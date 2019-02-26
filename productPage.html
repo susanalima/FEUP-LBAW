@@ -21,6 +21,67 @@
         <title>ProductName</title>
     </head>
     <body>
+        <!-- Navbar Start -->
+        <nav class="navbar navbar-light bg-light">
+            <a class="navbar-brand" href="#">
+                <img src="/images/placeholder.png" width="30" height="30" class="d-inline-block align-top" alt="" />
+                PuzzleWood
+            </a>
+        </nav>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <button
+                class="navbar-toggler"
+                type="button"
+                data-toggle="collapse"
+                data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+            >
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse d-flex justify-content-between" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto w-100 d-flex">
+                    <li class="nav-item dropdown mr-auto col-2">
+                        <a
+                            class="nav-link dropdown-toggle"
+                            href="#"
+                            id="navbarDropdown"
+                            role="button"
+                            data-toggle="dropdown"
+                            aria-haspopup="true"
+                            aria-expanded="false"
+                        >
+                            All Categories
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
+                    </li>
+                    <li class="col-8">
+                        <form class="form-inline my-2 my-lg-0 d-flex justify-content-between">
+                            <input
+                                class="form-control mr-auto"
+                                type="search"
+                                placeholder="Search"
+                                aria-label="Search"
+                                id="searchBar"
+                            />
+                            <button class="btn btn-outline-primary" type="submit" id="searchBtn">Search</button>
+                        </form>
+                    </li>
+                    <li class="nav-item ml-auto col-2 text-right">
+                        <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">Your Account</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <!-- Navbar End -->
+
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="#">Home</a></li>
@@ -244,6 +305,7 @@
             </div>
         </div>
 
+        <!-- Footer Start -->
         <div class="d-flex justify-content-around text-white p-5" id="footer">
             <div class="d-flex flex-column">
                 <a href="#">Help</a>
@@ -252,6 +314,7 @@
             </div>
             <h4 class="align-self-end ">&copy; 2015 PuzzleWood.pt. All Rights Reserved.</h4>
         </div>
+        <!-- Footer End -->
 
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
