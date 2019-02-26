@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+    crossorigin="anonymous" />
+
+  <title>PuzzleWood</title>
+</head>
+
+<body>
+  <!-- Image and text -->
+  <nav class="navbar navbar-light bg-light">
+    <a class="navbar-brand" href="#">
+      <img src="/img.png" width="30" height="30" class="d-inline-block align-top" alt="" />
+      PuzzleWood
+    </a>
+  </nav>
+
+  <h2 class="text-center">User Profile</h2>
+
+  <div class="w-50 mx-auto accordion" id="profileOptions">
+
+    <div class="card">
+      <div class="card-header" id="headingOne">
+        <h2 class="mb-0">
+          <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseOne"
+            aria-expanded="false" aria-controls="collapseOne">
+            Information
+          </button>
+        </h2>
+      </div>
+      <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#profileOptions">
+        <div class="card-body">
+          <form>
+            <div class="form-group row">
+              <label for="name" class="col-sm-3 col-form-label">Name</label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control-plaintext" id="name" value="John Doe">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="staticEmail" class="col-sm-3 col-form-label">Email</label>
+              <div class="col-sm-8">
+                <input type="email" class="form-control-plaintext" id="staticEmail" value="johnnyDoe@example.com">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="address" class="col-sm-3 col-form-label">Address</label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control-plaintext" id="address" value="Algum sitio em Gaia">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="inputPassword" class="col-sm-3 col-form-label">New Password</label>
+              <div class="col-sm-8">
+                <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="inputPassword" class="col-sm-3 col-form-label">Confirm Password</label>
+              <div class="col-sm-8">
+                <input type="password" class="form-control" id="ConfirmPassword" placeholder="Password">
+              </div>
+            </div>
+            <!--tabela com cartoes associados-->
+            <button type="submit" class="btn btn-outline-success float-right m-2">Save</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header" id="headingTwo">
+        <h2 class="mb-0">
+          <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo"
+            aria-expanded="false" aria-controls="collapseTwo">
+            Notifications
+          </button>
+        </h2>
+      </div>
+      <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#profileOptions">
+        <div class="card-body">
+          <!--info alert-->
+          <div class="alert alert-info">
+            <div class="container">
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span>x</span>
+              </button>
+              <b>2019-02-22 :</b> Jane Doe answered your question on bla bla...
+            </div>
+          </div>
+          <!--primary alert-->
+          <div class="alert alert-primary">
+            <div class="container">
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span>x</span>
+              </button>
+              <b>2019-02-21 :</b> 90% off in laptops! Don't miss this opportunity!
+            </div>
+          </div>
+          <!--success alert-->
+          <div class="alert alert-success">
+            <div class="container">
+              <!--<div class="alert-icon">
+                        <i class="material-icons">check</i>
+                    </div>-->
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span>x</span>
+              </button>
+              <b>2019-02-21 :</b> Purchase of shopping cart #3 successfull
+            </div>
+          </div>
+          <!--warning alert-->
+          <div class="alert alert-warning">
+            <div class="container">
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span>x</span>
+              </button>
+              <b>2019-02-19 :</b> Your account was blocked, contact support ASAP
+            </div>
+          </div>
+          <!--info danger-->
+          <div class="alert alert-danger">
+            <div class="container">
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span>x</span>
+              </button>
+              <b>2019-02-19 :</b> Invalid purchase (nao sei se este se aplica)
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header" id="headingThree">
+        <h2 class="mb-0">
+          <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree"
+            aria-expanded="false" aria-controls="collapseThree">
+            Purchase History
+          </button>
+        </h2>
+      </div>
+      <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#profileOptions">
+        <div class="card-body">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Cart</th>
+                <th scope="col">Date</th>
+                <th scope="col">Total Price (€)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>2012-03-11</td>
+                <td>14.89</td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>2017-02-11</td>
+                <td>109.99</td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>2019-01-21</td>
+                <td>999.99</td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header" id="headingFour">
+          <h2 class="mb-0">
+            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFour"
+              aria-expanded="false" aria-controls="collapseFour">
+              Wish Lists
+            </button>
+          </h2>
+        </div>
+        <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#profileOptions">
+          <div class="card-body">
+            <dl class="row">
+              <dt class="col-sm-3 text-truncate">When I'm a millionaire</dt>
+              <dd class="col-sm-9">Things I'm going to buy when I'm a millionaire!!!!!!!!!!!</dd>
+
+              <dt class="col-sm-3 text-truncate">Birthday</dt>
+              <dd class="col-sm-9">
+                <p>Anniversary gifts</p>
+              </dd>
+
+              <dt class="col-sm-3 text-truncate">School</dt>
+              <dd class="col-sm-9">Stuff I have to buy for school as soon as I have money</dd>
+
+              <dt class="col-sm-3 text-truncate">Mum</dt>
+              <dd class="col-sm-9">My mummy's wish list </dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+
+</body>
+
+</html>
