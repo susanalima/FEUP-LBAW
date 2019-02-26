@@ -1,0 +1,52 @@
+body
+{
+    font-family: 'Roboto', sans-serif;
+}
+
+#edition #dropdownMenuButton
+{
+    width: 100%;
+}
+
+#addBtns button
+{
+    width: 49%;
+}
+
+#specificSpecs button:hover
+{
+    background-color: rgb(0, 123, 255);
+    color: aliceblue;
+}
+
+h1 
+{
+    font-size: 1.4em;
+}
+
+h2 
+{
+    font-size: 1.1em;
+    font-family: 'Roboto italic', sans-serif;
+    color: rgb(78, 78, 78);
+}
+
+h3 
+{
+    font-size: 1.0em;
+}
+
+h4 
+{
+    font-size: .85em;
+}
+
+#footer 
+{
+    background-color: grey;
+}
+
+#footer a 
+{
+    color: white;
+}
