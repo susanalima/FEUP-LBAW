@@ -1,0 +1,18 @@
+#wishListsTabs{
+    margin-top: 2em;
+    margin-left: 4em;
+}
+
+#list-example{
+    width:10%;
+}
+
+#listItems{
+    width:85%;
+    overflow: auto;
+    height: 20em;
+}
+
+#mainContainer{
+    margin-left:4em;
+}
