@@ -10,34 +10,39 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
     crossorigin="anonymous" />
 
-  <title>User Profile</title>
+  <!-- Roboto Font -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,400i" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/styles.css" />
+
+  <title>Your Account</title>
 </head>
 
 <body>
   <!-- Image and text -->
   <nav class="navbar navbar-light bg-light">
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand" href="main.html">
       <img src="/images/placeholder.png" width="30" height="30" class="d-inline-block align-top" alt="" />
       PuzzleWood
     </a>
   </nav>
 
-  <h2 class="text-center p-3">User Profile</h2>
+  <h1 class="text-center p-3 mt-4">Your Account</h1>
 
-  <div class="w-50 mx-auto accordion" id="profileOptions">
+  <div class="w-50 mx-auto accordion mb-5 mt-4" id="profileOptions">
 
     <div class="card">
       <div class="card-header" id="infoHeading">
         <h2 class="mb-0">
-          <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#userInfo"
+          <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#clientInfo"
             aria-expanded="false" aria-controls="collapseOne">
             Information
           </button>
         </h2>
       </div>
-      <div id="userInfo" class="collapse show" aria-labelledby="headingOne" data-parent="#profileOptions">
+      <div id="clientInfo" class="collapse show" aria-labelledby="headingOne" data-parent="#profileOptions">
         <div class="card-body ml-2">
-          <form class="userInfoForm" >
+          <form class="clientInfoForm">
             <div class="form-group row">
               <label for="name" class="col-sm-3 col-form-label"><b>Name</b></label>
               <div class="col-sm-8">
@@ -57,11 +62,11 @@
               </div>
             </div>
             <div class="form-group row">
-                <label for="inputPassword" class="col-sm-3 col-form-label pr-0"><b>Current Password</b></label>
-                <div class="col-sm-8">
-                  <input type="password" class="form-control" id="CurrentPassword" placeholder="Password">
-                </div>
+              <label for="inputPassword" class="col-sm-3 col-form-label pr-0"><b>Current Password</b></label>
+              <div class="col-sm-8">
+                <input type="password" class="form-control" id="CurrentPassword" placeholder="Password">
               </div>
+            </div>
             <div class="form-group row">
               <label for="inputPassword" class="col-sm-3 col-form-label pr-0"><b>New Password</b></label>
               <div class="col-sm-8">
@@ -75,29 +80,51 @@
               </div>
             </div>
             <!--tabela com cartoes associados-->
-            <button type="submit" class="btn btn-outline-success float-right mb-2 mt-2 btn-sm">Save</button>
+            <button type="submit" class="btn btn-outline-success float-right mb-4 mt-2 btn-sm">Save</button>
           </form>
-          <button type="button" class="btn btn-outline-danger float-left mb-2 mt-2 btn-sm">Delete Account</button>
+          <div>
+            <table class="table">
+              <caption>
+                Associated cards
+                <button type="button" class="btn btn-outline-success float-right mb-2 mt-0 btn-sm">Add card</button>
+              </caption>
+              <thead>
+                <tr>
+                  <th scope="col">Card Number</th>
+                  <th scope="col">Expiration Date</th>
+                  <th scope="col">Name</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1111</td>
+                  <td>11/2019</td>
+                  <td>Visa</td>
+                </tr>
+              </tbody>
+            </table>
+            <button type="button" class="btn btn-outline-danger float-left mb-2 btn-sm">Delete Account</button>
+          </div>
         </div>
       </div>
     </div>
     <div class="card">
       <div class="card-header" id="notfsHeading">
         <h2 class="mb-0 d-flex justify-content-between align-items-center">
-          <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#userNotfs"
+          <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#clientNotfs"
             aria-expanded="false" aria-controls="collapseTwo">
             Notifications
           </button>
           <!--<span class="badge badge-info badge-pill">2</span>-->
         </h2>
       </div>
-      <div id="userNotfs" class="collapse" aria-labelledby="notfsHeading" data-parent="#profileOptions">
+      <div id="clientNotfs" class="collapse" aria-labelledby="notfsHeading" data-parent="#profileOptions">
         <div class="card-body">
           <!--info alert-->
           <div class="alert alert-info">
             <div class="container">
               <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span>x</span>
+                <span aria-hidden="true">&times;</span>
               </button>
               <b>2019-02-22 :</b> Jane Doe answered your question on bla bla...
             </div>
@@ -106,7 +133,7 @@
           <div class="alert alert-primary">
             <div class="container">
               <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span>x</span>
+                <span aria-hidden="true">&times;</span>
               </button>
               <b>2019-02-21 :</b> 90% off in laptops! Don't miss this opportunity!
             </div>
@@ -118,7 +145,7 @@
                         <i class="material-icons">check</i>
                     </div>-->
               <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span>x</span>
+                <span aria-hidden="true">&times;</span>
               </button>
               <b>2019-02-21 :</b> Purchase of shopping cart #3 successfull
             </div>
@@ -127,7 +154,7 @@
           <div class="alert alert-warning">
             <div class="container">
               <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span>x</span>
+                <span aria-hidden="true">&times;</span>
               </button>
               <b>2019-02-19 :</b> Your account was blocked, contact support ASAP
             </div>
@@ -136,7 +163,7 @@
           <div class="alert alert-danger">
             <div class="container">
               <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span>x</span>
+                <span aria-hidden="true">&times;</span>
               </button>
               <b>2019-02-19 :</b> Invalid purchase (nao sei se este se aplica)
             </div>
@@ -147,13 +174,13 @@
     <div class="card">
       <div class="card-header" id="purchaseHistHeading">
         <h2 class="mb-0">
-          <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#userPurchaseHist"
+          <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#clientPurchaseHist"
             aria-expanded="false" aria-controls="collapseThree">
             Purchase History
           </button>
         </h2>
       </div>
-      <div id="userPurchaseHist" class="collapse" aria-labelledby="purchaseHistHeading" data-parent="#profileOptions">
+      <div id="clientPurchaseHist" class="collapse" aria-labelledby="purchaseHistHeading" data-parent="#profileOptions">
         <div class="card-body">
           <table class="table">
             <thead>
@@ -186,13 +213,13 @@
       <div class="card">
         <div class="card-header" id="wishListsHeading">
           <h2 class="mb-0">
-            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#userWishLists"
+            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#clientWishLists"
               aria-expanded="false" aria-controls="collapseFour">
               Wish Lists
             </button>
           </h2>
         </div>
-        <div id="userWishLists" class="collapse" aria-labelledby="wishListsHeading" data-parent="#profileOptions">
+        <div id="clientWishLists" class="collapse" aria-labelledby="wishListsHeading" data-parent="#profileOptions">
           <div class="card-body">
             <table class="table">
               <tbody>
@@ -200,28 +227,55 @@
                   <th scope="row">1</th>
                   <td><b>When I'm a millionaire</b></td>
                   <td>Things I'm going to buy when I'm a millionaire!!!!!!!!!!!</td>
-                  <td><button type="button" class="btn btn-outline-primary btn-sm">Share</button></td>
+                  <td>
+                    <div class="d-flex justify-content-between">
+                      <button type="button" class="btn btn-outline-primary btn-sm m-1">Share</button>
+                      <button type="button" class="btn btn-outline-danger btn-sm  m-1">Delete</button>
+                    </div>
+                  </td>
                 </tr>
                 <tr>
                   <th scope="row">2</th>
                   <td><b>Birthday</b></td>
                   <td>Anniversary gifts</td>
-                  <td><button type="button" class="btn btn-outline-primary btn-sm">Share</button></td>
+                  <td>
+                    <div class="d-flex justify-content-between">
+                      <button type="button" class="btn btn-outline-primary btn-sm m-1">Share</button>
+                      <button type="button" class="btn btn-outline-danger btn-sm  m-1">Delete</button>
+                    </div>
+                  </td>
                 </tr>
                 <tr>
                   <th scope="row">3</th>
                   <td><b>School</b></td>
                   <td>Stuff I have to buy for school as soon as I have money</td>
-                  <td><button type="button" class="btn btn-outline-primary btn-sm">Share</button></td>
+                  <td>
+                    <div class="d-flex justify-content-between">
+                      <button type="button" class="btn btn-outline-primary btn-sm m-1">Share</button>
+                      <button type="button" class="btn btn-outline-danger btn-sm  m-1">Delete</button>
+                    </div>
+                  </td>
                 </tr>
               </tbody>
             </table>
-            <button type="button" class="btn btn-outline-success float-right m-2 btn-sm ">New Wish List</button> 
+            <button type="button" class="btn btn-outline-success float-left m-2 btn-sm ">New Wish List</button>
+            <button type="button" class="btn btn-outline-danger float-right m-2 btn-sm ">Delete all</button>
           </div>
         </div>
       </div>
     </div>
   </div>
+
+  <!-- Footer Start -->
+  <div class="d-flex justify-content-around text-white p-5" id="footer">
+    <div class="d-flex flex-column">
+      <a href="#">Help</a>
+      <a href="#">Contacts</a>
+      <a href="#">FAQs</a>
+    </div>
+    <h4 class="align-self-end ">&copy; 2015 PuzzleWood.pt. All Rights Reserved.</h4>
+  </div>
+  <!-- Footer End -->
 
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
