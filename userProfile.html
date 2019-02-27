@@ -10,81 +10,88 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
     crossorigin="anonymous" />
 
-  <title>PuzzleWood</title>
+  <title>User Profile</title>
 </head>
 
 <body>
   <!-- Image and text -->
   <nav class="navbar navbar-light bg-light">
     <a class="navbar-brand" href="#">
-      <img src="/img.png" width="30" height="30" class="d-inline-block align-top" alt="" />
+      <img src="/images/placeholder.png" width="30" height="30" class="d-inline-block align-top" alt="" />
       PuzzleWood
     </a>
   </nav>
 
-  <h2 class="text-center">User Profile</h2>
+  <h2 class="text-center p-3">User Profile</h2>
 
   <div class="w-50 mx-auto accordion" id="profileOptions">
 
     <div class="card">
-      <div class="card-header" id="headingOne">
+      <div class="card-header" id="infoHeading">
         <h2 class="mb-0">
-          <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseOne"
+          <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#userInfo"
             aria-expanded="false" aria-controls="collapseOne">
             Information
           </button>
         </h2>
       </div>
-      <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#profileOptions">
-        <div class="card-body">
-          <form>
+      <div id="userInfo" class="collapse show" aria-labelledby="headingOne" data-parent="#profileOptions">
+        <div class="card-body ml-2">
+          <form class="userInfoForm" >
             <div class="form-group row">
-              <label for="name" class="col-sm-3 col-form-label">Name</label>
+              <label for="name" class="col-sm-3 col-form-label"><b>Name</b></label>
               <div class="col-sm-8">
                 <input type="text" class="form-control-plaintext" id="name" value="John Doe">
               </div>
             </div>
             <div class="form-group row">
-              <label for="staticEmail" class="col-sm-3 col-form-label">Email</label>
+              <label for="staticEmail" class="col-sm-3 col-form-label"><b>Email</b></label>
               <div class="col-sm-8">
                 <input type="email" class="form-control-plaintext" id="staticEmail" value="johnnyDoe@example.com">
               </div>
             </div>
             <div class="form-group row">
-              <label for="address" class="col-sm-3 col-form-label">Address</label>
+              <label for="address" class="col-sm-3 col-form-label"><b>Address</b></label>
               <div class="col-sm-8">
                 <input type="text" class="form-control-plaintext" id="address" value="Algum sitio em Gaia">
               </div>
             </div>
             <div class="form-group row">
-              <label for="inputPassword" class="col-sm-3 col-form-label">New Password</label>
+                <label for="inputPassword" class="col-sm-3 col-form-label pr-0"><b>Current Password</b></label>
+                <div class="col-sm-8">
+                  <input type="password" class="form-control" id="CurrentPassword" placeholder="Password">
+                </div>
+              </div>
+            <div class="form-group row">
+              <label for="inputPassword" class="col-sm-3 col-form-label pr-0"><b>New Password</b></label>
               <div class="col-sm-8">
-                <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+                <input type="password" class="form-control" id="NewPassword" placeholder="Password">
               </div>
             </div>
             <div class="form-group row">
-              <label for="inputPassword" class="col-sm-3 col-form-label">Confirm Password</label>
+              <label for="inputPassword" class="col-sm-3 col-form-label pr-0"><b>Confirm Password</b></label>
               <div class="col-sm-8">
                 <input type="password" class="form-control" id="ConfirmPassword" placeholder="Password">
               </div>
             </div>
             <!--tabela com cartoes associados-->
-            <button type="submit" class="btn btn-outline-success float-right m-2">Save</button>
+            <button type="submit" class="btn btn-outline-success float-right mb-2 mt-2 btn-sm">Save</button>
           </form>
+          <button type="button" class="btn btn-outline-danger float-left mb-2 mt-2 btn-sm">Delete Account</button>
         </div>
       </div>
     </div>
-
     <div class="card">
-      <div class="card-header" id="headingTwo">
-        <h2 class="mb-0">
-          <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo"
+      <div class="card-header" id="notfsHeading">
+        <h2 class="mb-0 d-flex justify-content-between align-items-center">
+          <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#userNotfs"
             aria-expanded="false" aria-controls="collapseTwo">
             Notifications
           </button>
+          <!--<span class="badge badge-info badge-pill">2</span>-->
         </h2>
       </div>
-      <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#profileOptions">
+      <div id="userNotfs" class="collapse" aria-labelledby="notfsHeading" data-parent="#profileOptions">
         <div class="card-body">
           <!--info alert-->
           <div class="alert alert-info">
@@ -134,20 +141,19 @@
               <b>2019-02-19 :</b> Invalid purchase (nao sei se este se aplica)
             </div>
           </div>
-
         </div>
       </div>
     </div>
     <div class="card">
-      <div class="card-header" id="headingThree">
+      <div class="card-header" id="purchaseHistHeading">
         <h2 class="mb-0">
-          <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree"
+          <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#userPurchaseHist"
             aria-expanded="false" aria-controls="collapseThree">
             Purchase History
           </button>
         </h2>
       </div>
-      <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#profileOptions">
+      <div id="userPurchaseHist" class="collapse" aria-labelledby="purchaseHistHeading" data-parent="#profileOptions">
         <div class="card-body">
           <table class="table">
             <thead>
@@ -173,37 +179,44 @@
                 <td>2019-01-21</td>
                 <td>999.99</td>
               </tr>
-
             </tbody>
           </table>
         </div>
       </div>
       <div class="card">
-        <div class="card-header" id="headingFour">
+        <div class="card-header" id="wishListsHeading">
           <h2 class="mb-0">
-            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFour"
+            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#userWishLists"
               aria-expanded="false" aria-controls="collapseFour">
               Wish Lists
             </button>
           </h2>
         </div>
-        <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#profileOptions">
+        <div id="userWishLists" class="collapse" aria-labelledby="wishListsHeading" data-parent="#profileOptions">
           <div class="card-body">
-            <dl class="row">
-              <dt class="col-sm-3 text-truncate">When I'm a millionaire</dt>
-              <dd class="col-sm-9">Things I'm going to buy when I'm a millionaire!!!!!!!!!!!</dd>
-
-              <dt class="col-sm-3 text-truncate">Birthday</dt>
-              <dd class="col-sm-9">
-                <p>Anniversary gifts</p>
-              </dd>
-
-              <dt class="col-sm-3 text-truncate">School</dt>
-              <dd class="col-sm-9">Stuff I have to buy for school as soon as I have money</dd>
-
-              <dt class="col-sm-3 text-truncate">Mum</dt>
-              <dd class="col-sm-9">My mummy's wish list </dd>
-            </dl>
+            <table class="table">
+              <tbody>
+                <tr>
+                  <th scope="row">1</th>
+                  <td><b>When I'm a millionaire</b></td>
+                  <td>Things I'm going to buy when I'm a millionaire!!!!!!!!!!!</td>
+                  <td><button type="button" class="btn btn-outline-primary btn-sm">Share</button></td>
+                </tr>
+                <tr>
+                  <th scope="row">2</th>
+                  <td><b>Birthday</b></td>
+                  <td>Anniversary gifts</td>
+                  <td><button type="button" class="btn btn-outline-primary btn-sm">Share</button></td>
+                </tr>
+                <tr>
+                  <th scope="row">3</th>
+                  <td><b>School</b></td>
+                  <td>Stuff I have to buy for school as soon as I have money</td>
+                  <td><button type="button" class="btn btn-outline-primary btn-sm">Share</button></td>
+                </tr>
+              </tbody>
+            </table>
+            <button type="button" class="btn btn-outline-success float-right m-2 btn-sm ">New Wish List</button> 
           </div>
         </div>
       </div>
