@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+        <!-- Bootstrap CSS -->
+        <link
+            rel="stylesheet"
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+            crossorigin="anonymous"
+        />
+
+        <!-- Roboto Font -->
+        <link href="https://fonts.googleapis.com/css?family=Roboto:400,400i" rel="stylesheet" />
+
+        <link rel="stylesheet" href="css/styles.css" />
+
+        <title>SearchResult</title>
+    </head>
+    <body>
+        <!-- Navbar Start -->
+        <nav class="navbar navbar-light bg-light">
+            <a class="navbar-brand" href="#">
+                <img src="/images/placeholder.png" width="30" height="30" class="d-inline-block align-top" alt="" />
+                PuzzleWood
+            </a>
+        </nav>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <button
+                class="navbar-toggler"
+                type="button"
+                data-toggle="collapse"
+                data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+            >
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse d-flex justify-content-between" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto w-100 d-flex">
+                    <li class="nav-item dropdown mr-auto col-2">
+                        <a
+                            class="nav-link dropdown-toggle"
+                            href="#"
+                            id="navbarDropdown"
+                            role="button"
+                            data-toggle="dropdown"
+                            aria-haspopup="true"
+                            aria-expanded="false"
+                        >
+                            All Categories
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
+                    </li>
+                    <li class="col-8">
+                        <form class="form-inline my-2 my-lg-0 d-flex justify-content-between">
+                            <input
+                                class="form-control mr-auto"
+                                type="search"
+                                placeholder="Search"
+                                aria-label="Search"
+                                id="searchBar"
+                            />
+                            <button class="btn btn-outline-primary" type="submit" id="searchBtn">Search</button>
+                        </form>
+                    </li>
+                    <li class="nav-item ml-auto col-2 text-right">
+                        <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">Your Account</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <!-- Navbar End -->
+
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item"><a href="#">Library</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Data</li>
+            </ol>
+        </nav>
+
+        <div class="d-flex justify-content-around" id="searchBody">
+            <div class="bg-primary p-4 m-2" id="filters">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" />
+                    <label class="form-check-label" for="defaultCheck1">
+                        Default checkbox
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck2" disabled />
+                    <label class="form-check-label" for="defaultCheck2">
+                        Disabled checkbox
+                    </label>
+                </div>
+                <form>
+                    <div class="form-group">
+                        <label for="formControlRange">Example Range input</label>
+                        <input type="range" class="form-control-range" id="formControlRange" />
+                    </div>
+                </form>
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1">Example select</label>
+                    <select class="form-control" id="exampleFormControlSelect1">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+                </div>
+                <div class="form-check">
+                    <input
+                        class="form-check-input"
+                        type="radio"
+                        name="exampleRadios"
+                        id="exampleRadios1"
+                        value="option1"
+                        checked
+                    />
+                    <label class="form-check-label" for="exampleRadios1">
+                        Default radio
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input
+                        class="form-check-input"
+                        type="radio"
+                        name="exampleRadios"
+                        id="exampleRadios2"
+                        value="option2"
+                    />
+                    <label class="form-check-label" for="exampleRadios2">
+                        Second default radio
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input
+                        class="form-check-input"
+                        type="radio"
+                        name="exampleRadios"
+                        id="exampleRadios3"
+                        value="option3"
+                        disabled
+                    />
+                    <label class="form-check-label" for="exampleRadios3">
+                        Disabled radio
+                    </label>
+                </div>
+            </div>
+            <div class="d-flex justify-content-start flex-wrap bg-secondary p-4 m-2" id="results">
+                <div class="product d-flex flex-column">
+                    <div class="productName"></div>
+                    <div class="d-flex flex-column flex-wrap">
+                        <div class="productImage"></div>
+                        <button type="button" class="searchBtn"></button>
+                        <button type="button" class="searchBtn"></button>
+                    </div>
+                    <div class="rating">
+                        <div class="form-check form-check-inline">
+                            <input
+                                class="form-check-input"
+                                type="radio"
+                                name="inlineRadioOptions"
+                                id="inlineRadio1"
+                                value="option1"
+                            />
+                            <input
+                                class="form-check-input"
+                                type="radio"
+                                name="inlineRadioOptions"
+                                id="inlineRadio1"
+                                value="option1"
+                            />
+                            <input
+                                class="form-check-input"
+                                type="radio"
+                                name="inlineRadioOptions"
+                                id="inlineRadio1"
+                                value="option1"
+                            />
+                            <input
+                                class="form-check-input"
+                                type="radio"
+                                name="inlineRadioOptions"
+                                id="inlineRadio1"
+                                value="option1"
+                            />
+                            <input
+                                class="form-check-input"
+                                type="radio"
+                                name="inlineRadioOptions"
+                                id="inlineRadio1"
+                                value="option1"
+                            />
+                        </div>
+                    </div>
+                </div>
+                <div class="product d-flex flex-column">
+                    <div class="productName"></div>
+                    <div class="d-flex flex-column flex-wrap">
+                        <div class="productImage"></div>
+                        <button type="button" class="searchBtn"></button>
+                        <button type="button" class="searchBtn"></button>
+                    </div>
+                    <div class="rating">
+                        <div class="form-check form-check-inline">
+                            <input
+                                class="form-check-input"
+                                type="radio"
+                                name="inlineRadioOptions"
+                                id="inlineRadio1"
+                                value="option1"
+                            />
+                            <input
+                                class="form-check-input"
+                                type="radio"
+                                name="inlineRadioOptions"
+                                id="inlineRadio1"
+                                value="option1"
+                            />
+                            <input
+                                class="form-check-input"
+                                type="radio"
+                                name="inlineRadioOptions"
+                                id="inlineRadio1"
+                                value="option1"
+                            />
+                            <input
+                                class="form-check-input"
+                                type="radio"
+                                name="inlineRadioOptions"
+                                id="inlineRadio1"
+                                value="option1"
+                            />
+                            <input
+                                class="form-check-input"
+                                type="radio"
+                                name="inlineRadioOptions"
+                                id="inlineRadio1"
+                                value="option1"
+                            />
+                        </div>
+                    </div>
+                </div>
+                <div class="product d-flex flex-column">
+                    <div class="productName"></div>
+                    <div class="d-flex flex-column flex-wrap">
+                        <div class="productImage"></div>
+                        <button type="button" class="searchBtn"></button>
+                        <button type="button" class="searchBtn"></button>
+                    </div>
+                    <div class="rating">
+                        <div class="form-check form-check-inline">
+                            <input
+                                class="form-check-input"
+                                type="radio"
+                                name="inlineRadioOptions"
+                                id="inlineRadio1"
+                                value="option1"
+                            />
+                            <input
+                                class="form-check-input"
+                                type="radio"
+                                name="inlineRadioOptions"
+                                id="inlineRadio1"
+                                value="option1"
+                            />
+                            <input
+                                class="form-check-input"
+                                type="radio"
+                                name="inlineRadioOptions"
+                                id="inlineRadio1"
+                                value="option1"
+                            />
+                            <input
+                                class="form-check-input"
+                                type="radio"
+                                name="inlineRadioOptions"
+                                id="inlineRadio1"
+                                value="option1"
+                            />
+                            <input
+                                class="form-check-input"
+                                type="radio"
+                                name="inlineRadioOptions"
+                                id="inlineRadio1"
+                                value="option1"
+                            />
+                        </div>
+                    </div>
+                </div>
+                <div class="product d-flex flex-column">
+                    <div class="productName"></div>
+                    <div class="d-flex flex-column flex-wrap">
+                        <div class="productImage"></div>
+                        <button type="button" class="searchBtn"></button>
+                        <button type="button" class="searchBtn"></button>
+                    </div>
+                    <div class="rating">
+                        <div class="form-check form-check-inline">
+                            <input
+                                class="form-check-input"
+                                type="radio"
+                                name="inlineRadioOptions"
+                                id="inlineRadio1"
+                                value="option1"
+                            />
+                            <input
+                                class="form-check-input"
+                                type="radio"
+                                name="inlineRadioOptions"
+                                id="inlineRadio1"
+                                value="option1"
+                            />
+                            <input
+                                class="form-check-input"
+                                type="radio"
+                                name="inlineRadioOptions"
+                                id="inlineRadio1"
+                                value="option1"
+                            />
+                            <input
+                                class="form-check-input"
+                                type="radio"
+                                name="inlineRadioOptions"
+                                id="inlineRadio1"
+                                value="option1"
+                            />
+                            <input
+                                class="form-check-input"
+                                type="radio"
+                                name="inlineRadioOptions"
+                                id="inlineRadio1"
+                                value="option1"
+                            />
+                        </div>
+                    </div>
+                </div>
+                <div class="product d-flex flex-column">
+                    <div class="productName"></div>
+                    <div class="d-flex flex-column flex-wrap">
+                        <div class="productImage"></div>
+                        <button type="button" class="searchBtn"></button>
+                        <button type="button" class="searchBtn"></button>
+                    </div>
+                    <div class="rating">
+                        <div class="form-check form-check-inline">
+                            <input
+                                class="form-check-input"
+                                type="radio"
+                                name="inlineRadioOptions"
+                                id="inlineRadio1"
+                                value="option1"
+                            />
+                            <input
+                                class="form-check-input"
+                                type="radio"
+                                name="inlineRadioOptions"
+                                id="inlineRadio1"
+                                value="option1"
+                            />
+                            <input
+                                class="form-check-input"
+                                type="radio"
+                                name="inlineRadioOptions"
+                                id="inlineRadio1"
+                                value="option1"
+                            />
+                            <input
+                                class="form-check-input"
+                                type="radio"
+                                name="inlineRadioOptions"
+                                id="inlineRadio1"
+                                value="option1"
+                            />
+                            <input
+                                class="form-check-input"
+                                type="radio"
+                                name="inlineRadioOptions"
+                                id="inlineRadio1"
+                                value="option1"
+                            />
+                        </div>
+                    </div>
+                </div>
+                <div class="product d-flex flex-column">
+                    <div class="productName"></div>
+                    <div class="d-flex flex-column flex-wrap">
+                        <div class="productImage"></div>
+                        <button type="button" class="searchBtn"></button>
+                        <button type="button" class="searchBtn"></button>
+                    </div>
+                    <div class="rating">
+                        <div class="form-check form-check-inline">
+                            <input
+                                class="form-check-input"
+                                type="radio"
+                                name="inlineRadioOptions"
+                                id="inlineRadio1"
+                                value="option1"
+                            />
+                            <input
+                                class="form-check-input"
+                                type="radio"
+                                name="inlineRadioOptions"
+                                id="inlineRadio1"
+                                value="option1"
+                            />
+                            <input
+                                class="form-check-input"
+                                type="radio"
+                                name="inlineRadioOptions"
+                                id="inlineRadio1"
+                                value="option1"
+                            />
+                            <input
+                                class="form-check-input"
+                                type="radio"
+                                name="inlineRadioOptions"
+                                id="inlineRadio1"
+                                value="option1"
+                            />
+                            <input
+                                class="form-check-input"
+                                type="radio"
+                                name="inlineRadioOptions"
+                                id="inlineRadio1"
+                                value="option1"
+                            />
+                        </div>
+                    </div>
+                </div>
+                <div class="product d-flex flex-column">
+                    <div class="productName"></div>
+                    <div class="d-flex flex-column flex-wrap">
+                        <div class="productImage"></div>
+                        <button type="button" class="searchBtn"></button>
+                        <button type="button" class="searchBtn"></button>
+                    </div>
+                    <div class="rating">
+                        <div class="form-check form-check-inline">
+                            <input
+                                class="form-check-input"
+                                type="radio"
+                                name="inlineRadioOptions"
+                                id="inlineRadio1"
+                                value="option1"
+                            />
+                            <input
+                                class="form-check-input"
+                                type="radio"
+                                name="inlineRadioOptions"
+                                id="inlineRadio1"
+                                value="option1"
+                            />
+                            <input
+                                class="form-check-input"
+                                type="radio"
+                                name="inlineRadioOptions"
+                                id="inlineRadio1"
+                                value="option1"
+                            />
+                            <input
+                                class="form-check-input"
+                                type="radio"
+                                name="inlineRadioOptions"
+                                id="inlineRadio1"
+                                value="option1"
+                            />
+                            <input
+                                class="form-check-input"
+                                type="radio"
+                                name="inlineRadioOptions"
+                                id="inlineRadio1"
+                                value="option1"
+                            />
+                        </div>
+                    </div>
+                </div>
+                <div class="product d-flex flex-column">
+                    <div class="productName"></div>
+                    <div class="d-flex flex-column flex-wrap">
+                        <div class="productImage"></div>
+                        <button type="button" class="searchBtn"></button>
+                        <button type="button" class="searchBtn"></button>
+                    </div>
+                    <div class="rating">
+                        <div class="form-check form-check-inline">
+                            <input
+                                class="form-check-input"
+                                type="radio"
+                                name="inlineRadioOptions"
+                                id="inlineRadio1"
+                                value="option1"
+                            />
+                            <input
+                                class="form-check-input"
+                                type="radio"
+                                name="inlineRadioOptions"
+                                id="inlineRadio1"
+                                value="option1"
+                            />
+                            <input
+                                class="form-check-input"
+                                type="radio"
+                                name="inlineRadioOptions"
+                                id="inlineRadio1"
+                                value="option1"
+                            />
+                            <input
+                                class="form-check-input"
+                                type="radio"
+                                name="inlineRadioOptions"
+                                id="inlineRadio1"
+                                value="option1"
+                            />
+                            <input
+                                class="form-check-input"
+                                type="radio"
+                                name="inlineRadioOptions"
+                                id="inlineRadio1"
+                                value="option1"
+                            />
+                        </div>
+                    </div>
+                </div>
+                <div class="product d-flex flex-column">
+                    <div class="productName"></div>
+                    <div class="d-flex flex-column flex-wrap">
+                        <div class="productImage"></div>
+                        <button type="button" class="searchBtn"></button>
+                        <button type="button" class="searchBtn"></button>
+                    </div>
+                    <div class="rating">
+                        <div class="form-check form-check-inline">
+                            <input
+                                class="form-check-input"
+                                type="radio"
+                                name="inlineRadioOptions"
+                                id="inlineRadio1"
+                                value="option1"
+                            />
+                            <input
+                                class="form-check-input"
+                                type="radio"
+                                name="inlineRadioOptions"
+                                id="inlineRadio1"
+                                value="option1"
+                            />
+                            <input
+                                class="form-check-input"
+                                type="radio"
+                                name="inlineRadioOptions"
+                                id="inlineRadio1"
+                                value="option1"
+                            />
+                            <input
+                                class="form-check-input"
+                                type="radio"
+                                name="inlineRadioOptions"
+                                id="inlineRadio1"
+                                value="option1"
+                            />
+                            <input
+                                class="form-check-input"
+                                type="radio"
+                                name="inlineRadioOptions"
+                                id="inlineRadio1"
+                                value="option1"
+                            />
+                        </div>
+                    </div>
+                </div>
+                <div class="product d-flex flex-column">
+                    <div class="productName"></div>
+                    <div class="d-flex flex-column flex-wrap">
+                        <div class="productImage"></div>
+                        <button type="button" class="searchBtn"></button>
+                        <button type="button" class="searchBtn"></button>
+                    </div>
+                    <div class="rating">
+                        <div class="form-check form-check-inline">
+                            <input
+                                class="form-check-input"
+                                type="radio"
+                                name="inlineRadioOptions"
+                                id="inlineRadio1"
+                                value="option1"
+                            />
+                            <input
+                                class="form-check-input"
+                                type="radio"
+                                name="inlineRadioOptions"
+                                id="inlineRadio1"
+                                value="option1"
+                            />
+                            <input
+                                class="form-check-input"
+                                type="radio"
+                                name="inlineRadioOptions"
+                                id="inlineRadio1"
+                                value="option1"
+                            />
+                            <input
+                                class="form-check-input"
+                                type="radio"
+                                name="inlineRadioOptions"
+                                id="inlineRadio1"
+                                value="option1"
+                            />
+                            <input
+                                class="form-check-input"
+                                type="radio"
+                                name="inlineRadioOptions"
+                                id="inlineRadio1"
+                                value="option1"
+                            />
+                        </div>
+                    </div>
+                </div>
+                <div class="product d-flex flex-column">
+                    <div class="productName"></div>
+                    <div class="d-flex flex-column flex-wrap">
+                        <div class="productImage"></div>
+                        <button type="button" class="searchBtn"></button>
+                        <button type="button" class="searchBtn"></button>
+                    </div>
+                    <div class="rating">
+                        <div class="form-check form-check-inline">
+                            <input
+                                class="form-check-input"
+                                type="radio"
+                                name="inlineRadioOptions"
+                                id="inlineRadio1"
+                                value="option1"
+                            />
+                            <input
+                                class="form-check-input"
+                                type="radio"
+                                name="inlineRadioOptions"
+                                id="inlineRadio1"
+                                value="option1"
+                            />
+                            <input
+                                class="form-check-input"
+                                type="radio"
+                                name="inlineRadioOptions"
+                                id="inlineRadio1"
+                                value="option1"
+                            />
+                            <input
+                                class="form-check-input"
+                                type="radio"
+                                name="inlineRadioOptions"
+                                id="inlineRadio1"
+                                value="option1"
+                            />
+                            <input
+                                class="form-check-input"
+                                type="radio"
+                                name="inlineRadioOptions"
+                                id="inlineRadio1"
+                                value="option1"
+                            />
+                        </div>
+                    </div>
+                </div>
+                <div class="product d-flex flex-column">
+                    <div class="productName"></div>
+                    <div class="d-flex flex-column flex-wrap">
+                        <div class="productImage"></div>
+                        <button type="button" class="searchBtn"></button>
+                        <button type="button" class="searchBtn"></button>
+                    </div>
+                    <div class="rating">
+                        <div class="form-check form-check-inline">
+                            <input
+                                class="form-check-input"
+                                type="radio"
+                                name="inlineRadioOptions"
+                                id="inlineRadio1"
+                                value="option1"
+                            />
+                            <input
+                                class="form-check-input"
+                                type="radio"
+                                name="inlineRadioOptions"
+                                id="inlineRadio1"
+                                value="option1"
+                            />
+                            <input
+                                class="form-check-input"
+                                type="radio"
+                                name="inlineRadioOptions"
+                                id="inlineRadio1"
+                                value="option1"
+                            />
+                            <input
+                                class="form-check-input"
+                                type="radio"
+                                name="inlineRadioOptions"
+                                id="inlineRadio1"
+                                value="option1"
+                            />
+                            <input
+                                class="form-check-input"
+                                type="radio"
+                                name="inlineRadioOptions"
+                                id="inlineRadio1"
+                                value="option1"
+                            />
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+
+        <!-- Footer Start -->
+        <div class="d-flex justify-content-around text-white p-5" id="footer">
+            <div class="d-flex flex-column">
+                <a href="#">Help</a>
+                <a href="#">Contacts</a>
+                <a href="#">FAQs</a>
+            </div>
+            <h4 class="align-self-end ">&copy; 2019 PuzzleWood.pt. All Rights Reserved.</h4>
+        </div>
+        <!-- Footer End -->
+
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script
+            src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"
+        ></script>
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"
+        ></script>
+        <script
+            src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"
+        ></script>
+    </body>
+</html>
