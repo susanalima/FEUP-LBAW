@@ -56,6 +56,19 @@
     outline:none
 }
 
+
+.add_cart2{
+    background-image: url('../images/final_cart_add2.png');
+    background-color: transparent;
+    background-size: 100%,100%;
+    height: 2.5em;
+    width: 2.5em;
+    border: none;
+    cursor: pointer;
+    outline:none
+}
+
+
 .shop_button{
     border-radius: 2em;
     display:block;
