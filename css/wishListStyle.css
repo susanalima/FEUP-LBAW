@@ -4,12 +4,12 @@
 }
 
 #list-example{
-    width:10em;
+    width:  auto;
     height: auto;
 }
 
 #listItems{
-    width: 85%;
+    width: 80%;
     overflow: auto;
     height: 30em;
 }
@@ -19,12 +19,30 @@
     width:100%;
 }
 
+.product_card{
+    min-height: 21em;
+}
+
+.product_img{
+    width: 40%; 
+    height: 75%;
+    background-size: cover;
+    margin-left:0.5em;
+   
+}
 
 .review_score{
     width:auto;
     height: 1.5em;
     margin-left: 0em;
     margin-top: 0em;
+}
+
+.product_name{
+    font-size:1.5em;
+    margin-left:0.5em;
+    margin-top: 0.3em;
+   
 }
 
 .add_cart{
