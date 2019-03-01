@@ -37,3 +37,12 @@
     cursor: pointer;
     outline:none
 }
+
+.shop_button{
+    border-radius: 2em;
+    display:block;
+    border-radius: 50%;
+    outline:none !important;
+    
+   
+}
