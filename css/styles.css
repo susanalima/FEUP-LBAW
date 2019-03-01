@@ -1,5 +1,7 @@
 body {
     font-family: "Roboto", sans-serif;
+    display: flex;
+    flex-direction: column;
 }
 
 #edition #dropdownMenuButton {
@@ -34,7 +36,7 @@ h4 {
 }
 
 #footer {
-    background-color: grey;
+    background-color: grey; 
 }
 
 #footer a {
@@ -109,4 +111,9 @@ h4 {
     background-color: coral;
     border: 0;
     padding: 0;
+}
+
+.black-control
+{
+    filter: invert(100%);   
 }
