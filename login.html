@@ -29,88 +29,116 @@
         </a>
     </nav>
 
-    <div class="w-75 mx-auto ">
+    <div class="w-100 mx-auto">
         <div class="d-flex justify-content-around m-5">
             <div>
-                <h1 class="mb-4">Login</h1>
-                <form class="mr-2" action="main.html">
+                <form class="ml-5 p-4 border rounded" action="main.html">
+                    <h1 class="mb-4">Login</h1>
                     <div class="form-group">
                         <label for="signInEmail">Email</label>
                         <div class="input-group flex-nowrap">
-                            <div class="input-group-prepend">
+                            <!--<div class="input-group-prepend">
                                 <span class="input-group-text" id="addon-wrapping"> <img src="/images/email_icon.png"
                                         width="auto" height="22" alt="" /></span>
-                            </div>
+                            </div>-->
                             <input type="email" class="form-control" id="signInEmail" placeholder="Email">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="signInPassword">Password</label>
                         <div class="input-group flex-nowrap">
-                            <div class="input-group-prepend">
+                            <!--<div class="input-group-prepend">
                                 <span class="input-group-text" id="addon-wrapping"> <img src="/images/pwd_icon.png"
                                         width="auto" height="22" alt="" /></span>
-                            </div>
+                             </div>-->
                             <input type="password" class="form-control" id="signInPassword" placeholder="Password">
                         </div>
                     </div>
                     <button type="submit" class="btn btn-primary btn-block btn-sm mt-4">Login</button>
                 </form>
             </div>
-
             <div>
-                <h1 class="mb-4">Create Account</h1>
-                <form class="ml-2" action="main.html">
+                <form class="ml-4 col-sm-8 p-4 border rounded" action="main.html">
+                    <h1 class="mb-4">Create Account</h1>
                     <div class="form-group">
                         <label for="signUpName">Name</label>
                         <div class="input-group flex-nowrap">
-                            <div class="input-group-prepend">
+                            <!-- <div class="input-group-prepend">
                                 <span class="input-group-text" id="addon-wrapping"> <img src="/images/user_icon.png"
                                         width="auto" height="22" alt="" /></span>
-                            </div>
+                            </div>-->
                             <input type="text" class="form-control" id="signUpName" placeholder="Name">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="signUpEmail">Email</label>
                         <div class="input-group flex-nowrap">
-                            <div class="input-group-prepend">
+                            <!--<div class="input-group-prepend">
                                 <span class="input-group-text" id="addon-wrapping"> <img src="/images/email_icon.png"
                                         width="auto" height="22" alt="" /></span>
-                            </div>
+                            </div>-->
                             <input type="email" class="form-control" id="signUpEmail" placeholder="Email">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Address</label>
+                        <div class="input-group flex-nowrap">
+                            <!--<div class="input-group-prepend">
+                                <span class="input-group-text" id="addon-wrapping"> <img src="/images/address_icon.jpg"
+                                        width="auto" height="22" alt="" /></span>
+                            </div>-->
+                            <input type="text" class="form-control" id="signUpPostCode" placeholder="Postcode">
+                        </div>
+                        <div class="input-group flex-nowrap mt-2">
+                            <!--<div class="input-group-prepend">
+                                <span class="input-group-text" id="addon-wrapping"> <img src="/images/address_icon.jpg"
+                                        width="auto" height="22" alt="" /></span>
+                            </div>-->
+                            <input type="text" class="form-control" id="signUpStreet" placeholder="Street and number, P.O. box, c/o">
+                        </div>
+                        <div class="input-group flex-nowrap mt-2">
+                            <!--<div class="input-group-prepend">
+                                <span class="input-group-text" id="addon-wrapping"> <img src="/images/address_icon.jpg"
+                                        width="auto" height="22" alt="" /></span>
+                            </div>-->
+                            <input type="text" class="form-control" id="signUpApartment" placeholder="Flat, suite, unit, floor, etc">
+                        </div>
+                        <div class="input-group flex-nowrap mt-2">
+
+
+                            <!--<div class="input-group-prepend">
+                                <span class="input-group-text" id="addon-wrapping"> <img src="/images/address_icon.jpg"
+                                        width="auto" height="22" alt="" /></span>
+                            </div>-->
+                            <input type="text" class="form-control" id="signUpTown" placeholder="Town, City">
+                            <!--<div class="input-group-prepend">
+                                <span class="input-group-text" id="addon-wrapping"> <img src="/images/address_icon.jpg"
+                                        width="auto" height="22" alt="" /></span>
+                            </div>-->
+                            <input type="text" class="form-control" id="signUpCountry" placeholder="Country">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="signUpPassword">Password</label>
                         <div class="input-group flex-nowrap">
-                            <div class="input-group-prepend">
+                            <!--<div class="input-group-prepend">
                                 <span class="input-group-text" id="addon-wrapping"> <img src="/images/pwd_icon.png"
                                         width="auto" height="22" alt="" /></span>
-                            </div>
+                            </div>-->
                             <input type="password" class="form-control" id="signUpPassword" placeholder="Password">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="signUpConfPassword">Confirm Password</label>
                         <div class="input-group flex-nowrap">
-                            <div class="input-group-prepend">
+                            <!--<div class="input-group-prepend">
                                 <span class="input-group-text" id="addon-wrapping"> <img src="/images/pwd_icon.png"
                                         width="auto" height="22" alt="" /></span>
-                            </div>
+                            </div>-->
                             <input type="password" class="form-control" id="signUpConfPassword" placeholder="Password">
                         </div>
                     </div>
-                    <div class="form-group">
-                        <!--<label for="signUpAddress">Address (nao esta no formato certo)</label>
-                        <div class="input-group flex-nowrap">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="addon-wrapping"> <img src="/images/address_icon.jpg"
-                                        width="auto" height="22" alt="" /></span>
-                            </div>
-                            <input type="text" class="form-control" id="signUpAddress" placeholder="Address">
-                        </div>-->
-                    </div>
+
                     <button type="submit" class="btn btn-primary btn-block btn-sm mt-4">Create Account</button>
                 </form>
             </div>
