@@ -15,6 +15,8 @@
 
   <link rel="stylesheet" href="css/styles.css" />
 
+  <!--<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">-->
+
   <title>Your Account</title>
 </head>
 
@@ -35,48 +37,48 @@
       <div class="card-header" id="infoHeading">
         <h2 class="mb-0">
           <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#clientInfo"
-            aria-expanded="false" aria-controls="collapseOne">
+            aria-expanded="false" aria-controls="clientInfo">
             Information
           </button>
         </h2>
       </div>
-      <div id="clientInfo" class="collapse show" aria-labelledby="headingOne" data-parent="#profileOptions">
+      <div id="clientInfo" class="collapse show" aria-labelledby="infoHeading" data-parent="#profileOptions">
         <div class="card-body ml-2">
           <form class="clientInfoForm">
             <div class="form-group row">
-              <label for="name" class="col-sm-3 col-form-label"><b>Name</b></label>
+              <label for="clientName" class="col-sm-3 col-form-label"><b>Name</b></label>
               <div class="col-sm-8">
-                <input type="text" class="form-control-plaintext" id="name" value="John Doe">
+                <input type="text" class="form-control-plaintext" id="clientName" value="John Doe">
               </div>
             </div>
             <div class="form-group row">
-              <label for="staticEmail" class="col-sm-3 col-form-label"><b>Email</b></label>
+              <label for="clientEmail" class="col-sm-3 col-form-label"><b>Email</b></label>
               <div class="col-sm-8">
-                <input type="email" class="form-control-plaintext" id="staticEmail" value="johnnyDoe@example.com">
+                <input type="email" class="form-control-plaintext" id="clientEmail" value="johnnyDoe@example.com">
               </div>
             </div>
             <div class="form-group row">
-              <label for="address" class="col-sm-3 col-form-label"><b>Address</b></label>
+              <label for="clientAddress" class="col-sm-3 col-form-label"><b>Address</b></label>
               <div class="col-sm-8">
-                <input type="text" class="form-control-plaintext" id="address" value="Algum sitio em Gaia">
+                <input type="text" class="form-control-plaintext" id="clientAddress" value="Algum sitio em Gaia">
               </div>
             </div>
             <div class="form-group row">
-              <label for="inputPassword" class="col-sm-3 col-form-label pr-0"><b>Current Password</b></label>
+              <label for="clientCurrentPassword" class="col-sm-3 col-form-label pr-0"><b>Current Password</b></label>
               <div class="col-sm-8">
-                <input type="password" class="form-control" id="CurrentPassword" placeholder="Password">
+                <input type="password" class="form-control" id="clientCurrentPassword" placeholder="Password">
               </div>
             </div>
             <div class="form-group row">
-              <label for="inputPassword" class="col-sm-3 col-form-label pr-0"><b>New Password</b></label>
+              <label for="clientNewPassword" class="col-sm-3 col-form-label pr-0"><b>New Password</b></label>
               <div class="col-sm-8">
-                <input type="password" class="form-control" id="NewPassword" placeholder="Password">
+                <input type="password" class="form-control" id="clientNewPassword" placeholder="Password">
               </div>
             </div>
             <div class="form-group row">
-              <label for="inputPassword" class="col-sm-3 col-form-label pr-0"><b>Confirm Password</b></label>
+              <label for="clientConfirmPassword" class="col-sm-3 col-form-label pr-0"><b>Confirm Password</b></label>
               <div class="col-sm-8">
-                <input type="password" class="form-control" id="ConfirmPassword" placeholder="Password">
+                <input type="password" class="form-control" id="clientConfirmPassword" placeholder="Password">
               </div>
             </div>
             <!--tabela com cartoes associados-->
@@ -112,7 +114,7 @@
       <div class="card-header" id="notfsHeading">
         <h2 class="mb-0 d-flex justify-content-between align-items-center">
           <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#clientNotfs"
-            aria-expanded="false" aria-controls="collapseTwo">
+            aria-expanded="false" aria-controls="clientNotfs">
             Notifications
           </button>
           <!--<span class="badge badge-info badge-pill">2</span>-->
@@ -175,7 +177,7 @@
       <div class="card-header" id="purchaseHistHeading">
         <h2 class="mb-0">
           <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#clientPurchaseHist"
-            aria-expanded="false" aria-controls="collapseThree">
+            aria-expanded="false" aria-controls="clientPurchaseHist">
             Purchase History
           </button>
         </h2>
@@ -214,7 +216,7 @@
         <div class="card-header" id="wishListsHeading">
           <h2 class="mb-0">
             <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#clientWishLists"
-              aria-expanded="false" aria-controls="collapseFour">
+              aria-expanded="false" aria-controls="clientWishLists">
               Wish Lists
             </button>
           </h2>
@@ -229,8 +231,8 @@
                   <td>Things I'm going to buy when I'm a millionaire!!!!!!!!!!!</td>
                   <td>
                     <div class="d-flex justify-content-between">
-                      <button type="button" class="btn btn-outline-primary btn-sm m-1">Share</button>
-                      <button type="button" class="btn btn-outline-danger btn-sm  m-1">Delete</button>
+                      <button type="button" class="btn btn-outline-primary btn-sm m-2 btnShare"></button>
+                      <button type="button" class="btn btn-outline-danger btn-sm m-2 btnTrash"></button>
                     </div>
                   </td>
                 </tr>
@@ -240,8 +242,8 @@
                   <td>Anniversary gifts</td>
                   <td>
                     <div class="d-flex justify-content-between">
-                      <button type="button" class="btn btn-outline-primary btn-sm m-1">Share</button>
-                      <button type="button" class="btn btn-outline-danger btn-sm  m-1">Delete</button>
+                      <button type="button" class="btn btn-outline-primary btn-sm m-2 btnShare"></button>
+                      <button type="button" class="btn btn-outline-danger btn-sm m-2 btnTrash"></button>
                     </div>
                   </td>
                 </tr>
@@ -250,9 +252,9 @@
                   <td><b>School</b></td>
                   <td>Stuff I have to buy for school as soon as I have money</td>
                   <td>
-                    <div class="d-flex justify-content-between">
-                      <button type="button" class="btn btn-outline-primary btn-sm m-1">Share</button>
-                      <button type="button" class="btn btn-outline-danger btn-sm  m-1">Delete</button>
+                    <div class="d-flex justify-content-center">
+                      <button type="button" class="btn btn-outline-primary btn-sm m-2 btnShare"></button>
+                      <button type="button" class="btn btn-outline-danger btn-sm m-2 btnTrash"></button>
                     </div>
                   </td>
                 </tr>
