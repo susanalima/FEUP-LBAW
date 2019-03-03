@@ -36,7 +36,7 @@ h4 {
 }
 
 #footer {
-    background-color: grey; 
+    background-color: grey;
 }
 
 #footer a {
@@ -70,13 +70,15 @@ h4 {
 }
 
 #filters {
-    width: 350px;
-    min-width: 280px;
+    width: 320px;
+    min-width: 250px;
+    background-color: #ccd1d6;
 }
 
 #results {
-    max-width: 1410px;
-    padding: 20px;
+    max-width: 1220px;
+    padding: 10px;
+    border: 1px solid #ccd1d6;
 }
 
 #searchBody {
@@ -84,36 +86,76 @@ h4 {
 }
 
 .product {
-    width: 300px;
-    height: 350px;
-    margin: 20px;
-    background-color: black;
+    width: 350px;
+    height: 400px;
+    margin: 10px 20px;
 }
 
 .productImage {
-    width: 250px;
-    height: 250px;
-    background-color: blueviolet
-}
-
-.productName, 
-.rating
-{
     width: 300px;
-    min-height: 50px;
-    background-color: aqua
+    height: 300px;
 }
 
-.searchBtn
-{
+.productName,
+.rating {
+    width: 350px;
+    min-height: 50px;
+}
+
+.productName {
+    margin-bottom: 5px;
+}
+
+.black-control {
+    filter: invert(100%);
+}
+
+.starsRating {
+    border: none;
+    float: left;
+}
+
+.starsRating > input {
+    display: none;
+}
+.starsRating > label:before {
+    margin: 5px;
+    font-size: 1.25em;
+    font-family: "Font Awesome 5 Free";
+    display: inline-block;
+    content: "\f005";
+}
+
+.starsRating > .half:before {
+    content: "\f089";
+    position: absolute;
+}
+
+.starsRating > label {
+    color: rgb(184, 180, 180);
+    float: right;
+}
+
+/***** CSS Magic to Highlight Stars on Hover *****/
+
+.starsRating > input:checked ~ label, /* show gold star when clicked */
+.starsRating:not(:checked) > label:hover, /* hover current star */
+.starsRating:not(:checked) > label:hover ~ label {
+    color: #ffd700;
+} /* hover previous stars in list */
+
+.starsRating > input:checked + label:hover, /* hover current star when changing starsRating */
+.starsRating > input:checked ~ label:hover,
+.starsRating > label:hover ~ input:checked ~ label, /* lighten current selection */
+.starsRating > input:checked ~ label:hover ~ label {
+    color: #ffed85;
+}
+
+.addToCartBtn,
+.addToWishListBtn {
     width: 50px;
     height: 50px;
-    background-color: coral;
-    border: 0;
+    border: 0px;
     padding: 0;
 }
 
-.black-control
-{
-    filter: invert(100%);   
-}

@@ -16,6 +16,14 @@
         <!-- Roboto Font -->
         <link href="https://fonts.googleapis.com/css?family=Roboto:400,400i" rel="stylesheet" />
 
+        <!-- Font Awesome -->
+        <link
+            rel="stylesheet"
+            href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+            integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+            crossorigin="anonymous"
+        />
+
         <link rel="stylesheet" href="css/styles.css" />
 
         <title>ProductName</title>
@@ -111,7 +119,52 @@
             </div>
             <div class="col-md-2 d-flex flex-column justify-content-end">
                 <h2 id="category">Category</h2>
-                <h1 class="mb-4" id="name">Product Name</h1>
+                <h1 class="" id="name">Product Name</h1>
+
+                <form class="rating mb-2">
+                    <fieldset class="starsRating">
+                        <input type="radio" id="star5" name="rating" value="5" ><label
+                            class="full"
+                            for="star5"
+                        ></label>
+                        <input type="radio" id="star4half" name="rating" value="4.5" ><label
+                            class="half"
+                            for="star4half"
+                        ></label>
+                        <input type="radio" id="star4" name="rating" value="4" ><label
+                            class="full"
+                            for="star4"
+                        ></label>
+                        <input type="radio" id="star3half" name="rating" value="3.5" ><label
+                            class="half"
+                            for="star3half"
+                        ></label>
+                        <input type="radio" id="star3" name="rating" value="3" ><label
+                            class="full"
+                            for="star3"
+                        ></label>
+                        <input type="radio" id="star2half" name="rating" value="2.5" ><label
+                            class="half"
+                            for="star2half"
+                        ></label>
+                        <input type="radio" id="star2" name="rating" value="2" ><label
+                            class="full"
+                            for="star2"
+                        ></label>
+                        <input type="radio" id="star1half" name="rating" value="1.5" ><label
+                            class="half"
+                            for="star1half"
+                        ></label>
+                        <input type="radio" id="star1" name="rating" value="1" ><label
+                            class="full"
+                            for="star1"
+                        ></label>
+                        <input type="radio" id="star0half" name="rating" value="0.5" /><label
+                            class="half"
+                            for="star0half"
+                        ></label>
+                    </fieldset>
+                </form>
 
                 <div class="dropdown" id="edition">
                     <button
