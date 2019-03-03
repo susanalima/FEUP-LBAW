@@ -71,7 +71,6 @@ h4 {
 
 #filters {
     width: 320px;
-    min-width: 250px;
     background-color: #ccd1d6;
 }
 
@@ -159,3 +158,20 @@ h4 {
     padding: 0;
 }
 
+@media screen and (max-width: 1600px) {
+    #results {
+        max-width: 850px;
+    }
+    #filters {
+        width: 320px;
+    }
+  }
+
+  @media screen and (max-width: 1200px) {
+    #results {
+        max-width: 440px;
+    }
+    #filters {
+        width: 320px;
+    }
+  }
