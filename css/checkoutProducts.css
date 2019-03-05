@@ -154,7 +154,7 @@
 }
 
 .final_price{
-    width:100%;
+    width: 100%;
     margin:0;
     margin-left: 0.1em;
     max-width: 90%;
@@ -164,9 +164,18 @@
 }
 
 .bottom_row{
-    width:100%;
+    min-width: 90%;
+    margin-left: 0;
+    margin-right: 0;
 }
 
 .final_value{
     float: right;    
+}
+
+.back_button, .next_button{
+    width:15%;
+    border-radius: 3em;
+    font-size: 2em;
+    margin-left: 3em;
 }
