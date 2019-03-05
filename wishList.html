@@ -2,13 +2,33 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <link rel="stylesheet" href="css/wishListStyle.css">
-        <link rel="stylesheet" href="css/styles.css">
-    <title>Wish Lists</title>
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+        <!-- Bootstrap CSS -->
+        <link
+            rel="stylesheet"
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+            crossorigin="anonymous"
+        />
+
+        <!-- Roboto Font -->
+        <link href="https://fonts.googleapis.com/css?family=Roboto:400,400i" rel="stylesheet" />
+
+        <!-- Font Awesome -->
+        <link
+            rel="stylesheet"
+            href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+            integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+            crossorigin="anonymous"
+        />
+
+    
+        <link rel="stylesheet" href="css/wishListStyle.css" />
+        <title>WishList</title>
 </head>
 
 <body>
@@ -78,7 +98,7 @@
                             <img class="card-img-top product_img" src="./images/img.png" alt="Card image cap">
 
                             <div class="col-sm">
-                                <button  class="btn-outline-secondary add_cart2 shop_button" type="button"></button>
+                                <button class="btn-outline-secondary add_cart2 shop_button" type="button"></button>
                                 <p style="margin-left: 0em; margin-bottom: 0; width: auto; height: auto;">Lorem ipsum
                                     dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
                                     ut
@@ -104,126 +124,178 @@
                                     eget
                                     sit.
                                     Cras ornare arcu dui vivamus arcu felis bibendum ut tristique.</p>
-                                <img class="review_score" src="images/stars.png">
+                                    <div class="rating mb-2">
+                                        <fieldset class="starsRating">
+                                            <label class="full" for="star5"></label>
+                                            <label class="half" for="star4half"></label>
+                                            <label class="full" for="star4"></label>
+                                            <label class="half marked" for="star3half"></label>
+                                            <label class="full marked" for="star3"></label>
+                                            <label class="half marked" for="star2half"></label>
+                                            <label class="full marked" for="star2" ></label>
+                                            <label class="half marked" for="star1half" ></label>
+                                            <label class="full marked" for="star1" ></label>
+                                            <label class="half marked" for="star0half"></label>
+                                        </fieldset>
+                                    </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <div id="list-item-2" class="card product_card" style="margin-top: 2.5em;">
-                        <h4 class="product_name">God's Autobiography</h4>
-                        <div class="container" style="margin-left: 0.4em;">
-                            <div class="row">
-                                <img class="card-img-top product_img" src="./images/img.png" alt="Card image cap">
-    
-                                <div class="col-sm">
-                                    <button  class="btn-outline-success add_cart shop_button" type="button"></button>
-                                    <p style="margin-left: 0em; margin-bottom: 0; width: auto; height: auto;">Lorem ipsum
-                                        dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                                        ut
-                                        labore
-                                        et dolore
-                                        magna aliqua. Pulvinar neque laoreet suspendisse interdum consectetur. In aliquam
-                                        sem
-                                        fringilla
-                                        ut
-                                        morbi.
-                                        Turpis tincidunt id aliquet risus feugiat in ante metus dictum. Pellentesque id nibh
-                                        tortor
-                                        id.
-                                        Nisi
-                                        scelerisque eu ultrices vitae. Eget mauris pharetra et ultrices neque ornare.
-                                        Volutpat
-                                        diam
-                                        ut
-                                        venenatis
-                                        tellus in metus. Erat imperdiet sed euismod nisi. Diam maecenas sed enim ut sem
-                                        viverra
-                                        aliquet
-                                        eget
-                                        sit.
-                                        Cras ornare arcu dui vivamus arcu felis bibendum ut tristique.</p>
-                                    <img class="review_score" src="images/stars.png">
+                    <h4 class="product_name">God's Autobiography</h4>
+                    <div class="container" style="margin-left: 0.4em;">
+                        <div class="row">
+                            <img class="card-img-top product_img" src="./images/img.png" alt="Card image cap">
+
+                            <div class="col-sm">
+                                <button class="btn-outline-success add_cart shop_button" type="button"></button>
+                                <p style="margin-left: 0em; margin-bottom: 0; width: auto; height: auto;">Lorem ipsum
+                                    dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                                    ut
+                                    labore
+                                    et dolore
+                                    magna aliqua. Pulvinar neque laoreet suspendisse interdum consectetur. In aliquam
+                                    sem
+                                    fringilla
+                                    ut
+                                    morbi.
+                                    Turpis tincidunt id aliquet risus feugiat in ante metus dictum. Pellentesque id nibh
+                                    tortor
+                                    id.
+                                    Nisi
+                                    scelerisque eu ultrices vitae. Eget mauris pharetra et ultrices neque ornare.
+                                    Volutpat
+                                    diam
+                                    ut
+                                    venenatis
+                                    tellus in metus. Erat imperdiet sed euismod nisi. Diam maecenas sed enim ut sem
+                                    viverra
+                                    aliquet
+                                    eget
+                                    sit.
+                                    Cras ornare arcu dui vivamus arcu felis bibendum ut tristique.</p>
+                                    <div class="rating mb-2">
+                                        <fieldset class="starsRating">
+                                            <label class="full marked" for="star5"></label>
+                                            <label class="half marked" for="star4half"></label>
+                                            <label class="full marked" for="star4"></label>
+                                            <label class="half marked" for="star3half"></label>
+                                            <label class="full marked" for="star3"></label>
+                                            <label class="half marked" for="star2half"></label>
+                                            <label class="full marked" for="star2" ></label>
+                                            <label class="half marked" for="star1half" ></label>
+                                            <label class="full marked" for="star1" ></label>
+                                            <label class="half marked" for="star0half"></label>
+                                        </fieldset>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="list-item-3" class="card product_card" style="margin-top: 2.5em;">
+                    <h4 class="product_name">Overpriced Phones</h4>
+                    <div class="container" style="margin-left: 0.4em;">
+                        <div class="row">
+                            <img class="card-img-top product_img" src="./images/img.png" alt="Card image cap">
+
+                            <div class="col-sm">
+                                <button class="btn-outline-success add_cart shop_button" type="button"></button>
+                                <p style="margin-left: 0em; margin-bottom: 0; width: auto; height: auto;">Lorem ipsum
+                                    dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                                    ut
+                                    labore
+                                    et dolore
+                                    magna aliqua. Pulvinar neque laoreet suspendisse interdum consectetur. In aliquam
+                                    sem
+                                    fringilla
+                                    ut
+                                    morbi.
+                                    Turpis tincidunt id aliquet risus feugiat in ante metus dictum. Pellentesque id nibh
+                                    tortor
+                                    id.
+                                    Nisi
+                                    scelerisque eu ultrices vitae. Eget mauris pharetra et ultrices neque ornare.
+                                    Volutpat
+                                    diam
+                                    ut
+                                    venenatis
+                                    tellus in metus. Erat imperdiet sed euismod nisi. Diam maecenas sed enim ut sem
+                                    viverra
+                                    aliquet
+                                    eget
+                                    sit.
+                                    Cras ornare arcu dui vivamus arcu felis bibendum ut tristique.</p>
+                                    <div class="rating mb-2">
+                                        <fieldset class="starsRating">
+                                            <label class="full" for="star5"></label>
+                                            <label class="half" for="star4half"></label>
+                                            <label class="full marked" for="star4"></label>
+                                            <label class="half marked" for="star3half"></label>
+                                            <label class="full marked" for="star3"></label>
+                                            <label class="half marked" for="star2half"></label>
+                                            <label class="full marked" for="star2" ></label>
+                                            <label class="half marked" for="star1half" ></label>
+                                            <label class="full marked" for="star1" ></label>
+                                            <label class="half marked" for="star0half"></label>
+                                        </fieldset>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="list-item-4" class="card product_card" style="margin-top: 2.5em; padding-bottom: 2em;">
+                    <h4 class="product_name">PsycMixTape</h4>
+                    <div class="container" style="margin-left:0.4em;">
+                        <div class="row">
+                            <img class="card-img-top product_img" src="./images/img.png" alt="Card image cap">
+
+                            <div class="col-sm">
+                                <button class="btn-outline-success add_cart shop_button" type="button"></button>
+                                <p style="margin-left: 0em; margin-bottom: 0; width: auto; height: auto;">Lorem ipsum
+                                    dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                                    ut
+                                    labore
+                                    et dolore
+                                    magna aliqua. Pulvinar neque laoreet suspendisse interdum consectetur. In aliquam
+                                    sem
+                                    fringilla
+                                    ut
+                                    morbi.
+                                    Turpis tincidunt id aliquet risus feugiat in ante metus dictum. Pellentesque id nibh
+                                    tortor
+                                    id.
+                                    Nisi
+                                    scelerisque eu ultrices vitae. Eget mauris pharetra et ultrices neque ornare.
+                                    Volutpat
+                                    diam
+                                    ut
+                                    venenatis
+                                    tellus in metus. Erat imperdiet sed euismod nisi. Diam maecenas sed enim ut sem
+                                    viverra
+                                    aliquet
+                                    eget
+                                    sit.
+                                    Cras ornare arcu dui vivamus arcu felis bibendum ut tristique.</p>
+                                <div class="rating mb-2">
+                                    <fieldset class="starsRating">
+                                        <label class="full" for="star5"></label>
+                                        <label class="half" for="star4half"></label>
+                                        <label class="full" for="star4"></label>
+                                        <label class="half" for="star3half"></label>
+                                        <label class="full" for="star3"></label>
+                                        <label class="half" for="star2half"></label>
+                                        <label class="full marked" for="star2" ></label>
+                                        <label class="half marked" for="star1half" ></label>
+                                        <label class="full marked" for="star1" ></label>
+                                        <label class="half marked" for="star0half"></label>
+                                    </fieldset>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div id="list-item-3" class="card product_card" style="margin-top: 2.5em;">
-                            <h4 class="product_name" >Overpriced Phones</h4>
-                            <div class="container" style="margin-left: 0.4em;">
-                                <div class="row">
-                                    <img class="card-img-top product_img" src="./images/img.png" alt="Card image cap">
-        
-                                    <div class="col-sm">
-                                        <button class="btn-outline-success add_cart shop_button" type="button"></button>
-                                        <p style="margin-left: 0em; margin-bottom: 0; width: auto; height: auto;">Lorem ipsum
-                                            dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                                            ut
-                                            labore
-                                            et dolore
-                                            magna aliqua. Pulvinar neque laoreet suspendisse interdum consectetur. In aliquam
-                                            sem
-                                            fringilla
-                                            ut
-                                            morbi.
-                                            Turpis tincidunt id aliquet risus feugiat in ante metus dictum. Pellentesque id nibh
-                                            tortor
-                                            id.
-                                            Nisi
-                                            scelerisque eu ultrices vitae. Eget mauris pharetra et ultrices neque ornare.
-                                            Volutpat
-                                            diam
-                                            ut
-                                            venenatis
-                                            tellus in metus. Erat imperdiet sed euismod nisi. Diam maecenas sed enim ut sem
-                                            viverra
-                                            aliquet
-                                            eget
-                                            sit.
-                                            Cras ornare arcu dui vivamus arcu felis bibendum ut tristique.</p>
-                                        <img class="review_score" src="images/stars.png">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="list-item-4" class="card product_card" style="margin-top: 2.5em; padding-bottom: 2em;">
-                                <h4 class="product_name">PsycMixTape</h4>
-                                <div class="container" style="margin-left:0.4em;">
-                                    <div class="row">
-                                        <img class="card-img-top product_img" src="./images/img.png" alt="Card image cap">
-            
-                                        <div class="col-sm">
-                                            <button  class="btn-outline-success add_cart shop_button" type="button"></button>
-                                            <p style="margin-left: 0em; margin-bottom: 0; width: auto; height: auto;">Lorem ipsum
-                                                dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                                                ut
-                                                labore
-                                                et dolore
-                                                magna aliqua. Pulvinar neque laoreet suspendisse interdum consectetur. In aliquam
-                                                sem
-                                                fringilla
-                                                ut
-                                                morbi.
-                                                Turpis tincidunt id aliquet risus feugiat in ante metus dictum. Pellentesque id nibh
-                                                tortor
-                                                id.
-                                                Nisi
-                                                scelerisque eu ultrices vitae. Eget mauris pharetra et ultrices neque ornare.
-                                                Volutpat
-                                                diam
-                                                ut
-                                                venenatis
-                                                tellus in metus. Erat imperdiet sed euismod nisi. Diam maecenas sed enim ut sem
-                                                viverra
-                                                aliquet
-                                                eget
-                                                sit.
-                                                Cras ornare arcu dui vivamus arcu felis bibendum ut tristique.</p>
-                                            <img class="review_score" src="images/stars.png">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                </div>
             </div>
         </div>
     </div>

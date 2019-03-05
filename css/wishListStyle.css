@@ -77,3 +77,50 @@
     
    
 }
+
+.rating {
+    width: 350px;
+    min-height: 50px;
+}
+
+.starsRating {
+    border: none;
+    float: left;
+}
+
+.starsRating > input {
+    display: none;
+}
+.starsRating > label:before {
+    margin: 5px;
+    font-size: 1.25em;
+    font-family: "Font Awesome 5 Free";
+    display: inline-block;
+    content: "\f005";
+}
+
+.starsRating > .half:before {
+    content: "\f089";
+    position: absolute;
+}
+
+
+.starsRating > label {
+    color: rgb(184, 180, 180);
+    float: right;
+}
+
+.starsRating .marked{
+    color: #ffed85;
+}
+
+
+
+#footer {
+    background-color: grey;
+}
+
+#footer a {
+    color: white;
+}
+
