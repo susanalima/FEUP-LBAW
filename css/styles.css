@@ -177,7 +177,7 @@ h4 {
 }
 
 #shoppingCart {
-    position: absolute;
+    position: fixed;
     bottom: 25px;
     right: 0px;
 }
