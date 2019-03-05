@@ -43,109 +43,117 @@
         </h2>
       </div>
       <div id="clientInfo" class="collapse show" aria-labelledby="infoHeading" data-parent="#profileOptions">
-        <div class="card-body ml-2">
-          <form class="clientInfoForm">
-            <div class="form-group row">
-              <label for="clientName" class="col-sm-3 col-form-label"><b>Name</b></label>
-              <div class="col-sm-8">
-                <input type="text" class="form-control-plaintext" id="clientName" value="John Doe">
+        <div class="card-body">
+          <div class="p-4 border border-ligh">
+            <p>Personal Information</p>
+            <form class="clientInfoForm">
+              <div class="form-group row">
+                <label for="clientName" class="col-sm-3 col-form-label"><b>Name</b></label>
+                <div class="col-sm-8">
+                  <input type="text" class="form-control-plaintext" id="clientName" value="John Doe">
+                </div>
               </div>
-            </div>
-            <div class="form-group row">
-              <label for="clientEmail" class="col-sm-3 col-form-label"><b>Email</b></label>
-              <div class="col-sm-8">
-                <input type="email" class="form-control-plaintext" id="clientEmail" value="johnnyDoe@example.com">
-              </div>
-            </div>
 
-            <div class="form-group row">
-              <label for="clientAddress" class="col-sm-3 col-form-label"><b>Address</b></label>
-              <div class="col-sm-8">
-                <input type="text" class="form-control-plaintext" id="clientAddress" value="R. Dr. Roberto Frias, 4200-465 Porto, Portugal">
+              <div class="form-group row">
+                <label for="clientEmail" class="col-sm-3 col-form-label"><b>Email</b></label>
+                <div class="col-sm-8">
+                  <input type="email" class="form-control-plaintext" id="clientEmail" value="johnnyDoe@example.com">
+                </div>
               </div>
-            </div>
 
-            <div class="form-group row">
-              <label for="clientCurrentPassword" class="col-sm-3 col-form-label pr-0"><b>Current Password</b></label>
-              <div class="col-sm-8">
-                <input type="password" class="form-control" id="clientCurrentPassword" placeholder="Password">
+              <!--<div class="form-group row">
+                <label for="clientAddress" class="col-sm-3 col-form-label"><b>Address</b></label>
+                <div class="col-sm-8">
+                  <input type="text" class="form-control-plaintext" id="clientAddress" value="R. Dr. Roberto Frias, 4200-465 Porto, Portugal">
+                </div>
+              </div>-->
+
+              <div class="form-group row">
+                <label for="clientCurrentPassword" class="col-sm-3 col-form-label pr-0"><b>Current Password</b></label>
+                <div class="col-sm-8">
+                  <input type="password" class="form-control" id="clientCurrentPassword" placeholder="Password">
+                </div>
               </div>
-            </div>
-            <div class="form-group row">
-              <label for="clientNewPassword" class="col-sm-3 col-form-label pr-0"><b>New Password</b></label>
-              <div class="col-sm-8">
-                <input type="password" class="form-control" id="clientNewPassword" placeholder="Password">
+              <div class="form-group row">
+                <label for="clientNewPassword" class="col-sm-3 col-form-label pr-0"><b>New Password</b></label>
+                <div class="col-sm-8">
+                  <input type="password" class="form-control" id="clientNewPassword" placeholder="Password">
+                </div>
               </div>
-            </div>
-            <div class="form-group row">
-              <label for="clientConfirmPassword" class="col-sm-3 col-form-label pr-0"><b>Confirm Password</b></label>
-              <div class="col-sm-8">
-                <input type="password" class="form-control" id="clientConfirmPassword" placeholder="Password">
+              <div class="form-group row">
+                <label for="clientConfirmPassword" class="col-sm-3 col-form-label pr-0"><b>Confirm Password</b></label>
+                <div class="col-sm-8">
+                  <input type="password" class="form-control" id="clientConfirmPassword" placeholder="Password">
+                </div>
               </div>
-            </div>
-            <!--tabela com cartoes associados-->
-            <button type="submit" class="btn btn-outline-success float-right mb-4 mt-2 btn-sm">Save</button>
-          </form>
-          <div>
+              <button type="submit" class="btn btn-outline-success mt-2 btn-sm">Save</button>
+            </form>
+          </div>
+
+          <div class="mt-3 p-4 border border-ligh">
+            <p>Addresses </p>
             <table class="table">
-              <caption>
-                Associated cards
-                <button type="button" class="btn btn-outline-success float-right mb-2 mt-0 btn-sm" data-toggle="modal"
-                  data-target="#addCard">Add card</button>
-                <div class="modal fade" id="addCard" tabindex="-1" role="dialog" aria-labelledby="addCardLabel"
-                  aria-hidden="true">
-                  <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h5 class="modal-title" id="addCardLabel">New Card</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                        </button>
-                      </div>
-                      <div class="modal-body">
-                        <form>
-
-                          <div class="row">
-                            <div class="col-md-7">
-                              <div class="form-group">
-                                <label for="cardNumber">Card Number</label>
-                                <input type="tel" class="form-control" id="cardNumber" placeholder="Valid Card Number"
-                                  required>
-                              </div>
+              <thead>
+                <tr>
+                  <th scope="col">Name</th>
+                  <th scope="col">Address</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Hell</td>
+                  <td>Alameda dos Jardins d'Arrábida 443, 4400-478 Porto, Portugal</td>
+                </tr>
+                <tr>
+                  <td>Work</td>
+                  <td>R. Dr. Roberto Frias, 4200-465 Porto, Portugal</td>
+                </tr>
+              </tbody>
+            </table>
+            <button type="button" class="btn btn-outline-success mt-2 btn-sm" data-toggle="modal" data-target="#addAddress">Add address</button>
+            <div class="modal fade" id="addAddress" tabindex="-1" role="dialog" aria-labelledby="addAddressLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="addCardLabel">New Card</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label>Address</label>
+                            <div class="input-group flex-nowrap">
+                                <input type="text" class="form-control" id="addAddressName" placeholder="Name" required>
                             </div>
-                            <div class=" col-md-5 pull-right">
-                              <div class="form-group">
-                                <label for="cardName">Card Name</label>
-                                <input type="tel" class="form-control" id="cardName" placeholder="Card Name" required />
-                              </div>
+                            <div class="input-group flex-nowrap mt-2">
+                                <input type="text" class="form-control" id="addAddressPostCode" placeholder="Postcode" required>
                             </div>
-                          </div>
-                          <div class="row">
-                            <div class="col-md-7">
-                              <div class="form-group">
-                                <label for="cardExpDate">Expiration Date</label>
-                                <input type="tel" class="form-control" id="cardExpDate" placeholder="YYYY / MM"
-                                  required />
-                              </div>
+                            <div class="input-group flex-nowrap mt-2">
+                                <input type="text" class="form-control" id="addAddressStreet" placeholder="Street and number, P.O. box, c/o" required>
                             </div>
-                            <div class="col-md-5 pull-right">
-                              <div class="form-group">
-                                <label for="cardCVC">CV Code</label>
-                                <input type="tel" class="form-control" id="cardCVC" placeholder="CVC" required />
-                              </div>
+                            <div class="input-group flex-nowrap mt-2">
+                                <input type="text" class="form-control" id="addAddressApartment" placeholder="Flat, suite, unit, floor, etc" required>
                             </div>
-                          </div>
-                        </form>
-                      </div>
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-outline-danger btn-sm" data-dismiss="modal">Cancel</button>
-                        <button type="button" class="btn btn-outline-success btn-sm">Finish</button>
-                      </div>
-                    </div>
+                            <div class="input-group flex-nowrap mt-2">
+                                <input type="text" class="form-control" id="addAddressTown" placeholder="Town, City" required>
+                                <input type="text" class="form-control" id="addAddressCountry" placeholder="Country" required>
+                            </div>
+                        </div>
+                    </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-danger btn-sm" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-outline-success btn-sm">Finish</button>
                   </div>
                 </div>
-
-              </caption>
+              </div>
+            </div>
+          </div>
+          <div class="mt-3 p-4 border border-ligh">
+            <p>Cards </p>
+            <table class="table">
               <thead>
                 <tr>
                   <th scope="col">Card Number</th>
@@ -161,9 +169,59 @@
                 </tr>
               </tbody>
             </table>
-            <button type="button" class="btn btn-outline-danger float-left mb-2 btn-sm">Delete Account</button>
+            <button type="button" class="btn btn-outline-success mt-2 btn-sm" data-toggle="modal" data-target="#addCard">Add card</button>
+            <div class="modal fade" id="addCard" tabindex="-1" role="dialog" aria-labelledby="addCardLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="addCardLabel">New Card</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <form>
+                      <div class="row">
+                        <div class="col-md-7">
+                          <div class="form-group">
+                            <label for="cardNumber">Card Number</label>
+                            <input type="tel" class="form-control" id="cardNumber" placeholder="Valid Card Number"
+                              required>
+                          </div>
+                        </div>
+                        <div class=" col-md-5 pull-right">
+                          <div class="form-group">
+                            <label for="cardName">Card Name</label>
+                            <input type="tel" class="form-control" id="cardName" placeholder="Card Name" required />
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-7">
+                          <div class="form-group">
+                            <label for="cardExpDate">Expiration Date</label>
+                            <input type="tel" class="form-control" id="cardExpDate" placeholder="YYYY / MM" required />
+                          </div>
+                        </div>
+                        <div class="col-md-5 pull-right">
+                          <div class="form-group">
+                            <label for="cardCVC">CV Code</label>
+                            <input type="tel" class="form-control" id="cardCVC" placeholder="CVC" required />
+                          </div>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-danger btn-sm" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-outline-success btn-sm">Finish</button>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
+        <button type="button" class="btn btn-outline-danger float-right mr-4 mb-3 btn-sm">Delete Account</button>
       </div>
     </div>
     <div class="card">
@@ -318,7 +376,7 @@
             </table>
 
             <button type="button" class="btn btn-outline-success float-left m-2 btn-sm " data-toggle="modal"
-              data-target="#createWListModel">New Wish List</button>
+              data-target="#createWListModel">Add Wish List</button>
             <div class="modal fade" id="createWListModel" tabindex="-1" role="dialog" aria-labelledby="createWListModelLabel"
               aria-hidden="true">
               <div class="modal-dialog" role="document">

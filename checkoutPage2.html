@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+        crossorigin="anonymous" />
+
+    <!-- Roboto Font -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,400i" rel="stylesheet" />
+
+    <link rel="stylesheet" href="css/styles.css" />
+
+    <script type="text/javascript">
+        function other_textBox(val, id) {
+            var element = document.getElementById(id);
+            if (val == '-')
+                element.style.display = 'block';
+            else
+                element.style.display = 'none';
+        }
+
+    </script>
+
+    <!--<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">-->
+    <title>Checkout</title>
+</head>
+
+<body>
+
+    <!-- Image and text -->
+    <nav class="navbar navbar-light bg-light">
+        <a class="navbar-brand" href="main.html">
+            <img src="images/placeholder.png" width="30" height="30" class="d-inline-block align-top" alt="" />
+            PuzzleWood
+        </a>
+    </nav>
+
+    <!--<nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">1.Products</li>
+            <li class="breadcrumb-item active" aria-current="page"><a href="#">2.Delivery</a></li>
+            <li class="breadcrumb-item"><a href="#">3.Payment</a></li>
+            <li class="breadcrumb-item"><a href="#">4.Shipping</a></li>
+            <li class="breadcrumb-item"><a href="#">5.Confirmation</a></li>
+        </ol>
+    </nav>-->
+
+    <div class="w-50 mx-auto mainContent">
+        <form>
+            <div>
+                <label>Address</label>
+                <select class="custom-select" id="selectAddress" name="address" onchange="other_textBox(this.value,'checkoutOtherAddress')">
+                    <option value="Hell">Hell - Alameda dos Jardins d'Arrábida 443, 4400-478 Porto, Portugal </option>
+                    <option value="Work">Work - R. Dr. Roberto Frias, 4200-465 Porto, Portugal</option>
+                    <option value="-">Other</option>
+                </select>
+
+                <div id="checkoutOtherAddress" style='display:none;'>
+                    <div class="card card-body">
+                        <label>Other Address</label>
+                        <div class="input-group flex-nowrap">
+                            <input type="text" class="form-control" id="checkoutPostCode" placeholder="Postcode"
+                                required>
+                        </div>
+                        <div class="input-group flex-nowrap mt-2">
+                            <input type="text" class="form-control" id="checkoutStreet" placeholder="Street and number, P.O. box, c/o"
+                                required>
+                        </div>
+                        <div class="input-group flex-nowrap mt-2">
+                            <input type="text" class="form-control" id="checkoutApartment" placeholder="Flat, suite, unit, floor, etc"
+                                required>
+                        </div>
+                        <div class="input-group flex-nowrap mt-2">
+                            <input type="text" class="form-control" id="checkoutTown" placeholder="Town, City" required>
+                            <input type="text" class="form-control" id="checkoutCountry" placeholder="Country" required>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <label>Payment</label>
+                <select class="custom-select" id="selectPayment" name="payment" onchange="other_textBox(this.value,'checkoutOtherPayment')">
+                    <option value="Card1">Card1 </option>
+                    <option value="Catd2">Card2</option>
+                    <option value="-">Other</option>
+                </select>
+
+                <div id="checkoutOtherPayment" style='display:none;'>
+                    <div class="card card-body">
+                            <label>Other Payment</label>
+                        <div class="row">
+                            <div class="col-md-7">
+                                <div class="form-group">
+                                    <input type="tel" class="form-control" id="checkoutCardNumber" placeholder="Valid Card Number"
+                                        required>
+                                </div>
+                            </div>
+                            <div class=" col-md-5 pull-right">
+                                <div class="form-group">
+                                    <input type="tel" class="form-control" id="checkoutCardName" placeholder="Card Name"
+                                        required />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-7">
+                                <div class="form-group">
+                                    <input type="tel" class="form-control" id="checkoutCardExpDate" placeholder="Expiration Date (YYYY / MM) "
+                                        required />
+                                </div>
+                            </div>
+                            <div class="col-md-5 pull-right">
+                                <div class="form-group">
+                                    <input type="tel" class="form-control" id="checkoutCardCVC" placeholder="CVC" required />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <label>Shipping</label>
+                <select class="custom-select" id="selectShipping name="address">
+                    <option value="NormalShp">Normal </option>
+                    <option value="UrgentShp">Urgent</option>
+                    <option value="ExtremelyShp">Extremely Urgent</option>
+                </select>
+        </form>
+    </div>
+
+    </div>
+
+    <!-- Footer Start -->
+    <div class="d-flex justify-content-around text-white p-5" id="footer">
+        <div class="d-flex flex-column">
+            <a href="#">Help</a>
+            <a href="#">Contacts</a>
+            <a href="#">FAQs</a>
+        </div>
+        <h4 class="align-self-end ">&copy; 2019 PuzzleWood.pt. All Rights Reserved.</h4>
+    </div>
+    <!-- Footer End -->
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>
