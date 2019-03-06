@@ -5,6 +5,20 @@ body {
     min-height: 100%;
 }
 
+:root{
+    --var-main-color: #208d56;
+    --var-secon-color: #8d2d20;
+}
+
+#searchBtn{
+    border-color: #FFFF;
+    color: #ffff
+}
+
+.navbar{
+    background-color: var(--var-main-color);
+}
+
 html {
     height: 100%;
 }
