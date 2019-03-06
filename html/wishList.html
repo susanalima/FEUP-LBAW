@@ -2,76 +2,71 @@
 <html lang="en">
 
 <head>
-        <!-- Required meta tags -->
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
-        <!-- Bootstrap CSS -->
-        <link
-            rel="stylesheet"
-            href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-            crossorigin="anonymous"
-        />
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
 
-        <!-- Roboto Font -->
-        <link href="https://fonts.googleapis.com/css?family=Roboto:400,400i" rel="stylesheet" />
+    <!-- Roboto Font -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,400i" rel="stylesheet" />
 
-        <!-- Font Awesome -->
-        <link
-            rel="stylesheet"
-            href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
-            integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
-            crossorigin="anonymous"
-        />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous" />
 
+    <link rel="stylesheet" href="css/root.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/wishListStyle.css" />
     
-        <link rel="stylesheet" href="css/wishListStyle.css" />
-        <title>WishList</title>
+
+    <title>WishList</title>
 </head>
 
 <body>
-    <nav class="navbar navbar-light bg-light">
-        <a class="navbar-brand" href="main.html">
-            <img src="images/placeholder.png" width="30" height="30" class="d-inline-block align-top" alt="" />
-            PuzzleWood
-        </a>
-    </nav>
-
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto w-100 d-flex">
-                <li class="nav-item dropdown mr-auto col-2">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        All Categories
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something else here</a>
+    <div>
+     <!-- Image and text -->
+     <nav class="navbar navbar-expand-lg navbar-light">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+      
+            <div class="collapse navbar-collapse d-flex justify-content-between" id="navbarSupportedContent">
+             
+              <nav class="navbar mr-auto w-12 d-flex navbar-light">
+                <a class="navbar-brand" href="./main.html">
+                  <img src="./images/img.png" width="30" height="30" class="d-inline-block align-top" alt="" />
+                  PuzzleWood
+                </a>
+              </nav>
+              <nav class="search-bar navbar-nav mr-auto mb-2 w-100 mt-2 d-flex">
+                <div class="input-group">
+                  <div class=" input-group-prepend">
+                    <button class="btn dropdown-toggle search-category" type="button" data-toggle="dropdown" aria-haspopup="true"
+                      aria-expanded="false">Dropdown</button>
+                    <div class="dropdown-menu search-category-drop">
+                      <a class="dropdown-item" href="#">Action</a>
+                      <a class="dropdown-item" href="#">Another action</a>
+                      <a class="dropdown-item" href="#">Something else here</a>
                     </div>
-                </li>
-                <li class="col-8">
-                    <form class="form-inline my-2 my-lg-0">
-                        <input class="form-control mr-auto col-9" type="search" placeholder="Search"
-                            aria-label="Search">
-                        <button class="btn btn-outline-success col-2" type="submit">Search</button>
-                    </form>
-                </li>
-                <li class="nav-item ml-auto col-2">
-                    <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">Your Account</a>
-                </li>
-            </ul>
+                  </div>
+                  <form class="form-inline my-2 my-lg-0 d-flex justify-content-between">
+                    <input class="form-control mr-auto" type="search" placeholder="Search" aria-label="Search"
+                      id="searchBar" />
+      
+                    <button id="searchBtn" class="btn" type="submit" id="searchBtn">Search</button>
+                  </form>
+                </div>
+      
+                <div class="nav-item ml-auto col-2 text-right">
+                  <a class="nav-link" href="clientAccount.html" tabindex="-1" aria-disabled="true">Your Account</a>
+                </div>
+            </div>
+          </nav>
 
-        </div>
-    </nav>
     <nav id="wishListsTabs" aria-label="Page navigation example">
         <ul class="pagination">
             <li class="page-item"><a class="page-link" href="#">Wish List 1</a></li>
@@ -123,20 +118,20 @@
                                     eget
                                     sit.
                                     Cras ornare arcu dui vivamus arcu felis bibendum ut tristique.</p>
-                                    <div class="rating mb-2">
-                                        <fieldset class="starsRating">
-                                            <label class="full" for="star5"></label>
-                                            <label class="half" for="star4half"></label>
-                                            <label class="full" for="star4"></label>
-                                            <label class="half marked" for="star3half"></label>
-                                            <label class="full marked" for="star3"></label>
-                                            <label class="half marked" for="star2half"></label>
-                                            <label class="full marked" for="star2" ></label>
-                                            <label class="half marked" for="star1half" ></label>
-                                            <label class="full marked" for="star1" ></label>
-                                            <label class="half marked" for="star0half"></label>
-                                        </fieldset>
-                                    </div>
+                                <div class="rating mb-2">
+                                    <fieldset class="starsRating">
+                                        <label class="full" for="star5"></label>
+                                        <label class="half" for="star4half"></label>
+                                        <label class="full" for="star4"></label>
+                                        <label class="half marked" for="star3half"></label>
+                                        <label class="full marked" for="star3"></label>
+                                        <label class="half marked" for="star2half"></label>
+                                        <label class="full marked" for="star2"></label>
+                                        <label class="half marked" for="star1half"></label>
+                                        <label class="full marked" for="star1"></label>
+                                        <label class="half marked" for="star0half"></label>
+                                    </fieldset>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -175,20 +170,20 @@
                                     eget
                                     sit.
                                     Cras ornare arcu dui vivamus arcu felis bibendum ut tristique.</p>
-                                    <div class="rating mb-2">
-                                        <fieldset class="starsRating">
-                                            <label class="full marked" for="star5"></label>
-                                            <label class="half marked" for="star4half"></label>
-                                            <label class="full marked" for="star4"></label>
-                                            <label class="half marked" for="star3half"></label>
-                                            <label class="full marked" for="star3"></label>
-                                            <label class="half marked" for="star2half"></label>
-                                            <label class="full marked" for="star2" ></label>
-                                            <label class="half marked" for="star1half" ></label>
-                                            <label class="full marked" for="star1" ></label>
-                                            <label class="half marked" for="star0half"></label>
-                                        </fieldset>
-                                    </div>
+                                <div class="rating mb-2">
+                                    <fieldset class="starsRating">
+                                        <label class="full marked" for="star5"></label>
+                                        <label class="half marked" for="star4half"></label>
+                                        <label class="full marked" for="star4"></label>
+                                        <label class="half marked" for="star3half"></label>
+                                        <label class="full marked" for="star3"></label>
+                                        <label class="half marked" for="star2half"></label>
+                                        <label class="full marked" for="star2"></label>
+                                        <label class="half marked" for="star1half"></label>
+                                        <label class="full marked" for="star1"></label>
+                                        <label class="half marked" for="star0half"></label>
+                                    </fieldset>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -226,20 +221,20 @@
                                     eget
                                     sit.
                                     Cras ornare arcu dui vivamus arcu felis bibendum ut tristique.</p>
-                                    <div class="rating mb-2">
-                                        <fieldset class="starsRating">
-                                            <label class="full" for="star5"></label>
-                                            <label class="half" for="star4half"></label>
-                                            <label class="full marked" for="star4"></label>
-                                            <label class="half marked" for="star3half"></label>
-                                            <label class="full marked" for="star3"></label>
-                                            <label class="half marked" for="star2half"></label>
-                                            <label class="full marked" for="star2" ></label>
-                                            <label class="half marked" for="star1half" ></label>
-                                            <label class="full marked" for="star1" ></label>
-                                            <label class="half marked" for="star0half"></label>
-                                        </fieldset>
-                                    </div>
+                                <div class="rating mb-2">
+                                    <fieldset class="starsRating">
+                                        <label class="full" for="star5"></label>
+                                        <label class="half" for="star4half"></label>
+                                        <label class="full marked" for="star4"></label>
+                                        <label class="half marked" for="star3half"></label>
+                                        <label class="full marked" for="star3"></label>
+                                        <label class="half marked" for="star2half"></label>
+                                        <label class="full marked" for="star2"></label>
+                                        <label class="half marked" for="star1half"></label>
+                                        <label class="full marked" for="star1"></label>
+                                        <label class="half marked" for="star0half"></label>
+                                    </fieldset>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -285,9 +280,9 @@
                                         <label class="half" for="star3half"></label>
                                         <label class="full" for="star3"></label>
                                         <label class="half" for="star2half"></label>
-                                        <label class="full marked" for="star2" ></label>
-                                        <label class="half marked" for="star1half" ></label>
-                                        <label class="full marked" for="star1" ></label>
+                                        <label class="full marked" for="star2"></label>
+                                        <label class="half marked" for="star1half"></label>
+                                        <label class="full marked" for="star1"></label>
                                         <label class="half marked" for="star0half"></label>
                                     </fieldset>
                                 </div>
@@ -297,6 +292,7 @@
                 </div>
             </div>
         </div>
+    </div>
     </div>
     <div class="d-flex justify-content-around text-white p-5" id="footer">
         <div class="d-flex flex-column">

@@ -1,0 +1,39 @@
+@import url("root.css");
+
+#searchBtn{
+    border-color: black;
+    color: #ffff;
+    
+  
+}
+
+.search-category{
+    border-color: black;
+    color: black;
+    background-color: white;
+}
+
+.search-category-drop{
+    border-color: black;
+}
+.form-inline{
+    min-width:80%;
+}
+
+.navbar{
+    background-color: var(--var-main-color);
+}
+
+#searchBar {
+    padding: .5rem, 1rem;
+    width: 80%;
+    border-radius: 0;
+    border: 1px solid black;
+    height: 100%;
+    border-top-right-radius: 0.2em;
+    border-bottom-right-radius: 0.2em;
+}
+
+#searchBtn {
+    width: 19%;
+}
