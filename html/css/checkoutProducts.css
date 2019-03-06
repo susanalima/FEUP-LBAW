@@ -15,10 +15,11 @@
 }
 
 #listItems{
-    width: 90%;
+    width: 75%;
     overflow: auto;
     height: 30em;
-    margin-left: 0.2em;
+    margin: auto;
+    
 }
 
 #mainContainer{
@@ -28,13 +29,17 @@
 
 
 .product_card_top{
-    min-height: 25em;
+    min-height: auto;
     
 }
 
 .product_card{
-    min-height: 25em;
+    min-height: min-content;
     /*margin-top: 2.5em;*/
+}
+
+.product_info{
+    max-width: 50%;
 }
 
 .product_img{
@@ -87,7 +92,7 @@
 
 
 .rating {
-    width: 350px;
+    max-width: auto;
     min-height: 50px;
 }
 
@@ -101,7 +106,7 @@
 }
 .starsRating > label:before {
     margin: 5px;
-    font-size: 1.25em;
+    font-size: 2vw;
     font-family: "Font Awesome 5 Free";
     display: inline-block;
     content: "\f005";
@@ -110,6 +115,10 @@
 .starsRating > .half:before {
     content: "\f089";
     position: absolute;
+}
+
+.half{
+    display: none;
 }
 
 
@@ -136,8 +145,8 @@
     background-image: url('../images/cancel-icon.png');
     background-color: transparent;
     background-size: 100%,100%;
-    height: 2.5em;
-    width: 2.5em;
+    height: 3vw;
+    width: 3vw;
     border: none;
     cursor: pointer;
     outline:none;   
@@ -150,7 +159,8 @@
 .price{
     margin-top:0.5em;
     margin-bottom:0.5em;
-    font-size: 3em;
+    font-size: 2.5vw;
+    min-width: auto;
 }
 
 .final_price{
@@ -164,9 +174,9 @@
 }
 
 .bottom_row{
-    min-width: 90%;
-    margin-left: 0;
-    margin-right: 0;
+    min-width: 75%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .final_value{
@@ -174,8 +184,18 @@
 }
 
 .back_button, .next_button{
-    width:15%;
+    min-width:auto;
     border-radius: 3em;
     font-size: 2em;
-    margin-left: 3em;
+    margin-left: 3vw;
+}
+
+.next_button{
+    padding-left: 1.5vw;
+    padding-right: 1vw;
+}
+
+.back_button{
+    padding-left: 2vw;
+    padding-right: 2vw;
 }
