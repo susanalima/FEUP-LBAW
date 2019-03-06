@@ -15,7 +15,29 @@
 
   <link rel="stylesheet" href="css/styles.css" />
 
-  <!--<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">-->
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+    crossorigin="anonymous" />
+
+  <script type="text/javascript">
+    function editClientName(button, name) {
+        let clientName = document.getElementById("clientName");
+        if (clientName)
+        {
+          if(button.value == "edit")
+          {
+            button.value = "save"
+            clientName.innerHTML = '<form class="clientInfoForm"><div class="row"><div class="col-sm-8"><input type="text" id="clientName" value="John Doe"></div></div></form>'
+          }
+          else if(button.value == "save")
+          {
+            button.value = "edit"
+            clientName.innerHTML = name
+          }
+        }
+    }
+  </script>
+
 
   <title>Your Account</title>
 </head>
@@ -46,101 +68,59 @@
         <div class="card-body">
           <div class="p-4 border border-ligh">
             <p>Personal Information</p>
-            <form class="clientInfoForm">
-              <div class="form-group row">
-                <label for="clientName" class="col-sm-3 col-form-label"><b>Name</b></label>
-                <div class="col-sm-8">
-                  <input type="text" class="form-control-plaintext" id="clientName" value="John Doe">
-                </div>
-              </div>
 
-              <div class="form-group row">
-                <label for="clientEmail" class="col-sm-3 col-form-label"><b>Email</b></label>
-                <div class="col-sm-8">
-                  <input type="email" class="form-control-plaintext" id="clientEmail" value="johnnyDoe@example.com">
-                </div>
-              </div>
-
-              <!--<div class="form-group row">
-                <label for="clientAddress" class="col-sm-3 col-form-label"><b>Address</b></label>
-                <div class="col-sm-8">
-                  <input type="text" class="form-control-plaintext" id="clientAddress" value="R. Dr. Roberto Frias, 4200-465 Porto, Portugal">
-                </div>
-              </div>-->
-
-              <div class="form-group row">
-                <label for="clientCurrentPassword" class="col-sm-3 col-form-label pr-0"><b>Current Password</b></label>
-                <div class="col-sm-8">
-                  <input type="password" class="form-control" id="clientCurrentPassword" placeholder="Password">
-                </div>
-              </div>
-              <div class="form-group row">
-                <label for="clientNewPassword" class="col-sm-3 col-form-label pr-0"><b>New Password</b></label>
-                <div class="col-sm-8">
-                  <input type="password" class="form-control" id="clientNewPassword" placeholder="Password">
-                </div>
-              </div>
-              <div class="form-group row">
-                <label for="clientConfirmPassword" class="col-sm-3 col-form-label pr-0"><b>Confirm Password</b></label>
-                <div class="col-sm-8">
-                  <input type="password" class="form-control" id="clientConfirmPassword" placeholder="Password">
-                </div>
-              </div>
-              <button type="submit" class="btn btn-outline-success mt-2 btn-sm">Save</button>
-            </form>
-          </div>
-
-          <div class="mt-3 p-4 border border-ligh">
-            <p>Addresses </p>
+      
             <table class="table">
-              <thead>
-                <tr>
-                  <th scope="col">Name</th>
-                  <th scope="col">Address</th>
-                </tr>
-              </thead>
               <tbody>
                 <tr>
-                  <td>Hell</td>
-                  <td>Alameda dos Jardins d'Arrábida 443, 4400-478 Porto, Portugal</td>
+                  <td><b>Name</b></td>
+                  <td id="clientName">John Doe</td>
+                  <td>
+                    <button type="button" class="btn btn-outline-primary btn-sm fas fa-edit" onclick='editClientName(this, "John Doe")' value="edit"></button>
+                  </td>
                 </tr>
                 <tr>
-                  <td>Work</td>
-                  <td>R. Dr. Roberto Frias, 4200-465 Porto, Portugal</td>
+                  <td><b>Email</b></td>
+                  <td> johnnyDoe@example.com</td>
+                  <td>
+                  </td>
                 </tr>
+
+
               </tbody>
             </table>
-            <button type="button" class="btn btn-outline-success mt-2 btn-sm" data-toggle="modal" data-target="#addAddress">Add address</button>
-            <div class="modal fade" id="addAddress" tabindex="-1" role="dialog" aria-labelledby="addAddressLabel" aria-hidden="true">
+
+      
+            <div class="modal fade" id="changePwdModal" tabindex="-1" role="dialog" aria-labelledby="changePwdModalLabel"
+              aria-hidden="true">
               <div class="modal-dialog" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h5 class="modal-title" id="addCardLabel">New Card</h5>
+                    <h5 class="modal-title" id="changePwdModalLabel">Change Password</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
                   </div>
                   <div class="modal-body">
                     <form>
-                        <div class="form-group">
-                            <label>Address</label>
-                            <div class="input-group flex-nowrap">
-                                <input type="text" class="form-control" id="addAddressName" placeholder="Name" required>
-                            </div>
-                            <div class="input-group flex-nowrap mt-2">
-                                <input type="text" class="form-control" id="addAddressPostCode" placeholder="Postcode" required>
-                            </div>
-                            <div class="input-group flex-nowrap mt-2">
-                                <input type="text" class="form-control" id="addAddressStreet" placeholder="Street and number, P.O. box, c/o" required>
-                            </div>
-                            <div class="input-group flex-nowrap mt-2">
-                                <input type="text" class="form-control" id="addAddressApartment" placeholder="Flat, suite, unit, floor, etc" required>
-                            </div>
-                            <div class="input-group flex-nowrap mt-2">
-                                <input type="text" class="form-control" id="addAddressTown" placeholder="Town, City" required>
-                                <input type="text" class="form-control" id="addAddressCountry" placeholder="Country" required>
-                            </div>
+                      <div class="form-group row">
+                        <label for="clientCurrentPassword" class="col-sm-4 col-form-label pr-0"><b>Current Password</b></label>
+                        <div class="col-sm-8">
+                          <input type="password" class="form-control" id="clientCurrentPassword" placeholder="Password">
                         </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="clientNewPassword" class="col-sm-4 col-form-label pr-0"><b>New Password</b></label>
+                        <div class="col-sm-8">
+                          <input type="password" class="form-control" id="clientNewPassword" placeholder="Password">
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="clientConfirmPassword" class="col-sm-4 col-form-label pr-0"><b>Confirm Password</b></label>
+                        <div class="col-sm-8">
+                          <input type="password" class="form-control" id="clientConfirmPassword" placeholder="Password">
+                        </div>
+                      </div>
                     </form>
                   </div>
                   <div class="modal-footer">
@@ -150,6 +130,180 @@
                 </div>
               </div>
             </div>
+          </div>
+          <div class="mt-3 p-4 border border-ligh">
+            <p>Addresses </p>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Name</th>
+                  <th scope="col">Address</th>
+                  <th scope="col"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Hell</td>
+                  <td>Alameda dos Jardins d'Arrábida 443, 4400-478 Porto, Portugal</td>
+                  <td>
+                    <div class="d-flex justify-content-center">
+                      <button type="button" class="btn btn-outline-primary btn-sm m-2 fas fa-edit" data-toggle="modal"
+                        data-target="#editHellAddress"></button>
+                      <div class="modal fade" id="editHellAddress" tabindex="-1" role="dialog" aria-labelledby="editHellAddressLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="editHellAddress">Edit Hell Address</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                              <form>
+                                <div class="form-group">
+                                  <label>Address</label>
+                                  <div class="input-group flex-nowrap">
+                                    <input type="text" class="form-control" id="editHellAddressName" placeholder="Name"
+                                      value="Hell" required>
+                                  </div>
+                                  <div class="input-group flex-nowrap mt-2">
+                                    <input type="text" class="form-control" id="editHellAddressPostCode" placeholder="Postcode"
+                                      value="4400-478 " required>
+                                  </div>
+                                  <div class="input-group flex-nowrap mt-2">
+                                    <input type="text" class="form-control" id="editHellAddressStreet" placeholder="Street and number, P.O. box, c/o"
+                                      value="Alameda dos Jardins d'Arrábida" required>
+                                  </div>
+                                  <div class="input-group flex-nowrap mt-2">
+                                    <input type="text" class="form-control" id="editHellAddressApartment" placeholder="Flat, suite, unit, floor, etc"
+                                      value="443" required>
+                                  </div>
+                                  <div class="input-group flex-nowrap mt-2">
+                                    <input type="text" class="form-control" id="editHellAddressTown" placeholder="Town, City"
+                                      value="Porto" required>
+                                    <input type="text" class="form-control" id="editHellAddressCountry" placeholder="Country"
+                                      value="Portugal" required>
+                                  </div>
+                                </div>
+                              </form>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-outline-danger btn-sm" data-dismiss="modal">Cancel</button>
+                              <button type="button" class="btn btn-outline-success btn-sm">Finish</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <button type="button" class="btn btn-outline-danger btn-sm m-2 fas fa-trash-alt"></button>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Work</td>
+                  <td>R. Dr. Roberto Frias, 4200-465 Porto, Portugal</td>
+                  <td>
+                    <div class="d-flex justify-content-center">
+                      <button type="button" class="btn btn-outline-primary btn-sm m-2 fas fa-edit" data-toggle="modal"
+                        data-target="#editWorkAddress"></button>
+                      <div class="modal fade" id="editWorkAddress" tabindex="-1" role="dialog" aria-labelledby="editWorkAddressLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="editWorkAddress">Edit Work Address</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                              <form>
+                                <div class="form-group">
+                                  <label>Address</label>
+                                  <div class="input-group flex-nowrap">
+                                    <input type="text" class="form-control" id="editWorkAddressName" placeholder="Name"
+                                      value="Work" required>
+                                  </div>
+                                  <div class="input-group flex-nowrap mt-2">
+                                    <input type="text" class="form-control" id="editWorkAddressPostCode" placeholder="Postcode"
+                                      value="4200-465" required>
+                                  </div>
+                                  <div class="input-group flex-nowrap mt-2">
+                                    <input type="text" class="form-control" id="editWorkAddressStreet" placeholder="Street and number, P.O. box, c/o"
+                                      value="R. Dr. Roberto Frias" required>
+                                  </div>
+                                  <div class="input-group flex-nowrap mt-2">
+                                    <input type="text" class="form-control" id="editWorkAddressApartment" placeholder="Flat, suite, unit, floor, etc"
+                                      value="s/n" required>
+                                  </div>
+                                  <div class="input-group flex-nowrap mt-2">
+                                    <input type="text" class="form-control" id="editWorkAddressTown" placeholder="Town, City"
+                                      value="Porto" required>
+                                    <input type="text" class="form-control" id="editWorkAddressCountry" placeholder="Country"
+                                      value="Portugal" required>
+                                  </div>
+                                </div>
+                              </form>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-outline-danger btn-sm" data-dismiss="modal">Cancel</button>
+                              <button type="button" class="btn btn-outline-success btn-sm">Finish</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <button type="button" class="btn btn-outline-danger btn-sm m-2 fas fa-trash-alt"></button>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <button type="button" class="btn btn-outline-success mt-2 btn-sm" data-toggle="modal" data-target="#addAddress">Add
+              address</button>
+            <div class="modal fade" id="addAddress" tabindex="-1" role="dialog" aria-labelledby="addAddressLabel"
+              aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="addAddressLabel">New Address</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <form>
+                      <div class="form-group">
+                        <label>Address</label>
+                        <div class="input-group flex-nowrap">
+                          <input type="text" class="form-control" id="addAddressName" placeholder="Name" required>
+                        </div>
+                        <div class="input-group flex-nowrap mt-2">
+                          <input type="text" class="form-control" id="addAddressPostCode" placeholder="Postcode"
+                            required>
+                        </div>
+                        <div class="input-group flex-nowrap mt-2">
+                          <input type="text" class="form-control" id="addAddressStreet" placeholder="Street and number, P.O. box, c/o"
+                            required>
+                        </div>
+                        <div class="input-group flex-nowrap mt-2">
+                          <input type="text" class="form-control" id="addAddressApartment" placeholder="Flat, suite, unit, floor, etc"
+                            required>
+                        </div>
+                        <div class="input-group flex-nowrap mt-2">
+                          <input type="text" class="form-control" id="addAddressTown" placeholder="Town, City" required>
+                          <input type="text" class="form-control" id="addAddressCountry" placeholder="Country" required>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-danger btn-sm" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-outline-success btn-sm">Finish</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <button type="button" class="btn btn-outline-danger float-right m-2 btn-sm ">Delete all</button>
           </div>
           <div class="mt-3 p-4 border border-ligh">
             <p>Cards </p>
@@ -169,7 +323,8 @@
                 </tr>
               </tbody>
             </table>
-            <button type="button" class="btn btn-outline-success mt-2 btn-sm" data-toggle="modal" data-target="#addCard">Add card</button>
+            <button type="button" class="btn btn-outline-success mt-2 btn-sm" data-toggle="modal" data-target="#addCard">Add
+              card</button>
             <div class="modal fade" id="addCard" tabindex="-1" role="dialog" aria-labelledby="addCardLabel" aria-hidden="true">
               <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -221,7 +376,12 @@
             </div>
           </div>
         </div>
-        <button type="button" class="btn btn-outline-danger float-right mr-4 mb-3 btn-sm">Delete Account</button>
+            <!--TODO CHANGE LOCATION-->
+            <div class="d-flex  flex-column float-right">
+              <button type="button" class="btn btn-outline-dark mr-4 mb-2 btn-sm " data-toggle="modal" data-target="#changePwdModal">Change
+                Password</button>
+                <button type="button" class="btn btn-outline-danger mr-4 mb-3 btn-sm">Delete Account</button>
+            </div>
       </div>
     </div>
     <div class="card">
@@ -301,26 +461,32 @@
           <table class="table">
             <thead>
               <tr>
-                <th scope="col">Cart</th>
                 <th scope="col">Date</th>
                 <th scope="col">Total Price (€)</th>
+                <th scope="col"></th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <th scope="row">1</th>
                 <td>2012-03-11</td>
                 <td>14.89</td>
+                <td>
+                  <a class="btn btn-outline-success btn-sm m-2" href="#" role="button">View Card</a>
+                </td>
               </tr>
               <tr>
-                <th scope="row">2</th>
                 <td>2017-02-11</td>
                 <td>109.99</td>
+                <td>
+                  <a class="btn btn-outline-success btn-sm m-2" href="#" role="button">View Card</a>
+                </td>
               </tr>
               <tr>
-                <th scope="row">3</th>
                 <td>2019-01-21</td>
                 <td>999.99</td>
+                <td>
+                  <a class="btn btn-outline-success btn-sm m-2" href="#" role="button">View Card</a>
+                </td>
               </tr>
             </tbody>
           </table>
@@ -344,9 +510,9 @@
                   <td><b>When I'm a millionaire</b></td>
                   <td>Things I'm going to buy when I'm a millionaire!!!!!!!!!!!</td>
                   <td>
-                    <div class="d-flex justify-content-between">
-                      <button type="button" class="btn btn-outline-primary btn-sm m-2 btnShare"></button>
-                      <button type="button" class="btn btn-outline-danger btn-sm m-2 btnTrash"></button>
+                    <div class="d-flex justify-content-center">
+                      <button type="button" class="btn btn-outline-primary btn-sm m-2 fas fa-share-alt"></button>
+                      <button type="button" class="btn btn-outline-danger btn-sm m-2 fas fa-trash-alt"></button>
                     </div>
                   </td>
                 </tr>
@@ -355,9 +521,9 @@
                   <td><b>Birthday</b></td>
                   <td>Anniversary gifts</td>
                   <td>
-                    <div class="d-flex justify-content-between">
-                      <button type="button" class="btn btn-outline-primary btn-sm m-2 btnShare"></button>
-                      <button type="button" class="btn btn-outline-danger btn-sm m-2 btnTrash"></button>
+                    <div class="d-flex justify-content-center">
+                      <button type="button" class="btn btn-outline-primary btn-sm m-2 fas fa-share-alt"></button>
+                      <button type="button" class="btn btn-outline-danger btn-sm m-2 fas fa-trash-alt"></button>
                     </div>
                   </td>
                 </tr>
@@ -367,22 +533,22 @@
                   <td>Stuff I have to buy for school as soon as I have money</td>
                   <td>
                     <div class="d-flex justify-content-center">
-                      <button type="button" class="btn btn-outline-primary btn-sm m-2 btnShare"></button>
-                      <button type="button" class="btn btn-outline-danger btn-sm m-2 btnTrash"></button>
+                      <button type="button" class="btn btn-outline-primary btn-sm m-2 fas fa-share-alt"></button>
+                      <button type="button" class="btn btn-outline-danger btn-sm m-2 fas fa-trash-alt"></button>
                     </div>
                   </td>
                 </tr>
               </tbody>
             </table>
 
-            <button type="button" class="btn btn-outline-success float-left m-2 btn-sm " data-toggle="modal"
-              data-target="#createWListModel">Add Wish List</button>
-            <div class="modal fade" id="createWListModel" tabindex="-1" role="dialog" aria-labelledby="createWListModelLabel"
+            <button type="button" class="btn btn-outline-success m-2 btn-sm " data-toggle="modal" data-target="#createWListModal">Add
+              Wish List</button>
+            <div class="modal fade" id="createWListModal" tabindex="-1" role="dialog" aria-labelledby="createWListModalLabel"
               aria-hidden="true">
               <div class="modal-dialog" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h5 class="modal-title" id="createWListModelLabel">New Wish List</h5>
+                    <h5 class="modal-title" id="createWListModalLabel">New Wish List</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
