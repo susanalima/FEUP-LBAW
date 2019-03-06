@@ -1,0 +1,37 @@
+body {
+    font-family: "Roboto", sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+}
+
+:root{
+    --var-main-color: #208d56;
+    --var-secon-color: #8d2d20;
+}
+
+html {
+    height: 100%;
+}
+
+h1 {
+    font-size: 1.4em;
+}
+
+h2 {
+    font-size: 1.1em;
+    font-family: "Roboto italic", sans-serif;
+    color: rgb(78, 78, 78);
+}
+
+h3 {
+    font-size: 1em;
+}
+
+h4 {
+    font-size: 0.85em;
+}
+
+h5 {
+    font-size: 0.75em;
+}

@@ -5,56 +5,31 @@ body {
     min-height: 100%;
 }
 
+.form-inline{
+    min-width:80%;
+}
+
 :root{
-    --var-main-color: rgb(64, 163, 91);
-    --var-secon-color: rgb(75, 191, 107);
-    --var-gray: rgb(223, 227, 230);
-    --var-text: rgb(23, 57, 77);
-    --var-secon-text: rgb(73, 100, 115);
-}
-
-.card-header {
-    color: white;
-    background-color: var(--var-main-color);
-}
-
-.soft-card {
-    border-color: var(--var-secon-color);
-    border-bottom: 2px solid var(--var-secon-color);
-    background-color: white;
-    color: var(--var-text);
-}
-
-.btn-primary {
-    color: white;
-    background-color: var(--var-main-color);
-}
-
-.btn-secondary {
-    color: white;
-    background-color: var(--var-main-color);
-}
-
-.btn-link,
-.btn-link:hover,
-.btn-link:active,
-.btn-link::selection {
-    background-color: inherit;
-    color: var(--var-text);
-    text-decoration: none;
-}
-
-
-.card {
-    background-color: var(--var-gray);
-    font-size: 1.2em;
+    --var-main-color: #208d56;
+    --var-secon-color: #8d2d20;
 }
 
 #searchBtn{
-    border-color: #FFFF;
-    color: #ffff
+    border-color: black;
+    color: #ffff;
+    
+  
 }
 
+.search-category{
+    border-color: black;
+    color: black;
+    background-color: white;
+}
+
+.search-category-drop{
+    border-color: black;
+}
 .navbar{
     background-color: var(--var-main-color);
 }
@@ -110,8 +85,15 @@ h5 {
     color: white;
 }
 
+
 #searchBar {
+    padding: .5rem, 1rem;
     width: 80%;
+    border-radius: 0;
+    border: 1px solid black;
+    height: 100%;
+    border-top-right-radius: 0.2em;
+    border-bottom-right-radius: 0.2em;
 }
 
 #searchBtn {

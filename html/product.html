@@ -30,64 +30,45 @@
     </head>
     <body>
         <!-- Navbar Start -->
-        <nav class="navbar navbar-light">
-            <a class="navbar-brand" href="#">
-                <img src="images/placeholder.png" width="30" height="30" class="d-inline-block align-top" alt="" />
-                PuzzleWood
-            </a>
-        </nav>
         <nav class="navbar navbar-expand-lg navbar-light">
-            <button
-                class="navbar-toggler"
-                type="button"
-                data-toggle="collapse"
-                data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent"
-                aria-expanded="false"
-                aria-label="Toggle navigation"
-            >
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse d-flex justify-content-between" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto w-100 d-flex">
-                    <li class="nav-item dropdown mr-auto col-2">
-                        <a
-                            class="nav-link dropdown-toggle"
-                            href="#"
-                            id="navbarDropdown"
-                            role="button"
-                            data-toggle="dropdown"
-                            aria-haspopup="true"
-                            aria-expanded="false"
-                        >
-                            All Categories
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Something else here</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                  aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+          
+                <div class="collapse navbar-collapse d-flex justify-content-between" id="navbarSupportedContent">
+                 
+                  <nav class="navbar mr-auto w-12 d-flex navbar-light">
+                    <a class="navbar-brand" href="./main.html">
+                      <img src="./images/img.png" width="30" height="30" class="d-inline-block align-top" alt="" />
+                      PuzzleWood
+                    </a>
+                  </nav>
+                  <nav class="search-bar navbar-nav mr-auto mb-2 w-100 mt-2 d-flex">
+                    <div class="input-group">
+                      <div class=" input-group-prepend">
+                        <button class="btn dropdown-toggle search-category" type="button" data-toggle="dropdown" aria-haspopup="true"
+                          aria-expanded="false">Dropdown</button>
+                        <div class="dropdown-menu search-category-drop">
+                          <a class="dropdown-item" href="#">Action</a>
+                          <a class="dropdown-item" href="#">Another action</a>
+                          <a class="dropdown-item" href="#">Something else here</a>
                         </div>
-                    </li>
-                    <li class="col-8">
-                        <form class="form-inline my-2 my-lg-0 d-flex justify-content-between">
-                            <input
-                                class="form-control mr-auto"
-                                type="search"
-                                placeholder="Search"
-                                aria-label="Search"
-                                id="searchBar"
-                            />
-                            <button class="btn btn-outline-primary" type="submit" id="searchBtn">Search</button>
-                        </form>
-                    </li>
-                    <li class="nav-item ml-auto col-2 text-right">
-                        <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">Your Account</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
+                      </div>
+                      <form class="form-inline my-2 my-lg-0 d-flex justify-content-between">
+                        <input class="form-control mr-auto" type="search" placeholder="Search" aria-label="Search"
+                          id="searchBar" />
+          
+                        <button id="searchBtn" class="btn" type="submit" id="searchBtn">Search</button>
+                      </form>
+                    </div>
+          
+                    <div class="nav-item ml-auto col-2 text-right">
+                      <a class="nav-link" href="clientAccount.html" tabindex="-1" aria-disabled="true">Your Account</a>
+                    </div>
+                </div>
+              </nav>
+    
         <!-- Navbar End -->
 
         <nav aria-label="breadcrumb">
@@ -200,9 +181,9 @@
             </div>
         </div>
 
-        <div class="accordion w-75 mx-auto mb-4" id="infoSection">
+        <div class="accordion" id="infoSection">
             <div class="card">
-                <div class="card-header soft-card" id="specsHeading">
+                <div class="card-header" id="specsHeading">
                     <h2 class="mb-0">
                         <button
                             class="btn btn-link"
@@ -247,7 +228,7 @@
                 </div>
             </div>
             <div class="card">
-                <div class="card-header soft-card " id="reviewsCol">
+                <div class="card-header" id="reviewsCol">
                     <h2 class="mb-0">
                         <button
                             class="btn btn-link collapsed"
@@ -302,7 +283,7 @@
                 </div>
             </div>
             <div class="card">
-                <div class="card-header soft-card" id="qaHeading">
+                <div class="card-header" id="qaHeading">
                     <h2 class="mb-0">
                         <button
                             class="btn btn-link collapsed"
