@@ -1,73 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
 
-<head>
-  <!-- Required meta tags -->
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="css/styles.css"
+    />
 
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
-  <link rel="stylesheet" href="css/styles.css" />
+    <title>PuzzleWood</title>
+  </head>
+  <body>
+    <div>
 
-  <title>PuzzleWood</title>
-</head>
-
-<body>
-  <div>
-
-    <!-- Image and text -->
-
-    <nav class="navbar navbar-expand-lg navbar-light">
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse d-flex justify-content-between" id="navbarSupportedContent">
-       
-        <nav class="navbar mr-auto w-12 d-flex navbar-light">
-          <a class="navbar-brand" href="./main.html">
-            <img src="./images/img.png" width="30" height="30" class="d-inline-block align-top" alt="" />
-            PuzzleWood
-          </a>
-        </nav>
-        <nav class="search-bar navbar-nav mr-auto mb-2 w-100 mt-2 d-flex">
-          <div class="input-group">
-            <div class=" input-group-prepend">
-              <button class="btn dropdown-toggle search-category" type="button" data-toggle="dropdown" aria-haspopup="true"
-                aria-expanded="false">Dropdown</button>
-              <div class="dropdown-menu search-category-drop">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Something else here</a>
+      <!-- Image and text -->
+      <nav class="navbar navbar-expand-lg navbar-light">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+    
+          <div class="collapse navbar-collapse d-flex justify-content-between" id="navbarSupportedContent">
+           
+            <nav class="navbar mr-auto w-12 d-flex navbar-light">
+              <a class="navbar-brand" href="./main.html">
+                <img src="./images/img.png" width="30" height="30" class="d-inline-block align-top" alt="" />
+                PuzzleWood
+              </a>
+            </nav>
+            <nav class="search-bar navbar-nav mr-auto mb-2 w-100 mt-2 d-flex">
+              <div class="input-group">
+                <div class=" input-group-prepend">
+                  <button class="btn dropdown-toggle search-category" type="button" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false">Dropdown</button>
+                  <div class="dropdown-menu search-category-drop">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                  </div>
+                </div>
+                <form class="form-inline my-2 my-lg-0 d-flex justify-content-between">
+                  <input class="form-control mr-auto" type="search" placeholder="Search" aria-label="Search"
+                    id="searchBar" />
+    
+                  <button id="searchBtn" class="btn" type="submit" id="searchBtn">Search</button>
+                </form>
               </div>
-            </div>
-            <form class="form-inline my-2 my-lg-0 d-flex justify-content-between">
-              <input class="form-control mr-auto" type="search" placeholder="Search" aria-label="Search"
-                id="searchBar" />
-
-              <button id="searchBtn" class="btn" type="submit" id="searchBtn">Search</button>
-            </form>
+    
+              <div class="nav-item ml-auto col-2 text-right">
+                <a class="nav-link" href="clientAccount.html" tabindex="-1" aria-disabled="true">Your Account</a>
+              </div>
           </div>
-
-          <div class="nav-item ml-auto col-2 text-right">
-            <a class="nav-link" href="clientAccount.html" tabindex="-1" aria-disabled="true">Your Account</a>
-          </div>
-      </div>
-    </nav>
-    <div class="w-50 mx-auto bd-example">
-      <div id="carouselExampleCaptions" class="carousel slide mt-5" data-ride="carousel">
+        </nav>
+      <div class="w-50 mx-auto bd-example">
+        <div
+        id="carouselExampleCaptions"
+        class="carousel slide mt-5"
+        data-ride="carousel"
+        >
         <ol class="carousel-indicators">
-          <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+          <li
+          data-target="#carouselExampleCaptions"
+          data-slide-to="0"
+          class="active"
+          ></li>
           <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
           <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
         </ol>
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <a href="product.html">
-              <img src="./images/img.png" class="d-block w-100" alt="..." />
+            <a href="product.html"> 
+              <img src="./images/img.png" class="d-block w-100" alt="..." /> 
             </a>
             <div class="carousel-caption d-none d-md-block">
               <h5>First slide label</h5>
@@ -85,7 +100,7 @@
           </div>
           <div class="carousel-item">
             <a href="product.html">
-              <img src="./images/img.png" class="d-block w-100" alt="..." />
+                <img src="./images/img.png" class="d-block w-100" alt="..." />
             </a>
             <div class="carousel-caption d-none d-md-block">
               <h5>Third slide label</h5>
@@ -95,268 +110,297 @@
             </div>
           </div>
         </div>
-        <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="sr-only">Next</span>
-        </a>
-      </div>
+        <a
+        class="carousel-control-prev"
+        href="#carouselExampleCaptions"
+        role="button"
+        data-slide="prev"
+        >
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a
+      class="carousel-control-next"
+      href="#carouselExampleCaptions"
+      role="button"
+      data-slide="next"
+      >
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+</div>
+<div>
+  <div class="card w-75 mt-5 mb-5 mr-auto ml-auto">
+    <div class="card-header">
+      All Categories
     </div>
-    <div>
-      <div class="card w-75 mt-5 mb-5 mr-auto ml-auto">
-        <div class="card-header">
-          All Categories
-        </div>
-        <div class="card-body">
-          <div class="w-75 mx-auto bd-example">
-            <div id="carouselExampleCaptioasdasns" class="carousel slide mt-5" data-ride="carousel">
-              <div class="carousel-inner">
-                <div class="carousel-item active">
-                  <div class="container">
-                    <div class="row">
-                      <div class="col w-25">
-                        <div class="card w-75 mr-auto ml-auto">
-                          <a href="search.html">
-                            <img class="card-img-top" src="./images/img.png" alt="Card image cap">
-                          </a>
-                          <div class="card-body p-1">
-                            <h5 class="card-title">Category 1</h5>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col w-25">
-                        <div class="card w-75 mr-auto ml-auto">
-                          <a href="search.html">
-                            <img class="card-img-top" src="./images/img.png" alt="Card image cap">
-                          </a>
-                          <div class="card-body p-1">
-                            <h5 class="card-title">Category 2</h5>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col w-25">
-                        <div class="card w-75 mr-auto ml-auto">
-                          <a href="search.html">
-                            <img class="card-img-top" src="./images/img.png" alt="Card image cap">
-                          </a>
-                          <div class="card-body p-1">
-                            <h5 class="card-title">Category 3</h5>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col w-25 mt-4">
-                        <div class="card w-75 mr-auto ml-auto">
-                          <a href="search.html">
-                            <img class="card-img-top" src="./images/img.png" alt="Card image cap">
-                          </a>
-                          <div class="card-body p-1">
-                            <h5 class="card-title">Category 4</h5>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col w-25 mt-4">
-                        <div class="card w-75 mr-auto ml-auto">
-                          <a href="search.html">
-                            <img class="card-img-top" src="./images/img.png" alt="Card image cap">
-                          </a>
-                          <div class="card-body p-1">
-                            <h5 class="card-title">Category 5</h5>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col w-25 mt-4">
-                        <div class="card w-75 mr-auto ml-auto">
-                          <a href="search.html">
-                            <img class="card-img-top" src="./images/img.png" alt="Card image cap">
-                          </a>
-                          <div class="card-body p-1">
-                            <h5 class="card-title">Category 6</h5>
-                          </div>
-                        </div>
-                      </div>
+    <div class="card-body">
+      <div class="w-75 mx-auto bd-example">
+        <div
+        id="carouselExampleCaptioasdasns"
+        class="carousel slide mt-5"
+        data-ride="carousel"
+        >
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="container">
+              <div class="row">
+                <div class="col w-25">
+                  <div class="card w-75 mr-auto ml-auto">
+                    <a href="search.html">
+                      <img class="card-img-top" src="./images/img.png" alt="Card image cap">
+                    </a>
+                    <div class="card-body m-0 p-1">
+                      <h5 class="card-title">Category 1</h5>
                     </div>
                   </div>
                 </div>
-                <div class="carousel-item">
-                  <div class="container">
-                    <div class="row">
-                      <div class="col w-25">
-                        <div class="card w-75 mr-auto ml-auto">
-                          <a href="search.html">
-                            <img class="card-img-top" src="./images/img.png" alt="Card image cap">
-                          </a>
-                          <div class="card-body p-1">
-                            <h5 class="card-title">Category 7</h5>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col w-25">
-                        <div class="card w-75 mr-auto ml-auto">
-                          <a href="search.html">
-                            <img class="card-img-top" src="./images/img.png" alt="Card image cap">
-                          </a>
-                          <div class="card-body p-1">
-                            <h5 class="card-title">Category 8</h5>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col w-25">
-                        <div class="card w-75 mr-auto ml-auto">
-                          <a href="search.html">
-                            <img class="card-img-top" src="./images/img.png" alt="Card image cap">
-                          </a>
-                          <div class="card-body p-1">
-                            <h5 class="card-title">Category 9</h5>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col w-25 mt-4">
-                        <div class="card w-75 mr-auto ml-auto">
-                          <a href="search.html">
-                            <img class="card-img-top" src="./images/img.png" alt="Card image cap">
-                          </a>
-                          <div class="card-body p-1">
-                            <h5 class="card-title">Category 10</h5>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col w-25 mt-4">
-                        <div class="card w-75 mr-auto ml-auto">
-                          <a href="search.html">
-                            <img class="card-img-top" src="./images/img.png" alt="Card image cap">
-                          </a>
-                          <div class="card-body p-1">
-                            <h5 class="card-title">Category 11</h5>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col w-25 mt-4">
-                        <div class="card w-75 mr-auto ml-auto">
-                          <a href="search.html">
-                            <img class="card-img-top" src="./images/img.png" alt="Card image cap">
-                          </a>
-                          <div class="card-body p-1">
-                            <h5 class="card-title">Category 12</h5>
-                          </div>
-                        </div>
-                      </div>
+                <div class="col w-25">
+                  <div class="card w-75 mr-auto ml-auto">
+                    <a href="search.html">
+                      <img class="card-img-top" src="./images/img.png" alt="Card image cap">
+                    </a>
+                    <div class="card-body p-1">
+                      <h5 class="card-title">Category 2</h5>
                     </div>
                   </div>
                 </div>
-                <div class="carousel-item">
-                  <div class="container">
-                    <div class="row">
-                      <div class="col w-25">
-                        <div class="card w-75 mr-auto ml-auto">
-                          <a href="search.html">
-                            <img class="card-img-top" src="./images/img.png" alt="Card image cap">
-                          </a>
-                          <div class="card-body p-1">
-                            <h5 class="card-title">Category 13</h5>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col w-25">
-                        <div class="card w-75 mr-auto ml-auto">
-                          <a href="search.html">
-                            <img class="card-img-top" src="./images/img.png" alt="Card image cap">
-                          </a>
-                          <div class="card-body p-1">
-                            <h5 class="card-title">Category 14</h5>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col w-25">
-                        <div class="card w-75 mr-auto ml-auto">
-                          <a href="search.html">
-                            <img class="card-img-top" src="./images/img.png" alt="Card image cap">
-                          </a>
-                          <div class="card-body p-1">
-                            <h5 class="card-title">Category 15</h5>
-                          </div>
-                        </div>
-                      </div>
+                <div class="col w-25">
+                  <div class="card w-75 mr-auto ml-auto">
+                    <a href="search.html">
+                      <img class="card-img-top" src="./images/img.png" alt="Card image cap">
+                    </a>
+                    <div class="card-body p-1">
+                      <h5 class="card-title">Category 3</h5>
                     </div>
-                    <div class="row">
-                      <div class="col w-25 mt-4">
-                        <div class="card w-75 mr-auto ml-auto">
-                          <a href="search.html">
-                            <img class="card-img-top" src="./images/img.png" alt="Card image cap">
-                          </a>
-                          <div class="card-body p-1">
-                            <h5 class="card-title">Category 16</h5>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col w-25 mt-4">
-                        <div class="card w-75 mr-auto ml-auto">
-                          <a href="search.html">
-                            <img class="card-img-top" src="./images/img.png" alt="Card image cap">
-                          </a>
-                          <div class="card-body p-1">
-                            <h5 class="card-title">Category 17</h5>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col w-25 mt-4">
-                        <div class="card w-75 mr-auto ml-auto">
-                          <a href="search.html">
-                            <img class="card-img-top" src="./images/img.png" alt="Card image cap">
-                          </a>
-                          <div class="card-body p-1">
-                            <h5 class="card-title">Category 18</h5>
-                          </div>
-                        </div>
-                      </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col w-25 mt-4">
+                  <div class="card w-75 mr-auto ml-auto">
+                    <a href="search.html">
+                      <img class="card-img-top" src="./images/img.png" alt="Card image cap">
+                    </a>
+                    <div class="card-body p-1">
+                      <h5 class="card-title">Category 4</h5>
+                    </div>
+                  </div>
+                </div>
+                <div class="col w-25 mt-4">
+                  <div class="card w-75 mr-auto ml-auto">
+                    <a href="search.html">
+                      <img class="card-img-top" src="./images/img.png" alt="Card image cap">
+                    </a>
+                    <div class="card-body p-1">
+                      <h5 class="card-title">Category 5</h5>
+                    </div>
+                  </div>
+                </div>
+                <div class="col w-25 mt-4">
+                  <div class="card w-75 mr-auto ml-auto">
+                    <a href="search.html">
+                      <img class="card-img-top" src="./images/img.png" alt="Card image cap">
+                    </a>
+                    <div class="card-body p-1">
+                      <h5 class="card-title">Category 6</h5>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            <a class="carousel-control-prev" href="#carouselExampleCaptioasdasns" role="button" data-slide="prev">
-              <span class="carousel-control-prev-icon black-control" aria-hidden="true"></span>
-              <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleCaptioasdasns" role="button" data-slide="next">
-              <span class="carousel-control-next-icon black-control" aria-hidden="true"></span>
-              <span class="sr-only">Next</span>
-            </a>
+                    </div>
+                    <div class="carousel-item">
+                      <div class="container">
+                        <div class="row">
+                          <div class="col w-25">
+                            <div class="card w-75 mr-auto ml-auto">
+                              <a href="search.html">
+                                <img class="card-img-top" src="./images/img.png" alt="Card image cap">
+                              </a>
+                              <div class="card-body p-1">
+                                <h5 class="card-title">Category 7</h5>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col w-25">
+                            <div class="card w-75 mr-auto ml-auto">
+                              <a href="search.html">
+                                <img class="card-img-top" src="./images/img.png" alt="Card image cap">
+                              </a>
+                              <div class="card-body p-1">
+                                <h5 class="card-title">Category 8</h5>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col w-25">
+                            <div class="card w-75 mr-auto ml-auto">
+                              <a href="search.html">
+                                <img class="card-img-top" src="./images/img.png" alt="Card image cap">
+                              </a>
+                              <div class="card-body p-1">
+                                <h5 class="card-title">Category 9</h5>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col w-25 mt-4">
+                            <div class="card w-75 mr-auto ml-auto">
+                              <a href="search.html">
+                                <img class="card-img-top" src="./images/img.png" alt="Card image cap">
+                              </a>
+                              <div class="card-body p-1">
+                                <h5 class="card-title">Category 10</h5>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col w-25 mt-4">
+                            <div class="card w-75 mr-auto ml-auto">
+                              <a href="search.html">
+                                <img class="card-img-top" src="./images/img.png" alt="Card image cap">
+                              </a>
+                              <div class="card-body p-1">
+                                <h5 class="card-title">Category 11</h5>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col w-25 mt-4">
+                            <div class="card w-75 mr-auto ml-auto">
+                              <a href="search.html">
+                                <img class="card-img-top" src="./images/img.png" alt="Card image cap">
+                              </a>
+                              <div class="card-body p-1">
+                                <h5 class="card-title">Category 12</h5>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="container">
+                          <div class="row">
+                              <div class="col w-25">
+                                <div class="card w-75 mr-auto ml-auto">
+                                  <a href="search.html">
+                                    <img class="card-img-top" src="./images/img.png" alt="Card image cap">
+                                  </a>
+                                  <div class="card-body p-1">
+                                    <h5 class="card-title">Category 13</h5>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col w-25">
+                                <div class="card w-75 mr-auto ml-auto">
+                                    <a href="search.html">
+                                      <img class="card-img-top" src="./images/img.png" alt="Card image cap">
+                                    </a>
+                                    <div class="card-body p-1">
+                                      <h5 class="card-title">Category 14</h5>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="col w-25">
+                                  <div class="card w-75 mr-auto ml-auto">
+                                    <a href="search.html">
+                                      <img class="card-img-top" src="./images/img.png" alt="Card image cap">
+                                    </a>
+                                    <div class="card-body p-1">
+                                      <h5 class="card-title">Category 15</h5>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            <div class="row">
+                              <div class="col w-25 mt-4">
+                                <div class="card w-75 mr-auto ml-auto">
+                                      <a href="search.html">
+                                        <img class="card-img-top" src="./images/img.png" alt="Card image cap">
+                                      </a>
+                                      <div class="card-body p-1">
+                                        <h5 class="card-title">Category 16</h5>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="col w-25 mt-4">
+                                    <div class="card w-75 mr-auto ml-auto">
+                                      <a href="search.html">
+                                        <img class="card-img-top" src="./images/img.png" alt="Card image cap">
+                                      </a>
+                                      <div class="card-body p-1">
+                                        <h5 class="card-title">Category 17</h5>
+                                      </div>
+                                    </div>
+                                  </div>
+                                <div class="col w-25 mt-4">
+                                  <div class="card w-75 mr-auto ml-auto">
+                                    <a href="search.html">
+                                      <img class="card-img-top" src="./images/img.png" alt="Card image cap">
+                                    </a>
+                                    <div class="card-body p-1">
+                                      <h5 class="card-title">Category 18</h5>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                      </div>
+                    </div>
+                  </div>
+                  <a
+                    class="carousel-control-prev"
+                    href="#carouselExampleCaptioasdasns"
+                    role="button"
+                    data-slide="prev"
+                  >
+                  <span class="carousel-control-prev-icon black-control" aria-hidden="true"></span>
+                  <span class="sr-only">Previous</span>
+                  </a>
+                  <a
+                  class="carousel-control-next"
+                  href="#carouselExampleCaptioasdasns"
+                  role="button"
+                  data-slide="next"
+                  >
+                  <span class="carousel-control-next-icon black-control" aria-hidden="true"></span>
+                  <span class="sr-only">Next</span>
+                </a>
+              </div>
+            </div>
+            
           </div>
         </div>
-
       </div>
+      <!-- Footer Start -->
+      <div class="d-flex justify-content-around text-white p-5" id="footer">
+          <div class="d-flex flex-column">
+              <a href="./help.html#support">Help</a>
+              <a href="./help.html#contacts">Contacts</a>
+              <a href="./help.html#FAQ">FAQs</a>
+          </div>
+          <h4 class="align-self-end ">&copy; 2019 PuzzleWood.pt. All Rights Reserved.</h4>
+      </div>
+      <!-- Footer End -->
     </div>
-  </div>
-  <!-- Footer Start -->
-  <div class="d-flex justify-content-around text-white p-5" id="footer">
-    <div class="d-flex flex-column">
-      <a href="./help.html#support">Help</a>
-      <a href="./help.html#contacts">Contacts</a>
-      <a href="./help.html#FAQ">FAQs</a>
-    </div>
-    <h4 class="align-self-end ">&copy; 2019 PuzzleWood.pt. All Rights Reserved.</h4>
-  </div>
-  <!-- Footer End -->
-  </div>
-
-  <!-- Optional JavaScript -->
-  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-    crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-    crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-    crossorigin="anonymous"></script>
-</body>
-
-</html>
+      
+      <!-- Optional JavaScript -->
+      <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+      <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+  </html>
