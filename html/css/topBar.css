@@ -29,7 +29,7 @@
 
 #searchCategorySelector button,
 #searchCategorySelector div {
-    border: 1px solid var(--var-secon-color);
+    border: 1px solid var(--var-thir-color);
 }
 
 #searchCategorySelector button {
@@ -37,7 +37,7 @@
 }
 
 #searchCategorySelector button:hover {
-    background-color: var(--var-secon-color);
+    background-color: var(--var-thir-color);
 }
 
 #searchCategorySelector button:focus,
@@ -46,7 +46,7 @@
 }
 
 #searchBtn {
-    border: 1px solid var(--var-secon-color);
+    border: 1px solid var(--var-thir-color);
     border-left-width: 0;
     border-top-left-radius: 0em;
     border-bottom-left-radius: 0em;
@@ -54,7 +54,7 @@
 }
 
 #searchBtn:hover {
-    background-color: var(--var-secon-color);
+    background-color: var(--var-thir-color);
 }
 
 #searchNav * * {
@@ -63,12 +63,20 @@
 }
 
 #accountLinks * {
-    color: var(--var-text);
+    color: var(--var-gray);
 }
 
+#accountLinks *:hover {
+    color: white;
+}
 
 #navbarLogo a {
     font-size: 1.4em;
-    color: var(--var-text);
+    color: var(--var-gray);
     font-weight: 300;
 }
+
+#navbarLogo a:hover {
+    color: white;
+}
+

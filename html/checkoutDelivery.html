@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+        crossorigin="anonymous" />
 
 
 
@@ -17,31 +17,23 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,400i" rel="stylesheet" />
 
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
-        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+        crossorigin="anonymous" />
 
     <!-- JS Scripts (Pooper.js included) -->
 
-        <script
-        src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"
-    ></script>
-    <script
-        src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"
-    ></script>
-    <script
-        src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"
-    ></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
 
 
     <link rel="stylesheet" href="css/checkoutProducts.css" />
     <link rel="stylesheet" href="css/root.css" />
     <link rel="stylesheet" href="css/topBar.css" />
+    <link rel="stylesheet" href="css/styles.css" />
 
 
     <title>Checkout Products</title>
@@ -75,8 +67,7 @@
                         </div>
                     </div>
                     <form class="form-inline my-2 my-lg-0 d-flex justify-content-between">
-                        <input class="form-control mr-auto" type="search" placeholder="Search" aria-label="Search"
-                            id="searchBar" />
+                        <input class="form-control mr-auto" type="search" placeholder="Search" aria-label="Search" id="searchBar" />
 
                         <button id="searchBtn" class="btn" type="submit" id="searchBtn">Search</button>
                     </form>
@@ -99,21 +90,68 @@
     </nav>
 
     <div id="listItems" class="card">
-        <div class="d-flex align-items-center justify-content-left flex-wrap m-5">
-            <div class="card bg-light" style="width: 21rem; height: 12rem;">
+        <div class="d-flex align-items-center justify-content-start p-4 m-2 flex-wrap m-5">
+            <div class="d-flex flex-column card bg-light align-items-center justify-content-center" style="width: 21rem; height: 12rem;" data-toggle="modal" data-target="#deliveryAddressModel">
+                <p> <i class="fas fa-plus m-2"></i>Other address</p>
             </div>
-            <div class="card" style="width: 21rem; height: 12rem;">
+        
+            <!-- Add New Address Modal -->
+            <div class="modal fade" id="deliveryAddressModel" tabindex="-1" role="dialog" aria-labelledby="deliveryAddressModelLabel"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="deliveryAddressModelLabel">Other Delivery Address</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                              <div class="form-group">
+                                <label>Address</label>
+                                <div class="input-group flex-nowrap">
+                                  <input type="text" class="form-control" id="deliveryAddressName" placeholder="Name" required>
+                                </div>
+                                <div class="input-group flex-nowrap mt-2">
+                                  <input type="text" class="form-control" id="deliveryAddressPostCode" placeholder="Postcode"
+                                    required>
+                                </div>
+                                <div class="input-group flex-nowrap mt-2">
+                                  <input type="text" class="form-control" id="deliveryAddressStreet" placeholder="Street and number, P.O. box, c/o"
+                                    required>
+                                </div>
+                                <div class="input-group flex-nowrap mt-2">
+                                  <input type="text" class="form-control" id="deliveryAddressApartment" placeholder="Flat, suite, unit, floor, etc"
+                                    required>
+                                </div>
+                                <div class="input-group flex-nowrap mt-2">
+                                  <input type="text" class="form-control" id="deliveryAddressTown" placeholder="Town, City" required>
+                                  <input type="text" class="form-control" id="deliveryAddressCountry" placeholder="Country" required>
+                                </div>
+                              </div>
+                            </form>
+                          </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-outline-danger btn-sm" data-dismiss="modal">Cancel</button>
+                            <button type="button" class="btn btn-outline-success btn-sm">Deliver here!</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!---->
+
+            <div class="d-flex flex-column card" style="width: 21rem; height: 12rem;">
                 <div class="card-body">
                     <h5 class="card-title">Address</h5>
                     <h6 class="card-subtitle mb-2 text-muted">Hell</h6>
                     <p class="card-text">Alameda dos Jardins d'Arrábida 443, 4400-478 Porto, Portugal</p>
                     <button type="button" class="btn btn-primary btn-sm btn-block">Deliver here!</button>
                 </div>
-
             </div>
 
 
-            <div class="card" style="width: 21rem; height: 12rem;">
+            <div class="d-flex flex-column card" style="width: 21rem; height: 12rem;">
                 <div class="card-body">
                     <h5 class="card-title">Address</h5>
                     <h6 class="card-subtitle mb-2 text-muted">Work</h6>
@@ -121,7 +159,7 @@
                     <button type="button" class="btn btn-primary btn-sm btn-block">Deliver here!</button>
                 </div>
             </div>
-            <div class="card" style="width: 21rem; height: 12rem;">
+            <div class="d-flex flex-column card" style="width: 21rem; height: 12rem;">
                 <div class="card-body">
                     <h5 class="card-title">Address</h5>
                     <h6 class="card-subtitle mb-2 text-muted">Home</h6>
@@ -129,18 +167,16 @@
                     <button type="button" class="btn btn-primary btn-sm btn-block">Deliver here!</button>
                 </div>
             </div>
-            <div class="card" style="width: 21rem; height: 12rem;">
+            <div class="d-flex flex-column card" style="width: 21rem; height: 12rem;">
                 <div class="card-body">
                     <h5 class="card-title">Address</h5>
                     <h6 class="card-subtitle mb-2 text-muted">Gym</h6>
                     <p class="card-text">Alameda dos Jardins d'Arrábida 443, 4400-478 Porto, Portugal</p>
                     <button type="button" class="btn btn-primary btn-sm btn-block">Deliver here!</button>
-
                 </div>
             </div>
         </div>
     </div>
-
     <div class="card container bottom_row">
         <div class="row">
             <div class="col-sm card final_price container">
@@ -153,10 +189,16 @@
                     </div>
                 </div>
             </div>
-            <button class="btn-outline-info back_button" type="button"> Back </button>
+            <button class="btn-outline-info back_button"  type="button"> Back </button>
             <button class="btn-outline-info next_button" type="button"> Next ></button>
         </div>
     </div>
+
+        
+       
+      
+
+    
     <div class="d-flex justify-content-around text-white p-5" id="footer">
         <div class="d-flex flex-column">
             <a href="./help.html#support">Help</a>

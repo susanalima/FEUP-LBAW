@@ -8,9 +8,11 @@ body {
 :root {
     --var-main-color: rgb(64, 163, 91);
     --var-secon-color: rgb(75, 191, 107);
+    --var-thir-color: rgb(129, 210, 152);
     --var-gray: rgb(223, 227, 230);
     --var-text: rgb(23, 57, 77);
     --var-secon-text: rgb(73, 100, 115);
+
 }
 
 html {
