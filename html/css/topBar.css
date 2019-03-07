@@ -1,39 +1,74 @@
 @import url("root.css");
 
-#searchBtn{
-    border-color: black;
-    color: #ffff;
-    
-  
-}
-
-.search-category{
+.search-category {
     border-color: black;
     color: black;
     background-color: white;
 }
 
-.search-category-drop{
+.search-category-drop {
     border-color: black;
 }
-.form-inline{
-    min-width:80%;
+.form-inline {
+    min-width: 80%;
 }
 
-.navbar{
+.navbar {
     background-color: var(--var-main-color);
+    padding: 3px;
 }
 
 #searchBar {
-    padding: .5rem, 1rem;
-    width: 80%;
+    padding: 0.5rem, 1rem;
     border-radius: 0;
-    border: 1px solid black;
-    height: 100%;
-    border-top-right-radius: 0.2em;
-    border-bottom-right-radius: 0.2em;
+    border: 1px solid var(--var-secon-color);
+    border-right-width: 0;
+    border-left-width: 0;
+    flex-grow: 1;
+}
+
+#searchCategorySelector button,
+#searchCategorySelector div {
+    border: 1px solid var(--var-secon-color);
+}
+
+#searchCategorySelector button {
+    border-right-width: 0;
+}
+
+#searchCategorySelector button:focus {
+    background-color: var(--var-secon-color);
+}
+
+#searchCategorySelector button:focus,
+#searchBar:focus {
+    box-shadow: none;
 }
 
 #searchBtn {
-    width: 19%;
+    border: 1px solid var(--var-secon-color);
+    border-left-width: 0;
+    border-top-left-radius: 0em;
+    border-bottom-left-radius: 0em;
+    height: 100%;
+}
+
+#searchBtn:hover {
+    background-color: var(--var-secon-color);
+}
+
+#searchNav * * {
+    background-color: white;
+    color: var(--var-text);
+}
+
+#accountLinks * {
+    color: var(--var-text);
+}
+
+
+#navbarLogo a {
+    font-size: 1.4em;
+    color: var(--var-text);
+    font-weight: 300;
 }

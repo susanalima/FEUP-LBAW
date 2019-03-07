@@ -1,3 +1,6 @@
+
+@import url("root.css");
+
 body {
     font-family: "Roboto", sans-serif;
     display: flex;
@@ -5,32 +8,20 @@ body {
     min-height: 100%;
 }
 
-.form-inline{
-    min-width:80%;
+.form-inline {
+    min-width: 80%;
 }
 
-:root{
-    --var-main-color: #208d56;
-    --var-secon-color: #8d2d20;
-}
-
-#searchBtn{
-    border-color: black;
-    color: #ffff;
-    
-  
-}
-
-.search-category{
+.search-category {
     border-color: black;
     color: black;
     background-color: white;
 }
 
-.search-category-drop{
+.search-category-drop {
     border-color: black;
 }
-.navbar{
+.navbar {
     background-color: var(--var-main-color);
 }
 
@@ -83,21 +74,6 @@ h5 {
 
 #footer a {
     color: white;
-}
-
-
-#searchBar {
-    padding: .5rem, 1rem;
-    width: 80%;
-    border-radius: 0;
-    border: 1px solid black;
-    height: 100%;
-    border-top-right-radius: 0.2em;
-    border-bottom-right-radius: 0.2em;
-}
-
-#searchBtn {
-    width: 19%;
 }
 
 #filters {
@@ -225,7 +201,7 @@ h5 {
 
     width: 350px;
     height: 100%;
-    
+
     z-index: 2;
 }
 
@@ -239,7 +215,7 @@ h5 {
     height: 100%;
     background: rgba(0, 0, 0, 0.6);
     z-index: -1;
-    opacity: 0;    
+    opacity: 0;
 }
 
 .overlay.active {
@@ -266,4 +242,8 @@ h5 {
 .cartQuantitySelector {
     width: 50px;
     font-size: 0.7em;
+}
+
+.breadcrumb {
+    background-color: ;
 }
