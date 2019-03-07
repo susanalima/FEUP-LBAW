@@ -1,13 +1,6 @@
 
 @import url("root.css");
 
-body {
-    font-family: "Roboto", sans-serif;
-    display: flex;
-    flex-direction: column;
-    min-height: 100%;
-}
-
 .form-inline {
     min-width: 80%;
 }
@@ -20,9 +13,6 @@ body {
 
 .search-category-drop {
     border-color: black;
-}
-.navbar {
-    background-color: var(--var-main-color);
 }
 
 html {
@@ -39,7 +29,7 @@ html {
 
 #specificSpecs button:hover {
     background-color: rgb(0, 123, 255);
-    color: aliceblue;
+    color: var(--var-gray-light);
 }
 
 .all_address{
@@ -69,26 +59,33 @@ h5 {
 }
 
 #footer {
-    background-color: grey;
+    background-color: var(--var-secon-color);
+    
 }
 
 .mainContent {
     flex-grow: 1;
 }
 
-#footer a {
-    color: white;
+#footer * {
+    color: var(--var-text);
+}
+
+#footer h4 {
+    color: var(--var-secon-text);
 }
 
 #filters {
     width: 320px;
-    background-color: #ccd1d6;
+    background-color: var(--var-gray-light);
+    border-radius: 0.25rem;
 }
 
 #results {
     max-width: 1070px;
     padding: 10px;
-    border: 1px solid #ccd1d6;
+    border: 1px solid var(--var-gray-light);
+    border-radius: 0.25rem;
 }
 
 #searchBody {
@@ -114,6 +111,14 @@ h5 {
 .productName,
 .productPrice {
     width: 300px;
+}
+
+.productName {
+    font-weight: 600;
+}
+
+.productPrice {
+    color: var(--var-secon-text);
 }
 
 .productBot {
@@ -152,7 +157,7 @@ h5 {
 }
 
 .starsRating > label {
-    color: rgb(184, 180, 180);
+    color: var(--var-gray-ml);
     float: right;
 }
 
@@ -161,22 +166,43 @@ h5 {
 .starsRating > input:checked ~ label, /* show gold star when clicked */
 .starsRating:not(:checked) > label:hover, /* hover current star */
 .starsRating:not(:checked) > label:hover ~ label {
-    color: #ffd700;
+    color: var(--var-main-color);
 } /* hover previous stars in list */
 
 .starsRating > input:checked + label:hover, /* hover current star when changing starsRating */
 .starsRating > input:checked ~ label:hover,
 .starsRating > label:hover ~ input:checked ~ label, /* lighten current selection */
 .starsRating > input:checked ~ label:hover ~ label {
-    color: #ffed85;
+    color: var(--var-secon-color);
 }
 
 .addToCartBtn,
 .addToWishListBtn {
+    border-radius: 0.25rem;
+    margin: 0px 0px 1px 1px;
     width: 50px;
     height: 50px;
-    border: 0px;
     padding: 0;
+}
+
+.addToCartBtn{
+    border: 1px solid var(--var-main-color);
+    color: white;
+    background-color: var(--var-main-color);
+}
+
+.addToWishListBtn {
+    border: 1px solid var(--var-main-color);
+    color: var(--var-main-color);
+    background-color: white;
+}
+
+.addToCartBtn:hover {
+    color: var(--var-text);
+}
+
+.addToWishListBtn:hover {
+    color: var(--var-text);
 }
 
 @media screen and (max-width: 1450px) {
@@ -214,9 +240,15 @@ h5 {
     height: 50px;
     border: 0px;
     padding: 0;
+    border-radius: 0.25rem;
+    background-color: var(--var-main-color);
 }
 
 #shoppingCart {
+
+    background-color: var(--var-main-color);
+    color: var(--var-text);
+
     display: block;
     position: fixed;
     bottom: 0px;
@@ -226,6 +258,24 @@ h5 {
     height: 100%;
 
     z-index: 2;
+}
+
+#shoppingCartHeader * {
+    color: var(--var-gray-light); 
+    background-color: var(--var-main-color);
+}
+
+#shoppingCartHeader h2 {
+    font-weight: 600;
+}
+
+#shoppingCartCartTotal {
+    color: var(--var-gray-light);
+}
+
+#shoppingCartCart article {
+    background-color: var(--var-gray-light);
+    color: var(--var-text);
 }
 
 #shoppingCart.active {
@@ -268,5 +318,9 @@ h5 {
 }
 
 .breadcrumb {
-    background-color: ;
+    background-color: var(--var-gray-light);
+}
+
+#searchCategorySelector {
+    z-index: 0;
 }

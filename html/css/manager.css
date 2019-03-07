@@ -1,0 +1,13 @@
+.chat {
+  list-style-type: none;
+  padding: 0em;
+}
+
+.chat-body {
+  border-bottom: 1px dotted #B3A9A9;
+  margin-bottom: 0.5em;
+}
+
+.chat-body .glyphicon-time {
+  margin-right: 0.5em;
+}

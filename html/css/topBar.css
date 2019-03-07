@@ -1,27 +1,27 @@
 @import url("root.css");
 
 .search-category {
-    border-color: black;
-    color: black;
+    border-color: var(--var-gray-dark);
+    color: var(--var-gray-dark);
     background-color: white;
 }
 
 .search-category-drop {
-    border-color: black;
+    border-color: var(--var-gray-dark);
 }
 .form-inline{
     max-width: 85%;
 }
 
 .navbar {
-    background-color: var(--var-main-color);
-    padding: 3px;
+    background-color: var(--var-secon-color);
+    padding: 5px;
 }
 
 #searchBar {
     padding: 0.5rem, 1rem;
     border-radius: 0;
-    border: 1px solid var(--var-secon-color);
+    border: 1px solid var(--var-main-color);
     border-right-width: 0;
     border-left-width: 0;
     flex-grow: 1;
@@ -29,7 +29,7 @@
 
 #searchCategorySelector button,
 #searchCategorySelector div {
-    border: 1px solid var(--var-thir-color);
+    border: 1px solid var(--var-main-color);
 }
 
 #searchCategorySelector button {
@@ -37,7 +37,8 @@
 }
 
 #searchCategorySelector button:hover {
-    background-color: var(--var-thir-color);
+    background-color: var(--var-main-color);
+    color: white;
 }
 
 #searchCategorySelector button:focus,
@@ -46,7 +47,7 @@
 }
 
 #searchBtn {
-    border: 1px solid var(--var-thir-color);
+    border: 1px solid var(--var-main-color);
     border-left-width: 0;
     border-top-left-radius: 0em;
     border-bottom-left-radius: 0em;
@@ -54,16 +55,17 @@
 }
 
 #searchBtn:hover {
-    background-color: var(--var-thir-color);
+    background-color: var(--var-main-color);
+    color: white;
 }
 
 #searchNav * * {
     background-color: white;
-    color: var(--var-text);
+    color: var(--var-gray-dark);
 }
 
 #accountLinks * {
-    color: var(--var-gray);
+    color: white;
 }
 
 #accountLinks *:hover {
@@ -72,11 +74,12 @@
 
 #navbarLogo a {
     font-size: 1.4em;
-    color: var(--var-gray);
+    color: white;
     font-weight: 300;
 }
 
-#navbarLogo a:hover {
+#accountLinks *:hover {
+    background-color: var(--var-main-color);
+    border-radius: 0.25rem;
     color: white;
 }
-

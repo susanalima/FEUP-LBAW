@@ -3,6 +3,7 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100%;
+    color: var(--var-text);
 }
 
 :root {
@@ -12,7 +13,11 @@ body {
     --var-gray: rgb(223, 227, 230);
     --var-text: rgb(23, 57, 77);
     --var-secon-text: rgb(73, 100, 115);
-
+    
+    --var-gray-light: rgb(224,224,224);
+    --var-gray-ml: rgb(192,192,192);
+    --var-gray-mid: rgb(136,136,136);
+    --var-gray-dark: rgb(56,56,56);
 }
 
 html {
@@ -39,4 +44,8 @@ h4 {
 
 h5 {
     font-size: 0.75em;
+}
+
+a {
+    color: var(--var-text);
 }
