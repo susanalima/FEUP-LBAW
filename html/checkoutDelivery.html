@@ -1,0 +1,153 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+        crossorigin="anonymous" />
+
+
+
+
+    <!-- Roboto Font -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,400i" rel="stylesheet" />
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+        crossorigin="anonymous" />
+
+
+    <link rel="stylesheet" href="css/checkoutProducts.css" />
+    <link rel="stylesheet" href="css/root.css" />
+    <link rel="stylesheet" href="css/topBar.css" />
+
+
+    <title>Checkout Products</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse d-flex justify-content-between" id="navbarSupportedContent">
+
+            <nav class="navbar mr-auto w-12 d-flex navbar-light">
+                <a class="navbar-brand" href="./index.html">
+                    <img src="./images/img.png" width="30" height="30" class="d-inline-block align-top" alt="" />
+                    PuzzleWood
+                </a>
+            </nav>
+
+            <nav class="search-bar navbar-nav mr-auto mb-2 w-100 mt-2 d-flex">
+                <div class="input-group">
+                    <div class=" input-group-prepend">
+                        <button class="btn dropdown-toggle search-category" type="button" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">Dropdown</button>
+                        <div class="dropdown-menu search-category-drop">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
+                    </div>
+                    <form class="form-inline my-2 my-lg-0 d-flex justify-content-between">
+                        <input class="form-control mr-auto" type="search" placeholder="Search" aria-label="Search" id="searchBar" />
+
+                        <button id="searchBtn" class="btn" type="submit" id="searchBtn">Search</button>
+                    </form>
+                </div>
+
+                <div class="nav-item ml-auto col-2 text-right">
+                    <a class="nav-link" href="clientAccount.html" tabindex="-1" aria-disabled="true">Your Account</a>
+                </div>
+        </div>
+    </nav>
+
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item active"><a href="#">1.Products</a></li>
+            <li class="breadcrumb-item" aria-current="page">2.Delivery</a></li>
+            <li class="breadcrumb-item"><a href="#">3.Payment</a></li>
+            <li class="breadcrumb-item"><a href="#">4.Shipping</a></li>
+            <li class="breadcrumb-item"><a href="#">5.Confirmation</a></li>
+        </ol>
+    </nav>
+
+    <div id="listItems" class="card">
+        <div class="d-flex align-items-center justify-content-center flex-wrap m-5">
+            <div class="card bg-light" style="width: 21rem; height: 12rem;">
+            </div>
+            <div class="card" style="width: 21rem; height: 12rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Address</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Hell</h6>
+                    <p class="card-text">Alameda dos Jardins d'Arrábida 443, 4400-478 Porto, Portugal</p>
+                    <button type="button" class="btn btn-primary btn-sm btn-block">Deliver here!</button>
+                </div>
+                
+            </div>
+
+
+            <div class="card" style="width: 21rem; height: 12rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Address</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Work</h6>
+                    <p class="card-text">R. Dr. Roberto Frias, 4200-465 Porto, Portugal</p>
+                    <button type="button" class="btn btn-primary btn-sm btn-block">Deliver here!</button>
+                </div>
+            </div>
+            <div class="card" style="width: 21rem; height: 12rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Address</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Home</h6>
+                    <p class="card-text">Alameda dos Jardins d'Arrábida 443, 4400-478 Porto, Portugal</p>
+                    <button type="button" class="btn btn-primary btn-sm btn-block">Deliver here!</button>
+                </div>
+            </div>
+            <div class="card" style="width: 21rem; height: 12rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Address</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Gym</h6>
+                    <p class="card-text">Alameda dos Jardins d'Arrábida 443, 4400-478 Porto, Portugal</p>
+                    <button type="button" class="btn btn-primary btn-sm btn-block">Deliver here!</button>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card container bottom_row">
+        <div class="row">
+            <div class="col-sm card final_price container">
+                <div class="row">
+                    <div class="col-sm">
+                        <h1>Final Value:</h1>
+                    </div>
+                    <div class="col-sm">
+                        <h1 class="final_value">311.96</h1>
+                    </div>
+                </div>
+            </div>
+            <button class="btn-outline-info back_button" type="button"> Back </button>
+            <button class="btn-outline-info next_button" type="button"> Next ></button>
+        </div>
+    </div>
+    <div class="d-flex justify-content-around text-white p-5" id="footer">
+        <div class="d-flex flex-column">
+            <a href="./help.html#support">Help</a>
+            <a href="./help.html#contacts">Contacts</a>
+            <a href="./help.html#FAQ">FAQs</a>
+        </div>
+        <h4 class="align-self-end ">&copy; 2019 PuzzleWood.pt. All Rights Reserved.</h4>
+    </div>
+
+
+</body>
+
+</html>
