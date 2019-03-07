@@ -17,7 +17,7 @@
     border-color: black;
 }
 .form-inline{
-    min-width:80%;
+    max-width: 85%;
 }
 
 .navbar{
