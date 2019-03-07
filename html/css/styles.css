@@ -59,7 +59,7 @@ h5 {
 }
 
 #footer {
-    background-color: var(--var-secon-color);
+    background-color: var(--var-fourth-color);
     
 }
 
@@ -68,11 +68,11 @@ h5 {
 }
 
 #footer * {
-    color: var(--var-text);
+    color: var(--var-gray-light);
 }
 
 #footer h4 {
-    color: var(--var-secon-text);
+    color: var(--var-gray-ml);
 }
 
 #filters {
