@@ -42,6 +42,10 @@ html {
     color: aliceblue;
 }
 
+.all_address{
+    min-width: 80%;
+}
+
 h1 {
     font-size: 1.4em;
 }

@@ -9,8 +9,8 @@
 .search-category-drop {
     border-color: black;
 }
-.form-inline {
-    min-width: 80%;
+.form-inline{
+    max-width: 85%;
 }
 
 .navbar {
