@@ -23,6 +23,20 @@ html {
     width: 100%;
 }
 
+#edition {
+    border-radius: 0.25rem;
+    background-color: var(--var-gray-mid);
+    color: var(--var-text);
+}
+
+#dropdownMenuButton {
+    color: var(--var-gray-light);
+}
+
+#dropdownMenuButton:hover {
+    color: var(--var-text);
+}
+
 #addBtns button {
     width: 49%;
 }
@@ -117,7 +131,8 @@ h5 {
     font-weight: 600;
 }
 
-.productPrice {
+.productPrice,
+#priceLbl {
     color: var(--var-secon-text);
 }
 
@@ -323,4 +338,32 @@ h5 {
 
 #searchCategorySelector {
     z-index: 0;
+}
+
+#specsCol {
+    width: 95%;
+}
+
+#specsCol td{
+    text-align: end;
+}
+
+#infoSection * {
+    color: var(--var-text);
+}
+
+#infoSection button:hover {
+    color: var(--var-secon-text);
+}
+
+.table-hover tbody tr:hover {
+    background-color: var(--var-thir-color);
+}
+
+#specsCol .table-hover tbody tr:hover > * {
+    color: var(--var-gray-dark);
+}
+
+.card-body .card {
+    border: 1px solid var(--var-thir-color);
 }

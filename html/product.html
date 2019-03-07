@@ -25,50 +25,65 @@
         />
 
         <link rel="stylesheet" href="css/styles.css" />
+        <link rel="stylesheet" href="css/topBar.css" />
 
         <title>ProductName</title>
     </head>
     <body>
         <!-- Navbar Start -->
+
         <nav class="navbar navbar-expand-lg navbar-light">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                  aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="navbar-toggler-icon"></span>
-                </button>
-          
-                <div class="collapse navbar-collapse d-flex justify-content-between" id="navbarSupportedContent">
-                 
-                  <nav class="navbar mr-auto w-12 d-flex navbar-light">
-                    <a class="navbar-brand" href="./main.html">
-                      <img src="./images/img.png" width="30" height="30" class="d-inline-block align-top" alt="" />
-                      PuzzleWood
+            <button
+                class="navbar-toggler"
+                type="button"
+                data-toggle="collapse"
+                data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+            >
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse d-flex justify-content-between" id="navbarSupportedContent">
+                <nav class="navbar d-flex navbar-light" id="navbarLogo">
+                    <a class="navbar-brand" href="./index.html">
+                        <img src="./images/img.png" width="30" height="30" class="d-inline-block align-top" alt="" />
+                        PuzzleWood
                     </a>
-                  </nav>
-                  <nav class="search-bar navbar-nav mr-auto mb-2 w-100 mt-2 d-flex">
-                    <div class="input-group">
-                      <div class=" input-group-prepend">
-                        <button class="btn dropdown-toggle search-category" type="button" data-toggle="dropdown" aria-haspopup="true"
-                          aria-expanded="false">Dropdown</button>
-                        <div class="dropdown-menu search-category-drop">
-                          <a class="dropdown-item" href="#">Action</a>
-                          <a class="dropdown-item" href="#">Another action</a>
-                          <a class="dropdown-item" href="#">Something else here</a>
+                </nav>
+                <div class="search-bar navbar-nav w-50">
+                    <div class="input-group" id="searchNav">
+                        <div class=" input-group-prepend" id="searchCategorySelector">
+                            <button
+                                class="btn dropdown-toggle search-category"
+                                type="button"
+                                data-toggle="dropdown"
+                                aria-haspopup="true"
+                                aria-expanded="false"
+                            >
+                                Dropdown
+                            </button>
+                            <div class="dropdown-menu search-category-drop">
+                                <a class="dropdown-item" href="#">Action</a>
+                                <a class="dropdown-item" href="#">Another action</a>
+                                <a class="dropdown-item" href="#">Something else here</a>
+                            </div>
                         </div>
-                      </div>
-                      <form class="form-inline my-2 my-lg-0 d-flex justify-content-between">
-                        <input class="form-control mr-auto" type="search" placeholder="Search" aria-label="Search"
-                          id="searchBar" />
-          
-                        <button id="searchBtn" class="btn" type="submit" id="searchBtn">Search</button>
-                      </form>
-                    </div>
-          
-                    <div class="nav-item ml-auto col-2 text-right">
-                      <a class="nav-link" href="clientAccount.html" tabindex="-1" aria-disabled="true">Your Account</a>
+                        <form class="form-inline my-2 my-lg-0 d-flex justify-content-between">
+                            <input class="form-control" type="text" placeholder="Search" id="searchBar" />
+
+                            <button id="searchBtn" class="btn fas fa-search" type="submit" id="searchBtn"></button>
+                        </form>
                     </div>
                 </div>
-              </nav>
-    
+
+                <nav class="nav-item text-right" id="accountLinks">
+                    <a class="nav-link" href="clientAccount.html" tabindex="-1" aria-disabled="true">Your Account</a>
+                </nav>
+            </div>
+        </nav>
+
         <!-- Navbar End -->
 
         <nav aria-label="breadcrumb">
@@ -104,39 +119,39 @@
 
                 <form class="rating mb-2">
                     <fieldset class="starsRating">
-                        <input type="radio" id="star5" name="rating" value="5" ><label
+                        <input type="radio" id="star5" name="rating" value="5" /><label
                             class="full"
                             for="star5"
                         ></label>
-                        <input type="radio" id="star4half" name="rating" value="4.5" ><label
+                        <input type="radio" id="star4half" name="rating" value="4.5" /><label
                             class="half"
                             for="star4half"
                         ></label>
-                        <input type="radio" id="star4" name="rating" value="4" ><label
+                        <input type="radio" id="star4" name="rating" value="4" /><label
                             class="full"
                             for="star4"
                         ></label>
-                        <input type="radio" id="star3half" name="rating" value="3.5" ><label
+                        <input type="radio" id="star3half" name="rating" value="3.5" /><label
                             class="half"
                             for="star3half"
                         ></label>
-                        <input type="radio" id="star3" name="rating" value="3" ><label
+                        <input type="radio" id="star3" name="rating" value="3" /><label
                             class="full"
                             for="star3"
                         ></label>
-                        <input type="radio" id="star2half" name="rating" value="2.5" ><label
+                        <input type="radio" id="star2half" name="rating" value="2.5" /><label
                             class="half"
                             for="star2half"
                         ></label>
-                        <input type="radio" id="star2" name="rating" value="2" ><label
+                        <input type="radio" id="star2" name="rating" value="2" /><label
                             class="full"
                             for="star2"
                         ></label>
-                        <input type="radio" id="star1half" name="rating" value="1.5" ><label
+                        <input type="radio" id="star1half" name="rating" value="1.5" /><label
                             class="half"
                             for="star1half"
                         ></label>
-                        <input type="radio" id="star1" name="rating" value="1" ><label
+                        <input type="radio" id="star1" name="rating" value="1" /><label
                             class="full"
                             for="star1"
                         ></label>
@@ -149,7 +164,7 @@
 
                 <div class="dropdown" id="edition">
                     <button
-                        class="btn btn-secondary dropdown-toggle"
+                        class="btn dropdown-toggle"
                         type="button"
                         id="dropdownMenuButton"
                         data-toggle="dropdown"
@@ -171,17 +186,17 @@
                 </div>
 
                 <div class="d-flex justify-content-between" id="addBtns">
-                    <button class="btn btn-primary" type="submit" id="addToCart">
-                        Add to cart
+                    <button class="btn addToCartBtn" type="submit" id="addToCart">
+                        <i class="fas fa-cart-plus"></i>
                     </button>
-                    <button class="btn btn-primary btn-secondary" type="submit" id="addToWishList">
-                        Add to list
+                    <button class="btn addToWishListBtn" type="submit" id="addToWishList">
+                        <i class="fas fa-heart"></i>
                     </button>
                 </div>
             </div>
         </div>
 
-        <div class="accordion" id="infoSection">
+        <div class="accordion w-75 pb-4 mx-auto" id="infoSection">
             <div class="card">
                 <div class="card-header" id="specsHeading">
                     <h2 class="mb-0">
@@ -198,33 +213,28 @@
                     </h2>
                 </div>
 
-                <div id="specsCol" class="collapse show" aria-labelledby="specsHeading" data-parent="#infoSection">
-                    <div class="card-body d-flex justify-content-center" id="specsTable">
-                        <ul class="list-group w-25" id="generalSpecs">
-                            <li class="list-group-item disabled" aria-disabled="true">Cras justo odio</li>
-                            <li class="list-group-item">Dapibus ac facilisis in</li>
-                            <li class="list-group-item">Morbi leo risus</li>
-                            <li class="list-group-item">Porta ac consectetur ac</li>
-                            <li class="list-group-item">Vestibulum at eros</li>
-                        </ul>
-                        <div class="list-group w-50" id="specificSpecs">
-                            <button type="button" class="list-group-item list-group-item-action">
-                                Cras justo odio
-                            </button>
-                            <button type="button" class="list-group-item list-group-item-action">
-                                Dapibus ac facilisis in
-                            </button>
-                            <button type="button" class="list-group-item list-group-item-action">
-                                Morbi leo risus
-                            </button>
-                            <button type="button" class="list-group-item list-group-item-action">
-                                Porta ac consectetur ac
-                            </button>
-                            <button type="button" class="list-group-item list-group-item-action" disabled>
-                                Vestibulum at eros
-                            </button>
-                        </div>
-                    </div>
+                <div id="specsCol" class="collapse show mx-auto" aria-labelledby="specsHeading" data-parent="#infoSection">
+                    <table class="table table-hover">
+                        <thead>
+                          <tr>
+                            <th scope="col">Details</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <th scope="row">1</th>
+                            <td>Mark</td>
+                          </tr>
+                          <tr>
+                            <th scope="row">2</th>
+                            <td>Jacob</td>
+                          </tr>
+                          <tr>
+                            <th scope="row">3</th>
+                            <td>Larry the Bird</td>
+                          </tr>
+                        </tbody>
+                      </table>
                 </div>
             </div>
             <div class="card">

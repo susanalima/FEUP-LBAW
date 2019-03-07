@@ -50,3 +50,7 @@ h5 {
 a {
     color: var(--var-text);
 }
+
+a:hover {
+    color: var(--var-secon-text);
+}
