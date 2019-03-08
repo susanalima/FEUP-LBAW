@@ -40,63 +40,67 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
 
-        <div class="collapse navbar-collapse d-flex justify-content-between" id="navbarSupportedContent">
+    <div class="mainContent">
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-            <nav class="navbar mr-auto w-12 d-flex navbar-light">
-                <a class="navbar-brand" href="./index.html">
-                    <img src="./images/img.png" width="30" height="30" class="d-inline-block align-top" alt="" />
-                    PuzzleWood
-                </a>
-            </nav>
+            <div class="collapse navbar-collapse d-flex justify-content-between" id="navbarSupportedContent">
 
-            <nav class="search-bar navbar-nav mr-auto mb-2 w-100 mt-2 d-flex">
-                <div class="input-group">
-                    <div class=" input-group-prepend">
-                        <button class="btn dropdown-toggle search-category" type="button" data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false">Dropdown</button>
-                        <div class="dropdown-menu search-category-drop">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <a class="dropdown-item" href="#">Something else here</a>
+                <nav class="navbar mr-auto w-12 d-flex navbar-light">
+                    <a class="navbar-brand" href="./index.html">
+                        <img src="./images/img.png" width="30" height="30" class="d-inline-block align-top" alt="" />
+                        PuzzleWood
+                    </a>
+                </nav>
+
+                <nav class="search-bar navbar-nav mr-auto mb-2 w-100 mt-2 d-flex">
+                    <div class="input-group">
+                        <div class=" input-group-prepend">
+                            <button class="btn dropdown-toggle search-category" type="button" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">Dropdown</button>
+                            <div class="dropdown-menu search-category-drop">
+                                <a class="dropdown-item" href="#">Action</a>
+                                <a class="dropdown-item" href="#">Another action</a>
+                                <a class="dropdown-item" href="#">Something else here</a>
+                            </div>
                         </div>
+                        <form class="form-inline my-2 my-lg-0 d-flex justify-content-between">
+                            <input class="form-control mr-auto" type="search" placeholder="Search" aria-label="Search"
+                                id="searchBar" />
+
+                            <button id="searchBtn" class="btn" type="submit" id="searchBtn">Search</button>
+                        </form>
                     </div>
-                    <form class="form-inline my-2 my-lg-0 d-flex justify-content-between">
-                        <input class="form-control mr-auto" type="search" placeholder="Search" aria-label="Search" id="searchBar" />
 
-                        <button id="searchBtn" class="btn" type="submit" id="searchBtn">Search</button>
-                    </form>
-                </div>
+                    <div class="nav-item ml-auto col-2 text-right">
+                        <a class="nav-link" href="clientAccount.html" tabindex="-1" aria-disabled="true">Your Account</a>
+                    </div>
+            </div>
+        </nav>
 
-                <div class="nav-item ml-auto col-2 text-right">
-                    <a class="nav-link" href="clientAccount.html" tabindex="-1" aria-disabled="true">Your Account</a>
-                </div>
-        </div>
-    </nav>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item active"><a href="#">1.Products</a></li>
+                <li class="breadcrumb-item" aria-current="page">2.Delivery</a></li>
+                <li class="breadcrumb-item"><a href="#">3.Payment</a></li>
+                <li class="breadcrumb-item"><a href="#">4.Shipping</a></li>
+                <li class="breadcrumb-item"><a href="#">5.Confirmation</a></li>
+            </ol>
+        </nav>
 
-    <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item active"><a href="#">1.Products</a></li>
-            <li class="breadcrumb-item" aria-current="page">2.Delivery</a></li>
-            <li class="breadcrumb-item"><a href="#">3.Payment</a></li>
-            <li class="breadcrumb-item"><a href="#">4.Shipping</a></li>
-            <li class="breadcrumb-item"><a href="#">5.Confirmation</a></li>
-        </ol>
-    </nav>
+        <div id="listItems" class="card">
+            <div class=" w-75 m-auto ">
 
-    <div id="listItems" class="card">
-        <div class=" w-75 m-auto ">
-        
-            <div class="d-flex align-items-center justify-content-start flex-wrap m-5">
-                    <div class="d-flex flex-column card bg-light align-items-center justify-content-center" style="width: 20rem; height: 12rem;" data-toggle="modal" data-target="#deliveryAddressModel">
+                <div class="d-flex align-items-center justify-content-start flex-wrap m-5">
+                    <div class="d-flex flex-column card bg-light align-items-center justify-content-center" style="width: 20rem; height: 12rem;"
+                        data-toggle="modal" data-target="#deliveryAddressModel">
                         <p> <i class="fas fa-plus m-2"></i>Other address</p>
                     </div>
-                
+
                     <!-- Add New Address Modal -->
                     <div class="modal fade" id="deliveryAddressModel" tabindex="-1" role="dialog" aria-labelledby="deliveryAddressModelLabel"
                         aria-hidden="true">
@@ -110,30 +114,33 @@
                                 </div>
                                 <div class="modal-body">
                                     <form>
-                                      <div class="form-group">
-                                        <label>Address</label>
-                                        <div class="input-group flex-nowrap">
-                                          <input type="text" class="form-control" id="deliveryAddressName" placeholder="Name" required>
+                                        <div class="form-group">
+                                            <label>Address</label>
+                                            <div class="input-group flex-nowrap">
+                                                <input type="text" class="form-control" id="deliveryAddressName"
+                                                    placeholder="Name" required>
+                                            </div>
+                                            <div class="input-group flex-nowrap mt-2">
+                                                <input type="text" class="form-control" id="deliveryAddressPostCode"
+                                                    placeholder="Postcode" required>
+                                            </div>
+                                            <div class="input-group flex-nowrap mt-2">
+                                                <input type="text" class="form-control" id="deliveryAddressStreet"
+                                                    placeholder="Street and number, P.O. box, c/o" required>
+                                            </div>
+                                            <div class="input-group flex-nowrap mt-2">
+                                                <input type="text" class="form-control" id="deliveryAddressApartment"
+                                                    placeholder="Flat, suite, unit, floor, etc" required>
+                                            </div>
+                                            <div class="input-group flex-nowrap mt-2">
+                                                <input type="text" class="form-control" id="deliveryAddressTown"
+                                                    placeholder="Town, City" required>
+                                                <input type="text" class="form-control" id="deliveryAddressCountry"
+                                                    placeholder="Country" required>
+                                            </div>
                                         </div>
-                                        <div class="input-group flex-nowrap mt-2">
-                                          <input type="text" class="form-control" id="deliveryAddressPostCode" placeholder="Postcode"
-                                            required>
-                                        </div>
-                                        <div class="input-group flex-nowrap mt-2">
-                                          <input type="text" class="form-control" id="deliveryAddressStreet" placeholder="Street and number, P.O. box, c/o"
-                                            required>
-                                        </div>
-                                        <div class="input-group flex-nowrap mt-2">
-                                          <input type="text" class="form-control" id="deliveryAddressApartment" placeholder="Flat, suite, unit, floor, etc"
-                                            required>
-                                        </div>
-                                        <div class="input-group flex-nowrap mt-2">
-                                          <input type="text" class="form-control" id="deliveryAddressTown" placeholder="Town, City" required>
-                                          <input type="text" class="form-control" id="deliveryAddressCountry" placeholder="Country" required>
-                                        </div>
-                                      </div>
                                     </form>
-                                  </div>
+                                </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-outline-danger btn-sm" data-dismiss="modal">Cancel</button>
                                     <button type="button" class="btn btn-outline-success btn-sm">Deliver here!</button>
@@ -142,7 +149,7 @@
                         </div>
                     </div>
                     <!---->
-        
+
                     <div class="d-flex flex-column card" style="width: 20rem; height: 12rem;">
                         <div class="card-body">
                             <h5 class="card-title">Address</h5>
@@ -151,8 +158,8 @@
                             <button type="button" class="btn btn-primary btn-sm btn-block">Deliver here!</button>
                         </div>
                     </div>
-        
-        
+
+
                     <div class="d-flex flex-column card addresses" style="width: 20rem; height: 12rem;">
                         <div class="card-body">
                             <h5 class="card-title">Address</h5>
@@ -180,29 +187,28 @@
                 </div>
             </div>
         </div>
-        </div>
-    <div class="card container bottom_row ">
-        <div class="row">
-            <div class="col-sm card final_price container">
-                <div class="row">
-                    <div class="col-sm">
-                        <h1>Final Value:</h1>
-                    </div>
-                    <div class="col-sm">
-                        <h1 class="final_value">311.96</h1>
+        <div class="card container bottom_row ">
+            <div class="row">
+                <div class="col-sm card final_price container">
+                    <div class="row">
+                        <div class="col-sm">
+                            <h1>Final Value:</h1>
+                        </div>
+                        <div class="col-sm">
+                            <h1 class="final_value">311.96</h1>
+                        </div>
                     </div>
                 </div>
+                <button class="btn-outline-info back_button" type="button"> Back </button>
+                <button class="btn-outline-info next_button" type="button"> Next ></button>
             </div>
-            <button class="btn-outline-info back_button"  type="button"> Back </button>
-            <button class="btn-outline-info next_button" type="button"> Next ></button>
         </div>
     </div>
 
-        
-       
-      
 
-    
+
+
+
     <div class="d-flex justify-content-around text-white p-5" id="footer">
         <div class="d-flex flex-column">
             <a href="./help.html#support">Help</a>
