@@ -20,7 +20,7 @@
 }
 
 .product_card{
-    min-height: 21em;
+    min-height: 23em;
 }
 
 .product_img{
@@ -56,6 +56,12 @@
     outline:none
 }
 
+
+.addToCartBtn{
+    min-height: 5%;
+    max-height: 8%;
+    width:15%;
+}
 
 .add_cart2{
     background-image: url('../images/final_cart_add2.png');
