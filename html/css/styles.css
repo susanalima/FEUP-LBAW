@@ -18,7 +18,12 @@ html {
     height: 100%;
 }
 
-.btn-group-black button:hover {
+.chat {
+    list-style: none;
+    padding-left: 0em;
+}
+
+.btn-group-dark button:hover {
     color: var(--var-text);
 }
 
