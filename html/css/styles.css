@@ -198,24 +198,28 @@ h5 {
     padding: 0;
 }
 
-.addToCartBtn {
-    border: 1px solid var(--var-main-color);
-    color: white;
-    background-color: var(--var-main-color);
-}
-
+.addToCartBtn,
 .addToWishListBtn {
     border: 1px solid var(--var-main-color);
     color: var(--var-main-color);
     background-color: white;
 }
 
-.addToCartBtn:hover {
+.addToCartBtn:hover,
+.addToWishListBtn:hover {
     color: var(--var-text);
 }
 
-.addToWishListBtn:hover {
+.active.addToCartBtn:hover,
+.active.addToWishListBtn:hover {
     color: var(--var-text);
+}
+
+.active.addToCartBtn,
+.active.addToWishListBtn {
+    border: 1px solid var(--var-main-color);
+    color: white;
+    background-color: var(--var-main-color);
 }
 
 #qaBox,
