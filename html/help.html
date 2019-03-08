@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+
+    <link rel="stylesheet" href="css/topBar.css" />
+
+    <title>PuzzleWood</title>
+  </head>
+  <body>
+    <div class="mainContent">
+      <!-- Image and text -->
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        ></button>
+
+        <div
+          class="collapse navbar-collapse d-flex justify-content-between"
+          id="navbarSupportedContent"
+        >
+          <nav class="navbar d-flex navbar-light" id="navbarLogo">
+            <a class="navbar-brand" href="./index.html">
+              <img
+                src="./images/img.png"
+                width="30"
+                height="30"
+                class="d-inline-block align-top"
+                alt=""
+              />
+              PuzzleWood
+            </a>
+          </nav>
+          <div class="search-bar navbar-nav" id="searchNavContainer">
+            <div class="input-group" id="searchNav">
+              <div class=" input-group-prepend" id="searchCategorySelector">
+                <button
+                  class="btn dropdown-toggle search-category"
+                  type="button"
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                >
+                  All
+                </button>
+                <div class="dropdown-menu search-category-drop">
+                  <a class="dropdown-item" href="#">All</a>
+                  <a class="dropdown-item" href="#">Another action</a>
+                  <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+              </div>
+              <form class="form-inline my-lg-0 d-flex justify-content-between">
+                <input
+                  class="form-control"
+                  type="text"
+                  placeholder="Search"
+                  id="searchBar"
+                />
+
+                <button
+                  id="searchBtn"
+                  class="fas fa-search"
+                  type="submit"
+                  id="searchBtn"
+                ></button>
+              </form>
+            </div>
+          </div>
+
+          <nav class="nav-item text-right" id="accountLinks">
+            <a
+              class="nav-link"
+              href="clientAccount.html"
+              tabindex="-1"
+              aria-disabled="true"
+              >Your Account</a
+            >
+          </nav>
+        </div>
+      </nav>
+      <div class="accordion w-75 mx-auto my-2" id="accordionExample">
+        <div class="card">
+          <div class="card-header" id="headingOne">
+            <h5 class="mb-0">
+              <button
+                class="btn btn-link"
+                type="button"
+                data-toggle="collapse"
+                data-target="#collapseOne"
+                aria-expanded="true"
+                aria-controls="collapseOne"
+              >
+                Help
+              </button>
+            </h5>
+          </div>
+
+          <div
+            id="collapseOne"
+            class="collapse show"
+            aria-labelledby="headingOne"
+            data-parent="#accordionExample"
+          >
+            <div class="card-body">
+              Anim pariatur cliche reprehenderit, enim eiusmod high life
+              accusamus terry richardson ad squid. 3 wolf moon officia aute, non
+              cupidatat skateboard dolor brunch. Food truck quinoa nesciunt
+              laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird
+              on it squid single-origin coffee nulla assumenda shoreditch et.
+              Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred
+              nesciunt sapiente ea proident. Ad vegan excepteur butcher vice
+              lomo. Leggings occaecat craft beer farm-to-table, raw denim
+              aesthetic synth nesciunt you probably haven't heard of them
+              accusamus labore sustainable VHS.
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header" id="headingTwo">
+            <h5 class="mb-0">
+              <button
+                class="btn btn-link collapsed"
+                type="button"
+                data-toggle="collapse"
+                data-target="#collapseTwo"
+                aria-expanded="false"
+                aria-controls="collapseTwo"
+              >
+                Contacts
+              </button>
+            </h5>
+          </div>
+          <div
+            id="collapseTwo"
+            class="collapse"
+            aria-labelledby="headingTwo"
+            data-parent="#accordionExample"
+          >
+            <div class="card-body">
+              Anim pariatur cliche reprehenderit, enim eiusmod high life
+              accusamus terry richardson ad squid. 3 wolf moon officia aute, non
+              cupidatat skateboard dolor brunch. Food truck quinoa nesciunt
+              laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird
+              on it squid single-origin coffee nulla assumenda shoreditch et.
+              Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred
+              nesciunt sapiente ea proident. Ad vegan excepteur butcher vice
+              lomo. Leggings occaecat craft beer farm-to-table, raw denim
+              aesthetic synth nesciunt you probably haven't heard of them
+              accusamus labore sustainable VHS.
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header" id="headingThree">
+            <h5 class="mb-0">
+              <button
+                class="btn btn-link collapsed"
+                type="button"
+                data-toggle="collapse"
+                data-target="#collapseThree"
+                aria-expanded="false"
+                aria-controls="collapseThree"
+              >
+                FAQs
+              </button>
+            </h5>
+          </div>
+          <div
+            id="collapseThree"
+            class="collapse"
+            aria-labelledby="headingThree"
+            data-parent="#accordionExample"
+          >
+            <div class="card-body">
+              <ul>
+                <li><a href="#Q1">1</a></li>
+                <li><a href="#Q2">2</a></li>
+                <li><a href="#Q3">3</a></li>
+                <li><a href="#Q4">4</a></li>
+              </ul>
+                <div class="card" id="Q1">
+                    <div class="card-body">
+                       <strong>Can I ......</strong>
+                       <p>Yes you can!</p>
+                    </div>
+                </div>
+                <div class="card" id="Q2">
+                    <div class="card-body">
+                        This is some text within a card body.
+                    </div>
+                </div>
+                <div class="card" id="Q3">
+                    <div class="card-body">
+                        This is some text within a card body.
+                    </div>
+                </div>
+                <div class="card" id="Q4">
+                    <div class="card-body">
+                        This is some text within a card body.
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer Start -->
+    <div class="d-flex justify-content-around text-white p-5" id="footer">
+      <div class="d-flex flex-column">
+        <a href="./help.html#support">Help</a>
+        <a href="./help.html#contacts">Contacts</a>
+        <a href="./help.html#FAQ">FAQs</a>
+      </div>
+      <h4 class="align-self-end ">
+        &copy; 2019 PuzzleWood.pt. All Rights Reserved.
+      </h4>
+    </div>
+    <!-- Footer End -->
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
