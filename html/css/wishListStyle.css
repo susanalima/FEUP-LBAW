@@ -57,6 +57,12 @@
 }
 
 
+.addToCartBtn{
+    min-height: 5%;
+    max-height: 8%;
+    width:15%;
+}
+
 .add_cart2{
     background-image: url('../images/final_cart_add2.png');
     background-color: transparent;
