@@ -14,6 +14,9 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,400i" rel="stylesheet" />
 
     <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/topbar.css" />
+    <link rel="stylesheet" href="css/login.css" />
+
 
     <!--<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">-->
 
@@ -21,69 +24,71 @@
 </head>
 
 <body>
-    <!-- Image and text -->
-    <nav class="navbar navbar-light">
-        <a class="navbar-brand" href="index.html">
-            <img src="images/placeholder.png" width="30" height="30" class="d-inline-block align-top" alt="" />
-            PuzzleWood
-        </a>
-    </nav>
 
-    <h1 class="text-center p-3 mt-4">Your Account</h1>
+    <div class="mainContent">
+        <!-- Image and text -->
+        <nav class="navbar navbar-light">
+            <a class="navbar-brand" href="index.html">
+                <img src="images/placeholder.png" width="30" height="30" class="d-inline-block align-top" alt="" />
+                PuzzleWood
+            </a>
+        </nav>
 
- 
-     <div class="row justify-content-md-center">
-            <div class="w-25 mx-5 mt-4 mb-5">
-                <form class="p-3 border border-dark rounded" action="index.html">
-                    <h1 class="mb-4">Login</h1>
-                    <div class="form-group">
-                        <label for="signInEmail">Email</label>
-                        <div class="input-group flex-nowrap">
-                            <input type="email" class="form-control" id="signInEmail" placeholder="Email" required>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="signInPassword">Password</label>
-                        <div class="input-group flex-nowrap">
-                            <input type="password" class="form-control" id="signInPassword" placeholder="Password" required>
-                        </div>
-                    </div>
-                    <button type="submit" class="btn btn-block btn-sm btn-primary mt-4">Login</button>
-                </form>
-            </div>
-            <div class="w-25 mx-5 mt-4 mb-5">
-                <form class="p-3 border border-dark rounded" action="index.html">
-                    <h1 class="mb-4">Create Account</h1>
-                    <div class="form-group">
-                        <label for="signUpName">Name</label>
-                        <div class="input-group flex-nowrap">
-                            <input type="text" class="form-control" id="signUpName" placeholder="Name" required>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="signUpEmail">Email</label>
-                        <div class="input-group flex-nowrap">
-                            <input type="email" class="form-control" id="signUpEmail" placeholder="Email" required>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="signUpPassword">Password</label>
-                        <div class="input-group flex-nowrap">
-                            <input type="password" class="form-control" id="signUpPassword" placeholder="Password" required>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="signUpConfPassword">Confirm Password</label>
-                        <div class="input-group flex-nowrap">
-                            <input type="password" class="form-control" id="signUpConfPassword" placeholder="Password" required>
-                        </div>
-                    </div>
+        <h1 class="text-center p-3 mt-4">Your Account</h1>
 
-                    <button type="submit" class="btn btn-block btn-sm btn-primary mt-4">Create Account</button>
-                </form>
-            </div>
+
+        <div class="d-flex justify-content-center flex-wrap">
+
+            <form class=" p-3 border border-dark rounded loginForm mx-4 mb-auto" action="index.html">
+                <h1 class="mb-4">Login</h1>
+                <div class="form-group">
+                    <label for="signInEmail">Email</label>
+                    <div class="input-group flex-nowrap">
+                        <input type="email" class="form-control" id="signInEmail" placeholder="Email" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="signInPassword">Password</label>
+                    <div class="input-group flex-nowrap">
+                        <input type="password" class="form-control" id="signInPassword" placeholder="Password" required>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-block btn-sm btn-primary mt-4">Login</button>
+            </form>
+
+
+            <form class="p-3 border border-dark rounded loginForm mx-4 mb-4" action="index.html">
+                <h1 class="mb-4">Create Account</h1>
+                <div class="form-group">
+                    <label for="signUpName">Name</label>
+                    <div class="input-group flex-nowrap">
+                        <input type="text" class="form-control" id="signUpName" placeholder="Name" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="signUpEmail">Email</label>
+                    <div class="input-group flex-nowrap">
+                        <input type="email" class="form-control" id="signUpEmail" placeholder="Email" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="signUpPassword">Password</label>
+                    <div class="input-group flex-nowrap">
+                        <input type="password" class="form-control" id="signUpPassword" placeholder="Password" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="signUpConfPassword">Confirm Password</label>
+                    <div class="input-group flex-nowrap">
+                        <input type="password" class="form-control" id="signUpConfPassword" placeholder="Password"
+                            required>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-block btn-sm btn-primary mt-4">Create Account</button>
+            </form>
         </div>
-  
+    </div>
+
 
     <!-- Footer Start -->
     <div class="d-flex justify-content-around text-white p-5" id="footer">
