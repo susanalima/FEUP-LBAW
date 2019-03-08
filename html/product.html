@@ -184,10 +184,10 @@
                 </div>
 
                 <div class="d-flex justify-content-between" id="addBtns">
-                    <button class="btn addToCartBtn" type="submit" id="addToCart">
+                    <button class="btn addToCartBtn" onClick="addToCart(this)" type="submit" id="addToCart">
                         <i class="fas fa-cart-plus"></i>
                     </button>
-                    <button class="btn addToWishListBtn" type="submit" id="addToWishList">
+                    <button class="btn addToWishListBtn" onClick="addToWishList(this)" type="submit" id="addToWishList">
                         <i class="fas fa-heart"></i>
                     </button>
                 </div>
@@ -256,36 +256,36 @@
                     </h2>
                 </div>
                 <div id="reviewsHeading" class="collapse" aria-labelledby="reviewsCol" data-parent="#infoSection">
-                    <div class="card-body pl-5 pr-5" id="reviewsBox">
-                        <div class="p-1">
+                    <div class="card-body" id="reviewsBox">
+                        <div class="">
                             <div class="card">
                                 <div class="card-body">
                                     This is some text within a card body.
                                 </div>
                             </div>
                         </div>
-                        <div class="p-1">
+                        <div class="">
                             <div class="card">
                                 <div class="card-body">
                                     This is some text within a card body.
                                 </div>
                             </div>
                         </div>
-                        <div class="p-1">
+                        <div class="">
                             <div class="card">
                                 <div class="card-body">
                                     This is some text within a card body.
                                 </div>
                             </div>
                         </div>
-                        <div class="p-1">
+                        <div class="">
                             <div class="card">
                                 <div class="card-body">
                                     This is some text within a card body.
                                 </div>
                             </div>
                         </div>
-                        <div class="p-1">
+                        <div class="">
                             <div class="card">
                                 <div class="card-body">
                                     This is some text within a card body.
@@ -311,36 +311,36 @@
                     </h2>
                 </div>
                 <div id="qaCol" class="collapse" aria-labelledby="qaHeading" data-parent="#infoSection">
-                    <div class="card-body pl-5 pr-5" id="qaBox">
-                        <div class="p-1">
+                    <div class="card-body" id="qaBox">
+                        <div class="">
                             <div class="card">
                                 <div class="card-body">
                                     This is some text within a card body.
                                 </div>
                             </div>
                         </div>
-                        <div class="p-1">
+                        <div class="">
                             <div class="card">
                                 <div class="card-body">
                                     This is some text within a card body.
                                 </div>
                             </div>
                         </div>
-                        <div class="p-1">
+                        <div class="">
                             <div class="card">
                                 <div class="card-body">
                                     This is some text within a card body.
                                 </div>
                             </div>
                         </div>
-                        <div class="p-1">
+                        <div class="">
                             <div class="card">
                                 <div class="card-body">
                                     This is some text within a card body.
                                 </div>
                             </div>
                         </div>
-                        <div class="p-1">
+                        <div class="">
                             <div class="card">
                                 <div class="card-body">
                                     This is some text within a card body.
@@ -351,6 +351,15 @@
                 </div>
             </div>
         </div>
+
+        <script>
+            function addToCart(elem) {
+                elem.classList.toggle("active");
+            }
+            function addToWishList(elem) {
+                elem.classList.toggle("active");
+            }
+        </script>
 
         <!-- Footer Start -->
         <div class="d-flex justify-content-around text-white p-5" id="footer">

@@ -1,0 +1,23 @@
+@media screen and (max-width: 1080px) {
+    #profileOptions {
+        width: 100%;
+      
+    }
+}
+
+@media screen and (max-width: 950px) {
+    #profileOptions {
+        width: 100%;
+    }
+}
+
+
+.danger {
+    border-radius: 0.25rem;
+   border-color: var(--var-text-color);
+}
+
+.danger:hover {
+    background-color: var(--var-text);
+    color: white;
+}

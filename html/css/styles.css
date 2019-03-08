@@ -1,4 +1,3 @@
-
 @import url("root.css");
 
 .form-inline {
@@ -46,7 +45,7 @@ html {
     color: var(--var-gray-light);
 }
 
-.all_address{
+.all_address {
     min-width: 80%;
 }
 
@@ -74,7 +73,6 @@ h5 {
 
 #footer {
     background-color: var(--var-fourth-color);
-    
 }
 
 .mainContent {
@@ -200,24 +198,38 @@ h5 {
     padding: 0;
 }
 
-.addToCartBtn{
-    border: 1px solid var(--var-main-color);
-    color: white;
-    background-color: var(--var-main-color);
-}
-
+.addToCartBtn,
 .addToWishListBtn {
     border: 1px solid var(--var-main-color);
     color: var(--var-main-color);
     background-color: white;
 }
 
-.addToCartBtn:hover {
+.addToCartBtn:hover,
+.addToWishListBtn:hover {
     color: var(--var-text);
 }
 
-.addToWishListBtn:hover {
+.active.addToCartBtn:hover,
+.active.addToWishListBtn:hover {
     color: var(--var-text);
+}
+
+.active.addToCartBtn,
+.active.addToWishListBtn {
+    border: 1px solid var(--var-main-color);
+    color: white;
+    background-color: var(--var-main-color);
+}
+
+#qaBox,
+#reviewsBox {
+    padding: 0.8em;
+}
+
+#qaBox > div,
+#reviewsBox > div {
+    padding: 0.5em;
 }
 
 @media screen and (max-width: 1450px) {
@@ -245,6 +257,24 @@ h5 {
     #filters {
         width: 300px;
     }
+
+    #qaBox,
+    #reviewsBox {
+        padding: 0.5em;
+    }
+
+    #qaBox > div,
+    #reviewsBox > div {
+        padding: 0em;
+    }
+
+    #qaBox .card,
+    #reviewsBox .card {
+        border-radius: 0;
+        border-right: 0;
+        border-left: 0;
+        border-top: 0;
+    }
 }
 
 #shoppingCartOpener {
@@ -260,7 +290,6 @@ h5 {
 }
 
 #shoppingCart {
-
     background-color: var(--var-main-color);
     color: var(--var-text);
 
@@ -276,7 +305,7 @@ h5 {
 }
 
 #shoppingCartHeader * {
-    color: var(--var-gray-light); 
+    color: var(--var-gray-light);
     background-color: var(--var-main-color);
 }
 
@@ -344,7 +373,7 @@ h5 {
     width: 95%;
 }
 
-#specsCol td{
+#specsCol td {
     text-align: end;
 }
 
@@ -369,7 +398,7 @@ h5 {
 }
 
 #productCtrl {
- min-width: 300px;
+    min-width: 300px;
 }
 
 #imagesCarousel {
