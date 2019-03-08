@@ -158,6 +158,27 @@
     outline:none !important;
 }
 
+.remove_product{
+    outline:none !important;
+    display:inline-block;
+    border-radius: 0.25rem;
+    border-width: 0.1rem;
+    border-color: var(--var-fourth-color);
+    background-color: white;
+    color: var( --var-fourth-color);
+}
+
+.remove_product:hover{
+    outline:none !important;
+    display:inline-block;
+    border-radius: 0.25rem;
+    border-width: 0.1rem;
+    border-color: black;
+    background-color: red;
+    color:white;
+
+}
+
 .price{
     margin-top:0.5em;
     margin-bottom:0.5em;
@@ -209,7 +230,7 @@
 
 
     outline:none;
-    display: inline-block;
+
 
 }
 
