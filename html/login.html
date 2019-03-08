@@ -13,8 +13,10 @@
     <!-- Roboto Font -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,400i" rel="stylesheet" />
 
+   
+    <link rel="stylesheet" href="css/root.css" />
     <link rel="stylesheet" href="css/styles.css" />
-    <link rel="stylesheet" href="css/topbar.css" />
+    <link rel="stylesheet" href="css/topBar.css" />
     <link rel="stylesheet" href="css/login.css" />
 
 
@@ -24,15 +26,29 @@
 </head>
 
 <body>
+    <!-- Image and text -->
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <button
+            class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+        >
+        </button>
 
-    <div class="mainContent">
-        <!-- Image and text -->
-        <nav class="navbar navbar-light">
-            <a class="navbar-brand" href="index.html">
-                <img src="images/placeholder.png" width="30" height="30" class="d-inline-block align-top" alt="" />
-                PuzzleWood
-            </a>
-        </nav>
+        <div class="collapse navbar-collapse d-flex justify-content-between" id="navbarSupportedContent">
+            <nav class="navbar d-flex navbar-light" id="navbarLogo">
+                <a class="navbar-brand" href="./index.html">
+                    <img src="./images/img.png" width="30" height="30" class="d-inline-block align-top" alt="" />
+                    PuzzleWood
+                </a>
+            </nav>
+        </div>
+    </nav>
+
 
         <h1 class="text-center p-3 mt-4">Your Account</h1>
 

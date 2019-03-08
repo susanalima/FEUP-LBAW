@@ -11,6 +11,7 @@
 }
 .form-inline {
     max-width: 85%;
+    min-width: 80%;
 }
 
 .navbar {

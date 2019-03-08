@@ -1,4 +1,4 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -10,75 +10,80 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
         crossorigin="anonymous" />
 
-
-
-
     <!-- Roboto Font -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,400i" rel="stylesheet" />
-
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
-        crossorigin="anonymous" />
-
-    <!-- JS Scripts (Pooper.js included) -->
-
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
-
 
     <link rel="stylesheet" href="css/checkoutProducts.css" />
     <link rel="stylesheet" href="css/root.css" />
     <link rel="stylesheet" href="css/topBar.css" />
     <link rel="stylesheet" href="css/styles.css" />
+    
+    <script type="text/javascript">
+        function other_textBox(val, id) {
+            var element = document.getElementById(id);
+            if (val == '-')
+                element.style.display = 'block';
+            else
+                element.style.display = 'none';
+        }
 
+    </script>
 
-    <title>Checkout Products</title>
+    <!--<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">-->
+    <title>Checkout</title>
 </head>
 
 <body>
 
-    <div class="mainContent">
-        <nav class="navbar navbar-expand-lg navbar-light">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+    <!-- Image and text -->
+    <nav class="navbar navbar-expand-lg navbar-light mb-3">
+            <button
+                class="navbar-toggler"
+                type="button"
+                data-toggle="collapse"
+                data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+            >
             </button>
-
+    
             <div class="collapse navbar-collapse d-flex justify-content-between" id="navbarSupportedContent">
-
-                <nav class="navbar mr-auto w-12 d-flex navbar-light">
+                <nav class="navbar d-flex navbar-light" id="navbarLogo">
                     <a class="navbar-brand" href="./index.html">
                         <img src="./images/img.png" width="30" height="30" class="d-inline-block align-top" alt="" />
                         PuzzleWood
                     </a>
                 </nav>
-
-                <nav class="search-bar navbar-nav mr-auto mb-2 w-100 mt-2 d-flex">
-                    <div class="input-group">
-                        <div class=" input-group-prepend">
-                            <button class="btn dropdown-toggle search-category" type="button" data-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false">Dropdown</button>
+                <div class="search-bar navbar-nav" id="searchNavContainer">
+                    <div class="input-group" id="searchNav">
+                        <div class=" input-group-prepend" id="searchCategorySelector">
+                            <button
+                                class="btn dropdown-toggle search-category"
+                                type="button"
+                                data-toggle="dropdown"
+                                aria-haspopup="true"
+                                aria-expanded="false"
+                            >
+                                All
+                            </button>
                             <div class="dropdown-menu search-category-drop">
-                                <a class="dropdown-item" href="#">Action</a>
+                                <a class="dropdown-item" href="#">All</a>
                                 <a class="dropdown-item" href="#">Another action</a>
                                 <a class="dropdown-item" href="#">Something else here</a>
                             </div>
                         </div>
-                        <form class="form-inline my-2 my-lg-0 d-flex justify-content-between">
-                            <input class="form-control mr-auto" type="search" placeholder="Search" aria-label="Search"
-                                id="searchBar" />
-
-                            <button id="searchBtn" class="btn" type="submit" id="searchBtn">Search</button>
+                        <form class="form-inline my-lg-0 d-flex justify-content-between">
+                            <input class="form-control" type="text" placeholder="Search" id="searchBar" />
+    
+                            <button id="searchBtn" class="fas fa-search" type="submit" id="searchBtn"></button>
                         </form>
                     </div>
-
-                    <div class="nav-item ml-auto col-2 text-right">
-                        <a class="nav-link" href="clientAccount.html" tabindex="-1" aria-disabled="true">Your Account</a>
-                    </div>
+                </div>
+    
+                <nav class="nav-item text-right" id="accountLinks">
+                    <a class="nav-link" href="clientAccount.html" tabindex="-1" aria-disabled="true">Your Account</a>
+                </nav>
             </div>
         </nav>
 
@@ -211,13 +216,22 @@
 
     <div class="d-flex justify-content-around text-white p-5" id="footer">
         <div class="d-flex flex-column">
-            <a href="./help.html#support">Help</a>
-            <a href="./help.html#contacts">Contacts</a>
-            <a href="./help.html#FAQ">FAQs</a>
+            <a href="#">Help</a>
+            <a href="#">Contacts</a>
+            <a href="#">FAQs</a>
         </div>
         <h4 class="align-self-end ">&copy; 2019 PuzzleWood.pt. All Rights Reserved.</h4>
     </div>
+    <!-- Footer End -->
 
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
 
 </body>
 

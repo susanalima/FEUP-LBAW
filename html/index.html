@@ -20,24 +20,17 @@
       href="css/styles.css"
     />
 
+    <link
+    rel="stylesheet"
+    href="css/topBar.css"
+  />
+
     <title>PuzzleWood</title>
   </head>
   <body>
     <div>
 
       <!-- Image and text -->
-      <nav class="navbar navbar-light">
-        <a class="navbar-brand" href="./index.html">
-          <img
-          src="./images/img.png"
-          width="30"
-          height="30"
-          class="d-inline-block align-top"
-          alt=""
-          />
-          PuzzleWood
-        </a>
-      </nav>
       <nav class="navbar navbar-expand-lg navbar-light">
         <button
             class="navbar-toggler"
@@ -48,42 +41,44 @@
             aria-expanded="false"
             aria-label="Toggle navigation"
         >
-            <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse d-flex justify-content-between" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto w-100 d-flex">
-              <li class="w-75">
-              <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                  <button class="btn dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</button>
-                  <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                    <div role="separator" class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Separated link</a>
-                  </div>
-                
-              
-               
-                    <form class="form-inline my-2 my-lg-0 d-flex justify-content-between">
-                        <input
-                            class="form-control mr-auto"
-                            type="search"
-                            placeholder="Search"
-                            aria-label="Search"
-                            id="searchBar"
-                        />
-                        <button id="searchBtn" class="btn" type="submit" id="searchBtn">Search</button>
+            <nav class="navbar d-flex navbar-light" id="navbarLogo">
+                <a class="navbar-brand" href="./index.html">
+                    <img src="./images/img.png" width="30" height="30" class="d-inline-block align-top" alt="" />
+                    PuzzleWood
+                </a>
+            </nav>
+            <div class="search-bar navbar-nav" id="searchNavContainer">
+                <div class="input-group" id="searchNav">
+                    <div class=" input-group-prepend" id="searchCategorySelector">
+                        <button
+                            class="btn dropdown-toggle search-category"
+                            type="button"
+                            data-toggle="dropdown"
+                            aria-haspopup="true"
+                            aria-expanded="false"
+                        >
+                            All
+                        </button>
+                        <div class="dropdown-menu search-category-drop">
+                            <a class="dropdown-item" href="#">All</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
+                    </div>
+                    <form class="form-inline my-lg-0 d-flex justify-content-between">
+                        <input class="form-control" type="text" placeholder="Search" id="searchBar" />
+
+                        <button id="searchBtn" class="fas fa-search" type="submit" id="searchBtn"></button>
                     </form>
-                
-              </div>
-            </li>
-                <li class="nav-item ml-auto col-2 text-right">
-                    <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">Your Account</a>
-                </li>
-            </ul>
+                </div>
+            </div>
+
+            <nav class="nav-item text-right" id="accountLinks">
+                <a class="nav-link" href="clientAccount.html" tabindex="-1" aria-disabled="true">Your Account</a>
+            </nav>
         </div>
     </nav>
       <div class="w-50 mx-auto bd-example">
@@ -103,7 +98,7 @@
         </ol>
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <a href="product.html"> 
+            <a href="./product.html"> 
               <img src="./images/img.png" class="d-block w-100" alt="..." /> 
             </a>
             <div class="carousel-caption d-none d-md-block">
@@ -112,7 +107,7 @@
             </div>
           </div>
           <div class="carousel-item">
-            <a href="search.html">
+            <a href="./search.html">
               <img src="./images/placeholder.png" class="d-block w-100" alt="..." />
             </a>
             <div class="carousel-caption d-none d-md-block">
@@ -121,7 +116,7 @@
             </div>
           </div>
           <div class="carousel-item">
-            <a href="product.html">
+            <a href="./product.html">
                 <img src="./images/img.png" class="d-block w-100" alt="..." />
             </a>
             <div class="carousel-caption d-none d-md-block">
@@ -170,7 +165,7 @@
               <div class="row">
                 <div class="col w-25">
                   <div class="card w-75 mr-auto ml-auto border-0">
-                    <a href="search.html">
+                    <a href="./search.html">
                       <img class="card-img-top" src="./images/img.png" alt="Card image cap">
                     </a>
                     <div class="card-body card-img p-1">
@@ -180,7 +175,7 @@
                 </div>
                 <div class="col w-25">
                   <div class="card w-75 mr-auto ml-auto border-0">
-                    <a href="search.html">
+                    <a href="./search.html">
                       <img class="card-img-top" src="./images/img.png" alt="Card image cap">
                     </a>
                     <div class="card-body card-img p-1">
@@ -190,7 +185,7 @@
                 </div>
                 <div class="col w-25">
                   <div class="card w-75 mr-auto ml-auto border-0">
-                    <a href="search.html">
+                    <a href="./search.html">
                       <img class="card-img-top" src="./images/img.png" alt="Card image cap">
                     </a>
                     <div class="card-body card-img p-1">
@@ -202,7 +197,7 @@
               <div class="row">
                 <div class="col w-25 mt-4">
                   <div class="card w-75 mr-auto ml-auto border-0">
-                    <a href="search.html">
+                    <a href="./search.html">
                       <img class="card-img-top" src="./images/img.png" alt="Card image cap">
                     </a>
                     <div class="card-body card-img p-1">
@@ -212,7 +207,7 @@
                 </div>
                 <div class="col w-25 mt-4">
                   <div class="card w-75 mr-auto ml-auto border-0">
-                    <a href="search.html">
+                    <a href="./search.html">
                       <img class="card-img-top" src="./images/img.png" alt="Card image cap">
                     </a>
                     <div class="card-body card-img p-1">
@@ -222,7 +217,7 @@
                 </div>
                 <div class="col w-25 mt-4">
                   <div class="card w-75 mr-auto ml-auto border-0">
-                    <a href="search.html">
+                    <a href="./search.html">
                       <img class="card-img-top" src="./images/img.png" alt="Card image cap">
                     </a>
                     <div class="card-body card-img p-1">
@@ -238,7 +233,7 @@
                         <div class="row">
                           <div class="col w-25">
                             <div class="card w-75 mr-auto ml-auto border-0">
-                              <a href="search.html">
+                              <a href="./search.html">
                                 <img class="card-img-top" src="./images/img.png" alt="Card image cap">
                               </a>
                               <div class="card-body card-img p-1">
@@ -248,7 +243,7 @@
                           </div>
                           <div class="col w-25">
                             <div class="card w-75 mr-auto ml-auto border-0">
-                              <a href="search.html">
+                              <a href="./search.html">
                                 <img class="card-img-top" src="./images/img.png" alt="Card image cap">
                               </a>
                               <div class="card-body card-img p-1">
@@ -258,7 +253,7 @@
                           </div>
                           <div class="col w-25">
                             <div class="card w-75 mr-auto ml-auto border-0">
-                              <a href="search.html">
+                              <a href="./search.html">
                                 <img class="card-img-top" src="./images/img.png" alt="Card image cap">
                               </a>
                               <div class="card-body card-img p-1">
@@ -270,7 +265,7 @@
                         <div class="row">
                           <div class="col w-25 mt-4">
                             <div class="card w-75 mr-auto ml-auto border-0">
-                              <a href="search.html">
+                              <a href="./search.html">
                                 <img class="card-img-top" src="./images/img.png" alt="Card image cap">
                               </a>
                               <div class="card-body card-img p-1">
@@ -280,7 +275,7 @@
                           </div>
                           <div class="col w-25 mt-4">
                             <div class="card w-75 mr-auto ml-auto border-0">
-                              <a href="search.html">
+                              <a href="./search.html">
                                 <img class="card-img-top" src="./images/img.png" alt="Card image cap">
                               </a>
                               <div class="card-body card-img p-1">
@@ -290,7 +285,7 @@
                           </div>
                           <div class="col w-25 mt-4">
                             <div class="card w-75 mr-auto ml-auto border-0">
-                              <a href="search.html">
+                              <a href="./search.html">
                                 <img class="card-img-top" src="./images/img.png" alt="Card image cap">
                               </a>
                               <div class="card-body card-img p-1">
@@ -306,7 +301,7 @@
                           <div class="row">
                               <div class="col w-25">
                                 <div class="card w-75 mr-auto ml-auto border-0">
-                                  <a href="search.html">
+                                  <a href="./search.html">
                                     <img class="card-img-top" src="./images/img.png" alt="Card image cap">
                                   </a>
                                   <div class="card-body card-img p-1">
@@ -316,7 +311,7 @@
                               </div>
                               <div class="col w-25">
                                 <div class="card w-75 mr-auto ml-auto border-0">
-                                    <a href="search.html">
+                                    <a href="./search.html">
                                       <img class="card-img-top" src="./images/img.png" alt="Card image cap">
                                     </a>
                                     <div class="card-body card-img p-1">
@@ -326,7 +321,7 @@
                                 </div>
                                 <div class="col w-25">
                                   <div class="card w-75 mr-auto ml-auto border-0">
-                                    <a href="search.html">
+                                    <a href="./search.html">
                                       <img class="card-img-top" src="./images/img.png" alt="Card image cap">
                                     </a>
                                     <div class="card-body card-img p-1">
@@ -338,7 +333,7 @@
                             <div class="row">
                               <div class="col w-25 mt-4">
                                 <div class="card w-75 mr-auto ml-auto border-0">
-                                      <a href="search.html">
+                                      <a href="./search.html">
                                         <img class="card-img-top" src="./images/img.png" alt="Card image cap">
                                       </a>
                                       <div class="card-body card-img p-1">
@@ -348,7 +343,7 @@
                                   </div>
                                   <div class="col w-25 mt-4">
                                     <div class="card w-75 mr-auto ml-auto border-0">
-                                      <a href="search.html">
+                                      <a href="./search.html">
                                         <img class="card-img-top" src="./images/img.png" alt="Card image cap">
                                       </a>
                                       <div class="card-body card-img p-1">
@@ -358,7 +353,7 @@
                                   </div>
                                 <div class="col w-25 mt-4">
                                   <div class="card border-0 w-75 mr-auto ml-auto">
-                                    <a href="search.html">
+                                    <a href="./search.html">
                                       <img class="card-img-top" src="./images/img.png" alt="Card image cap">
                                     </a>
                                     <div class="card-body p-1">

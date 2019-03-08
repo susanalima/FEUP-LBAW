@@ -22,8 +22,9 @@
 
 
     <link rel="stylesheet" href="css/checkoutProducts.css" />
+
     <link rel="stylesheet" href="css/root.css" />
-    <link rel="stylesheet" href="css/topBar.css" />
+    <link rel="stylesheet" href="css/topBar.css"/>
 
 
     <title>Checkout Products</title>
@@ -31,43 +32,54 @@
 
 <body>
         <nav class="navbar navbar-expand-lg navbar-light">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                  aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="navbar-toggler-icon"></span>
-                </button>
-          
+                <button
+                    class="navbar-toggler"
+                    type="button"
+                    data-toggle="collapse"
+                    data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation"
+                ></button>
+    
                 <div class="collapse navbar-collapse d-flex justify-content-between" id="navbarSupportedContent">
-                 
-                  <nav class="navbar mr-auto w-12 d-flex navbar-light">
-                    <a class="navbar-brand" href="./index.html">
-                      <img src="./images/img.png" width="30" height="30" class="d-inline-block align-top" alt="" />
-                      PuzzleWood
-                    </a>
-                  </nav>
-                  <nav class="search-bar navbar-nav mr-auto mb-2 w-100 mt-2 d-flex">
-                    <div class="input-group">
-                      <div class=" input-group-prepend">
-                        <button class="btn dropdown-toggle search-category" type="button" data-toggle="dropdown" aria-haspopup="true"
-                          aria-expanded="false">Dropdown</button>
-                        <div class="dropdown-menu search-category-drop">
-                          <a class="dropdown-item" href="#">Action</a>
-                          <a class="dropdown-item" href="#">Another action</a>
-                          <a class="dropdown-item" href="#">Something else here</a>
+                    <nav class="navbar d-flex navbar-light" id="navbarLogo">
+                        <a class="navbar-brand" href="./index.html">
+                            <img src="./images/img.png" width="30" height="30" class="d-inline-block align-top" alt="" />
+                            PuzzleWood
+                        </a>
+                    </nav>
+                    <div class="search-bar navbar-nav" id="searchNavContainer">
+                        <div class="input-group" id="searchNav">
+                            <div class=" input-group-prepend" id="searchCategorySelector">
+                                <button
+                                    class="btn dropdown-toggle search-category"
+                                    type="button"
+                                    data-toggle="dropdown"
+                                    aria-haspopup="true"
+                                    aria-expanded="false"
+                                >
+                                    All
+                                </button>
+                                <div class="dropdown-menu search-category-drop">
+                                    <a class="dropdown-item" href="#">All</a>
+                                    <a class="dropdown-item" href="#">Another action</a>
+                                    <a class="dropdown-item" href="#">Something else here</a>
+                                </div>
+                            </div>
+                            <form class="form-inline my-lg-0 d-flex justify-content-between">
+                                <input class="form-control" type="text" placeholder="Search" id="searchBar" />
+    
+                                <button id="searchBtn" class="fas fa-search" type="submit" id="searchBtn"></button>
+                            </form>
                         </div>
-                      </div>
-                      <form class="form-inline my-2 my-lg-0 d-flex justify-content-between">
-                        <input class="form-control mr-auto" type="search" placeholder="Search" aria-label="Search"
-                          id="searchBar" />
-          
-                        <button id="searchBtn" class="btn" type="submit" id="searchBtn">Search</button>
-                      </form>
                     </div>
-          
-                    <div class="nav-item ml-auto col-2 text-right">
-                      <a class="nav-link" href="clientAccount.html" tabindex="-1" aria-disabled="true">Your Account</a>
-                    </div>
+    
+                    <nav class="nav-item text-right" id="accountLinks">
+                        <a class="nav-link" href="clientAccount.html" tabindex="-1" aria-disabled="true">Your Account</a>
+                    </nav>
                 </div>
-              </nav>
+            </nav>
     
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
