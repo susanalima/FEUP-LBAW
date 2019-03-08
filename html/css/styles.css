@@ -18,6 +18,10 @@ html {
     height: 100%;
 }
 
+.btn-group-black button:hover {
+    color: var(--var-text);
+}
+
 #edition #dropdownMenuButton {
     width: 100%;
 }
