@@ -18,6 +18,15 @@ html {
     height: 100%;
 }
 
+.chat {
+    list-style: none;
+    padding-left: 0em;
+}
+
+.btn-group-dark button:hover {
+    color: var(--var-text);
+}
+
 #edition #dropdownMenuButton {
     width: 100%;
 }
@@ -400,11 +409,11 @@ h5 {
     text-align: end;
 }
 
-#infoSection * {
+.accordion * {
     color: var(--var-text);
 }
 
-#infoSection button:hover {
+.accordion button:hover {
     color: var(--var-secon-text);
 }
 
