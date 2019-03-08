@@ -1,3 +1,5 @@
+@import url("root.css");
+
 .breadcrumb-item + .breadcrumb-item::before {
     color: #ccc;
     content: "> ";
@@ -165,10 +167,13 @@
 
 .final_price{
     width: 100%;
+    height: 75%;
+    background-color: var(--var-gray);
+    color: black;
     margin:0;
     margin-left: 0.1em;
     max-width: 90%;
-    border-width: 0.3em;
+    border-width: 0.2rem;
     border-color: rgb(85, 85, 85);
     border-radius: 2em;
 }
@@ -177,6 +182,7 @@
     min-width: 75%;
     margin-left: auto;
     margin-right: auto;
+    border: none;
 }
 
 .final_value{
@@ -184,10 +190,33 @@
 }
 
 .back_button, .next_button{
+    width:10%;
     min-width:auto;
-    border-radius: 3em;
-    font-size: 2em;
+    border-radius: 0.25rem;
+    font-size:auto;
     margin-left: 3vw;
+    outline:none !important;
+    border-color: var(--var-gray-mid);
+    background-color: var(--var-gray);
+    color: var(--var-text);
+    cursor: pointer;
+    outline:none;
+    max-height: 75%;
+}
+
+.back_button:hover, .next_button:hover{
+    width:10%;
+    min-width:auto;
+    border-radius: 0.25rem;
+    font-size:auto;
+    margin-left: 3vw;
+    outline:none !important;
+    border-color: var(--var-gray-mid);
+    background-color: var(--var-fourth-color);
+    color: var(--var-gray);
+    cursor: pointer;
+    outline:none;
+    max-height: 75%;
 }
 
 .next_button{
