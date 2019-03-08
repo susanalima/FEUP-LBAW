@@ -1,11 +1,3 @@
-@media screen and (max-width: 1450px) {
-    #profileOptions {
-        width: 50%;
-        margin-left:auto;
-        margin-right: auto;
-    }
-}
-
 @media screen and (max-width: 1080px) {
     #profileOptions {
         width: 100%;
