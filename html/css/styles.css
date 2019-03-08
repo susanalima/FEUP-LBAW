@@ -296,9 +296,9 @@ h5 {
     display: block;
     position: fixed;
     bottom: 0px;
-    right: -350px;
+    right: -400px;
 
-    width: 350px;
+    width: 400px;
     height: 100%;
 
     z-index: 2;
@@ -357,7 +357,7 @@ h5 {
 }
 
 .cartQuantitySelector {
-    width: 50px;
+    width: 45px;
     font-size: 0.7em;
 }
 
@@ -403,4 +403,15 @@ h5 {
 
 #imagesCarousel {
     min-width: 60%;
+}
+
+.cartQuantitySelectorControllerBtn {
+    padding: 2px;
+    padding-left: 4px;
+    padding-right: 4px;
+    font-size: 0.7em;
+}
+
+.cartQuantitySelectorController {
+    margin-left: 7px;
 }
