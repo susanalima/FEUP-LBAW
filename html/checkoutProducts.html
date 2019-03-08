@@ -11,7 +11,7 @@
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
 
 
-    
+
 
     <!-- Roboto Font -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,400i" rel="stylesheet" />
@@ -24,63 +24,51 @@
     <link rel="stylesheet" href="css/checkoutProducts.css" />
 
     <link rel="stylesheet" href="css/root.css" />
-    <link rel="stylesheet" href="css/topBar.css"/>
+    <link rel="stylesheet" href="css/topBar.css" />
 
 
     <title>Checkout Products</title>
 </head>
 
 <body>
-        <nav class="navbar navbar-expand-lg navbar-light">
-                <button
-                    class="navbar-toggler"
-                    type="button"
-                    data-toggle="collapse"
-                    data-target="#navbarSupportedContent"
-                    aria-controls="navbarSupportedContent"
-                    aria-expanded="false"
-                    aria-label="Toggle navigation"
-                ></button>
-    
-                <div class="collapse navbar-collapse d-flex justify-content-between" id="navbarSupportedContent">
-                    <nav class="navbar d-flex navbar-light" id="navbarLogo">
-                        <a class="navbar-brand" href="./index.html">
-                            <img src="./images/img.png" width="30" height="30" class="d-inline-block align-top" alt="" />
-                            PuzzleWood
-                        </a>
-                    </nav>
-                    <div class="search-bar navbar-nav" id="searchNavContainer">
-                        <div class="input-group" id="searchNav">
-                            <div class=" input-group-prepend" id="searchCategorySelector">
-                                <button
-                                    class="btn dropdown-toggle search-category"
-                                    type="button"
-                                    data-toggle="dropdown"
-                                    aria-haspopup="true"
-                                    aria-expanded="false"
-                                >
-                                    All
-                                </button>
-                                <div class="dropdown-menu search-category-drop">
-                                    <a class="dropdown-item" href="#">All</a>
-                                    <a class="dropdown-item" href="#">Another action</a>
-                                    <a class="dropdown-item" href="#">Something else here</a>
-                                </div>
-                            </div>
-                            <form class="form-inline my-lg-0 d-flex justify-content-between">
-                                <input class="form-control" type="text" placeholder="Search" id="searchBar" />
-    
-                                <button id="searchBtn" class="fas fa-search" type="submit" id="searchBtn"></button>
-                            </form>
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"></button>
+
+        <div class="collapse navbar-collapse d-flex justify-content-between" id="navbarSupportedContent">
+            <nav class="navbar d-flex navbar-light" id="navbarLogo">
+                <a class="navbar-brand" href="./index.html">
+                    <img src="./images/img.png" width="30" height="30" class="d-inline-block align-top" alt="" />
+                    PuzzleWood
+                </a>
+            </nav>
+            <div class="search-bar navbar-nav" id="searchNavContainer">
+                <div class="input-group" id="searchNav">
+                    <div class=" input-group-prepend" id="searchCategorySelector">
+                        <button class="btn dropdown-toggle search-category" type="button" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            All
+                        </button>
+                        <div class="dropdown-menu search-category-drop">
+                            <a class="dropdown-item" href="#">All</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <a class="dropdown-item" href="#">Something else here</a>
                         </div>
                     </div>
-    
-                    <nav class="nav-item text-right" id="accountLinks">
-                        <a class="nav-link" href="clientAccount.html" tabindex="-1" aria-disabled="true">Your Account</a>
-                    </nav>
+                    <form class="form-inline my-lg-0 d-flex justify-content-between">
+                        <input class="form-control" type="text" placeholder="Search" id="searchBar" />
+
+                        <button id="searchBtn" class="fas fa-search" type="submit" id="searchBtn"></button>
+                    </form>
                 </div>
+            </div>
+
+            <nav class="nav-item text-right" id="accountLinks">
+                <a class="nav-link" href="clientAccount.html" tabindex="-1" aria-disabled="true">Your Account</a>
             </nav>
-    
+        </div>
+    </nav>
+
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item active" aria-current="page">1.Products</li>
@@ -99,23 +87,23 @@
                 <div class="row">
                     <img class="card-img-top product_img" src="./images/img.png" alt="Card image cap">
                     <div class="col-sm product_info">
-                        <button class="btn-outline-warning cancel_button" type="button"></button>
+                        <button class="btn btn-light remove_product" type="button"><i class="fa fa-times" aria-hidden="true"></i></button>
                         <h1 class="price">22.49€</h1>
                         <h3 class="date_add">Added in: 12-08-2018</h3>
-                            <div class="rating mb-2">
-                                <fieldset class="starsRating">
-                                    <label class="full" for="star5"></label>
-                                    <label class="half" for="star4half"></label>
-                                    <label class="full" for="star4"></label>
-                                    <label class="half marked" for="star3half"></label>
-                                    <label class="full marked" for="star3"></label>
-                                    <label class="half marked" for="star2half"></label>
-                                    <label class="full marked" for="star2"></label>
-                                    <label class="half marked" for="star1half"></label>
-                                    <label class="full marked" for="star1"></label>
-                                    <label class="half marked" for="star0half"></label>
-                                </fieldset>
-                            </div>
+                        <div class="rating mb-2">
+                            <fieldset class="starsRating">
+                                <label class="full" for="star5"></label>
+                                <label class="half" for="star4half"></label>
+                                <label class="full" for="star4"></label>
+                                <label class="half marked" for="star3half"></label>
+                                <label class="full marked" for="star3"></label>
+                                <label class="half marked" for="star2half"></label>
+                                <label class="full marked" for="star2"></label>
+                                <label class="half marked" for="star1half"></label>
+                                <label class="full marked" for="star1"></label>
+                                <label class="half marked" for="star0half"></label>
+                            </fieldset>
+                        </div>
 
                     </div>
                 </div>
@@ -128,7 +116,7 @@
                 <div class="row">
                     <img class="card-img-top product_img" src="./images/img.png" alt="Card image cap">
                     <div class="col-sm product_info">
-                        <button class="btn-outline-warning cancel_button" type="button"></button>
+                        <button class="btn btn-light remove_product" type="button"><i class="fa fa-times" aria-hidden="true"></i></button>
                         <h1 class="price">29.99€</h2>
                             <h3 class="date_add">Added in: 01-04-2019</h3>
                             <div class="rating mb-2">
@@ -155,7 +143,7 @@
                 <div class="row">
                     <img class="card-img-top product_img" src="./images/img.png" alt="Card image cap">
                     <div class="col-sm product_info">
-                        <button class="btn-outline-warning cancel_button" type="button"></button>
+                        <button class="btn btn-light remove_product" type="button"><i class="fa fa-times" aria-hidden="true"></i></button>
                         <h1 class="price">199.49€</h2>
                             <div class="rating mb-2">
                                 <fieldset class="starsRating">
@@ -181,7 +169,7 @@
                 <div class="row">
                     <img class="card-img-top product_img" src="./images/img.png" alt="Card image cap">
                     <div class="col-sm product_info">
-                        <button class="btn-outline-warning cancel_button" type="button"></button>
+                        <button class="btn btn-light remove_product" type="button"><i class="fa fa-times" aria-hidden="true"></i></button>
                         <h1 class="price">59.99€</h2>
                             <div class="rating mb-2">
                                 <fieldset class="starsRating">
@@ -203,9 +191,9 @@
         </div>
     </div>
     <div class="card container bottom_row">
-        <div class="row">
+        <div class="row center-block h-75">
             <div class="col-sm card final_price container">
-                <div class="row">
+                <div class="row h-75">
                     <div class="col-sm">
                         <h1 class="final_label">Final Value:</h1>
                     </div>
@@ -214,8 +202,10 @@
                     </div>
                 </div>
             </div>
-            <button class="back_button"  type="button"> Back </button>
-            <button class="next_button" type="button"> Next ></button>
+           
+            <button class="btn btn-light back_button" type="button">Back</button>
+            <button class="btn btn-light next_button " type="button">Next ></button>
+     
         </div>
     </div>
     <div class="d-flex justify-content-around text-white p-5" id="footer">
