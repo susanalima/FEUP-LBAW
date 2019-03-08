@@ -409,11 +409,11 @@ h5 {
     text-align: end;
 }
 
-#infoSection * {
+.accordion * {
     color: var(--var-text);
 }
 
-#infoSection button:hover {
+.accordion button:hover {
     color: var(--var-secon-text);
 }
 
