@@ -173,13 +173,15 @@
     margin:0;
     margin-left: 0.1em;
     max-width: 90%;
-    border-width: 0.2rem;
+    border-width: 0.15rem;
     border-color: rgb(85, 85, 85);
-    border-radius: 2em;
+    border-radius:0.25rem;
+
+    text-align: left;
+    display: inline-block;
 }
 
 .bottom_row{
-    min-width: 75%;
     margin-left: auto;
     margin-right: auto;
     border: none;
@@ -191,17 +193,24 @@
 
 .back_button, .next_button{
     width:10%;
+    max-height: 75%;
     min-width:auto;
     border-radius: 0.25rem;
-    font-size:auto;
     margin-left: 3vw;
-    outline:none !important;
+    padding-bottom: 2vw;
+    padding: auto;
+    text-align: center;
+    display: inline-block;
+
+   
     border-color: var(--var-gray-mid);
     background-color: var(--var-gray);
     color: var(--var-text);
-    cursor: pointer;
+
+
     outline:none;
-    max-height: 75%;
+    display: inline-block;
+
 }
 
 .back_button:hover, .next_button:hover{
@@ -210,21 +219,11 @@
     border-radius: 0.25rem;
     font-size:auto;
     margin-left: 3vw;
-    outline:none !important;
+   
     border-color: var(--var-gray-mid);
     background-color: var(--var-fourth-color);
     color: var(--var-gray);
-    cursor: pointer;
-    outline:none;
     max-height: 75%;
+    
 }
 
-.next_button{
-    padding-left: 1.5vw;
-    padding-right: 1vw;
-}
-
-.back_button{
-    padding-left: 2vw;
-    padding-right: 2vw;
-}
