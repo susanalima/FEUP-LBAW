@@ -248,7 +248,38 @@
     
 }
 
-.checkoutCard {
+.checkoutListCards {
     width: 85%;
+}
+
+.checkoutCard {
+    width: 22rem; 
+    height: 16rem;
+}
+
+@media screen and (max-width: 1080px) {
+    #listItems {
+        width: 100%;
+        height: 100%;
+        margin: auto;
+    }
+    .checkoutListCards {
+        width: 85%;
+    }
+    .checkoutCard {
+        width: 20rem;
+    }  
+}
+
+@media screen and (max-width: 950px) {
+    #listItems {
+        width: 100%;
+    }
+    .checkoutListCards {
+        width: 100%;
+    }
+    .checkoutCard {
+        height: 18rem;
+    }
 }
 
