@@ -20,6 +20,8 @@ body {
     --var-gray-ml: rgb(192,192,192);
     --var-gray-mid: rgb(136,136,136);
     --var-gray-dark: rgb(56,56,56);
+    --var-blue-ml: rgb(11, 126, 146);
+    --var-blue-mid: rgb(10, 101, 117);
 }
 
 html {

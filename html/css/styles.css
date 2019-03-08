@@ -413,7 +413,7 @@ h5 {
     color: var(--var-text);
 }
 
-.accordion button:hover {
+.accordion .btn-link:hover {
     color: var(--var-secon-text);
 }
 
@@ -446,4 +446,23 @@ h5 {
 
 .cartQuantitySelectorController {
     margin-left: 7px;
+}
+
+.btnAction {
+    background-color: var(--var-blue-ml);
+    color: white;
+}
+
+.btnAction:hover {
+    background-color: var(--var-blue-mid);
+    color: white;
+}
+
+.btnOutlineAction {
+    border-color: var(--var-blue-ml);
+}
+
+.btnOutlineAction:hover {
+    background-color: var(--var-blue-ml);
+    color: white;
 }

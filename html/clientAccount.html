@@ -51,7 +51,7 @@
       </a>
     </nav>
 
-    <div class="w-75 mx-auto">
+    <div class="mx-auto" id="profile">
     <h1 class="text-center p-3 mt-4">Your Account</h1>
 
     <div class="accordion pb-4" id="profileOptions">
@@ -78,7 +78,7 @@
 
                       <td>
                         <div class="d-flex justify-content-center">
-                          <button type="button" class="btn btn-outline-primary btn-sm fas fa-edit" onclick='editClientName(this, "John Doe")'
+                          <button type="button" class="btn btnOutlineAction btn-sm fas fa-edit" onclick='editClientName(this, "John Doe")'
                             value="edit"></button>
                         </div>
                       </td>
@@ -111,7 +111,7 @@
                       <td>Alameda dos Jardins d'Arrábida 443, 4400-478 Porto, Portugal</td>
                       <td>
                         <div class="d-flex justify-content-center">
-                          <button type="button" class="btn btn-outline-primary btn-sm m-2 fas fa-edit" data-toggle="modal"
+                          <button type="button" class="btn btnOutlineAction btn-sm m-2 fas fa-edit" data-toggle="modal"
                             data-target="#editHellAddress"></button>
                           <div class="modal fade" id="editHellAddress" tabindex="-1" role="dialog" aria-labelledby="editHellAddressLabel"
                             aria-hidden="true">
@@ -159,7 +159,7 @@
                               </div>
                             </div>
                           </div>
-                          <button type="button" class="btn btn-sm m-2 fas fa-trash-alt danger"></button>
+                          <button type="button" class="btn btn-outline-danger btn-sm m-2 fas fa-trash-alt"></button>
                         </div>
                       </td>
                     </tr>
@@ -168,7 +168,7 @@
                       <td>R. Dr. Roberto Frias, 4200-465 Porto, Portugal</td>
                       <td>
                         <div class="d-flex justify-content-center">
-                          <button type="button" class="btn btn-outline-primary btn-sm m-2 fas fa-edit" data-toggle="modal"
+                          <button type="button" class="btn btnOutlineAction btn-sm m-2 fas fa-edit" data-toggle="modal"
                             data-target="#editWorkAddress"></button>
                           <div class="modal fade" id="editWorkAddress" tabindex="-1" role="dialog" aria-labelledby="editWorkAddressLabel"
                             aria-hidden="true">
@@ -349,7 +349,7 @@
             </div>
           </div>
           <div class="d-flex  flex-column float-right">
-            <button type="button" class="btn btn-outline-dark mr-4 mb-2 btn-sm " data-toggle="modal" data-target="#changePwdModal">Change
+            <button type="button" class="btn btnOutlineAction mr-4 mb-2 btn-sm " data-toggle="modal" data-target="#changePwdModal">Change
               Password</button>
             <button type="button" class="btn btn-outline-danger mr-4 mb-3 btn-sm">Delete Account</button>
           </div>
@@ -521,7 +521,7 @@
                       <td>Things I'm going to buy when I'm a millionaire!!!!!!!!!!!</td>
                       <td>
                         <div class="d-flex justify-content-center">
-                          <button type="button" class="btn btn-outline-primary btn-sm m-2 fas fa-share-alt"></button>
+                          <button type="button" class="btn btnOutlineAction btn-sm m-2 fas fa-share-alt"></button>
                           <button type="button" class="btn btn-outline-danger btn-sm m-2 fas fa-trash-alt"></button>
                         </div>
                       </td>
@@ -532,7 +532,7 @@
                       <td>Anniversary gifts</td>
                       <td>
                         <div class="d-flex justify-content-center">
-                          <button type="button" class="btn btn-outline-primary btn-sm m-2 fas fa-share-alt"></button>
+                          <button type="button" class="btn btnOutlineAction btn-sm m-2 fas fa-share-alt"></button>
                           <button type="button" class="btn btn-outline-danger btn-sm m-2 fas fa-trash-alt"></button>
                         </div>
                       </td>
@@ -543,7 +543,7 @@
                       <td>Stuff I have to buy for school as soon as I have money</td>
                       <td>
                         <div class="d-flex justify-content-center">
-                          <button type="button" class="btn btn-outline-primary btn-sm m-2 fas fa-share-alt"></button>
+                          <button type="button" class="btn btnOutlineAction btn-sm m-2 fas fa-share-alt"></button>
                           <button type="button" class="btn btn-outline-danger btn-sm m-2 fas fa-trash-alt"></button>
                         </div>
                       </td>
@@ -582,7 +582,7 @@
                   </div>
                 </div>
               </div>
-              <button type="button" class="btn float-right m-2 btn-sm danger">Delete all</button>
+              <button type="button" class="btn btn-outline-danger float-right m-2 btn-sm">Delete all</button>
             </div>
           </div>
         </div>
