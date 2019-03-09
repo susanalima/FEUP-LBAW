@@ -14,6 +14,7 @@
     min-width: 80%;
 }
 
+
 .navbar {
     background-color: var(--var-secon-color);
     padding: 5px;
@@ -60,7 +61,7 @@
 
 #searchBtn:hover {
     background-color: var(--var-main-color);
-    color: white;
+    color:white;
 }
 
 #searchNav * * {
