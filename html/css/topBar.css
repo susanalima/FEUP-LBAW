@@ -8,6 +8,7 @@
 
 .search-category-drop {
     border-color: var(--var-gray-dark);
+    
 }
 .form-inline {
     max-width: 85%;
@@ -29,6 +30,11 @@
     flex-grow: 1;
 }
 
+#searchCategorySelector{
+    position: relative;
+    z-index: 10000;
+}
+
 #searchCategorySelector button,
 #searchCategorySelector div {
     border: 1px solid var(--var-main-color);
@@ -46,6 +52,7 @@
 #searchCategorySelector button:focus,
 #searchBar:focus {
     box-shadow: none;
+    
 }
 
 #searchBtn {
