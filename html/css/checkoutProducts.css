@@ -202,7 +202,7 @@
     float: right;    
 }
 
-.back_button, .next_button{
+ .button_form{
     width:10%;
     max-height: 75%;
     min-width:auto;
@@ -214,28 +214,33 @@
     display: inline-block;
 
    
+  }
+
+.back_button, .next_button{
+    text-align: center;
+    display: inline-block;
+
+    width: 100%;
     border-color: var(--var-gray-mid);
     background-color: var(--var-gray);
     color: var(--var-text);
 
 
     outline:none;
-
-
 }
 
 .back_button:hover, .next_button:hover{
-    width:10%;
-    min-width:auto;
-    border-radius: 0.25rem;
-    font-size:auto;
-    margin-left: 3vw;
+    text-align: center;
+    display: inline-block;
+
+    width: 100%;
    
     border-color: var(--var-gray-mid);
     background-color: var(--var-fourth-color);
     color: var(--var-gray);
-    max-height: 75%;
-    
+   
+    outline:none;
+}
 }
 
 .checkoutListCards {

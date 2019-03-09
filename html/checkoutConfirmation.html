@@ -154,19 +154,23 @@
         </div>
     </div>
     <div class="card container bottom_row ">
-        <div class="row">
+        <div class="row center-block h-75">
             <div class="col-sm card final_price container">
                 <div class="row">
                     <div class="col-sm">
                         <h1>Final Value:</h1>
                     </div>
                     <div class="col-sm">
-                        <h1 class="final_value">311.96</h1>
+                        <h1 class="final_value">311.96€</h1>
                     </div>
                 </div>
             </div>
-            <button class="btn-outline-info back_button" type="button"> Cancel </button>
-            <button class="btn-outline-info next_button" type="button"> Purchase! ></button>
+            <form class="button_form" action="checkoutPayment.html">
+                    <button class="btn btn-light back_button" type="submit" value="Go Back"><i class="fa fa-caret-left" aria-hidden="true"></i>  Back</button>
+                </form>
+                <form class="button_form" action="index.html">
+                    <button class="btn btn-light next_button " type="submit" value="Confirm Purchase">Confirm <i class="fa fa-check" aria-hidden="true"></i></button>
+                </form>
         </div>
     </div>
     </div>
