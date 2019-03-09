@@ -23,7 +23,7 @@
     <link rel="stylesheet" href="css/styles.css" />
 
     <!--<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">-->
-    <title>Checkout Delivery</title>
+    <title>Checkout Confirmation</title>
 </head>
 
 <body>
@@ -95,7 +95,7 @@
     </div>
     <div id="listItems" class="card">
         <div class="card-body m-auto checkoutListCards">
-            <div class="d-flex align-items-center justify-content-start flex-wrap mx-5">
+            <div class="d-flex align-items-center justify-content-center flex-wrap mx-5">
                     <div class="d-flex flex-column card checkoutCard">
                             <div class="card-body">
                                 <h2 class="card-title mb-3 text-muted">Products</h2>
@@ -122,7 +122,9 @@
                                     </dl>
                                 </div>
                             </div>
-                            <button type="button" class="btn btnAction btn-sm  mb-4 mx-3">Edit!</button>
+                            <form class="button_form  mb-4 mx-3" action="checkoutProducts.html">
+                            <button type="submit" class="btn btnAction btn-sm ">Edit!</button>
+                        </form>
                         </div>
                 <div class="d-flex flex-column card checkoutCard">
                     <div class="card-body ">
@@ -133,8 +135,10 @@
                                 <p>Portugal</p>
                             </div>
                     </div>
-                    <button type="button" class="btn btnAction mary btn-sm  mb-4 mx-3">Edit!</button>
-                </div>
+                    <form class="button_form  mb-4 mx-3" action="checkoutDelivery.html">
+                        <button type="submit" class="btn btnAction btn-sm ">Edit!</button>
+                    </form>             
+                  </div>
 
                 <div class="d-flex flex-column card checkoutCard">
                         <div class="card-body">
@@ -151,8 +155,9 @@
                                 <dd class="col-sm-5">2019/11</dd>
                             </dl>
                             </div>
-                            <button type="button" class="btn btnAction btn-sm  mb-4 mx-3">Edit!</button>
-                    </div>
+                            <form class="button_form  mb-4 mx-3" action="checkoutPayment.html">
+                                <button type="submit" class="btn btnAction btn-sm ">Edit!</button>
+                            </form>                    </div>
 
                 <div class="d-flex flex-column card checkoutCard">
                     <div class="card-body">
@@ -163,7 +168,9 @@
                                 <p>No additional costs!</p>
                             </div>
                     </div>
-                    <button type="button" class="btn btnAction btn-sm  mb-4 mx-3">Edit!</button>
+                    <form class="button_form  mb-4 mx-3" action="checkoutShipping.html">
+                        <button type="submit" class="btn btnAction btn-sm ">Edit!</button>
+                    </form>
                 </div>
 
             </div>

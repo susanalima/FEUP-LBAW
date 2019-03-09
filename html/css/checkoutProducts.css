@@ -5,6 +5,20 @@
     content: "> ";
 }
 
+.btnAction{
+    width:100%;
+}
+
+.card-body{
+    height: 75%;
+}
+
+.checkoutTextTop{
+    display: inline-block;
+    width:min-content;
+    margin-left: 11%;
+    margin-bottom:3%;
+}
 
 #wishListsTabs{
     margin-top: 2em;
@@ -192,6 +206,8 @@
     display: inline-block;
 }
 
+
+
 .bottom_row{
    display: inline-block;
     width: auto;
@@ -204,17 +220,7 @@
     float: right;    
 }
 
- .button_form{
-    width:10%;
-    max-height: 75%;
-    min-width:auto;
-    border-radius: 0.25rem;
-    margin-left: 3vw;
-    padding-bottom: 2vw;
-    padding: auto;
-    text-align: center;
-    display: inline-block;
-}
+ 
 
 
 

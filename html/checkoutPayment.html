@@ -103,8 +103,8 @@
 
     <div id="listItems" class="card">
         <div class="card-body m-auto checkoutListCards">
-            <h2 class="m-5">Select or add a card to make your purchase!</h2>
-            <div class="d-flex align-items-center justify-content-start flex-wrap m-5">
+            <h2 class="checkoutTextTop">Select or add a card to make your purchase!</h2>
+            <div class="d-flex align-items-center justify-content-center flex-wrap">
             
                 <div class="d-flex flex-column card checkoutCard">
                     <div class="card-body">
@@ -120,7 +120,9 @@
                             <dd class="col-sm-5">2019/11</dd>
                         </dl>
                     </div>
-                    <button type="button" class="btn btnAction btn-sm  mb-4 mx-3">Deliver here!</button>
+                    <form class="button_form  mb-4 mx-3" action="checkoutConfirmation.html">
+                    <button type="submit" class="btn btnAction btn-sm">Pay with this one!</button>
+                    </form>
                 </div>
                 <div class="d-flex flex-column card bg-light align-items-center justify-content-center checkoutCard"
                     data-toggle="modal" data-target="#deliveryCardModel">
