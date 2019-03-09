@@ -1,16 +1,23 @@
+@import url("root.css");
+
 .chat {
   list-style-type: none;
   padding: 0em;
 }
 
 .chat-body {
-  border-bottom: 1px dotted #B3A9A9;
+  border-bottom: 1px solid var(--var-secon-text);
   margin-bottom: 0.5em;
 }
 
-.chat-body .glyphicon-time {
+.chat-body {
   margin-right: 0.5em;
 }
+
+.btn-group-dark button:hover {
+  color: var(--var-text);
+}
+
 
 #clientManagerMessages {
   width: 76%;
