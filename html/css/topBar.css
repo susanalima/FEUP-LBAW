@@ -8,11 +8,13 @@
 
 .search-category-drop {
     border-color: var(--var-gray-dark);
+    
 }
 .form-inline {
     max-width: 85%;
     min-width: 80%;
 }
+
 
 .navbar {
     background-color: var(--var-secon-color);
@@ -26,6 +28,11 @@
     border-right-width: 0;
     border-left-width: 0;
     flex-grow: 1;
+}
+
+#searchCategorySelector{
+    position: relative;
+    z-index: 10000;
 }
 
 #searchCategorySelector button,
@@ -45,6 +52,7 @@
 #searchCategorySelector button:focus,
 #searchBar:focus {
     box-shadow: none;
+    
 }
 
 #searchBtn {
@@ -60,7 +68,7 @@
 
 #searchBtn:hover {
     background-color: var(--var-main-color);
-    color: white;
+    color:white;
 }
 
 #searchNav * * {
