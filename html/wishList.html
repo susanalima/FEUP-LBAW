@@ -21,292 +21,305 @@
     <link rel="stylesheet" href="css/styles.css" />
     <link rel="stylesheet" href="css/wishListStyle.css" />
     <link rel="stylesheet" href="css/topBar.css" />
-    
+
 
     <title>WishList</title>
 </head>
 
 <body>
     <div class="mainContent">
-     <!-- Image and text -->
-     <nav class="navbar navbar-expand-lg navbar-light">
-        <button
-            class="navbar-toggler"
-            type="button"
-            data-toggle="collapse"
-            data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-        >
-        </button>
+        <!-- Image and text -->
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            </button>
 
-        <div class="collapse navbar-collapse d-flex justify-content-between" id="navbarSupportedContent">
-            <nav class="navbar d-flex navbar-light" id="navbarLogo">
-                <a class="navbar-brand" href="./index.html">
-                    <img src="./images/img.png" width="30" height="30" class="d-inline-block align-top" alt="" />
-                    PuzzleWood
-                </a>
-            </nav>
-            <div class="search-bar navbar-nav" id="searchNavContainer">
-                <div class="input-group" id="searchNav">
-                    <div class=" input-group-prepend" id="searchCategorySelector">
-                        <button
-                            class="btn dropdown-toggle search-category"
-                            type="button"
-                            data-toggle="dropdown"
-                            aria-haspopup="true"
-                            aria-expanded="false"
-                        >
-                            All
-                        </button>
-                        <div class="dropdown-menu search-category-drop">
-                            <a class="dropdown-item" href="#">All</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <a class="dropdown-item" href="#">Something else here</a>
+            <div class="collapse navbar-collapse d-flex justify-content-between" id="navbarSupportedContent">
+                <nav class="navbar d-flex navbar-light" id="navbarLogo">
+                    <a class="navbar-brand" href="./index.html">
+                        <img src="./images/img.png" width="30" height="30" class="d-inline-block align-top" alt="" />
+                        PuzzleWood
+                    </a>
+                </nav>
+                <div class="search-bar navbar-nav" id="searchNavContainer">
+                    <div class="input-group" id="searchNav">
+                        <div class=" input-group-prepend" id="searchCategorySelector">
+                            <button class="btn dropdown-toggle search-category" type="button" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                                All
+                            </button>
+                            <div class="dropdown-menu search-category-drop">
+                                <a class="dropdown-item" href="#">All</a>
+                                <a class="dropdown-item" href="#">Another action</a>
+                                <a class="dropdown-item" href="#">Something else here</a>
+                            </div>
+                        </div>
+                        <form class="form-inline my-lg-0 d-flex justify-content-between">
+                            <input class="form-control" type="text" placeholder="Search" id="searchBar" />
+
+                            <button id="searchBtn" class="fas fa-search" type="submit" id="searchBtn"></button>
+                        </form>
+                    </div>
+                </div>
+
+                <nav class="nav-item text-right" id="accountLinks">
+                    <a class="nav-link" href="clientAccount.html" tabindex="-1" aria-disabled="true">Your Account</a>
+                </nav>
+            </div>
+        </nav>
+
+        <nav id="wishListsTabs" class="w-75 mx-auto" aria-label="Page navigation example">
+            <ul class="pagination mb-0">
+                <li class="page-item"><a class="page-link" href="#">Wish List 1</a></li>
+                <li class="page-item"><a class="page-link" href="#">Wedding</a></li>
+                <li class="page-item"><a class="page-link" href="#">Christmas</a></li>
+                <li class="page-item"><a class="page-link" href="#">Wish List 2</a></li>
+            </ul>
+        </nav>
+        <div id="mainContainer w-75 mx-auto" class="container">
+            <div class="row">
+                <div id="list-example" class="list-group">
+                    <a class="list-group-item list-group-item-action" href="#list-item-1">Laptop XPTO</a>
+                    <a class="list-group-item list-group-item-action" href="#list-item-2">God's Autobiography</a>
+                    <a class="list-group-item list-group-item-action" href="#list-item-3">Overpriced Phones</a>
+                    <a class="list-group-item list-group-item-action" href="#list-item-4">PsycMixTape</a>
+                </div>
+                <div id="listItems" data-spy="scroll" data-target="#list-example" data-offset="0" class="card">
+
+                    <div id="list-item-1" class="card product_card">
+                        <h4 class="product_name">Laptop XPTO</h4>
+                        <div class="container" style="margin-left: 0.4em;">
+                            <div class="row">
+                                <img class="card-img-top product_img" src="./images/img.png" alt="Card image cap">
+
+                                <div class="col-sm">
+                                    <div> <button class="btn addToCartBtn fas fa-cart-plus" onClick="addToCart(this)"
+                                            type="submit" id="addToCart"></button> <button
+                                            class="btn removeWishItem fas fa-times" onClick="removeItem(this)"
+                                            type="submit" id="removeWishItem"></button></div>
+                                    <p style="margin-left: 0em; margin-bottom: 0; width: auto; height: auto;">Lorem
+                                        ipsum
+                                        dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                                        ut
+                                        labore
+                                        et dolore
+                                        magna aliqua. Pulvinar neque laoreet suspendisse interdum consectetur. In
+                                        aliquam
+                                        sem
+                                        fringilla
+                                        ut
+                                        morbi.
+                                        Turpis tincidunt id aliquet risus feugiat in ante metus dictum. Pellentesque id
+                                        nibh
+                                        tortor
+                                        id.
+                                        Nisi
+                                        scelerisque eu ultrices vitae. Eget mauris pharetra et ultrices neque ornare.
+                                        Volutpat
+                                        diam
+                                        ut
+                                        venenatis
+                                        tellus in metus. Erat imperdiet sed euismod nisi. Diam maecenas sed enim ut sem
+                                        viverra
+                                        aliquet
+                                        eget
+                                        sit.
+                                        Cras ornare arcu dui vivamus arcu felis bibendum ut tristique.</p>
+                                    <div class="rating mb-2">
+                                        <fieldset class="starsRating">
+                                            <label class="full" for="star5"></label>
+                                            <label class="half" for="star4half"></label>
+                                            <label class="full" for="star4"></label>
+                                            <label class="half marked" for="star3half"></label>
+                                            <label class="full marked" for="star3"></label>
+                                            <label class="half marked" for="star2half"></label>
+                                            <label class="full marked" for="star2"></label>
+                                            <label class="half marked" for="star1half"></label>
+                                            <label class="full marked" for="star1"></label>
+                                            <label class="half marked" for="star0half"></label>
+                                        </fieldset>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <form class="form-inline my-lg-0 d-flex justify-content-between">
-                        <input class="form-control" type="text" placeholder="Search" id="searchBar" />
 
-                        <button id="searchBtn" class="fas fa-search" type="submit" id="searchBtn"></button>
-                    </form>
+                    <div id="list-item-2" class="card product_card" style="margin-top: 2.5em;">
+                        <h4 class="product_name">God's Autobiography</h4>
+                        <div class="container" style="margin-left: 0.4em;">
+                            <div class="row">
+                                <img class="card-img-top product_img" src="./images/img.png" alt="Card image cap">
+
+                                <div class="col-sm">
+                                    <div> <button class="btn addToCartBtn fas fa-cart-plus" onClick="addToCart(this)"
+                                            type="submit" id="addToCart"></button> <button
+                                            class="btn removeWishItem fas fa-times" onClick="removeItem(this)"
+                                            type="submit" id="removeWishItem"></button> </div>
+                                    <p style="margin-left: 0em; margin-bottom: 0; width: auto; height: auto;">Lorem
+                                        ipsum
+                                        dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                                        ut
+                                        labore
+                                        et dolore
+                                        magna aliqua. Pulvinar neque laoreet suspendisse interdum consectetur. In
+                                        aliquam
+                                        sem
+                                        fringilla
+                                        ut
+                                        morbi.
+                                        Turpis tincidunt id aliquet risus feugiat in ante metus dictum. Pellentesque id
+                                        nibh
+                                        tortor
+                                        id.
+                                        Nisi
+                                        scelerisque eu ultrices vitae. Eget mauris pharetra et ultrices neque ornare.
+                                        Volutpat
+                                        diam
+                                        ut
+                                        venenatis
+                                        tellus in metus. Erat imperdiet sed euismod nisi. Diam maecenas sed enim ut sem
+                                        viverra
+                                        aliquet
+                                        eget
+                                        sit.
+                                        Cras ornare arcu dui vivamus arcu felis bibendum ut tristique.</p>
+                                    <div class="rating mb-2">
+                                        <fieldset class="starsRating">
+                                            <label class="full marked" for="star5"></label>
+                                            <label class="half marked" for="star4half"></label>
+                                            <label class="full marked" for="star4"></label>
+                                            <label class="half marked" for="star3half"></label>
+                                            <label class="full marked" for="star3"></label>
+                                            <label class="half marked" for="star2half"></label>
+                                            <label class="full marked" for="star2"></label>
+                                            <label class="half marked" for="star1half"></label>
+                                            <label class="full marked" for="star1"></label>
+                                            <label class="half marked" for="star0half"></label>
+                                        </fieldset>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="list-item-3" class="card product_card" style="margin-top: 2.5em;">
+                        <h4 class="product_name">Overpriced Phones</h4>
+                        <div class="container" style="margin-left: 0.4em;">
+                            <div class="row">
+                                <img class="card-img-top product_img" src="./images/img.png" alt="Card image cap">
+
+                                <div class="col-sm">
+                                    <div> <button class="btn addToCartBtn fas fa-cart-plus" onClick="addToCart(this)"
+                                            type="submit" id="addToCart"></button> <button
+                                            class="btn removeWishItem fas fa-times" onClick="removeItem(this)"
+                                            type="submit" id="removeWishItem"></button> </div>
+                                    <p style="margin-left: 0em; margin-bottom: 0; width: auto; height: auto;">Lorem
+                                        ipsum
+                                        dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                                        ut
+                                        labore
+                                        et dolore
+                                        magna aliqua. Pulvinar neque laoreet suspendisse interdum consectetur. In
+                                        aliquam
+                                        sem
+                                        fringilla
+                                        ut
+                                        morbi.
+                                        Turpis tincidunt id aliquet risus feugiat in ante metus dictum. Pellentesque id
+                                        nibh
+                                        tortor
+                                        id.
+                                        Nisi
+                                        scelerisque eu ultrices vitae. Eget mauris pharetra et ultrices neque ornare.
+                                        Volutpat
+                                        diam
+                                        ut
+                                        venenatis
+                                        tellus in metus. Erat imperdiet sed euismod nisi. Diam maecenas sed enim ut sem
+                                        viverra
+                                        aliquet
+                                        eget
+                                        sit.
+                                        Cras ornare arcu dui vivamus arcu felis bibendum ut tristique.</p>
+                                    <div class="rating mb-2">
+                                        <fieldset class="starsRating">
+                                            <label class="full" for="star5"></label>
+                                            <label class="half" for="star4half"></label>
+                                            <label class="full marked" for="star4"></label>
+                                            <label class="half marked" for="star3half"></label>
+                                            <label class="full marked" for="star3"></label>
+                                            <label class="half marked" for="star2half"></label>
+                                            <label class="full marked" for="star2"></label>
+                                            <label class="half marked" for="star1half"></label>
+                                            <label class="full marked" for="star1"></label>
+                                            <label class="half marked" for="star0half"></label>
+                                        </fieldset>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="list-item-4" class="card product_card" style="margin-top: 2.5em; padding-bottom: 2em;">
+                        <h4 class="product_name">PsycMixTape</h4>
+                        <div class="container" style="margin-left:0.4em;">
+                            <div class="row">
+                                <img class="card-img-top product_img" src="./images/img.png" alt="Card image cap">
+
+                                <div class="col-sm">
+                                    <div>
+                                        <button class="btn addToCartBtn fas fa-cart-plus" onClick="addToCart(this)"
+                                            type="submit" id="addToCart"></button> <button
+                                            class="btn removeWishItem fas fa-times" onClick="removeItem(this)"
+                                            type="submit" id="removeWishItem"></button> 
+                                    </div>
+                                    <p style="margin-left: 0em; margin-bottom: 0; width: auto; height: auto;">Lorem
+                                        ipsum
+                                        dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                                        ut
+                                        labore
+                                        et dolore
+                                        magna aliqua. Pulvinar neque laoreet suspendisse interdum consectetur. In
+                                        aliquam
+                                        sem
+                                        fringilla
+                                        ut
+                                        morbi.
+                                        Turpis tincidunt id aliquet risus feugiat in ante metus dictum. Pellentesque id
+                                        nibh
+                                        tortor
+                                        id.
+                                        Nisi
+                                        scelerisque eu ultrices vitae. Eget mauris pharetra et ultrices neque ornare.
+                                        Volutpat
+                                        diam
+                                        ut
+                                        venenatis
+                                        tellus in metus. Erat imperdiet sed euismod nisi. Diam maecenas sed enim ut sem
+                                        viverra
+                                        aliquet
+                                        eget
+                                        sit.
+                                        Cras ornare arcu dui vivamus arcu felis bibendum ut tristique.</p>
+                                    <div class="rating mb-2">
+                                        <fieldset class="starsRating">
+                                            <label class="full" for="star5"></label>
+                                            <label class="half" for="star4half"></label>
+                                            <label class="full" for="star4"></label>
+                                            <label class="half" for="star3half"></label>
+                                            <label class="full" for="star3"></label>
+                                            <label class="half" for="star2half"></label>
+                                            <label class="full marked" for="star2"></label>
+                                            <label class="half marked" for="star1half"></label>
+                                            <label class="full marked" for="star1"></label>
+                                            <label class="half marked" for="star0half"></label>
+                                        </fieldset>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-
-            <nav class="nav-item text-right" id="accountLinks">
-                <a class="nav-link" href="clientAccount.html" tabindex="-1" aria-disabled="true">Your Account</a>
-            </nav>
         </div>
-    </nav>
-
-    <nav id="wishListsTabs" aria-label="Page navigation example">
-        <ul class="pagination w-75 mx-auto">
-            <li class="page-item"><a class="page-link" href="#">Wish List 1</a></li>
-            <li class="page-item"><a class="page-link" href="#">Wedding</a></li>
-            <li class="page-item"><a class="page-link" href="#">Christmas</a></li>
-            <li class="page-item"><a class="page-link" href="#">Wish List 2</a></li>
-        </ul>
-    </nav>
-    <div id="mainContainer w-75 mx-auto" class="container">
-        <div class="row">
-            <div id="list-example" class="list-group">
-                <a class="list-group-item list-group-item-action" href="#list-item-1">Laptop XPTO</a>
-                <a class="list-group-item list-group-item-action" href="#list-item-2">God's Autobiography</a>
-                <a class="list-group-item list-group-item-action" href="#list-item-3">Overpriced Phones</a>
-                <a class="list-group-item list-group-item-action" href="#list-item-4">PsycMixTape</a>
-            </div>
-            <div id="listItems" data-spy="scroll" data-target="#list-example" data-offset="0" class="card">
-
-                <div id="list-item-1" class="card product_card">
-                    <h4 class="product_name">Laptop XPTO</h4>
-                    <div class="container" style="margin-left: 0.4em;">
-                        <div class="row">
-                            <img class="card-img-top product_img" src="./images/img.png" alt="Card image cap">
-
-                            <div class="col-sm">
-                                <div><button class="btn addToCartBtn" onClick="addToCart(this)" type="submit" id="addToCart">                         <i class="fas fa-cart-plus"></i></div>
-                                <p style="margin-left: 0em; margin-bottom: 0; width: auto; height: auto;">Lorem ipsum
-                                    dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                                    ut
-                                    labore
-                                    et dolore
-                                    magna aliqua. Pulvinar neque laoreet suspendisse interdum consectetur. In aliquam
-                                    sem
-                                    fringilla
-                                    ut
-                                    morbi.
-                                    Turpis tincidunt id aliquet risus feugiat in ante metus dictum. Pellentesque id nibh
-                                    tortor
-                                    id.
-                                    Nisi
-                                    scelerisque eu ultrices vitae. Eget mauris pharetra et ultrices neque ornare.
-                                    Volutpat
-                                    diam
-                                    ut
-                                    venenatis
-                                    tellus in metus. Erat imperdiet sed euismod nisi. Diam maecenas sed enim ut sem
-                                    viverra
-                                    aliquet
-                                    eget
-                                    sit.
-                                    Cras ornare arcu dui vivamus arcu felis bibendum ut tristique.</p>
-                                <div class="rating mb-2">
-                                    <fieldset class="starsRating">
-                                        <label class="full" for="star5"></label>
-                                        <label class="half" for="star4half"></label>
-                                        <label class="full" for="star4"></label>
-                                        <label class="half marked" for="star3half"></label>
-                                        <label class="full marked" for="star3"></label>
-                                        <label class="half marked" for="star2half"></label>
-                                        <label class="full marked" for="star2"></label>
-                                        <label class="half marked" for="star1half"></label>
-                                        <label class="full marked" for="star1"></label>
-                                        <label class="half marked" for="star0half"></label>
-                                    </fieldset>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div id="list-item-2" class="card product_card" style="margin-top: 2.5em;">
-                    <h4 class="product_name">God's Autobiography</h4>
-                    <div class="container" style="margin-left: 0.4em;">
-                        <div class="row">
-                            <img class="card-img-top product_img" src="./images/img.png" alt="Card image cap">
-
-                            <div class="col-sm">
-                                <div><button class="btn addToCartBtn" onClick="addToCart(this)" type="submit" id="addToCart">                         
-                                    <i class="fas fa-cart-plus"></i></div>
-                                <p style="margin-left: 0em; margin-bottom: 0; width: auto; height: auto;">Lorem ipsum
-                                    dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                                    ut
-                                    labore
-                                    et dolore
-                                    magna aliqua. Pulvinar neque laoreet suspendisse interdum consectetur. In aliquam
-                                    sem
-                                    fringilla
-                                    ut
-                                    morbi.
-                                    Turpis tincidunt id aliquet risus feugiat in ante metus dictum. Pellentesque id nibh
-                                    tortor
-                                    id.
-                                    Nisi
-                                    scelerisque eu ultrices vitae. Eget mauris pharetra et ultrices neque ornare.
-                                    Volutpat
-                                    diam
-                                    ut
-                                    venenatis
-                                    tellus in metus. Erat imperdiet sed euismod nisi. Diam maecenas sed enim ut sem
-                                    viverra
-                                    aliquet
-                                    eget
-                                    sit.
-                                    Cras ornare arcu dui vivamus arcu felis bibendum ut tristique.</p>
-                                <div class="rating mb-2">
-                                    <fieldset class="starsRating">
-                                        <label class="full marked" for="star5"></label>
-                                        <label class="half marked" for="star4half"></label>
-                                        <label class="full marked" for="star4"></label>
-                                        <label class="half marked" for="star3half"></label>
-                                        <label class="full marked" for="star3"></label>
-                                        <label class="half marked" for="star2half"></label>
-                                        <label class="full marked" for="star2"></label>
-                                        <label class="half marked" for="star1half"></label>
-                                        <label class="full marked" for="star1"></label>
-                                        <label class="half marked" for="star0half"></label>
-                                    </fieldset>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div id="list-item-3" class="card product_card" style="margin-top: 2.5em;">
-                    <h4 class="product_name">Overpriced Phones</h4>
-                    <div class="container" style="margin-left: 0.4em;">
-                        <div class="row">
-                            <img class="card-img-top product_img" src="./images/img.png" alt="Card image cap">
-
-                            <div class="col-sm">
-                                <div><button class="btn addToCartBtn" onClick="addToCart(this)" type="submit" id="addToCart">                         <i class="fas fa-cart-plus"></i></div>
-                                <p style="margin-left: 0em; margin-bottom: 0; width: auto; height: auto;">Lorem ipsum
-                                    dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                                    ut
-                                    labore
-                                    et dolore
-                                    magna aliqua. Pulvinar neque laoreet suspendisse interdum consectetur. In aliquam
-                                    sem
-                                    fringilla
-                                    ut
-                                    morbi.
-                                    Turpis tincidunt id aliquet risus feugiat in ante metus dictum. Pellentesque id nibh
-                                    tortor
-                                    id.
-                                    Nisi
-                                    scelerisque eu ultrices vitae. Eget mauris pharetra et ultrices neque ornare.
-                                    Volutpat
-                                    diam
-                                    ut
-                                    venenatis
-                                    tellus in metus. Erat imperdiet sed euismod nisi. Diam maecenas sed enim ut sem
-                                    viverra
-                                    aliquet
-                                    eget
-                                    sit.
-                                    Cras ornare arcu dui vivamus arcu felis bibendum ut tristique.</p>
-                                <div class="rating mb-2">
-                                    <fieldset class="starsRating">
-                                        <label class="full" for="star5"></label>
-                                        <label class="half" for="star4half"></label>
-                                        <label class="full marked" for="star4"></label>
-                                        <label class="half marked" for="star3half"></label>
-                                        <label class="full marked" for="star3"></label>
-                                        <label class="half marked" for="star2half"></label>
-                                        <label class="full marked" for="star2"></label>
-                                        <label class="half marked" for="star1half"></label>
-                                        <label class="full marked" for="star1"></label>
-                                        <label class="half marked" for="star0half"></label>
-                                    </fieldset>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div id="list-item-4" class="card product_card" style="margin-top: 2.5em; padding-bottom: 2em;">
-                    <h4 class="product_name">PsycMixTape</h4>
-                    <div class="container" style="margin-left:0.4em;">
-                        <div class="row">
-                            <img class="card-img-top product_img" src="./images/img.png" alt="Card image cap">
-
-                            <div class="col-sm">
-                                <div><button class="btn addToCartBtn" onClick="addToCart(this)" type="submit" id="addToCart">                         <i class="fas fa-cart-plus"></i></div>
-                                <p style="margin-left: 0em; margin-bottom: 0; width: auto; height: auto;">Lorem ipsum
-                                    dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                                    ut
-                                    labore
-                                    et dolore
-                                    magna aliqua. Pulvinar neque laoreet suspendisse interdum consectetur. In aliquam
-                                    sem
-                                    fringilla
-                                    ut
-                                    morbi.
-                                    Turpis tincidunt id aliquet risus feugiat in ante metus dictum. Pellentesque id nibh
-                                    tortor
-                                    id.
-                                    Nisi
-                                    scelerisque eu ultrices vitae. Eget mauris pharetra et ultrices neque ornare.
-                                    Volutpat
-                                    diam
-                                    ut
-                                    venenatis
-                                    tellus in metus. Erat imperdiet sed euismod nisi. Diam maecenas sed enim ut sem
-                                    viverra
-                                    aliquet
-                                    eget
-                                    sit.
-                                    Cras ornare arcu dui vivamus arcu felis bibendum ut tristique.</p>
-                                <div class="rating mb-2">
-                                    <fieldset class="starsRating">
-                                        <label class="full" for="star5"></label>
-                                        <label class="half" for="star4half"></label>
-                                        <label class="full" for="star4"></label>
-                                        <label class="half" for="star3half"></label>
-                                        <label class="full" for="star3"></label>
-                                        <label class="half" for="star2half"></label>
-                                        <label class="full marked" for="star2"></label>
-                                        <label class="half marked" for="star1half"></label>
-                                        <label class="full marked" for="star1"></label>
-                                        <label class="half marked" for="star0half"></label>
-                                    </fieldset>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
     </div>
     <div class="d-flex justify-content-around text-white p-5" id="footer">
         <div class="d-flex flex-column">
