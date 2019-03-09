@@ -18,3 +18,7 @@
         margin-top:2em;
     }
 }
+
+.loginForm {
+    border: 1px solid var(--var-thir-color);
+}

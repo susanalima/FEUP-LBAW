@@ -18,15 +18,6 @@ html {
     height: 100%;
 }
 
-.chat {
-    list-style: none;
-    padding-left: 0em;
-}
-
-.btn-group-dark button:hover {
-    color: var(--var-text);
-}
-
 #edition #dropdownMenuButton {
     width: 100%;
 }

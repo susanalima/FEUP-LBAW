@@ -12,7 +12,7 @@
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
-    crossorigin="anonymous" />
+        crossorigin="anonymous" />
 
     <!-- Roboto Font -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,400i" rel="stylesheet" />
@@ -21,13 +21,14 @@
     <link rel="stylesheet" href="css/root.css" />
     <link rel="stylesheet" href="css/topBar.css" />
     <link rel="stylesheet" href="css/styles.css" />
-    
+
 
     <!--<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">-->
     <title>Checkout Shipping</title>
 </head>
 
 <body>
+    <div class="mainContent">
 
     <!-- Image and text -->
     <nav class="navbar navbar-expand-lg navbar-light">
@@ -41,7 +42,7 @@
                 aria-label="Toggle navigation"
             >
             </button>
-    
+
             <div class="collapse navbar-collapse d-flex justify-content-between" id="navbarSupportedContent">
                 <nav class="navbar d-flex navbar-light" id="navbarLogo">
                     <a class="navbar-brand" href="./index.html">
@@ -52,13 +53,8 @@
                 <div class="search-bar navbar-nav" id="searchNavContainer">
                     <div class="input-group" id="searchNav">
                         <div class=" input-group-prepend" id="searchCategorySelector">
-                            <button
-                                class="btn dropdown-toggle search-category"
-                                type="button"
-                                data-toggle="dropdown"
-                                aria-haspopup="true"
-                                aria-expanded="false"
-                            >
+                            <button class="btn dropdown-toggle search-category" type="button" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
                                 All
                             </button>
                             <div class="dropdown-menu search-category-drop">
@@ -69,12 +65,12 @@
                         </div>
                         <form class="form-inline my-lg-0 d-flex justify-content-between">
                             <input class="form-control" type="text" placeholder="Search" id="searchBar" />
-    
+
                             <button id="searchBtn" class="fas fa-search" type="submit" id="searchBtn"></button>
                         </form>
                     </div>
                 </div>
-    
+
                 <nav class="nav-item text-right" id="accountLinks">
                     <a class="nav-link" href="clientAccount.html" tabindex="-1" aria-disabled="true">Your Account</a>
                 </nav>
@@ -90,9 +86,9 @@
                     <li class="breadcrumb-item"><a href="checkoutConfirmation.html">5.Confirmation</a></li>
             </ol>
         </nav>
-  <div id="listItems" class="card">
+        <div id="listItems" class="card">
             <div class="card-body m-auto checkoutListCards">
-                 <h2 class="m-5">Select a shipping method for your purchase!</h2>
+                <h2 class="m-5">Select a shipping method for your purchase!</h2>
                 <div class="d-flex align-items-center justify-content-start flex-wrap m-5">
                     <div class="d-flex flex-column card addresses checkoutCard">
                         <div class="card-body">
@@ -102,7 +98,7 @@
                         </div>
                         <button type="button" class="btn btnAction btn-sm  mb-4 mx-3">Ship!</button>
                     </div>
-                    <div class="d-flex flex-column card checkoutCard" >
+                    <div class="d-flex flex-column card checkoutCard">
                         <div class="card-body">
                             <h2 class="card-title mb-3 text-muted">Urgent</h2>
                             <p class="card-text">Delivered within 5 days after purchase</p>
@@ -132,18 +128,14 @@
     </div>
 
 
-
-
-
-
     <div class="d-flex justify-content-around text-white p-5" id="footer">
-        <div class="d-flex flex-column">
-            <a href="#">Help</a>
-            <a href="#">Contacts</a>
-            <a href="#">FAQs</a>
+            <div class="d-flex flex-column">
+                <a href="./help.html#support">Help</a>
+                <a href="./help.html#contacts">Contacts</a>
+                <a href="./help.html#FAQ">FAQs</a>
+            </div>
+            <h4 class="align-self-end ">&copy; 2019 PuzzleWood.pt. All Rights Reserved.</h4>
         </div>
-        <h4 class="align-self-end ">&copy; 2019 PuzzleWood.pt. All Rights Reserved.</h4>
-    </div>
     <!-- Footer End -->
 
     <!-- Optional JavaScript -->
