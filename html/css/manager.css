@@ -11,3 +11,7 @@
 .chat-body .glyphicon-time {
   margin-right: 0.5em;
 }
+
+#clientManagerMessages {
+  width: 76%;
+}
