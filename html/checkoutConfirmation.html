@@ -79,97 +79,77 @@
     </nav>
     <div id="listItems" class="card">
         <div class="card-body m-auto checkoutListCards">
-            <h2 class="m-5">Select or add an address where your purchase will be delivered!</h2>
-            <div class="d-flex align-items-center justify-content-start flex-wrap m-5">
-                <div class="d-flex flex-column card bg-light align-items-center justify-content-center checkoutCard"
-                    data-toggle="modal" data-target="#deliveryAddressModel">
-                    <p> <i class="fas fa-plus m-2"></i>Other address</p>
-                </div>
-
-                <!-- Add New Address Modal -->
-                <div class="modal fade" id="deliveryAddressModel" tabindex="-1" role="dialog" aria-labelledby="deliveryAddressModelLabel"
-                    aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="deliveryAddressModelLabel">Other Delivery Address</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
+            <div class="d-flex align-items-center justify-content-start flex-wrap mx-5">
+                    <div class="d-flex flex-column card checkoutCard">
+                            <div class="card-body">
+                                <h2 class="card-title mb-3 text-muted">Products</h2>
+                                <div style="overflow-y: scroll; overflow-x: hidden; max-height: 7.5em;">
+                                    <dl class="row">
+                                        <dt class="col-sm-8">God's Autobiography</dt>
+                                        <dd class="col-sm-4 text-truncate">29.99€</dd>
+                                        <dt class="col-sm-8">Overpriced Phones</dt>
+                                        <dd class="col-sm-4">199.49€</dd>
+                                        <dt class="col-sm-8">PsycMixTape</dt>
+                                        <dd class="col-sm-4">59.99€</dd>
+                                        <dt class="col-sm-8">God's Autobiography</dt>
+                                        <dd class="col-sm-4 text-truncate">29.99€</dd>
+                                        <dt class="col-sm-8">Overpriced Phones</dt>
+                                        <dd class="col-sm-4">199.49€</dd>
+                                        <dt class="col-sm-8">PsycMixTape</dt>
+                                        <dd class="col-sm-4">59.99€</dd>
+                                        <dt class="col-sm-8">God's Autobiography</dt>
+                                        <dd class="col-sm-4 text-truncate">29.99€</dd>
+                                        <dt class="col-sm-8">Overpriced Phones</dt>
+                                        <dd class="col-sm-4">199.49€</dd>
+                                        <dt class="col-sm-8">PsycMixTape</dt>
+                                        <dd class="col-sm-4">59.99€</dd>
+                                    </dl>
+                                </div>
                             </div>
-                            <div class="modal-body">
-                                <form>
-                                    <div class="form-group">
-                                        <label>Address</label>
-                                        <div class="input-group flex-nowrap">
-                                            <input type="text" class="form-control" id="deliveryAddressName"
-                                                placeholder="Name" required>
-                                        </div>
-                                        <div class="input-group flex-nowrap mt-2">
-                                            <input type="text" class="form-control" id="deliveryAddressPostCode"
-                                                placeholder="Postcode" required>
-                                        </div>
-                                        <div class="input-group flex-nowrap mt-2">
-                                            <input type="text" class="form-control" id="deliveryAddressStreet"
-                                                placeholder="Street and number, P.O. box, c/o" required>
-                                        </div>
-                                        <div class="input-group flex-nowrap mt-2">
-                                            <input type="text" class="form-control" id="deliveryAddressApartment"
-                                                placeholder="Flat, suite, unit, floor, etc" required>
-                                        </div>
-                                        <div class="input-group flex-nowrap mt-2">
-                                            <input type="text" class="form-control" id="deliveryAddressTown"
-                                                placeholder="Town, City" required>
-                                            <input type="text" class="form-control" id="deliveryAddressCountry"
-                                                placeholder="Country" required>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-outline-danger btn-sm" data-dismiss="modal">Cancel</button>
-                                <button type="button" class="btn btn-outline-success btn-sm">Deliver here!</button>
-                            </div>
+                            <button type="button" class="btn btnAction btn-sm  mb-4 mx-3">Edit!</button>
                         </div>
-                    </div>
-                </div>
-                <!---->
-
                 <div class="d-flex flex-column card checkoutCard">
                     <div class="card-body ">
-                        <h2 class="card-title mb-3 text-muted">Hell</h2>
+                        <h2 class="card-title mb-3 text-muted">Delivery Address</h2>
                         <div class="card-text">
                                 <p>Alameda dos Jardins d'Arrábida 443</p>
                                 <p>4400-478 Porto</p>
                                 <p>Portugal</p>
                             </div>
                     </div>
-                    <button type="button" class="btn btnAction mary btn-sm  mb-4 mx-3">Deliver here!</button>
+                    <button type="button" class="btn btnAction mary btn-sm  mb-4 mx-3">Edit!</button>
                 </div>
 
+                <div class="d-flex flex-column card checkoutCard">
+                        <div class="card-body">
+                            <h2 class="card-title mb-3 text-muted">Payment Method
+                                <i class="float-right fab fa-cc-visa fa-2x"></i>
+                            </h2>
+                            
+                            <dl class="row">
+                                <dt class="col-sm-5">Name</dt>
+                                <dd class="col-sm-5 text-truncate">John Doe</dd>
+                                <dt class="col-sm-5">Ends in</dt>
+                                <dd class="col-sm-5">1111</dd>
+                                <dt class="col-sm-5">Expiration Date</dt>
+                                <dd class="col-sm-5">2019/11</dd>
+                            </dl>
+                            </div>
+                            <button type="button" class="btn btnAction btn-sm  mb-4 mx-3">Edit!</button>
+                    </div>
 
                 <div class="d-flex flex-column card checkoutCard">
                     <div class="card-body">
-                        <h2 class="card-title mb-3 text-muted">Work</h2>
+                        <h2 class="card-title mb-3 text-muted">Shipping Method</h2>
                         <div class="card-text">
-                                <p>R. Dr. Roberto Frias</p>
-                                <p>4200-465 Porto</p>
-                                <p>Portugal</p>
+                                <strong>Regular</strong>
+                                <p>Delivered within 15 days after purchase</p>
+                                <p>No additional costs!</p>
                             </div>
                     </div>
-                    <button type="button" class="btn btnAction btn-sm  mb-4 mx-3">Deliver here!</button>
+                    <button type="button" class="btn btnAction btn-sm  mb-4 mx-3">Edit!</button>
                 </div>
-                <div class="d-flex flex-column card checkoutCard">
-                    <div class="card-body">
-                        <h2 class="card-title mb-3 text-muted">Home</h2>
-                        <div class="card-text">
-                            <p>Alameda dos Jardins d'Arrábida 443</p>
-                            <p>4400-478 Porto</p>
-                            <p>Portugal</p>
-                        </div>
-                    </div>
-                    <button type="button" class="btn btnAction btn-sm  mb-4 mx-3">Deliver here!</button>
-                </div>
+
             </div>
         </div>
     </div>
@@ -185,8 +165,8 @@
                     </div>
                 </div>
             </div>
-            <button class="btn-outline-info back_button" type="button"> Back </button>
-            <button class="btn-outline-info next_button" type="button"> Next ></button>
+            <button class="btn-outline-info back_button" type="button"> Cancel </button>
+            <button class="btn-outline-info next_button" type="button"> Purchase! ></button>
         </div>
     </div>
     </div>
