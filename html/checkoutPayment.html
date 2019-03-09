@@ -38,10 +38,10 @@
 
 <body>
     <div class="mainContent">
-        <nav class="navbar navbar-expand-lg navbar-light mb-3">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            </button>
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        </button>
 
             <div class="collapse navbar-collapse d-flex justify-content-between" id="navbarSupportedContent">
                 <nav class="navbar d-flex navbar-light" id="navbarLogo">
@@ -86,14 +86,20 @@
             </ol>
         </nav>
 
-        <div id="listItems" class="card">
-            <div class="card-body m-auto checkoutListCards">
-                <h2 class="m-5">Select or add a card to make your purchase!</h2>
-                <div class="d-flex align-items-center justify-content-start flex-wrap m-5">
-                    <div class="d-flex flex-column card bg-light align-items-center justify-content-center checkoutCard"
-                        data-toggle="modal" data-target="#deliveryCardModel">
-                        <p> <i class="fas fa-plus m-2"></i>Other card</p>
-                    </div>
+            <nav class="nav-item text-right" id="accountLinks">
+                <a class="nav-link" href="clientAccount.html" tabindex="-1" aria-disabled="true">Your Account</a>
+            </nav>
+        </div>
+    </nav>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="checkoutProducts.html">1.Products</a></li>
+                <li class="breadcrumb-item"><a href="checkoutDelivery.html">2.Delivery</a></li>
+                <li class="breadcrumb-item active" aria-current="page">3.Payment</li>
+                <li class="breadcrumb-item"><a href="checkoutShipping.html">4.Shipping</a></li>
+                <li class="breadcrumb-item"><a href="checkoutConfirmation.html">5.Confirmation</a></li>
+        </ol>
+    </nav>
 
                     <!-- Add New Card Modal -->
                     <div class="modal fade" id="deliveryCardModel" tabindex="-1" role="dialog" aria-labelledby="deliveryCardModelLabel"
