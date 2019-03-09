@@ -133,16 +133,6 @@
     color: #ffed85;
 }
 
-
-
-#footer {
-    background-color: grey;
-}
-
-#footer a {
-    color: white;
-}
-
 .cancel_button{
     background-image: url('../images/cancel-icon.png');
     background-color: transparent;
