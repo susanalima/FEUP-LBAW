@@ -45,564 +45,564 @@
   <div class="mainContent">
     <!-- Image and text -->
     <nav class="navbar navbar-expand-lg navbar-light">
-        <button
-            class="navbar-toggler"
-            type="button"
-            data-toggle="collapse"
-            data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-        >
-        </button>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      </button>
 
-        <div class="collapse navbar-collapse d-flex justify-content-between" id="navbarSupportedContent">
-            <nav class="navbar d-flex navbar-light" id="navbarLogo">
-                <a class="navbar-brand" href="./index.html">
-                    <img src="./images/img.png" width="30" height="30" class="d-inline-block align-top" alt="" />
-                    PuzzleWood
-                </a>
-            </nav>
-        </div>
+      <div class="collapse navbar-collapse d-flex justify-content-between" id="navbarSupportedContent">
+        <nav class="navbar d-flex navbar-light" id="navbarLogo">
+          <a class="navbar-brand" href="./index.html">
+            <img src="./images/img.png" width="30" height="30" class="d-inline-block align-top" alt="" />
+            PuzzleWood
+          </a>
+        </nav>
+      </div>
     </nav>
 
     <div class="mx-auto" id="profile">
-    <h1 class="text-center p-3 mt-4">Your Account</h1>
+      <h1 class="text-center p-3 mt-4">Your Account</h1>
 
-    <div class="accordion pb-4" id="profileOptions">
+      <div class="accordion pb-4" id="profileOptions">
 
-      <div class="card">
-        <div class="card-header" id="infoHeading">
-          <h2 class="mb-0">
-            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#clientInfo"
-              aria-expanded="false" aria-controls="clientInfo">
-              Information
-            </button>
-          </h2>
-        </div>
-        <div id="clientInfo" class="collapse show" aria-labelledby="infoHeading" data-parent="#profileOptions">
-          <div class="card-body">
-            <div class="p-4 border border-ligh">
-              <p>Personal Information</p>
-              <div class="table-responsive">
-                <table class="table">
-                  <tbody>
-                    <tr>
-                      <td><b>Name</b></td>
-                      <td id="clientName">John Doe</td>
-
-                      <td>
-                        <div class="d-flex justify-content-center">
-                          <button type="button" class="btn btnOutlineAction btn-sm fas fa-edit" onclick='editClientName(this, "John Doe")'
-                            value="edit"></button>
+        <div class="card">
+          <div class="card-header" id="infoHeading">
+            <h2 class="mb-0">
+              <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#clientInfo"
+                aria-expanded="false" aria-controls="clientInfo">
+                Information
+              </button>
+            </h2>
+          </div>
+          <div id="clientInfo" class="collapse show" aria-labelledby="infoHeading" data-parent="#profileOptions">
+            <div class="card-body">
+              <div class="card p-3">
+                <div class="card-body">
+                  <p>Personal Information</p>
+                  <div class="table-responsive">
+                    <table class="table">
+                      <tbody>
+                        <tr>
+                          <td><b>Name</b></td>
+                          <td id="clientName">John Doe</td>
+                          <td>
+                            <div class="d-flex justify-content-center">
+                              <button type="button" class="btn btnOutlineAction fas fa-edit" onclick='editClientName(this, "John Doe")'
+                                value="edit"></button>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td><b>Email</b></td>
+                          <td> johnnyDoe@example.com</td>
+                          <td>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+              <div class="card mt-3 p-3">
+                <div class="card-body">
+                  <p>Addresses </p>
+                  <div class="table-responsive">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th scope="col">Name</th>
+                          <th scope="col">Address</th>
+                          <th scope="col"></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Hell</td>
+                          <td>Alameda dos Jardins d'Arrábida 443, 4400-478 Porto, Portugal</td>
+                          <td>
+                            <div class="d-flex justify-content-center">
+                              <button type="button" class="btn btnOutlineAction m-2 fas fa-edit" data-toggle="modal"
+                                data-target="#editHellAddress"></button>
+                              <div class="modal fade" id="editHellAddress" tabindex="-1" role="dialog" aria-labelledby="editHellAddressLabel"
+                                aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                  <div class="modal-content">
+                                    <div class="modal-header">
+                                      <h5 class="modal-title" id="editHellAddress">Edit Hell Address</h5>
+                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                      </button>
+                                    </div>
+                                    <div class="modal-body">
+                                      <form>
+                                        <div class="form-group">
+                                          <label>Address</label>
+                                          <div class="input-group flex-nowrap">
+                                            <input type="text" class="form-control" id="editHellAddressName"
+                                              placeholder="Name" value="Hell" required>
+                                          </div>
+                                          <div class="input-group flex-nowrap mt-2">
+                                            <input type="text" class="form-control" id="editHellAddressPostCode"
+                                              placeholder="Postcode" value="4400-478 " required>
+                                          </div>
+                                          <div class="input-group flex-nowrap mt-2">
+                                            <input type="text" class="form-control" id="editHellAddressStreet"
+                                              placeholder="Street and number, P.O. box, c/o" value="Alameda dos Jardins d'Arrábida"
+                                              required>
+                                          </div>
+                                          <div class="input-group flex-nowrap mt-2">
+                                            <input type="text" class="form-control" id="editHellAddressApartment"
+                                              placeholder="Flat, suite, unit, floor, etc" value="443" required>
+                                          </div>
+                                          <div class="input-group flex-nowrap mt-2">
+                                            <input type="text" class="form-control" id="editHellAddressTown"
+                                              placeholder="Town, City" value="Porto" required>
+                                            <input type="text" class="form-control" id="editHellAddressCountry"
+                                              placeholder="Country" value="Portugal" required>
+                                          </div>
+                                        </div>
+                                      </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                      <button type="button" class="btn btn-outline-danger btn-sm" data-dismiss="modal">Cancel</button>
+                                      <button type="button" class="btn btn-outline-success btn-sm">Finish</button>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <button type="button" class="btn btn-outline-danger m-2 fas fa-trash-alt"></button>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Work</td>
+                          <td>R. Dr. Roberto Frias, 4200-465 Porto, Portugal</td>
+                          <td>
+                            <div class="d-flex justify-content-center">
+                              <button type="button" class="btn btnOutlineAction m-2 fas fa-edit" data-toggle="modal"
+                                data-target="#editWorkAddress"></button>
+                              <div class="modal fade" id="editWorkAddress" tabindex="-1" role="dialog" aria-labelledby="editWorkAddressLabel"
+                                aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                  <div class="modal-content">
+                                    <div class="modal-header">
+                                      <h5 class="modal-title" id="editWorkAddress">Edit Work Address</h5>
+                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                      </button>
+                                    </div>
+                                    <div class="modal-body">
+                                      <form>
+                                        <div class="form-group">
+                                          <label>Address</label>
+                                          <div class="input-group flex-nowrap">
+                                            <input type="text" class="form-control" id="editWorkAddressName"
+                                              placeholder="Name" value="Work" required>
+                                          </div>
+                                          <div class="input-group flex-nowrap mt-2">
+                                            <input type="text" class="form-control" id="editWorkAddressPostCode"
+                                              placeholder="Postcode" value="4200-465" required>
+                                          </div>
+                                          <div class="input-group flex-nowrap mt-2">
+                                            <input type="text" class="form-control" id="editWorkAddressStreet"
+                                              placeholder="Street and number, P.O. box, c/o" value="R. Dr. Roberto Frias"
+                                              required>
+                                          </div>
+                                          <div class="input-group flex-nowrap mt-2">
+                                            <input type="text" class="form-control" id="editWorkAddressApartment"
+                                              placeholder="Flat, suite, unit, floor, etc" value="s/n" required>
+                                          </div>
+                                          <div class="input-group flex-nowrap mt-2">
+                                            <input type="text" class="form-control" id="editWorkAddressTown"
+                                              placeholder="Town, City" value="Porto" required>
+                                            <input type="text" class="form-control" id="editWorkAddressCountry"
+                                              placeholder="Country" value="Portugal" required>
+                                          </div>
+                                        </div>
+                                      </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                      <button type="button" class="btn btn-outline-danger btn-sm" data-dismiss="modal">Cancel</button>
+                                      <button type="button" class="btn btn-outline-success btn-sm">Finish</button>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <button type="button" class="btn btn-outline-danger m-2 fas fa-trash-alt"></button>
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <button type="button" class="btn btn-outline-success mt-2 btn-sm" data-toggle="modal" data-target="#addAddress">Add
+                    address</button>
+                  <div class="modal fade" id="addAddress" tabindex="-1" role="dialog" aria-labelledby="addAddressLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="addAddressLabel">New Address</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
                         </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td><b>Email</b></td>
-                      <td> johnnyDoe@example.com</td>
-                      <td>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
+                        <div class="modal-body">
+                          <form>
+                            <div class="form-group">
+                              <label>Address</label>
+                              <div class="input-group flex-nowrap">
+                                <input type="text" class="form-control" id="addAddressName" placeholder="Name" required>
+                              </div>
+                              <div class="input-group flex-nowrap mt-2">
+                                <input type="text" class="form-control" id="addAddressPostCode" placeholder="Postcode"
+                                  required>
+                              </div>
+                              <div class="input-group flex-nowrap mt-2">
+                                <input type="text" class="form-control" id="addAddressStreet" placeholder="Street and number, P.O. box, c/o"
+                                  required>
+                              </div>
+                              <div class="input-group flex-nowrap mt-2">
+                                <input type="text" class="form-control" id="addAddressApartment" placeholder="Flat, suite, unit, floor, etc"
+                                  required>
+                              </div>
+                              <div class="input-group flex-nowrap mt-2">
+                                <input type="text" class="form-control" id="addAddressTown" placeholder="Town, City"
+                                  required>
+                                <input type="text" class="form-control" id="addAddressCountry" placeholder="Country"
+                                  required>
+                              </div>
+                            </div>
+                          </form>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-outline-danger btn-sm" data-dismiss="modal">Cancel</button>
+                          <button type="button" class="btn btn-outline-success btn-sm">Finish</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <button type="button" class="btn btn-outline-danger float-right m-2 btn-sm ">Delete all</button>
+                </div>
+              </div>
+              <div class="card mt-3 p-3">
+                <div class="card-body">
+                <p>Cards </p>
+                <div class="table-responsive">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">Card Number</th>
+                        <th scope="col">Expiration Date</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Type</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>1111</td>
+                        <td>2019/11</td>
+                        <td>John Doe</td>
+                        <td><i class="fab fa-cc-visa fa-2x"></i></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <button type="button" class="btn btn-outline-success mt-2 btn-sm" data-toggle="modal" data-target="#addCard">Add
+                  card</button>
+                <div class="modal fade" id="addCard" tabindex="-1" role="dialog" aria-labelledby="addCardLabel"
+                  aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="addCardLabel">New Card</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <form>
+                          <div class="row">
+                            <div class="col-md-7">
+                              <div class="form-group">
+                                <label for="cardNumber">Card Number</label>
+                                <input type="tel" class="form-control" id="cardNumber" placeholder="Valid Card Number"
+                                  required>
+                              </div>
+                            </div>
+                            <div class=" col-md-5 pull-right">
+                              <div class="form-group">
+                                <label for="cardName">Card Name</label>
+                                <input type="tel" class="form-control" id="cardName" placeholder="Card Name" required />
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-md-7">
+                              <div class="form-group">
+                                <label for="cardExpDate">Expiration Date</label>
+                                <input type="tel" class="form-control" id="cardExpDate" placeholder="YYYY / MM"
+                                  required />
+                              </div>
+                            </div>
+                            <div class="col-md-5 pull-right">
+                              <div class="form-group">
+                                <label for="cardCVC">CV Code</label>
+                                <input type="tel" class="form-control" id="cardCVC" placeholder="CVC" required />
+                              </div>
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-danger btn-sm" data-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-outline-success btn-sm">Finish</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
+          </div>
+            <div class="d-flex  flex-column float-right">
+              <button type="button" class="btn btnOutlineAction mr-4 mb-2 btn-sm " data-toggle="modal" data-target="#changePwdModal">Change
+                Password</button>
+              <button type="button" class="btn btn-outline-danger mr-4 mb-3 btn-sm">Delete Account</button>
+            </div>
 
-            <div class="mt-3 p-4 border border-ligh">
-              <p>Addresses </p>
+            <div class="modal fade" id="changePwdModal" tabindex="-1" role="dialog" aria-labelledby="changePwdModalLabel"
+              aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="changePwdModalLabel">Change Password</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <form>
+                      <div class="form-group row">
+                        <label for="clientCurrentPassword" class="col-sm-4 col-form-label pr-0"><b>Current Password</b></label>
+                        <div class="col-sm-8">
+                          <input type="password" class="form-control" id="clientCurrentPassword" placeholder="Password">
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="clientNewPassword" class="col-sm-4 col-form-label pr-0"><b>New Password</b></label>
+                        <div class="col-sm-8">
+                          <input type="password" class="form-control" id="clientNewPassword" placeholder="Password">
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="clientConfirmPassword" class="col-sm-4 col-form-label pr-0"><b>Confirm Password</b></label>
+                        <div class="col-sm-8">
+                          <input type="password" class="form-control" id="clientConfirmPassword" placeholder="Password">
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-danger btn-sm" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-outline-success btn-sm">Finish</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header" id="notfsHeading">
+            <h2 class="mb-0 d-flex justify-content-between align-items-center">
+              <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#clientNotfs"
+                aria-expanded="false" aria-controls="clientNotfs">
+                Notifications
+              </button>
+            </h2>
+          </div>
+          <div id="clientNotfs" class="collapse" aria-labelledby="notfsHeading" data-parent="#profileOptions">
+            <div class="card-body">
+              <!--info alert-->
+              <div class="alert alert-info">
+                <div class="container">
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                  <b>2019-02-22 :</b> Jane Doe answered your question on bla bla...
+                </div>
+              </div>
+              <!--primary alert-->
+              <div class="alert alert-primary">
+                <div class="container">
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                  <b>2019-02-21 :</b> 90% off in laptops! Don't miss this opportunity!
+                </div>
+              </div>
+              <!--success alert-->
+              <div class="alert alert-success">
+                <div class="container">
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                  <b>2019-02-21 :</b> Purchase of shopping cart #3 successfull
+                </div>
+              </div>
+              <!--warning alert-->
+              <div class="alert alert-warning">
+                <div class="container">
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                  <b>2019-02-19 :</b> Your account was blocked, contact support ASAP
+                </div>
+              </div>
+              <!--info danger-->
+              <div class="alert alert-danger">
+                <div class="container">
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                  <b>2019-02-19 :</b> Invalid purchase (nao sei se este se aplica)
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header" id="purchaseHistHeading">
+            <h2 class="mb-0">
+              <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#clientPurchaseHist"
+                aria-expanded="false" aria-controls="clientPurchaseHist">
+                Purchase History
+              </button>
+            </h2>
+          </div>
+          <div id="clientPurchaseHist" class="collapse" aria-labelledby="purchaseHistHeading" data-parent="#profileOptions">
+            <div class="card-body">
               <div class="table-responsive">
-                <table class="table">
+                <table class="table text-center">
                   <thead>
                     <tr>
-                      <th scope="col">Name</th>
-                      <th scope="col">Address</th>
+                      <th scope="col">Date</th>
+                      <th scope="col">Total Price</th>
                       <th scope="col"></th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
-                      <td>Hell</td>
-                      <td>Alameda dos Jardins d'Arrábida 443, 4400-478 Porto, Portugal</td>
+                      <td>2012-03-11</td>
+                      <td>14.89€</td>
                       <td>
-                        <div class="d-flex justify-content-center">
-                          <button type="button" class="btn btnOutlineAction btn-sm m-2 fas fa-edit" data-toggle="modal"
-                            data-target="#editHellAddress"></button>
-                          <div class="modal fade" id="editHellAddress" tabindex="-1" role="dialog" aria-labelledby="editHellAddressLabel"
-                            aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                              <div class="modal-content">
-                                <div class="modal-header">
-                                  <h5 class="modal-title" id="editHellAddress">Edit Hell Address</h5>
-                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                  </button>
-                                </div>
-                                <div class="modal-body">
-                                  <form>
-                                    <div class="form-group">
-                                      <label>Address</label>
-                                      <div class="input-group flex-nowrap">
-                                        <input type="text" class="form-control" id="editHellAddressName" placeholder="Name"
-                                          value="Hell" required>
-                                      </div>
-                                      <div class="input-group flex-nowrap mt-2">
-                                        <input type="text" class="form-control" id="editHellAddressPostCode"
-                                          placeholder="Postcode" value="4400-478 " required>
-                                      </div>
-                                      <div class="input-group flex-nowrap mt-2">
-                                        <input type="text" class="form-control" id="editHellAddressStreet" placeholder="Street and number, P.O. box, c/o"
-                                          value="Alameda dos Jardins d'Arrábida" required>
-                                      </div>
-                                      <div class="input-group flex-nowrap mt-2">
-                                        <input type="text" class="form-control" id="editHellAddressApartment"
-                                          placeholder="Flat, suite, unit, floor, etc" value="443" required>
-                                      </div>
-                                      <div class="input-group flex-nowrap mt-2">
-                                        <input type="text" class="form-control" id="editHellAddressTown" placeholder="Town, City"
-                                          value="Porto" required>
-                                        <input type="text" class="form-control" id="editHellAddressCountry" placeholder="Country"
-                                          value="Portugal" required>
-                                      </div>
-                                    </div>
-                                  </form>
-                                </div>
-                                <div class="modal-footer">
-                                  <button type="button" class="btn btn-outline-danger btn-sm" data-dismiss="modal">Cancel</button>
-                                  <button type="button" class="btn btn-outline-success btn-sm">Finish</button>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <button type="button" class="btn btn-outline-danger btn-sm m-2 fas fa-trash-alt"></button>
-                        </div>
+                        <a class="btn btn-outline-success btn-sm m-2" href="#" role="button">View Card</a>
                       </td>
                     </tr>
                     <tr>
-                      <td>Work</td>
-                      <td>R. Dr. Roberto Frias, 4200-465 Porto, Portugal</td>
+                      <td>2017-02-11</td>
+                      <td>109.99€</td>
                       <td>
-                        <div class="d-flex justify-content-center">
-                          <button type="button" class="btn btnOutlineAction btn-sm m-2 fas fa-edit" data-toggle="modal"
-                            data-target="#editWorkAddress"></button>
-                          <div class="modal fade" id="editWorkAddress" tabindex="-1" role="dialog" aria-labelledby="editWorkAddressLabel"
-                            aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                              <div class="modal-content">
-                                <div class="modal-header">
-                                  <h5 class="modal-title" id="editWorkAddress">Edit Work Address</h5>
-                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                  </button>
-                                </div>
-                                <div class="modal-body">
-                                  <form>
-                                    <div class="form-group">
-                                      <label>Address</label>
-                                      <div class="input-group flex-nowrap">
-                                        <input type="text" class="form-control" id="editWorkAddressName" placeholder="Name"
-                                          value="Work" required>
-                                      </div>
-                                      <div class="input-group flex-nowrap mt-2">
-                                        <input type="text" class="form-control" id="editWorkAddressPostCode"
-                                          placeholder="Postcode" value="4200-465" required>
-                                      </div>
-                                      <div class="input-group flex-nowrap mt-2">
-                                        <input type="text" class="form-control" id="editWorkAddressStreet" placeholder="Street and number, P.O. box, c/o"
-                                          value="R. Dr. Roberto Frias" required>
-                                      </div>
-                                      <div class="input-group flex-nowrap mt-2">
-                                        <input type="text" class="form-control" id="editWorkAddressApartment"
-                                          placeholder="Flat, suite, unit, floor, etc" value="s/n" required>
-                                      </div>
-                                      <div class="input-group flex-nowrap mt-2">
-                                        <input type="text" class="form-control" id="editWorkAddressTown" placeholder="Town, City"
-                                          value="Porto" required>
-                                        <input type="text" class="form-control" id="editWorkAddressCountry" placeholder="Country"
-                                          value="Portugal" required>
-                                      </div>
-                                    </div>
-                                  </form>
-                                </div>
-                                <div class="modal-footer">
-                                  <button type="button" class="btn btn-outline-danger btn-sm" data-dismiss="modal">Cancel</button>
-                                  <button type="button" class="btn btn-outline-success btn-sm">Finish</button>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <button type="button" class="btn btn-outline-danger btn-sm m-2 fas fa-trash-alt"></button>
-                        </div>
+                        <a class="btn btn-outline-success btn-sm m-2" href="#" role="button">View Card</a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>2019-01-21</td>
+                      <td>999.99€</td>
+                      <td>
+                        <a class="btn btn-outline-success btn-sm m-2" href="#" role="button">View Card</a>
                       </td>
                     </tr>
                   </tbody>
                 </table>
               </div>
-              <button type="button" class="btn btn-outline-success mt-2 btn-sm" data-toggle="modal" data-target="#addAddress">Add
-                address</button>
-              <div class="modal fade" id="addAddress" tabindex="-1" role="dialog" aria-labelledby="addAddressLabel"
-                aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title" id="addAddressLabel">New Address</h5>
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
-                    </div>
-                    <div class="modal-body">
-                      <form>
-                        <div class="form-group">
-                          <label>Address</label>
-                          <div class="input-group flex-nowrap">
-                            <input type="text" class="form-control" id="addAddressName" placeholder="Name" required>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header" id="wishListsHeading">
+              <h2 class="mb-0">
+                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#clientWishLists"
+                  aria-expanded="false" aria-controls="clientWishLists">
+                  Wish Lists
+                </button>
+              </h2>
+            </div>
+            <div id="clientWishLists" class="collapse" aria-labelledby="wishListsHeading" data-parent="#profileOptions">
+              <div class="card-body">
+                <div class="table-responsive">
+                  <table class="table">
+                    <tbody>
+                      <tr>
+                        <th scope="row">1</th>
+                        <td><b>When I'm a millionaire</b></td>
+                        <td>Things I'm going to buy when I'm a millionaire!!!!!!!!!!!</td>
+                        <td>
+                          <div class="d-flex justify-content-center">
+                            <button type="button" class="btn btnOutlineAction m-2 fas fa-share-alt"></button>
+                            <button type="button" class="btn btn-outline-danger m-2 fas fa-trash-alt"></button>
                           </div>
-                          <div class="input-group flex-nowrap mt-2">
-                            <input type="text" class="form-control" id="addAddressPostCode" placeholder="Postcode"
-                              required>
+                        </td>
+                      </tr>
+                      <tr>
+                        <th scope="row">2</th>
+                        <td><b>Birthday</b></td>
+                        <td>Anniversary gifts</td>
+                        <td>
+                          <div class="d-flex justify-content-center">
+                            <button type="button" class="btn btnOutlineAction  m-2 fas fa-share-alt"></button>
+                            <button type="button" class="btn btn-outline-danger m-2 fas fa-trash-alt"></button>
                           </div>
-                          <div class="input-group flex-nowrap mt-2">
-                            <input type="text" class="form-control" id="addAddressStreet" placeholder="Street and number, P.O. box, c/o"
-                              required>
+                        </td>
+                      </tr>
+                      <tr>
+                        <th scope="row">3</th>
+                        <td><b>School</b></td>
+                        <td>Stuff I have to buy for school as soon as I have money</td>
+                        <td>
+                          <div class="d-flex justify-content-center">
+                            <button type="button" class="btn btnOutlineAction m-2 fas fa-share-alt"></button>
+                            <button type="button" class="btn btn-outline-danger m-2 fas fa-trash-alt"></button>
                           </div>
-                          <div class="input-group flex-nowrap mt-2">
-                            <input type="text" class="form-control" id="addAddressApartment" placeholder="Flat, suite, unit, floor, etc"
-                              required>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <button type="button" class="btn btn-outline-success m-2 btn-sm " data-toggle="modal" data-target="#createWListModal">Add
+                  Wish List</button>
+                <div class="modal fade" id="createWListModal" tabindex="-1" role="dialog" aria-labelledby="createWListModalLabel"
+                  aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="createWListModalLabel">New Wish List</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <form>
+                          <div class="form-group">
+                            <label for="wishListName" class="col-form-label">Name</label>
+                            <input type="text" class="form-control" id="wishListName">
                           </div>
-                          <div class="input-group flex-nowrap mt-2">
-                            <input type="text" class="form-control" id="addAddressTown" placeholder="Town, City"
-                              required>
-                            <input type="text" class="form-control" id="addAddressCountry" placeholder="Country"
-                              required>
+                          <div class="form-group">
+                            <label for="wishListDescription" class="col-form-label">Description</label>
+                            <textarea class="form-control" id="wishListDescription"></textarea>
                           </div>
-                        </div>
-                      </form>
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-outline-danger btn-sm" data-dismiss="modal">Cancel</button>
-                      <button type="button" class="btn btn-outline-success btn-sm">Finish</button>
+                        </form>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-danger btn-sm" data-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-outline-success btn-sm">Finish</button>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-              <button type="button" class="btn btn-outline-danger float-right m-2 btn-sm ">Delete all</button>
-            </div>
-            <div class="mt-3 p-4 border border-ligh">
-              <p>Cards </p>
-              <div class="table-responsive">
-                <table class="table">
-                  <thead>
-                    <tr>
-                      <th scope="col">Card Number</th>
-                      <th scope="col">Expiration Date</th>
-                      <th scope="col">Name</th>
-                      <th scope="col">Type</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>1111</td>
-                      <td>2019/11</td>
-                      <td>John Doe</td>
-                      <td><i class="fab fa-cc-visa fa-2x"></i></td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-              <button type="button" class="btn btn-outline-success mt-2 btn-sm" data-toggle="modal" data-target="#addCard">Add
-                card</button>
-              <div class="modal fade" id="addCard" tabindex="-1" role="dialog" aria-labelledby="addCardLabel"
-                aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title" id="addCardLabel">New Card</h5>
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
-                    </div>
-                    <div class="modal-body">
-                      <form>
-                        <div class="row">
-                          <div class="col-md-7">
-                            <div class="form-group">
-                              <label for="cardNumber">Card Number</label>
-                              <input type="tel" class="form-control" id="cardNumber" placeholder="Valid Card Number"
-                                required>
-                            </div>
-                          </div>
-                          <div class=" col-md-5 pull-right">
-                            <div class="form-group">
-                              <label for="cardName">Card Name</label>
-                              <input type="tel" class="form-control" id="cardName" placeholder="Card Name" required />
-                            </div>
-                          </div>
-                        </div>
-                        <div class="row">
-                          <div class="col-md-7">
-                            <div class="form-group">
-                              <label for="cardExpDate">Expiration Date</label>
-                              <input type="tel" class="form-control" id="cardExpDate" placeholder="YYYY / MM" required />
-                            </div>
-                          </div>
-                          <div class="col-md-5 pull-right">
-                            <div class="form-group">
-                              <label for="cardCVC">CV Code</label>
-                              <input type="tel" class="form-control" id="cardCVC" placeholder="CVC" required />
-                            </div>
-                          </div>
-                        </div>
-                      </form>
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-outline-danger btn-sm" data-dismiss="modal">Cancel</button>
-                      <button type="button" class="btn btn-outline-success btn-sm">Finish</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="d-flex  flex-column float-right">
-            <button type="button" class="btn btnOutlineAction mr-4 mb-2 btn-sm " data-toggle="modal" data-target="#changePwdModal">Change
-              Password</button>
-            <button type="button" class="btn btn-outline-danger mr-4 mb-3 btn-sm">Delete Account</button>
-          </div>
-
-          <div class="modal fade" id="changePwdModal" tabindex="-1" role="dialog" aria-labelledby="changePwdModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="changePwdModalLabel">Change Password</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <form>
-                    <div class="form-group row">
-                      <label for="clientCurrentPassword" class="col-sm-4 col-form-label pr-0"><b>Current Password</b></label>
-                      <div class="col-sm-8">
-                        <input type="password" class="form-control" id="clientCurrentPassword" placeholder="Password">
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <label for="clientNewPassword" class="col-sm-4 col-form-label pr-0"><b>New Password</b></label>
-                      <div class="col-sm-8">
-                        <input type="password" class="form-control" id="clientNewPassword" placeholder="Password">
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <label for="clientConfirmPassword" class="col-sm-4 col-form-label pr-0"><b>Confirm Password</b></label>
-                      <div class="col-sm-8">
-                        <input type="password" class="form-control" id="clientConfirmPassword" placeholder="Password">
-                      </div>
-                    </div>
-                  </form>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-outline-danger btn-sm" data-dismiss="modal">Cancel</button>
-                  <button type="button" class="btn btn-outline-success btn-sm">Finish</button>
-                </div>
+                <button type="button" class="btn btn-outline-danger float-right m-2 btn-sm">Delete all</button>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="card">
-        <div class="card-header" id="notfsHeading">
-          <h2 class="mb-0 d-flex justify-content-between align-items-center">
-            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#clientNotfs"
-              aria-expanded="false" aria-controls="clientNotfs">
-              Notifications
-            </button>
-          </h2>
-        </div>
-        <div id="clientNotfs" class="collapse" aria-labelledby="notfsHeading" data-parent="#profileOptions">
-          <div class="card-body">
-            <!--info alert-->
-            <div class="alert alert-info">
-              <div class="container">
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-                <b>2019-02-22 :</b> Jane Doe answered your question on bla bla...
-              </div>
-            </div>
-            <!--primary alert-->
-            <div class="alert alert-primary">
-              <div class="container">
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-                <b>2019-02-21 :</b> 90% off in laptops! Don't miss this opportunity!
-              </div>
-            </div>
-            <!--success alert-->
-            <div class="alert alert-success">
-              <div class="container">
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-                <b>2019-02-21 :</b> Purchase of shopping cart #3 successfull
-              </div>
-            </div>
-            <!--warning alert-->
-            <div class="alert alert-warning">
-              <div class="container">
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-                <b>2019-02-19 :</b> Your account was blocked, contact support ASAP
-              </div>
-            </div>
-            <!--info danger-->
-            <div class="alert alert-danger">
-              <div class="container">
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-                <b>2019-02-19 :</b> Invalid purchase (nao sei se este se aplica)
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-header" id="purchaseHistHeading">
-          <h2 class="mb-0">
-            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#clientPurchaseHist"
-              aria-expanded="false" aria-controls="clientPurchaseHist">
-              Purchase History
-            </button>
-          </h2>
-        </div>
-        <div id="clientPurchaseHist" class="collapse" aria-labelledby="purchaseHistHeading" data-parent="#profileOptions">
-          <div class="card-body">
-            <div class="table-responsive">
-              <table class="table">
-                <thead>
-                  <tr>
-                    <th scope="col">Date</th>
-                    <th scope="col">Total Price (€)</th>
-                    <th scope="col"></th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>2012-03-11</td>
-                    <td>14.89</td>
-                    <td>
-                      <a class="btn btn-outline-success btn-sm m-2" href="#" role="button">View Card</a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>2017-02-11</td>
-                    <td>109.99</td>
-                    <td>
-                      <a class="btn btn-outline-success btn-sm m-2" href="#" role="button">View Card</a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>2019-01-21</td>
-                    <td>999.99</td>
-                    <td>
-                      <a class="btn btn-outline-success btn-sm m-2" href="#" role="button">View Card</a>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-header" id="wishListsHeading">
-            <h2 class="mb-0">
-              <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#clientWishLists"
-                aria-expanded="false" aria-controls="clientWishLists">
-                Wish Lists
-              </button>
-            </h2>
-          </div>
-          <div id="clientWishLists" class="collapse" aria-labelledby="wishListsHeading" data-parent="#profileOptions">
-            <div class="card-body">
-              <div class="table-responsive">
-                <table class="table">
-                  <tbody>
-                    <tr>
-                      <th scope="row">1</th>
-                      <td><b>When I'm a millionaire</b></td>
-                      <td>Things I'm going to buy when I'm a millionaire!!!!!!!!!!!</td>
-                      <td>
-                        <div class="d-flex justify-content-center">
-                          <button type="button" class="btn btnOutlineAction btn-sm m-2 fas fa-share-alt"></button>
-                          <button type="button" class="btn btn-outline-danger btn-sm m-2 fas fa-trash-alt"></button>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <th scope="row">2</th>
-                      <td><b>Birthday</b></td>
-                      <td>Anniversary gifts</td>
-                      <td>
-                        <div class="d-flex justify-content-center">
-                          <button type="button" class="btn btnOutlineAction btn-sm m-2 fas fa-share-alt"></button>
-                          <button type="button" class="btn btn-outline-danger btn-sm m-2 fas fa-trash-alt"></button>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <th scope="row">3</th>
-                      <td><b>School</b></td>
-                      <td>Stuff I have to buy for school as soon as I have money</td>
-                      <td>
-                        <div class="d-flex justify-content-center">
-                          <button type="button" class="btn btnOutlineAction btn-sm m-2 fas fa-share-alt"></button>
-                          <button type="button" class="btn btn-outline-danger btn-sm m-2 fas fa-trash-alt"></button>
-                        </div>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-              <button type="button" class="btn btn-outline-success m-2 btn-sm " data-toggle="modal" data-target="#createWListModal">Add
-                Wish List</button>
-              <div class="modal fade" id="createWListModal" tabindex="-1" role="dialog" aria-labelledby="createWListModalLabel"
-                aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title" id="createWListModalLabel">New Wish List</h5>
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
-                    </div>
-                    <div class="modal-body">
-                      <form>
-                        <div class="form-group">
-                          <label for="wishListName" class="col-form-label">Name</label>
-                          <input type="text" class="form-control" id="wishListName">
-                        </div>
-                        <div class="form-group">
-                          <label for="wishListDescription" class="col-form-label">Description</label>
-                          <textarea class="form-control" id="wishListDescription"></textarea>
-                        </div>
-                      </form>
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-outline-danger btn-sm" data-dismiss="modal">Cancel</button>
-                      <button type="button" class="btn btn-outline-success btn-sm">Finish</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <button type="button" class="btn btn-outline-danger float-right m-2 btn-sm">Delete all</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
     </div>
   </div>
   <!-- Footer Start -->
