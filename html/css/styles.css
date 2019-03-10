@@ -563,3 +563,8 @@ h5 {
 #maxPrice::after {
     content: " €";
 }
+
+#intro {
+    align-self: center;
+    width: 100%;
+}
