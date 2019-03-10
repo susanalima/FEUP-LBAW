@@ -11,6 +11,9 @@ function addToCart(elem) {
 function addToWishList(elem) {
     elem.classList.toggle("active");
 }
+function addToComparison(elem) {
+    elem.classList.toggle("active");
+}
 function plusOne(elem) {
     var textfield = elem.parentElement.parentElement.getElementsByTagName("INPUT")[0];
     var quantity = parseInt(textfield.value) + 1;
