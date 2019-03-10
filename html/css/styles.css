@@ -294,7 +294,7 @@ h5 {
     width: 400px;
     height: 100%;
 
-    z-index: 20;
+    z-index: 100;
 }
 
 #shoppingCartHeader * {
@@ -329,7 +329,7 @@ h5 {
 }
 
 .overlay.active {
-    z-index: 19;
+    z-index: 99;
     opacity: 1;
 }
 

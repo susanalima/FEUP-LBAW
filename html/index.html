@@ -350,7 +350,136 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Shopping Cart Start -->
+
+            <button
+                type="button"
+                class="d-flex align-items-center justify-content-around text-white"
+                onclick="opener()"
+                id="shoppingCartOpener"
+            >
+                <i class="fas fa-shopping-cart"></i>
+            </button>
+
+            <div class="transitions" id="shoppingCart">
+                <div class="d-flex justify-content-between" id="shoppingCartHeader">
+                    <h2 class="font-italic pt-4 pl-4">Shopping Cart</h2>
+                    <button
+                        type="button"
+                        class="d-flex align-items-center justify-content-around pr-4"
+                        onclick="opener()"
+                        id="shoppingCartCloser"
+                    >
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="m-2 p-2 d-flex justify-content-end" id="shoppingCartCartTotal">
+                    <h4 class="font-italic">Total:</h4>
+                    <h3 class="pl-4 pr-2">XX.XX</h3>
+                </div>
+                <div class="d-flex flex-column justify-content-between" id="shoppingCartCart">
+                    <article class="m-2 p-2 d-flex justify-content-between align-items-center">
+                        <div class="cartProductImage">
+                            <img src="images/placeholder.png" class="" alt="..." />
+                        </div>
+                        <div>
+                            <h4 class="cartProductName">Product Name</h4>
+                            <h5 class="cartProductSpec font-italic">Product Spec</h5>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <input type="text" class="form-control cartQuantitySelector" placeholder="1" />
+                            <div class="cartQuantitySelectorController d-flex flex-column align-items-center">
+                                <button
+                                    class="btn cartQuantitySelectorControllerBtn"
+                                    onClick="plusOne(this)"
+                                    type="submit"
+                                >
+                                    <i class="fas fa-plus"></i>
+                                </button>
+                                <button
+                                    class="btn cartQuantitySelectorControllerBtn"
+                                    onClick="minusOne(this)"
+                                    type="submit"
+                                >
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <h4 class="cartProductSubTotal">XX.XX</h4>
+                        <i class="fas fa-times"></i>
+                    </article>
+
+                    <article class="m-2 p-2 d-flex justify-content-between align-items-center">
+                        <div class="cartProductImage">
+                            <img src="images/placeholder.png" class="" alt="..." />
+                        </div>
+                        <div>
+                            <h4 class="cartProductName">Product Name</h4>
+                            <h5 class="cartProductSpec font-italic">Product Spec</h5>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <input type="text" class="form-control cartQuantitySelector" placeholder="1" />
+                            <div class="cartQuantitySelectorController d-flex flex-column align-items-center">
+                                <button
+                                    class="btn cartQuantitySelectorControllerBtn"
+                                    onClick="plusOne(this)"
+                                    type="submit"
+                                >
+                                    <i class="fas fa-plus"></i>
+                                </button>
+                                <button
+                                    class="btn cartQuantitySelectorControllerBtn"
+                                    onClick="minusOne(this)"
+                                    type="submit"
+                                >
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <h4 class="cartProductSubTotal">XX.XX</h4>
+                        <i class="fas fa-times"></i>
+                    </article>
+
+                    <article class="m-2 p-2 d-flex justify-content-between align-items-center">
+                        <div class="cartProductImage">
+                            <img src="images/placeholder.png" class="" alt="..." />
+                        </div>
+                        <div>
+                            <h4 class="cartProductName">Product Name</h4>
+                            <h5 class="cartProductSpec font-italic">Product Spec</h5>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <input type="text" class="form-control cartQuantitySelector" placeholder="1" />
+                            <div class="cartQuantitySelectorController d-flex flex-column align-items-center">
+                                <button
+                                    class="btn cartQuantitySelectorControllerBtn"
+                                    onClick="plusOne(this)"
+                                    type="submit"
+                                >
+                                    <i class="fas fa-plus"></i>
+                                </button>
+                                <button
+                                    class="btn cartQuantitySelectorControllerBtn"
+                                    onClick="minusOne(this)"
+                                    type="submit"
+                                >
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <h4 class="cartProductSubTotal">XX.XX</h4>
+                        <i class="fas fa-times"></i>
+                    </article>
+                </div>
+            </div>
+
+            <!--Card JavaScript-->
+            <script type="text/javascript" src="./scripts/card.js"></script>
+
+            <!-- Shopping Cart End -->
         </div>
+        <div class="overlay transitions" id="overlay"></div>
 
         <!-- Footer Start -->
         <div class="d-flex justify-content-between text-white p-5 flex-wrap" id="footer">
