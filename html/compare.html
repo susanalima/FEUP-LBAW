@@ -24,10 +24,10 @@
             crossorigin="anonymous"
         />
 
-        <link rel="stylesheet" href="css/topBar.css" />
         <link rel="stylesheet" href="css/styles.css" />
+        <link rel="stylesheet" href="css/topBar.css" />
 
-        <title>SearchResult</title>
+        <title>ComparePage</title>
     </head>
     <body>
         <!-- Navbar Start -->
@@ -79,1003 +79,109 @@
                     </nav>
                 </div>
             </nav>
-        </div>
-        <!-- Navbar End -->
 
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item"><a href="#">Library</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Data</li>
-            </ol>
-        </nav>
+            <!-- Navbar End -->
 
-        <div class="d-flex justify-content-around pb-3" id="searchBody">
-            <div class="p-4 m-2" id="filters">
-                <div class="pb-4">
-                    <span>Brand</span>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" />
-                        <label class="form-check-label" for="defaultCheck1">
-                            Brand1
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" />
-                        <label class="form-check-label" for="defaultCheck1">
-                            Brand2
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" />
-                        <label class="form-check-label" for="defaultCheck1">
-                            Brand3
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck2" disabled />
-                        <label class="form-check-label" for="defaultCheck2">
-                            Brand4
-                        </label>
-                    </div>
-                </div>
-                <form>
-                    <div class="form-group">
-                        <label for="formControlRange">Price Range</label>
-                        <div>
-                            <div id="priceControlRange">
-                                <input
-                                    type="range"
-                                    onchange="updateValMin(this)"
-                                    oninput="verifyValMin(this)"
-                                    class="form-control-range pwRange"
-                                    id="priceControlRangeMin"
-                                    value="0"
-                                    min="0"
-                                    max="100"
-                                />
-                                <input
-                                    type="range"
-                                    onchange="updateValMax(this)"
-                                    oninput="verifyValMax(this)"
-                                    class="form-control-range pwRange"
-                                    id="priceControlRangeMax"
-                                    value="100"
-                                    min="0"
-                                    max="100"
-                                />
-                                <script src="scripts/priceRange.js" defer></script>
-                            </div>
-                            <div class="d-flex justify-content-between pt-4">
-                                <span id="minPrice">0</span>
-                                <span id="maxPrice">100</span>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item"><a href="#">Library</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Data</li>
+                </ol>
+            </nav>
 
-            <div class="d-flex justify-content-start flex-wrap p-4 m-2" id="results">
-                <div class="product d-flex flex-column">
-                    <div class="productName d-flex align-items-end">
-                        <span>Product Name</span>
-                    </div>
-                    <div class="productPrice d-flex align-items-center">
-                        <span>XX.XX€</span>
-                    </div>
-                    <div class="d-flex flex-column flex-wrap productMid">
-                        <div class="productImage">
-                            <img src="images/placeholder.png" class="d-block w-100 h-100" alt="..." />
-                        </div>
-                        <button type="button" class="addToCartBtn" onClick="addToCart(this)">
-                            <i class="fas fa-cart-plus"></i>
-                        </button>
-                        <button type="button" class="addToWishListBtn" onClick="addToWishList(this)">
-                            <i class="fas fa-heart"></i>
-                        </button>
-                    </div>
-                    <div class="productBot d-flex justify-content-center">
-                        <form class="rating">
-                            <fieldset class="starsRating">
-                                <input type="radio" id="star5" name="rating" value="5" /><label
-                                    class="full"
-                                    for="star5"
-                                ></label>
-                                <input type="radio" id="star4half" name="rating" value="4.5" /><label
-                                    class="half"
-                                    for="star4half"
-                                ></label>
-                                <input type="radio" id="star4" name="rating" value="4" /><label
-                                    class="full"
-                                    for="star4"
-                                ></label>
-                                <input type="radio" id="star3half" name="rating" value="3.5" /><label
-                                    class="half"
-                                    for="star3half"
-                                ></label>
-                                <input type="radio" id="star3" name="rating" value="3" /><label
-                                    class="full"
-                                    for="star3"
-                                ></label>
-                                <input type="radio" id="star2half" name="rating" value="2.5" /><label
-                                    class="half"
-                                    for="star2half"
-                                ></label>
-                                <input type="radio" id="star2" name="rating" value="2" /><label
-                                    class="full"
-                                    for="star2"
-                                ></label>
-                                <input type="radio" id="star1half" name="rating" value="1.5" /><label
-                                    class="half"
-                                    for="star1half"
-                                ></label>
-                                <input type="radio" id="star1" name="rating" value="1" /><label
-                                    class="full"
-                                    for="star1"
-                                ></label>
-                                <input type="radio" id="star0half" name="rating" value="0.5" /><label
-                                    class="half"
-                                    for="star0half"
-                                ></label>
-                            </fieldset>
-                        </form>
-                    </div>
-                </div>
-
-                <div class="product d-flex flex-column">
-                    <div class="productName d-flex align-items-end">
-                        <span>Product Name</span>
-                    </div>
-                    <div class="productPrice d-flex align-items-center">
-                        <span>XX.XX€</span>
-                    </div>
-                    <div class="d-flex flex-column flex-wrap productMid">
-                        <div class="productImage">
-                            <img src="images/placeholder.png" class="d-block w-100 h-100" alt="..." />
-                        </div>
-                        <button type="button" class="addToCartBtn" onClick="addToCart(this)">
-                            <i class="fas fa-cart-plus"></i>
-                        </button>
-                        <button type="button" class="addToWishListBtn" onClick="addToWishList(this)">
-                            <i class="fas fa-heart"></i>
-                        </button>
-                    </div>
-                    <div class="productBot d-flex justify-content-center">
-                        <form class="rating">
-                            <fieldset class="starsRating">
-                                <input type="radio" id="star5" name="rating" value="5" /><label
-                                    class="full"
-                                    for="star5"
-                                ></label>
-                                <input type="radio" id="star4half" name="rating" value="4.5" /><label
-                                    class="half"
-                                    for="star4half"
-                                ></label>
-                                <input type="radio" id="star4" name="rating" value="4" /><label
-                                    class="full"
-                                    for="star4"
-                                ></label>
-                                <input type="radio" id="star3half" name="rating" value="3.5" /><label
-                                    class="half"
-                                    for="star3half"
-                                ></label>
-                                <input type="radio" id="star3" name="rating" value="3" /><label
-                                    class="full"
-                                    for="star3"
-                                ></label>
-                                <input type="radio" id="star2half" name="rating" value="2.5" /><label
-                                    class="half"
-                                    for="star2half"
-                                ></label>
-                                <input type="radio" id="star2" name="rating" value="2" /><label
-                                    class="full"
-                                    for="star2"
-                                ></label>
-                                <input type="radio" id="star1half" name="rating" value="1.5" /><label
-                                    class="half"
-                                    for="star1half"
-                                ></label>
-                                <input type="radio" id="star1" name="rating" value="1" /><label
-                                    class="full"
-                                    for="star1"
-                                ></label>
-                                <input type="radio" id="star0half" name="rating" value="0.5" /><label
-                                    class="half"
-                                    for="star0half"
-                                ></label>
-                            </fieldset>
-                        </form>
-                    </div>
-                </div>
-
-                <div class="product d-flex flex-column">
-                    <div class="productName d-flex align-items-end">
-                        <span>Product Name</span>
-                    </div>
-                    <div class="productPrice d-flex align-items-center">
-                        <span>XX.XX€</span>
-                    </div>
-                    <div class="d-flex flex-column flex-wrap productMid">
-                        <div class="productImage">
-                            <img src="images/placeholder.png" class="d-block w-100 h-100" alt="..." />
-                        </div>
-                        <button type="button" class="addToCartBtn" onClick="addToCart(this)">
-                            <i class="fas fa-cart-plus"></i>
-                        </button>
-                        <button type="button" class="addToWishListBtn" onClick="addToWishList(this)">
-                            <i class="fas fa-heart"></i>
-                        </button>
-                    </div>
-                    <div class="productBot d-flex justify-content-center">
-                        <form class="rating">
-                            <fieldset class="starsRating">
-                                <input type="radio" id="star5" name="rating" value="5" /><label
-                                    class="full"
-                                    for="star5"
-                                ></label>
-                                <input type="radio" id="star4half" name="rating" value="4.5" /><label
-                                    class="half"
-                                    for="star4half"
-                                ></label>
-                                <input type="radio" id="star4" name="rating" value="4" /><label
-                                    class="full"
-                                    for="star4"
-                                ></label>
-                                <input type="radio" id="star3half" name="rating" value="3.5" /><label
-                                    class="half"
-                                    for="star3half"
-                                ></label>
-                                <input type="radio" id="star3" name="rating" value="3" /><label
-                                    class="full"
-                                    for="star3"
-                                ></label>
-                                <input type="radio" id="star2half" name="rating" value="2.5" /><label
-                                    class="half"
-                                    for="star2half"
-                                ></label>
-                                <input type="radio" id="star2" name="rating" value="2" /><label
-                                    class="full"
-                                    for="star2"
-                                ></label>
-                                <input type="radio" id="star1half" name="rating" value="1.5" /><label
-                                    class="half"
-                                    for="star1half"
-                                ></label>
-                                <input type="radio" id="star1" name="rating" value="1" /><label
-                                    class="full"
-                                    for="star1"
-                                ></label>
-                                <input type="radio" id="star0half" name="rating" value="0.5" /><label
-                                    class="half"
-                                    for="star0half"
-                                ></label>
-                            </fieldset>
-                        </form>
-                    </div>
-                </div>
-
-                <div class="product d-flex flex-column">
-                    <div class="productName d-flex align-items-end">
-                        <span>Product Name</span>
-                    </div>
-                    <div class="productPrice d-flex align-items-center">
-                        <span>XX.XX€</span>
-                    </div>
-                    <div class="d-flex flex-column flex-wrap productMid">
-                        <div class="productImage">
-                            <img src="images/placeholder.png" class="d-block w-100 h-100" alt="..." />
-                        </div>
-                        <button type="button" class="addToCartBtn" onClick="addToCart(this)">
-                            <i class="fas fa-cart-plus"></i>
-                        </button>
-                        <button type="button" class="addToWishListBtn" onClick="addToWishList(this)">
-                            <i class="fas fa-heart"></i>
-                        </button>
-                    </div>
-                    <div class="productBot d-flex justify-content-center">
-                        <form class="rating">
-                            <fieldset class="starsRating">
-                                <input type="radio" id="star5" name="rating" value="5" /><label
-                                    class="full"
-                                    for="star5"
-                                ></label>
-                                <input type="radio" id="star4half" name="rating" value="4.5" /><label
-                                    class="half"
-                                    for="star4half"
-                                ></label>
-                                <input type="radio" id="star4" name="rating" value="4" /><label
-                                    class="full"
-                                    for="star4"
-                                ></label>
-                                <input type="radio" id="star3half" name="rating" value="3.5" /><label
-                                    class="half"
-                                    for="star3half"
-                                ></label>
-                                <input type="radio" id="star3" name="rating" value="3" /><label
-                                    class="full"
-                                    for="star3"
-                                ></label>
-                                <input type="radio" id="star2half" name="rating" value="2.5" /><label
-                                    class="half"
-                                    for="star2half"
-                                ></label>
-                                <input type="radio" id="star2" name="rating" value="2" /><label
-                                    class="full"
-                                    for="star2"
-                                ></label>
-                                <input type="radio" id="star1half" name="rating" value="1.5" /><label
-                                    class="half"
-                                    for="star1half"
-                                ></label>
-                                <input type="radio" id="star1" name="rating" value="1" /><label
-                                    class="full"
-                                    for="star1"
-                                ></label>
-                                <input type="radio" id="star0half" name="rating" value="0.5" /><label
-                                    class="half"
-                                    for="star0half"
-                                ></label>
-                            </fieldset>
-                        </form>
-                    </div>
-                </div>
-
-                <div class="product d-flex flex-column">
-                    <div class="productName d-flex align-items-end">
-                        <span>Product Name</span>
-                    </div>
-                    <div class="productPrice d-flex align-items-center">
-                        <span>XX.XX€</span>
-                    </div>
-                    <div class="d-flex flex-column flex-wrap productMid">
-                        <div class="productImage">
-                            <img src="images/placeholder.png" class="d-block w-100 h-100" alt="..." />
-                        </div>
-                        <button type="button" class="addToCartBtn" onClick="addToCart(this)">
-                            <i class="fas fa-cart-plus"></i>
-                        </button>
-                        <button type="button" class="addToWishListBtn" onClick="addToWishList(this)">
-                            <i class="fas fa-heart"></i>
-                        </button>
-                    </div>
-                    <div class="productBot d-flex justify-content-center">
-                        <form class="rating">
-                            <fieldset class="starsRating">
-                                <input type="radio" id="star5" name="rating" value="5" /><label
-                                    class="full"
-                                    for="star5"
-                                ></label>
-                                <input type="radio" id="star4half" name="rating" value="4.5" /><label
-                                    class="half"
-                                    for="star4half"
-                                ></label>
-                                <input type="radio" id="star4" name="rating" value="4" /><label
-                                    class="full"
-                                    for="star4"
-                                ></label>
-                                <input type="radio" id="star3half" name="rating" value="3.5" /><label
-                                    class="half"
-                                    for="star3half"
-                                ></label>
-                                <input type="radio" id="star3" name="rating" value="3" /><label
-                                    class="full"
-                                    for="star3"
-                                ></label>
-                                <input type="radio" id="star2half" name="rating" value="2.5" /><label
-                                    class="half"
-                                    for="star2half"
-                                ></label>
-                                <input type="radio" id="star2" name="rating" value="2" /><label
-                                    class="full"
-                                    for="star2"
-                                ></label>
-                                <input type="radio" id="star1half" name="rating" value="1.5" /><label
-                                    class="half"
-                                    for="star1half"
-                                ></label>
-                                <input type="radio" id="star1" name="rating" value="1" /><label
-                                    class="full"
-                                    for="star1"
-                                ></label>
-                                <input type="radio" id="star0half" name="rating" value="0.5" /><label
-                                    class="half"
-                                    for="star0half"
-                                ></label>
-                            </fieldset>
-                        </form>
-                    </div>
-                </div>
-
-                <div class="product d-flex flex-column">
-                    <div class="productName d-flex align-items-end">
-                        <span>Product Name</span>
-                    </div>
-                    <div class="productPrice d-flex align-items-center">
-                        <span>XX.XX€</span>
-                    </div>
-                    <div class="d-flex flex-column flex-wrap productMid">
-                        <div class="productImage">
-                            <img src="images/placeholder.png" class="d-block w-100 h-100" alt="..." />
-                        </div>
-                        <button type="button" class="addToCartBtn" onClick="addToCart(this)">
-                            <i class="fas fa-cart-plus"></i>
-                        </button>
-                        <button type="button" class="addToWishListBtn" onClick="addToWishList(this)">
-                            <i class="fas fa-heart"></i>
-                        </button>
-                    </div>
-                    <div class="productBot d-flex justify-content-center">
-                        <form class="rating">
-                            <fieldset class="starsRating">
-                                <input type="radio" id="star5" name="rating" value="5" /><label
-                                    class="full"
-                                    for="star5"
-                                ></label>
-                                <input type="radio" id="star4half" name="rating" value="4.5" /><label
-                                    class="half"
-                                    for="star4half"
-                                ></label>
-                                <input type="radio" id="star4" name="rating" value="4" /><label
-                                    class="full"
-                                    for="star4"
-                                ></label>
-                                <input type="radio" id="star3half" name="rating" value="3.5" /><label
-                                    class="half"
-                                    for="star3half"
-                                ></label>
-                                <input type="radio" id="star3" name="rating" value="3" /><label
-                                    class="full"
-                                    for="star3"
-                                ></label>
-                                <input type="radio" id="star2half" name="rating" value="2.5" /><label
-                                    class="half"
-                                    for="star2half"
-                                ></label>
-                                <input type="radio" id="star2" name="rating" value="2" /><label
-                                    class="full"
-                                    for="star2"
-                                ></label>
-                                <input type="radio" id="star1half" name="rating" value="1.5" /><label
-                                    class="half"
-                                    for="star1half"
-                                ></label>
-                                <input type="radio" id="star1" name="rating" value="1" /><label
-                                    class="full"
-                                    for="star1"
-                                ></label>
-                                <input type="radio" id="star0half" name="rating" value="0.5" /><label
-                                    class="half"
-                                    for="star0half"
-                                ></label>
-                            </fieldset>
-                        </form>
-                    </div>
-                </div>
-
-                <div class="product d-flex flex-column">
-                    <div class="productName d-flex align-items-end">
-                        <span>Product Name</span>
-                    </div>
-                    <div class="productPrice d-flex align-items-center">
-                        <span>XX.XX€</span>
-                    </div>
-                    <div class="d-flex flex-column flex-wrap productMid">
-                        <div class="productImage">
-                            <img src="images/placeholder.png" class="d-block w-100 h-100" alt="..." />
-                        </div>
-                        <button type="button" class="addToCartBtn" onClick="addToCart(this)">
-                            <i class="fas fa-cart-plus"></i>
-                        </button>
-                        <button type="button" class="addToWishListBtn" onClick="addToWishList(this)">
-                            <i class="fas fa-heart"></i>
-                        </button>
-                    </div>
-                    <div class="productBot d-flex justify-content-center">
-                        <form class="rating">
-                            <fieldset class="starsRating">
-                                <input type="radio" id="star5" name="rating" value="5" /><label
-                                    class="full"
-                                    for="star5"
-                                ></label>
-                                <input type="radio" id="star4half" name="rating" value="4.5" /><label
-                                    class="half"
-                                    for="star4half"
-                                ></label>
-                                <input type="radio" id="star4" name="rating" value="4" /><label
-                                    class="full"
-                                    for="star4"
-                                ></label>
-                                <input type="radio" id="star3half" name="rating" value="3.5" /><label
-                                    class="half"
-                                    for="star3half"
-                                ></label>
-                                <input type="radio" id="star3" name="rating" value="3" /><label
-                                    class="full"
-                                    for="star3"
-                                ></label>
-                                <input type="radio" id="star2half" name="rating" value="2.5" /><label
-                                    class="half"
-                                    for="star2half"
-                                ></label>
-                                <input type="radio" id="star2" name="rating" value="2" /><label
-                                    class="full"
-                                    for="star2"
-                                ></label>
-                                <input type="radio" id="star1half" name="rating" value="1.5" /><label
-                                    class="half"
-                                    for="star1half"
-                                ></label>
-                                <input type="radio" id="star1" name="rating" value="1" /><label
-                                    class="full"
-                                    for="star1"
-                                ></label>
-                                <input type="radio" id="star0half" name="rating" value="0.5" /><label
-                                    class="half"
-                                    for="star0half"
-                                ></label>
-                            </fieldset>
-                        </form>
-                    </div>
-                </div>
-
-                <div class="product d-flex flex-column">
-                    <div class="productName d-flex align-items-end">
-                        <span>Product Name</span>
-                    </div>
-                    <div class="productPrice d-flex align-items-center">
-                        <span>XX.XX€</span>
-                    </div>
-                    <div class="d-flex flex-column flex-wrap productMid">
-                        <div class="productImage">
-                            <img src="images/placeholder.png" class="d-block w-100 h-100" alt="..." />
-                        </div>
-                        <button type="button" class="addToCartBtn" onClick="addToCart(this)">
-                            <i class="fas fa-cart-plus"></i>
-                        </button>
-                        <button type="button" class="addToWishListBtn" onClick="addToWishList(this)">
-                            <i class="fas fa-heart"></i>
-                        </button>
-                    </div>
-                    <div class="productBot d-flex justify-content-center">
-                        <form class="rating">
-                            <fieldset class="starsRating">
-                                <input type="radio" id="star5" name="rating" value="5" /><label
-                                    class="full"
-                                    for="star5"
-                                ></label>
-                                <input type="radio" id="star4half" name="rating" value="4.5" /><label
-                                    class="half"
-                                    for="star4half"
-                                ></label>
-                                <input type="radio" id="star4" name="rating" value="4" /><label
-                                    class="full"
-                                    for="star4"
-                                ></label>
-                                <input type="radio" id="star3half" name="rating" value="3.5" /><label
-                                    class="half"
-                                    for="star3half"
-                                ></label>
-                                <input type="radio" id="star3" name="rating" value="3" /><label
-                                    class="full"
-                                    for="star3"
-                                ></label>
-                                <input type="radio" id="star2half" name="rating" value="2.5" /><label
-                                    class="half"
-                                    for="star2half"
-                                ></label>
-                                <input type="radio" id="star2" name="rating" value="2" /><label
-                                    class="full"
-                                    for="star2"
-                                ></label>
-                                <input type="radio" id="star1half" name="rating" value="1.5" /><label
-                                    class="half"
-                                    for="star1half"
-                                ></label>
-                                <input type="radio" id="star1" name="rating" value="1" /><label
-                                    class="full"
-                                    for="star1"
-                                ></label>
-                                <input type="radio" id="star0half" name="rating" value="0.5" /><label
-                                    class="half"
-                                    for="star0half"
-                                ></label>
-                            </fieldset>
-                        </form>
-                    </div>
-                </div>
-
-                <div class="product d-flex flex-column">
-                    <div class="productName d-flex align-items-end">
-                        <span>Product Name</span>
-                    </div>
-                    <div class="productPrice d-flex align-items-center">
-                        <span>XX.XX€</span>
-                    </div>
-                    <div class="d-flex flex-column flex-wrap productMid">
-                        <div class="productImage">
-                            <img src="images/placeholder.png" class="d-block w-100 h-100" alt="..." />
-                        </div>
-                        <button type="button" class="addToCartBtn" onClick="addToCart(this)">
-                            <i class="fas fa-cart-plus"></i>
-                        </button>
-                        <button type="button" class="addToWishListBtn" onClick="addToWishList(this)">
-                            <i class="fas fa-heart"></i>
-                        </button>
-                    </div>
-                    <div class="productBot d-flex justify-content-center">
-                        <form class="rating">
-                            <fieldset class="starsRating">
-                                <input type="radio" id="star5" name="rating" value="5" /><label
-                                    class="full"
-                                    for="star5"
-                                ></label>
-                                <input type="radio" id="star4half" name="rating" value="4.5" /><label
-                                    class="half"
-                                    for="star4half"
-                                ></label>
-                                <input type="radio" id="star4" name="rating" value="4" /><label
-                                    class="full"
-                                    for="star4"
-                                ></label>
-                                <input type="radio" id="star3half" name="rating" value="3.5" /><label
-                                    class="half"
-                                    for="star3half"
-                                ></label>
-                                <input type="radio" id="star3" name="rating" value="3" /><label
-                                    class="full"
-                                    for="star3"
-                                ></label>
-                                <input type="radio" id="star2half" name="rating" value="2.5" /><label
-                                    class="half"
-                                    for="star2half"
-                                ></label>
-                                <input type="radio" id="star2" name="rating" value="2" /><label
-                                    class="full"
-                                    for="star2"
-                                ></label>
-                                <input type="radio" id="star1half" name="rating" value="1.5" /><label
-                                    class="half"
-                                    for="star1half"
-                                ></label>
-                                <input type="radio" id="star1" name="rating" value="1" /><label
-                                    class="full"
-                                    for="star1"
-                                ></label>
-                                <input type="radio" id="star0half" name="rating" value="0.5" /><label
-                                    class="half"
-                                    for="star0half"
-                                ></label>
-                            </fieldset>
-                        </form>
-                    </div>
-                </div>
-
-                <div class="product d-flex flex-column">
-                    <div class="productName d-flex align-items-end">
-                        <span>Product Name</span>
-                    </div>
-                    <div class="productPrice d-flex align-items-center">
-                        <span>XX.XX€</span>
-                    </div>
-                    <div class="d-flex flex-column flex-wrap productMid">
-                        <div class="productImage">
-                            <img src="images/placeholder.png" class="d-block w-100 h-100" alt="..." />
-                        </div>
-                        <button type="button" class="addToCartBtn" onClick="addToCart(this)">
-                            <i class="fas fa-cart-plus"></i>
-                        </button>
-                        <button type="button" class="addToWishListBtn" onClick="addToWishList(this)">
-                            <i class="fas fa-heart"></i>
-                        </button>
-                    </div>
-                    <div class="productBot d-flex justify-content-center">
-                        <form class="rating">
-                            <fieldset class="starsRating">
-                                <input type="radio" id="star5" name="rating" value="5" /><label
-                                    class="full"
-                                    for="star5"
-                                ></label>
-                                <input type="radio" id="star4half" name="rating" value="4.5" /><label
-                                    class="half"
-                                    for="star4half"
-                                ></label>
-                                <input type="radio" id="star4" name="rating" value="4" /><label
-                                    class="full"
-                                    for="star4"
-                                ></label>
-                                <input type="radio" id="star3half" name="rating" value="3.5" /><label
-                                    class="half"
-                                    for="star3half"
-                                ></label>
-                                <input type="radio" id="star3" name="rating" value="3" /><label
-                                    class="full"
-                                    for="star3"
-                                ></label>
-                                <input type="radio" id="star2half" name="rating" value="2.5" /><label
-                                    class="half"
-                                    for="star2half"
-                                ></label>
-                                <input type="radio" id="star2" name="rating" value="2" /><label
-                                    class="full"
-                                    for="star2"
-                                ></label>
-                                <input type="radio" id="star1half" name="rating" value="1.5" /><label
-                                    class="half"
-                                    for="star1half"
-                                ></label>
-                                <input type="radio" id="star1" name="rating" value="1" /><label
-                                    class="full"
-                                    for="star1"
-                                ></label>
-                                <input type="radio" id="star0half" name="rating" value="0.5" /><label
-                                    class="half"
-                                    for="star0half"
-                                ></label>
-                            </fieldset>
-                        </form>
-                    </div>
-                </div>
-
-                <div class="product d-flex flex-column">
-                    <div class="productName d-flex align-items-end">
-                        <span>Product Name</span>
-                    </div>
-                    <div class="productPrice d-flex align-items-center">
-                        <span>XX.XX€</span>
-                    </div>
-                    <div class="d-flex flex-column flex-wrap productMid">
-                        <div class="productImage">
-                            <img src="images/placeholder.png" class="d-block w-100 h-100" alt="..." />
-                        </div>
-                        <button type="button" class="addToCartBtn" onClick="addToCart(this)">
-                            <i class="fas fa-cart-plus"></i>
-                        </button>
-                        <button type="button" class="addToWishListBtn" onClick="addToWishList(this)">
-                            <i class="fas fa-heart"></i>
-                        </button>
-                    </div>
-                    <div class="productBot d-flex justify-content-center">
-                        <form class="rating">
-                            <fieldset class="starsRating">
-                                <input type="radio" id="star5" name="rating" value="5" /><label
-                                    class="full"
-                                    for="star5"
-                                ></label>
-                                <input type="radio" id="star4half" name="rating" value="4.5" /><label
-                                    class="half"
-                                    for="star4half"
-                                ></label>
-                                <input type="radio" id="star4" name="rating" value="4" /><label
-                                    class="full"
-                                    for="star4"
-                                ></label>
-                                <input type="radio" id="star3half" name="rating" value="3.5" /><label
-                                    class="half"
-                                    for="star3half"
-                                ></label>
-                                <input type="radio" id="star3" name="rating" value="3" /><label
-                                    class="full"
-                                    for="star3"
-                                ></label>
-                                <input type="radio" id="star2half" name="rating" value="2.5" /><label
-                                    class="half"
-                                    for="star2half"
-                                ></label>
-                                <input type="radio" id="star2" name="rating" value="2" /><label
-                                    class="full"
-                                    for="star2"
-                                ></label>
-                                <input type="radio" id="star1half" name="rating" value="1.5" /><label
-                                    class="half"
-                                    for="star1half"
-                                ></label>
-                                <input type="radio" id="star1" name="rating" value="1" /><label
-                                    class="full"
-                                    for="star1"
-                                ></label>
-                                <input type="radio" id="star0half" name="rating" value="0.5" /><label
-                                    class="half"
-                                    for="star0half"
-                                ></label>
-                            </fieldset>
-                        </form>
-                    </div>
-                </div>
-
-                <div class="product d-flex flex-column">
-                    <div class="productName d-flex align-items-end">
-                        <span>Product Name</span>
-                    </div>
-                    <div class="productPrice d-flex align-items-center">
-                        <span>XX.XX€</span>
-                    </div>
-                    <div class="d-flex flex-column flex-wrap productMid">
-                        <div class="productImage">
-                            <img src="images/placeholder.png" class="d-block w-100 h-100" alt="..." />
-                        </div>
-                        <button type="button" class="addToCartBtn" onClick="addToCart(this)">
-                            <i class="fas fa-cart-plus"></i>
-                        </button>
-                        <button type="button" class="addToWishListBtn" onClick="addToWishList(this)">
-                            <i class="fas fa-heart"></i>
-                        </button>
-                    </div>
-                    <div class="productBot d-flex justify-content-center">
-                        <form class="rating">
-                            <fieldset class="starsRating">
-                                <input type="radio" id="star5" name="rating" value="5" /><label
-                                    class="full"
-                                    for="star5"
-                                ></label>
-                                <input type="radio" id="star4half" name="rating" value="4.5" /><label
-                                    class="half"
-                                    for="star4half"
-                                ></label>
-                                <input type="radio" id="star4" name="rating" value="4" /><label
-                                    class="full"
-                                    for="star4"
-                                ></label>
-                                <input type="radio" id="star3half" name="rating" value="3.5" /><label
-                                    class="half"
-                                    for="star3half"
-                                ></label>
-                                <input type="radio" id="star3" name="rating" value="3" /><label
-                                    class="full"
-                                    for="star3"
-                                ></label>
-                                <input type="radio" id="star2half" name="rating" value="2.5" /><label
-                                    class="half"
-                                    for="star2half"
-                                ></label>
-                                <input type="radio" id="star2" name="rating" value="2" /><label
-                                    class="full"
-                                    for="star2"
-                                ></label>
-                                <input type="radio" id="star1half" name="rating" value="1.5" /><label
-                                    class="half"
-                                    for="star1half"
-                                ></label>
-                                <input type="radio" id="star1" name="rating" value="1" /><label
-                                    class="full"
-                                    for="star1"
-                                ></label>
-                                <input type="radio" id="star0half" name="rating" value="0.5" /><label
-                                    class="half"
-                                    for="star0half"
-                                ></label>
-                            </fieldset>
-                        </form>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Shopping Cart Start -->
-
-            <button
-                type="button"
-                class="d-flex align-items-center justify-content-around text-white"
-                onclick="opener()"
-                id="shoppingCartOpener"
+            <div
+                id="specsCol"
+                class="collapse show mx-auto compareTable"
+                aria-labelledby="specsHeading"
+                data-parent="#infoSection"
             >
-                <i class="fas fa-shopping-cart"></i>
-            </button>
-
-            <div class="transitions" id="shoppingCart">
-                <div class="d-flex justify-content-between" id="shoppingCartHeader">
-                    <h2 class="font-italic pt-4 pl-4">Shopping Cart</h2>
-                    <button
-                        type="button"
-                        class="d-flex align-items-center justify-content-around pr-4"
-                        onclick="opener()"
-                        id="shoppingCartCloser"
-                    >
-                        <i class="fas fa-times"></i>
-                    </button>
-                </div>
-                <div class="m-2 p-2 d-flex justify-content-end" id="shoppingCartCartTotal">
-                    <h4 class="font-italic">Total:</h4>
-                    <h3 class="pl-4 pr-2">XX.XX€</h3>
-                </div>
-                <div class="d-flex flex-column justify-content-between" id="shoppingCartCart">
-                    <article class="m-2 p-2 d-flex justify-content-between align-items-center">
-                        <div class="cartProductImage">
-                            <img src="images/placeholder.png" class="d-block w-100 h-100" alt="..." />
-                        </div>
-                        <div>
-                            <h4 class="cartProductName">Product Name</h4>
-                            <h5 class="cartProductSpec font-italic">Product Spec</h5>
-                        </div>
-                        <div class="d-flex align-items-center">
-                            <input type="text" class="form-control cartQuantitySelector" placeholder="1" />
-                            <div class="cartQuantitySelectorController d-flex flex-column align-items-center">
-                                <button
-                                    class="btn cartQuantitySelectorControllerBtn"
-                                    onClick="plusOne(this)"
-                                    type="submit"
-                                >
-                                    <i class="fas fa-plus"></i>
-                                </button>
-                                <button
-                                    class="btn cartQuantitySelectorControllerBtn"
-                                    onClick="minusOne(this)"
-                                    type="submit"
-                                >
-                                    <i class="fas fa-minus"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <h4 class="cartProductSubTotal">XX.XX€</h4>
-                        <i class="fas fa-times"></i>
-                    </article>
-
-                    <article class="m-2 p-2 d-flex justify-content-between align-items-center">
-                        <div class="cartProductImage">
-                            <img src="images/placeholder.png" class="d-block w-100 h-100" alt="..." />
-                        </div>
-                        <div>
-                            <h4 class="cartProductName">Product Name</h4>
-                            <h5 class="cartProductSpec font-italic">Product Spec</h5>
-                        </div>
-                        <div class="d-flex align-items-center">
-                            <input type="text" class="form-control cartQuantitySelector" placeholder="1" />
-                            <div class="cartQuantitySelectorController d-flex flex-column align-items-center">
-                                <button
-                                    class="btn cartQuantitySelectorControllerBtn"
-                                    onClick="plusOne(this)"
-                                    type="submit"
-                                >
-                                    <i class="fas fa-plus"></i>
-                                </button>
-                                <button
-                                    class="btn cartQuantitySelectorControllerBtn"
-                                    onClick="minusOne(this)"
-                                    type="submit"
-                                >
-                                    <i class="fas fa-minus"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <h4 class="cartProductSubTotal">XX.XX€</h4>
-                        <i class="fas fa-times"></i>
-                    </article>
-
-                    <article class="m-2 p-2 d-flex justify-content-between align-items-center">
-                        <div class="cartProductImage">
-                            <img src="images/placeholder.png" class="d-block w-100 h-100" alt="..." />
-                        </div>
-                        <div>
-                            <h4 class="cartProductName">Product Name</h4>
-                            <h5 class="cartProductSpec font-italic">Product Spec</h5>
-                        </div>
-                        <div class="d-flex align-items-center">
-                            <input type="text" class="form-control cartQuantitySelector" placeholder="1" />
-                            <div class="cartQuantitySelectorController d-flex flex-column align-items-center">
-                                <button
-                                    class="btn cartQuantitySelectorControllerBtn"
-                                    onClick="plusOne(this)"
-                                    type="submit"
-                                >
-                                    <i class="fas fa-plus"></i>
-                                </button>
-                                <button
-                                    class="btn cartQuantitySelectorControllerBtn"
-                                    onClick="minusOne(this)"
-                                    type="submit"
-                                >
-                                    <i class="fas fa-minus"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <h4 class="cartProductSubTotal">XX.XX€</h4>
-                        <i class="fas fa-times"></i>
-                    </article>
-                </div>
+                <table class="table table-hover compare">
+                    <thead>
+                        <tr>
+                            <th scope="col" id="compareTableCorner">Details</th>
+                            <th scope="col">
+                                <div class="productImageCompare pb-2">
+                                    <img src="images/placeholder.png" class="d-block w-100 h-100" alt="..." />
+                                </div>
+                                <span>Product Name</span>
+                            </th>
+                            <th scope="col">
+                                <div class="productImageCompare pb-2">
+                                    <img src="images/placeholder.png" class="d-block w-100 h-100" alt="..." />
+                                </div>
+                                <span>Product Name</span>
+                            </th>
+                            <th scope="col">
+                                <div class="productImageCompare pb-2">
+                                    <img src="images/placeholder.png" class="d-block w-100 h-100" alt="..." />
+                                </div>
+                                <span>Product Name</span>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>Mark</td>
+                            <td>Mark</td>
+                            <td>Mark</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>Jacob</td>
+                            <td>Jacob</td>
+                            <td>Jacob</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">3</th>
+                            <td>Larry the Bird</td>
+                            <td>Larry the Bird</td>
+                            <td>Larry the Bird</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">3</th>
+                            <td>Larry the Bird</td>
+                            <td>Larry the Bird</td>
+                            <td>Larry the Bird</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">3</th>
+                            <td>Larry the Bird</td>
+                            <td>Larry the Bird</td>
+                            <td>Larry the Bird</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">3</th>
+                            <td>Larry the Bird</td>
+                            <td>Larry the Bird</td>
+                            <td>Larry the Bird</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">3</th>
+                            <td>Larry the Bird</td>
+                            <td>Larry the Bird</td>
+                            <td>Larry the Bird</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">3</th>
+                            <td>Larry the Bird</td>
+                            <td>Larry the Bird</td>
+                            <td>Larry the Bird</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">3</th>
+                            <td>Larry the Bird</td>
+                            <td>Larry the Bird</td>
+                            <td>Larry the Bird</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
 
-        <div class="overlay transitions" id="overlay"></div>
-
-        <!-- Shopping Cart End -->
+        <!--Card JavaScript-->
+        <script type="text/javascript" src="./scripts/card.js"></script>
 
         <!-- Footer Start -->
         <div class="d-flex justify-content-between text-white p-5 flex-wrap" id="footer">
@@ -1087,9 +193,6 @@
             <h4 class="align-self-end mx-auto">&copy; 2019 PuzzleWood.pt. All Rights Reserved.</h4>
         </div>
         <!-- Footer End -->
-
-        <!--Card JavaScript-->
-        <script type="text/javascript" src="./scripts/card.js"></script>
 
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->

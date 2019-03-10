@@ -119,6 +119,10 @@ h5 {
     width: 250px;
     height: 250px;
 }
+.productImageCompare {
+    width: 150px;
+    height: 150px;
+}
 
 .productName,
 .productPrice {
@@ -229,75 +233,7 @@ h5 {
     padding: 0.5em;
 }
 
-@media screen and (max-width: 1450px) {
-    #results {
-        max-width: 730px;
-    }
-    #filters {
-        width: 320px;
-    }
-}
 
-@media screen and (max-width: 1080px) {
-    #results {
-        max-width: 730px;
-    }
-    #filters {
-        width: 200px;
-    }
-}
-
-@media screen and (max-width: 980px) {
-    #searchBody {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    #filters {
-        max-width: 730px;
-        width: 100%;
-    }
-
-    #results {
-        width: 100%;
-    }
-
-    #qaBox,
-    #reviewsBox {
-        padding: 0.5em;
-    }
-
-    #qaBox > div,
-    #reviewsBox > div {
-        padding: 0em;
-    }
-
-    #qaBox .card,
-    #reviewsBox .card {
-        border-radius: 0;
-        border-right: 0;
-        border-left: 0;
-        border-top: 0;
-    }
-}
-
-@media screen and (max-width: 744px) {
-    #results {
-        justify-content: center !important;
-    }
-    #footer div,
-    h4 {
-        width: 100%;
-        margin-left: 0;
-    }
-}
-
-@media screen and (max-width: 400px) {
-    #shoppingCart {
-        width: 95% !important;
-    }
-}
 
 #shoppingCartOpener {
     position: fixed;
@@ -393,6 +329,9 @@ h5 {
 
 #specsCol {
     width: 95%;
+}
+#specsCol.compareTable{
+    width: 75%;
 }
 
 #specsCol td {
@@ -560,11 +499,107 @@ h5 {
 }
 
 #minPrice::after,
-#maxPrice::after {
+#maxPrice::after,
+#priceVal::after,
+.productPrice::after {
     content: " €";
 }
 
 #intro {
     align-self: center;
     width: 100%;
+}
+
+#specsCol .compare td {
+    text-align: center;
+}
+
+#specsCol .compare thead tr th {
+    min-width: 150px;
+    text-align: center;
+}
+
+#specsCol .compare thead tr th * {
+    margin: auto;
+}
+
+#specsCol #compareTableCorner {
+    text-align: start;
+    width: auto;
+
+}
+
+@media screen and (max-width: 1450px) {
+    #results {
+        max-width: 730px;
+    }
+    #filters {
+        width: 320px;
+    }
+}
+
+@media screen and (max-width: 1080px) {
+    #results {
+        max-width: 730px;
+    }
+    #filters {
+        width: 200px;
+    }
+}
+
+@media screen and (max-width: 980px) {
+    #searchBody {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #filters {
+        max-width: 730px;
+        width: 100%;
+    }
+
+    #results {
+        width: 100%;
+    }
+
+    #qaBox,
+    #reviewsBox {
+        padding: 0.5em;
+    }
+
+    #qaBox > div,
+    #reviewsBox > div {
+        padding: 0em;
+    }
+
+    #qaBox .card,
+    #reviewsBox .card {
+        border-radius: 0;
+        border-right: 0;
+        border-left: 0;
+        border-top: 0;
+    }
+    #specsCol.compareTable{
+        width: 95%;
+        overflow-x: scroll;
+    }
+    
+}
+
+@media screen and (max-width: 744px) {
+    #results {
+        justify-content: center !important;
+    }
+    #footer div,
+    h4 {
+        width: 100%;
+        margin-left: 0;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    #shoppingCart {
+        width: 95% !important;
+    }
 }
