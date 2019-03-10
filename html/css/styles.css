@@ -384,6 +384,13 @@ h5 {
     border: 1px solid var(--var-thir-color);
 }
 
+.card-body .answerCard {
+    justify-content: flex-end!important;
+}
+.card-body .answerCard .card{
+    border-color: var(--var-gray-dark);
+}
+
 #productCtrl {
     min-width: 300px;
 }
