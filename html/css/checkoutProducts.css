@@ -282,10 +282,17 @@ label.full, label.half{
     width:50%;
 }
 
+#footer{
+    width:100%;
+    min-height: auto;
+}
+
+
+
 @media screen and (max-width: 1080px) {
     #listItems {
         width: 100%;
-        height: 100%;
+        height: auto;
         margin: auto;
         margin-top:0;
     }
@@ -305,7 +312,7 @@ label.full, label.half{
         display: inline-block;
         width: auto;
     }
-
+ 
     
 }
 
