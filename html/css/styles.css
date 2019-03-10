@@ -638,8 +638,17 @@ h5 {
     }
 }
 
+@media screen and (max-width: 500px) {
+    #comparisonModal .modal-body {
+        flex-direction: column;
+    }
+}
+
 @media screen and (max-width: 400px) {
     #shoppingCart {
         width: 95% !important;
+    }
+    #comparisonModal .modal-body {
+    
     }
 }
