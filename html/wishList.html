@@ -64,7 +64,8 @@
             </div>
         </nav>
 
-        <nav id="wishListsTabs" class="w-75 mx-auto" aria-label="Page navigation example">
+        <div class="wishListContent">
+        <nav id="wishListsTabs" class="d-flex" aria-label="Page navigation example">
             <ul class="pagination mb-0">
                 <li class="page-item"><a class="page-link" href="#">Wish List 1</a></li>
                 <li class="page-item"><a class="page-link" href="#">Wedding</a></li>
@@ -72,8 +73,8 @@
                 <li class="page-item"><a class="page-link" href="#">Wish List 2</a></li>
             </ul>
         </nav>
-        <div id="mainContainer w-75 mx-auto" class="container">
-            <div class="row">
+        <div id="mainContainer" class="container">
+            <div class="row ">
                 <div id="list-example" class="list-group">
                     <a class="list-group-item list-group-item-action" href="#list-item-1">Laptop XPTO</a>
                     <a class="list-group-item list-group-item-action" href="#list-item-2">God's Autobiography</a>
@@ -84,32 +85,37 @@
 
                     <div id="list-item-1" class="card product_card">
                         <h4 class="product_name">Laptop XPTO</h4>
-                        <div class="container" style="margin-left: 0.4em;">
+                        <div class="container">
                             <div class="row">
-                                <img class="card-img-top product_img" src="./images/products/laptop.webp" alt="Card image cap">
+                                <img class="card-img-top product_img" src="./images/products/laptop.webp"
+                                    alt="Card image cap">
 
                                 <div class="col-sm">
-                                    <div> <button class="btn addToCartBtn fas fa-cart-plus" onClick="addToCart(this)"
-                                            type="submit" id="addToCart"></button> <button
-                                            class="btn removeWishItem fas fa-times" 
-                                            type="submit" id="removeWishItem"></button></div>
-                                    <p style="margin-left: 0em; margin-bottom: 0; width: auto; height: auto;">Laptop XPTO includes dual-boot OS
-                                    32bit Windows Vista and Ubuntu Linux 16.04 LTS. This computer has 4 core 4GHz processor, NVIDIA 1660 graphics card and 4GB of RAM.
-                                    The screen has 15.4 inch diameter ultra HD. Also back-lit LED lights on keyboard</p>
-                                    <div class="rating mb-2">
-                                        <fieldset class="starsRating">
-                                            <label class="full" for="star5"></label>
-                                            <label class="half" for="star4half"></label>
-                                            <label class="full" for="star4"></label>
-                                            <label class="half marked" for="star3half"></label>
-                                            <label class="full marked" for="star3"></label>
-                                            <label class="half marked" for="star2half"></label>
-                                            <label class="full marked" for="star2"></label>
-                                            <label class="half marked" for="star1half"></label>
-                                            <label class="full marked" for="star1"></label>
-                                            <label class="half marked" for="star0half"></label>
-                                        </fieldset>
-                                    </div>
+                                    <div class="product_buttons"> <button class="btn addToCartBtn fas fa-cart-plus"
+                                            onClick="addToCart(this)" type="submit" id="addToCart"></button>
+                                        <button class="btn removeWishItem fas fa-times" type="submit"
+                                            id="removeWishItem"></button></div>
+                                            <div class="rating">
+                                                <fieldset class="starsRating">
+                                                    <label class="full" for="star5"></label>
+                                                    <label class="half" for="star4half"></label>
+                                                    <label class="full" for="star4"></label>
+                                                    <label class="half marked" for="star3half"></label>
+                                                    <label class="full marked" for="star3"></label>
+                                                    <label class="half marked" for="star2half"></label>
+                                                    <label class="full marked" for="star2"></label>
+                                                    <label class="half marked" for="star1half"></label>
+                                                    <label class="full marked" for="star1"></label>
+                                                    <label class="half marked" for="star0half"></label>
+                                                </fieldset>
+                                            </div>
+                                    <p>Laptop
+                                        XPTO includes dual-boot OS
+                                        32bit Windows Vista and Ubuntu Linux 16.04 LTS. This computer has 4 core 4GHz
+                                        processor, NVIDIA 1660 graphics card and 4GB of RAM.
+                                        The screen has 15.4 inch diameter ultra HD. Also back-lit LED lights on keyboard
+                                    </p>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -119,30 +125,34 @@
                         <h4 class="product_name">God's Autobiography</h4>
                         <div class="container" style="margin-left: 0.4em;">
                             <div class="row">
-                                <img class="card-img-top product_img" src="./images/products/book_white.jpg" alt="Card image cap">
+                                <img class="card-img-top product_img" src="./images/products/book_white.jpg"
+                                    alt="Card image cap">
 
                                 <div class="col-sm">
                                     <div> <button class="btn addToCartBtn fas fa-cart-plus" onClick="addToCart(this)"
                                             type="submit" id="addToCart"></button> <button
-                                            class="btn removeWishItem fas fa-times"
-                                            type="submit" id="removeWishItem"></button> </div>
+                                            class="btn removeWishItem fas fa-times" type="submit"
+                                            id="removeWishItem"></button> </div>
+                                            <div class="rating mb-2">
+                                                <fieldset class="starsRating">
+                                                    <label class="full marked" for="star5"></label>
+                                                    <label class="half marked" for="star4half"></label>
+                                                    <label class="full marked" for="star4"></label>
+                                                    <label class="half marked" for="star3half"></label>
+                                                    <label class="full marked" for="star3"></label>
+                                                    <label class="half marked" for="star2half"></label>
+                                                    <label class="full marked" for="star2"></label>
+                                                    <label class="half marked" for="star1half"></label>
+                                                    <label class="full marked" for="star1"></label>
+                                                    <label class="half marked" for="star0half"></label>
+                                                </fieldset>
+                                            </div>
                                     <p style="margin-left: 0em; margin-bottom: 0; width: auto; height: auto;">
-                                    A thrilling autobiography about one of the worlds most proliphic thinker and creator. It follows the "life" since the beggining of times
-                                to the last second of space-time continum. The reader will never look to reality in the same way after reading this book. Best-seller in 14 countries.</p>
-                                    <div class="rating mb-2">
-                                        <fieldset class="starsRating">
-                                            <label class="full marked" for="star5"></label>
-                                            <label class="half marked" for="star4half"></label>
-                                            <label class="full marked" for="star4"></label>
-                                            <label class="half marked" for="star3half"></label>
-                                            <label class="full marked" for="star3"></label>
-                                            <label class="half marked" for="star2half"></label>
-                                            <label class="full marked" for="star2"></label>
-                                            <label class="half marked" for="star1half"></label>
-                                            <label class="full marked" for="star1"></label>
-                                            <label class="half marked" for="star0half"></label>
-                                        </fieldset>
-                                    </div>
+                                        A thrilling autobiography about one of the worlds most proliphic thinker and
+                                        creator. It follows the "life" since the beggining of times
+                                        to the last second of space-time continum. The reader will never look to reality
+                                        in the same way after reading this book. Best-seller in 14 countries.</p>
+                                  
                                 </div>
                             </div>
                         </div>
@@ -151,28 +161,32 @@
                         <h4 class="product_name">Overpriced Phones</h4>
                         <div class="container" style="margin-left: 0.4em;">
                             <div class="row">
-                                <img class="card-img-top product_img" src="./images/products/headphones.jpg" alt="Card image cap">
+                                <img class="card-img-top product_img" src="./images/products/headphones.jpg"
+                                    alt="Card image cap">
 
                                 <div class="col-sm">
                                     <div> <button class="btn addToCartBtn fas fa-cart-plus" onClick="addToCart(this)"
                                             type="submit" id="addToCart"></button> <button
-                                            class="btn removeWishItem fas fa-times" 
-                                            type="submit" id="removeWishItem"></button> </div>
-                                    <p style="margin-left: 0em; margin-bottom: 0; width: auto; height: auto;">Wireless phones with a 2mm cable charger, 20-20000 Hz range, bass boost, 7.1 surround-system. Comes in 3 different colors.</p>
-                                    <div class="rating mb-2">
-                                        <fieldset class="starsRating">
-                                            <label class="full" for="star5"></label>
-                                            <label class="half" for="star4half"></label>
-                                            <label class="full marked" for="star4"></label>
-                                            <label class="half marked" for="star3half"></label>
-                                            <label class="full marked" for="star3"></label>
-                                            <label class="half marked" for="star2half"></label>
-                                            <label class="full marked" for="star2"></label>
-                                            <label class="half marked" for="star1half"></label>
-                                            <label class="full marked" for="star1"></label>
-                                            <label class="half marked" for="star0half"></label>
-                                        </fieldset>
-                                    </div>
+                                            class="btn removeWishItem fas fa-times" type="submit"
+                                            id="removeWishItem"></button> </div>
+                                            <div class="rating mb-2">
+                                                <fieldset class="starsRating">
+                                                    <label class="full" for="star5"></label>
+                                                    <label class="half" for="star4half"></label>
+                                                    <label class="full marked" for="star4"></label>
+                                                    <label class="half marked" for="star3half"></label>
+                                                    <label class="full marked" for="star3"></label>
+                                                    <label class="half marked" for="star2half"></label>
+                                                    <label class="full marked" for="star2"></label>
+                                                    <label class="half marked" for="star1half"></label>
+                                                    <label class="full marked" for="star1"></label>
+                                                    <label class="half marked" for="star0half"></label>
+                                                </fieldset>
+                                            </div>
+                                    <p style="margin-left: 0em; margin-bottom: 0; width: auto; height: auto;">Wireless
+                                        phones with a 2mm cable charger, 20-20000 Hz range, bass boost, 7.1
+                                        surround-system. Comes in 3 different colors.</p>
+                                   
                                 </div>
                             </div>
                         </div>
@@ -181,18 +195,16 @@
                         <h4 class="product_name">PsycMixTape</h4>
                         <div class="container" style="margin-left:0.4em;">
                             <div class="row">
-                                <img class="card-img-top product_img" src="./images/products/cd_album.png" alt="Card image cap">
+                                <img class="card-img-top product_img" src="./images/products/cd_album.png"
+                                    alt="Card image cap">
 
                                 <div class="col-sm">
                                     <div>
                                         <button class="btn addToCartBtn fas fa-cart-plus" onClick="addToCart(this)"
                                             type="submit" id="addToCart"></button> <button
-                                            class="btn removeWishItem fas fa-times"
-                                            type="submit" id="removeWishItem"></button> 
+                                            class="btn removeWishItem fas fa-times" type="submit"
+                                            id="removeWishItem"></button>
                                     </div>
-                                    <p style="margin-left: 0em; margin-bottom: 0; width: auto; height: auto;">The last full length EP from british producer
-                                        Iglooghost contains big hits like Super Ink Burst, Bug Thief, New Vectors and Shrine Hacker. Contains three extra experimental tracks
-                                    produced with guest artists.</p>
                                     <div class="rating mb-2">
                                         <fieldset class="starsRating">
                                             <label class="full" for="star5"></label>
@@ -207,6 +219,12 @@
                                             <label class="half marked" for="star0half"></label>
                                         </fieldset>
                                     </div>
+                                    <p style="margin-left: 0em; margin-bottom: 0; width: auto; height: auto;">The last
+                                        full length EP from british producer
+                                        Iglooghost contains big hits like Super Ink Burst, Bug Thief, New Vectors and
+                                        Shrine Hacker. Contains three extra experimental tracks
+                                        produced with guest artists.</p>
+                                   
                                 </div>
                             </div>
                         </div>
@@ -215,14 +233,15 @@
             </div>
         </div>
     </div>
+</div>
     <div class="d-flex justify-content-between text-white p-5 flex-wrap" id="footer">
-            <div class="d-flex flex-column mx-auto">
-                <a href="./help.html#support">Help</a>
-                <a href="./help.html#contacts">Contacts</a>
-                <a href="./help.html#FAQ">FAQs</a>
-            </div>
-            <h4 class="align-self-end mx-auto">&copy; 2019 PuzzleWood.pt. All Rights Reserved.</h4>
+        <div class="d-flex flex-column mx-auto">
+            <a href="./help.html#support">Help</a>
+            <a href="./help.html#contacts">Contacts</a>
+            <a href="./help.html#FAQ">FAQs</a>
         </div>
+        <h4 class="align-self-end mx-auto">&copy; 2019 PuzzleWood.pt. All Rights Reserved.</h4>
+    </div>
 
     <!--Card JavaScript-->
     <script type="text/javascript" src="./scripts/card.js"> </script>
