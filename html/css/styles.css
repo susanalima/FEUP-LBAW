@@ -115,7 +115,15 @@ h5 {
     height: 250px;
 }
 
-.productImage {
+.cartProductImage {
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    background-color: var(--var-gray-light);
+}
+
+.productImage,
+.productImageCompare {
     background-color: white;
 }
 
@@ -132,7 +140,8 @@ h5 {
 }
 
 .productImage img,
-.productImageCompare img {
+.productImageCompare img,
+.cartProductImage img {
     max-width: 100%;
     max-height: 100%;
     display: inline-block; /* Instead of display: block; */
@@ -211,6 +220,9 @@ h5 {
 
 .addToCartBtn,
 .addToWishListBtn,
+.addToCmpBtn,
+.modalBtn,
+.cmnBtn,
 .removeWishItem {
     border-radius: 0.25rem;
     margin: 0px 0px 1px 1px;
@@ -223,16 +235,25 @@ h5 {
 }
 
 .addToCartBtn:hover,
+.addToCmpBtn:hover,
+.modalBtn:hover,
+.cmnBtn:hover,
 .addToWishListBtn:hover {
     color: var(--var-text);
 }
 
 .active.addToCartBtn:hover,
+.active.addToCmpBtn:hover,
+.active.modalBtn:hover,
+.active.cmnBtn:hover,
 .active.addToWishListBtn:hover {
     color: var(--var-text);
 }
 
 .active.addToCartBtn,
+.active.addToCmpBtn,
+.active.modalBtn,
+.active.cmnBtn,
 .active.addToWishListBtn {
     border: 1px solid var(--var-main-color);
     color: white;
@@ -323,11 +344,6 @@ h5 {
     border: 0px;
 }
 
-.cartProductImage {
-    width: 60px;
-    height: 60px;
-}
-
 .cartQuantitySelector {
     width: 45px;
     font-size: 0.7em;
@@ -335,10 +351,6 @@ h5 {
 
 .breadcrumb {
     background-color: var(--var-gray-light);
-}
-
-#searchCategorySelector {
-    z-index: 0;
 }
 
 #specsCol {
