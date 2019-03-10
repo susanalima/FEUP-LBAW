@@ -457,3 +457,8 @@ h5 {
     background-color: var(--var-blue-ml);
     color: white;
 }
+
+.img-blur {
+  filter: blur(0.5px);
+  -webkit-filter: blur(0.5px);
+}
