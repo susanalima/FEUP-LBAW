@@ -21,23 +21,6 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
     crossorigin="anonymous" />
 
-  <script type="text/javascript">
-    function editClientName(button, name) {
-      let clientName = document.getElementById("clientName");
-      if (clientName) {
-        if (button.value == "edit") {
-          button.value = "save"
-          clientName.innerHTML = '<form class="clientInfoForm"><div class="row"><div class="col-sm-8"><input type="text" id="clientName" value="John Doe"></div></div></form>'
-        }
-        else if (button.value == "save") {
-          button.value = "edit"
-          clientName.innerHTML = name
-        }
-      }
-    }
-  </script>
-
-
   <title>Your Account</title>
 </head>
 
@@ -751,7 +734,8 @@
       <h4 class="align-self-end mx-auto">&copy; 2019 PuzzleWood.pt. All Rights Reserved.</h4>
   </div>
   <!-- Footer End -->
-
+  <!--Edit JavaScript-->
+    <script type="text/javascript" src="./scripts/edition.js"> </script>
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
