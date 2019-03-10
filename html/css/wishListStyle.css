@@ -179,7 +179,7 @@ div.col-sm p{
 }
 
 
-@media screen and (max-width: 1442px){
+@media screen and (max-width: 960px){
     .product_img{
         display:none;
     }
