@@ -1,26 +1,38 @@
 #wishListsTabs{
     margin-top: 2em;
-    margin-left: 4em;
 }
 
 #list-example{
     width:  auto;
     height: auto;
 }
-
-#listItems{
-    width: 80%;
-    overflow: auto;
-    height: 30em;
+.wishListContent{
+    width: 75%;
+    margin:auto;
 }
 
+#listItems{
+    max-width: 80%;
+    overflow-y: auto;
+    min-height: 30em;
+    max-height:50rem;
+}
+.col-sm{
+    padding-right: 0;
+    padding-left: 0;
+    margin-left: 0.5em;
+}
 #mainContainer{
-    margin-left:4em;
     width:100%;
 }
 
 .product_card{
-    min-height: 23em;
+    min-height: auto;
+    padding-left: 0.4em;
+}
+
+h4.product_name{
+    margin:0;
 }
 
 .product_img{
@@ -45,34 +57,36 @@
    
 }
 
+.page-link{
+    font-size:1.5vmax;
+}
+
 
 
 .addToCartBtn{
     min-height: 5%;
     max-height: 8%;
-    width:15%;
+    min-width:15%;
 }
 
 
 .addToCartBtn:hover{
     min-height: 5%;
     max-height: 8%;
-    width:15%;
+    min-width:15%;
     color:white;
     background-color: var(--var-main-color);
 }
 
 .removeWishItem{
-    min-height: 5%;
+    min-height: 15%;
     max-height: 8%;
-    width:15%;
 
 }
 
 .removeWishItem:hover{
-    min-height: 5%;
+    min-height: 15%;
     max-height: 8%;
-    width:15%;
     color:white;
     background-color: var(--var-main-color);
 }
@@ -86,9 +100,13 @@
 }
 
 .rating {
-    width: 350px;
-    min-height: 50px;
+    width: auto;
+    height: auto;
+    display:inline-block;
+    margin-bottom: 0;
 }
+
+
 
 .starsRating {
     border: none;
@@ -97,6 +115,10 @@
 
 .starsRating > input {
     display: none;
+}
+
+label{
+    margin-bottom: 0;   
 }
 .starsRating > label:before {
     margin: 5px;
@@ -121,5 +143,49 @@
     color: #ffed85;
 }
 
-@media screen and (max-width: 1080px) {
+div.col-sm p{
+   width:90%;
+   margin-left: 0em; 
+   margin-bottom: 0;
+}
+
+@media screen and (max-width: 750px) {
+    div.col-sm p{
+        display:none;
+    }
+
+    ul.pagination{
+        justify-content: center;
+    }
+    
+}
+
+@media screen and (max-width: 1260px){
+    #list-example{
+        display:none;
+    }
+
+    #wishListsTabs{
+        justify-content: center;
+        width:100%;
+       
+    }
+
+    #listItems{
+        margin:auto;
+        width: auto;
+    }
+}
+
+
+@media screen and (max-width: 1442px){
+    .product_img{
+        display:none;
+    }
+}
+
+@media screen and (max-width: 400px){
+   .wishListContent{
+       width:100%;
+    }
 }
