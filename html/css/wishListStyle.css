@@ -120,3 +120,6 @@
 .starsRating .marked{
     color: #ffed85;
 }
+
+@media screen and (max-width: 1080px) {
+}

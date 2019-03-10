@@ -22,7 +22,6 @@
 
 
     <link rel="stylesheet" href="css/checkoutProducts.css" />
-
     <link rel="stylesheet" href="css/root.css" />
     <link rel="stylesheet" href="css/topBar.css" />
     <link rel="stylesheet" href="css/styles.css" />
@@ -80,11 +79,11 @@
     <div class="card container bottom_row">
         <div class="row center-block">
             <div class="col-sm card final_price container">
-                <div class="row h-75">
-                    <div class="col-sm">
+                <div class="price_row h-75">
+                    <div class="price_col col-sm">
                         <h1 class="final_label">Final Value:</h1>
                     </div>
-                    <div class="col-sm">
+                    <div class="price_col col-sm ">
                         <h1 class="final_value">311.96€</h1>
                     </div>
                 </div>
@@ -96,33 +95,39 @@
         <div class="card product_card">
             <h4 class="product_name">Laptop XPTO</h4>
             <div class="container" style="margin-left: 0.4em;">
-                <div class="row">
-                    <img class="card-img-top product_img" src="./images/img.png" alt="Card image cap">
-                    <div class="col-sm product_info">
+                <div class="row flex-row d-flex justify-content-start">
+                    <img class="card-img-top product_img" src="images/products/laptop.webp" alt="Card image cap">
+                            <div class="col-sm">
+                    
+                    <div>
                         <button class="btn btn-light remove_product" type="button"><i class="fa fa-times" aria-hidden="true"></i></button>
                         <h1 class="price">22.49€</h1>
+                    </div>
+
                         <div class="quantity_field">
                                 <h1 class="quantity">Quantity: 4</h1>
-                                <button class="add_quantity btn" type="button"><i class="fa fa-plus" aria-hidden="true"></i></button>
-                                <button class="add_quantity btn" type="button"><i class="fa fa-minus" aria-hidden="true"></i></button>
+                                <div class="quantity_buttons">
+                                    <button class="add_quantity btn" type="button"><i class="fa fa-plus" aria-hidden="true"></i></button>
+                                    <button class="add_quantity btn" type="button"><i class="fa fa-minus" aria-hidden="true"></i></button>
+                                </div>
                             </div>
-                        <h3 class="date_add">Added in: 12-08-2018</h3>
+                        <h3 class="date_add">Added in: 12-08-2018</h3>         
                         <div class="rating stars_field mb-2">
-                            <fieldset class="starsRating">
-                                <label class="full" for="star5"></label>
-                                <label class="half" for="star4half"></label>
-                                <label class="full" for="star4"></label>
-                                <label class="half marked" for="star3half"></label>
-                                <label class="full marked" for="star3"></label>
-                                <label class="half marked" for="star2half"></label>
-                                <label class="full marked" for="star2"></label>
-                                <label class="half marked" for="star1half"></label>
-                                <label class="full marked" for="star1"></label>
-                                <label class="half marked" for="star0half"></label>
-                            </fieldset>
-                        </div>
-
+                                <fieldset class="starsRating">
+                                    <label class="full" for="star5"></label>
+                                    <label class="half" for="star4half"></label>
+                                    <label class="full" for="star4"></label>
+                                    <label class="half marked" for="star3half"></label>
+                                    <label class="full marked" for="star3"></label>
+                                    <label class="half marked" for="star2half"></label>
+                                    <label class="full marked" for="star2"></label>
+                                    <label class="half marked" for="star1half"></label>
+                                    <label class="full marked" for="star1"></label>
+                                    <label class="half marked" for="star0half"></label>
+                                </fieldset>
+                            </div> 
                     </div>
+                
                 </div>
             </div>
         </div>
@@ -130,18 +135,20 @@
         <div class="card product_card">
             <h4 class="product_name">God's Autobiography</h4>
             <div class="container" style="margin-left: 0.4em;">
-                <div class="row">
-                    <img class="card-img-top product_img" src="./images/img.png" alt="Card image cap">
-                    <div class="col-sm product_info">
+                <div class="row  flex-row d-flex justify-content-start">
+                    <img class="card-img-top product_img" src="images/products/book_white.jpg" alt="Card image cap">
+                    <div class="col-sm">
                         <button class="btn btn-light remove_product" type="button"><i class="fa fa-times" aria-hidden="true"></i></button>
                         <h1 class="price">29.99€</h1>
                         <div class="quantity_field">
                                 <h1 class="quantity">Quantity: 1</h1>
-                                <button class="add_quantity btn" type="button"><i class="fa fa-plus" aria-hidden="true"></i></button>
-                                <button class="add_quantity btn" type="button"><i class="fa fa-minus" aria-hidden="true"></i></button>
+                                <div class="quantity_buttons">
+                                    <button class="add_quantity btn" type="button"><i class="fa fa-plus" aria-hidden="true"></i></button>
+                                    <button class="add_quantity btn" type="button"><i class="fa fa-minus" aria-hidden="true"></i></button>
+                                </div>
                             </div>
                             <h3 class="date_add">Added in: 01-04-2019</h3>
-                            <div class="rating mb-2">
+                            <div class="rating stars_field mb-2">
                                 <fieldset class="starsRating">
                                     <label class="full" for="star5"></label>
                                     <label class="half" for="star4half"></label>
@@ -163,17 +170,19 @@
             <h4 class="product_name">Overpriced Phones</h4>
             <div class="container" style="margin-left: 0.4em;">
                 <div class="row">
-                    <img class="card-img-top product_img" src="./images/img.png" alt="Card image cap">
+                    <img class="card-img-top product_img" src="./images/products/headphones.jpg" alt="Card image cap">
                     <div class="col-sm product_info">
                         <button class="btn btn-light remove_product" type="button"><i class="fa fa-times" aria-hidden="true"></i></button>
                         <h1 class="price">199.49€</h1>
                         <div class="quantity_field">
                                 <h1 class="quantity">Quantity: 1</h1>
+                                <div class="quantity_buttons">
                                 <button class="add_quantity btn" type="button"><i class="fa fa-plus" aria-hidden="true"></i></button>
                                 <button class="add_quantity btn" type="button"><i class="fa fa-minus" aria-hidden="true"></i></button>
                             </div>
+                            </div>
                             <h3 class="date_add">Added in: 10-03-2019</h3>
-                            <div class="rating mb-2">
+                            <div class="rating stars_field mb-2">
                                 <fieldset class="starsRating">
                                     <label class="full" for="star5"></label>
                                     <label class="half" for="star4half"></label>
@@ -195,7 +204,7 @@
             <h4 class="product_name">PsycMixTape</h4>
             <div class="container" style="margin-left:0.4em;">
                 <div class="row">
-                    <img class="card-img-top product_img" src="./images/img.png" alt="Card image cap">
+                    <img class="card-img-top product_img" src="./images/products/cd_album.png" alt="Card image cap">
                     <div class="col-sm product_info">
                         <button class="btn btn-light remove_product" type="button"><i class="fa fa-times" aria-hidden="true"></i></button>
                         <h1 class="price">59.99€</h1>
@@ -205,7 +214,7 @@
                             <button class="add_quantity btn" type="button"><i class="fa fa-minus" aria-hidden="true"></i></button>
                         </div>
                         <h3 class="date_add">Added in: 18-10-2018</h3>
-                            <div class="rating mb-2">
+                            <div class="rating stars_field mb-2">
                                 <fieldset class="starsRating">
                                     <label class="full" for="star5"></label>
                                     <label class="half" for="star4half"></label>
@@ -225,15 +234,14 @@
         </div>
     </div>
   </div>
-    <div class="d-flex justify-content-between text-white p-5 flex-wrap" id="footer">
-            <div class="d-flex flex-column mx-auto">
-                <a href="./help.html#support">Help</a>
-                <a href="./help.html#contacts">Contacts</a>
-                <a href="./help.html#FAQ">FAQs</a>
-            </div>
-            <h4 class="align-self-end mx-auto">&copy; 2019 PuzzleWood.pt. All Rights Reserved.</h4>
+  <div class="d-flex justify-content-between text-white p-5 flex-wrap" id="footer">
+        <div class="d-flex flex-column mx-auto">
+            <a href="./help.html#support">Help</a>
+            <a href="./help.html#contacts">Contacts</a>
+            <a href="./help.html#FAQ">FAQs</a>
         </div>
-
+        <h4 class="align-self-end mx-auto">&copy; 2019 PuzzleWood.pt. All Rights Reserved.</h4>
+    </div>
 
 </body>
 
