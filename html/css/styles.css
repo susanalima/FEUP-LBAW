@@ -287,6 +287,10 @@ h5 {
     #results {
         justify-content: center!important;
     }
+    #footer div,h4{
+        width: 100%;
+        margin-left:0;
+    }
 }
 
 @media screen and (max-width: 400px) {
@@ -452,4 +456,9 @@ h5 {
 .btnOutlineAction:hover {
     background-color: var(--var-blue-ml);
     color: white;
+}
+
+.img-blur {
+  filter: blur(0.5px);
+  -webkit-filter: blur(0.5px);
 }

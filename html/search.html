@@ -31,18 +31,8 @@
     </head>
     <body>
         <!-- Navbar Start -->
-
+        <div class="mainContent">
         <nav class="navbar navbar-expand-lg navbar-light">
-            <button
-                class="navbar-toggler"
-                type="button"
-                data-toggle="collapse"
-                data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent"
-                aria-expanded="false"
-                aria-label="Toggle navigation"
-            ></button>
-
             <div class="collapse navbar-collapse d-flex justify-content-between" id="navbarSupportedContent">
                 <nav class="navbar d-flex navbar-light" id="navbarLogo">
                     <a class="navbar-brand" href="./index.html">
@@ -1079,53 +1069,25 @@
                 </article>
             </div>
         </div>
-
-        <script>
-            function opener() {
-                var cart = document.getElementById("shoppingCart");
-                cart.classList.toggle("active");
-
-                var overlay = document.getElementById("overlay");
-                overlay.classList.toggle("active");
-            }
-            function addToCart(elem) {
-                elem.classList.toggle("active");
-            }
-            function addToWishList(elem) {
-                elem.classList.toggle("active");
-            }
-            function plusOne(elem) {
-                var textfield = elem.parentElement.parentElement.getElementsByTagName("INPUT")[0];
-                var quantity = parseInt(textfield.value) + 1;
-                if (isNaN(quantity)) {
-                    quantity = 2;
-                }
-                textfield.value = quantity;
-            }
-            function minusOne(elem) {
-                var textfield = elem.parentElement.parentElement.getElementsByTagName("INPUT")[0];
-                var quantity = parseInt(textfield.value) - 1;
-                if (isNaN(quantity) || quantity < 0) {
-                    quantity = 0;
-                }
-                textfield.value = quantity;
-            }
-        </script>
+        </div>
 
         <div class="overlay transitions" id="overlay"></div>
 
         <!-- Shopping Cart End -->
 
         <!-- Footer Start -->
-        <div class="d-flex justify-content-around text-white p-5" id="footer">
-            <div class="d-flex flex-column">
-                <a href="./help.html#support">Help</a>
-                <a href="./help.html#contacts">Contacts</a>
-                <a href="./help.html#FAQ">FAQs</a>
+        <div class="d-flex justify-content-between text-white p-5 flex-wrap" id="footer">
+                <div class="d-flex flex-column mx-auto">
+                    <a href="./help.html#support">Help</a>
+                    <a href="./help.html#contacts">Contacts</a>
+                    <a href="./help.html#FAQ">FAQs</a>
+                </div>
+                <h4 class="align-self-end mx-auto">&copy; 2019 PuzzleWood.pt. All Rights Reserved.</h4>
             </div>
-            <h4 class="align-self-end ">&copy; 2019 PuzzleWood.pt. All Rights Reserved.</h4>
-        </div>
         <!-- Footer End -->
+
+        <!--Card JavaScript-->
+        <script type="text/javascript" src="./scripts/card.js"> </script>
 
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
