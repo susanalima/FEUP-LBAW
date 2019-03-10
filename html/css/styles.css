@@ -190,7 +190,8 @@ h5 {
 }*/
 
 .addToCartBtn,
-.addToWishListBtn, .removeWishItem{
+.addToWishListBtn,
+.removeWishItem {
     border-radius: 0.25rem;
     margin: 0px 0px 1px 1px;
     width: 50px;
@@ -247,7 +248,6 @@ h5 {
 }
 
 @media screen and (max-width: 980px) {
-
     #searchBody {
         display: flex;
         flex-direction: column;
@@ -283,18 +283,17 @@ h5 {
 }
 
 @media screen and (max-width: 744px) {
-
     #results {
-        justify-content: center!important;
+        justify-content: center !important;
     }
-    #footer div,h4{
+    #footer div,
+    h4 {
         width: 100%;
-        margin-left:0;
+        margin-left: 0;
     }
 }
 
 @media screen and (max-width: 400px) {
-
     #shoppingCart {
         width: 95% !important;
     }
@@ -459,6 +458,108 @@ h5 {
 }
 
 .img-blur {
-  filter: blur(0.5px);
-  -webkit-filter: blur(0.5px);
+    filter: blur(0.5px);
+    -webkit-filter: blur(0.5px);
+}
+
+/*https://css-tricks.com/styling-cross-browser-compatible-range-inputs-css/*/
+.pwRange {
+    -webkit-appearance: none;
+    margin: 10px 0;
+    width: 100%;
+}
+.pwRange:focus {
+    outline: none;
+}
+.pwRange::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 8.4px;
+    cursor: pointer;
+    animate: 0.2s;
+    background: var(--var-secon-color);
+    border-radius: 1.3px;
+}
+.pwRange::-webkit-slider-thumb {
+    border: 1px solid var(--var-text);
+    height: 20px;
+    width: 20px;
+    border-radius: 2.5px;
+    background: #ffffff;
+    cursor: pointer;
+    -webkit-appearance: none;
+    margin-top: -6px;
+}
+.pwRange:focus::-webkit-slider-runnable-track {
+    background: var(--var-secon-color);
+}
+.pwRange::-moz-range-track {
+    width: 100%;
+    height: 8.4px;
+    cursor: pointer;
+    animate: 0.2s;
+    background: var(--var-secon-color);
+    border-radius: 1.3px;
+}
+.pwRange::-moz-range-thumb {
+    border: 1px solid var(--var-text);
+    height: 20px;
+    width: 20px;
+    border-radius: 2.5px;
+    background: #ffffff;
+    cursor: pointer;
+}
+.pwRange::-ms-track {
+    width: 100%;
+    height: 8.4px;
+    cursor: pointer;
+    animate: 0.2s;
+    background: transparent;
+    border-color: transparent;
+    border-width: 16px 0;
+    color: transparent;
+}
+.pwRange::-ms-fill-lower {
+    background: var(--var-secon-color);
+    border: 0.2px solid #010101;
+    border-radius: 2.6px;
+}
+.pwRange::-ms-fill-upper {
+    background: var(--var-secon-color);
+    border: 0.2px solid #010101;
+    border-radius: 2.6px;
+}
+.pwRange::-ms-thumb {
+    border: 1px solid var(--var-text);
+    height: 36px;
+    width: 16px;
+    border-radius: 3px;
+    background: #ffffff;
+    cursor: pointer;
+}
+.pwRange:focus::-ms-fill-lower {
+    background: var(--var-secon-color);
+}
+.pwRange:focus::-ms-fill-upper {
+    background: var(--var-secon-color);
+}
+
+#priceControlRange {
+    position: relative;
+}
+
+#priceControlRange input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    
+}
+
+#priceControlRangeMin::-webkit-slider-thumb {
+    position: relative;
+    z-index: 1;
+}
+
+#minPrice::after,
+#maxPrice::after {
+    content: " €";
 }
