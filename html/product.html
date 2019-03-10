@@ -32,45 +32,54 @@
     <body>
         <!-- Navbar Start -->
         <div class="mainContent">
-        <nav class="navbar navbar-expand-lg navbar-light">
-            <div class="collapse navbar-collapse d-flex justify-content-between" id="navbarSupportedContent">
-                <nav class="navbar d-flex navbar-light" id="navbarLogo">
-                    <a class="navbar-brand" href="./index.html">
-                        <img src="./images/img.png" width="30" height="30" class="d-inline-block align-top" alt="" />
-                        PuzzleWood
-                    </a>
-                </nav>
-                <div class="search-bar navbar-nav" id="searchNavContainer">
-                    <div class="input-group" id="searchNav">
-                        <div class=" input-group-prepend" id="searchCategorySelector">
-                            <button
-                                class="btn dropdown-toggle search-category"
-                                type="button"
-                                data-toggle="dropdown"
-                                aria-haspopup="true"
-                                aria-expanded="false"
-                            >
-                                All
-                            </button>
-                            <div class="dropdown-menu search-category-drop">
-                                <a class="dropdown-item" href="#">All</a>
-                                <a class="dropdown-item" href="#">Another action</a>
-                                <a class="dropdown-item" href="#">Something else here</a>
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <div class="collapse navbar-collapse d-flex justify-content-between" id="navbarSupportedContent">
+                    <nav class="navbar d-flex navbar-light" id="navbarLogo">
+                        <a class="navbar-brand" href="./index.html">
+                            <img
+                                src="./images/img.png"
+                                width="30"
+                                height="30"
+                                class="d-inline-block align-top"
+                                alt=""
+                            />
+                            PuzzleWood
+                        </a>
+                    </nav>
+                    <div class="search-bar navbar-nav" id="searchNavContainer">
+                        <div class="input-group" id="searchNav">
+                            <div class=" input-group-prepend" id="searchCategorySelector">
+                                <button
+                                    class="btn dropdown-toggle search-category"
+                                    type="button"
+                                    data-toggle="dropdown"
+                                    aria-haspopup="true"
+                                    aria-expanded="false"
+                                >
+                                    All
+                                </button>
+                                <div class="dropdown-menu search-category-drop">
+                                    <a class="dropdown-item" href="#">All</a>
+                                    <a class="dropdown-item" href="#">Another action</a>
+                                    <a class="dropdown-item" href="#">Something else here</a>
+                                </div>
                             </div>
+                            <form class="form-inline my-lg-0 d-flex justify-content-between">
+                                <input class="form-control" type="text" placeholder="Search" id="searchBar" />
+
+                                <button id="searchBtn" class="fas fa-search" type="submit" id="searchBtn"></button>
+                            </form>
                         </div>
-                        <form class="form-inline my-lg-0 d-flex justify-content-between">
-                            <input class="form-control" type="text" placeholder="Search" id="searchBar" />
-
-                            <button id="searchBtn" class="fas fa-search" type="submit" id="searchBtn"></button>
-                        </form>
                     </div>
-                </div>
 
-                <nav class="nav-item text-right" id="accountLinks">
-                    <a class="nav-link" href="clientAccount.html" tabindex="-1" aria-disabled="true">Your Account</a>
-                </nav>
-            </div>
-        </nav>
+                    <nav class="nav-item text-right" id="accountLinks">
+                        <a class="nav-link" href="clientAccount.html" tabindex="-1" aria-disabled="true"
+                            >Your Account</a
+                        >
+                    </nav>
+                </div>
+            </nav>
+        </div>
 
         <!-- Navbar End -->
 
@@ -82,7 +91,7 @@
             </ol>
         </nav>
 
-        <div id="intro" class="row d-flex justify-content-center p-5">
+        <div id="intro" class="row d-flex justify-content-center p-5 w-100">
             <div id="imagesCarousel" class="carousel slide col-md-5" data-ride="carousel">
                 <ol class="carousel-indicators">
                     <li data-target="#imagesCarousel" data-slide-to="0" class="active"></li>
@@ -91,13 +100,13 @@
                 </ol>
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img src="images/placeholder.png" class="d-block w-100" alt="..." />
+                        <img src="images/products/macbook.jpg" class="d-block w-100" alt="..." />
                     </div>
                     <div class="carousel-item">
-                        <img src="images/placeholder.png" class="d-block w-100" alt="..." />
+                        <img src="images/products/macbook2.jpg" class="d-block w-100" alt="..." />
                     </div>
                     <div class="carousel-item">
-                        <img src="images/placeholder.png" class="d-block w-100" alt="..." />
+                        <img src="images/products/macbook3.jpg" class="d-block w-100" alt="..." />
                     </div>
                 </div>
             </div>
@@ -170,16 +179,94 @@
 
                 <div class="d-flex justify-content-between p-3" id="price">
                     <h2 id="priceLbl" class="">Price:</h2>
-                    <h3 id="priceVal" class="">XX.XX€</h3>
+                    <h3 id="priceVal" class="">XX.XX</h3>
                 </div>
 
-                <div class="d-flex justify-content-between" id="addBtns">
-                    <button class="btn addToCartBtn" onClick="addToCart(this)" type="submit" id="addToCart">
+                <div class="d-flex flex-column" id="addBtns">
+                    <div class="d-flex justify-content-between w-100">
+                        <button
+                            class="btn addToWishListBtn"
+                            onClick="addToWishList(this)"
+                            type="submit"
+                            id="addToWishList"
+                            title="Add To Wish List"
+                        >
+                            <i class="fas fa-heart"></i>
+                        </button>
+                        <button
+                            class="btn addToCmpBtn"
+                            onClick="addToComparison(this)"
+                            type="submit"
+                            id="addToCmp"
+                            title="Add To Comparison"
+                            data-toggle="modal"
+                            data-target="#comparisonModal"
+                        >
+                            <i class="fas fa-exchange-alt"></i>
+                        </button>
+                    </div>
+                    <button
+                        class="btn addToCartBtn w-100 mt-1"
+                        onClick="addToCart(this)"
+                        type="submit"
+                        id="addToCart"
+                        title="Add To Cart"
+                    >
                         <i class="fas fa-cart-plus"></i>
                     </button>
-                    <button class="btn addToWishListBtn" onClick="addToWishList(this)" type="submit" id="addToWishList">
-                        <i class="fas fa-heart"></i>
-                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal -->
+        <div
+            class="modal fade"
+            id="comparisonModal"
+            tabindex="-1"
+            role="dialog"
+            aria-labelledby="comparisonModalLabel"
+            aria-hidden="true"
+        >
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="comparisonModalLabel">Products Added For Comparison</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body d-flex justify-content-between">
+                        <div class="productForComparison d-flex flex-column align-items-center">
+                            <button class="btn cmnBtn" title="Remove From Comparison">
+                                <i class="fas fa-times"></i>
+                            </button>
+                            <div class="productImageCompare pb-2">
+                                <img src="images/placeholder.png" class="" alt="..." />
+                            </div>
+                            <span>Product Name</span>
+                        </div>
+                        <div class="productForComparison d-flex flex-column align-items-center">
+                            <button class="btn cmnBtn" title="Remove From Comparison">
+                                <i class="fas fa-times"></i>
+                            </button>
+                            <div class="productImageCompare pb-2">
+                                <img src="images/placeholder.png" class="" alt="..." />
+                            </div>
+                            <span>Product Name</span>
+                        </div>
+                        <div class="productForComparison d-flex flex-column align-items-center">
+                            <button class="btn cmnBtn" title="Remove From Comparison">
+                                <i class="fas fa-times"></i>
+                            </button>
+                            <div class="productImageCompare pb-2">
+                                <img src="images/placeholder.png" class="" alt="..." />
+                            </div>
+                            <span>Product Name</span>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn modalBtn" data-dismiss="modal">Close</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -341,20 +428,19 @@
                 </div>
             </div>
         </div>
-        </div>
 
         <!--Card JavaScript-->
-        <script type="text/javascript" src="./scripts/card.js"> </script>
+        <script type="text/javascript" src="./scripts/card.js"></script>
 
         <!-- Footer Start -->
         <div class="d-flex justify-content-between text-white p-5 flex-wrap" id="footer">
-                <div class="d-flex flex-column mx-auto">
-                    <a href="./help.html#support">Help</a>
-                    <a href="./help.html#contacts">Contacts</a>
-                    <a href="./help.html#FAQ">FAQs</a>
-                </div>
-                <h4 class="align-self-end mx-auto">&copy; 2019 PuzzleWood.pt. All Rights Reserved.</h4>
+            <div class="d-flex flex-column mx-auto">
+                <a href="./help.html#support">Help</a>
+                <a href="./help.html#contacts">Contacts</a>
+                <a href="./help.html#FAQ">FAQs</a>
             </div>
+            <h4 class="align-self-end mx-auto">&copy; 2019 PuzzleWood.pt. All Rights Reserved.</h4>
+        </div>
         <!-- Footer End -->
 
         <!-- Optional JavaScript -->
