@@ -79,355 +79,481 @@
                     </nav>
                 </div>
             </nav>
-        </div>
 
-        <!-- Navbar End -->
+            <!-- Navbar End -->
 
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item"><a href="#">Library</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Data</li>
-            </ol>
-        </nav>
-
-        <div id="intro" class="row d-flex justify-content-center p-5 w-100">
-            <div id="imagesCarousel" class="carousel slide col-md-5" data-ride="carousel">
-                <ol class="carousel-indicators">
-                    <li data-target="#imagesCarousel" data-slide-to="0" class="active"></li>
-                    <li data-target="#imagesCarousel" data-slide-to="1"></li>
-                    <li data-target="#imagesCarousel" data-slide-to="2"></li>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item"><a href="#">Library</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Data</li>
                 </ol>
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img src="images/products/macbook.jpg" class="d-block w-100" alt="..." />
+            </nav>
+
+            <div id="intro" class="row d-flex justify-content-center p-5 w-100">
+                <div id="imagesCarousel" class="carousel slide col-md-5" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#imagesCarousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#imagesCarousel" data-slide-to="1"></li>
+                        <li data-target="#imagesCarousel" data-slide-to="2"></li>
+                    </ol>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="images/products/macbook.jpg" class="d-block w-100" alt="..." />
+                        </div>
+                        <div class="carousel-item">
+                            <img src="images/products/macbook2.jpg" class="d-block w-100" alt="..." />
+                        </div>
+                        <div class="carousel-item">
+                            <img src="images/products/macbook3.jpg" class="d-block w-100" alt="..." />
+                        </div>
                     </div>
-                    <div class="carousel-item">
-                        <img src="images/products/macbook2.jpg" class="d-block w-100" alt="..." />
+                </div>
+                <div class="col-md-2 d-flex flex-column justify-content-end" id="productCtrl">
+                    <h2 class="mt-4" id="category">Category</h2>
+                    <h1 class="" id="name">Product Name</h1>
+
+                    <form class="rating mb-2">
+                        <fieldset class="starsRating">
+                            <input type="radio" id="star5" name="rating" value="5" /><label
+                                class="full"
+                                for="star5"
+                            ></label>
+                            <input type="radio" id="star4half" name="rating" value="4.5" /><label
+                                class="half"
+                                for="star4half"
+                            ></label>
+                            <input type="radio" id="star4" name="rating" value="4" /><label
+                                class="full"
+                                for="star4"
+                            ></label>
+                            <input type="radio" id="star3half" name="rating" value="3.5" /><label
+                                class="half"
+                                for="star3half"
+                            ></label>
+                            <input type="radio" id="star3" name="rating" value="3" /><label
+                                class="full"
+                                for="star3"
+                            ></label>
+                            <input type="radio" id="star2half" name="rating" value="2.5" /><label
+                                class="half"
+                                for="star2half"
+                            ></label>
+                            <input type="radio" id="star2" name="rating" value="2" /><label
+                                class="full"
+                                for="star2"
+                            ></label>
+                            <input type="radio" id="star1half" name="rating" value="1.5" /><label
+                                class="half"
+                                for="star1half"
+                            ></label>
+                            <input type="radio" id="star1" name="rating" value="1" /><label
+                                class="full"
+                                for="star1"
+                            ></label>
+                            <input type="radio" id="star0half" name="rating" value="0.5" /><label
+                                class="half"
+                                for="star0half"
+                            ></label>
+                        </fieldset>
+                    </form>
+
+                    <div class="dropdown" id="edition">
+                        <button
+                            class="btn dropdown-toggle"
+                            type="button"
+                            id="dropdownMenuButton"
+                            data-toggle="dropdown"
+                            aria-haspopup="true"
+                            aria-expanded="false"
+                        >
+                            Edition
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
                     </div>
-                    <div class="carousel-item">
-                        <img src="images/products/macbook3.jpg" class="d-block w-100" alt="..." />
+
+                    <div class="d-flex justify-content-between p-3" id="price">
+                        <h2 id="priceLbl" class="">Price:</h2>
+                        <h3 id="priceVal" class="">XX.XX</h3>
+                    </div>
+
+                    <div class="d-flex flex-column" id="addBtns">
+                        <div class="d-flex justify-content-between w-100">
+                            <button
+                                class="btn addToWishListBtn"
+                                onClick="addToWishList(this)"
+                                type="submit"
+                                id="addToWishList"
+                                title="Add To Wish List"
+                            >
+                                <i class="fas fa-heart"></i>
+                            </button>
+                            <button
+                                class="btn addToCmpBtn"
+                                onClick="addToComparison(this)"
+                                type="submit"
+                                id="addToCmp"
+                                title="Add To Comparison"
+                                data-toggle="modal"
+                                data-target="#comparisonModal"
+                            >
+                                <i class="fas fa-exchange-alt"></i>
+                            </button>
+                        </div>
+                        <button
+                            class="btn addToCartBtn w-100 mt-1"
+                            onClick="addToCart(this)"
+                            type="submit"
+                            id="addToCart"
+                            title="Add To Cart"
+                        >
+                            <i class="fas fa-cart-plus"></i>
+                        </button>
                     </div>
                 </div>
             </div>
-            <div class="col-md-2 d-flex flex-column justify-content-end" id="productCtrl">
-                <h2 class="mt-4" id="category">Category</h2>
-                <h1 class="" id="name">Product Name</h1>
 
-                <form class="rating mb-2">
-                    <fieldset class="starsRating">
-                        <input type="radio" id="star5" name="rating" value="5" /><label
-                            class="full"
-                            for="star5"
-                        ></label>
-                        <input type="radio" id="star4half" name="rating" value="4.5" /><label
-                            class="half"
-                            for="star4half"
-                        ></label>
-                        <input type="radio" id="star4" name="rating" value="4" /><label
-                            class="full"
-                            for="star4"
-                        ></label>
-                        <input type="radio" id="star3half" name="rating" value="3.5" /><label
-                            class="half"
-                            for="star3half"
-                        ></label>
-                        <input type="radio" id="star3" name="rating" value="3" /><label
-                            class="full"
-                            for="star3"
-                        ></label>
-                        <input type="radio" id="star2half" name="rating" value="2.5" /><label
-                            class="half"
-                            for="star2half"
-                        ></label>
-                        <input type="radio" id="star2" name="rating" value="2" /><label
-                            class="full"
-                            for="star2"
-                        ></label>
-                        <input type="radio" id="star1half" name="rating" value="1.5" /><label
-                            class="half"
-                            for="star1half"
-                        ></label>
-                        <input type="radio" id="star1" name="rating" value="1" /><label
-                            class="full"
-                            for="star1"
-                        ></label>
-                        <input type="radio" id="star0half" name="rating" value="0.5" /><label
-                            class="half"
-                            for="star0half"
-                        ></label>
-                    </fieldset>
-                </form>
+            <!-- Modal -->
+            <div
+                class="modal fade"
+                id="comparisonModal"
+                tabindex="-1"
+                role="dialog"
+                aria-labelledby="comparisonModalLabel"
+                aria-hidden="true"
+            >
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="comparisonModalLabel">Products Added For Comparison</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body d-flex justify-content-between">
+                            <div class="productForComparison d-flex flex-column align-items-center">
+                                <button class="btn cmnBtn" title="Remove From Comparison">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                                <div class="productImageCompare pb-2">
+                                    <img src="images/placeholder.png" class="" alt="..." />
+                                </div>
+                                <span>Product Name</span>
+                            </div>
+                            <div class="productForComparison d-flex flex-column align-items-center">
+                                <button class="btn cmnBtn" title="Remove From Comparison">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                                <div class="productImageCompare pb-2">
+                                    <img src="images/placeholder.png" class="" alt="..." />
+                                </div>
+                                <span>Product Name</span>
+                            </div>
+                            <div class="productForComparison d-flex flex-column align-items-center">
+                                <button class="btn cmnBtn" title="Remove From Comparison">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                                <div class="productImageCompare pb-2">
+                                    <img src="images/placeholder.png" class="" alt="..." />
+                                </div>
+                                <span>Product Name</span>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn modalBtn" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-                <div class="dropdown" id="edition">
+            <div class="accordion w-75 pb-4 mx-auto" id="infoSection">
+                <div class="card">
+                    <div class="card-header" id="specsHeading">
+                        <h2 class="mb-0">
+                            <button
+                                class="btn btn-link"
+                                type="button"
+                                data-toggle="collapse"
+                                data-target="#specsCol"
+                                aria-expanded="true"
+                                aria-controls="specsCol"
+                            >
+                                Specifications
+                            </button>
+                        </h2>
+                    </div>
+
+                    <div
+                        id="specsCol"
+                        class="collapse show mx-auto"
+                        aria-labelledby="specsHeading"
+                        data-parent="#infoSection"
+                    >
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Details</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">1</th>
+                                    <td>Mark</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">2</th>
+                                    <td>Jacob</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">3</th>
+                                    <td>Larry the Bird</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="reviewsCol">
+                        <h2 class="mb-0">
+                            <button
+                                class="btn btn-link collapsed"
+                                type="button"
+                                data-toggle="collapse"
+                                data-target="#reviewsHeading"
+                                aria-expanded="false"
+                                aria-controls="reviewsHeading"
+                            >
+                                Reviews
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="reviewsHeading" class="collapse" aria-labelledby="reviewsCol" data-parent="#infoSection">
+                        <div class="card-body" id="reviewsBox">
+                            <div class="">
+                                <div class="card">
+                                    <div class="card-body">
+                                        This is some text within a card body.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="">
+                                <div class="card">
+                                    <div class="card-body">
+                                        This is some text within a card body.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="">
+                                <div class="card">
+                                    <div class="card-body">
+                                        This is some text within a card body.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="">
+                                <div class="card">
+                                    <div class="card-body">
+                                        This is some text within a card body.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="">
+                                <div class="card">
+                                    <div class="card-body">
+                                        This is some text within a card body.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="qaHeading">
+                        <h2 class="mb-0">
+                            <button
+                                class="btn btn-link collapsed"
+                                type="button"
+                                data-toggle="collapse"
+                                data-target="#qaCol"
+                                aria-expanded="false"
+                                aria-controls="qaCol"
+                            >
+                                Q&A
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="qaCol" class="collapse" aria-labelledby="qaHeading" data-parent="#infoSection">
+                        <div class="card-body" id="qaBox">
+                            <div class="">
+                                <div class="card">
+                                    <div class="card-body">
+                                        This is some text within a card body.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="">
+                                <div class="card">
+                                    <div class="card-body">
+                                        This is some text within a card body.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="">
+                                <div class="card">
+                                    <div class="card-body">
+                                        This is some text within a card body.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="">
+                                <div class="card">
+                                    <div class="card-body">
+                                        This is some text within a card body.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="">
+                                <div class="card">
+                                    <div class="card-body">
+                                        This is some text within a card body.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Shopping Cart Start -->
+
+            <button
+                type="button"
+                class="d-flex align-items-center justify-content-around text-white"
+                onclick="opener()"
+                id="shoppingCartOpener"
+            >
+                <i class="fas fa-shopping-cart"></i>
+            </button>
+
+            <div class="transitions" id="shoppingCart">
+                <div class="d-flex justify-content-between" id="shoppingCartHeader">
+                    <h2 class="font-italic pt-4 pl-4">Shopping Cart</h2>
                     <button
-                        class="btn dropdown-toggle"
                         type="button"
-                        id="dropdownMenuButton"
-                        data-toggle="dropdown"
-                        aria-haspopup="true"
-                        aria-expanded="false"
+                        class="d-flex align-items-center justify-content-around pr-4"
+                        onclick="opener()"
+                        id="shoppingCartCloser"
                     >
-                        Edition
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
-                </div>
-
-                <div class="d-flex justify-content-between p-3" id="price">
-                    <h2 id="priceLbl" class="">Price:</h2>
-                    <h3 id="priceVal" class="">XX.XX</h3>
-                </div>
-
-                <div class="d-flex flex-column" id="addBtns">
-                    <div class="d-flex justify-content-between w-100">
-                        <button
-                            class="btn addToWishListBtn"
-                            onClick="addToWishList(this)"
-                            type="submit"
-                            id="addToWishList"
-                            title="Add To Wish List"
-                        >
-                            <i class="fas fa-heart"></i>
-                        </button>
-                        <button
-                            class="btn addToCmpBtn"
-                            onClick="addToComparison(this)"
-                            type="submit"
-                            id="addToCmp"
-                            title="Add To Comparison"
-                            data-toggle="modal"
-                            data-target="#comparisonModal"
-                        >
-                            <i class="fas fa-exchange-alt"></i>
-                        </button>
-                    </div>
-                    <button
-                        class="btn addToCartBtn w-100 mt-1"
-                        onClick="addToCart(this)"
-                        type="submit"
-                        id="addToCart"
-                        title="Add To Cart"
-                    >
-                        <i class="fas fa-cart-plus"></i>
+                        <i class="fas fa-times"></i>
                     </button>
                 </div>
-            </div>
-        </div>
+                <div class="m-2 p-2 d-flex justify-content-end" id="shoppingCartCartTotal">
+                    <h4 class="font-italic">Total:</h4>
+                    <h3 class="pl-4 pr-2">XX.XX</h3>
+                </div>
+                <div class="d-flex flex-column justify-content-between" id="shoppingCartCart">
+                    <article class="m-2 p-2 d-flex justify-content-between align-items-center">
+                        <div class="cartProductImage">
+                            <img src="images/placeholder.png" class="" alt="..." />
+                        </div>
+                        <div>
+                            <h4 class="cartProductName">Product Name</h4>
+                            <h5 class="cartProductSpec font-italic">Product Spec</h5>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <input type="text" class="form-control cartQuantitySelector" placeholder="1" />
+                            <div class="cartQuantitySelectorController d-flex flex-column align-items-center">
+                                <button
+                                    class="btn cartQuantitySelectorControllerBtn"
+                                    onClick="plusOne(this)"
+                                    type="submit"
+                                >
+                                    <i class="fas fa-plus"></i>
+                                </button>
+                                <button
+                                    class="btn cartQuantitySelectorControllerBtn"
+                                    onClick="minusOne(this)"
+                                    type="submit"
+                                >
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <h4 class="cartProductSubTotal">XX.XX</h4>
+                        <i class="fas fa-times"></i>
+                    </article>
 
-        <!-- Modal -->
-        <div
-            class="modal fade"
-            id="comparisonModal"
-            tabindex="-1"
-            role="dialog"
-            aria-labelledby="comparisonModalLabel"
-            aria-hidden="true"
-        >
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="comparisonModalLabel">Products Added For Comparison</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body d-flex justify-content-between">
-                        <div class="productForComparison d-flex flex-column align-items-center">
-                            <button class="btn cmnBtn" title="Remove From Comparison">
-                                <i class="fas fa-times"></i>
-                            </button>
-                            <div class="productImageCompare pb-2">
-                                <img src="images/placeholder.png" class="" alt="..." />
-                            </div>
-                            <span>Product Name</span>
+                    <article class="m-2 p-2 d-flex justify-content-between align-items-center">
+                        <div class="cartProductImage">
+                            <img src="images/placeholder.png" class="" alt="..." />
                         </div>
-                        <div class="productForComparison d-flex flex-column align-items-center">
-                            <button class="btn cmnBtn" title="Remove From Comparison">
-                                <i class="fas fa-times"></i>
-                            </button>
-                            <div class="productImageCompare pb-2">
-                                <img src="images/placeholder.png" class="" alt="..." />
-                            </div>
-                            <span>Product Name</span>
+                        <div>
+                            <h4 class="cartProductName">Product Name</h4>
+                            <h5 class="cartProductSpec font-italic">Product Spec</h5>
                         </div>
-                        <div class="productForComparison d-flex flex-column align-items-center">
-                            <button class="btn cmnBtn" title="Remove From Comparison">
-                                <i class="fas fa-times"></i>
-                            </button>
-                            <div class="productImageCompare pb-2">
-                                <img src="images/placeholder.png" class="" alt="..." />
+                        <div class="d-flex align-items-center">
+                            <input type="text" class="form-control cartQuantitySelector" placeholder="1" />
+                            <div class="cartQuantitySelectorController d-flex flex-column align-items-center">
+                                <button
+                                    class="btn cartQuantitySelectorControllerBtn"
+                                    onClick="plusOne(this)"
+                                    type="submit"
+                                >
+                                    <i class="fas fa-plus"></i>
+                                </button>
+                                <button
+                                    class="btn cartQuantitySelectorControllerBtn"
+                                    onClick="minusOne(this)"
+                                    type="submit"
+                                >
+                                    <i class="fas fa-minus"></i>
+                                </button>
                             </div>
-                            <span>Product Name</span>
                         </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn modalBtn" data-dismiss="modal">Close</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+                        <h4 class="cartProductSubTotal">XX.XX</h4>
+                        <i class="fas fa-times"></i>
+                    </article>
 
-        <div class="accordion w-75 pb-4 mx-auto" id="infoSection">
-            <div class="card">
-                <div class="card-header" id="specsHeading">
-                    <h2 class="mb-0">
-                        <button
-                            class="btn btn-link"
-                            type="button"
-                            data-toggle="collapse"
-                            data-target="#specsCol"
-                            aria-expanded="true"
-                            aria-controls="specsCol"
-                        >
-                            Specifications
-                        </button>
-                    </h2>
-                </div>
-
-                <div
-                    id="specsCol"
-                    class="collapse show mx-auto"
-                    aria-labelledby="specsHeading"
-                    data-parent="#infoSection"
-                >
-                    <table class="table table-hover">
-                        <thead>
-                            <tr>
-                                <th scope="col">Details</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td>Jacob</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">3</th>
-                                <td>Larry the Bird</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-header" id="reviewsCol">
-                    <h2 class="mb-0">
-                        <button
-                            class="btn btn-link collapsed"
-                            type="button"
-                            data-toggle="collapse"
-                            data-target="#reviewsHeading"
-                            aria-expanded="false"
-                            aria-controls="reviewsHeading"
-                        >
-                            Reviews
-                        </button>
-                    </h2>
-                </div>
-                <div id="reviewsHeading" class="collapse" aria-labelledby="reviewsCol" data-parent="#infoSection">
-                    <div class="card-body" id="reviewsBox">
-                        <div class="">
-                            <div class="card">
-                                <div class="card-body">
-                                    This is some text within a card body.
-                                </div>
+                    <article class="m-2 p-2 d-flex justify-content-between align-items-center">
+                        <div class="cartProductImage">
+                            <img src="images/placeholder.png" class="" alt="..." />
+                        </div>
+                        <div>
+                            <h4 class="cartProductName">Product Name</h4>
+                            <h5 class="cartProductSpec font-italic">Product Spec</h5>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <input type="text" class="form-control cartQuantitySelector" placeholder="1" />
+                            <div class="cartQuantitySelectorController d-flex flex-column align-items-center">
+                                <button
+                                    class="btn cartQuantitySelectorControllerBtn"
+                                    onClick="plusOne(this)"
+                                    type="submit"
+                                >
+                                    <i class="fas fa-plus"></i>
+                                </button>
+                                <button
+                                    class="btn cartQuantitySelectorControllerBtn"
+                                    onClick="minusOne(this)"
+                                    type="submit"
+                                >
+                                    <i class="fas fa-minus"></i>
+                                </button>
                             </div>
                         </div>
-                        <div class="">
-                            <div class="card">
-                                <div class="card-body">
-                                    This is some text within a card body.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="">
-                            <div class="card">
-                                <div class="card-body">
-                                    This is some text within a card body.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="">
-                            <div class="card">
-                                <div class="card-body">
-                                    This is some text within a card body.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="">
-                            <div class="card">
-                                <div class="card-body">
-                                    This is some text within a card body.
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-header" id="qaHeading">
-                    <h2 class="mb-0">
-                        <button
-                            class="btn btn-link collapsed"
-                            type="button"
-                            data-toggle="collapse"
-                            data-target="#qaCol"
-                            aria-expanded="false"
-                            aria-controls="qaCol"
-                        >
-                            Q&A
-                        </button>
-                    </h2>
-                </div>
-                <div id="qaCol" class="collapse" aria-labelledby="qaHeading" data-parent="#infoSection">
-                    <div class="card-body" id="qaBox">
-                        <div class="">
-                            <div class="card">
-                                <div class="card-body">
-                                    This is some text within a card body.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="">
-                            <div class="card">
-                                <div class="card-body">
-                                    This is some text within a card body.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="">
-                            <div class="card">
-                                <div class="card-body">
-                                    This is some text within a card body.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="">
-                            <div class="card">
-                                <div class="card-body">
-                                    This is some text within a card body.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="">
-                            <div class="card">
-                                <div class="card-body">
-                                    This is some text within a card body.
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                        <h4 class="cartProductSubTotal">XX.XX</h4>
+                        <i class="fas fa-times"></i>
+                    </article>
                 </div>
             </div>
         </div>
+        <div class="overlay transitions" id="overlay"></div>
+        
+        <!-- Shopping Cart End -->
 
         <!--Card JavaScript-->
         <script type="text/javascript" src="./scripts/card.js"></script>
