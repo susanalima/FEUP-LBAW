@@ -15,9 +15,9 @@
 
 .checkoutTextTop{
     display: inline-block;
-    width:min-content;
+    overflow-wrap: break-word;
+    margin-bottom: 2%;
     margin-left: 11%;
-    margin-bottom:3%;
 }
 
 #wishListsTabs{
@@ -45,18 +45,9 @@
 }
 
 
-.product_card_top{
-    min-height: auto;
-    
-}
 
 .product_card{
     min-height: min-content;
-   
-    /*margin-top: 2.5em;*/
-}
-
-.product_card, .product_card_top{
     border-width: 2px;
     border-color: var(--var-gray-dark);
     margin-bottom: 4px;
@@ -76,6 +67,7 @@
     margin-bottom: .5rem;
     background-color: var(--var-gray);
     border-color: var(--var-gray-dark);
+    min-width: 10px;
 }
 
 .add_quantity:hover{
@@ -98,6 +90,17 @@
     background-size: cover;
     margin-left:0.5em;
    
+}
+
+.stars_field{
+    display: inline-block;
+    width: auto;
+}
+
+label.full, label.half{
+    display: inline-block;
+    height: 2vw;
+    margin-bottom: 0;
 }
 
 .product_name{
@@ -136,8 +139,6 @@
     display:block;
     border-radius: 50%;
     outline:none !important;
-    
-   
 }
 
 
@@ -218,8 +219,8 @@
 }
 
 .price{
-    margin-top:0.5em;
-    margin-bottom:0.5em;
+    margin-top:0.5rem;
+    margin-bottom:0.5rem;
     font-size: 2.5vw;
     min-width: auto;
 }
