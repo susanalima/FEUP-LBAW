@@ -57,32 +57,35 @@
 
 .quantity{
     display: inline-block;
+    width:auto;
+}
+
+.quantity_field{
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .add_quantity{
     width: 5%;
-    height:5%;
     padding: 0;
     margin-left: .5rem;
     margin-bottom: .5rem;
     background-color: var(--var-gray);
     border-color: var(--var-gray-dark);
-    min-width: 10px;
+    min-width: 1.4em;
 }
 
 .add_quantity:hover{
     width: 5%;
-    height:5%;
     padding: 0;
     margin-left: .5rem;
     margin-bottom: .5rem;
     background-color: var(--var-gray-dark);
     color: var(--var-gray);
+    min-width: 1.4em;
 }
 
-.product_info{
-    max-width: 50%;
-}
+
 
 .product_img{
     width: 40%; 
@@ -94,7 +97,7 @@
 
 .stars_field{
     display: inline-block;
-    width: auto;
+    width: max-content;
 }
 
 label.full, label.half{
@@ -119,6 +122,10 @@ label.full, label.half{
     border: none;
     cursor: pointer;
     outline:none
+}
+
+.final_label{
+    width:125px;
 }
 
 
@@ -149,7 +156,6 @@ label.full, label.half{
 
 .starsRating {
     border: none;
-    float: left;
 }
 
 .starsRating > input {
@@ -221,18 +227,18 @@ label.full, label.half{
 .price{
     margin-top:0.5rem;
     margin-bottom:0.5rem;
-    font-size: 2.5vw;
+    font-size: auto;
     min-width: auto;
 }
 
 .final_price{
     width: 100%;
-    height: 75%;
+
     background-color: var(--var-gray);
     color: black;
     margin:0;
     margin-left: 0.1em;
-    max-width: 90%;
+   
     border-width: 0.15rem;
     border-color: rgb(85, 85, 85);
     border-radius:0.25rem;
@@ -255,11 +261,6 @@ label.full, label.half{
     float: right;    
 }
 
- 
-
-
-
-
 .checkoutListCards {
     width: 85%;
 }
@@ -269,18 +270,43 @@ label.full, label.half{
     height: 16rem;
 }
 
+.price_row{
+    display: flex;
+    flex-wrap: wrap;
+    width:100%;
+}
+
+.price_col{
+    padding: 0;
+    display: inline-block;
+    width:50%;
+}
+
 @media screen and (max-width: 1080px) {
     #listItems {
         width: 100%;
         height: 100%;
         margin: auto;
+        margin-top:0;
     }
     .checkoutListCards {
         width: 85%;
     }
     .checkoutCard {
         width: 20rem;
-    }  
+    }
+    
+    .bottom_row{
+        margin-left:0;
+        
+    }
+
+    .final_price{
+        display: inline-block;
+        width: auto;
+    }
+
+    
 }
 
 @media screen and (max-width: 950px) {
@@ -292,6 +318,13 @@ label.full, label.half{
     }
     .checkoutCard {
         height: 18rem;
+    }
+   
+}
+
+@media screen and (max-width: 500px){
+    .product_img{
+        display: none;
     }
 }
 
