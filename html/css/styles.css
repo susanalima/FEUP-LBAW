@@ -636,6 +636,9 @@ h5 {
         width: 100%;
         margin-left: 0;
     }
+    .cartProductSubTotal {
+        width: auto;
+    }
 }
 
 @media screen and (max-width: 500px) {
