@@ -1228,14 +1228,17 @@
             <div class="transitions" id="shoppingCart">
                 <div class="d-flex justify-content-between" id="shoppingCartHeader">
                     <h2 class="font-italic pt-4 pl-4">Shopping Cart</h2>
-                    <button
-                        type="button"
-                        class="d-flex align-items-center justify-content-around pr-4"
-                        onclick="opener()"
-                        id="shoppingCartCloser"
-                    >
-                        <i class="fas fa-times"></i>
-                    </button>
+                    <div class="d-flex">
+                        <button class="btn cmnBtn mt-1" onclick="window.location.href = './checkoutProducts.html';" title="Checkout"><i class="fas fa-credit-card"></i></button>
+                        <button
+                            type="button"
+                            class="d-flex align-items-center justify-content-around pr-4"
+                            onclick="opener()"
+                            id="shoppingCartCloser"
+                        >
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
                 </div>
                 <div class="m-2 p-2 d-flex justify-content-end" id="shoppingCartCartTotal">
                     <h4 class="font-italic">Total:</h4>
