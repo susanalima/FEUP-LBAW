@@ -815,7 +815,7 @@
                                 <div class="w-75 ">
                                     <div class="card">
                                         <div class="card-body">
-                                            It’s a 2011 Laptop, not compatible with the new IOS update. 
+                                            It’s a 2011 Laptop, not compatible with the new IOS update.
                                         </div>
                                     </div>
                                 </div>
@@ -824,7 +824,7 @@
                                 <div class="w-75 ">
                                     <div class="card">
                                         <div class="card-body">
-                                             Will OS 10.12 or higher run on this Mac?
+                                            Will OS 10.12 or higher run on this Mac?
                                         </div>
                                     </div>
                                 </div>
@@ -833,7 +833,8 @@
                                 <div class="w-75 ">
                                     <div class="card">
                                         <div class="card-body">
-                                             10.12 is the highest for this model. Mojave (the latest) will NOT run on this 
+                                            10.12 is the highest for this model. Mojave (the latest) will NOT run on
+                                            this
                                         </div>
                                     </div>
                                 </div>
@@ -866,14 +867,23 @@
             <div class="transitions" id="shoppingCart">
                 <div class="d-flex justify-content-between" id="shoppingCartHeader">
                     <h2 class="font-italic pt-4 pl-4">Shopping Cart</h2>
-                    <button
-                        type="button"
-                        class="d-flex align-items-center justify-content-around pr-4"
-                        onclick="opener()"
-                        id="shoppingCartCloser"
-                    >
-                        <i class="fas fa-times"></i>
-                    </button>
+                    <div class="d-flex">
+                        <button
+                            class="btn cmnBtn mt-1"
+                            onclick="window.location.href = './checkoutProducts.html';"
+                            title="Checkout"
+                        >
+                            <i class="fas fa-credit-card"></i>
+                        </button>
+                        <button
+                            type="button"
+                            class="d-flex align-items-center justify-content-around pr-4"
+                            onclick="opener()"
+                            id="shoppingCartCloser"
+                        >
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
                 </div>
                 <div class="m-2 p-2 d-flex justify-content-end" id="shoppingCartCartTotal">
                     <h4 class="font-italic">Total:</h4>
