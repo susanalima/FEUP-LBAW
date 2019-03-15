@@ -317,7 +317,18 @@ label.full, label.half{
     min-height: auto;
 }
 
+.otherInfo {
+    background-color: var(--var-gray-light);
+}
 
+.otherInfo:hover {
+    background-color: var(--var-gray-ml)
+}
+
+
+.checkoutCard {
+    margin:0.2em;
+}
 
 @media screen and (max-width: 1080px) {
     #listItems {

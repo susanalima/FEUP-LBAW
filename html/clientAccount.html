@@ -54,7 +54,7 @@
           </div>
           <div id="clientInfo" class="collapse show" aria-labelledby="infoHeading" data-parent="#profileOptions">
             <div class="card-body">
-              <div class="card p-3">
+              <div class="card p-3 infoCard">
                 <div class="card-body">
                   <p>Personal Information</p>
                   <div class="table-responsive">
@@ -65,8 +65,8 @@
                           <td id="clientName">John Doe</td>
                           <td>
                             <div class="d-flex justify-content-center">
-                              <button type="button" class="btn btnOutlineAction fas fa-edit" onclick='editClientName(this, "John Doe")'
-                                value="edit"></button>
+                              <button type="button" class="btn btnOutlineAction" onclick='editClientName(this, "John Doe")'
+                                value="edit">Edit</button>
                             </div>
                           </td>
                         </tr>
@@ -81,7 +81,7 @@
                   </div>
                 </div>
               </div>
-              <div class="card mt-3 p-3">
+              <div class="card p-3 infoCard">
                 <div class="card-body">
                   <p>Addresses </p>
                   <div class="table-responsive">
@@ -99,8 +99,7 @@
                           <td>Alameda dos Jardins d'Arrábida 443, 4400-478 Porto, Portugal</td>
                           <td>
                             <div class="d-flex justify-content-center">
-                              <button type="button" class="btn btnOutlineAction m-2 fas fa-edit" data-toggle="modal"
-                                data-target="#editHellAddress"></button>
+                              <button type="button" class="btn btnOutlineAction m-2" data-toggle="modal" data-target="#editHellAddress">Edit</button>
                               <div class="modal fade" id="editHellAddress" tabindex="-1" role="dialog" aria-labelledby="editHellAddressLabel"
                                 aria-hidden="true">
                                 <div class="modal-dialog" role="document">
@@ -142,13 +141,13 @@
                                       </form>
                                     </div>
                                     <div class="modal-footer">
-                                      <button type="button" class="btn btn-outline-danger btn-sm" data-dismiss="modal">Cancel</button>
                                       <button type="button" class="btn btn-outline-success btn-sm">Finish</button>
+                                      <button type="button" class="btn btn-outline-danger btn-sm" data-dismiss="modal">Cancel</button>
                                     </div>
                                   </div>
                                 </div>
                               </div>
-                              <button type="button" class="btn btn-outline-danger m-2 fas fa-trash-alt"></button>
+                              <button type="button" class="btn btn-outline-danger m-2">Delete</button>
                             </div>
                           </td>
                         </tr>
@@ -157,8 +156,7 @@
                           <td>R. Dr. Roberto Frias, 4200-465 Porto, Portugal</td>
                           <td>
                             <div class="d-flex justify-content-center">
-                              <button type="button" class="btn btnOutlineAction m-2 fas fa-edit" data-toggle="modal"
-                                data-target="#editWorkAddress"></button>
+                              <button type="button" class="btn btnOutlineAction m-2" data-toggle="modal" data-target="#editWorkAddress">Edit</button>
                               <div class="modal fade" id="editWorkAddress" tabindex="-1" role="dialog" aria-labelledby="editWorkAddressLabel"
                                 aria-hidden="true">
                                 <div class="modal-dialog" role="document">
@@ -200,21 +198,26 @@
                                       </form>
                                     </div>
                                     <div class="modal-footer">
-                                      <button type="button" class="btn btn-outline-danger btn-sm" data-dismiss="modal">Cancel</button>
                                       <button type="button" class="btn btn-outline-success btn-sm">Finish</button>
+                                      <button type="button" class="btn btn-outline-danger btn-sm" data-dismiss="modal">Cancel</button>
                                     </div>
                                   </div>
                                 </div>
                               </div>
-                              <button type="button" class="btn btn-outline-danger m-2 fas fa-trash-alt"></button>
+                              <button type="button" class="btn btn-outline-danger m-2">Delete</button>
                             </div>
                           </td>
                         </tr>
                       </tbody>
                     </table>
                   </div>
-                  <button type="button" class="btn btn-outline-success mt-2 btn-sm" data-toggle="modal" data-target="#addAddress">Add
-                    address</button>
+              
+                    <div class="d-flex float-right mx-3 mb-3">
+                        <button type="button" class="btn btnOutlineAction mr-2 btn-sm " data-toggle="modal" data-target="#addAddress">Add
+                            address</button>
+                        <button type="button" class="btn btn-outline-danger mr-2 btn-sm">Delete All</button>
+                      </div>
+                    
                   <div class="modal fade" id="addAddress" tabindex="-1" role="dialog" aria-labelledby="addAddressLabel"
                     aria-hidden="true">
                     <div class="modal-dialog" role="document">
@@ -254,16 +257,15 @@
                           </form>
                         </div>
                         <div class="modal-footer">
-                          <button type="button" class="btn btn-outline-danger btn-sm" data-dismiss="modal">Cancel</button>
                           <button type="button" class="btn btn-outline-success btn-sm">Finish</button>
+                          <button type="button" class="btn btn-outline-danger btn-sm" data-dismiss="modal">Cancel</button>
                         </div>
                       </div>
                     </div>
                   </div>
-                  <button type="button" class="btn btn-outline-danger float-right m-2 btn-sm ">Delete all</button>
                 </div>
               </div>
-              <div class="card mt-3 p-3">
+              <div class="card p-3 infoCard">
                 <div class="card-body">
                   <p>Cards </p>
                   <div class="table-responsive">
@@ -286,8 +288,9 @@
                       </tbody>
                     </table>
                   </div>
-                  <button type="button" class="btn btn-outline-success mt-2 btn-sm" data-toggle="modal" data-target="#addCard">Add
-                    card</button>
+                  <!--HERE-->
+                  <button type="button" class="btn btn-outline-success float-right mx-3 mb-3 btn-sm" data-toggle="modal" data-target="#addCard">Add
+                    card</button>                    
                   <div class="modal fade" id="addCard" tabindex="-1" role="dialog" aria-labelledby="addCardLabel"
                     aria-hidden="true">
                     <div class="modal-dialog" role="document">
@@ -333,8 +336,8 @@
                           </form>
                         </div>
                         <div class="modal-footer">
-                          <button type="button" class="btn btn-outline-danger btn-sm" data-dismiss="modal">Cancel</button>
                           <button type="button" class="btn btn-outline-success btn-sm">Finish</button>
+                          <button type="button" class="btn btn-outline-danger btn-sm" data-dismiss="modal">Cancel</button>
                         </div>
                       </div>
                     </div>
@@ -342,12 +345,11 @@
                 </div>
               </div>
             </div>
-            <div class="d-flex  flex-column float-right">
-              <button type="button" class="btn btnOutlineAction mr-4 mb-2 btn-sm " data-toggle="modal" data-target="#changePwdModal">Change
+            <div class="d-flex float-right mx-3 mb-3">
+              <button type="button" class="btn btnOutlineAction mr-2 btn-sm " data-toggle="modal" data-target="#changePwdModal">Change
                 Password</button>
-              <button type="button" class="btn btn-outline-danger mr-4 mb-3 btn-sm">Delete Account</button>
+              <button type="button" class="btn btn-outline-danger mr-2 btn-sm">Delete Account</button>
             </div>
-
             <div class="modal fade" id="changePwdModal" tabindex="-1" role="dialog" aria-labelledby="changePwdModalLabel"
               aria-hidden="true">
               <div class="modal-dialog" role="document">
@@ -381,8 +383,8 @@
                     </form>
                   </div>
                   <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-danger btn-sm" data-dismiss="modal">Cancel</button>
                     <button type="button" class="btn btn-outline-success btn-sm">Finish</button>
+                    <button type="button" class="btn btn-outline-danger btn-sm" data-dismiss="modal">Cancel</button>
                   </div>
                 </div>
               </div>
@@ -474,7 +476,7 @@
                       <td>14.89€</td>
                       <td>
                         <button class="btn btn-outline-success btn-sm m-2" role="button" data-toggle="modal"
-                          data-target=".viewCard1Modal">View Card</button>
+                          data-target=".viewCard1Modal">View cart</button>
                         <div class="modal fade viewCard1Modal" tabindex="-1" role="dialog" aria-labelledby="viewCard1ModalLabel"
                           aria-hidden="true">
                           <div class="modal-dialog">
@@ -493,12 +495,14 @@
                                     <div class="card-body">
                                       <div class="row">
                                         <div class="col-4 col-md-4">
-                                            <a href="./product.html">
-                                          <img src="./images/products/cd.jpg" class="card-img-top" alt="Product image">
+                                          <a href="./product.html">
+                                            <img src="./images/products/cd.jpg" class="card-img-top" alt="Product image">
                                           </a>
                                         </div>
                                         <div class="text-left">
-                                          <a href="./product.html"><h1>Kamikaze album</h1></a>
+                                          <a href="./product.html">
+                                            <h1>Kamikaze album</h1>
+                                          </a>
                                           <h2>10.00€</h2>
                                           <h2>1 unit</h2>
                                         </div>
@@ -509,12 +513,14 @@
                                     <div class="card-body">
                                       <div class="row">
                                         <div class="col-4 col-md-4">
-                                            <a href="./product.html">
-                                          <img src="./images/products/pen.jpg" class="card-img-top" alt="Product image">
+                                          <a href="./product.html">
+                                            <img src="./images/products/pen.jpg" class="card-img-top" alt="Product image">
                                           </a>
                                         </div>
                                         <div class="text-left">
-                                          <a href="./product.html"><h1>Pen Drive</h1></a>
+                                          <a href="./product.html">
+                                            <h1>Pen Drive</h1>
+                                          </a>
                                           <h2>1.80€</h2>
                                           <h2>1 unit</h2>
                                         </div>
@@ -525,12 +531,14 @@
                                     <div class="card-body">
                                       <div class="row">
                                         <div class="col-4 col-md-4">
-                                            <a href="./product.html">
-                                          <img src="./images/products/livro.jpg" class="card-img-top" alt="Product image">
+                                          <a href="./product.html">
+                                            <img src="./images/products/livro.jpg" class="card-img-top" alt="Product image">
                                           </a>
                                         </div>
                                         <div class="text-left">
-                                          <a href="./product.html"><h1>Memorial Convento</h1></a>
+                                          <a href="./product.html">
+                                            <h1>Memorial Convento</h1>
+                                          </a>
                                           <h2>3.09€</h2>
                                           <h2>1 unit</h2>
                                         </div>
@@ -549,7 +557,7 @@
                       <td>109.99€</td>
                       <td>
                         <button class="btn btn-outline-success btn-sm m-2" role="button" data-toggle="modal"
-                          data-target=".viewCard2Modal">View Card</button>
+                          data-target=".viewCard2Modal">View cart</button>
                         <div class="modal fade viewCard2Modal" tabindex="-1" role="dialog" aria-labelledby="viewCard2ModalLabel"
                           aria-hidden="true">
                           <div class="modal-dialog">
@@ -569,11 +577,13 @@
                                       <div class="row">
                                         <div class="col-4 col-md-4">
                                           <a href="./product.html">
-                                          <img src="./images/products/headphones.jpg" class="card-img-top" alt="Product image">
+                                            <img src="./images/products/headphones.jpg" class="card-img-top" alt="Product image">
                                           </a>
                                         </div>
                                         <div class="text-left">
-                                          <a href="./product.html"><h1>Amazing Headphones</h1></a>
+                                          <a href="./product.html">
+                                            <h1>Amazing Headphones</h1>
+                                          </a>
                                           <h2>109.09€</h2>
                                           <h2>1 unit</h2>
                                         </div>
@@ -592,7 +602,7 @@
                       <td>999.99€</td>
                       <td>
                         <button class="btn btn-outline-success btn-sm m-2" role="button" data-toggle="modal"
-                          data-target=".viewCard3Modal">View Card</button>
+                          data-target=".viewCard3Modal">View cart</button>
                         <div class="modal fade viewCard3Modal" tabindex="-1" role="dialog" aria-labelledby="viewCard3ModalLabel"
                           aria-hidden="true">
                           <div class="modal-dialog">
@@ -612,11 +622,13 @@
                                       <div class="row">
                                         <div class="col-4 col-md-4">
                                           <a href="./product.html">
-                                          <img src="./images/products/macbook.jpg" class="card-img-top" alt="Product image">
+                                            <img src="./images/products/macbook.jpg" class="card-img-top" alt="Product image">
                                           </a>
                                         </div>
                                         <div class="text-left">
-                                          <a href="./product.html"><h1>Macbook</h1></a>
+                                          <a href="./product.html">
+                                            <h1>Macbook</h1>
+                                          </a>
                                           <h2>999.99€</h2>
                                           <h2>1 unit</h2>
                                         </div>
@@ -655,8 +667,8 @@
                         <td>Things I'm going to buy when I'm a millionaire!!!!!!!!!!!</td>
                         <td>
                           <div class="d-flex justify-content-center">
-                            <button type="button" class="btn btnOutlineAction m-2 fas fa-share-alt"></button>
-                            <button type="button" class="btn btn-outline-danger m-2 fas fa-trash-alt"></button>
+                            <button type="button" class="btn btnOutlineAction m-2">Share</button>
+                            <button type="button" class="btn btn-outline-danger m-2">Delete</button>
                           </div>
                         </td>
                       </tr>
@@ -666,8 +678,8 @@
                         <td>Anniversary gifts</td>
                         <td>
                           <div class="d-flex justify-content-center">
-                            <button type="button" class="btn btnOutlineAction  m-2 fas fa-share-alt"></button>
-                            <button type="button" class="btn btn-outline-danger m-2 fas fa-trash-alt"></button>
+                            <button type="button" class="btn btnOutlineAction  m-2">Share</button>
+                            <button type="button" class="btn btn-outline-danger m-2">Delete</button>
                           </div>
                         </td>
                       </tr>
@@ -677,16 +689,20 @@
                         <td>Stuff I have to buy for school as soon as I have money</td>
                         <td>
                           <div class="d-flex justify-content-center">
-                            <button type="button" class="btn btnOutlineAction m-2 fas fa-share-alt"></button>
-                            <button type="button" class="btn btn-outline-danger m-2 fas fa-trash-alt"></button>
+                            <button type="button" class="btn btnOutlineAction m-2">Share</button>
+                            <button type="button" class="btn btn-outline-danger m-2">Trash</button>
                           </div>
                         </td>
                       </tr>
                     </tbody>
                   </table>
                 </div>
-                <button type="button" class="btn btn-outline-success m-2 btn-sm " data-toggle="modal" data-target="#createWListModal">Add
-                  Wish List</button>
+
+                <div class="d-flex float-right mx-3 mb-3">
+                  <button type="button" class="btn btn-outline-success mr-2 btn-sm " data-toggle="modal" data-target="#createWListModal">Add
+                    Wish List</button>
+                  <button type="button" class="btn btn-outline-danger mr-2 btn-sm">Delete all</button>
+                </div>
                 <div class="modal fade" id="createWListModal" tabindex="-1" role="dialog" aria-labelledby="createWListModalLabel"
                   aria-hidden="true">
                   <div class="modal-dialog" role="document">
@@ -710,13 +726,12 @@
                         </form>
                       </div>
                       <div class="modal-footer">
-                        <button type="button" class="btn btn-outline-danger btn-sm" data-dismiss="modal">Cancel</button>
                         <button type="button" class="btn btn-outline-success btn-sm">Finish</button>
+                        <button type="button" class="btn btn-outline-danger btn-sm" data-dismiss="modal">Cancel</button>
                       </div>
                     </div>
                   </div>
                 </div>
-                <button type="button" class="btn btn-outline-danger float-right m-2 btn-sm">Delete all</button>
               </div>
             </div>
           </div>
@@ -726,16 +741,16 @@
   </div>
   <!-- Footer Start -->
   <div class="d-flex justify-content-between text-white p-5 flex-wrap" id="footer">
-      <div class="d-flex flex-column mx-auto">
-          <a href="./help.html#support">Help</a>
-          <a href="./help.html#contacts">Contacts</a>
-          <a href="./help.html#FAQ">FAQs</a>
-      </div>
-      <h4 class="align-self-end mx-auto">&copy; 2019 PuzzleWood.pt. All Rights Reserved.</h4>
+    <div class="d-flex flex-column mx-auto">
+      <a href="./help.html#support">Help</a>
+      <a href="./help.html#contacts">Contacts</a>
+      <a href="./help.html#FAQ">FAQs</a>
+    </div>
+    <h4 class="align-self-end mx-auto">&copy; 2019 PuzzleWood.pt. All Rights Reserved.</h4>
   </div>
   <!-- Footer End -->
   <!--Edit JavaScript-->
-    <script type="text/javascript" src="./scripts/edition.js"> </script>
+  <script type="text/javascript" src="./scripts/edition.js"> </script>
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
