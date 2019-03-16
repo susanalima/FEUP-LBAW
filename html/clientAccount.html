@@ -65,7 +65,7 @@
                           <td id="clientName">John Doe</td>
                           <td>
                             <div class="d-flex justify-content-center">
-                              <button type="button" class="btn btnOutlineAction" onclick='editClientName(this, "John Doe")'
+                              <button type="button" class="btn btn-sm button-action" onclick='editClientName(this, "John Doe")'
                                 value="edit">Edit</button>
                             </div>
                           </td>
@@ -99,7 +99,7 @@
                           <td>Alameda dos Jardins d'Arrábida 443, 4400-478 Porto, Portugal</td>
                           <td>
                             <div class="d-flex justify-content-center">
-                              <button type="button" class="btn btnOutlineAction m-2" data-toggle="modal" data-target="#editHellAddress">Edit</button>
+                              <button type="button" class="btn btn-sm button-action m-2" data-toggle="modal" data-target="#editHellAddress">Edit</button>
                               <div class="modal fade" id="editHellAddress" tabindex="-1" role="dialog" aria-labelledby="editHellAddressLabel"
                                 aria-hidden="true">
                                 <div class="modal-dialog" role="document">
@@ -147,7 +147,7 @@
                                   </div>
                                 </div>
                               </div>
-                              <button type="button" class="btn btn-outline-danger m-2">Delete</button>
+                              <button type="button" class="btn btn-sm button-negative m-2">Delete</button>
                             </div>
                           </td>
                         </tr>
@@ -156,7 +156,7 @@
                           <td>R. Dr. Roberto Frias, 4200-465 Porto, Portugal</td>
                           <td>
                             <div class="d-flex justify-content-center">
-                              <button type="button" class="btn btnOutlineAction m-2" data-toggle="modal" data-target="#editWorkAddress">Edit</button>
+                              <button type="button" class="btn btn-sm button-action m-2" data-toggle="modal" data-target="#editWorkAddress">Edit</button>
                               <div class="modal fade" id="editWorkAddress" tabindex="-1" role="dialog" aria-labelledby="editWorkAddressLabel"
                                 aria-hidden="true">
                                 <div class="modal-dialog" role="document">
@@ -198,13 +198,13 @@
                                       </form>
                                     </div>
                                     <div class="modal-footer">
-                                      <button type="button" class="btn btn-outline-success btn-sm">Finish</button>
-                                      <button type="button" class="btn btn-outline-danger btn-sm" data-dismiss="modal">Cancel</button>
+                                      <button type="button" class="btn button-submit btn-sm">Finish</button>
+                                      <button type="button" class="btn button-negative btn-sm" data-dismiss="modal">Cancel</button>
                                     </div>
                                   </div>
                                 </div>
                               </div>
-                              <button type="button" class="btn btn-outline-danger m-2">Delete</button>
+                              <button type="button" class="btn btn-sm button-negative m-2">Delete</button>
                             </div>
                           </td>
                         </tr>
@@ -213,9 +213,9 @@
                   </div>
               
                     <div class="d-flex float-right mx-3 mb-3">
-                        <button type="button" class="btn btnOutlineAction mr-2 btn-sm " data-toggle="modal" data-target="#addAddress">Add
+                        <button type="button" class="btn button-action mr-2 btn-sm " data-toggle="modal" data-target="#addAddress">Add
                             address</button>
-                        <button type="button" class="btn btn-outline-danger mr-2 btn-sm">Delete All</button>
+                        <button type="button" class="btn button-negative mr-2 btn-sm">Delete All</button>
                       </div>
                     
                   <div class="modal fade" id="addAddress" tabindex="-1" role="dialog" aria-labelledby="addAddressLabel"
@@ -235,21 +235,25 @@
                               <div class="input-group flex-nowrap">
                                 <input type="text" class="form-control" id="addAddressName" placeholder="Name" required>
                               </div>
-                              <div class="input-group flex-nowrap mt-2">
-                                <input type="text" class="form-control" id="addAddressPostCode" placeholder="Postcode"
-                                  required>
-                              </div>
+                           
                               <div class="input-group flex-nowrap mt-2">
                                 <input type="text" class="form-control" id="addAddressStreet" placeholder="Street and number, P.O. box, c/o"
                                   required>
                               </div>
+                             
                               <div class="input-group flex-nowrap mt-2">
-                                <input type="text" class="form-control" id="addAddressApartment" placeholder="Flat, suite, unit, floor, etc"
-                                  required>
-                              </div>
+                                
+                                    <input type="text" class="form-control mr-2" id="addAddressApartment" placeholder="Flat, suite, unit, floor, etc"
+                                    required>
+                                    <input type="text" class="form-control" id="addAddressPostCode" placeholder="Postcode"
+                                    required>
+                                </div>
+
                               <div class="input-group flex-nowrap mt-2">
-                                <input type="text" class="form-control" id="addAddressTown" placeholder="Town, City"
+                            
+                                <input type="text"  class="form-control mr-2" id="addAddressTown" placeholder="Town, City"
                                   required>
+                             
                                 <input type="text" class="form-control" id="addAddressCountry" placeholder="Country"
                                   required>
                               </div>
@@ -257,8 +261,8 @@
                           </form>
                         </div>
                         <div class="modal-footer">
-                          <button type="button" class="btn btn-outline-success btn-sm">Finish</button>
-                          <button type="button" class="btn btn-outline-danger btn-sm" data-dismiss="modal">Cancel</button>
+                          <button type="button" class="btn button-submit btn-sm">Finish</button>
+                          <button type="button" class="btn button-negative btn-sm" data-dismiss="modal">Cancel</button>
                         </div>
                       </div>
                     </div>
@@ -275,21 +279,24 @@
                           <th scope="col">Card Number</th>
                           <th scope="col">Expiration Date</th>
                           <th scope="col">Name</th>
-                          <th scope="col">Type</th>
+                          <th scope="col"></th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr>
-                          <td>1111</td>
+                          <td>1111<i class="fab fa-cc-visa fa-2x"></i></td>
                           <td>2019/11</td>
                           <td>John Doe</td>
-                          <td><i class="fab fa-cc-visa fa-2x"></i></td>
+                          <td>
+                            <button class="btn btn-sm button-action m-2">Edit</button>
+                            <button class="btn btn-sm button-negative m-2">Delete</button>
+                          </td>
                         </tr>
                       </tbody>
                     </table>
                   </div>
                   <!--HERE-->
-                  <button type="button" class="btn btn-outline-success float-right mx-3 mb-3 btn-sm" data-toggle="modal" data-target="#addCard">Add
+                  <button type="button" class="btn button-action float-right mx-3 mb-3 btn-sm" data-toggle="modal" data-target="#addCard">Add
                     card</button>                    
                   <div class="modal fade" id="addCard" tabindex="-1" role="dialog" aria-labelledby="addCardLabel"
                     aria-hidden="true">
@@ -336,8 +343,8 @@
                           </form>
                         </div>
                         <div class="modal-footer">
-                          <button type="button" class="btn btn-outline-success btn-sm">Finish</button>
-                          <button type="button" class="btn btn-outline-danger btn-sm" data-dismiss="modal">Cancel</button>
+                          <button type="button" class="btn button-submit btn-sm">Finish</button>
+                          <button type="button" class="btn button-negative btn-sm" data-dismiss="modal">Cancel</button>
                         </div>
                       </div>
                     </div>
@@ -346,9 +353,9 @@
               </div>
             </div>
             <div class="d-flex float-right mx-3 mb-3">
-              <button type="button" class="btn btnOutlineAction mr-2 btn-sm " data-toggle="modal" data-target="#changePwdModal">Change
+              <button type="button" class="btn button-action mr-2 btn-sm " data-toggle="modal" data-target="#changePwdModal">Change
                 Password</button>
-              <button type="button" class="btn btn-outline-danger mr-2 btn-sm">Delete Account</button>
+              <button type="button" class="btn button-negative mr-2 btn-sm">Delete Account</button>
             </div>
             <div class="modal fade" id="changePwdModal" tabindex="-1" role="dialog" aria-labelledby="changePwdModalLabel"
               aria-hidden="true">
@@ -383,8 +390,8 @@
                     </form>
                   </div>
                   <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-success btn-sm">Finish</button>
-                    <button type="button" class="btn btn-outline-danger btn-sm" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn button-submit btn-sm">Finish</button>
+                    <button type="button" class="btn button-negative btn-sm" data-dismiss="modal">Cancel</button>
                   </div>
                 </div>
               </div>
@@ -444,7 +451,7 @@
                   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>
-                  <b>2019-02-19 :</b> Invalid purchase (nao sei se este se aplica)
+                  <b>2019-02-19 :</b> Invalid purchase 
                 </div>
               </div>
             </div>
@@ -475,7 +482,7 @@
                       <td>2012-03-11</td>
                       <td>14.89€</td>
                       <td>
-                        <button class="btn btn-outline-success btn-sm m-2" role="button" data-toggle="modal"
+                        <button class="btn button-action btn-sm m-2" role="button" data-toggle="modal"
                           data-target=".viewCard1Modal">View cart</button>
                         <div class="modal fade viewCard1Modal" tabindex="-1" role="dialog" aria-labelledby="viewCard1ModalLabel"
                           aria-hidden="true">
@@ -556,7 +563,7 @@
                       <td>2017-02-11</td>
                       <td>109.99€</td>
                       <td>
-                        <button class="btn btn-outline-success btn-sm m-2" role="button" data-toggle="modal"
+                        <button class="btn button-action btn-sm m-2" role="button" data-toggle="modal"
                           data-target=".viewCard2Modal">View cart</button>
                         <div class="modal fade viewCard2Modal" tabindex="-1" role="dialog" aria-labelledby="viewCard2ModalLabel"
                           aria-hidden="true">
@@ -601,7 +608,7 @@
                       <td>2019-01-21</td>
                       <td>999.99€</td>
                       <td>
-                        <button class="btn btn-outline-success btn-sm m-2" role="button" data-toggle="modal"
+                        <button class="btn button-action btn-sm m-2" role="button" data-toggle="modal"
                           data-target=".viewCard3Modal">View cart</button>
                         <div class="modal fade viewCard3Modal" tabindex="-1" role="dialog" aria-labelledby="viewCard3ModalLabel"
                           aria-hidden="true">
@@ -667,8 +674,8 @@
                         <td>Things I'm going to buy when I'm a millionaire!!!!!!!!!!!</td>
                         <td>
                           <div class="d-flex justify-content-center">
-                            <button type="button" class="btn btnOutlineAction m-2">Share</button>
-                            <button type="button" class="btn btn-outline-danger m-2">Delete</button>
+                            <button type="button" class="btn btn-sm button-action m-2">Share</button>
+                            <button type="button" class="btn btn-sm button-negative m-2">Delete</button>
                           </div>
                         </td>
                       </tr>
@@ -678,8 +685,8 @@
                         <td>Anniversary gifts</td>
                         <td>
                           <div class="d-flex justify-content-center">
-                            <button type="button" class="btn btnOutlineAction  m-2">Share</button>
-                            <button type="button" class="btn btn-outline-danger m-2">Delete</button>
+                            <button type="button" class="btn btn-sm button-action m-2">Share</button>
+                            <button type="button" class="btn btn-sm button-negative m-2">Delete</button>
                           </div>
                         </td>
                       </tr>
@@ -689,8 +696,8 @@
                         <td>Stuff I have to buy for school as soon as I have money</td>
                         <td>
                           <div class="d-flex justify-content-center">
-                            <button type="button" class="btn btnOutlineAction m-2">Share</button>
-                            <button type="button" class="btn btn-outline-danger m-2">Trash</button>
+                            <button type="button" class="btn btn-sm button-action m-2">Share</button>
+                            <button type="button" class="btn btn-sm button-negative m-2">Delete</button>
                           </div>
                         </td>
                       </tr>
@@ -699,9 +706,9 @@
                 </div>
 
                 <div class="d-flex float-right mx-3 mb-3">
-                  <button type="button" class="btn btn-outline-success mr-2 btn-sm " data-toggle="modal" data-target="#createWListModal">Add
+                  <button type="button" class="btn btn-sm button-action mr-2 btn-sm " data-toggle="modal" data-target="#createWListModal">Add
                     Wish List</button>
-                  <button type="button" class="btn btn-outline-danger mr-2 btn-sm">Delete all</button>
+                  <button type="button" class="btn btn-sm button-negative mr-2 btn-sm">Delete all</button>
                 </div>
                 <div class="modal fade" id="createWListModal" tabindex="-1" role="dialog" aria-labelledby="createWListModalLabel"
                   aria-hidden="true">
@@ -726,8 +733,8 @@
                         </form>
                       </div>
                       <div class="modal-footer">
-                        <button type="button" class="btn btn-outline-success btn-sm">Finish</button>
-                        <button type="button" class="btn btn-outline-danger btn-sm" data-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btutton-submit btn-sm">Finish</button>
+                        <button type="button" class="btn button-negative btn-sm" data-dismiss="modal">Cancel</button>
                       </div>
                     </div>
                   </div>
@@ -763,3 +770,5 @@
 </body>
 
 </html>
+
+
