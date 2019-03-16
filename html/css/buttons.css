@@ -1,0 +1,78 @@
+@import url("root.css");
+
+
+.button-action{
+    color:var(--var-main-color);
+    background-color:white;
+    border-color: var(--var-main-color);
+}
+
+.button-action:hover{
+    background-color:var(--var-main-color);
+    border-color: var(--var-main-color);
+    color:white;
+}
+
+.button-submit{
+    background-color:var(--var-secon-color);
+    border-color: var(--var-secon-color);
+    color:white;
+}
+
+.button-submit:hover{
+    background-color:var(--var-secon-color);
+    border-color: var(--var-secon-color);
+    color: var(--var-gray-light);
+}
+
+.button-negative{
+    color:red;
+    background-color:white;
+    border-color: red;
+
+}
+
+.button-negative:hover{
+    color: white;
+    background-color:red;
+    border-color: red;
+
+}
+
+.button-toggable{
+    color:var(--var-main-color);
+    background-color:white;
+    border-color: var(--var-main-color);
+
+}
+
+.button-toggable:hover{
+    color:white;
+    background-color:var(--var-thir-color);
+    border-color: var(--var-main-color);
+
+}
+
+.button-toggable.active{
+    color:white;
+    background-color:var(--var-main-color);   
+     border-color: var(--var-main-color);
+
+}
+
+
+body *{
+    display: block;
+    width:10%;
+    margin:2em;
+}
+
+.button-action, .button-action:hover, .button-submit,.button-submit:hover,
+.button-negative, .button-negative:hover, .button-toggable, .button-toggable:hover,
+.button-toggable:focus{
+    outline: none !important;
+    
+    border-width: 1px;
+    border: solid;
+}
+
