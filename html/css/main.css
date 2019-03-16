@@ -5,3 +5,13 @@
     margin-right: 0.5em !important;
   }
 }
+
+.hotProducts {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+}
+
+.product {
+  flex: 0 0 auto;
+}
