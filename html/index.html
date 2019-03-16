@@ -31,7 +31,7 @@
         <div class="mainContent">
             <!-- Image and text -->
             <nav class="navbar navbar-expand-lg navbar-light">
-                <div class="collapse navbar-collapse d-flex justify-content-between" id="navbarSupportedContent">
+                <div class="collapse navbar-collapse d-flex" id="navbarSupportedContent">
                     <nav class="navbar d-flex navbar-light" id="navbarLogo">
                         <a class="navbar-brand" href="./index.html">
                             <img
@@ -43,8 +43,19 @@
                             />
                             PuzzleWood
                         </a>
+                        <span class="dropdown navText">
+                                <button class="btn  dropdown-toggle" type="button" id="dropdownAllCategories"                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    All Categories
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownAllCategories">
+                                    <a class="dropdown-item" href="#">Action</a>
+                                    <a class="dropdown-item" href="#">Another action</a>
+                                    <a class="dropdown-item" href="#">Something else here</a>
+                                </div>
+                            </span>
                     </nav>
-                    <div class="search-bar navbar-nav" id="searchNavContainer">
+                    <nav class="navbar navbar-expand-lg navbar-light flex-grow-1 d-flex">
+                    <div class="search-bar navbar-nav flex-grow-1" id="searchNavContainer">
                         <div class="input-group" id="searchNav">
                             <div class=" input-group-prepend" id="searchCategorySelector">
                                 <button
@@ -70,16 +81,16 @@
                         </div>
                     </div>
 
-                    <nav class="nav-item text-right" id="accountLinks">
+                    <nav class="nav-item text-right navText d-flex justify-content-between" id="accountLinks">
+                        <a class="nav-link text-nowrap" href="checkoutProducts.html" tabindex="-1" aria-disabled="true"
+                            >Shopping Cart
+                        </a>
                         <a class="nav-link" href="clientAccount.html" tabindex="-1" aria-disabled="true"
-                            >Your Account</a
-                        >
+                            >Your Account
+                        </a>
                     </nav>
                 </div>
             </nav>
-            <h2 class="h3 mx-auto mt-2 text-center pt-5 pb-4">
-                Featured
-            </h2>
             <div class="w-50 mx-auto mainCarousel mt-4">
                 <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
                     <ol class="carousel-indicators">
@@ -87,7 +98,7 @@
                         <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
                         <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
                     </ol>
-                    <div class="carousel-inner shadow-lg">
+                    <div class="carousel-inner">
                         <div class="carousel-item active">
                             <a href="./product.html">
                                 <img src="./images/products/surface.jpg" class="d-block w-100" alt="..." />
@@ -114,9 +125,9 @@
                     </a>
                 </div>
             </div>
-            <div class="card w-75 mt-5 mb-5 mr-auto ml-auto">
+            <div class="card w-50 mt-5 mb-5 mr-auto ml-auto" id="featured">
                 <div class="card-header">
-                    All Categories
+                    Most wished for in Computers
                 </div>
                 <div class="card-body">
                     <div class="w-75 mx-auto bd-example d-none d-md-block">
@@ -168,50 +179,6 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="row">
-                                            <div class="col w-25 mt-4">
-                                                <div class="card w-75 mr-auto ml-auto border-0">
-                                                    <a href="./search.html">
-                                                        <img
-                                                            class="card-img-top img-blur"
-                                                            src="./images/categories/headphones.jpg"
-                                                            alt="Card image cap"
-                                                        />
-                                                    </a>
-                                                    <div class="card-body card-img p-1">
-                                                        <h5 class="card-title">Headphones</h5>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col w-25 mt-4">
-                                                <div class="card w-75 mr-auto ml-auto border-0">
-                                                    <a href="./search.html">
-                                                        <img
-                                                            class="card-img-top img-blur"
-                                                            src="./images/categories/laptops.jpg"
-                                                            alt="Card image cap"
-                                                        />
-                                                    </a>
-                                                    <div class="card-body card-img p-1">
-                                                        <h5 class="card-title">Laptops</h5>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col w-25 mt-4">
-                                                <div class="card w-75 mr-auto ml-auto border-0">
-                                                    <a href="./search.html">
-                                                        <img
-                                                            class="card-img-top img-blur"
-                                                            src="./images/categories/desktops.jpg"
-                                                            alt="Card image cap"
-                                                        />
-                                                    </a>
-                                                    <div class="card-body card-img p-1">
-                                                        <h5 class="card-title">Desktops</h5>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
                                     </div>
                                 </div>
                                 <div class="carousel-item">
@@ -256,50 +223,6 @@
                                                     </a>
                                                     <div class="card-body card-img p-1">
                                                         <h5 class="card-title">CDs</h5>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col w-25 mt-4">
-                                                <div class="card w-75 mr-auto ml-auto border-0">
-                                                    <a href="./search.html">
-                                                        <img
-                                                            class="card-img-top img-blur"
-                                                            src="./images/categories/vinyls.jpg"
-                                                            alt="Card image cap"
-                                                        />
-                                                    </a>
-                                                    <div class="card-body card-img p-1">
-                                                        <h5 class="card-title">Vinyls</h5>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col w-25 mt-4">
-                                                <div class="card w-75 mr-auto ml-auto border-0">
-                                                    <a href="./search.html">
-                                                        <img
-                                                            class="card-img-top img-blur"
-                                                            src="./images/categories/dvds.jpg"
-                                                            alt="Card image cap"
-                                                        />
-                                                    </a>
-                                                    <div class="card-body card-img p-1">
-                                                        <h5 class="card-title">DVDs</h5>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col w-25 mt-4">
-                                                <div class="card w-75 mr-auto ml-auto border-0">
-                                                    <a href="./search.html">
-                                                        <img
-                                                            class="card-img-top img-blur"
-                                                            src="./images/categories/action-figures.jpg"
-                                                            alt="Card image cap"
-                                                        />
-                                                    </a>
-                                                    <div class="card-body card-img p-1">
-                                                        <h5 class="card-title">Action Figures</h5>
                                                     </div>
                                                 </div>
                                             </div>

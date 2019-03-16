@@ -75,11 +75,7 @@
     color: var(--var-gray-dark);
 }
 
-#accountLinks * {
-    color: white;
-}
-
-#accountLinks *:hover {
+.navText > * {
     color: white;
 }
 
@@ -89,7 +85,7 @@
     font-weight: 300;
 }
 
-#accountLinks *:hover {
+#navText *:hover {
     background-color: var(--var-main-color);
     border-radius: 0.25rem;
     color: white;
@@ -135,3 +131,14 @@
         order: 2;
     }
 }
+
+@media screen and (max-width: 992px) {
+    #navbarLogo {
+        width: 100%;
+    }
+
+    #accountLinks {
+        width: 100%;
+    }
+}
+
