@@ -5,10 +5,6 @@
     content: "> ";
 }
 
-.btnAction{
-    width:100%;
-}
-
 .card-body{
     height: 75%;
 }
@@ -317,7 +313,19 @@ label.full, label.half{
     min-height: auto;
 }
 
+.otherInfo {
+    background-color: var(--var-gray-light);
+}
 
+.otherInfo:hover {
+    background-color: var(--var-gray-ml);
+    cursor: pointer;
+}
+
+
+.checkoutCard {
+    margin:0.2em;
+}
 
 @media screen and (max-width: 1080px) {
     #listItems {

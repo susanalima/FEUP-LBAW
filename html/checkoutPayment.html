@@ -114,11 +114,14 @@
                             <dd class="col-sm-5">2019/11</dd>
                         </dl>
                     </div>
-                    <form class="button_form  mb-4 mx-3" action="checkoutConfirmation.html">
-                    <button type="submit" class="btn btnAction btn-sm">Pay with this one!</button>
-                    </form>
+                    <div class="d-flex flex-row-reverse mb-4 mx-3">
+                            <button type="button" class="btn btn-sm button-submit">Edit</button>
+                        <form class="button_form mr-2" action="checkoutConfirmation.html"> <button type="submit"
+                                class="btn button-action btn-sm">Pay</button>
+                        </form>
+                    </div>
                 </div>
-                <div class="d-flex flex-column card bg-light align-items-center justify-content-center checkoutCard"
+                <div class="d-flex flex-column card align-items-center justify-content-center checkoutCard otherInfo" 
                     data-toggle="modal" data-target="#deliveryCardModel">
                     <p> <i class="fas fa-plus m-2"></i>Other card</p>
                 </div>
@@ -171,13 +174,12 @@
                                 </form>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-outline-danger btn-sm" data-dismiss="modal">Cancel</button>
-                                <button type="button" class="btn btn-outline-success btn-sm">Pay with me!</button>
+                                <button type="button" class="btn button-submit btn-sm">Pay</button>
+                                <button type="button" class="btn button-negative btn-sm" data-dismiss="modal">Cancel</button>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!---->
             </div>
         </div>
     </div>

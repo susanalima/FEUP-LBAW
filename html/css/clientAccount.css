@@ -17,3 +17,10 @@
     }
 }
 
+
+.card-body .card.infoCard {
+    border-style:none none solid none;
+    border-radius: 0%;
+ 
+}
+
