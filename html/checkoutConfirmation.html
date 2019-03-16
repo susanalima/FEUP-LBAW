@@ -27,166 +27,173 @@
 </head>
 
 <body>
-        <div class="mainContent">
-    <!-- Image and text -->
-    <nav class="navbar navbar-expand-lg navbar-light">
-        <div class="collapse navbar-collapse d-flex justify-content-between" id="navbarSupportedContent">
-            <nav class="navbar d-flex navbar-light" id="navbarLogo">
-                <a class="navbar-brand" href="./index.html">
-                    <img src="./images/img.png" width="30" height="30" class="d-inline-block align-top" alt="" />
-                    PuzzleWood
-                </a>
-            </nav>
-            <div class="search-bar navbar-nav" id="searchNavContainer">
-                <div class="input-group" id="searchNav">
-                    <div class=" input-group-prepend" id="searchCategorySelector">
-                        <button class="btn dropdown-toggle search-category" type="button" data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false">
-                            All
-                        </button>
-                        <div class="dropdown-menu search-category-drop">
-                            <a class="dropdown-item" href="#">All</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <a class="dropdown-item" href="#">Something else here</a>
-                        </div>
-                    </div>
-                    <form class="form-inline my-lg-0 d-flex justify-content-between">
-                        <input class="form-control" type="text" placeholder="Search" id="searchBar" />
-
-                        <button id="searchBtn" class="fas fa-search" type="submit" id="searchBtn"></button>
-                    </form>
-                </div>
-            </div>
-
-            <nav class="nav-item text-right" id="accountLinks">
-                <a class="nav-link" href="clientAccount.html" tabindex="-1" aria-disabled="true">Your Account</a>
-            </nav>
-        </div>
-    </nav>
-
-    <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="checkoutProducts.html">1.Products</a></li>
-            <li class="breadcrumb-item"><a href="checkoutDelivery.html">2.Delivery</a></li>
-            <li class="breadcrumb-item"><a href="checkoutShipping.html">3.Shipping</a></li>
-            <li class="breadcrumb-item"><a href="checkoutPayment.html">4.Payment</a></li>
-            <li class="breadcrumb-item active" aria-current="page">5.Confirmation</li>
-        </ol>
-    </nav>
-
-      <div class="card container bottom_row">
-        <div class="row center-block">
-            <div class="col-sm card final_price container">
-                <div class="price_row h-75">
-                    <div class="price_col col-sm">
-                        <h1 class="final_label">Final Value:</h1>
-                    </div>
-                    <div class="price_col col-sm ">
-                        <h1 class="final_value">311.96€</h1>
-                    </div>
-                </div>
-            </div>
-            <form class="button_form" action="index.html">
-                <button class="btn btn-light next_button " type="submit" value="Go to Delivery">Confirm Purchase <i class="fa fa-check" aria-hidden="true"></i></button>
-            </form>
-        
-        </div>
-    </div>
-    
-    <div id="listItems" class="card">
-        <div class="card-body m-auto checkoutListCards">
-            <div class="d-flex align-items-center justify-content-center flex-wrap">
-                    <div class="d-flex flex-column card addresses checkoutCard">
-                            <div class="card-body">
-                                <h2 class="card-title mb-3 text-muted">Products</h2>
-                                <div style="overflow-y: scroll; overflow-x: hidden; max-height: 7.5em;">
-                                    <dl class="row">
-                                        <dt class="col-sm-8">God's Autobiography</dt>
-                                        <dd class="col-sm-4 text-truncate">29.99€</dd>
-                                        <dt class="col-sm-8">Overpriced Phones</dt>
-                                        <dd class="col-sm-4">199.49€</dd>
-                                        <dt class="col-sm-8">PsycMixTape</dt>
-                                        <dd class="col-sm-4">59.99€</dd>
-                                        <dt class="col-sm-8">God's Autobiography</dt>
-                                        <dd class="col-sm-4 text-truncate">29.99€</dd>
-                                        <dt class="col-sm-8">Overpriced Phones</dt>
-                                        <dd class="col-sm-4">199.49€</dd>
-                                        <dt class="col-sm-8">PsycMixTape</dt>
-                                        <dd class="col-sm-4">59.99€</dd>
-                                        <dt class="col-sm-8">God's Autobiography</dt>
-                                        <dd class="col-sm-4 text-truncate">29.99€</dd>
-                                        <dt class="col-sm-8">Overpriced Phones</dt>
-                                        <dd class="col-sm-4">199.49€</dd>
-                                        <dt class="col-sm-8">PsycMixTape</dt>
-                                        <dd class="col-sm-4">59.99€</dd>
-                                    </dl>
-                                </div>
+    <div class="mainContent">
+        <!-- Image and text -->
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="collapse navbar-collapse d-flex justify-content-between" id="navbarSupportedContent">
+                <nav class="navbar d-flex navbar-light" id="navbarLogo">
+                    <a class="navbar-brand" href="./index.html">
+                        <img src="./images/img.png" width="30" height="30" class="d-inline-block align-top" alt="" />
+                        PuzzleWood
+                    </a>
+                </nav>
+                <div class="search-bar navbar-nav" id="searchNavContainer">
+                    <div class="input-group" id="searchNav">
+                        <div class=" input-group-prepend" id="searchCategorySelector">
+                            <button class="btn dropdown-toggle search-category" type="button" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                                All
+                            </button>
+                            <div class="dropdown-menu search-category-drop">
+                                <a class="dropdown-item" href="#">All</a>
+                                <a class="dropdown-item" href="#">Another action</a>
+                                <a class="dropdown-item" href="#">Something else here</a>
                             </div>
-                            <form class="button_form  mb-4 mx-3" action="checkoutProducts.html">
-                            <button type="submit" class="btn btnAction btn-sm ">Edit!</button>
-                        </form>
                         </div>
-                <div class="d-flex flex-column card checkoutCard">
-                    <div class="card-body ">
-                        <h2 class="card-title mb-3 text-muted">Delivery Address</h2>
-                        <div class="card-text">
+                        <form class="form-inline my-lg-0 d-flex justify-content-between">
+                            <input class="form-control" type="text" placeholder="Search" id="searchBar" />
+
+                            <button id="searchBtn" class="fas fa-search" type="submit" id="searchBtn"></button>
+                        </form>
+                    </div>
+                </div>
+
+                <nav class="nav-item text-right" id="accountLinks">
+                    <a class="nav-link" href="clientAccount.html" tabindex="-1" aria-disabled="true">Your Account</a>
+                </nav>
+            </div>
+        </nav>
+
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="checkoutProducts.html">1.Products</a></li>
+                <li class="breadcrumb-item"><a href="checkoutDelivery.html">2.Delivery</a></li>
+                <li class="breadcrumb-item"><a href="checkoutShipping.html">3.Shipping</a></li>
+                <li class="breadcrumb-item"><a href="checkoutPayment.html">4.Payment</a></li>
+                <li class="breadcrumb-item active" aria-current="page">5.Confirmation</li>
+            </ol>
+        </nav>
+
+        <div class="card container bottom_row">
+            <div class="row center-block">
+                <div class="col-sm card final_price container">
+                    <div class="price_row h-75">
+                        <div class="price_col col-sm">
+                            <h1 class="final_label">Final Value:</h1>
+                        </div>
+                        <div class="price_col col-sm ">
+                            <h1 class="final_value">311.96€</h1>
+                        </div>
+                    </div>
+                </div>
+                <form class="button_form" action="index.html">
+                    <button class="btn btn-light next_button " type="submit" value="Go to Delivery">Confirm Purchase <i
+                            class="fa fa-check" aria-hidden="true"></i></button>
+                </form>
+
+            </div>
+        </div>
+
+        <div id="listItems" class="card">
+            <div class="card-body m-auto checkoutListCards">
+                    <h2 class="checkoutTextTop">Confirm all the information for your purchase!</h2>
+                <div class="d-flex align-items-center justify-content-center flex-wrap">
+                    <div class="d-flex flex-column card addresses checkoutCard">
+                        <div class="card-body">
+                            <h2 class="card-title mb-3 text-muted">Products</h2>
+                            <div style="overflow-y: scroll; overflow-x: hidden; max-height: 7.5em;">
+                                <dl class="row">
+                                    <dt class="col-sm-8">God's Autobiography</dt>
+                                    <dd class="col-sm-4 text-truncate">29.99€</dd>
+                                    <dt class="col-sm-8">Overpriced Phones</dt>
+                                    <dd class="col-sm-4">199.49€</dd>
+                                    <dt class="col-sm-8">PsycMixTape</dt>
+                                    <dd class="col-sm-4">59.99€</dd>
+                                    <dt class="col-sm-8">God's Autobiography</dt>
+                                    <dd class="col-sm-4 text-truncate">29.99€</dd>
+                                    <dt class="col-sm-8">Overpriced Phones</dt>
+                                    <dd class="col-sm-4">199.49€</dd>
+                                    <dt class="col-sm-8">PsycMixTape</dt>
+                                    <dd class="col-sm-4">59.99€</dd>
+                                    <dt class="col-sm-8">God's Autobiography</dt>
+                                    <dd class="col-sm-4 text-truncate">29.99€</dd>
+                                    <dt class="col-sm-8">Overpriced Phones</dt>
+                                    <dd class="col-sm-4">199.49€</dd>
+                                    <dt class="col-sm-8">PsycMixTape</dt>
+                                    <dd class="col-sm-4">59.99€</dd>
+                                </dl>
+                            </div>
+                        </div>
+                        <div class="d-flex flex-row-reverse mb-4 mx-3">
+                            <form class="button_form mr-2" action="checkoutProducts.html"> <button type="submit" class="btn button-submit btn-sm">Edit</button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="d-flex flex-column card checkoutCard">
+                        <div class="card-body ">
+                            <h2 class="card-title mb-3 text-muted">Delivery Address</h2>
+                            <div class="card-text">
                                 <p>Alameda dos Jardins d'Arrábida 443</p>
                                 <p>4400-478 Porto</p>
                                 <p>Portugal</p>
                             </div>
+                        </div>
+                        <div class="d-flex flex-row-reverse mb-4 mx-3">
+                            <form class="button_form mr-2" action="checkoutDelivery.html"> <button type="submit" class="btn button-submit btn-sm">Edit</button>
+                            </form>
+                        </div>
                     </div>
-                    <form class="button_form  mb-4 mx-3" action="checkoutDelivery.html">
-                        <button type="submit" class="btn btnAction btn-sm ">Edit!</button>
-                    </form>             
-                  </div>
 
-                <div class="d-flex flex-column card checkoutCard">
+                    <div class="d-flex flex-column card checkoutCard">
                         <div class="card-body">
-                            <h2 class="card-title mb-3 text-muted">Payment Method
-                                <i class="float-right fab fa-cc-visa fa-2x"></i>
-                            </h2>
-                            
-                            <dl class="row">
-                                <dt class="col-sm-5">Name</dt>
-                                <dd class="col-sm-5 text-truncate">John Doe</dd>
-                                <dt class="col-sm-5">Ends in</dt>
-                                <dd class="col-sm-5">1111</dd>
-                                <dt class="col-sm-5">Expiration Date</dt>
-                                <dd class="col-sm-5">2019/11</dd>
-                            </dl>
-                            </div>
-                            <form class="button_form  mb-4 mx-3" action="checkoutPayment.html">
-                                <button type="submit" class="btn btnAction btn-sm ">Edit!</button>
-                            </form>                    </div>
-
-                <div class="d-flex flex-column card checkoutCard">
-                    <div class="card-body">
-                        <h2 class="card-title mb-3 text-muted">Shipping Method</h2>
-                        <div class="card-text">
+                            <h2 class="card-title mb-3 text-muted">Shipping Method</h2>
+                            <div class="card-text">
                                 <strong>Regular</strong>
                                 <p>Delivered within 15 days after purchase</p>
                                 <p>No additional costs!</p>
                             </div>
+                        </div>
+                        <div class="d-flex flex-row-reverse mb-4 mx-3">
+                            <form class="button_form mr-2" action="checkoutShipping.html"> <button type="submit" class="btn button-submit btn-sm">Edit</button>
+                            </form>
+                        </div>
                     </div>
-                    <form class="button_form  mb-4 mx-3" action="checkoutShipping.html">
-                        <button type="submit" class="btn btnAction btn-sm ">Edit!</button>
-                    </form>
-                </div>
 
+                    <div class="d-flex flex-column card checkoutCard">
+                            <div class="card-body">
+                                <h2 class="card-title mb-3 text-muted">Payment Method
+                                    <i class="float-right fab fa-cc-visa fa-2x"></i>
+                                </h2>
+    
+                                <dl class="row">
+                                    <dt class="col-sm-5">Name</dt>
+                                    <dd class="col-sm-5 text-truncate">John Doe</dd>
+                                    <dt class="col-sm-5">Ends in</dt>
+                                    <dd class="col-sm-5">1111</dd>
+                                    <dt class="col-sm-5">Expiration Date</dt>
+                                    <dd class="col-sm-5">2019/11</dd>
+                                </dl>
+                            </div>
+                            <div class="d-flex flex-row-reverse mb-4 mx-3">
+                                <form class="button_form mr-2" action="checkoutPayment.html"> <button type="submit" class="btn button-submit btn-sm">Edit</button>
+                                </form>
+                            </div>
+                        </div>
+
+                </div>
             </div>
         </div>
-    </div>
     </div>
 
 
     <div class="d-flex justify-content-between text-white p-5 flex-wrap" id="footer">
-            <div class="d-flex flex-column mx-auto">
-                <a href="./help.html#support">Help</a>
-                <a href="./help.html#contacts">Contacts</a>
-                <a href="./help.html#FAQ">FAQs</a>
-            </div>
-            <h4 class="align-self-end mx-auto">&copy; 2019 PuzzleWood.pt. All Rights Reserved.</h4>
+        <div class="d-flex flex-column mx-auto">
+            <a href="./help.html#support">Help</a>
+            <a href="./help.html#contacts">Contacts</a>
+            <a href="./help.html#FAQ">FAQs</a>
         </div>
+        <h4 class="align-self-end mx-auto">&copy; 2019 PuzzleWood.pt. All Rights Reserved.</h4>
+    </div>
     <!-- Footer End -->
 
     <!-- Optional JavaScript -->
