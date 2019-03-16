@@ -422,8 +422,9 @@ h5 {
 
 
 .img-blur {
-    filter: blur(0.5px);
-    -webkit-filter: blur(0.5px);
+    max-height: 150px;
+    max-width: 250px;
+    margin-right: auto;
 }
 
 /*https://css-tricks.com/styling-cross-browser-compatible-range-inputs-css/*/
