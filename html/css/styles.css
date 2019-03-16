@@ -420,28 +420,11 @@ h5 {
     margin-left: 7px;
 }
 
-.btnAction {
-    background-color: var(--var-blue-ml);
-    color: white;
-}
-
-.btnAction:hover {
-    background-color: var(--var-blue-mid);
-    color: white;
-}
-
-.btnOutlineAction {
-    border-color: var(--var-blue-ml);
-}
-
-.btnOutlineAction:hover {
-    background-color: var(--var-blue-ml);
-    color: white;
-}
 
 .img-blur {
-    filter: blur(0.5px);
-    -webkit-filter: blur(0.5px);
+    max-height: 150px;
+    max-width: 250px;
+    margin-right: auto;
 }
 
 /*https://css-tricks.com/styling-cross-browser-compatible-range-inputs-css/*/

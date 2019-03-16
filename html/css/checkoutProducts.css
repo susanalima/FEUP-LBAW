@@ -5,10 +5,6 @@
     content: "> ";
 }
 
-.btnAction{
-    width:100%;
-}
-
 .card-body{
     height: 75%;
 }
@@ -322,7 +318,8 @@ label.full, label.half{
 }
 
 .otherInfo:hover {
-    background-color: var(--var-gray-ml)
+    background-color: var(--var-gray-ml);
+    cursor: pointer;
 }
 
 
