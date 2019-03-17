@@ -25,3 +25,11 @@
 .loginFlex {
     margin-bottom: 1em;
 }
+
+.loginHref {
+    color: var(--var-secon-color);
+}
+
+.loginHref:hover {
+    color: var(--var-main-color);
+}
