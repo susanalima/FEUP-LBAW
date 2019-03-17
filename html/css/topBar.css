@@ -70,6 +70,10 @@
     color: var(--var-gray-dark);
 }
 
+.navbar-nav div.dropdown-menu {
+    position: absolute;
+}
+
 #navbarLogo a.dropdown-item {
     color: var(--var-text) !important;
     font-size: 1em;
