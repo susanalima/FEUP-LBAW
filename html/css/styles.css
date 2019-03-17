@@ -388,6 +388,11 @@ fieldset{
     color: var(--var-secon-text);
 }
 
+ #linkHovered:hover {
+    color:var(--var-secon-text);
+    text-decoration: underline;
+}
+
 .table-hover tbody tr:hover {
     background-color: var(--var-thir-color);
 }
@@ -648,4 +653,16 @@ fieldset{
     #comparisonModal .modal-body {
     
     }
+}
+
+
+
+.card-body .card.infoCard {
+    border-style:none none solid none;
+    border-radius: 0%;
+}
+
+.card-body .card.reverseInfoCard {
+    border-style:solid none none none;
+    border-radius: 0%;
 }
