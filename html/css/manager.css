@@ -14,11 +14,6 @@
   margin-right: 0.5em;
 }
 
-.btn-group-dark button:hover {
-  color: var(--var-text);
-}
-
-
 #clientManagerMessages {
-  width: 76%;
+  width: 90%;
 }
