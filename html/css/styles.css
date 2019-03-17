@@ -62,13 +62,14 @@ html {
 }
 
 #filters {
+    min-width: 300px;
     width: 320px;
     background-color: var(--var-gray-light);
     border-radius: 0.25rem;
 }
 
 #results {
-    max-width: 1070px;
+    max-width: 1410px;
     padding: 10px;
     border: 1px solid var(--var-gray-light);
     border-radius: 0.25rem;
@@ -81,7 +82,8 @@ html {
 .product {
     width: 300px;
     height: 350px;
-    margin: 10px 20px;
+    margin: 40px 40px;
+    border-bottom: 1px solid var(--var-gray-light) ;
 }
 
 .productMid {
@@ -500,23 +502,14 @@ fieldset{
 
 @media screen and (max-width: 1450px) {
     #results {
-        max-width: 730px;
+        max-width: 1100px;
     }
-    #filters {
-        width: 320px;
-    }
-}
-
-@media screen and (max-width: 1080px) {
-    #results {
-        max-width: 730px;
-    }
-    #filters {
-        width: 200px;
+    .product {
+        margin: 40px 20px;
     }
 }
 
-@media screen and (max-width: 980px) {
+@media screen and (max-width: 1000px) {
     #searchBody {
         display: flex;
         flex-direction: column;
@@ -609,4 +602,8 @@ fieldset{
 .card-body .card.reverseInfoCard {
     border-style:solid none none none;
     border-radius: 0%;
+}
+
+.ProductBtnsContainer button {
+    margin: 2px 1px;
 }
