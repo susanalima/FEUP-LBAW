@@ -44,7 +44,7 @@
                             PuzzleWood
                         </a>
                         <span class="dropdown navText">
-                                <button class="btn  dropdown-toggle" type="button" id="dropdownAllCategories"                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <button class="btn  dropdown-toggle" type="button" id="dropdownAllCategories" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     All Categories
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="dropdownAllCategories">
@@ -86,9 +86,6 @@
                     </div>
 
                     <nav class="nav-item text-right navText d-flex justify-content-between" id="accountLinks">
-                        <a class="nav-link text-nowrap" href="checkoutProducts.html" tabindex="-1" aria-disabled="true"
-                            >Shopping Cart
-                        </a>
                         <a class="nav-link" href="clientAccount.html" tabindex="-1" aria-disabled="true"
                             >Your Account
                         </a>
@@ -121,15 +118,27 @@
                 </div>
             </div>
 
-        <div id="listItems" class="card">
+        
             <div class="card-body m-auto checkoutListCards">
                 <h2 class="checkoutTextTop">Select a shipping method for your purchase!</h2>
-                <div class="d-flex align-items-center justify-content-center flex-wrap">
+                <div class="d-flex all_elements2">
                     <div class="d-flex flex-column card checkoutCard">
                         <div class="card-body">
                             <h2 class="card-title mb-3 text-muted">Regular</h2>
                             <p class="card-text">Delivered within 15 days after purchase</p>
                             <p class="card-text">No additional costs!</p>
+                        </div>
+                        <div class="d-flex flex-row-reverse mb-4 mx-3">
+                            <form class="button_form mr-2" action="checkoutPayment.html"> <button type="submit"
+                                    class="btn button-submit btn-sm">Ship</button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="d-flex flex-column card checkoutCard">
+                        <div class="card-body">
+                            <h2 class="card-title mb-3 text-muted">Fast</h2>
+                            <p class="card-text">Delivered within 7 days after purchase</p>
+                            <p class="card-text">Additional 2.99€ cost</p>
                         </div>
                         <div class="d-flex flex-row-reverse mb-4 mx-3">
                             <form class="button_form mr-2" action="checkoutPayment.html"> <button type="submit"
@@ -152,7 +161,7 @@
                 </div>
             </div>
         </div>
-    </div>
+  
 
     <div class="d-flex justify-content-between text-white p-5 flex-wrap" id="footer">
             <div class="d-flex flex-column mx-auto">
