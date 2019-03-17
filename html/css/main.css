@@ -12,6 +12,15 @@
   overflow-x: auto;
 }
 
-.product {
-  flex: 0 0 auto;
+.img-text {
+  position: absolute;
+  padding-bottom: 1em;
+  padding-top: 0.5em;
+  bottom: 0em;
+  text-align: center;
+  color: white;
+  width: 100%;
+  background: rgba(0.4, 0.4, 0.4, 0.4);
+  font-size: 1.5em;
+  text-shadow: 0 1px 0 black;
 }
