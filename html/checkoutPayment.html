@@ -94,9 +94,6 @@
                     </div>
 
                     <nav class="nav-item text-right navText d-flex justify-content-between" id="accountLinks">
-                        <a class="nav-link text-nowrap" href="#" onclick="opener()" tabindex="-1" aria-disabled="true"
-                            >Shopping Cart
-                        </a>
                         <a class="nav-link" href="clientAccount.html" tabindex="-1" aria-disabled="true"
                             >Your Account
                         </a>
@@ -112,26 +109,17 @@
             <li class="breadcrumb-item"><a href="checkoutConfirmation.html">5.Confirmation</a></li>
         </ol>
     </nav>
-    <div class="card container bottom_row">
-            <div class="row center-block">
-                <div class="col-sm card final_price container">
-                    <div class="price_row h-75">
-                        <div class="price_col col-sm">
-                            <h1 class="final_label">Final Value:</h1>
-                        </div>
-                        <div class="price_col col-sm ">
-                            <h1 class="final_value">311.96€</h1>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    
 
-    <div id="listItems" class="card">
-        <div class="card-body m-auto checkoutListCards">
+        <div class="all_deliveries">
+            <div class="card-body m-auto checkoutListCards">
+                    <div class="d-flex price flex-wrap">
+                            <h1 class="final_label">Total: 311.96€</h1>
+                       </div>
             <h2 class="checkoutTextTop">Select or add a card to make your purchase!</h2>
-            <div class="d-flex align-items-center justify-content-center flex-wrap">
-                <div class="d-flex flex-column card checkoutCard">
+            
+            <div class="d-flex all_elements2">
+                                <div class="d-flex flex-column card checkoutCard">
                     <div class="card-body">
                         <div class="d-flex flex-row-reverse">
                             <i class="fab fa-cc-visa fa-2x"></i>
@@ -143,6 +131,27 @@
                             <dd class="col-sm-5">1111</dd>
                             <dt class="col-sm-5">Expiration Date</dt>
                             <dd class="col-sm-5">2019/11</dd>
+                        </dl>
+                    </div>
+                    <div class="d-flex flex-row-reverse mb-4 mx-3">
+                            <button type="button" class="btn btn-sm button-action">Edit</button>
+                        <form class="button_form mr-2" action="checkoutConfirmation.html"> <button type="submit"
+                                class="btn button-submit btn-sm">Pay</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="d-flex flex-column card checkoutCard">
+                    <div class="card-body">
+                        <div class="d-flex flex-row-reverse">
+                            <i class="fab fa-cc-visa fa-2x"></i>
+                        </div>
+                        <dl class="row">
+                            <dt class="col-sm-5">Name</dt>
+                            <dd class="col-sm-5 text-truncate">John Doe</dd>
+                            <dt class="col-sm-5">Ends in</dt>
+                            <dd class="col-sm-5">2222</dd>
+                            <dt class="col-sm-5">Expiration Date</dt>
+                            <dd class="col-sm-5">2019/12</dd>
                         </dl>
                     </div>
                     <div class="d-flex flex-row-reverse mb-4 mx-3">

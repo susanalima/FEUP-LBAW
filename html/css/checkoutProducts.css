@@ -9,12 +9,46 @@
     height: 75%;
 }
 
-.checkoutTextTop{
+.price_tag{
+    margin-top:0.8em;
+}
+
+.checkoutTextTop, .price, .price1{
     display: inline-block;
     overflow-wrap: break-word;
     margin-bottom: 2%;
     margin-left: 11%;
 }
+
+.price1{
+    display: inline-block;
+    overflow-wrap: break-word;
+    width:75%;
+    padding-left: 10%;
+}
+
+
+.all_elements, .all_elements2{
+    width:75%;
+    margin-left: auto;
+    margin-right: auto;
+    height: auto;
+    flex-wrap: wrap;
+    justify-content: start;
+    padding-left:10%
+  
+}
+
+.all_deliveries{
+    width:100%;
+    margin-left: auto;
+    margin-right: auto;
+    height: auto;   
+   
+}
+
+
+
 
 #wishListsTabs{
     margin-top: 2em;
@@ -38,7 +72,6 @@
 
 
  .next_button{
-    text-align: center;
     display: inline-block;
 
     width: auto;
@@ -46,9 +79,9 @@
     background-color: var(--var-gray);
     border-color: var(--var-gray-dark);
     color: var(--var-text);
-    margin-left:1rem;
     border-width: 2px;
     outline:none;
+    margin-right:2em;
 }
 
 .next_button:hover{
@@ -73,12 +106,19 @@
 
 
 .product_card{
-    min-height: min-content;
     border-width: 2px;
-    border-color: var(--var-gray-dark);
+    border-color: var(--var-main-color);
+    border-left: none;
+    border-right: none;
+    border-top: none;
     margin-bottom: 4px;
-    margin-left: 2px;
+    margin-left:2%;
+    margin-right:2%;
+    
     padding-bottom: 1.5vw;
+    border-radius: 0;
+    width: 450px;
+    height: auto;
 }
 
 .quantity{
@@ -96,8 +136,8 @@
     padding: 0;
     margin-left: .5rem;
     margin-bottom: .5rem;
-    background-color: var(--var-gray);
-    border-color: var(--var-gray-dark);
+    background-color: transparent;
+    border: none;
     min-width: 1.4em;
 }
 
@@ -106,19 +146,23 @@
     padding: 0;
     margin-left: .5rem;
     margin-bottom: .5rem;
-    background-color: var(--var-gray-dark);
-    color: var(--var-gray);
+    background-color: transparent;
+    color: var(--var-main-color);
     min-width: 1.4em;
 }
 
 
 
 .product_img{
-    width: 40%; 
-    height: 75%;
-    background-size: cover;
+    background-size: 100% auto;
+    max-width: 256px;
+    max-height: 256px;
+    width:auto;
+    height: auto;
+    object-fit: scale-down;
     margin-left:0.5em;
-   margin-bottom:0.2rem;
+    margin-bottom:0.2rem;
+    padding:0;
 }
 
 .stars_field{
@@ -151,7 +195,8 @@ label.full, label.half{
 }
 
 .final_label{
-    width:125px;
+    width:auto;
+    margin-right: 1em;
 }
 
 
@@ -214,74 +259,11 @@ label.full, label.half{
     color: #ffed85;
 }
 
-.cancel_button{
-    background-image: url('../images/cancel-icon.png');
-    background-color: transparent;
-    background-size: 100%,100%;
-    height: 3vw;
-    width: 3vw;
-    border: none;
-    cursor: pointer;
-    outline:none;   
-    border-radius: 2em;
-    display:block;
-    border-radius: 50%;
-    outline:none !important;
-}
-
-.remove_product{
-    outline:none !important;
-    display:inline-block;
-    border-radius: 0.25rem;
-    border-width: 0.1rem;
-    border-color: var(--var-fourth-color);
-    background-color: white;
-    color: var( --var-fourth-color);
-}
-
-.remove_product:hover{
-    outline:none !important;
-    display:inline-block;
-    border-radius: 0.25rem;
-    border-width: 0.1rem;
-    border-color: black;
-    background-color: red;
-    color:white;
-
-}
-
-.price{
-    margin-top:0.5rem;
-    margin-bottom:0.5rem;
-    font-size: auto;
-    min-width: auto;
-}
-
-.final_price{
-    width: 100%;
-
-    background-color: var(--var-gray);
-    color: black;
-    margin:0;
-    margin-left: 0.1em;
-   
-    border-width: 0.15rem;
-    border-color: rgb(85, 85, 85);
-    border-radius:0.25rem;
-
-    text-align: left;
-    display: inline-block;
-}
 
 
 
-.bottom_row{
-   display: inline-block;
-    width: auto;
-    min-width: 25%;
-    margin-left:12.5%;
-    border: none;
-}
+
+
 
 .final_value{
     float: right;    
@@ -294,6 +276,7 @@ label.full, label.half{
 .checkoutCard {
     width: 22rem; 
     height: 16rem;
+    
 }
 
 .price_row{
@@ -307,6 +290,7 @@ label.full, label.half{
     display: inline-block;
     width:50%;
 }
+
 
 #footer{
     width:100%;
@@ -327,19 +311,43 @@ label.full, label.half{
     margin:0.2em;
 }
 
+.checkoutListCards {
+    width: 85%;
+}
+.checkoutCard {
+    width: 20rem;
+}
+
+
+
+@media screen and (max-width: 1440px) {
+    .all_elements{
+        justify-content: flex-start;
+    }
+ }
+
+@media screen and (max-width: 1305px) {
+   .all_elements .all_elements2{
+       width:100%;
+       padding-left: 0;
+   }
+}
+
+@media screen and (max-width: 1345px) {
+    .all_elements2{
+       padding-left:0;
+    }
+}
+
+
 @media screen and (max-width: 1080px) {
     #listItems {
-        width: 100%;
+        width: auto;
         height: auto;
         margin: auto;
         margin-top:0;
     }
-    .checkoutListCards {
-        width: 85%;
-    }
-    .checkoutCard {
-        width: 20rem;
-    }
+    
     
     .bottom_row{
         margin-left:0;
@@ -354,33 +362,55 @@ label.full, label.half{
     
 }
 
-@media screen and (max-width: 950px) {
-    #listItems {
-        width: 100%;
-    }
-    .checkoutListCards {
-        width: 100%;
-    }
-    .checkoutCard {
-        height: 18rem;
-    }
-   
-}
 
-@media screen and (max-width: 500px){
-    .product_img{
-        display: none;
+
+@media screen and (max-width: 980px) {
+    .all_elements{
+        justify-content: center;
+        padding-left:0%;
     }
 }
 
 
-@media screen and (max-width: 434px){
+@media screen and (max-width: 1070px) {
+    .all_elements2{
+        justify-content: center;
+        padding-left:0%;
+    }
+}
+
+
+@media screen and (max-width: 576px){
+    .all_elements, .all_elements2{
+        width: 100%;
+        margin:0;
+    }
+    .col-sm{
+        padding-right: 0;
+        width:45%;
+    }
+
+    .price, .price1{
+        margin:auto;
+        margin-bottom:2em;
+        padding-left: 0;
+    }
+
+}
+
+
+@media screen and (max-width: 410px){
     .next_button{
         margin-left: 0;
     }
     .next_button:hover{
         margin-left: 0;
     }
+
+    .date_add{
+        display:none;
+    }
+
 }
 
 
