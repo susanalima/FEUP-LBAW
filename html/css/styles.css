@@ -324,7 +324,7 @@ fieldset{
 }
 
 .table-hover tbody tr:hover {
-    background-color: var(--var-thir-color);
+    background-color: var(--var-gray-light);
 }
 
 #specsCol .table-hover tbody tr:hover > * {
@@ -335,11 +335,26 @@ fieldset{
     border: 1px solid var(--var-thir-color);
 }
 
+.qaBox {
+    margin: 10px;
+    border: 1px solid var(--var-gray-light);
+    border-radius: 0.25rem;
+}
+.qaBox.answered {
+    border: 1px solid var(--var-thir-color);
+}
+
 .card-body .answerCard {
-    justify-content: flex-end!important;
 }
 .card-body .answerCard .card{
     border-color: var(--var-gray-dark);
+}
+
+.answerCardLabel::before {
+    content:"Answer: ";
+}
+.questionCardLabel::before{
+    content:"Question: ";
 }
 
 #productCtrl {
