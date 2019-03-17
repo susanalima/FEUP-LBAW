@@ -9,7 +9,9 @@
 .hotProducts {
   display: flex;
   flex-wrap: nowrap;
-  overflow-x: auto;
+	overflow-y: hidden;
+	overflow-x: scroll;
+	-webkit-overflow-scrolling: touch;
 }
 
 .img-text {
@@ -20,7 +22,21 @@
   text-align: center;
   color: white;
   width: 100%;
-  background: rgba(0.4, 0.4, 0.4, 0.4);
+  background-color: rgb(0.4, 0.4, 0.4);
+  background-color: rgba(122, 115, 115, 0.41);
   font-size: 1.5em;
-  text-shadow: 0 1px 0 black;
+}
+
+.carousel-control-prev-icon {
+  background-image: url(../images/ui/carousel-prev.png);
+}
+
+.carousel-control-next-icon {
+  background-image: url(../images/ui/carousel-next.png);
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  width: 2em;
+  height: 4em;
 }
