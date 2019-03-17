@@ -39,7 +39,7 @@
 }
 
 #searchCategorySelector button:hover {
-    background-color: var(--var-main-color);
+    background-color: var(--var-main-color)!important;
     color: white;
 }
 
