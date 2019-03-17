@@ -45,28 +45,6 @@ html {
     min-width: 80%;
 }
 
-h1 {
-    font-size: 1.4em;
-}
-
-h2 {
-    font-size: 1.1em;
-    font-family: "Roboto italic", sans-serif;
-    color: rgb(78, 78, 78);
-}
-
-h3 {
-    font-size: 1em;
-}
-
-h4 {
-    font-size: 0.85em;
-}
-
-h5 {
-    font-size: 0.75em;
-}
-
 #footer {
     background-color: var(--var-fourth-color);
 }
@@ -115,7 +93,7 @@ h5 {
     width: 60px;
     height: 60px;
     line-height: 60px;
-    background-color: var(--var-gray-light);
+    background-color: inherit;
 }
 
 .productImage,
@@ -223,53 +201,6 @@ fieldset{
     color: var(--var-secon-color);
 }
 
-.addToCartBtn,
-.addToWishListBtn,
-.addToCmpBtn,
-.modalBtn,
-.cmnBtn,
-.removeWishItem {
-    border-radius: 0.25rem;
-    margin: 0px 0px 1px 1px;
-    width: 50px;
-    height: 50px;
-    padding: 0;
-    border: 1px solid var(--var-main-color);
-    color: var(--var-main-color);
-    background-color: white;
-}
-
-.addToCartBtn:hover,
-.addToCmpBtn:hover,
-.modalBtn:hover,
-.cmnBtn:hover,
-.addToWishListBtn:hover {
-    color: var(--var-text);
-}
-
-.active.addToCartBtn:hover,
-.active.addToCmpBtn:hover,
-.active.modalBtn:hover,
-.active.cmnBtn:hover,
-.active.addToWishListBtn:hover {
-    color: var(--var-text);
-}
-
-.active.addToCartBtn,
-.active.addToCmpBtn,
-.active.modalBtn,
-.active.cmnBtn,
-.active.addToWishListBtn {
-    border: 1px solid var(--var-main-color);
-    color: white;
-    background-color: var(--var-main-color);
-}
-
-.modalBtn {
-    width: auto;
-    padding: 0 3px;
-}
-
 #qaBox,
 #reviewsBox {
     padding: 0.8em;
@@ -321,7 +252,8 @@ fieldset{
 }
 
 #shoppingCartCart article {
-    background-color: var(--var-gray-light);
+    border-radius: 0.25rem;
+    background-color: white;
     color: var(--var-text);
 }
 
@@ -533,6 +465,7 @@ fieldset{
 #minPrice::after,
 #maxPrice::after,
 #priceVal::after,
+.totalPrice::after,
 .productPrice::after {
     content: " €";
 }

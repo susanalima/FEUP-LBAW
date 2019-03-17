@@ -1,5 +1,8 @@
 @import url("root.css");
 
+.btn {
+    border-radius: 0.25rem;
+}
 
 .button-action{
     color:var(--var-main-color);
@@ -60,15 +63,41 @@
 
 }
 
-
-
-
 .button-action, .button-action:hover, .button-submit,.button-submit:hover,
 .button-negative, .button-negative:hover, .button-toggable, .button-toggable:hover,
 .button-toggable:focus{
     outline: none !important;
-    
     border-width: 1px;
    
 }
 
+.addToCartBtn,
+.addToCmpBtn,
+.addToWishListBtn {
+    width: 50px;
+    height: 50px;
+}
+
+.cartBtn {
+    border-radius: 0.25rem;
+    margin: 0px 0px 1px 1px;
+    height: 50px;
+    padding: 0;
+    border: 1px solid var(--var-main-color);
+    color: var(--var-main-color);
+    background-color: white;
+}
+
+.cartBtn:hover {
+    color: var(--var-text);
+}
+
+.active.cartBtn:hover {
+    color: var(--var-text);
+}
+
+.active.cartBtn {
+    border: 1px solid var(--var-main-color);
+    color: white;
+    background-color: var(--var-main-color);
+}
