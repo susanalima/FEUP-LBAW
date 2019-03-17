@@ -20,9 +20,20 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
         integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous" />
 
+          <!-- JS Scripts (Pooper.js included) -->
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+
+
 
     <link rel="stylesheet" href="css/checkoutProducts.css" />
     <link rel="stylesheet" href="css/root.css" />
+    <link rel="stylesheet" href="css/buttons.css" />
     <link rel="stylesheet" href="css/topBar.css" />
     <link rel="stylesheet" href="css/styles.css" />
 
@@ -31,7 +42,8 @@
 </head>
 
 <body>
-        <div class="mainContent">
+    <div class="mainContent">
+        <!-- Image and text -->
         <nav class="navbar navbar-expand-lg navbar-light">
                 <div class="collapse navbar-collapse d-flex" id="navbarSupportedContent">
                     <nav class="navbar d-flex navbar-light" id="navbarLogo">
@@ -102,171 +114,155 @@
                 <li class="breadcrumb-item"><a href="checkoutShipping.html">3.Shipping</a></li>
                 <li class="breadcrumb-item"><a href="checkoutPayment.html">4.Payment</a></li>
                 <li class="breadcrumb-item"><a href="checkoutConfirmation.html">5.Confirmation</a></li>
-        </ol>
-    </nav>
-    <div class="card container bottom_row">
-        <div class="row center-block">
-            <div class="col-sm card final_price container">
-                <div class="price_row h-75">
-                    <div class="price_col col-sm">
-                        <h1 class="final_label">Final Value:</h1>
-                    </div>
-                    <div class="price_col col-sm ">
-                        <h1 class="final_value">311.96€</h1>
+            </ol>
+        </nav>
+        <div class="card container bottom_row">
+            <div class="row center-block">
+                <div class="col-sm card final_price container">
+                    <div class="price_row h-75">
+                        <div class="price_col col-sm">
+                            <h1 class="final_label">Total:</h1>
+                        </div>
+                        <div class="price_col col-sm ">
+                            <h1 class="final_value">311.96€</h1>
+                        </div>
                     </div>
                 </div>
+                <form class="button_form" action="checkoutDelivery.html">
+                    <button class="btn button-action next_button " type="submit" value="Go to Delivery">Confirm Products <i
+                            class="fa fa-caret-right" aria-hidden="true"></i></button>
+                </form>
             </div>
-            <form class="button_form" action="checkoutDelivery.html">
-                <button class="btn btn-light next_button " type="submit" value="Go to Delivery">Confirm Products <i class="fa fa-caret-right" aria-hidden="true"></i></button>
-            </form>
-        
         </div>
-    </div>
-    
-    <div id="listItems" class="card">
-        <div class="card product_card">
-            <h4 class="product_name">Laptop XPTO</h4>
+        
+        <div class="all_elements d-flex flex-wrap">
+        <div class="card product_card d-flex flex-column">
+            <h4 class="product_name">Laptop HP</h4>
             <div class="container" style="margin-left: 0.4em;">
                 <div class="row flex-row d-flex justify-content-start">
-                    <img class="card-img-top product_img" src="images/products/laptop.webp" alt="Card image cap">
-                            <div class="col-sm">
-                    
-                    <div>
-                        <button class="btn btn-light remove_product" type="button"><i class="fa fa-times" aria-hidden="true"></i></button>
-                        <h1 class="price">22.49€</h1>
-                    </div>
+                    <img class="card-img-top product_img col-sm" src="images/products/laptop.webp" alt="Card image cap">
+                    <div class="col-sm">
+
+                        <div>
+                            <button class="btn btn-light button-toggable" type="button"><i class="fa fa-times"
+                                    aria-hidden="true"></i></button>
+                            <h1 class="price">22.49€</h1>
+                        </div>
 
                         <div class="quantity_field">
-                                <h1 class="quantity">Quantity: 4</h1>
-                                <div class="quantity_buttons">
-                                    <button class="add_quantity btn" type="button"><i class="fa fa-plus" aria-hidden="true"></i></button>
-                                    <button class="add_quantity btn" type="button"><i class="fa fa-minus" aria-hidden="true"></i></button>
-                                </div>
+                            <h1 class="quantity_label">Quantity: 4</h1>
+                            <div class="quantity_buttons">
+                                <button class="add_quantity btn" type="button"><i class="fa fa-plus"
+                                        aria-hidden="true"></i></button>
+                                <button class="add_quantity btn" type="button"><i class="fa fa-minus"
+                                        aria-hidden="true"></i></button>
                             </div>
-                        <h3 class="date_add">Added in: 12-08-2018</h3>         
-                        <div class="rating stars_field mb-2">
-                                <fieldset class="starsRating">
-                                    <label class="full" for="star5"></label>
-                                    <label class="half" for="star4half"></label>
-                                    <label class="full" for="star4"></label>
-                                    <label class="half marked" for="star3half"></label>
-                                    <label class="full marked" for="star3"></label>
-                                    <label class="half marked" for="star2half"></label>
-                                    <label class="full marked" for="star2"></label>
-                                    <label class="half marked" for="star1half"></label>
-                                    <label class="full marked" for="star1"></label>
-                                    <label class="half marked" for="star0half"></label>
-                                </fieldset>
-                            </div> 
+                        </div>
+                        <h3 class="date_add">Added in: 12-08-2018</h3>
+
                     </div>
-                
+
                 </div>
             </div>
         </div>
 
-        <div class="card product_card">
-            <h4 class="product_name">God's Autobiography</h4>
+        <div class="card product_card d-flex flex-column">
+            <h4 class="product_name">Apple Book</h4>
             <div class="container" style="margin-left: 0.4em;">
-                <div class="row  flex-row d-flex justify-content-start">
-                    <img class="card-img-top product_img" src="images/products/book_white.jpg" alt="Card image cap">
+                <div class="row flex-row d-flex justify-content-start">
+                    <img class="card-img-top product_img col-sm" src="images/products/book_white.jpg" alt="Card image cap">
                     <div class="col-sm">
-                        <button class="btn btn-light remove_product" type="button"><i class="fa fa-times" aria-hidden="true"></i></button>
+                        <button class="btn btn-light button-toggable" type="button"><i class="fa fa-times"
+                                aria-hidden="true"></i></button>
                         <h1 class="price">29.99€</h1>
                         <div class="quantity_field">
-                                <h1 class="quantity">Quantity: 1</h1>
-                                <div class="quantity_buttons">
-                                    <button class="add_quantity btn" type="button"><i class="fa fa-plus" aria-hidden="true"></i></button>
-                                    <button class="add_quantity btn" type="button"><i class="fa fa-minus" aria-hidden="true"></i></button>
-                                </div>
+                            <h1 class="quantity">Quantity: 1</h1>
+                            <div class="quantity_buttons">
+                                <button class="add_quantity btn" type="button"><i class="fa fa-plus"
+                                        aria-hidden="true"></i></button>
+                                <button class="add_quantity btn" type="button"><i class="fa fa-minus"
+                                        aria-hidden="true"></i></button>
                             </div>
-                            <h3 class="date_add">Added in: 01-04-2019</h3>
-                            <div class="rating stars_field mb-2">
-                                <fieldset class="starsRating">
-                                    <label class="full" for="star5"></label>
-                                    <label class="half" for="star4half"></label>
-                                    <label class="full" for="star4"></label>
-                                    <label class="half" for="star3half"></label>
-                                    <label class="full" for="star3"></label>
-                                    <label class="half marked" for="star2half"></label>
-                                    <label class="full marked" for="star2"></label>
-                                    <label class="half marked" for="star1half"></label>
-                                    <label class="full marked" for="star1"></label>
-                                    <label class="half marked" for="star0half"></label>
-                                </fieldset>
-                            </div>
+                        </div>
+                        <h3 class="date_add">Added in: 01-04-2019</h3>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="card product_card">
-            <h4 class="product_name">Overpriced Phones</h4>
+        <div class="card product_card d-flex flex-column">
+            <h4 class="product_name">JBL Phones</h4>
             <div class="container" style="margin-left: 0.4em;">
                 <div class="row">
-                    <img class="card-img-top product_img" src="./images/products/headphones.jpg" alt="Card image cap">
+                    <img class="card-img-top product_img col-sm" src="./images/products/headphones.jpg" alt="Card image cap">
                     <div class="col-sm product_info">
-                        <button class="btn btn-light remove_product" type="button"><i class="fa fa-times" aria-hidden="true"></i></button>
+                        <button class="btn btn-light button-toggable" type="button"><i class="fa fa-times"
+                                aria-hidden="true"></i></button>
                         <h1 class="price">199.49€</h1>
                         <div class="quantity_field">
-                                <h1 class="quantity">Quantity: 1</h1>
-                                <div class="quantity_buttons">
-                                <button class="add_quantity btn" type="button"><i class="fa fa-plus" aria-hidden="true"></i></button>
-                                <button class="add_quantity btn" type="button"><i class="fa fa-minus" aria-hidden="true"></i></button>
+                            <h1 class="quantity">Quantity: 1</h1>
+                            <div class="quantity_buttons">
+                                <button class="add_quantity btn" type="button"><i class="fa fa-plus"
+                                        aria-hidden="true"></i></button>
+                                <button class="add_quantity btn" type="button"><i class="fa fa-minus"
+                                        aria-hidden="true"></i></button>
                             </div>
-                            </div>
-                            <h3 class="date_add">Added in: 10-03-2019</h3>
-                            <div class="rating stars_field mb-2">
-                                <fieldset class="starsRating">
-                                    <label class="full" for="star5"></label>
-                                    <label class="half" for="star4half"></label>
-                                    <label class="full" for="star4"></label>
-                                    <label class="half marked" for="star3half"></label>
-                                    <label class="full marked" for="star3"></label>
-                                    <label class="half marked" for="star2half"></label>
-                                    <label class="full marked" for="star2"></label>
-                                    <label class="half marked" for="star1half"></label>
-                                    <label class="full marked" for="star1"></label>
-                                    <label class="half marked" for="star0half"></label>
-                                </fieldset>
-                            </div>
+                        </div>
+                        <h3 class="date_add">Added in: 10-03-2019</h3>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="card product_card" >
-            <h4 class="product_name">PsycMixTape</h4>
+        <div class="card product_card d-flex flex-column">
+            <h4 class="product_name">Neo Wax Bloom</h4>
             <div class="container" style="margin-left:0.4em;">
                 <div class="row">
-                    <img class="card-img-top product_img" src="./images/products/cd_album.png" alt="Card image cap">
+                    <img class="card-img-top product_img col-sm" src="./images/products/cd_album.png" alt="Card image cap">
                     <div class="col-sm product_info">
-                        <button class="btn btn-light remove_product" type="button"><i class="fa fa-times" aria-hidden="true"></i></button>
+                        <button class="btn btn-light button-toggable" type="button"><i class="fa fa-times"
+                                aria-hidden="true"></i></button>
                         <h1 class="price">59.99€</h1>
                         <div class="quantity_field">
                             <h1 class="quantity">Quantity: 3</h1>
-                            <button class="add_quantity btn" type="button"><i class="fa fa-plus" aria-hidden="true"></i></button>
-                            <button class="add_quantity btn" type="button"><i class="fa fa-minus" aria-hidden="true"></i></button>
+                            <div class="quantity_buttons">
+                                <button class="add_quantity btn" type="button"><i class="fa fa-plus"
+                                        aria-hidden="true"></i></button>
+                                <button class="add_quantity btn" type="button"><i class="fa fa-minus"
+                                        aria-hidden="true"></i></button>
+                            </div>
                         </div>
                         <h3 class="date_add">Added in: 18-10-2018</h3>
-                            <div class="rating stars_field mb-2">
-                                <fieldset class="starsRating">
-                                    <label class="full" for="star5"></label>
-                                    <label class="half" for="star4half"></label>
-                                    <label class="full" for="star4"></label>
-                                    <label class="half" for="star3half"></label>
-                                    <label class="full" for="star3"></label>
-                                    <label class="half marked" for="star2half"></label>
-                                    <label class="full marked" for="star2"></label>
-                                    <label class="half marked" for="star1half"></label>
-                                    <label class="full marked" for="star1"></label>
-                                    <label class="half marked" for="star0half"></label>
-                                </fieldset>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card product_card d-flex flex-column">
+            <h4 class="product_name">Kamikaze</h4>
+            <div class="container" style="margin-left:0.4em;">
+                <div class="row">
+                    <img class="card-img-top product_img col-sm" src="./images/products/cd.jpg" alt="Card image cap">
+                    <div class="col-sm product_info">
+                        <button class="btn btn-light button-toggable" type="button"><i class="fa fa-times"
+                                aria-hidden="true"></i></button>
+                        <h1 class="price">59.99€</h1>
+                        <div class="quantity_field">
+                            <h1 class="quantity">Quantity: 3</h1>
+                            <div class="quantity_buttons">
+                                <button class="add_quantity btn" type="button"><i class="fa fa-plus"
+                                        aria-hidden="true"></i></button>
+                                <button class="add_quantity btn" type="button"><i class="fa fa-minus"
+                                        aria-hidden="true"></i></button>
                             </div>
+                        </div>
+                        <h3 class="date_add">Added in: 18-10-2018</h3>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-  </div>
-  <div class="d-flex justify-content-between text-white p-5 flex-wrap" id="footer">
+</div>
+
+
+    <div class="d-flex justify-content-between text-white p-5 flex-wrap" id="footer">
         <div class="d-flex flex-column mx-auto">
             <a href="./help.html#support">Help</a>
             <a href="./help.html#contacts">Contacts</a>

@@ -29,59 +29,49 @@
   <div class="mainContent">
     <!-- Image and text -->
     <nav class="navbar navbar-expand-lg navbar-light">
-        <div class="collapse navbar-collapse d-flex" id="navbarSupportedContent">
-            <nav class="navbar d-flex navbar-light" id="navbarLogo">
-                <a class="navbar-brand" href="./index.html">
-                    <img
-                        src="./images/img.png"
-                        width="30"
-                        height="30"
-                        class="d-inline-block align-top"
-                        alt=""
-                    />
-                    PuzzleWood
-                </a>
-                <span class="dropdown navText">
-                        <button class="btn  dropdown-toggle" type="button" id="dropdownAllCategories"                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            All Categories
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownAllCategories">
-                            <a class="dropdown-item" href="search.html">Desktops</a>
-                            <a class="dropdown-item" href="search.html">Laptops</a>
-                            <a class="dropdown-item" href="search.html">Books</a>
-                            <a class="dropdown-item" href="search.html">Headphones</a>
-                            <a class="dropdown-item" href="search.html">Music</a>
-                        </div>
-                    </span>
-            </nav>
-            <nav class="navbar navbar-expand-lg navbar-light flex-grow-1 d-flex">
-            <div class="search-bar navbar-nav flex-grow-1" id="searchNavContainer">
-                <div class="input-group" id="searchNav">
-                    <div class=" input-group-prepend" id="searchCategorySelector">
-                        <button
-                            class="btn dropdown-toggle search-category"
-                            type="button"
-                            data-toggle="dropdown"
-                            aria-haspopup="true"
-                            aria-expanded="false"
-                        >
-                            All
-                        </button>
-                        <div class="dropdown-menu search-category-drop">
-                                <a class="dropdown-item" href="#">Desktops</a>
-                                <a class="dropdown-item" href="#">Laptops</a>
-                                <a class="dropdown-item" href="#">Books</a>
-                                <a class="dropdown-item" href="#">Headphones</a>
-                                <a class="dropdown-item" href="#">Music</a>
-                        </div>
-                    </div>
-                    <form class="form-inline my-lg-0 d-flex justify-content-between">
-                        <input class="form-control" type="text" placeholder="Search" id="searchBar" />
-
-                        <button id="searchBtn" class="fas fa-search" type="submit" id="searchBtn"></button>
-                    </form>
-                </div>
+      <div class="collapse navbar-collapse d-flex" id="navbarSupportedContent">
+        <nav class="navbar d-flex navbar-light" id="navbarLogo">
+          <a class="navbar-brand" href="./index.html">
+            <img src="./images/img.png" width="30" height="30" class="d-inline-block align-top" alt="" />
+            PuzzleWood
+          </a>
+          <span class="dropdown navText">
+            <button class="btn  dropdown-toggle" type="button" id="dropdownAllCategories" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              All Categories
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownAllCategories">
+              <a class="dropdown-item" href="search.html">Desktops</a>
+              <a class="dropdown-item" href="search.html">Laptops</a>
+              <a class="dropdown-item" href="search.html">Books</a>
+              <a class="dropdown-item" href="search.html">Headphones</a>
+              <a class="dropdown-item" href="search.html">Music</a>
             </div>
+          </span>
+        </nav>
+        <nav class="navbar navbar-expand-lg navbar-light flex-grow-1 d-flex">
+          <div class="search-bar navbar-nav flex-grow-1" id="searchNavContainer">
+            <div class="input-group" id="searchNav">
+              <div class=" input-group-prepend" id="searchCategorySelector">
+                <button class="btn dropdown-toggle search-category" type="button" data-toggle="dropdown" aria-haspopup="true"
+                  aria-expanded="false">
+                  All
+                </button>
+                <div class="dropdown-menu search-category-drop">
+                  <a class="dropdown-item" href="#">Desktops</a>
+                  <a class="dropdown-item" href="#">Laptops</a>
+                  <a class="dropdown-item" href="#">Books</a>
+                  <a class="dropdown-item" href="#">Headphones</a>
+                  <a class="dropdown-item" href="#">Music</a>
+                </div>
+              </div>
+              <form class="form-inline my-lg-0 d-flex justify-content-between">
+                <input class="form-control" type="text" placeholder="Search" id="searchBar" />
+
+                <button id="searchBtn" class="fas fa-search" type="submit" id="searchBtn"></button>
+              </form>
+            </div>
+          </div>
 
             <nav class="nav-item text-right navText d-flex justify-content-between" id="accountLinks">
                 <a class="nav-link" href="clientAccount.html" tabindex="-1" aria-disabled="true"
@@ -132,10 +122,10 @@
                           <td><b>NIF</b></td>
                           <td id="clientNif">123456789</td>
                           <td>
-                              <div class="d-flex justify-content-center">
-                                  <button type="button" class="btn btn-sm button-action" onclick='editClientNif(this, "123456789")'
-                                    value="edit">Edit</button>
-                                </div>
+                            <div class="d-flex justify-content-center">
+                              <button type="button" class="btn btn-sm button-action" onclick='editClientNif(this, "123456789")'
+                                value="edit">Edit</button>
+                            </div>
                           </td>
                         </tr>
                       </tbody>
@@ -181,25 +171,28 @@
                                             <input type="text" class="form-control" id="editHellAddressName"
                                               placeholder="Name" value="Hell" required>
                                           </div>
-                                          <div class="input-group flex-nowrap mt-2">
-                                            <input type="text" class="form-control" id="editHellAddressPostCode"
-                                              placeholder="Postcode" value="4400-478 " required>
-                                          </div>
+
                                           <div class="input-group flex-nowrap mt-2">
                                             <input type="text" class="form-control" id="editHellAddressStreet"
                                               placeholder="Street and number, P.O. box, c/o" value="Alameda dos Jardins d'Arrábida"
                                               required>
                                           </div>
+
                                           <div class="input-group flex-nowrap mt-2">
-                                            <input type="text" class="form-control" id="editHellAddressApartment"
+
+                                            <input type="text" class="form-control mr-2 rounded" id="addAddressApartment"
                                               placeholder="Flat, suite, unit, floor, etc" value="443" required>
+                                            <input type="text" class="form-control rounded" id="addAddressPostCode"
+                                              placeholder="Postcode" value="4400-478 " required>
                                           </div>
+
                                           <div class="input-group flex-nowrap mt-2">
-                                            <input type="text" class="form-control" id="editHellAddressTown"
+                                            <input type="text" class="form-control  mr-2 rounded" id="editHellAddressTown"
                                               placeholder="Town, City" value="Porto" required>
-                                            <input type="text" class="form-control" id="editHellAddressCountry"
+                                            <input type="text" class="form-control rounded" id="editHellAddressCountry"
                                               placeholder="Country" value="Portugal" required>
                                           </div>
+
                                         </div>
                                       </form>
                                     </div>
@@ -239,23 +232,24 @@
                                             <input type="text" class="form-control" id="editWorkAddressName"
                                               placeholder="Name" value="Work" required>
                                           </div>
-                                          <div class="input-group flex-nowrap mt-2">
-                                            <input type="text" class="form-control" id="editWorkAddressPostCode"
-                                              placeholder="Postcode" value="4200-465" required>
-                                          </div>
+
                                           <div class="input-group flex-nowrap mt-2">
                                             <input type="text" class="form-control" id="editWorkAddressStreet"
                                               placeholder="Street and number, P.O. box, c/o" value="R. Dr. Roberto Frias"
                                               required>
                                           </div>
+
                                           <div class="input-group flex-nowrap mt-2">
-                                            <input type="text" class="form-control" id="editWorkAddressApartment"
+                                            <input type="text" class="form-control mr-2 rounded" id="editWorkAddressApartment"
                                               placeholder="Flat, suite, unit, floor, etc" value="s/n" required>
+                                            <input type="text" class="form-control rounded" id="editWorkAddressPostCode"
+                                              placeholder="Postcode" value="4200-465" required>
                                           </div>
+
                                           <div class="input-group flex-nowrap mt-2">
-                                            <input type="text" class="form-control" id="editWorkAddressTown"
+                                            <input type="text" class="form-control mr-2 rounded" id="editWorkAddressTown"
                                               placeholder="Town, City" value="Porto" required>
-                                            <input type="text" class="form-control" id="editWorkAddressCountry"
+                                            <input type="text" class="form-control rounded" id="editWorkAddressCountry"
                                               placeholder="Country" value="Portugal" required>
                                           </div>
                                         </div>
@@ -306,18 +300,18 @@
 
                               <div class="input-group flex-nowrap mt-2">
 
-                                <input type="text" class="form-control mr-2" id="addAddressApartment" placeholder="Flat, suite, unit, floor, etc"
-                                  required>
-                                <input type="text" class="form-control" id="addAddressPostCode" placeholder="Postcode"
+                                <input type="text" class="form-control mr-2 rounded" id="addAddressApartment"
+                                  placeholder="Flat, suite, unit, floor, etc" required>
+                                <input type="text" class="form-control rounded" id="addAddressPostCode" placeholder="Postcode"
                                   required>
                               </div>
 
                               <div class="input-group flex-nowrap mt-2">
 
-                                <input type="text" class="form-control mr-2" id="addAddressTown" placeholder="Town, City"
+                                <input type="text" class="form-control mr-2 rounded" id="addAddressTown" placeholder="Town, City"
                                   required>
 
-                                <input type="text" class="form-control" id="addAddressCountry" placeholder="Country"
+                                <input type="text" class="form-control rounded" id="addAddressCountry" placeholder="Country"
                                   required>
                               </div>
                             </div>
@@ -350,7 +344,7 @@
                         <tr>
                           <td>1111</td>
                           <td>2019/11</td>
-                          <td  id="cardTableName">John Doe </td>
+                          <td id="cardTableName">John Doe </td>
                           <td><i class="fab fa-cc-visa fa-2x"></i></td>
                           <td>
                             <div class="d-flex justify-content-center ml-2 pl-5">
@@ -417,111 +411,111 @@
                     </table>
                   </div>
                   <div class="d-flex flex-row-reverse  mx-3 mb-3">
-                      <button type="button" class="btn btn-sm button-negative mr-2  btn-sm">Delete all</button>
-                      <button type="button" class="btn button-action  mr-3  btn-sm" data-toggle="modal" data-target="#addCard">Add
-                        card</button>
-                    </div>
-                    <div class="modal fade" id="addCard" tabindex="-1" role="dialog" aria-labelledby="addCardLabel"
-                      aria-hidden="true">
-                      <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <h5 class="modal-title" id="addCardLabel">New Card</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                              <span aria-hidden="true">&times;</span>
-                            </button>
-                          </div>
-                          <div class="modal-body">
-                            <form>
-                              <div class="row">
-                                <div class="col-md-7">
-                                  <div class="form-group">
-                                    <label for="cardNumber">Card Number</label>
-                                    <input type="tel" class="form-control" id="cardNumber" placeholder="Valid Card Number"
-                                      required>
-                                  </div>
-                                </div>
-                                <div class=" col-md-5 pull-right">
-                                  <div class="form-group">
-                                    <label for="cardName">Name</label>
-                                    <input type="tel" class="form-control" id="cardName" placeholder="Name" required />
-                                  </div>
+                    <button type="button" class="btn btn-sm button-negative mr-2  btn-sm">Delete all</button>
+                    <button type="button" class="btn button-action  mr-3  btn-sm" data-toggle="modal" data-target="#addCard">Add
+                      card</button>
+                  </div>
+                  <div class="modal fade" id="addCard" tabindex="-1" role="dialog" aria-labelledby="addCardLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="addCardLabel">New Card</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          <form>
+                            <div class="row">
+                              <div class="col-md-7">
+                                <div class="form-group">
+                                  <label for="cardNumber">Card Number</label>
+                                  <input type="tel" class="form-control" id="cardNumber" placeholder="Valid Card Number"
+                                    required>
                                 </div>
                               </div>
-                              <div class="row">
-                                <div class="col-md-7">
-                                  <div class="form-group">
-                                    <label for="cardExpDate">Expiration Date</label>
-                                    <input type="tel" class="form-control" id="cardExpDate" placeholder="YYYY / MM"
-                                      required />
-                                  </div>
-                                </div>
-                                <div class="col-md-5 pull-right">
-                                  <div class="form-group">
-                                    <label for="cardCVC">CV Code</label>
-                                    <input type="tel" class="form-control" id="cardCVC" placeholder="CVC" required />
-                                  </div>
+                              <div class=" col-md-5 pull-right">
+                                <div class="form-group">
+                                  <label for="cardName">Name</label>
+                                  <input type="tel" class="form-control" id="cardName" placeholder="Name" required />
                                 </div>
                               </div>
-                            </form>
-                          </div>
-                          <div class="modal-footer">
-                            <button type="button" class="btn button-submit btn-sm">Finish</button>
-                            <button type="button" class="btn button-negative btn-sm" data-dismiss="modal">Cancel</button>
-                          </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-md-7">
+                                <div class="form-group">
+                                  <label for="cardExpDate">Expiration Date</label>
+                                  <input type="tel" class="form-control" id="cardExpDate" placeholder="YYYY / MM"
+                                    required />
+                                </div>
+                              </div>
+                              <div class="col-md-5 pull-right">
+                                <div class="form-group">
+                                  <label for="cardCVC">CV Code</label>
+                                  <input type="tel" class="form-control" id="cardCVC" placeholder="CVC" required />
+                                </div>
+                              </div>
+                            </div>
+                          </form>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn button-submit btn-sm">Finish</button>
+                          <button type="button" class="btn button-negative btn-sm" data-dismiss="modal">Cancel</button>
                         </div>
                       </div>
                     </div>
+                  </div>
                 </div>
               </div>
             </div>
             <div class="px-2">
-            <div class="d-flex flex-row-reverse  mb-3" id="passwordBtns">
-              <button type="button" class="btn button-negative mr-2 btn-sm">Delete Account</button>
-              <button type="button" class="btn button-action mr-3  btn-sm " data-toggle="modal" data-target="#changePwdModal">Change
+              <div class="d-flex flex-row-reverse  mb-3" id="passwordBtns">
+                <button type="button" class="btn button-negative mr-2 btn-sm">Delete Account</button>
+                <button type="button" class="btn button-action mr-3  btn-sm " data-toggle="modal" data-target="#changePwdModal">Change
                   Password</button>
-            </div>
-            <div class="modal fade" id="changePwdModal" tabindex="-1" role="dialog" aria-labelledby="changePwdModalLabel"
-              aria-hidden="true">
-              <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="changePwdModalLabel">Change Password</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="modal-body">
-                    <form>
-                      <div class="form-group row">
-                        <label for="clientCurrentPassword" class="col-sm-4 col-form-label pr-0"><b>Current Password</b></label>
-                        <div class="col-sm-8">
-                          <input type="password" class="form-control" id="clientCurrentPassword" placeholder="Password">
+              </div>
+              <div class="modal fade" id="changePwdModal" tabindex="-1" role="dialog" aria-labelledby="changePwdModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="changePwdModalLabel">Change Password</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <form>
+                        <div class="form-group row">
+                          <label for="clientCurrentPassword" class="col-sm-4 col-form-label pr-0"><b>Current Password</b></label>
+                          <div class="col-sm-8">
+                            <input type="password" class="form-control" id="clientCurrentPassword" placeholder="Password">
+                          </div>
                         </div>
-                      </div>
-                      <div class="form-group row">
-                        <label for="clientNewPassword" class="col-sm-4 col-form-label pr-0"><b>New Password</b></label>
-                        <div class="col-sm-8">
-                          <input type="password" class="form-control" id="clientNewPassword" placeholder="Password">
+                        <div class="form-group row">
+                          <label for="clientNewPassword" class="col-sm-4 col-form-label pr-0"><b>New Password</b></label>
+                          <div class="col-sm-8">
+                            <input type="password" class="form-control" id="clientNewPassword" placeholder="Password">
+                          </div>
                         </div>
-                      </div>
-                      <div class="form-group row">
-                        <label for="clientConfirmPassword" class="col-sm-4 col-form-label pr-0"><b>Confirm Password</b></label>
-                        <div class="col-sm-8">
-                          <input type="password" class="form-control" id="clientConfirmPassword" placeholder="Password">
+                        <div class="form-group row">
+                          <label for="clientConfirmPassword" class="col-sm-4 col-form-label pr-0"><b>Confirm Password</b></label>
+                          <div class="col-sm-8">
+                            <input type="password" class="form-control" id="clientConfirmPassword" placeholder="Password">
+                          </div>
                         </div>
-                      </div>
-                    </form>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn button-submit btn-sm">Finish</button>
-                    <button type="button" class="btn button-negative btn-sm" data-dismiss="modal">Cancel</button>
+                      </form>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn button-submit btn-sm">Finish</button>
+                      <button type="button" class="btn button-negative btn-sm" data-dismiss="modal">Cancel</button>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
         </div>
         <div class="card">
           <div class="card-header" id="notfsHeading">
@@ -620,26 +614,39 @@
                                     <span aria-hidden="true">&times;</span>
                                   </button>
                                 </div>
-
-                                <div class="d-flex justify-content-between">
-                                  <div class="d-flex flex-column ml-2">
-                                    <div class="d-flex justify-content-start" id="shoppingCartCartTotal">
-                                      <h4>Address:</h4>
-                                      <h3 class="pl-4 pr-2">Hell</h3>
+                                <div class="d-flex flex-column text-left ml-4">
+                                  <div id="shoppingCartCartTotal">
+                                    <div class="row mb-1">
+                                      <div class="col-6 col-md-2 p-0">
+                                        <h4>Address:</h4>
+                                      </div>
+                                      <div class="col-6 col-md-8 p-0">
+                                        <h4>Hell-Alameda dos Jardins d'Arrábida 443, 4400-478 Porto, Portugal</h4>
+                                      </div>
                                     </div>
-                                    <div class=" d-flex justify-content-start" id="shoppingCartCartTotal">
-                                      <h4>Card:</h4>
-                                      <h3 class="pl-5 pr-2">1111</h3>
+                                    <div class="row mb-1">
+                                      <div class="col-6 col-md-2 p-0">
+                                        <h4>Card:</h4>
+                                      </div>
+                                      <div class="col-6 col-md-8 p-0">
+                                        <h4>1111</h4>
+                                      </div>
                                     </div>
-                                  </div>
-                                  <div class="d-flex flex-column ">
-                                    <div class=" d-flex justify-content-end" id="shoppingCartCartTotal">
-                                      <h4>Shipping:</h4>
-                                      <h3 class="pl-4 pr-2">Regular</h3>
+                                    <div class="row mb-1">
+                                      <div class="col-6 col-md-2 p-0">
+                                        <h4>Shipping:</h4>
+                                      </div>
+                                      <div class="col-6 col-md-8 p-0">
+                                        <h4>Regular</h4>
+                                      </div>
                                     </div>
-                                    <div class=" d-flex justify-content-end" id="shoppingCartCartTotal">
-                                      <h4>Total:</h4>
-                                      <h3 class="pl-4 pr-2">984.97€</h3>
+                                    <div class="row mb-1">
+                                      <div class="col-6 col-md-2 p-0">
+                                        <h4>Total:</h4>
+                                      </div>
+                                      <div class="col-6 col-md-8 p-0">
+                                        <h4> 984.97€</h4>
+                                      </div>
                                     </div>
                                   </div>
                                 </div>
@@ -653,7 +660,7 @@
                                       <h5 class="cartProductSpec font-italic">Intel Core I9</h5>
                                     </a>
                                     <h4>1</h4>
-                                    <h4 class="cartProductSubTotal">899.99</h4>
+                                    <h4 class="cartProductSubTotal">899.99 €</h4>
 
                                   </article>
 
@@ -705,29 +712,44 @@
                                     <span aria-hidden="true">&times;</span>
                                   </button>
                                 </div>
+                                <div class="d-flex flex-column text-left ml-4">
+                                    <div id="shoppingCartCartTotal">
+                                      <div class="row mb-1">
+                                        <div class="col-6 col-md-2 p-0">
+                                          <h4>Address:</h4>
+                                        </div>
+                                        <div class="col-6 col-md-8 p-0">
+                                          <h4>Hell-Alameda dos Jardins d'Arrábida 443, 4400-478 Porto, Portugal</h4>
+                                        </div>
+                                      </div>
+                                      <div class="row mb-1">
+                                        <div class="col-6 col-md-2 p-0">
+                                          <h4>Card:</h4>
+                                        </div>
+                                        <div class="col-6 col-md-8 p-0">
+                                          <h4>1111</h4>
+                                        </div>
+                                      </div>
+                                      <div class="row mb-1">
+                                        <div class="col-6 col-md-2 p-0">
+                                          <h4>Shipping:</h4>
+                                        </div>
+                                        <div class="col-6 col-md-8 p-0">
+                                          <h4>Regular</h4>
+                                        </div>
+                                      </div>
+                                      <div class="row mb-1">
+                                        <div class="col-6 col-md-2 p-0">
+                                          <h4>Total:</h4>
+                                        </div>
+                                        <div class="col-6 col-md-8 p-0">
+                                          <h4> 984.97€</h4>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                
 
-                                <div class="d-flex justify-content-between">
-                                  <div class="d-flex flex-column ml-2">
-                                    <div class="d-flex justify-content-start" id="shoppingCartCartTotal">
-                                      <h4>Address:</h4>
-                                      <h3 class="pl-4 pr-2">Hell</h3>
-                                    </div>
-                                    <div class=" d-flex justify-content-start" id="shoppingCartCartTotal">
-                                      <h4>Card:</h4>
-                                      <h3 class="pl-5 pr-2">1111</h3>
-                                    </div>
-                                  </div>
-                                  <div class="d-flex flex-column ">
-                                    <div class=" d-flex justify-content-end" id="shoppingCartCartTotal">
-                                      <h4>Shipping:</h4>
-                                      <h3 class="pl-4 pr-2">Regular</h3>
-                                    </div>
-                                    <div class=" d-flex justify-content-end" id="shoppingCartCartTotal">
-                                      <h4>Total:</h4>
-                                      <h3 class="pl-4 pr-2">984.97€</h3>
-                                    </div>
-                                  </div>
-                                </div>
                                 <div class="d-flex flex-column justify-content-between" id="shoppingCartCart">
                                   <article class="m-2 p-2 d-flex justify-content-between align-items-center">
                                     <a href="./product.html" class="cartProductImage">
@@ -792,28 +814,42 @@
                                   </button>
                                 </div>
 
-                                <div class="d-flex justify-content-between">
-                                  <div class="d-flex flex-column ml-2">
-                                    <div class="d-flex justify-content-start" id="shoppingCartCartTotal">
-                                      <h4>Address:</h4>
-                                      <h3 class="pl-4 pr-2">Hell</h3>
-                                    </div>
-                                    <div class=" d-flex justify-content-start" id="shoppingCartCartTotal">
-                                      <h4>Card:</h4>
-                                      <h3 class="pl-5 pr-2">1111</h3>
+                                <div class="d-flex flex-column text-left ml-4">
+                                    <div id="shoppingCartCartTotal">
+                                      <div class="row mb-1">
+                                        <div class="col-6 col-md-2 p-0">
+                                          <h4>Address:</h4>
+                                        </div>
+                                        <div class="col-6 col-md-8 p-0">
+                                          <h4>Hell-Alameda dos Jardins d'Arrábida 443, 4400-478 Porto, Portugal</h4>
+                                        </div>
+                                      </div>
+                                      <div class="row mb-1">
+                                        <div class="col-6 col-md-2 p-0">
+                                          <h4>Card:</h4>
+                                        </div>
+                                        <div class="col-6 col-md-8 p-0">
+                                          <h4>1111</h4>
+                                        </div>
+                                      </div>
+                                      <div class="row mb-1">
+                                        <div class="col-6 col-md-2 p-0">
+                                          <h4>Shipping:</h4>
+                                        </div>
+                                        <div class="col-6 col-md-8 p-0">
+                                          <h4>Regular</h4>
+                                        </div>
+                                      </div>
+                                      <div class="row mb-1">
+                                        <div class="col-6 col-md-2 p-0">
+                                          <h4>Total:</h4>
+                                        </div>
+                                        <div class="col-6 col-md-8 p-0">
+                                          <h4> 984.97€</h4>
+                                        </div>
+                                      </div>
                                     </div>
                                   </div>
-                                  <div class="d-flex flex-column ">
-                                    <div class=" d-flex justify-content-end" id="shoppingCartCartTotal">
-                                      <h4>Shipping:</h4>
-                                      <h3 class="pl-4 pr-2">Regular</h3>
-                                    </div>
-                                    <div class=" d-flex justify-content-end" id="shoppingCartCartTotal">
-                                      <h4>Total:</h4>
-                                      <h3 class="pl-4 pr-2">984.97€</h3>
-                                    </div>
-                                  </div>
-                                </div>
                                 <div class="d-flex flex-column justify-content-between" id="shoppingCartCart">
                                   <article class="m-2 p-2 d-flex justify-content-between align-items-center">
                                     <a href="./product.html" class="cartProductImage">
