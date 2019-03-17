@@ -29,7 +29,7 @@
 .col-sm{
     padding-right: 0;
     padding-left: 0;
-    margin-left: 0.5em;
+    margin-left: 1.25em;
 }
 #mainContainer{
     width:100%;
@@ -214,16 +214,25 @@ div.col-sm p{
     }
 
     .page-link{
-        font-size:1.8vmax
+        font-size:1.5vmax
     }
 }
 
 
 @media screen and (max-width: 960px){
-    .product_img{
+    .rating{
         display:none;
     }
 }
+
+
+@media screen and (max-width: 575px){
+    .product_img{
+        width:100%;
+        margin-left:0;
+        margin-bottom:1.5em;
+     }
+ }
 
 @media screen and (max-width: 400px){
    .wishListContent{
