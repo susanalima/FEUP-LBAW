@@ -515,12 +515,6 @@ fieldset{
     border-color: var(--var-gray-light);
 }
 
-
-.accordion {
-    width: 75%;
-  
-}
-
 @media screen and (max-width: 1450px) {
     #results {
         max-width: 1100px;
@@ -588,18 +582,20 @@ fieldset{
     #comparisonModal .modal-body {
         flex-direction: column;
     }
-    .accordion {
-        width: 100%;
-    }
 }
 
 @media screen and (max-width: 400px) {
     #shoppingCart {
         width: 95% !important;
     }
+    #comparisonModal .modal-body {
+    
+    }
 }
 
-
+.accordionDiv {
+    width: 75%;
+}
 
 @media screen and (max-width: 1080px) {
     .accordionDiv {
