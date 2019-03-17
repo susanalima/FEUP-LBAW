@@ -7,18 +7,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
   <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+    crossorigin="anonymous" />
 
-      <!-- Font Awesome -->
-      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
-      integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+    crossorigin="anonymous" />
 
-    
-    <link rel="stylesheet" href="css/root.css" />
-    <link rel="stylesheet" href="css/topBar.css" />
-    <link rel="stylesheet" href="css/styles.css" />
 
+  <link rel="stylesheet" href="css/root.css" />
+  <link rel="stylesheet" href="css/topBar.css" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/buttons.css" />
+  <link rel="stylesheet" href="css/clientAccount.css" />
   <title>PuzzleWood</title>
 </head>
 
@@ -36,8 +37,8 @@
         <div class="search-bar navbar-nav" id="searchNavContainer">
           <div class="input-group" id="searchNav">
             <div class=" input-group-prepend" id="searchCategorySelector">
-              <button class="btn dropdown-toggle search-category" type="button" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false">
+              <button class="btn dropdown-toggle search-category" type="button" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">
                 All
               </button>
               <div class="dropdown-menu search-category-drop">
@@ -59,12 +60,14 @@
         </nav>
       </div>
     </nav>
-    <div class="accordion w-75 mx-auto my-2" id="accordionExample">
+
+    <div class="mx-auto accordionDiv">
+    <div class="accordion my-2" id="accordionExample">
       <div class="card" id="support">
         <div class="card-header" id="headingOne">
           <h5 class="mb-0">
-            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne"
-              aria-expanded="true" aria-controls="collapseOne">
+            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
+              aria-controls="collapseOne">
               Help
             </button>
           </h5>
@@ -96,17 +99,60 @@
         </div>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
           <div class="card-body">
-            Anim pariatur cliche reprehenderit, enim eiusmod high life
-            accusamus terry richardson ad squid. 3 wolf moon officia aute, non
-            cupidatat skateboard dolor brunch. Food truck quinoa nesciunt
-            laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird
-            on it squid single-origin coffee nulla assumenda shoreditch et.
-            Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred
-            nesciunt sapiente ea proident. Ad vegan excepteur butcher vice
-            lomo. Leggings occaecat craft beer farm-to-table, raw denim
-            aesthetic synth nesciunt you probably haven't heard of them
-            accusamus labore sustainable VHS.
+            <h2 class="mb-4 mt-2">Any doubts? <a id="linkHovered" data-toggle="modal" data-target="#contactModal">Contact us!</a> </h2>
+            <div class="row mb-1">
+              <div class="col-6 col-md-2"><b>Address:</b></div>
+              <div class="col-8 col-md-8"> s/n, R. Dr. Roberto Frias, 4200-465 Porto</div>
+            </div>
+            <div class="row mb-1">
+              <div class="col-6 col-md-2"><b>Phone:</b></div>
+              <div class="col-12 col-md-8">760 300 300</div>
+            </div>
+            <div class="row mb-1">
+              <div class="col-6 col-md-2"><b>Email:</b></div>
+              <div class="col-12 col-md-8">puzzleWoodIsBetterThanAmazon@gmail.com</div>
+            </div>
           </div>
+          <div class="d-flex flex-row-reverse mx-3 mb-3">
+              <button type="button" class="btn btn-sm button-action  btn-sm " data-toggle="modal" data-target="#contactModal">Contact Support</button>
+            </div>
+            <div class="modal fade" id="contactModal" tabindex="-1" role="dialog" aria-labelledby="contactModalLabel"
+              aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="contactModalLabel">Contact Support</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <form>
+                      <div class="form-group">
+                        <label for="wishListName" class="col-form-label">Subject</label>
+                        <input type="text" class="form-control" id="wishListName" required>
+                      </div>
+                      <div class="form-group">
+                          <label for="wishListName" class="col-form-label">Name</label>
+                          <input type="text" class="form-control" id="wishListName" required>
+                        </div>
+                      <div class="form-group">
+                          <label for="wishListName" class="col-form-label">Email</label>
+                          <input type="text" class="form-control" id="wishListName" required>
+                        </div>
+                      <div class="form-group">
+                        <label for="wishListDescription" class="col-form-label">Description</label>
+                        <textarea class="form-control" id="wishListDescription" required></textarea>
+                      </div>
+                    </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn button-submit btn-sm">Finish</button>
+                    <button type="button" class="btn button-negative btn-sm" data-dismiss="modal">Cancel</button>
+                  </div>
+                </div>
+              </div>
+            </div>
         </div>
       </div>
       <div class="card" id="faq">
@@ -121,22 +167,20 @@
         <div id="collapseThree" class="collapse show" aria-labelledby="headingThree" data-parent="#accordionExample">
           <div class="card-body">
             <ul>
-              <li><a href="#Q1">Cancel Items or Orders </a></li>
+              <li><a href="#Q1">Return products</a></li>
               <li><a href="#Q2">About Undeliverable Packages</a></li>
               <li><a href="#Q3">Determine Shipping Rates</a></li>
               <li><a href="#Q4">About Customs, Duties & Taxes</a></li>
             </ul>
-            <div class="card mb-1" id="Q1">
+            <div class="card mb-1 reverseInfoCard" id="Q1">
               <div class="card-body">
                 <strong>Cancel Items or Orders </strong>
                 <p>
-                  You can cancel items or orders that haven't entered the
-                  shipping process yet by visiting the Order section in Your
-                  Account.
+                  Products can be returned within 30 days of purchase.
                 </p>
               </div>
             </div>
-            <div class="card mb-1" id="Q2">
+            <div class="card mb-1 reverseInfoCard" id="Q2">
               <div class="card-body">
                 <strong>About Undeliverable Packages</strong>
                 <p>
@@ -146,16 +190,17 @@
                 </p>
               </div>
             </div>
-            <div class="card mb-1" id="Q3">
+            <div class="card mb-1 reverseInfoCard" id="Q3">
               <div class="card-body">
                 <strong>Determine Shipping Rates</strong>
                 <p>
-                  Shipping rates depend on the selected shipping speed and
-                  weight/size of the items.
+                  There are two available shipping options, regular and urgent. The first has no additional
+                  costs and is delivered within 15 days after purchase. The second has an additional 5.99€ cost but 
+                  is delivered within 5 days after purchase.
                 </p>
               </div>
             </div>
-            <div class="card mb-1" id="Q4">
+            <div class="card mb-1 reverseInfoCard" id="Q4">
               <div class="card-body">
                 <strong>About Customs, Duties & Taxes</strong>
                 <p>
@@ -169,29 +214,27 @@
         </div>
       </div>
     </div>
+    </div>
   </div>
 
   <!-- Footer Start -->
   <div class="d-flex justify-content-between text-white p-5 flex-wrap" id="footer">
-      <div class="d-flex flex-column mx-auto">
-          <a href="./help.html#support">Help</a>
-          <a href="./help.html#contacts">Contacts</a>
-          <a href="./help.html#FAQ">FAQs</a>
-      </div>
-      <h4 class="align-self-end mx-auto">&copy; 2019 PuzzleWood.pt. All Rights Reserved.</h4>
+    <div class="d-flex flex-column mx-auto">
+      <a href="./help.html#support">Help</a>
+      <a href="./help.html#contacts">Contacts</a>
+      <a href="./help.html#FAQ">FAQs</a>
+    </div>
+    <h4 class="align-self-end mx-auto">&copy; 2019 PuzzleWood.pt. All Rights Reserved.</h4>
   </div>
   <!-- Footer End -->
 
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
     crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
     crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
     crossorigin="anonymous"></script>
 </body>
 
