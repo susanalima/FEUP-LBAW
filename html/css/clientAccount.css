@@ -27,3 +27,11 @@
     background-color: var(--var-main-color);
 }
 
+#passwordBtns {
+    margin-right: 1.7em;
+}
+
+#cardTableName{
+    width:30%;
+}
+
