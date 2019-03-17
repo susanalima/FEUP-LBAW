@@ -203,12 +203,12 @@ fieldset{
     color: var(--var-secon-color);
 }
 
-#qaBox,
+
 #reviewsBox {
     padding: 0.8em;
 }
 
-#qaBox > div,
+
 #reviewsBox > div {
     padding: 0.5em;
 }
@@ -546,17 +546,18 @@ fieldset{
         width: 100%;
     }
 
-    #qaBox,
+    .qaBox,
     #reviewsBox {
         padding: 0.5em;
     }
 
-    #qaBox > div,
+    .qaBox > div,
     #reviewsBox > div {
         padding: 0em;
     }
 
-    #qaBox .card,
+    .qaBox,
+    .qaBox.answered,
     #reviewsBox .card {
         border-radius: 0;
         border-right: 0;
