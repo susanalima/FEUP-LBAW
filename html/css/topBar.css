@@ -75,6 +75,11 @@
     color: var(--var-gray-dark);
 }
 
+a.dropdown-item {
+    color: var(--var-text) !important;
+    font-size: 0.8em;
+}
+
 .navText > * {
     color: white;
 }
