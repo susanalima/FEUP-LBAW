@@ -33,37 +33,44 @@
         <!-- Navbar Start -->
         <div class="mainContent">
             <nav class="navbar navbar-expand-lg navbar-light">
-                    <div class="collapse navbar-collapse d-flex" id="navbarSupportedContent">
-                        <nav class="navbar d-flex navbar-light" id="navbarLogo">
-                            <a class="navbar-brand" href="./index.html">
-                                <img
-                                    src="./images/img.png"
-                                    width="30"
-                                    height="30"
-                                    class="d-inline-block align-top"
-                                    alt=""
-                                />
-                                PuzzleWood
-                            </a>
-                            <span class="dropdown navText">
-                                    <button class="btn  dropdown-toggle" type="button" id="dropdownAllCategories"                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        All Categories
-                                    </button>
-                                    <div class="dropdown-menu" aria-labelledby="dropdownAllCategories">
-                                        <a class="dropdown-item" href="search.html">Desktops</a>
-                                        <a class="dropdown-item" href="search.html">Laptops</a>
-                                        <a class="dropdown-item" href="search.html">Books</a>
-                                        <a class="dropdown-item" href="search.html">Headphones</a>
-                                        <a class="dropdown-item" href="search.html">Music</a>
-                                    </div>
-                                </span>
-                        </nav>
-                        <nav class="navbar navbar-expand-lg navbar-light flex-grow-1 d-flex">
+                <div class="collapse navbar-collapse d-flex" id="navbarSupportedContent">
+                    <nav class="navbar d-flex navbar-light" id="navbarLogo">
+                        <a class="navbar-brand" href="./index.html">
+                            <img
+                                src="./images/img.png"
+                                width="30"
+                                height="30"
+                                class="d-inline-block align-top"
+                                alt=""
+                            />
+                            PuzzleWood
+                        </a>
+                        <span class="dropdown navText">
+                            <button
+                                class="btn  dropdown-toggle"
+                                type="button"
+                                id="dropdownAllCategories"
+                                data-toggle="dropdown"
+                                aria-haspopup="true"
+                                aria-expanded="false"
+                            >
+                                All Categories
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownAllCategories">
+                                <a class="dropdown-item" href="search.html">Desktops</a>
+                                <a class="dropdown-item" href="search.html">Laptops</a>
+                                <a class="dropdown-item" href="search.html">Books</a>
+                                <a class="dropdown-item" href="search.html">Headphones</a>
+                                <a class="dropdown-item" href="search.html">Music</a>
+                            </div>
+                        </span>
+                    </nav>
+                    <nav class="navbar navbar-expand-lg navbar-light flex-grow-1 d-flex">
                         <div class="search-bar navbar-nav flex-grow-1" id="searchNavContainer">
                             <div class="input-group" id="searchNav">
                                 <div class=" input-group-prepend" id="searchCategorySelector">
                                     <button
-                                        class="btn dropdown-toggle search-category"
+                                        class="btn dropdown-toggle search-category bg-white"
                                         type="button"
                                         data-toggle="dropdown"
                                         aria-haspopup="true"
@@ -72,11 +79,11 @@
                                         All
                                     </button>
                                     <div class="dropdown-menu search-category-drop">
-                                            <a class="dropdown-item" href="#">Desktops</a>
-                                            <a class="dropdown-item" href="#">Laptops</a>
-                                            <a class="dropdown-item" href="#">Books</a>
-                                            <a class="dropdown-item" href="#">Headphones</a>
-                                            <a class="dropdown-item" href="#">Music</a>
+                                        <a class="dropdown-item" href="#">Desktops</a>
+                                        <a class="dropdown-item" href="#">Laptops</a>
+                                        <a class="dropdown-item" href="#">Books</a>
+                                        <a class="dropdown-item" href="#">Headphones</a>
+                                        <a class="dropdown-item" href="#">Music</a>
                                     </div>
                                 </div>
                                 <form class="form-inline my-lg-0 d-flex justify-content-between">
@@ -86,16 +93,16 @@
                                 </form>
                             </div>
                         </div>
-
-                        <nav class="nav-item text-right navText d-flex justify-content-between" id="accountLinks">
-                            <a class="nav-link text-nowrap" href="#" onclick="opener()" tabindex="-1" aria-disabled="true"
-                                >Shopping Cart
-                            </a>
-                            <a class="nav-link" href="clientAccount.html" tabindex="-1" aria-disabled="true"
-                                >Your Account
-                            </a>
-                        </nav>
-                    </div>
+                    </nav>
+                    <nav class="nav-item text-right navText d-flex justify-content-between" id="accountLinks">
+                        <a class="nav-link text-nowrap" href="#" onclick="opener()" tabindex="-1" aria-disabled="true"
+                            >Shopping Cart
+                        </a>
+                        <a class="nav-link" href="clientAccount.html" tabindex="-1" aria-disabled="true"
+                            >Your Account
+                        </a>
+                    </nav>
+                </div>
             </nav>
 
             <!-- Navbar End -->
@@ -983,15 +990,8 @@
 
             <div class="transitions" id="shoppingCart">
                 <div class="d-flex justify-content-between" id="shoppingCartHeader">
-                    <h2 class="font-italic pt-4 pl-4">Shopping Cart</h2>
+                    <h1 class="pt-4 pl-4">Shopping Cart</h1>
                     <div class="d-flex">
-                        <button
-                            class="btn cmnBtn mt-1"
-                            onclick="window.location.href = './checkoutProducts.html';"
-                            title="Checkout"
-                        >
-                            <i class="fas fa-credit-card"></i>
-                        </button>
                         <button
                             type="button"
                             class="d-flex align-items-center justify-content-around pr-4"
@@ -1002,31 +1002,42 @@
                         </button>
                     </div>
                 </div>
-                <div class="m-2 p-2 d-flex justify-content-end" id="shoppingCartCartTotal">
-                    <h4 class="font-italic">Total:</h4>
-                    <h3 class="pl-4 pr-2">984.97</h3>
+                <div class="m-2 p-2 d-flex flex-column justify-content-end" id="shoppingCartCartTotal">
+                    <div class="totalPrice d-flex align-self-end">
+                        <h4 class="">Total:</h4>
+                        <h3 class=" pl-4 pr-2">984.97</h3>
+                    </div>
+                    <button
+                        class="btn button-toggable mt-1"
+                        onclick="window.location.href = './checkoutProducts.html';"
+                        title="Checkout"
+                    >
+                        Checkout
+                    </button>
                 </div>
                 <div class="d-flex flex-column justify-content-between" id="shoppingCartCart">
                     <article class="m-2 p-2 d-flex justify-content-between align-items-center">
-                        <a href="./product.html" class="cartProductImage">
-                            <img src="images/products/googlePixelBook.jpg" class="" alt="..." />
-                        </a>
-                        <a href="./product.html">
-                            <h4 class="cartProductName">Laptop Asus 950</h4>
-                            <h5 class="cartProductSpec font-italic">Intel Core I9</h5>
-                        </a>
+                        <div class="w-50 d-flex justify-content-left align-items-center">
+                            <a href="./product.html" class="cartProductImage">
+                                <img src="images/products/googlePixelBook.jpg" class="" alt="..." />
+                            </a>
+                            <a href="./product.html">
+                                <h4 class="cartProductName">Laptop Asus 950</h4>
+                                <h5 class="cartProductSpec ">Intel Core I9</h5>
+                            </a>
+                        </div>
                         <div class="d-flex align-items-center">
                             <input type="text" class="form-control cartQuantitySelector" placeholder="1" />
                             <div class="cartQuantitySelectorController d-flex flex-column align-items-center">
                                 <button
-                                    class="btn cartQuantitySelectorControllerBtn"
+                                    class="btn cartQuantitySelectorControllerBtn button-toggable border border-white"
                                     onClick="plusOne(this)"
                                     type="submit"
                                 >
                                     <i class="fas fa-plus"></i>
                                 </button>
                                 <button
-                                    class="btn cartQuantitySelectorControllerBtn"
+                                    class="btn cartQuantitySelectorControllerBtn button-toggable border border-white"
                                     onClick="minusOne(this)"
                                     type="submit"
                                 >
@@ -1034,30 +1045,34 @@
                                 </button>
                             </div>
                         </div>
-                        <h4 class="cartProductSubTotal">899.99</h4>
-                        <i class="fas fa-times"></i>
+                        <h4 class="cartProductSubTotal totalPrice">899.99</h4>
+                        <button class="button-toggable btn border border-white">
+                            <i class="fas fa-times"></i>
+                        </button>
                     </article>
 
                     <article class="m-2 p-2 d-flex justify-content-between align-items-center">
-                        <a href="./product.html" class="cartProductImage">
-                            <img src="images/products/book_cover1984.jpg" class="" alt="..." />
-                        </a>
-                        <a href="./product.html">
-                            <h4 class="cartProductName">1984</h4>
-                            <h5 class="cartProductSpec font-italic">G. Orwell</h5>
-                        </a>
+                        <div class="w-50 d-flex justify-content-left align-items-center">
+                            <a href="./product.html" class="cartProductImage">
+                                <img src="images/products/book_cover1984.jpg" class="" alt="..." />
+                            </a>
+                            <a href="./product.html">
+                                <h4 class="cartProductName">1984</h4>
+                                <h5 class="cartProductSpec ">G. Orwell</h5>
+                            </a>
+                        </div>
                         <div class="d-flex align-items-center">
                             <input type="text" class="form-control cartQuantitySelector" placeholder="1" />
                             <div class="cartQuantitySelectorController d-flex flex-column align-items-center">
                                 <button
-                                    class="btn cartQuantitySelectorControllerBtn"
+                                    class="btn cartQuantitySelectorControllerBtn button-toggable border border-white"
                                     onClick="plusOne(this)"
                                     type="submit"
                                 >
                                     <i class="fas fa-plus"></i>
                                 </button>
                                 <button
-                                    class="btn cartQuantitySelectorControllerBtn"
+                                    class="btn cartQuantitySelectorControllerBtn button-toggable border border-white"
                                     onClick="minusOne(this)"
                                     type="submit"
                                 >
@@ -1065,30 +1080,34 @@
                                 </button>
                             </div>
                         </div>
-                        <h4 class="cartProductSubTotal">14.99</h4>
-                        <i class="fas fa-times"></i>
+                        <h4 class="cartProductSubTotal totalPrice">14.99</h4>
+                        <button class="button-toggable btn border border-white">
+                            <i class="fas fa-times"></i>
+                        </button>
                     </article>
 
                     <article class="m-2 p-2 d-flex justify-content-between align-items-center">
-                        <a href="./product.html" class="cartProductImage">
-                            <img src="images/products/headphones.jpg" class="" alt="..." />
-                        </a>
-                        <a href="./product.html">
-                            <h4 class="cartProductName">JBL Phones</h4>
-                            <h5 class="cartProductSpec font-italic">Wireless HQ</h5>
-                        </a>
+                        <div class="w-50 d-flex justify-content-left align-items-center">
+                            <a href="./product.html" class="cartProductImage">
+                                <img src="images/products/headphones.jpg" class="" alt="..." />
+                            </a>
+                            <a href="./product.html">
+                                <h4 class="cartProductName">JBL Phones</h4>
+                                <h5 class="cartProductSpec ">Wireless HQ</h5>
+                            </a>
+                        </div>
                         <div class="d-flex align-items-center">
                             <input type="text" class="form-control cartQuantitySelector" placeholder="1" />
                             <div class="cartQuantitySelectorController d-flex flex-column align-items-center">
                                 <button
-                                    class="btn cartQuantitySelectorControllerBtn"
+                                    class="btn cartQuantitySelectorControllerBtn button-toggable border border-white"
                                     onClick="plusOne(this)"
                                     type="submit"
                                 >
                                     <i class="fas fa-plus"></i>
                                 </button>
                                 <button
-                                    class="btn cartQuantitySelectorControllerBtn"
+                                    class="btn cartQuantitySelectorControllerBtn button-toggable border border-white"
                                     onClick="minusOne(this)"
                                     type="submit"
                                 >
@@ -1096,8 +1115,10 @@
                                 </button>
                             </div>
                         </div>
-                        <h4 class="cartProductSubTotal">69.99</h4>
-                        <i class="fas fa-times"></i>
+                        <h4 class="cartProductSubTotal totalPrice">69.99</h4>
+                        <button class="button-toggable btn border border-white">
+                            <i class="fas fa-times"></i>
+                        </button>
                     </article>
                 </div>
             </div>
