@@ -1,15 +1,10 @@
 @import url("root.css");
 
 .search-category {
-    border-color: var(--var-gray-dark);
     color: var(--var-gray-dark);
     background-color: white;
 }
 
-.search-category-drop {
-    border-color: var(--var-gray-dark);
-    
-}
 .form-inline {
     max-width: 85%;
     min-width: 80%;
@@ -34,9 +29,9 @@
     position: relative;
 }
 
-#searchCategorySelector button,
-#searchCategorySelector div {
+#searchCategorySelector button {
     border: 1px solid var(--var-main-color);
+    background: var(--var-gray-light)
 }
 
 #searchCategorySelector button {
@@ -75,9 +70,9 @@
     color: var(--var-gray-dark);
 }
 
-a.dropdown-item {
+#navbarLogo a.dropdown-item {
     color: var(--var-text) !important;
-    font-size: 0.8em;
+    font-size: 1em;
 }
 
 .navText > * {

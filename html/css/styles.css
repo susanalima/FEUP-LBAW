@@ -10,10 +10,6 @@
     background-color: white;
 }
 
-.search-category-drop {
-    border-color: black;
-}
-
 html {
     height: 100%;
 }
@@ -388,6 +384,11 @@ fieldset{
     color: var(--var-secon-text);
 }
 
+ #linkHovered:hover {
+    color:var(--var-secon-text);
+    text-decoration: underline;
+}
+
 .table-hover tbody tr:hover {
     background-color: var(--var-thir-color);
 }
@@ -648,4 +649,31 @@ fieldset{
     #comparisonModal .modal-body {
     
     }
+}
+
+.accordionDiv {
+    width: 75%;
+}
+
+@media screen and (max-width: 1080px) {
+    .accordionDiv {
+        width: 100%;
+      
+    }
+}
+
+@media screen and (max-width: 950px) {
+    .accordionDiv {
+        width: 100%;
+    }
+}
+
+.card-body .card.infoCard {
+    border-style:none none solid none;
+    border-radius: 0%;
+}
+
+.card-body .card.reverseInfoCard {
+    border-style:solid none none none;
+    border-radius: 0%;
 }
