@@ -9,7 +9,9 @@
 .hotProducts {
   display: flex;
   flex-wrap: nowrap;
-  overflow-x: auto;
+	overflow-y: hidden;
+	overflow-x: scroll;
+	-webkit-overflow-scrolling: touch;
 }
 
 .img-text {
