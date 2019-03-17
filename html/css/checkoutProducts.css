@@ -18,17 +18,27 @@
 
 
 
-.all_products{
+.all_elements, .all_elements2{
     width:75%;
     margin-left: auto;
     margin-right: auto;
     height: auto;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: start;
+    padding-left:10%
+  
+}
+
+.all_deliveries{
+    width:100%;
     margin-left: auto;
     margin-right: auto;
-
+    height: auto;   
+   
 }
+
+
+
 
 #wishListsTabs{
     margin-top: 2em;
@@ -281,6 +291,7 @@ label.full, label.half{
 .checkoutCard {
     width: 22rem; 
     height: 16rem;
+    
 }
 
 .price_row{
@@ -314,21 +325,32 @@ label.full, label.half{
     margin:0.2em;
 }
 
-.product_card:last-child, .product_card:nth-last-child(2){
-    border-bottom:none;
+.checkoutListCards {
+    width: 85%;
+}
+.checkoutCard {
+    width: 20rem;
 }
 
 
+
 @media screen and (max-width: 1440px) {
-    .all_products{
+    .all_elements{
         justify-content: flex-start;
     }
  }
 
 @media screen and (max-width: 1305px) {
-   .all_products{
+   .all_elements .all_elements2{
        width:100%;
+       padding-left: 0;
    }
+}
+
+@media screen and (max-width: 1345px) {
+    .all_elements2{
+       padding-left:0;
+    }
 }
 
 
@@ -339,12 +361,7 @@ label.full, label.half{
         margin: auto;
         margin-top:0;
     }
-    .checkoutListCards {
-        width: 85%;
-    }
-    .checkoutCard {
-        width: 20rem;
-    }
+    
     
     .bottom_row{
         margin-left:0;
@@ -361,33 +378,27 @@ label.full, label.half{
 
 
 
-@media screen and (max-width: 978px) {
-    .all_products{
+@media screen and (max-width: 980px) {
+    .all_elements{
         justify-content: center;
-    }
-    .product_card:nth-last-child(2){
-        border-bottom: 2px solid ;
-        border-color: var(--var-main-color);
-        
+        padding-left:0%;
     }
 }
 
 
-@media screen and (max-width: 950px) {
-    #listItems {
-        width: 100%;
+@media screen and (max-width: 1070px) {
+    .all_elements2{
+        justify-content: center;
+        padding-left:0%;
     }
-    .checkoutListCards {
-        width: 100%;
-    }
-    .checkoutCard {
-        height: 18rem;
-    }
-   
 }
+
+
+
+
 
 @media screen and (max-width: 576px){
-    .all_products{
+    .all_elements, .all_elements2{
         width: 100%;
         margin:0;
     }
