@@ -607,3 +607,19 @@ fieldset{
 .ProductBtnsContainer button {
     margin: 2px 1px;
 }
+
+#searchInfo {
+    width: 100%;
+    text-align: center;
+    justify-content: start;
+    padding: 10px 0;
+    background-color: var(--var-gray-light);
+}
+
+.brandName {
+    font-weight: bold;
+}
+
+.searchContent {
+    color: var(--var-secon-text);
+}

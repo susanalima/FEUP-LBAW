@@ -109,17 +109,23 @@
 
             <!-- Navbar End -->
 
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item"><a href="#">Library</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Data</li>
-                </ol>
-            </nav>
+            <div class="" id="searchInfo">
+                    1-16 of over 500 results for <span class="brandName">Laptops</span> : <span class="searchContent">lenovo</span> 
+            </div>
 
-            <div class="d-flex justify-content-around pb-3" id="searchBody">
+            <div class="d-flex justify-content-around pb-3 pt-3" id="searchBody">
                 <div class="p-4 m-2" id="filters">
                     <div class="pb-4">
+                        <div class="form-group">
+                            <label for="orderSelector">Order products by</label>
+                            <select class="form-control" id="orderSelector">
+                                <option>Featured</option>
+                                <option>Popularity</option>
+                                <option>Most Recent</option>
+                                <option>Most Sold</option>
+                                <option>Price</option>
+                            </select>
+                        </div>
                         <span>Brand</span>
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" />
@@ -199,7 +205,7 @@
                                 </div>
                             </a>
                             <div class="ProductBtnsContainer d-flex flex-column justify-content-center h-100">
-                                    <button
+                                <button
                                     type="button"
                                     class="btn addToCartBtn button-toggable"
                                     onClick="addToCart(this)"
@@ -293,7 +299,7 @@
                                 </div>
                             </a>
                             <div class="ProductBtnsContainer d-flex flex-column justify-content-center h-100">
-                                    <button
+                                <button
                                     type="button"
                                     class="btn addToCartBtn button-toggable"
                                     onClick="addToCart(this)"
@@ -387,7 +393,7 @@
                                 </div>
                             </a>
                             <div class="ProductBtnsContainer d-flex flex-column justify-content-center h-100">
-                                    <button
+                                <button
                                     type="button"
                                     class="btn addToCartBtn button-toggable"
                                     onClick="addToCart(this)"
@@ -481,7 +487,7 @@
                                 </div>
                             </a>
                             <div class="ProductBtnsContainer d-flex flex-column justify-content-center h-100">
-                                    <button
+                                <button
                                     type="button"
                                     class="btn addToCartBtn button-toggable"
                                     onClick="addToCart(this)"
@@ -575,7 +581,7 @@
                                 </div>
                             </a>
                             <div class="ProductBtnsContainer d-flex flex-column justify-content-center h-100">
-                                    <button
+                                <button
                                     type="button"
                                     class="btn addToCartBtn button-toggable"
                                     onClick="addToCart(this)"
@@ -669,7 +675,7 @@
                                 </div>
                             </a>
                             <div class="ProductBtnsContainer d-flex flex-column justify-content-center h-100">
-                                    <button
+                                <button
                                     type="button"
                                     class="btn addToCartBtn button-toggable"
                                     onClick="addToCart(this)"
@@ -763,7 +769,7 @@
                                 </div>
                             </a>
                             <div class="ProductBtnsContainer d-flex flex-column justify-content-center h-100">
-                                    <button
+                                <button
                                     type="button"
                                     class="btn addToCartBtn button-toggable"
                                     onClick="addToCart(this)"
@@ -859,7 +865,7 @@
                             </a>
 
                             <div class="ProductBtnsContainer d-flex flex-column justify-content-center h-100">
-                                    <button
+                                <button
                                     type="button"
                                     class="btn addToCartBtn button-toggable"
                                     onClick="addToCart(this)"
@@ -953,7 +959,7 @@
                                 </div>
                             </a>
                             <div class="ProductBtnsContainer d-flex flex-column justify-content-center h-100">
-                                    <button
+                                <button
                                     type="button"
                                     class="btn addToCartBtn button-toggable"
                                     onClick="addToCart(this)"
@@ -1047,7 +1053,7 @@
                                 </div>
                             </a>
                             <div class="ProductBtnsContainer d-flex flex-column justify-content-center h-100">
-                                    <button
+                                <button
                                     type="button"
                                     class="btn addToCartBtn button-toggable"
                                     onClick="addToCart(this)"
@@ -1141,7 +1147,7 @@
                                 </div>
                             </a>
                             <div class="ProductBtnsContainer d-flex flex-column justify-content-center h-100">
-                                    <button
+                                <button
                                     type="button"
                                     class="btn addToCartBtn button-toggable"
                                     onClick="addToCart(this)"
@@ -1235,7 +1241,7 @@
                                 </div>
                             </a>
                             <div class="ProductBtnsContainer d-flex flex-column justify-content-center h-100">
-                                    <button
+                                <button
                                     type="button"
                                     class="btn addToCartBtn button-toggable"
                                     onClick="addToCart(this)"
@@ -1505,7 +1511,7 @@
                         onclick="window.location.href = './checkoutProducts.html';"
                         title="Checkout"
                     >
-                    Checkout
+                        Checkout
                     </button>
                 </div>
                 <div class="d-flex flex-column justify-content-between" id="shoppingCartCart">
@@ -1575,8 +1581,8 @@
                         </div>
                         <h4 class="cartProductSubTotal totalPrice">14.99</h4>
                         <button class="button-toggable btn border border-white">
-                                <i class="fas fa-times"></i>
-                            </button>
+                            <i class="fas fa-times"></i>
+                        </button>
                     </article>
 
                     <article class="m-2 p-2 d-flex justify-content-between align-items-center">
@@ -1610,8 +1616,8 @@
                         </div>
                         <h4 class="cartProductSubTotal totalPrice">69.99</h4>
                         <button class="button-toggable btn border border-white">
-                                <i class="fas fa-times"></i>
-                            </button>
+                            <i class="fas fa-times"></i>
+                        </button>
                     </article>
                 </div>
             </div>
