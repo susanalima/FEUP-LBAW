@@ -655,7 +655,22 @@ fieldset{
     }
 }
 
+.accordionDiv {
+    width: 75%;
+}
 
+@media screen and (max-width: 1080px) {
+    .accordionDiv {
+        width: 100%;
+      
+    }
+}
+
+@media screen and (max-width: 950px) {
+    .accordionDiv {
+        width: 100%;
+    }
+}
 
 .card-body .card.infoCard {
     border-style:none none solid none;

@@ -1,24 +1,5 @@
 
 
-#profile {
-    width: 75%;
-}
-
-@media screen and (max-width: 1080px) {
-    #profile {
-        width: 100%;
-      
-    }
-}
-
-@media screen and (max-width: 950px) {
-    #profile {
-        width: 100%;
-    }
-}
-
-
-
 .previousCart {
     background-color: var(--var-main-color);
 }
