@@ -9,13 +9,19 @@
     height: 75%;
 }
 
-.checkoutTextTop{
+.checkoutTextTop, .price, .price1{
     display: inline-block;
     overflow-wrap: break-word;
     margin-bottom: 2%;
     margin-left: 11%;
 }
 
+.price1{
+    display: inline-block;
+    overflow-wrap: break-word;
+    width:75%;
+    padding-left: 10%;
+}
 
 
 .all_elements, .all_elements2{
@@ -62,7 +68,6 @@
 
 
  .next_button{
-    text-align: center;
     display: inline-block;
 
     width: auto;
@@ -70,9 +75,9 @@
     background-color: var(--var-gray);
     border-color: var(--var-gray-dark);
     color: var(--var-text);
-    margin-left:1rem;
     border-width: 2px;
     outline:none;
+    margin-right:2em;
 }
 
 .next_button:hover{
@@ -145,8 +150,12 @@
 
 
 .product_img{
-    width: 35%; 
+    background-size: 100% auto;
+    max-width: 256px;
+    max-height: 256px;
+    width:auto;
     height: auto;
+    object-fit: scale-down;
     margin-left:0.5em;
     margin-bottom:0.2rem;
     padding:0;
@@ -182,7 +191,8 @@ label.full, label.half{
 }
 
 .final_label{
-    width:125px;
+    width:auto;
+    margin-right: 1em;
 }
 
 
@@ -247,38 +257,9 @@ label.full, label.half{
 
 
 
-.price{
-    margin-top:0.5rem;
-    margin-bottom:0.5rem;
-    font-size: auto;
-    min-width: auto;
-}
-
-.final_price{
-    width: 100%;
-
-    background-color: var(--var-gray);
-    color: black;
-    margin:0;
-    margin-left: 0.1em;
-   
-    border-width: 0.15rem;
-    border-color: rgb(85, 85, 85);
-    border-radius:0.25rem;
-
-    text-align: left;
-    display: inline-block;
-}
 
 
 
-.bottom_row{
-   display: inline-block;
-    width: auto;
-    min-width: 25%;
-    margin-left:12.5%;
-    border: none;
-}
 
 .final_value{
     float: right;    
@@ -305,6 +286,7 @@ label.full, label.half{
     display: inline-block;
     width:50%;
 }
+
 
 #footer{
     width:100%;
@@ -405,6 +387,12 @@ label.full, label.half{
     .col-sm{
         padding-right: 0;
         width:45%;
+    }
+
+    .price, .price1{
+        margin:auto;
+        margin-bottom:2em;
+        padding-left: 0;
     }
 
 }

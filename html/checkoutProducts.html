@@ -58,7 +58,7 @@
                             PuzzleWood
                         </a>
                         <span class="dropdown navText">
-                                <button class="btn  dropdown-toggle" type="button" id="dropdownAllCategories"                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <button class="btn  dropdown-toggle" type="button" id="dropdownAllCategories" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     All Categories
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="dropdownAllCategories">
@@ -116,26 +116,14 @@
                 <li class="breadcrumb-item"><a href="checkoutConfirmation.html">5.Confirmation</a></li>
             </ol>
         </nav>
-        <div class="card container bottom_row">
-            <div class="row center-block">
-                <div class="col-sm card final_price container">
-                    <div class="price_row h-75">
-                        <div class="price_col col-sm">
-                            <h1 class="final_label">Total:</h1>
-                        </div>
-                        <div class="price_col col-sm ">
-                            <h1 class="final_value">311.96€</h1>
-                        </div>
-                    </div>
-                </div>
-                <form class="button_form" action="checkoutDelivery.html">
-                    <button class="btn button-action next_button " type="submit" value="Go to Delivery">Confirm Products <i
-                            class="fa fa-caret-right" aria-hidden="true"></i></button>
-                </form>
-            </div>
-        </div>
-        
+    
+        <div class="d-flex justify-content-between price1">
+                <h1 class="final_label">Total: 311.96€</h1>
+                <button class="btn button-action next_button w-auto" type="submit" value="Go to Delivery">Confirm Products <i
+                    class="fa fa-caret-right" aria-hidden="true"></i></button>
+           </div>
         <div class="all_elements d-flex flex-wrap">
+                
         <div class="card product_card d-flex flex-column">
             <h4 class="product_name">Laptop HP</h4>
             <div class="container" style="margin-left: 0.4em;">
@@ -169,7 +157,7 @@
         <div class="card product_card d-flex flex-column">
             <h4 class="product_name">Apple Book</h4>
             <div class="container" style="margin-left: 0.4em;">
-                <div class="row flex-row d-flex justify-content-start">
+                <div class="flex-row d-flex justify-content-start">
                     <img class="card-img-top product_img col-sm" src="images/products/book_white.jpg" alt="Card image cap">
                     <div class="col-sm">
                         <button class="btn btn-light button-toggable" type="button"><i class="fa fa-times"
