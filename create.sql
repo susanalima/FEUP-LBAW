@@ -35,7 +35,7 @@ CREATE TABLE log(
 	id INTEGER PRIMARY KEY,
 	id_non_admin INTEGER NOT NULL REFERENCES non_admin (id), 
 	description VARCHAR NOT NULL,
-	createdAt DATE NOT NULL CONSTRAINT dateLog CHECK (createdAt <= CURRENT_DATE)
+	created_at DATE NOT NULL CONSTRAINT date_log CHECK (created_at <= CURRENT_DATE)
 );
 
 CREATE TABLE message_client(
@@ -43,7 +43,7 @@ CREATE TABLE message_client(
 	id_client INTEGER NOT NULL REFERENCES client (id),
 	id_client_manager INTEGER NOT NULL REFERENCES client_manager (id),
 	content VARCHAR NOT NULL,
-	date DATE NOT NULL CONSTRAINT mcDate CHECK (date <= CURRENT_DATE)
+	date DATE NOT NULL CONSTRAINT mc_date CHECK (date <= CURRENT_DATE)
 );
 
 CREATE TABLE message_product(
@@ -51,7 +51,7 @@ CREATE TABLE message_product(
 	id_client INTEGER NOT NULL REFERENCES client (id),
 	id_sales_manager INTEGER NOT NULL REFERENCES sales_manager (id),
 	content VARCHAR NOT NULL,
-	date DATE NOT NULL CONSTRAINT mcDate CHECK (date <= CURRENT_DATE)
+	date DATE NOT NULL CONSTRAINT mc_date CHECK (date <= CURRENT_DATE)
 );
 
 
@@ -143,7 +143,7 @@ CREATE TABLE ass_category_specification(
 CREATE TABLE message(
 	id INTEGER PRIMARY KEY,
 	content VARCHAR NOT NULL,
-	createdAt DATE NOT NULL CONSTRAINT date_msg CHECK (createdAt <= CURRENT_DATE),
+	created_at DATE NOT NULL CONSTRAINT date_msg CHECK (created_at <= CURRENT_DATE),
 	report_counter INTEGER NOT NULL CONSTRAINT not_neg_count CHECK (report_counter >= 0),
 	blocked BOOLEAN NOT NULL,
 	id_product INTEGER NOT NULL REFERENCES product (id),
