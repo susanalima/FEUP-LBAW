@@ -1,5 +1,3 @@
-PRAGMA foreign_keys = on;
-
 CREATE TYPE Methods AS ENUM ('Regular', 'Fast','Urgent');
 CREATE TYPE Card_types AS ENUM ('Visa', 'Mastercard');
 CREATE TYPE Categories AS ENUM ('Book', 'CD','Laptop', 'Desktop', 'DVD', 'Mouse', 'Keyboard', 'Headphones/Earphones');
