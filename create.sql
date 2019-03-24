@@ -1,3 +1,6 @@
+DROP TYPE IF EXISTS Methods CASCADE;
+DROP TYPE IF EXISTS Card_types CASCADE;
+
 CREATE TYPE Methods AS ENUM ('Regular', 'Fast','Urgent');
 CREATE TYPE Card_types AS ENUM ('Visa', 'Mastercard');
 
