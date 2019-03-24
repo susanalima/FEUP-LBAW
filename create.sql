@@ -3,7 +3,7 @@ CREATE TYPE Card_types AS ENUM ('Visa', 'Mastercard');
 
 DROP TABLE IF EXISTS client CASCADE;
 DROP TABLE IF EXISTS client_manager CASCADE;
-DROP TABLE IF EXISTS product_manager CASCADE;
+DROP TABLE IF EXISTS sales_manager CASCADE;
 DROP TABLE IF EXISTS administrator CASCADE;
 DROP TABLE IF EXISTS non_admin CASCADE;
 DROP TABLE IF EXISTS person CASCADE;
@@ -48,7 +48,7 @@ CREATE TABLE client_manager(
 	id INTEGER PRIMARY KEY REFERENCES non_admin (id)
 );
 
-CREATE TABLE product_manager(
+CREATE TABLE sales_manager(
 	id INTEGER PRIMARY KEY REFERENCES non_admin (id)
 );
 
