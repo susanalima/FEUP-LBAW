@@ -25,8 +25,8 @@ DROP TABLE IF EXISTS message CASCADE;
 DROP TABLE IF EXISTS review CASCADE;
 DROP TABLE IF EXISTS q_a CASCADE;
 DROP TABLE IF EXISTS promotions CASCADE;
-DROP TABLE IF EXISTS id_specification_body CASCADE;
-DROP TABLE IF EXISTS id_specification_header CASCADE;
+DROP TABLE IF EXISTS specification_body CASCADE;
+DROP TABLE IF EXISTS specification_header CASCADE;
 
 CREATE TABLE person(
 	id INTEGER PRIMARY KEY,
@@ -100,6 +100,20 @@ CREATE TABLE address(
 	city VARCHAR NOT NULL
 );
 
+CREATE TABLE category(
+	id INTEGER PRIMARY KEY,
+	name VARCHAR NOT NULL CONSTRAINT unique_name UNIQUE
+);
+
+CREATE TABLE product(
+	id INTEGER PRIMARY KEY,
+	name VARCHAR NOT NULL,
+	price FLOAT NOT NULL CONSTRAINT not_neg_price CHECK (price >= 0),
+	stock INTEGER NOT NULL CONSTRAINT not_neg_stock CHECK (stock >= 0),
+	id_category INTEGER NOT NULL REFERENCES category (id)
+);
+
+
 CREATE TABLE shipping(
 	id INTEGER PRIMARY KEY,
 	method Methods NOT NULL
@@ -118,7 +132,7 @@ CREATE TABLE ass_list_product(
 CREATE TABLE wish_list(
 	id INTEGER PRIMARY KEY,
 	id_client INTEGER NOT NULL REFERENCES client (id),
-	id_list INTEGER NOT NULL REFERENCES ass_list_product NOT NULL REFERENCES id_list
+	id_list INTEGER NOT NULL REFERENCES ass_list_product (id_list)
 );
 
 
@@ -126,24 +140,12 @@ CREATE TABLE cart(
 	id INTEGER PRIMARY KEY,
 	checkout DATE NOT NULL CONSTRAINT checkout_date CHECK (checkout <= CURRENT_DATE),
 	id_client INTEGER NOT NULL REFERENCES client (id),
-	id_card INTEGER REFERENCES card (id),
+	id_card INTEGER REFERENCES credit_card (id),
 	id_address INTEGER REFERENCES address (id),
 	id_shipping INTEGER REFERENCES shipping (id),
 	id_list INTEGER NOT NULL REFERENCES ass_list_product (id_list)
 );
 
-CREATE TABLE category(
-	id INTEGER PRIMARY KEY,
-	name VARCHAR NOT NULL CONSTRAINT unique_name UNIQUE
-);
-
-CREATE TABLE product(
-	id INTEGER PRIMARY KEY,
-	name VARCHAR NOT NULL,
-	price FLOAT NOT NULL CONSTRAINT not_neg_price CHECK (price >= 0),
-	stock INTEGER NOT NULL CONSTRAINT not_neg_stock CHECK (stock >= 0),
-	id_category INTEGER NOT NULL REFERENCES category (id)
-);
 
 CREATE TABLE image(
 	id INTEGER PRIMARY KEY,
