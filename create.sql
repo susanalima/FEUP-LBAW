@@ -132,7 +132,7 @@ CREATE TABLE ass_list_product(
 CREATE TABLE wish_list(
 	id INTEGER PRIMARY KEY,
 	id_client INTEGER NOT NULL REFERENCES client (id),
-	id_list INTEGER NOT NULL REFERENCES ass_list_product (id_list)
+	id_list INTEGER CONSTRAINT unique_wish_list UNIQUE
 );
 
 
@@ -143,7 +143,7 @@ CREATE TABLE cart(
 	id_card INTEGER REFERENCES credit_card (id),
 	id_address INTEGER REFERENCES address (id),
 	id_shipping INTEGER REFERENCES shipping (id),
-	id_list INTEGER NOT NULL REFERENCES ass_list_product (id_list)
+	id_list INTEGER CONSTRAINT unique_cart UNIQUE
 );
 
 
