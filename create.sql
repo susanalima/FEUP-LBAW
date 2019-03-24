@@ -120,8 +120,8 @@ CREATE TABLE shipping(
 );
 
 CREATE TABLE ass_list_product(
-	id_list INTEGER,
-	id_product INTEGER REFERENCES product (id),
+	id_list INTEGER NOT NULL,
+	id_product INTEGER NOT NULL REFERENCES product (id),
 	quantity INTEGER NOT NULL,
 	added_to DATE NOT NULL CONSTRAINT list_prod_date CHECK (added_to <= CURRENT_DATE),
 	bought BOOLEAN NOT NULL,
@@ -152,6 +152,16 @@ CREATE TABLE image(
 	filepath VARCHAR NOT NULL CONSTRAINT unique_img UNIQUE,
 	description VARCHAR NOT NULL,
 	id_product INTEGER NOT NULL REFERENCES product (id)	
+);
+
+CREATE TABLE specification_body(
+	id INTEGER PRIMARY KEY,
+	content VARCHAR NOT NULL
+);
+
+CREATE TABLE specification_header(
+	id INTEGER PRIMARY KEY,
+	name VARCHAR NOT NULL
 );
 
 CREATE TABLE specification(
@@ -197,13 +207,5 @@ CREATE TABLE promotions(
 );
 
 
-CREATE TABLE specification_body(
-	id INTEGER PRIMARY KEY,
-	content VARCHAR NOT NULL
-);
 
-CREATE TABLE specification_header(
-	id INTEGER PRIMARY KEY,
-	name VARCHAR NOT NULL
-);
 
