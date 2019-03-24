@@ -1,6 +1,5 @@
 CREATE TYPE Methods AS ENUM ('Regular', 'Fast','Urgent');
 CREATE TYPE Card_types AS ENUM ('Visa', 'Mastercard');
-CREATE TYPE Categories AS ENUM ('Book', 'CD','Laptop', 'Desktop', 'DVD', 'Mouse', 'Keyboard', 'Headphones/Earphones');
 
 
 CREATE TABLE person(
@@ -109,7 +108,7 @@ CREATE TABLE cart(
 
 CREATE TABLE category(
 	id INTEGER PRIMARY KEY,
-	name VARCHAR NOT NULL
+	name VARCHAR NOT NULL CONSTRAINT unique_name UNIQUE
 );
 
 CREATE TABLE product(
