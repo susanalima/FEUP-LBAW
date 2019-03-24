@@ -1,6 +1,32 @@
 CREATE TYPE Methods AS ENUM ('Regular', 'Fast','Urgent');
 CREATE TYPE Card_types AS ENUM ('Visa', 'Mastercard');
 
+DROP TABLE IF EXISTS person;
+DROP TABLE IF EXISTS non_admin;
+DROP TABLE IF EXISTS client;
+DROP TABLE IF EXISTS client_manager;
+DROP TABLE IF EXISTS product_manager;
+DROP TABLE IF EXISTS administrator;
+DROP TABLE IF EXISTS log;
+DROP TABLE IF EXISTS message_client;
+DROP TABLE IF EXISTS message_product;
+DROP TABLE IF EXISTS credit_card;
+DROP TABLE IF EXISTS address;
+DROP TABLE IF EXISTS shipping;
+DROP TABLE IF EXISTS ass_list_product;
+DROP TABLE IF EXISTS wish_list;
+DROP TABLE IF EXISTS cart;
+DROP TABLE IF EXISTS category;
+DROP TABLE IF EXISTS product;
+DROP TABLE IF EXISTS image;
+DROP TABLE IF EXISTS specification;
+DROP TABLE IF EXISTS ass_category_specification;
+DROP TABLE IF EXISTS message;
+DROP TABLE IF EXISTS review;
+DROP TABLE IF EXISTS q_a;
+DROP TABLE IF EXISTS promotions;
+DROP TABLE IF EXISTS id_specification_body;
+DROP TABLE IF EXISTS id_specification_header;
 
 CREATE TABLE person(
 	id INTEGER PRIMARY KEY,
