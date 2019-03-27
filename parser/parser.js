@@ -1,8 +1,8 @@
 const rp = require("request-promise");
 const $ = require("cheerio");
-const amazon = "https://www.amazon.co.uk";
+const amazon = process.env.AMAZON || "https://www.amazon.co.uk";
 
-const no_pages_query = 5;
+const no_pages_query = process.env.QUERY_PAGES || 3;
 
 const getInfo = url =>
   rp(url)
@@ -26,12 +26,9 @@ const getInfo = url =>
         q_a,
         reviews
       };
-      console.log(info.q_a.length);
-      console.log(info.reviews.length);
+      console.log(info.brand);
     })
-    .catch(err => {
-      console.log(err);
-    });
+    .catch(err => {});
 
 function getDetails(html) {
   const info = $("#detail_bullets_id .content li", html);

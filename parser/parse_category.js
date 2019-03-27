@@ -1,21 +1,43 @@
 const rp = require("request-promise");
 const $ = require("cheerio");
+const { fork } = require("child_process");
+const no_pages = process.env.QUERY_PAGES || 2;
 
-const getProducts = url =>
-  rp(url).then(html => {
-    const list = $("#zg-ordered-list > li > span > div > span > a", html);
+async function run() {
+  const urls = await getProducts(process.argv[2]);
+  urls.forEach(url => {
+    fork("./parser.js", [url]);
+  });
+}
+
+async function getProducts(node_id) {
+  const ret = [];
+
+  for (let i = 1; i <= no_pages; i++) {
+    const URL = `https://www.amazon.co.uk/b/?node=${node_id}&page=${i}`;
+
+    const res = await parse(URL);
+    ret.push(...res);
+  }
+
+  return ret;
+
+  async function parse(url) {
+    const html = await rp(url);
+    const list = $(
+      "[id^=result] > div > div.a-row.a-spacing-base > div > div > a",
+      html
+    );
     const urls = [];
     for (let index = 0; index < list.length; index++) {
       const element = list[index];
       const href = element.attribs.href;
-      const url = "www.amazon.co.uk" + href.substr(0, href.indexOf("ref"));
+      const url = href.substr(0, href.indexOf("ref"));
 
       urls.push(url);
     }
-    console.log(urls);
-  });
+    return urls.filter(val => !val.includes("picasso"));
+  }
+}
 
-getProducts(
-  //"https://www.amazon.co.uk/gp/most-wished-for/electronics/430565031/"
-  "https://www.amazon.co.uk/gp/most-wished-for/electronics/430565031/?pg=2"
-);
+run();
