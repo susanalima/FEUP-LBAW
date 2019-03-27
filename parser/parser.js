@@ -2,6 +2,8 @@ const rp = require("request-promise");
 const $ = require("cheerio");
 const amazon = "https://www.amazon.co.uk";
 
+const no_pages_query = 5;
+
 const getInfo = url =>
   rp(url)
     .then(async html => {
@@ -10,7 +12,8 @@ const getInfo = url =>
       let name = getName(html);
       let brand = getBrand(html);
       let stock = Math.ceil(Math.random() * 500);
-      let q_a = await getQ_A(details.ASIN);
+      let q_a = await getQ_A(details.ASIN, no_pages_query);
+      let reviews = await getReviews(details.ASIN, no_pages_query);
 
       let info = {
         ...normalize_headers({
@@ -20,9 +23,11 @@ const getInfo = url =>
           stock,
           brand
         }),
-        q_a
+        q_a,
+        reviews
       };
-      console.dir(info);
+      console.log(info.q_a.length);
+      console.log(info.reviews.length);
     })
     .catch(err => {
       console.log(err);
@@ -105,14 +110,19 @@ function getBrand(html) {
   return clean(brand.children[0].data);
 }
 
-async function getQ_A(asin) {
-  const answered = `${amazon}/ask/questions/asin/${asin}/?isAnswered=true`;
-  const notAnswered = `${amazon}/ask/questions/asin/${asin}/?isAnswered=false`;
+async function getQ_A(asin, no_pages) {
+  const ret = [];
+  for (let i = 1; i <= no_pages; i++) {
+    const answered = `${amazon}/ask/questions/asin/${asin}/${i}/?isAnswered=true`;
+    const notAnswered = `${amazon}/ask/questions/asin/${asin}/${i}/?isAnswered=false`;
 
-  const res1 = await parse(answered);
-  const res2 = await parse(notAnswered);
+    const res1 = await parse(answered);
+    const res2 = await parse(notAnswered);
 
-  return [...res1, ...res2];
+    ret.push(...res1);
+    ret.push(...res2);
+  }
+  return ret;
 
   async function parse(url) {
     const html = await rp(url);
@@ -140,6 +150,46 @@ async function getQ_A(asin) {
       });
     }
     return res;
+  }
+}
+
+async function getReviews(asin, no_pages) {
+  const ret = [];
+  for (let i = 1; i <= no_pages; i++) {
+    const URL = `${amazon}/product-reviews/${asin}/?reviewerType=all_reviews&pageNumber=${i}`;
+    const res = await parse(URL);
+
+    ret.push(...res);
+  }
+  return ret;
+
+  async function parse(url) {
+    const html = await rp(url);
+    const reviews = $("[id^=customer_review]", html);
+    const res = [];
+    for (let index = 0; index < reviews.length; index++) {
+      const element = reviews[index];
+      const rating = clean(
+        $("div.a-row > a.a-link-normal", element)[0].attribs.title.split(" ")[0]
+      );
+
+      const startReview = $(".review-text > span", element)[0].children[0];
+      const content = collapseBr(startReview, "");
+
+      res.push({ rating, content });
+    }
+    return res;
+  }
+
+  function collapseBr(element, string) {
+    if (!element.next) return string + element.data;
+
+    if (element.type === "text") {
+      const newString = string + element.data + "\n";
+      return collapseBr(element.next, newString);
+    } else {
+      return collapseBr(element.next, string);
+    }
   }
 }
 
@@ -250,4 +300,4 @@ function normalize_headers(product) {
 
 getInfo(process.argv[2]);
 
-module.exports = { getInfo, getQ_A };
+module.exports = { getInfo };
