@@ -33,7 +33,8 @@ DROP TABLE IF EXISTS specification_header CASCADE;
   
 CREATE TABLE person(  
 	id INTEGER PRIMARY KEY,  
-	name VARCHAR NOT NULL,  
+	name VARCHAR NOT NULL,
+	password VARCHAR NOT NULL, 
 	email VARCHAR NOT NULL CONSTRAINT unique_email UNIQUE  
 );  
   
