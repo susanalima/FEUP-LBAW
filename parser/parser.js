@@ -145,8 +145,9 @@ function normalize_headers(product) {
   return normalized;
 
   function specialCases(product) {
-    backlit();
     category();
+    name("backlight", true, ["backli", "glow"]);
+    name("category", "laptop", ["laptop"]);
 
     function category() {
       const cat = product["category"].toLowerCase();
@@ -155,6 +156,7 @@ function normalize_headers(product) {
       replace("headphones", ["headphones", "earphones"]);
       replace("keyboards", ["keyboard"]);
       replace("music", ["music"]);
+      replace("computer", ["computer", "desktop"]);
 
       function replace(newCategory, categoriesToMatch) {
         categoriesToMatch.forEach(category => {
@@ -165,12 +167,13 @@ function normalize_headers(product) {
       }
     }
 
-    function backlit() {
+    function name(field, value, ...subStrings) {
       const name = normalized.name.toLowerCase();
-      const bl = "backli";
-      const glow = "glow";
-      if (name.includes(bl) || name.includes(glow)) {
-        normalized["backlight"] = true;
+      const filtered = subStrings.filter(val => name.includes(val));
+      const exists = filtered.length !== 0;
+
+      if (exists) {
+        normalized[field] = value;
       }
     }
   }
