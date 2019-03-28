@@ -134,7 +134,9 @@ CREATE TABLE ass_list_product(
 );  
   
 CREATE TABLE wish_list(  
-	id INTEGER PRIMARY KEY,  
+	id INTEGER PRIMARY KEY,
+	name VARCHAR,
+	description VARCHAR,
 	id_client INTEGER NOT NULL REFERENCES client (id),  
 	id_list INTEGER CONSTRAINT unique_wish_list UNIQUE  
 );  
@@ -175,10 +177,16 @@ CREATE TABLE specification(
 );  
   
 CREATE TABLE ass_category_specification(  
+	id_specification_header INTEGER REFERENCES specification_header (id),  
+	id_category INTEGER REFERENCES category(id),  
+	PRIMARY KEY(id_specification_header, id_category)  
+   
+);  
+
+CREATE TABLE ass_product_specification(  
 	id_specification INTEGER REFERENCES specification (id),  
 	id_product INTEGER REFERENCES product(id),  
 	PRIMARY KEY(id_specification, id_product)  
-   
 );  
   
 CREATE TABLE message(  
