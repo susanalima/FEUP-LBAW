@@ -156,7 +156,8 @@ CREATE TABLE cart(
 CREATE TABLE image(  
 	id INTEGER PRIMARY KEY,  
 	filepath VARCHAR NOT NULL CONSTRAINT unique_img UNIQUE,  
-	description VARCHAR NOT NULL,  
+	description VARCHAR NOT NULL,
+	primary_img BOOLEAN NOT NULL,
 	id_product INTEGER NOT NULL REFERENCES product (id)	  
 );  
   
