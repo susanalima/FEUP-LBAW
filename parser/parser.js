@@ -1,12 +1,17 @@
 const rp = require("request-promise");
 const $ = require("cheerio");
+const fs = require("fs");
 const amazon = process.env.AMAZON || "https://www.amazon.co.uk";
 
 const no_pages_query = process.env.QUERY_PAGES || 3;
 
-const getInfo = url =>
-  rp(url)
-    .then(async html => {
+async function getInfo(url) {
+  const info = await parse(url);
+  return info;
+
+  async function parse(url) {
+    try {
+      const html = await rp(url);
       let details = getDetails(html);
       let price = getPrice(html);
       let name = getName(html);
@@ -14,6 +19,7 @@ const getInfo = url =>
       let stock = Math.ceil(Math.random() * 500);
       let q_a = await getQ_A(details.ASIN, no_pages_query);
       let reviews = await getReviews(details.ASIN, no_pages_query);
+      let pictures = getPictures(html);
 
       let info = {
         ...normalize_headers({
@@ -24,11 +30,13 @@ const getInfo = url =>
           brand
         }),
         q_a,
-        reviews
+        reviews,
+        pictures
       };
-      console.log(info.brand);
-    })
-    .catch(err => {});
+      return info;
+    } catch (e) {}
+  }
+}
 
 function getDetails(html) {
   const info = $("#detail_bullets_id .content li", html);
@@ -190,6 +198,11 @@ async function getReviews(asin, no_pages) {
   }
 }
 
+function getPictures(html) {
+  const p = $("#landingImage", html)[0].attribs.src;
+  return p;
+}
+
 function clean(string) {
   return string.replace(/(\r\n|\n|\r|\t|[()])/gm, "").trim();
 }
@@ -242,7 +255,9 @@ function normalize_headers(product) {
   function specialCases(product) {
     category();
     name("backlight", true, ["backli", "glow"]);
-    name("category", "laptop", ["laptop"]);
+    if (product.category === "computer") {
+      name("category", "laptop", ["laptop"]);
+    }
 
     function category() {
       const cat = product["category"].toLowerCase();
@@ -252,6 +267,7 @@ function normalize_headers(product) {
       replace("keyboards", ["keyboard"]);
       replace("music", ["music"]);
       replace("computer", ["computer", "desktop"]);
+      replace("books", ["book"]);
 
       function replace(newCategory, categoriesToMatch) {
         categoriesToMatch.forEach(category => {
@@ -295,6 +311,16 @@ function normalize_headers(product) {
   }
 }
 
-getInfo(process.argv[2]);
+getInfo(process.argv[2]).then(data => {
+  const path = "products/p_" + Math.ceil(Math.random() * 5000) + ".json";
+  console.log(path);
+  fs.writeFile(path, JSON.stringify(data), function(err) {
+    if (err) {
+      return;
+    }
+
+    console.log("The file was saved!");
+  });
+});
 
 module.exports = { getInfo };
