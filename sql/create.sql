@@ -109,15 +109,22 @@ CREATE TABLE category(
 	id SERIAL PRIMARY KEY,  
 	name VARCHAR NOT NULL CONSTRAINT unique_name UNIQUE  
 );  
-  
+
+   
 CREATE TABLE product(  
 	id SERIAL PRIMARY KEY,  
 	name VARCHAR NOT NULL,  
 	price FLOAT NOT NULL CONSTRAINT not_neg_price CHECK (price >= 0),  
 	stock INTEGER NOT NULL CONSTRAINT not_neg_stock CHECK (stock >= 0),  
-	id_category INTEGER NOT NULL REFERENCES category (id),
-	primary_img INTEGER NOT NULL REFERENCES image (id)
+	id_category INTEGER NOT NULL REFERENCES category (id)
 );  
+CREATE TABLE image(  
+	id SERIAL PRIMARY KEY,  
+	filepath VARCHAR NOT NULL CONSTRAINT unique_img UNIQUE,  
+	description VARCHAR NOT NULL,
+	primary_img BOOLEAN NOT NULL,
+	id_product INTEGER NOT NULL REFERENCES product (id)	  
+); 
   
   
 CREATE TABLE shipping(  
@@ -154,13 +161,6 @@ CREATE TABLE cart(
 	id_list INTEGER CONSTRAINT unique_cart UNIQUE  
 );  
   
-  
-CREATE TABLE image(  
-	id SERIAL PRIMARY KEY,  
-	filepath VARCHAR NOT NULL CONSTRAINT unique_img UNIQUE,  
-	description VARCHAR NOT NULL,
-	id_product INTEGER NOT NULL REFERENCES product (id)	  
-);  
   
 CREATE TABLE specification_body(  
 	id SERIAL PRIMARY KEY,  
