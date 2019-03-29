@@ -10,3 +10,5 @@ added to sales_manager person 1251-1300
 added 1000 entries to log
 added 1000 entries to message_client
 added 1000 entries to message_product
+added 1500 entries to address
+added 1500 entries to credit_card

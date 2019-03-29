@@ -89,6 +89,7 @@ CREATE TABLE credit_card(
 	id SERIAL PRIMARY KEY,  
 	id_client INTEGER NOT NULL REFERENCES client (id),  
 	token VARCHAR NOT NULL,  
+	last_digits INTEGER NOT NULL,
 	expiration_date DATE NOT NULL,  
 	name VARCHAR NOT NULL,  
 	type Card_types NOT NULL  
@@ -98,8 +99,7 @@ CREATE TABLE address(
 	id SERIAL PRIMARY KEY,  
 	id_client INTEGER NOT NULL REFERENCES client (id),  
 	name VARCHAR NOT NULL,  
-	street VARCHAR NOT NULL,  
-	door_number INTEGER NOT NULL,  
+	address_line VARCHAR NOT NULL,
 	postal_code VARCHAR NOT NULL,  
 	country VARCHAR NOT NULL,  
 	city VARCHAR NOT NULL  
