@@ -1,0 +1,18 @@
+INSERT INTO product (id, name, price, stock, id_category) VALUES ('1010', 'Microsoft Natural Ergonomic Keyboard 4000 UK Layout', '43.37', '211', '2') ;
+INSERT INTO product (id, name, price, stock, id_category) VALUES ('1217', 'Dell KB216 USB Keyboard - Black', '14.48', '305', '2') ;
+INSERT INTO product (id, name, price, stock, id_category) VALUES ('1587', 'Microsoft Sculpt Ergonomic Desktop Keyboard, Mouse and Numeric Pad Set, UK Layout - Black,L5V-00006', '70.75', '430', '2') ;
+INSERT INTO product (id, name, price, stock, id_category) VALUES ('1822', 'Logitech K360 Wireless Keyboard - Black, UK layout', '29.95', '128', '2') ;
+INSERT INTO product (id, name, price, stock, id_category) VALUES ('1939', 'Microsoft Surface Bluetooth Keyboard', '79.00', '397', '2') ;
+INSERT INTO product (id, name, price, stock, id_category) VALUES ('1943', 'Microsoft All-in-One Media Keyboard with Integrated Track Pad - Monotone', '27.72', '466', '2') ;
+INSERT INTO product (id, name, price, stock, id_category) VALUES ('1954', 'Logitech MK270 Wireless Keyboard and Mouse Combo for Windows, Long Range Wireless Connection, 2.4 GHz Wireless, Compact Mouse, Full Sized Keyboard, QWERTY UK Layout, Black', '18.98', '203', '2') ;
+INSERT INTO product (id, name, price, stock, id_category) VALUES ('2311', 'Logitech 920-008091 G213 Prodigy Gaming Keyboard, RGB Backlit, Qwerty UK Layout - Black', '24.90', '31', '2') ;
+INSERT INTO product (id, name, price, stock, id_category) VALUES ('2685', 'USB Keyboard Wired【Comfortable & Durable】VicTsing Full Size Keyboard with 105 Chiclet Keys Quick Responsive, Plug and Play for Laptop, PC, Computer Windows Mac etc. – UK Layout, Black', '7.99', '349', '2') ;
+INSERT INTO product (id, name, price, stock, id_category) VALUES ('3445', 'TeckNet Bluetooth Ultra-Slim Wireless Keyboard with Built-in Li-polymer Rechargeable Battery for All iOS, Mac, iPad, Windows and Android 3.0 and above OS', '11.99', '294', '2') ;
+INSERT INTO product (id, name, price, stock, id_category) VALUES ('360', 'Logitech K400 Plus Wireless Touch Keyboard for Windows, Android and Chrome - QWERTY, UK Layout, Black', '19.99', '415', '2') ;
+INSERT INTO product (id, name, price, stock, id_category) VALUES ('3905', 'Perixx PERIBOARD-512 Ergonomic Split Keyboard - Natural Ergonomic Design - 485x236x44mm - Black - UK Layout', '24.99', '247', '2') ;
+INSERT INTO product (id, name, price, stock, id_category) VALUES ('4067', 'Logitech K780 Multi-Device Wireless USB, Bluetooth Keyboard, Wireless Keyboard for Windows, Mac, Chrome OS, iOS, Android, Switch Between Devices, Quiet Keyboard, QWERTY UK Layout, Dark Gray/White', '50.00', '121', '2') ;
+INSERT INTO product (id, name, price, stock, id_category) VALUES ('4308', 'Microsoft Wired Keyboard 600, UK Layout - Black', '10.48', '216', '2') ;
+INSERT INTO product (id, name, price, stock, id_category) VALUES ('4425', 'Logitech K120 Business Keyboard for Windows and Linux - QWERTY, UK Layout', '7.96', '301', '2') ;
+INSERT INTO product (id, name, price, stock, id_category) VALUES ('4759', 'Logitech K380 Multi-Device Bluetooth Keyboard for Windows, Mac, Chrome, Android, iOS and Apple TV - QWERTY, UK Layout, Black', '24.99', '214', '2') ;
+INSERT INTO product (id, name, price, stock, id_category) VALUES ('4762', 'Microsoft Wireless Desktop 2000 Keyboard and Mouse Set, UK Layout - Black', '30.24', '5', '2') ;
+INSERT INTO product (id, name, price, stock, id_category) VALUES ('750', 'Perixx PERIBOARD-409U Mini Wired Keyboard - USB - 315x147x21mm - UK Layout', '9.99', '311', '2') ;

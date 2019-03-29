@@ -6,12 +6,16 @@
   "scripts": {
     "test": "jest",
     "start": "node index.js",
-    "load": "node load.js"
+    "load_": "node load.js",
+    "concat_": "concat -o sql/script.sql sql/spec_body.sql sql/spec_header.sql sql/specs.sql sql/cat.sql sql/prod.sql",
+    "load": "yarn run load_ && yarn run concat_",
+    "full": "yarn run start && yarn run load_ && yarn run concat_"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "cheerio": "^1.0.0-rc.2",
+    "concat": "^1.0.3",
     "dotenv": "^7.0.0",
     "request": "^2.88.0",
     "request-promise": "^4.2.4"
