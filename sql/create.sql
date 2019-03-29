@@ -24,6 +24,7 @@ DROP TABLE IF EXISTS product CASCADE;
 DROP TABLE IF EXISTS image CASCADE;  
 DROP TABLE IF EXISTS specification CASCADE;  
 DROP TABLE IF EXISTS ass_category_specification CASCADE;  
+DROP TABLE IF EXISTS ass_product_specification CASCADE;  
 DROP TABLE IF EXISTS message CASCADE;  
 DROP TABLE IF EXISTS review CASCADE;  
 DROP TABLE IF EXISTS q_a CASCADE;  
@@ -32,7 +33,7 @@ DROP TABLE IF EXISTS specification_body CASCADE;
 DROP TABLE IF EXISTS specification_header CASCADE;  
   
 CREATE TABLE person(  
-	id INTEGER PRIMARY KEY,  
+	id SERIAL PRIMARY KEY,  
 	name VARCHAR NOT NULL,
 	password VARCHAR NOT NULL, 
 	email VARCHAR NOT NULL CONSTRAINT unique_email UNIQUE  
@@ -61,14 +62,14 @@ CREATE TABLE administrator(
 );  
   
 CREATE TABLE log(  
-	id INTEGER PRIMARY KEY,  
+	id SERIAL PRIMARY KEY,  
 	id_non_admin INTEGER NOT NULL REFERENCES non_admin (id),   
 	description VARCHAR NOT NULL,  
 	created_at DATE NOT NULL CONSTRAINT date_log CHECK (created_at <= CURRENT_DATE)  
 );  
   
 CREATE TABLE message_client(  
-	id INTEGER PRIMARY KEY,  
+	id SERIAL PRIMARY KEY,  
 	id_client INTEGER NOT NULL REFERENCES client (id),  
 	id_client_manager INTEGER NOT NULL REFERENCES client_manager (id),  
 	content VARCHAR NOT NULL,  
@@ -76,7 +77,7 @@ CREATE TABLE message_client(
 );  
   
 CREATE TABLE message_product(  
-	id INTEGER PRIMARY KEY,  
+	id SERIAL PRIMARY KEY,  
 	id_client INTEGER NOT NULL REFERENCES client (id),  
 	id_sales_manager INTEGER NOT NULL REFERENCES sales_manager (id),  
 	content VARCHAR NOT NULL,  
@@ -85,7 +86,7 @@ CREATE TABLE message_product(
   
   
 CREATE TABLE credit_card(  
-	id INTEGER PRIMARY KEY,  
+	id SERIAL PRIMARY KEY,  
 	id_client INTEGER NOT NULL REFERENCES client (id),  
 	token VARCHAR NOT NULL,  
 	expiration_date DATE NOT NULL,  
@@ -94,7 +95,7 @@ CREATE TABLE credit_card(
 );  
   
 CREATE TABLE address(  
-	id INTEGER PRIMARY KEY,  
+	id SERIAL PRIMARY KEY,  
 	id_client INTEGER NOT NULL REFERENCES client (id),  
 	name VARCHAR NOT NULL,  
 	street VARCHAR NOT NULL,  
@@ -105,12 +106,12 @@ CREATE TABLE address(
 );  
   
 CREATE TABLE category(  
-	id INTEGER PRIMARY KEY,  
+	id SERIAL PRIMARY KEY,  
 	name VARCHAR NOT NULL CONSTRAINT unique_name UNIQUE  
 );  
   
 CREATE TABLE product(  
-	id INTEGER PRIMARY KEY,  
+	id SERIAL PRIMARY KEY,  
 	name VARCHAR NOT NULL,  
 	price FLOAT NOT NULL CONSTRAINT not_neg_price CHECK (price >= 0),  
 	stock INTEGER NOT NULL CONSTRAINT not_neg_stock CHECK (stock >= 0),  
@@ -119,7 +120,7 @@ CREATE TABLE product(
   
   
 CREATE TABLE shipping(  
-	id INTEGER PRIMARY KEY,  
+	id SERIAL PRIMARY KEY,  
 	method Methods NOT NULL  
 );  
   
@@ -134,7 +135,7 @@ CREATE TABLE ass_list_product(
 );  
   
 CREATE TABLE wish_list(  
-	id INTEGER PRIMARY KEY,
+	id SERIAL PRIMARY KEY,
 	name VARCHAR,
 	description VARCHAR,
 	id_client INTEGER NOT NULL REFERENCES client (id),  
@@ -143,7 +144,7 @@ CREATE TABLE wish_list(
   
   
 CREATE TABLE cart(  
-	id INTEGER PRIMARY KEY,  
+	id SERIAL PRIMARY KEY,  
 	checkout DATE NOT NULL CONSTRAINT checkout_date CHECK (checkout <= CURRENT_DATE),  
 	id_client INTEGER NOT NULL REFERENCES client (id),  
 	id_card INTEGER REFERENCES credit_card (id),  
@@ -154,7 +155,7 @@ CREATE TABLE cart(
   
   
 CREATE TABLE image(  
-	id INTEGER PRIMARY KEY,  
+	id SERIAL PRIMARY KEY,  
 	filepath VARCHAR NOT NULL CONSTRAINT unique_img UNIQUE,  
 	description VARCHAR NOT NULL,
 	primary_img BOOLEAN NOT NULL,
@@ -162,17 +163,17 @@ CREATE TABLE image(
 );  
   
 CREATE TABLE specification_body(  
-	id INTEGER PRIMARY KEY,  
+	id SERIAL PRIMARY KEY,  
 	content VARCHAR NOT NULL  
 );  
   
 CREATE TABLE specification_header(  
-	id INTEGER PRIMARY KEY,  
+	id SERIAL PRIMARY KEY,  
 	name VARCHAR NOT NULL  
 );  
   
 CREATE TABLE specification(  
-	id INTEGER PRIMARY KEY,  
+	id SERIAL PRIMARY KEY,  
 	id_specification_body INTEGER REFERENCES specification_body (id),  
 	id_specification_header INTEGER REFERENCES specification_header (id)  
 );  
@@ -191,7 +192,7 @@ CREATE TABLE ass_product_specification(
 );  
   
 CREATE TABLE message(  
-	id INTEGER PRIMARY KEY,  
+	id SERIAL PRIMARY KEY,  
 	content VARCHAR NOT NULL,  
 	created_at DATE NOT NULL CONSTRAINT date_msg CHECK (created_at <= CURRENT_DATE),  
 	report_counter INTEGER NOT NULL CONSTRAINT not_neg_count CHECK (report_counter >= 0),  
@@ -211,7 +212,7 @@ CREATE TABLE q_a(
 );  
   
 CREATE TABLE promotions(  
-	id INTEGER PRIMARY KEY,  
+	id SERIAL PRIMARY KEY,  
 	discount INTEGER NOT NULL CONSTRAINT discount_bounds CHECK (discount >= 0 AND discount < 100),  
 	end_date DATE NOT NULL,  
 	start_date DATE NOT NULL CONSTRAINT start_date_valid CHECK (end_date > start_date),  

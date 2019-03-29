@@ -1,0 +1,1 @@
+INSERT INTO "administrator" (id) VALUES (1);
