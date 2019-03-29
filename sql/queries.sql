@@ -64,6 +64,53 @@ INSERT INTO client
 SELECT id, $nif
 FROM ins;
 
+--query insert review (creates new message and review)
+WITH ins AS (
+INSERT INTO message
+  (content, created_at, report_counter,blocked, id_product, id_non_admin)
+  VALUES ($content, $created_at, $report_counter,blocked, $id_product, $id_non_admin)
+RETURNING id)
+INSERT INTO review
+(id_message, rating)
+SELECT id, $rating
+FROM ins;
+
+--query insert q_a question (creates new message and q_a)
+WITH ins AS (
+INSERT INTO message
+  (content, created_at, report_counter,blocked, id_product, id_non_admin)
+  VALUES ($content, $created_at, $report_counter,blocked, $id_product, $id_non_admin)
+RETURNING id)
+INSERT INTO q_a
+(id_message)
+SELECT id
+FROM ins;
+
+--query insert q_a answer (creates new message and q_a) updates q_a 
+WITH ins AS (
+INSERT INTO message
+  (content, created_at, report_counter,blocked, id_product, id_non_admin)
+  VALUES ($content, $created_at, $report_counter,blocked, $id_product, $id_non_admin)
+RETURNING id)
+UPDATE q_a
+SET id_answer =  (SELECT id FROM ins)
+WHERE id_message = $id;
+
+
+
+
+--insert product info when category exists
+INSERT INTO product
+  (name, price, stock, id_category)
+  VALUES ($name, $price, $stock, (SELECT id FROM category WHERE name LIKE $category)) ;
+
+--insert category
+INSERT INTO category
+  (name)
+  VALUES ($name) ;
+
+
+
 
 --UPDATE
 
@@ -76,3 +123,8 @@ FROM ins;
 UPDATE product
   SET stock = $stock
   WHERE id = $id; 
+
+--query update ass_list product to bought -- TODO testing
+UPDATE ass_list_product
+  SET bought = 'TRUE'
+  WHERE id_list = $id_list AND id_product = id_product;
