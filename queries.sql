@@ -44,8 +44,24 @@ SELECT SH.name , SB.content
 FROM specification S, specification_body SB, specification_header SH, ass_product_specification APS, product P
 WHERE S.id_specification_body = SB.id AND S.id_specification_header = SH.id AND APS.id_specification = S.id AND P.id = APS.id_product AND P.id = $id;
 
-
 --query update product stock
 UPDATE product
   SET stock = $stock
   WHERE id = $id; 
+  
+--query insert client (creates new person, new non-admin and new client)
+WITH ins AS (
+INSERT INTO person
+  (name, password, email)
+  VALUES ($name, $password ,$email)
+RETURNING id),
+ins2 AS (
+INSERT INTO non_admin
+  (id, blocked)
+SELECT id, $blocked FROM ins
+RETURNING id 
+)
+INSERT INTO client
+(id, nif)
+SELECT id, $nif
+FROM ins;
