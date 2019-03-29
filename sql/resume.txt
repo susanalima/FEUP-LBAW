@@ -4,7 +4,9 @@ added 1299 to non_admin
 	901-1000 are blocked
 	1001-1300 are not blocked
 added person 1 to admin
-added to client 2-1200
-added to client_manager 1201-1250
-added to sales_manager 1251-1300
-
+added to client person 2-1200
+added to client_manager person 1201-1250
+added to sales_manager person 1251-1300
+added 1000 entries to log
+added 1000 entries to message_client
+added 1000 entries to message_product
