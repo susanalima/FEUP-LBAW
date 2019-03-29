@@ -1,4 +1,4 @@
-
+--SELECT
 
 --query de login
 SELECT password
@@ -44,11 +44,9 @@ SELECT SH.name , SB.content
 FROM specification S, specification_body SB, specification_header SH, ass_product_specification APS, product P
 WHERE S.id_specification_body = SB.id AND S.id_specification_header = SH.id AND APS.id_specification = S.id AND P.id = APS.id_product AND P.id = $id;
 
---query update product stock
-UPDATE product
-  SET stock = $stock
-  WHERE id = $id; 
-  
+
+--INSERT
+
 --query insert client (creates new person, new non-admin and new client)
 WITH ins AS (
 INSERT INTO person
@@ -65,3 +63,16 @@ INSERT INTO client
 (id, nif)
 SELECT id, $nif
 FROM ins;
+
+
+--UPDATE
+
+--query update block non-admin
+ UPDATE non_admin
+  SET blocked = $blocked
+  WHERE email = $email; --or id = $id
+
+--query update product stock
+UPDATE product
+  SET stock = $stock
+  WHERE id = $id; 
