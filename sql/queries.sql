@@ -25,6 +25,7 @@ SELECT WL.id, WL.name, WL.description
 FROM person P, wish_list WL
 WHERE P.id = WL.id_client AND P.email LIKE $email;
 
+
 --query carts do client
 
 
@@ -38,10 +39,6 @@ WHERE CP.category_id = $id AND I.id_product = CP.product_id AND I.primary_img = 
 ORDER BY RANDOM()
 LIMIT 1 
 
---selecionar random row (*)
---SELECT column FROM table
---ORDER BY RANDOM()
---LIMIT 1
 
 --query informaçao do produto (nome, preço, stock, categoria, ranking)
 SELECT P.name, P.price, P.stock, C.name, P.ranking
@@ -62,6 +59,22 @@ WHERE I.id_product = $id;
 SELECT I.filepath, I.description
 FROM image I
 WHERE I.id_product = $ID AND I.primary_img = 'TRUE';
+
+
+--query all products in a list of products (cart or wishlist)
+SELECT 	ALP.id_product, ALP.quantity, ALP.added_to, ALP.bought, ALP.return
+FROM ass_list_product ALP
+WHERE ALP.id_list = $id;
+
+--query informacao dos produtos de uma wishlist TODO testing
+SELECT P.id, P.name, P.price, P.ranking, I.filepath, I.description, ALP.added_to, ALP.quantity, ALP.bought, ALP.returned
+FROM wish_list WL, ass_list_product ALP, product P, image I
+WHERE WL.id = $id AND WL.id = ALP.id_list AND P.id = ALP.id_product AND I.id_product = P.id AND I.primary_img = 'TRUE';
+
+--query informacao dos produtos de um cart TODO testing
+SELECT P.id, P.name, P.price, P.ranking, I.filepath, I.description, ALP.added_to, ALP.quantity, ALP.bought, ALP.returned
+FROM cart C, ass_list_product ALP, product P, image I
+WHERE C.id = $id AND C.id = ALP.id_list AND P.id = ALP.id_product AND I.id_product = P.id AND I.primary_img = 'TRUE';
 
 --INSERT
 
