@@ -28,6 +28,17 @@ WHERE P.id = WL.id_client AND P.email LIKE $email;
 
 --query carts do client
 
+SELECT C.checkout, TP.price
+FROM cart C, client CL, (
+SELECT AP.id_list ,SUM(AP.TotalPrice) AS price
+FROM (
+select ALP.id_list, ALP.quantity, P.id ,P.price, price*quantity AS TotalPrice
+from ass_list_product ALP, product P
+WHERE ALP.id_product = P.id ) AS AP
+GROUP BY AP.id_list) AS TP
+WHERE C.id_list = TP.id_list AND CL.id = C.id_client AND CL.id = $id;
+
+
 
 --query de categorias TODO testing
 SELECT CP.category_name, I.filepath, I.description
