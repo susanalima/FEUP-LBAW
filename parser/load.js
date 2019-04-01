@@ -1,4 +1,7 @@
 const fs = require("fs");
+const moment = require("moment");
+
+const person_threshold = 60;
 
 // an array of filenames to concat
 const products = [];
@@ -116,6 +119,15 @@ function postgresInsert(object) {
   return specifications;
 }
 
+/**
+ *
+ *
+ * @param {*} id needs ID?
+ * @param {*} tableName
+ * @param {*} columnNames
+ * @param {*} data
+ * @returns
+ */
 function printPG(id, tableName, columnNames, data) {
   let string = "";
   let i = 1;
@@ -134,8 +146,10 @@ function printPG(id, tableName, columnNames, data) {
     const keys = Object.keys(object);
     keys.forEach((key, idx) => {
       const delim = idx === keys.length - 1 ? ") " : ", ";
+      const val = object[key];
+      const escaped = typeof val === "string" ? val.replace(/'/g, '"') : val;
 
-      if (quotes) s += "'" + object[key] + "'" + delim;
+      if (quotes) s += "'" + escaped + "'" + delim;
       else if (columnNames) s += columnNames[idx] + delim;
       else s += key + delim;
     });
@@ -184,22 +198,6 @@ fs.writeFileSync(
   )
 );
 
-function toArray(object, content) {
-  const keys = Object.keys(object);
-  const values = Object.values(object);
-  const ret = [];
-  for (let index = 0; index < keys.length; index++) {
-    const val = values[index];
-    const key = keys[index];
-
-    const obj = { id: val };
-    obj[content] = key;
-    ret.push(obj);
-  }
-
-  return ret;
-}
-
 const ass_product_specs = [];
 products
   .map(val => {
@@ -227,3 +225,109 @@ fs.writeFileSync(
     ass_product_specs
   )
 );
+
+const q_a = products.map(p => p.q_a.map(m => [m.q, m.a]).flat()).flat();
+const rev = products.map(p => p.reviews.map(m => m.content).flat()).flat();
+
+const messages = createDictionary(q_a.concat(rev));
+const msgArr = createMessages(products, messages).flat();
+
+const msgs = msgArr.filter(m => m.id);
+const reviews = msgArr.filter(m => m.rating);
+const questions_answers = msgArr.filter(m => m.id_answer);
+
+fs.writeFileSync("sql/message.sql", printPG(false, "message", null, msgs));
+fs.writeFileSync("sql/review.sql", printPG(false, "review", null, reviews));
+fs.writeFileSync("sql/q_a.sql", printPG(false, "q_a", null, questions_answers));
+
+function createMessages(products, messages) {
+  return products
+    .map(product => [
+      product.reviews
+        .map(review => {
+          const id = messages[review.content];
+          const days = Math.ceil(Math.random() * 350);
+          return [
+            {
+              id_message: id,
+              rating: review.rating
+            },
+            {
+              id,
+              content: review.content,
+              created_at: moment()
+                .subtract(days, "days")
+                .format(),
+              report_counter: Math.ceil(Math.random() * 3) - 1,
+              blocked: false,
+              id_product: product.id,
+              id_non_admin: Math.ceil(Math.random() * person_threshold)
+            }
+          ];
+        })
+        .flat(),
+      product.q_a
+        .map(q_a => {
+          const id_q = messages[q_a.q];
+          const id_a = q_a.a ? messages[q_a.a] : null;
+
+          const days = Math.ceil(Math.random() * 350);
+          const daysBetween = Math.ceil(Math.random() * 5);
+
+          const date = moment()
+            .subtract(days, "days")
+            .format();
+          const new_date = moment(date)
+            .add(daysBetween, "days")
+            .format();
+
+          const q_a_tuple = {
+            id_message: id_q,
+            id_answer: id_a
+          };
+          const q_message = {
+            id: id_q,
+            content: q_a.q,
+            created_at: date,
+            report_counter: Math.ceil(Math.random() * 3) - 1,
+            blocked: false,
+            id_product: product.id,
+            id_non_admin: Math.ceil(Math.random() * person_threshold + 1)
+          };
+          const a_message = id_a
+            ? {
+                id: id_a,
+                content: q_a.a,
+                created_at: new_date,
+                report_counter: 0,
+                blocked: false,
+                id_product: product.id,
+                id_non_admin:
+                  Math.ceil(Math.random() * person_threshold) + person_threshold
+              }
+            : null;
+
+          const arr = [q_a_tuple, q_message];
+          if (a_message) arr.push(a_message);
+          return arr;
+        })
+        .flat()
+    ])
+    .flat();
+}
+
+function toArray(object, content) {
+  const keys = Object.keys(object);
+  const values = Object.values(object);
+  const ret = [];
+  for (let index = 0; index < keys.length; index++) {
+    const val = values[index];
+    const key = keys[index];
+
+    const obj = { id: val };
+    obj[content] = key;
+    ret.push(obj);
+  }
+
+  return ret;
+}
