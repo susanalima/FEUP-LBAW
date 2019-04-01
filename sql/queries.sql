@@ -11,12 +11,12 @@ FROM person P  JOIN client USING(id)
 WHERE P.email LIKE $email;
 
 --query moradas do client
-SELECT A.name, street, door_number, postal_code, country, city
+SELECT A.name, address_line, postal_code, country, city
 FROM address A , person P 
 WHERE A.id_client = P.id AND P.email LIKE $email;
 
 --query cartoes do client
-SELECT token, expiration_date, CC.name, type
+SELECT last_digits, expiration_date, CC.name, type
 FROM credit_card CC , person P 
 WHERE CC.id_client = P.id AND P.email LIKE $email;
 
@@ -25,25 +25,67 @@ SELECT WL.id, WL.name, WL.description
 FROM person P, wish_list WL
 WHERE P.id = WL.id_client AND P.email LIKE $email;
 
---query de categorias falta parte das imagens (*)
-SELECT name
-FROM category C;
 
---selecionar random row (*)
---SELECT column FROM table
---ORDER BY RANDOM()
---LIMIT 1
+--query carts do client
 
---query informaçao do produto (nome, preço, stock, categoria, ranking) TODO falta a imagem
+SELECT C.checkout, TP.price
+FROM cart C, client CL, (
+SELECT AP.id_list ,SUM(AP.TotalPrice) AS price
+FROM (
+select ALP.id_list, ALP.quantity, P.id ,P.price, price*quantity AS TotalPrice
+from ass_list_product ALP, product P
+WHERE ALP.id_product = P.id ) AS AP
+GROUP BY AP.id_list) AS TP
+WHERE C.id_list = TP.id_list AND CL.id = C.id_client AND CL.id = $id;
+
+
+
+--query de categorias TODO testing
+SELECT CP.category_name, I.filepath, I.description
+FROM 
+(SELECT P.name AS product_name, P.id AS product_id, C.id AS category_id , C.name AS category_name
+FROM category C, product P 
+WHERE C.id = P.id_category) AS CP, Image I
+WHERE CP.category_id = $id AND I.id_product = CP.product_id AND I.primary_img = 'TRUE'
+ORDER BY RANDOM()
+LIMIT 1 
+
+
+--query informaçao do produto (nome, preço, stock, categoria, ranking)
 SELECT P.name, P.price, P.stock, C.name, P.ranking
 FROM product P, category C	
 WHERE P.id_category = C.id AND P.id = $id;
 
 --query de specifications de produtos 
-SELECT SH.name , SB.content
+SELECT  SH.name , SB.content, APS.id_product
 FROM specification S, specification_body SB, specification_header SH, ass_product_specification APS, product P
 WHERE S.id_specification_body = SB.id AND S.id_specification_header = SH.id AND APS.id_specification = S.id AND P.id = APS.id_product AND P.id = $id;
 
+--query todas imagens de um produto
+SELECT I.filepath, I.description
+FROM image I
+WHERE I.id_product = $id;
+
+--query imagem principal de um produto
+SELECT I.filepath, I.description
+FROM image I
+WHERE I.id_product = $ID AND I.primary_img = 'TRUE';
+
+
+--query all products in a list of products (cart or wishlist)
+SELECT 	ALP.id_product, ALP.quantity, ALP.added_to, ALP.bought, ALP.return
+FROM ass_list_product ALP
+WHERE ALP.id_list = $id;
+
+--query informacao dos produtos de uma wishlist TODO testing
+SELECT P.id, P.name, P.price, P.ranking, I.filepath, I.description, ALP.added_to, ALP.quantity, ALP.bought, ALP.returned
+FROM wish_list WL, ass_list_product ALP, product P, image I
+WHERE WL.id = $id AND WL.id = ALP.id_list AND P.id = ALP.id_product AND I.id_product = P.id AND I.primary_img = 'TRUE';
+
+--query informacao dos produtos de um cart TODO testing
+SELECT P.id, P.name, P.price, P.ranking, I.filepath, I.description, ALP.added_to, ALP.quantity, ALP.bought, ALP.returned
+FROM cart C, ass_list_product ALP, product P, image I
+WHERE C.id = $id AND C.id = ALP.id_list AND P.id = ALP.id_product AND I.id_product = P.id AND I.primary_img = 'TRUE';
 
 --INSERT
 
@@ -96,13 +138,22 @@ UPDATE q_a
 SET id_answer =  (SELECT id FROM ins)
 WHERE id_message = $id;
 
-
-
-
 --insert product info when category exists
 INSERT INTO product
   (name, price, stock, id_category)
   VALUES ($name, $price, $stock, (SELECT id FROM category WHERE name LIKE $category)) ;
+
+--insert product specification when specification_body exists
+WITH ins AS (
+INSERT INTO specification 
+  (id_specification_header, id_specification_body) 
+  VALUES ($id_specification_header, $id_specification_body) 
+  RETURNING id)
+INSERT INTO ass_product_specification
+(id_specification, id_product)
+SELECT id, $id_product
+FROM ins;
+
 
 --insert category
 INSERT INTO category
@@ -110,6 +161,10 @@ INSERT INTO category
   VALUES ($name) ;
 
 
+--insert ass_list_product
+INSERT INTO ass_list_product
+	(id_list, id_product, quantity, added_to, bought, return)
+VALUES ($id_list, $id_product, $quantity, $added_to, 'FALSE', 'FALSE');
 
 
 --UPDATE
@@ -128,3 +183,4 @@ UPDATE product
 UPDATE ass_list_product
   SET bought = 'TRUE'
   WHERE id_list = $id_list AND id_product = id_product;
+
