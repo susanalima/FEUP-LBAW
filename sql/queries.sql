@@ -182,8 +182,18 @@ UPDATE product
   SET stock = $stock
   WHERE id = $id; 
 
---query update ass_list product to bought -- TODO testing
+--query update ass_list product to bought 
 UPDATE ass_list_product
   SET bought = 'TRUE'
-  WHERE id_list = $id_list AND id_product = id_product;
+  WHERE id_list = $id;
+
+
+BEGIN TRANSACTION;
+  UPDATE ass_list_product
+    SET bought = 'FALSE'
+    WHERE id_list = 1;
+  UPDATE cart
+    SET checkout = '2018-12-12'
+    WHERE id_list = 1;
+COMMIT;
 
