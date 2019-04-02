@@ -8,22 +8,22 @@ WHERE P.email LIKE $email;
 --query informaçao pessoal do client 
 SELECT name, email, nif
 FROM person P  JOIN client USING(id)
-WHERE P.email LIKE $email;
+WHERE P.email LIKE $email; --P.id = $id;
 
 --query moradas do client
 SELECT A.name, address_line, postal_code, country, city
 FROM address A , person P 
-WHERE A.id_client = P.id AND P.email LIKE $email;
+WHERE A.id_client = P.id AND P.email LIKE $email;  --P.id = $id;
 
 --query cartoes do client
 SELECT last_digits, expiration_date, CC.name, type
 FROM credit_card CC , person P 
-WHERE CC.id_client = P.id AND P.email LIKE $email;
+WHERE CC.id_client = P.id AND P.email LIKE $email; --P.id = $id;
 
 --query wish lists do client
 SELECT WL.id, WL.name, WL.description
 FROM person P, wish_list WL
-WHERE P.id = WL.id_client AND P.email LIKE $email;
+WHERE P.id = WL.id_client AND P.email LIKE $email; --P.id = $id;
 
 
 --query carts do client
@@ -52,7 +52,10 @@ LIMIT 1
 
 
 --query informaçao do produto (nome, preço, stock, categoria, ranking)
-SELECT P.name, P.price, P.stock, C.name, P.ranking
+SELECT P.name, P.price, P.stock, C.name, 
+(SELECT AVG(R.rating) AS rating
+FROM message M, review R
+WHERE M.id = R.id_message AND M.id_product = P.id)
 FROM product P, category C	
 WHERE P.id_category = C.id AND P.id = $id;
 
