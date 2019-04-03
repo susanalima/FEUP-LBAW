@@ -1,12 +1,25 @@
-const rp = require("request-promise");
+const rp = require("request-promise-native");
 const $ = require("cheerio");
-const { fork } = require("child_process");
+const fs = require("fs");
 const no_pages = process.env.QUERY_PAGES || 2;
+const { getInfo } = require("./parser.js");
 
 async function run() {
+  console.log("Will get");
   const urls = await getProducts(process.argv[2]);
-  urls.forEach(url => {
-    fork("./parser.js", [url]);
+  urls.forEach(async url => {
+    const product = await getInfo(url, process.argv[3]);
+    const path = "products/p_" + Math.ceil(Math.random() * 5000) + ".json";
+    if (product !== undefined) {
+      console.log(path);
+      fs.writeFileSync(path, JSON.stringify(product), function(err) {
+        if (err) {
+          return;
+        }
+
+        console.log("The file was saved!");
+      });
+    }
   });
 }
 
@@ -16,19 +29,34 @@ async function getProducts(node_id) {
   for (let i = 1; i <= no_pages; i++) {
     const URL = `https://www.amazon.co.uk/b/?node=${node_id}&page=${i}`;
 
-    const res = await parse(URL);
-    ret.push(...res);
+    try {
+      const res = await parse(URL);
+      ret.push(...res);
+    } catch ({ error }) {
+      console.log(error);
+    }
   }
 
   return ret;
 
   async function parse(url) {
+    console.log(url);
     const html = await rp(url);
-    const list = $(
-      "[id^=result] > div > div.a-row.a-spacing-base > div > div > a",
-      html
-    );
+    const list =
+      $(
+        "[id^=result] > div > div.a-row.a-spacing-base > div > div > a",
+        html
+      ) &&
+      $(
+        "[id^=result] > div > div.a-fixed-left-grid > div > div.a-fixed-left-grid-col.a-col-left > div > div > a",
+        html
+      );
+
     const urls = [];
+    console.log(list.length);
+    if (list.length === 0) {
+      throw { error: "CAPTCHA ERROR" };
+    }
     for (let index = 0; index < list.length; index++) {
       const element = list[index];
       const href = element.attribs.href;
