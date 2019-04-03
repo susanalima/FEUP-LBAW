@@ -1,4 +1,4 @@
-const rp = require("request-promise");
+const rp = require("request-promise-native");
 const $ = require("cheerio");
 const fs = require("fs");
 const amazon = process.env.AMAZON || "https://www.amazon.co.uk";
@@ -94,7 +94,7 @@ function getPrice(html) {
     $("#priceblock_ourprice", html)[0];
 
   if (priceSpan) {
-    return clean(priceSpan.children[0].data);
+    return clean(priceSpan.children[0].data).replace(",", "");
   }
 }
 
@@ -204,7 +204,7 @@ function getPictures(html) {
 }
 
 function clean(string) {
-  return string.replace(/(\r\n|\n|\r|\t|[()])/gm, "").trim();
+  return string.replace(/(\r\n|\n|\r|\t|[()]|:)/gm, "").trim();
 }
 
 function normalize_headers(product) {
@@ -255,27 +255,9 @@ function normalize_headers(product) {
   function specialCases(product) {
     category();
     name("backlight", true, ["backli", "glow"]);
-    if (product.category === "computer") {
-      name("category", "laptop", ["laptop"]);
-    }
 
     function category() {
-      const cat = product["category"].toLowerCase();
-      const sub = product["sub_category"].toLowerCase();
-
-      replace("headphones", ["headphones", "earphones"]);
-      replace("keyboards", ["keyboard"]);
-      replace("music", ["music"]);
-      replace("computer", ["computer", "desktop"]);
-      replace("books", ["book"]);
-
-      function replace(newCategory, categoriesToMatch) {
-        categoriesToMatch.forEach(category => {
-          if (cat.includes(category) || sub.includes(category)) {
-            normalized["category"] = newCategory;
-          }
-        });
-      }
+      product.category = process.argv[3];
     }
 
     function name(field, value, ...subStrings) {
@@ -311,16 +293,6 @@ function normalize_headers(product) {
   }
 }
 
-getInfo(process.argv[2]).then(data => {
-  const path = "products/p_" + Math.ceil(Math.random() * 5000) + ".json";
-  console.log(path);
-  fs.writeFile(path, JSON.stringify(data), function(err) {
-    if (err) {
-      return;
-    }
-
-    console.log("The file was saved!");
-  });
-});
+//getInfo(process.argv[2])
 
 module.exports = { getInfo };

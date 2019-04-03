@@ -177,7 +177,7 @@ const printableProducts = products.map(product => {
   const obj = {
     id: product.id,
     name: product.name,
-    price: product.price ? product.price.replace("£", "") : "24.90",
+    price: product.price ? product.price.replace(/£|€|,/g, "") : "24.90",
     stock: product.stock,
     id_category: 2
   };
@@ -232,8 +232,10 @@ const rev = products.map(p => p.reviews.map(m => m.content).flat()).flat();
 const messages = createDictionary(q_a.concat(rev));
 const msgArr = createMessages(products, messages).flat();
 
-const msgs = msgArr.filter(m => m.id);
-const reviews = msgArr.filter(m => m.rating);
+const dupMsgs = msgArr.filter(m => m.id);
+const msgs = removeDuplicates(dupMsgs, "id");
+const dupRev = msgArr.filter(m => m.rating);
+const reviews = removeDuplicates(dupRev, "id_message");
 const questions_answers = msgArr.filter(m => m.id_answer);
 
 fs.writeFileSync("sql/message.sql", printPG(false, "message", null, msgs));
@@ -261,7 +263,7 @@ function createMessages(products, messages) {
               report_counter: Math.ceil(Math.random() * 3) - 1,
               blocked: false,
               id_product: product.id,
-              id_non_admin: Math.ceil(Math.random() * person_threshold)
+              id_non_admin: Math.ceil(Math.random() * person_threshold) + 2
             }
           ];
         })
@@ -271,7 +273,7 @@ function createMessages(products, messages) {
           const id_q = messages[q_a.q];
           const id_a = q_a.a ? messages[q_a.a] : null;
 
-          const days = Math.ceil(Math.random() * 350);
+          const days = Math.ceil(Math.random() * 350) + 6;
           const daysBetween = Math.ceil(Math.random() * 5);
 
           const date = moment()
@@ -292,7 +294,7 @@ function createMessages(products, messages) {
             report_counter: Math.ceil(Math.random() * 3) - 1,
             blocked: false,
             id_product: product.id,
-            id_non_admin: Math.ceil(Math.random() * person_threshold + 1)
+            id_non_admin: Math.ceil(Math.random() * person_threshold) + 2
           };
           const a_message = id_a
             ? {
@@ -303,7 +305,9 @@ function createMessages(products, messages) {
                 blocked: false,
                 id_product: product.id,
                 id_non_admin:
-                  Math.ceil(Math.random() * person_threshold) + person_threshold
+                  Math.ceil(Math.random() * person_threshold) +
+                  person_threshold +
+                  2
               }
             : null;
 
@@ -330,4 +334,9 @@ function toArray(object, content) {
   }
 
   return ret;
+}
+
+function removeDuplicates(array, prop) {
+  var seen = new Set();
+  return array.filter(item => !seen.has(item[prop]) && seen.add(item[prop]));
 }
