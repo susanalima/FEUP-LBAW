@@ -3,9 +3,8 @@
 CREATE FUNCTION delete_product_list() RETURNS TRIGGER AS
 $BODY$
 BEGIN
-   IF EXISTS (SELECT * FROM product_list 
-         JOIN cart USING(id) 
-         WHERE product_list.id = OLD.id) THEN
+   IF EXISTS (SELECT * FROM cart, wish_list
+         WHERE cart.id = OLD.id OR wish_list.id = OLD.id) THEN
             RAISE EXCEPTION 'This list can not be deleted';
     END IF;
     RETURN OLD;
