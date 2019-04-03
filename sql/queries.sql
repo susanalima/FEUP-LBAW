@@ -230,14 +230,14 @@ UPDATE ass_list_product
   WHERE id_list = $id;
 
 
---query update ass_list_product to bought, checkout date in cart and create new cart for client
+--query update ass_list_product to bought, checkout date, card, address and shipping in cart and create new cart for client
 BEGIN TRANSACTION;
   UPDATE ass_list_product
     SET bought = 'TRUE'
     WHERE id_list = $id_cart;
-  UPDATE cart
-    SET checkout = $checkout
-    WHERE id = $id_cart;
+   UPDATE cart
+    SET checkout = $checkout, id_card = $id_card, id_address = $id_address, id_shipping = $id_shipping
+    WHERE id = 8;
   WITH ins AS (
     INSERT INTO product_list DEFAULT VALUES
     RETURNING id)
