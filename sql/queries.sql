@@ -203,6 +203,13 @@ SELECT id, $id_client, $name, $description
 FROM ins; 
 
 
+--insert cart from wishlist
+INSERT INTO cart (id, id_client)
+SELECT WL.id, WL.id_client
+FROM wish_list WL
+WHERE WL.id = $id;
+
+
 --UPDATE
 
 --query update block non-admin
@@ -210,10 +217,12 @@ FROM ins;
   SET blocked = $blocked
   WHERE email = $email; --or id = $id
 
+
 --query update product stock
 UPDATE product
   SET stock = $stock
   WHERE id = $id; 
+
 
 --query update ass_list product to bought 
 UPDATE ass_list_product
