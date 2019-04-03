@@ -7,7 +7,7 @@
     "test": "node test.js",
     "start": "node index.js",
     "load_": "node load.js",
-    "concat_": "concat -o sql/script.sql sql/spec_body.sql sql/spec_header.sql sql/specs.sql sql/cat.sql sql/prod.sql sql/message.sql sql/q_a.sql sql/review.sql",
+    "concat_": "concat -o sql/script.sql sql/spec_body.sql sql/spec_header.sql sql/specs.sql sql/cat.sql sql/prod.sql sql/ass_prod_spec.sql sql/message.sql sql/q_a.sql sql/review.sql sql/lists.sql sql/wishlists.sql sql/carts.sql sql/ass_list_product.sql",
     "load": "yarn run load_ && yarn run concat_",
     "full": "yarn run start && yarn run load_ && yarn run concat_"
   },
@@ -17,6 +17,7 @@
     "cheerio": "^1.0.0-rc.2",
     "concat": "^1.0.3",
     "dotenv": "^7.0.0",
+    "faker": "^4.1.0",
     "moment": "^2.24.0",
     "request": "^2.88.0",
     "request-promise-native": "^1.0.7"

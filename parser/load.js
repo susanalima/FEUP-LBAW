@@ -1,15 +1,15 @@
 const fs = require("fs");
 const moment = require("moment");
+const faker = require("faker");
 
-const person_threshold = 60;
+const person_threshold = 1198;
+const managers = 50;
 
-// an array of filenames to concat
 const products = [];
 const files = [];
 
-const theDirectory = "./products"; // or whatever directory you want to read
+const theDirectory = "./products";
 fs.readdirSync(theDirectory).forEach(file => {
-  // you may want to filter these by extension, etc. to make sure they are JSON file
   files.push(theDirectory + "/" + file);
 });
 
@@ -203,10 +203,11 @@ products
   .map(val => {
     return {
       id: val.id,
-      specs: val.specs.map(pSpec =>
-        specifications.findIndex(
-          spec => JSON.stringify(spec) == JSON.stringify(pSpec)
-        )
+      specs: val.specs.map(
+        pSpec =>
+          specifications.findIndex(
+            spec => JSON.stringify(spec) == JSON.stringify(pSpec)
+          ) + 1
       )
     };
   })
@@ -221,7 +222,7 @@ fs.writeFileSync(
   printPG(
     false,
     "ass_product_specification",
-    ["id_specification", "id_product"],
+    ["id_product", "id_specification"],
     ass_product_specs
   )
 );
@@ -305,8 +306,9 @@ function createMessages(products, messages) {
                 blocked: false,
                 id_product: product.id,
                 id_non_admin:
-                  Math.ceil(Math.random() * person_threshold) +
+                  Math.ceil(Math.random() * managers) +
                   person_threshold +
+                  managers +
                   2
               }
             : null;
@@ -339,4 +341,116 @@ function toArray(object, content) {
 function removeDuplicates(array, prop) {
   var seen = new Set();
   return array.filter(item => !seen.has(item[prop]) && seen.add(item[prop]));
+}
+
+function createLists() {
+  const lists = [];
+  const wishlists = [];
+  const carts = [];
+  const ass_list_product = [];
+  let id_list = 1;
+
+  for (let index = 0; index < 2000; index++) {
+    const wishlist = Math.random() > 0.5;
+    const id_client = Math.ceil(Math.random() * person_threshold + 2);
+
+    const productsNo = Math.random() * 40;
+    const products = [];
+    for (let j = 0; j < productsNo; j++) {
+      const id_product = uniqueProduct(products);
+      const quantity = Math.ceil(Math.random() * 5);
+      const added_to = moment()
+        .subtract(Math.random() * 355, "days")
+        .format();
+      const bought =
+        !wishlist &&
+        carts.filter(cart => cart.client_id === id_client).length === 0 &&
+        Math.random() > 0.3
+          ? false
+          : true;
+      const returned = bought && Math.random() < 0.3;
+      products.push({
+        id_list: id_list,
+        id_product,
+        quantity,
+        added_to,
+        bought,
+        return: returned
+      });
+    }
+    ass_list_product.push(...products);
+
+    if (wishlist) {
+      const name = faker.commerce.productAdjective();
+      const description = faker.company.catchPhrase();
+      lists.push({ id: id_list });
+      wishlists.push({
+        id: id_list,
+        name,
+        description,
+        id_client
+      });
+    } else {
+      //cart
+      const sorted = products.map(prod => prod.added_to).sort();
+      const checkout = sorted[sorted.length - 1];
+      const id_shipping = Math.ceil(Math.random() * 3);
+
+      lists.push({ id: id_list });
+      carts.push({
+        id: id_list,
+        id_client,
+        checkout,
+        id_shipping
+      });
+    }
+    id_list++;
+  }
+
+  return {
+    lists,
+    wishlists,
+    carts,
+    ass_list_product
+  };
+
+  function uniqueProduct(prods) {
+    let temp;
+    let unique = false;
+    do {
+      temp = productIDs[Math.ceil(Math.random() * productIDs.length - 1)];
+      const filtered = prods.filter(p => p.id_product === temp);
+      unique = filtered.length === 0;
+    } while (!unique);
+    return temp;
+  }
+}
+
+const { lists, wishlists, carts, ass_list_product } = createLists();
+
+fs.writeFileSync("sql/lists.sql", printPG(false, "product_list", null, lists));
+fs.writeFileSync(
+  "sql/wishlists.sql",
+  printPG(false, "wish_list", null, wishlists)
+);
+fs.writeFileSync(
+  "sql/ass_list_product.sql",
+  printPG(false, "ass_list_product", null, ass_list_product)
+);
+fs.writeFileSync("sql/carts.sql", createCarts(carts));
+
+function createCarts(carts) {
+  let ret = "";
+  carts.forEach(cart_ => {
+    ret += cart(cart_) + "\n";
+  });
+  return ret;
+}
+
+function cart({ id, id_client, checkout, id_shipping }) {
+  return `INSERT INTO cart
+  (id, checkout, id_client, id_card, id_address, id_shipping)
+  SELECT ${id}, '${checkout}', ${id_client}, CC.id, ADDR.id, ${id_shipping} FROM
+  (select A.id from address A where A.id_client = ${id_client} ORDER BY RANDOM() LIMIT 1 ) AS ADDR, 
+  (select C.id from credit_card C where id_client = ${id_client} ORDER BY RANDOM() LIMIT 1 ) AS CC;`;
 }
