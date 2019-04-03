@@ -131,9 +131,14 @@ CREATE TABLE shipping(
 	id SERIAL PRIMARY KEY,  
 	method Methods NOT NULL  
 );  
+
+
+CREATE TABLE product_list(  
+	id SERIAL PRIMARY KEY 
+);  
   
 CREATE TABLE ass_list_product(  
-	id_list INTEGER NOT NULL,  
+	id_list INTEGER NOT NULL REFERENCES product_list (id),  
 	id_product INTEGER NOT NULL REFERENCES product (id),  
 	quantity INTEGER NOT NULL,  
 	added_to DATE NOT NULL CONSTRAINT list_prod_date CHECK (added_to <= CURRENT_DATE),  
@@ -143,23 +148,21 @@ CREATE TABLE ass_list_product(
 );  
   
 CREATE TABLE wish_list(  
-	id SERIAL PRIMARY KEY,
+	id INTEGER PRIMARY KEY REFERENCES product_list (id), 
 	name VARCHAR,
 	description VARCHAR,
-	id_client INTEGER NOT NULL REFERENCES client (id),  
-	id_list INTEGER CONSTRAINT unique_wish_list UNIQUE  
+	id_client INTEGER NOT NULL REFERENCES client (id)
 );  
   
   
 CREATE TABLE cart(  
-	id SERIAL PRIMARY KEY,  
-	checkout DATE NOT NULL CONSTRAINT checkout_date CHECK (checkout <= CURRENT_DATE),  
+	id INTEGER PRIMARY KEY REFERENCES product_list (id), 
+	checkout DATE CHECK (checkout <= CURRENT_DATE),  
 	id_client INTEGER NOT NULL REFERENCES client (id),  
 	id_card INTEGER REFERENCES credit_card (id),  
 	id_address INTEGER REFERENCES address (id),  
-	id_shipping INTEGER REFERENCES shipping (id),  
-	id_list INTEGER CONSTRAINT unique_cart UNIQUE  
-);  
+	id_shipping INTEGER REFERENCES shipping (id)
+);    
   
   
 CREATE TABLE specification_body(  
@@ -203,7 +206,7 @@ CREATE TABLE message(
   
 CREATE TABLE review(  
 	id_message INTEGER PRIMARY KEY REFERENCES message (id),  
-	rating INTEGER NOT NULL CONSTRAINT rating_bounds CHECK (rating >= 0 AND rating <= 5)  
+	rating decimal(2, 1) NOT NULL CONSTRAINT rating_bounds CHECK (rating >= 0 AND rating <= 5)  
 );  
   
 CREATE TABLE q_a(  

@@ -10,7 +10,7 @@ CREATE INDEX product_message ON message USING hash (id_product);
 --index client address
 CREATE INDEX client_address ON address USING hash (id_client); 
 
---index client address
+--index client cards
 CREATE INDEX client_card ON address USING hash (id_client); 
 
 --index product image

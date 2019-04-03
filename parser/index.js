@@ -8,13 +8,9 @@ const desktop_id = "428651031";
 const mouse_id = "430567031";
 const music_id = "11055011";
 
-/*
-fork("./parser.js", [
-  "https://www.amazon.co.uk/HP-Professional-Computer-Certified-Refurbished/dp/B071KWKYPW/"
-]);
-fork("./parser.js", [
-  "https://www.amazon.co.uk/ASUS-FX705GM-EV101T-Bezel-Gaming-Laptop/dp/B07HH5XR8K/"
-]);
-*/
-fork("./parse_category.js", [mouse_id]);
-//fork("./parser.js", [url_3]);
+//fork("./parse_category.js", [keyboard_id, "keyboard"]);
+//fork("./parse_category.js", [laptop_id, "laptop"]);
+//fork("./parse_category.js", [book_id, "book"]);
+//fork("./parse_category.js", [desktop_id, "desktop"]);
+//fork("./parse_category.js", [mouse_id, "mouse"]);
+fork("./parse_category.js", [music_id, "music"]);
