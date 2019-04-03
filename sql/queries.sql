@@ -237,7 +237,7 @@ BEGIN TRANSACTION;
     WHERE id_list = $id_cart;
    UPDATE cart
     SET checkout = $checkout, id_card = $id_card, id_address = $id_address, id_shipping = $id_shipping
-    WHERE id = 8;
+    WHERE id = $id_cart;
   WITH ins AS (
     INSERT INTO product_list DEFAULT VALUES
     RETURNING id)
