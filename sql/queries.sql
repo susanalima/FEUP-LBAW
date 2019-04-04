@@ -31,7 +31,7 @@ WHERE P.id = WL.id_client AND P.email LIKE $email; --P.id = $id;
 
 
 --query carts do client
-SELECT C.checkout, TP.price
+SELECT C.id, C.checkout, TP.price
 FROM cart C, client CL, (
 SELECT AP.id_list ,SUM(AP.TotalPrice) AS price
 FROM (
@@ -86,14 +86,17 @@ FROM ass_list_product ALP
 WHERE ALP.id_list = $id;
 
 
---query informacao dos produtos de uma wishlist TODO testing
-SELECT P.id, P.name, P.price, P.ranking, I.filepath, I.description, ALP.added_to, ALP.quantity, ALP.bought, ALP.returned
+--query informacao dos produtos de uma wishlist TODO testing (no image should we take it out?) 
+SELECT P.id, P.name, P.price, I.filepath, I.description, ALP.added_to, ALP.quantity, ALP.bought, ALP.return,
+(SELECT AVG(R.rating) AS rating
+FROM message M, review R
+WHERE M.id = R.id_message AND M.id_product = P.id)
 FROM wish_list WL, ass_list_product ALP, product P, image I
 WHERE WL.id = $id AND WL.id = ALP.id_list AND P.id = ALP.id_product AND I.id_product = P.id AND I.primary_img = 'TRUE';
 
 
---query informacao dos produtos de um cart TODO testing
-SELECT P.id, P.name, P.price, P.ranking, I.filepath, I.description, ALP.added_to, ALP.quantity, ALP.bought, ALP.returned
+--query informacao dos produtos de um cart TODO testing ranking
+SELECT P.id, P.name, P.price, P.ranking, I.filepath, I.description, ALP.added_to, ALP.quantity, ALP.bought, ALP.return
 FROM cart C, ass_list_product ALP, product P, image I
 WHERE C.id = $id AND C.id = ALP.id_list AND P.id = ALP.id_product AND I.id_product = P.id AND I.primary_img = 'TRUE';
 
