@@ -113,6 +113,15 @@ FROM cart C, ass_list_product ALP, product P, image I
 WHERE C.id = $id AND C.id = ALP.id_list AND P.id = ALP.id_product AND I.id_product = P.id AND I.primary_img = 'TRUE';
 
 
+--query informaçao dos produtos de uma categoria TODO testing
+select P.name, P.price, I.filepath, I.description,
+(SELECT AVG(R.rating) AS rating
+FROM message M, review R
+WHERE M.id = R.id_message AND M.id_product = P.id)
+from category C, product P, Image I
+WHERE P.id_category = C.id AND C.id = $id_category AND I.id_product = P.id AND I.primary_img = 'TRUE';
+
+
 --INSERT
 
 --query insert client (creates new person, new non-admin and new client)
