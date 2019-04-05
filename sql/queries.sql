@@ -262,6 +262,10 @@ BEGIN TRANSACTION;
    UPDATE cart
     SET checkout = $checkout, id_card = $id_card, id_address = $id_address, id_shipping = $id_shipping
     WHERE id = $id_cart;
+   UPDATE product
+    SET stock = stock - ALP.quantity
+    FROM cart C, ass_list_product ALP
+    WHERE C.id = $id_cart AND C.id = ALP.id_list AND product.id = ALP.id_product;
   WITH ins AS (
     INSERT INTO product_list DEFAULT VALUES
     RETURNING id)
