@@ -31,7 +31,7 @@ WHERE P.id = WL.id_client AND P.email LIKE $email; --P.id = $id;
 
 
 --query carts do client
-SELECT C.checkout, TP.price
+SELECT C.id, C.checkout, TP.price
 FROM cart C, client CL, (
 SELECT AP.id_list ,SUM(AP.TotalPrice) AS price
 FROM (
@@ -62,6 +62,18 @@ FROM product P, category C
 WHERE P.id_category = C.id AND P.id = $id;
 
 
+--query for product's reviews
+SELECT M.created_at, M.report_counter, M.blocked, M.content, R.rating, M.id_non_admin
+FROM message M, review R
+WHERE R.id_message = M.id AND M.id_product = $id_product;
+
+
+--query for product's Q&As
+SELECT QA.id_message, M.created_at, M.report_counter, M.blocked, M.content, M.id_non_admin, QA.id_answer,A.created_at, A.report_counter, A.blocked, A.content, A.id_non_admin
+FROM message M, q_a QA, message A
+WHERE QA.id_message = M.id AND M.id_product = $id_product AND A.id = QA.id_answer;
+
+
 --query de specifications de produtos 
 SELECT  SH.name , SB.content, APS.id_product
 FROM specification S, specification_body SB, specification_header SH, ass_product_specification APS, product P
@@ -86,16 +98,28 @@ FROM ass_list_product ALP
 WHERE ALP.id_list = $id;
 
 
---query informacao dos produtos de uma wishlist TODO testing
-SELECT P.id, P.name, P.price, P.ranking, I.filepath, I.description, ALP.added_to, ALP.quantity, ALP.bought, ALP.returned
+--query informacao dos produtos de uma wishlist TODO testing (no image should we take it out?) 
+SELECT P.id, P.name, P.price, I.filepath, I.description, ALP.added_to, ALP.quantity, ALP.bought, ALP.return,
+(SELECT AVG(R.rating) AS rating
+FROM message M, review R
+WHERE M.id = R.id_message AND M.id_product = P.id)
 FROM wish_list WL, ass_list_product ALP, product P, image I
 WHERE WL.id = $id AND WL.id = ALP.id_list AND P.id = ALP.id_product AND I.id_product = P.id AND I.primary_img = 'TRUE';
 
 
---query informacao dos produtos de um cart TODO testing
-SELECT P.id, P.name, P.price, P.ranking, I.filepath, I.description, ALP.added_to, ALP.quantity, ALP.bought, ALP.returned
+--query informacao dos produtos de um cart TODO testing 
+SELECT P.id, P.name, P.price, P.ranking, I.filepath, I.description, ALP.added_to, ALP.quantity, ALP.bought, ALP.return
 FROM cart C, ass_list_product ALP, product P, image I
 WHERE C.id = $id AND C.id = ALP.id_list AND P.id = ALP.id_product AND I.id_product = P.id AND I.primary_img = 'TRUE';
+
+
+--query informaçao dos produtos de uma categoria TODO testing
+select P.name, P.price, I.filepath, I.description,
+(SELECT AVG(R.rating) AS rating
+FROM message M, review R
+WHERE M.id = R.id_message AND M.id_product = P.id)
+from category C, product P, Image I
+WHERE P.id_category = C.id AND C.id = $id_category AND I.id_product = P.id AND I.primary_img = 'TRUE';
 
 
 --INSERT
@@ -238,6 +262,10 @@ BEGIN TRANSACTION;
    UPDATE cart
     SET checkout = $checkout, id_card = $id_card, id_address = $id_address, id_shipping = $id_shipping
     WHERE id = $id_cart;
+   UPDATE product
+    SET stock = stock - ALP.quantity
+    FROM cart C, ass_list_product ALP
+    WHERE C.id = $id_cart AND C.id = ALP.id_list AND product.id = ALP.id_product;
   WITH ins AS (
     INSERT INTO product_list DEFAULT VALUES
     RETURNING id)
