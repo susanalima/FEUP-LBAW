@@ -130,7 +130,7 @@ from category;
 --query category specifications (headers)
 select SH.id, SH.name
 from category C, ass_category_specification ACS, specification_header SH
-where C.id = 1 AND ACS.id_category = C.id AND ACS.id_specification_header = SH.id;
+where C.id = $id_category AND ACS.id_category = C.id AND ACS.id_specification_header = SH.id;
 
 
 --INSERT
