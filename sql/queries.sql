@@ -122,6 +122,17 @@ from category C, product P, Image I
 WHERE P.id_category = C.id AND C.id = $id_category AND I.id_product = P.id AND I.primary_img = 'TRUE';
 
 
+--query name and if of all categories
+select id, name
+from category;
+
+
+--query category specifications (headers)
+select SH.id, SH.name
+from category C, ass_category_specification ACS, specification_header SH
+where C.id = 1 AND ACS.id_category = C.id AND ACS.id_specification_header = SH.id;
+
+
 --INSERT
 
 --query insert client (creates new person, new non-admin and new client)
@@ -275,4 +286,10 @@ BEGIN TRANSACTION;
   FROM ins I, cart C
   WHERE C.id = $id_cart;
 COMMIT;
+
+
+--update cart's product quantity
+UPDATE ass_list_product
+SET quantity = $quantity
+WHERE id_list = $id_list AND id_product = $id_product;
 
