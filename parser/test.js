@@ -1,18 +1,33 @@
-const productIDs = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+const Search = require("azure-cognitiveservices-imagesearch");
+const CognitiveServicesCredentials = require("ms-rest-azure")
+  .CognitiveServicesCredentials;
+const serviceKey = "1a08ad1dc2ca4265a8c8010c4ef2e847";
 
-function uniqueProduct(prods) {
-  let temp;
-  let unique = false;
-  do {
-    temp = productIDs[Math.ceil(Math.random() * productIDs.length - 1)];
-    const filtered = prods.filter(p => p === temp);
-    unique = filtered.length === 0;
-  } while (!unique);
-  return temp;
+//instantiate the image search client
+let credentials = new CognitiveServicesCredentials(serviceKey);
+let imageSearchApiClient = new Search.ImageSearchClient(credentials);
+
+async function sendQuery(searchTerm) {
+  return await imageSearchApiClient.imagesOperations.search(searchTerm);
 }
 
-let prods = [1, 2];
+const searchTerm = "golden kylie minogue";
 
-for (let index = 0; index < 20; index++) {
-  console.log(uniqueProduct(prods));
+async function getImage(search) {
+  const { value } = await sendQuery(search);
+
+  const uniqueUrls = new Set();
+  let urls = value.filter(url => {
+    if (uniqueUrls.has(url.name)) {
+      return false;
+    }
+    uniqueUrls.add(url.name);
+    return true;
+  });
+
+  urls = urls.sort(value => value.contentSize).map(image => image.contentUrl);
+
+  console.log(urls);
 }
+
+getImage(searchTerm);

@@ -42,7 +42,7 @@ GROUP BY AP.id_list) AS TP
 WHERE C.id = TP.id_list AND CL.id = C.id_client AND CL.id = $id;
 
 
---query de categorias TODO testing
+--query de categorias 
 SELECT CP.category_name, I.filepath, I.description
 FROM 
 (SELECT P.name AS product_name, P.id AS product_id, C.id AS category_id , C.name AS category_name
@@ -98,22 +98,22 @@ FROM ass_list_product ALP
 WHERE ALP.id_list = $id;
 
 
---query informacao dos produtos de uma wishlist TODO testing (no image should we take it out?) 
-SELECT P.id, P.name, P.price, I.filepath, I.description, ALP.added_to, ALP.quantity, ALP.bought, ALP.return,
+--query informacao dos produtos de uma wishlist
+SELECT P.id, P.name, P.price, ALP.added_to, ALP.quantity, ALP.bought, ALP.return,
 (SELECT AVG(R.rating) AS rating
 FROM message M, review R
-WHERE M.id = R.id_message AND M.id_product = P.id)
+WHERE M.id = R.id_message AND M.id_product = P.id),  I.filepath, I.description
 FROM wish_list WL, ass_list_product ALP, product P, image I
-WHERE WL.id = $id AND WL.id = ALP.id_list AND P.id = ALP.id_product AND I.id_product = P.id AND I.primary_img = 'TRUE';
+WHERE WL.id = $id_wishlist AND WL.id = ALP.id_list AND P.id = ALP.id_product AND I.id_product = P.id AND I.primary_img = 'TRUE';
 
 
---query informacao dos produtos de um cart TODO testing 
-SELECT P.id, P.name, P.price, P.ranking, I.filepath, I.description, ALP.added_to, ALP.quantity, ALP.bought, ALP.return
+--query informacao dos produtos de um cart
+SELECT P.id, P.name, P.price, ALP.added_to, ALP.quantity, ALP.bought, ALP.return,  I.filepath, I.description
 FROM cart C, ass_list_product ALP, product P, image I
 WHERE C.id = $id AND C.id = ALP.id_list AND P.id = ALP.id_product AND I.id_product = P.id AND I.primary_img = 'TRUE';
 
 
---query informaçao dos produtos de uma categoria TODO testing
+--query informaçao dos produtos de uma categoria 
 select P.name, P.price, I.filepath, I.description,
 (SELECT AVG(R.rating) AS rating
 FROM message M, review R
@@ -262,6 +262,10 @@ BEGIN TRANSACTION;
    UPDATE cart
     SET checkout = $checkout, id_card = $id_card, id_address = $id_address, id_shipping = $id_shipping
     WHERE id = $id_cart;
+   UPDATE product
+    SET stock = stock - ALP.quantity
+    FROM cart C, ass_list_product ALP
+    WHERE C.id = $id_cart AND C.id = ALP.id_list AND product.id = ALP.id_product;
   WITH ins AS (
     INSERT INTO product_list DEFAULT VALUES
     RETURNING id)
