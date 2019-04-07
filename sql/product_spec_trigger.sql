@@ -3,6 +3,7 @@ DROP FUNCTION IF EXISTS check_specs() CASCADE;
 CREATE FUNCTION check_specs() RETURNS TRIGGER AS
 $BODY$
 BEGIN
+IF NEW.state
 IF EXISTS(
     WITH specs AS(
         SELECT SP.id, SP.id_specification_header
