@@ -55,4 +55,43 @@ CREATE TRIGGER insert_ass_list_product
 
 
 
+--trigger validate cart card info
+CREATE FUNCTION insert_cart_card() RETURNS TRIGGER AS
+$BODY$
+BEGIN
+    IF NOT EXISTS (SELECT 1 FROM credit_card C WHERE C.id_client = NEW.id_client) THEN
+        RAISE EXCEPTION 'The credit card added to the cart must belong to the cart s owner';
+    END IF;
+    RETURN NEW;
+END
+$BODY$
+LANGUAGE plpgsql;
+ 
+CREATE TRIGGER insert_cart_card
+    BEFORE INSERT OR UPDATE OF id_card 
+    ON cart
+    FOR EACH ROW
+    EXECUTE PROCEDURE insert_cart_card();
+
+
+--trigger validate cart card address
+CREATE FUNCTION insert_cart_address() RETURNS TRIGGER AS
+$BODY$
+BEGIN
+     IF NOT EXISTS (SELECT 1 FROM address A WHERE A.id_client = NEW.id_client AND NEW.id_address = A.id) THEN
+        RAISE EXCEPTION 'The address added to the cart must belong to the cart s owner';
+    END IF;
+    RETURN NEW;
+END
+$BODY$
+LANGUAGE plpgsql;
+ 
+CREATE TRIGGER insert_cart_address
+  BEFORE INSERT OR UPDATE OF id_address
+  ON cart
+  FOR EACH ROW
+  EXECUTE PROCEDURE insert_cart_address();
+
+
+
 

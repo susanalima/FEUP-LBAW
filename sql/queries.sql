@@ -42,7 +42,7 @@ GROUP BY AP.id_list) AS TP
 WHERE C.id = TP.id_list AND CL.id = C.id_client AND CL.id = $id;
 
 
---query de categorias TODO testing
+--query de categorias 
 SELECT CP.category_name, I.filepath, I.description
 FROM 
 (SELECT P.name AS product_name, P.id AS product_id, C.id AS category_id , C.name AS category_name
@@ -52,6 +52,10 @@ WHERE CP.category_id = $id AND I.id_product = CP.product_id AND I.primary_img = 
 ORDER BY RANDOM()
 LIMIT 1 
 
+--query de procura de produto por termos presentes no nome
+SELECT * 
+FROM product
+WHERE to_tsvector('english', name) @@ plainto_tsquery('english', $search_term) ORDER BY ts_rank(to_tsvector('english', name), plainto_tsquery('english', $search_term)) DESC
 
 --query informaçao do produto (nome, preço, stock, categoria, ranking)
 SELECT P.name, P.price, P.stock, C.name, 
@@ -98,28 +102,39 @@ FROM ass_list_product ALP
 WHERE ALP.id_list = $id;
 
 
---query informacao dos produtos de uma wishlist TODO testing (no image should we take it out?) 
-SELECT P.id, P.name, P.price, I.filepath, I.description, ALP.added_to, ALP.quantity, ALP.bought, ALP.return,
+--query informacao dos produtos de uma wishlist
+SELECT P.id, P.name, P.price, ALP.added_to, ALP.quantity, ALP.bought, ALP.return,
 (SELECT AVG(R.rating) AS rating
 FROM message M, review R
-WHERE M.id = R.id_message AND M.id_product = P.id)
+WHERE M.id = R.id_message AND M.id_product = P.id),  I.filepath, I.description
 FROM wish_list WL, ass_list_product ALP, product P, image I
-WHERE WL.id = $id AND WL.id = ALP.id_list AND P.id = ALP.id_product AND I.id_product = P.id AND I.primary_img = 'TRUE';
+WHERE WL.id = $id_wishlist AND WL.id = ALP.id_list AND P.id = ALP.id_product AND I.id_product = P.id AND I.primary_img = 'TRUE';
 
 
---query informacao dos produtos de um cart TODO testing 
-SELECT P.id, P.name, P.price, P.ranking, I.filepath, I.description, ALP.added_to, ALP.quantity, ALP.bought, ALP.return
+--query informacao dos produtos de um cart
+SELECT P.id, P.name, P.price, ALP.added_to, ALP.quantity, ALP.bought, ALP.return,  I.filepath, I.description
 FROM cart C, ass_list_product ALP, product P, image I
 WHERE C.id = $id AND C.id = ALP.id_list AND P.id = ALP.id_product AND I.id_product = P.id AND I.primary_img = 'TRUE';
 
 
---query informaçao dos produtos de uma categoria TODO testing
+--query informaçao dos produtos de uma categoria 
 select P.name, P.price, I.filepath, I.description,
 (SELECT AVG(R.rating) AS rating
 FROM message M, review R
 WHERE M.id = R.id_message AND M.id_product = P.id)
 from category C, product P, Image I
 WHERE P.id_category = C.id AND C.id = $id_category AND I.id_product = P.id AND I.primary_img = 'TRUE';
+
+
+--query name and if of all categories
+select id, name
+from category;
+
+
+--query category specifications (headers)
+select SH.id, SH.name
+from category C, ass_category_specification ACS, specification_header SH
+where C.id = $id_category AND ACS.id_category = C.id AND ACS.id_specification_header = SH.id;
 
 
 --INSERT
@@ -275,4 +290,10 @@ BEGIN TRANSACTION;
   FROM ins I, cart C
   WHERE C.id = $id_cart;
 COMMIT;
+
+
+--update cart's product quantity
+UPDATE ass_list_product
+SET quantity = $quantity
+WHERE id_list = $id_list AND id_product = $id_product;
 
