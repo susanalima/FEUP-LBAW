@@ -88,8 +88,11 @@ const bodies = [
     Array.from(
       new Set(
         products
-          .filter(val => val[header] != undefined)
-          .map(val => val[header].toLowerCase())
+          .filter(val => val[header] !== undefined)
+          .map(val => {
+            if (typeof val[header] === "boolean") return val[header];
+            else return val[header].toLowerCase();
+          })
       )
     )
   )
@@ -110,7 +113,12 @@ function postgresInsert(object) {
   for (let index = 0; index < keys.length; index++) {
     const header = specification_headers[keys[index]];
     if (header && !Array.isArray(header)) {
-      const elem = object[keys[index]].toLowerCase();
+      let elem;
+      if (typeof object[keys[index]] === "boolean") {
+        elem = object[keys[index]];
+      } else {
+        elem = object[keys[index]].toLowerCase();
+      }
 
       const body = specification_bodies[elem];
 
@@ -178,22 +186,30 @@ fs.writeFileSync("sql/cat.sql", printPG(false, "category", null, ret3));
 
 function category(product) {
   if (product.media_type) {
-    return categories_headers["music"];
+    return "music";
   } else if (product["isbn-13"]) {
-    return categories_headers["books"];
+    return "books";
   } else if (product.name.toLowerCase().includes("headphone")) {
-    return categories_headers["headphones"];
+    return "headphones";
+  } else if (product.name.toLowerCase().includes("mouse")) {
+    return "mouse";
   } else if (
     product.name.toLowerCase().includes("notebook") ||
+    product.name.toLowerCase().includes("laptop") ||
+    product.name.toLowerCase().includes("imac") ||
+    product.name.toLowerCase().includes("elitebook") ||
+    product.name.toLowerCase().includes("chromebit") ||
+    product.name.toLowerCase().includes("thinkpad") ||
     product.name.toLowerCase().includes("chromebook")
   ) {
-    return categories_headers["laptop"];
-  } else if (product.name.toLowerCase().includes("mouse")) {
-    return categories_headers["mouse"];
-  } else if (product.name.toLowerCase().includes("pc")) {
-    return categories_headers["computer"];
+    return "laptop";
+  } else if (
+    product.name.toLowerCase().includes("pc") ||
+    product.name.toLowerCase().includes("desktop")
+  ) {
+    return "computer";
   } else if (product.name.toLowerCase().includes("keyboard")) {
-    return categories_headers["keyboards"];
+    return "keyboards";
   }
 }
 
@@ -203,7 +219,7 @@ const printableProducts = products.map(product => {
     name: product.name,
     price: product.price ? product.price.replace(/£|€|,/g, "") : "24.90",
     stock: product.stock,
-    id_category: category(product),
+    id_category: categories_headers[category(product)],
     available: product.available
   };
   return obj;
