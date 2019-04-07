@@ -86,7 +86,7 @@ CREATE TRIGGER insert_cart_card
     EXECUTE PROCEDURE insert_cart_card();
 
 
---trigger validate cart card address
+--trigger validate cart address
 CREATE FUNCTION insert_cart_address() RETURNS TRIGGER AS
 $BODY$
 BEGIN
