@@ -13,7 +13,7 @@ IF EXISTS(
     ),
     specs AS(
         SELECT SP.id, SP.id_specification_header
-        FROM specs_associations SA, specifications SP
+        FROM specs_associations SA, specification SP
         Where SA.id_specification = SP.id
     ),
     product_headers AS(
@@ -34,7 +34,7 @@ IF EXISTS(
         ORDER BY IH.id ASC
     )
     ((SELECT * FROM product_headers EXCEPT SELECT * FROM category_headers) UNION ALL (SELECT * FROM category_headers EXCEPT SELECT * FROM product_headers)))
-    THEN RAISE EXCEPTION 'The product added does not have the required specifications for its category.';
+    THEN RAISE EXCEPTION 'The product added does not have the correct specifications for its category.';
     END IF;
     END IF;
     RETURN NEW;
