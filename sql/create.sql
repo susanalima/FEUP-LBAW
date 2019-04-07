@@ -117,7 +117,7 @@ CREATE TABLE product(
 	price FLOAT NOT NULL CONSTRAINT not_neg_price CHECK (price >= 0),  
 	stock INTEGER NOT NULL CONSTRAINT not_neg_stock CHECK (stock >= 0),  
 	id_category INTEGER NOT NULL REFERENCES category (id),
-	available BOOLEAN NOT NULL
+	available BOOLEAN DEFAULT false NOT NULL
 );  
 CREATE TABLE image(  
 	id SERIAL PRIMARY KEY,  
