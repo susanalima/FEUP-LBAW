@@ -52,7 +52,7 @@ WHERE CP.category_id = $id AND I.id_product = CP.product_id AND I.primary_img = 
 ORDER BY RANDOM()
 LIMIT 1 
 
---query de procura de produto por termos presentes no nome
+--query de procura de produtos por termos presentes no nome
 SELECT * 
 FROM product
 WHERE to_tsvector('english', name) @@ plainto_tsquery('english', $search_term) ORDER BY ts_rank(to_tsvector('english', name), plainto_tsquery('english', $search_term)) DESC
