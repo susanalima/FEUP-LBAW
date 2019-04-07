@@ -1,0 +1,1 @@
+CREATE INDEX search_product on product USING GIST (to_tsvector('english', name))
