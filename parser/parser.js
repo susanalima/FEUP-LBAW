@@ -21,6 +21,8 @@ async function getInfo(url) {
       let reviews = await getReviews(details.ASIN, no_pages_query);
       let pictures = getPictures(html);
 
+      console.log(name);
+
       let info = {
         ...normalize_headers({
           ...details,
@@ -34,7 +36,9 @@ async function getInfo(url) {
         pictures
       };
       return info;
-    } catch (e) {}
+    } catch (e) {
+      console.log(e);
+    }
   }
 }
 
@@ -99,7 +103,7 @@ function getPrice(html) {
 }
 
 function getName(html) {
-  const title = $("#productTitle", html)[0];
+  const title = $("#[id*=Title]", html)[0];
   return clean(title.children[0].data);
 }
 

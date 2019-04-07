@@ -17,11 +17,14 @@ console.log(files.length);
 files.forEach(file => {
   try {
     const obj = fs.readFileSync(file);
+    const available = Math.random() < 0.05;
+
     products.push({
       ...JSON.parse(obj),
       id: file.substring(13, file.length - 5),
       specs: [],
-      cat: -1
+      cat: -1,
+      available
     });
   } catch (e) {}
 });
@@ -173,13 +176,35 @@ fs.writeFileSync(
 const ret3 = toArray(categories_headers, "name");
 fs.writeFileSync("sql/cat.sql", printPG(false, "category", null, ret3));
 
+function category(product) {
+  if (product.media_type) {
+    return categories_headers["music"];
+  } else if (product["isbn-13"]) {
+    return categories_headers["books"];
+  } else if (product.name.toLowerCase().includes("headphone")) {
+    return categories_headers["headphones"];
+  } else if (
+    product.name.toLowerCase().includes("notebook") ||
+    product.name.toLowerCase().includes("chromebook")
+  ) {
+    return categories_headers["laptop"];
+  } else if (product.name.toLowerCase().includes("mouse")) {
+    return categories_headers["mouse"];
+  } else if (product.name.toLowerCase().includes("pc")) {
+    return categories_headers["computer"];
+  } else if (product.name.toLowerCase().includes("keyboard")) {
+    return categories_headers["keyboards"];
+  }
+}
+
 const printableProducts = products.map(product => {
   const obj = {
     id: product.id,
     name: product.name,
     price: product.price ? product.price.replace(/£|€|,/g, "") : "24.90",
     stock: product.stock,
-    id_category: 2
+    id_category: category(product),
+    available: product.available
   };
   return obj;
 });
@@ -454,3 +479,5 @@ function cart({ id, id_client, checkout, id_shipping }) {
   (select A.id from address A where A.id_client = ${id_client} ORDER BY RANDOM() LIMIT 1 ) AS ADDR, 
   (select C.id from credit_card C where id_client = ${id_client} ORDER BY RANDOM() LIMIT 1 ) AS CC;`;
 }
+
+module.exports = { printPG };

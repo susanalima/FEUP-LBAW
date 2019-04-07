@@ -11,8 +11,8 @@ const headphones_id = "4222329031";
 
 //fork("./parse_category.js", [keyboard_id, "keyboard"]);
 //fork("./parse_category.js", [laptop_id, "laptop"]);
-//fork("./parse_category.js", [book_id, "book"]);
+fork("./parse_category.js", [book_id, "books"]);
 //fork("./parse_category.js", [desktop_id, "desktop"]);
 //fork("./parse_category.js", [mouse_id, "mouse"]);
 //fork("./parse_category.js", [music_id, "music"]);
-fork("./parse_category.js", [headphones_id, "headphones"]);
+//fork("./parse_category.js", [headphones_id, "headphones"]);
