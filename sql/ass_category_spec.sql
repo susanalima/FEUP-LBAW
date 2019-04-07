@@ -34,9 +34,7 @@ INSERT INTO ass_category_specification (id_specification_header, id_category) VA
 INSERT INTO ass_category_specification (id_specification_header, id_category) VALUES (14, 1);
 INSERT INTO ass_category_specification (id_specification_header, id_category) VALUES (15, 0);
 INSERT INTO ass_category_specification (id_specification_header, id_category) VALUES (15, 1);
-INSERT INTO ass_category_specification (id_specification_header, id_category) VALUES (16, 0);
 INSERT INTO ass_category_specification (id_specification_header, id_category) VALUES (16, 1);
-INSERT INTO ass_category_specification (id_specification_header, id_category) VALUES (17, 0);
 INSERT INTO ass_category_specification (id_specification_header, id_category) VALUES (17, 1);
 INSERT INTO ass_category_specification (id_specification_header, id_category) VALUES (18, 4);
 INSERT INTO ass_category_specification (id_specification_header, id_category) VALUES (19, 4);
