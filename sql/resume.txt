@@ -13,7 +13,4 @@ added 1000 entries to message_product
 added 1500 entries to address
 added 1500 entries to credit_card
 added 600 promotions
-	1-200 present
-	201-400 past
-	401-600 future
-added 4000 ass_product_promotion
+added 2000 ass_product_promotion
