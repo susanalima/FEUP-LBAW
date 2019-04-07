@@ -4,7 +4,7 @@ const axios = require("axios");
 const Search = require("azure-cognitiveservices-imagesearch");
 const CognitiveServicesCredentials = require("ms-rest-azure")
   .CognitiveServicesCredentials;
-const serviceKey = "1a08ad1dc2ca4265a8c8010c4ef2e847";
+const serviceKey = process.env.SERVICE_KEY;
 const imageNo = process.env.IMAGES || 1;
 
 let credentials = new CognitiveServicesCredentials(serviceKey);
@@ -46,9 +46,10 @@ async function getImages({ name, id, brand }, n) {
       const res = await downloadImage(url, path);
       if (res === undefined) {
         console.log("UNDEFINED");
-      }
-      if (res && !res.status) {
+      } else if (res && !res.status) {
         console.log("Error " + res.error);
+      } else {
+        console.log("SUCESS!");
       }
     });
   } catch (error) {
