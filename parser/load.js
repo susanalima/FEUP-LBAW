@@ -17,7 +17,7 @@ console.log(files.length);
 files.forEach(file => {
   try {
     const obj = fs.readFileSync(file);
-    const available = Math.random() < 0.05;
+    const available = Math.random() > 0.05;
 
     products.push({
       ...JSON.parse(obj),
