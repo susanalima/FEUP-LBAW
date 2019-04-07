@@ -31,7 +31,9 @@ DROP TABLE IF EXISTS q_a CASCADE;
 DROP TABLE IF EXISTS promotion CASCADE;  
 DROP TABLE IF EXISTS specification_body CASCADE;  
 DROP TABLE IF EXISTS specification_header CASCADE;  
-DROP TABLE IF EXISTS product_list CASCADE;  
+DROP TABLE IF EXISTS product_list CASCADE; 
+DROP TABLE IF EXISTS ass_product_promotion CASCADE; 
+
   
 CREATE TABLE person(  
 	id SERIAL PRIMARY KEY,  
