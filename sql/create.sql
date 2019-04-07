@@ -28,7 +28,7 @@ DROP TABLE IF EXISTS ass_product_specification CASCADE;
 DROP TABLE IF EXISTS message CASCADE;  
 DROP TABLE IF EXISTS review CASCADE;  
 DROP TABLE IF EXISTS q_a CASCADE;  
-DROP TABLE IF EXISTS promotions CASCADE;  
+DROP TABLE IF EXISTS promotion CASCADE;  
 DROP TABLE IF EXISTS specification_body CASCADE;  
 DROP TABLE IF EXISTS specification_header CASCADE;  
 DROP TABLE IF EXISTS product_list CASCADE;  
@@ -216,13 +216,19 @@ CREATE TABLE q_a(
 	id_answer INTEGER REFERENCES message (id)  
 );  
   
-CREATE TABLE promotions(  
+CREATE TABLE promotion(  
 	id SERIAL PRIMARY KEY,  
 	discount INTEGER NOT NULL CONSTRAINT discount_bounds CHECK (discount >= 0 AND discount < 100),  
 	end_date DATE NOT NULL,  
 	start_date DATE NOT NULL CONSTRAINT start_date_valid CHECK (end_date > start_date),  
 	name VARCHAR NOT NULL,  
 	description VARCHAR  
+);
+
+CREATE TABLE ass_product_promotion(  
+	id_promotion INTEGER REFERENCES promotion (id),  
+	id_product INTEGER REFERENCES product(id),  
+	PRIMARY KEY(id_promotion, id_product)  
 );  
   
   
