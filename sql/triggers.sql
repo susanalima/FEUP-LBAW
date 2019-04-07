@@ -1,3 +1,15 @@
+DROP FUNCTION IF EXISTS delete_product_list() CASCADE;
+DROP FUNCTION IF EXISTS product_primary_img() CASCADE;
+DROP FUNCTION IF EXISTS insert_ass_list_product() CASCADE;
+DROP FUNCTION IF EXISTS insert_cart_card() CASCADE;
+DROP FUNCTION IF EXISTS insert_cart_address() CASCADE;
+ 
+DROP TRIGGER IF EXISTS delete_product_list ON product_list;
+DROP TRIGGER IF EXISTS product_primary_img ON image;
+DROP TRIGGER IF EXISTS insert_ass_list_product ON ass_list_product;
+DROP TRIGGER IF EXISTS insert_cart_card ON cart;
+DROP TRIGGER IF EXISTS insert_cart_address ON cart;
+
 
 --trigger delete product_list
 CREATE FUNCTION delete_product_list() RETURNS TRIGGER AS
