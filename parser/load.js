@@ -97,22 +97,41 @@ const bodies = [
     )
   )
 ].flat();
+const specs = JSON.parse(fs.readFileSync("specs.json"));
 
 const specification_headers = createDictionary(headers_names);
 const specification_bodies = createDictionary(bodies);
 const categories_headers = createDictionary(categories_names);
 const productIDs = products.map(val => val.id);
-products.map(val => (val["cat"] = categories_headers[val.category]));
+products.forEach(val => {
+  val["category"] = category(val);
+  val["cat"] = categories_headers[category(val)];
+});
 
-const specifications = Array.from(new Set(products.map(postgresInsert).flat()));
+const specificationsTemp = Array.from(
+  new Set(products.map(postgresInsert).flat())
+);
+
+const specifications = specificationsTemp.reduce((acc, current) => {
+  const x = acc.find(
+    item => item.header === current.header && item.body === current.body
+  );
+  if (!x) {
+    return acc.concat([current]);
+  } else {
+    return acc;
+  }
+}, []);
 
 function postgresInsert(object) {
   const specifications = [];
+  const expectedSpecs = specs[object.category];
 
   const keys = Object.keys(object);
   for (let index = 0; index < keys.length; index++) {
     const header = specification_headers[keys[index]];
-    if (header && !Array.isArray(header)) {
+    const isExpected = expectedSpecs.find(val => val == keys[index]);
+    if (header !== undefined && !Array.isArray(header) && isExpected) {
       let elem;
       if (typeof object[keys[index]] === "boolean") {
         elem = object[keys[index]];
@@ -214,6 +233,9 @@ function category(product) {
 }
 
 const printableProducts = products.map(product => {
+  if (product.id == "192") {
+    console.log("HEY");
+  }
   const obj = {
     id: product.id,
     name: product.name,
