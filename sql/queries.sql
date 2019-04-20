@@ -1,10 +1,9 @@
 --SELECT
 
 --query de login
-SELECT password
+SELECT id 
 FROM person P
-WHERE P.email LIKE $email;
-
+WHERE P.email LIKE $email AND P.password LIKE $password;
 
 --query informaçao pessoal do client 
 SELECT name, email, nif

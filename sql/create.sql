@@ -185,11 +185,10 @@ CREATE TABLE specification(
 	id_specification_header INTEGER REFERENCES specification_header (id)  
 );  
   
-CREATE TABLE ass_category_specification(  
-	id_specification_header INTEGER REFERENCES specification_header (id),  
+CREATE TABLE ass_category_specification(   
 	id_category INTEGER REFERENCES category(id),  
+	id_specification_header INTEGER REFERENCES specification_header (id), 
 	PRIMARY KEY(id_specification_header, id_category)  
-   
 );  
 
 CREATE TABLE ass_product_specification(  

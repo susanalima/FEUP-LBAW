@@ -15,6 +15,3 @@ CREATE INDEX product_image ON image USING hash (id_product);
 
 --index product message
 CREATE INDEX product_message ON message USING hash (id_product); 
-
---index category ass_category_specification
-CREATE INDEX category_ass_category_specification ON ass_category_specification USING hash (id_category); 

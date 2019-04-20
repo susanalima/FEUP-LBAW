@@ -1,3 +1,5 @@
+--Note : run triggers (last section of this script) after running data.sql script to avoid trigger related errors
+
 -----------------------------------------
 -- Drop old schmema
 -----------------------------------------
@@ -34,6 +36,14 @@ DROP TABLE IF EXISTS specification_body CASCADE;
 DROP TABLE IF EXISTS specification_header CASCADE;  
 DROP TABLE IF EXISTS product_list CASCADE; 
 DROP TABLE IF EXISTS ass_product_promotion CASCADE; 
+
+DROP INDEX IF EXISTS email_person;
+DROP INDEX IF EXISTS category_product;
+DROP INDEX IF EXISTS client_address;
+DROP INDEX IF EXISTS client_card;
+DROP INDEX IF EXISTS product_image;
+DROP INDEX IF EXISTS product_message;
+DROP INDEX IF EXISTS search_product;
 
 DROP FUNCTION IF EXISTS delete_product_list() CASCADE;
 DROP FUNCTION IF EXISTS product_primary_img() CASCADE;
@@ -210,11 +220,10 @@ CREATE TABLE specification(
 	id_specification_header INTEGER REFERENCES specification_header (id)  
 );  
   
-CREATE TABLE ass_category_specification(  
-	id_specification_header INTEGER REFERENCES specification_header (id),  
+CREATE TABLE ass_category_specification(   
 	id_category INTEGER REFERENCES category(id),  
+	id_specification_header INTEGER REFERENCES specification_header (id), 
 	PRIMARY KEY(id_specification_header, id_category)  
-   
 );  
 
 CREATE TABLE ass_product_specification(  
@@ -280,14 +289,15 @@ CREATE INDEX product_image ON image USING hash (id_product);
 --index product message
 CREATE INDEX product_message ON message USING hash (id_product); 
 
---index category ass_category_specification
-CREATE INDEX category_ass_category_specification ON ass_category_specification USING hash (id_category); 
-
 CREATE INDEX search_product on product USING GIST (to_tsvector('english', name));
 
 -----------------------------------------
--- TRIGGERS and UDFs
+-- TRIGGERS and UDFs *
 -----------------------------------------
+
+--* run triggers after running data.sql script to avoid trigger related errors
+--in the database script the carts are inserted with all checkout information,
+--the products are added to the carts after, which triggers one of the triggers (TRIGGER03)
 
 --trigger delete product_list
 CREATE FUNCTION delete_product_list() RETURNS TRIGGER AS
@@ -382,6 +392,7 @@ CREATE TRIGGER insert_cart_address
   FOR EACH ROW
   EXECUTE PROCEDURE insert_cart_address();
   
+
 CREATE FUNCTION check_specs() RETURNS TRIGGER AS
 $BODY$
 BEGIN
