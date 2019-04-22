@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\Client;
+use App\NonAdmin;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -14,7 +16,7 @@ class RegisterController extends Controller
     | Register Controller
     |--------------------------------------------------------------------------
     |
-    | This controller handles the registration of new users as well as their
+    | This controller handles the registration of new Users as well as their
     | validation and creation. By default this controller uses a trait to
     | provide this functionality without requiring any additional code.
     |
@@ -23,11 +25,11 @@ class RegisterController extends Controller
     use RegistersUsers;
 
     /**
-     * Where to redirect users after registration.
+     * Where to redirect Users after registration.
      *
      * @var string
      */
-    protected $redirectTo = '/';
+    protected $redirectTo = '/home';
 
     /**
      * Create a new controller instance.
@@ -49,23 +51,39 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
+            'email' => 'required|string|email|max:255|unique:person',
+            'nif' => 'required|numeric|digits:9',
             'password' => 'required|string|min:6|confirmed',
         ]);
     }
 
     /**
-     * Create a new user instance after a valid registration.
+     * Create a new User instance after a valid registration.
      *
      * @param  array  $data
      * @return \App\User
      */
     protected function create(array $data)
     {
-        return User::create([
+        $person = User::create([
             'name' => $data['name'],
+            'password' => $data['password'],
             'email' => $data['email'],
-            'password' => bcrypt($data['password']),
+            //'password' => bcrypt($data['password']), for now...
         ]);
+
+        NonAdmin::create([
+            'id' => $person->id,
+            'blocked' => false,
+        ]);
+
+        Client::create([
+            'id' => $person->id,
+            'nif' => $data['nif'],
+        ]);
+
+        return $person;
     }
+
+
 }
