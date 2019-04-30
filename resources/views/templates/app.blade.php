@@ -20,10 +20,10 @@
             integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
             crossorigin="anonymous"
         />
-        <link rel="stylesheet" href="css/styles.css" />
+        <link rel="stylesheet" href="{{ URL::asset('css/styles.css') }}" />
 
-        <link rel="stylesheet" href="css/topBar.css" />
-        <link rel="stylesheet" href="css/main.css" />
+        <link rel="stylesheet" href="{{ URL::asset('css/topBar.css') }}"" />
+        <link rel="stylesheet" href="{{ URL::asset('css/main.css') }}"" />
 
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">

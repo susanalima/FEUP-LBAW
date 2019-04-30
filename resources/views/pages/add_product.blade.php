@@ -5,7 +5,7 @@
 <div class="mainContent">
     <!-- Image and text -->
     <h1 class="text-center p-3">Add Product</h1>
-    <form>
+    <form method="POST" action=".">
         <div class="w-75 mx-auto my-5">
             <div class="row">
                 <div class="col-12 col-md-8">
@@ -45,7 +45,7 @@
                         <div class="carousel-inner">
                             <div class="carousel-item active">
                                 <a href="./product.html">
-                                    <img src="./images/img.png" class="d-block w-100" alt="Product Image" />
+                                    <img src="{{ URL::asset('images/img.png') }}" class="d-block w-100" alt="Product Image" />
                                 </a>
                                 <div class="carousel-caption d-none d-md-block">
                                     <h5>Image Preview</h5>
@@ -53,7 +53,7 @@
                             </div>
                             <div class="carousel-item">
                                 <a href="./search.html">
-                                    <img src="./images/placeholder.png" class="d-block w-100" alt="Product Image" />
+                                    <img src="{{ URL::asset('images/placeholder.png') }}" class="d-block w-100" alt="Product Image" />
                                 </a>
                                 <div class="carousel-caption d-none d-md-block">
                                     <h5>Image Preview</h5>
@@ -61,7 +61,7 @@
                             </div>
                             <div class="carousel-item">
                                 <a href="./product.html">
-                                    <img src="./images/img.png" class="d-block w-100" alt="Product Image" />
+                                    <img src="{{ URL::asset('images/img.png') }}" class="d-block w-100" alt="Product Image" />
                                 </a>
                                 <div class="carousel-caption d-none d-md-block">
                                     <h5>Image Preview</h5>
