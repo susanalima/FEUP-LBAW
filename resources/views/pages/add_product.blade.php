@@ -1,6 +1,7 @@
 @extends('templates.app')
 
 @section('content')
+<script type="text/javascript" src="{{ URL::asset('js/app.js') }}" defer></script>
 <div class="mainContent">
     <!-- Image and text -->
     <h1 class="text-center p-3">Add Product</h1>
@@ -20,7 +21,7 @@
                     <div class="form-group row">
                         <label for="addProductCategory" class="col-sm-2 col-form-label px-0">Category</label>
                         <div class="col-sm-8 px-0">
-                            <select id="addProductCategory" class="form-control">
+                            <select id="addProductCategorySpinner" class="form-control">
                             @foreach ($categories as $category)
                                 <option value="{{$category["id"]}}"> {{ucfirst($category["name"])}} </option>
                             @endforeach
@@ -86,36 +87,16 @@
                 <label for="addProductDescription" class="col-form-label px-0">Description</label>
                 <textarea class="form-control" id="addProductDescription"></textarea>
             </div>
-
-            <p class="row px-0"> Specifications </p>
-
-            <div class="form-group row">
-                <label for="addProductName" class="col-sm-1 col-form-label">Spec1</label>
+            
+            <p class="row px-0" id="specs"> Specifications </p>
+            @foreach ($specs as $spec)
+                <div class="form-group row insertSpec">
+                <label for="addProductName" class="col-sm-1 col-form-label">{{$spec["name"]}}</label>
                 <div class="col-sm-11 px-0">
-                    <input type="text" class="form-control" id="addProductName" placeholder="Spec1">
+                    <input type="text" class="form-control" id="spec_{{$spec["id"]}}" placeholder="">
                 </div>
             </div>
-
-            <div class="form-group row">
-                <label for="addProductName" class="col-sm-1 col-form-label">Spec2</label>
-                <div class="col-sm-11 px-0">
-                    <input type="text" class="form-control" id="addProductName" placeholder="Spec2">
-                </div>
-            </div>
-
-            <div class="form-group row">
-                <label for="addProductName" class="col-sm-1 col-form-label">Spec3</label>
-                <div class="col-sm-11 px-0">
-                    <input type="text" class="form-control" id="addProductName" placeholder="Spec3">
-                </div>
-            </div>
-
-            <div class="form-group row">
-                <label for="addProductName" class="col-sm-1 col-form-label">Spec4</label>
-                <div class="col-sm-11 px-0">
-                    <input type="text" class="form-control" id="addProductName" placeholder="Spec4">
-                </div>
-            </div>
+            @endforeach
             <div class="row justify-content-center">
                 <button type="submit" class="btn button-submit mt-3">Add Product</button>
             </div>
