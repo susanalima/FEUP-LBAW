@@ -33,7 +33,7 @@ class ProductController extends Controller
    return redirect()->route('product_create', ['error' => $data['error']]);
   }
 
-  return redirect()->route('product_page', ['id' => 200]);
+  return redirect()->route('product_page', ['id' => 150]);
   //return response("Product added with success", 200);
  }
 }

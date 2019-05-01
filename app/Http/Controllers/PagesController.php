@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Aux\Aux;
 use App\Category;
+use App\Product;
 
 class PagesController extends Controller
 {
@@ -85,6 +87,18 @@ class PagesController extends Controller
 
  public function product($id)
  {
+  $product = Product::find($id);
+  $product['category'] = Aux::formatHeader($product->category['name']);
+  $product['images'] = $product->images;
+  $product['specs'] = $product->specifications->map(function ($a) {return $a->spec();});
 
+  $data = array(
+   'type' => 'product',
+   'interactive' => true,
+   'product' => $product,
+  );
+
+  return view("pages.product")->with($data);
  }
+
 }
