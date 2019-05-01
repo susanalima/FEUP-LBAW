@@ -4,15 +4,22 @@
 <script type="text/javascript" src="{{ URL::asset('js/app.js') }}" defer></script>
 <div class="mainContent">
     <!-- Image and text -->
+    @isset ($error)
+    <div class="alert alert-danger" role="alert">
+        {{$error}}
+    </div>
+    @endisset
+
     <h1 class="text-center p-3">Add Product</h1>
-    <form method="POST" action=".">
+    <form method="POST" action="{{ route('product_add') }}">
+        {{ csrf_field() }}
         <div class="w-75 mx-auto my-5">
             <div class="row">
                 <div class="col-12 col-md-8">
                     <div class="form-group row">
                         <label for="addProductName" class="col-sm-2 col-form-label px-0">Product</label>
                         <div class="col-sm-8 px-0">
-                            <input type="text" class="form-control" id="addProductName" placeholder="Name">
+                            <input type="text" class="form-control" id="product_name" placeholder="Name" name="product_name" required>
                         </div>
                     </div>
                     <div class="form-group row justify-content-center">
@@ -21,7 +28,7 @@
                     <div class="form-group row">
                         <label for="addProductCategory" class="col-sm-2 col-form-label px-0">Category</label>
                         <div class="col-sm-8 px-0">
-                            <select id="addProductCategorySpinner" class="form-control">
+                            <select id="addProductCategorySpinner" class="form-control" name="category">
                             @foreach ($categories as $category)
                                 <option value="{{$category["id"]}}"> {{ucfirst($category["name"])}} </option>
                             @endforeach

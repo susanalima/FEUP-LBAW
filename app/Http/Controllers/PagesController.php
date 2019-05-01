@@ -49,7 +49,7 @@ class PagesController extends Controller
   return view("pages.login")->with($data);
  }
 
- public function add_product()
+ public function product_create($error = null)
  {
   $cats = Category::all()->map(function ($category) {
    return array("id" => $category->id, "name" => $category->name);
@@ -75,6 +75,16 @@ class PagesController extends Controller
    'categories' => $cats,
    'specs' => $specs,
   );
+
+  if ($error !== null) {
+   $data['error'] = $error;
+  }
+
   return view("pages.add_product")->with($data);
+ }
+
+ public function product($id)
+ {
+
  }
 }

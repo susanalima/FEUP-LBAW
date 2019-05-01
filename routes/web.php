@@ -16,8 +16,8 @@ Route::get('/help', "PagesController@help");
 Route::get('/contacts', "PagesController@contacts");
 Route::get('/faq', "PagesController@faq");
 
-Route::get('/product/create', "PagesController@add_product");
-Route::get('/product', "PagesController@product")->name('product_page');
-Route::post('/product', "ProductController@add_product")->name('add_product');
+Route::get('/product/create/{error?}', "PagesController@product_create")->name('product_create');
+Route::get('/product/{id}', "PagesController@product")->name('product_page');
+Route::post('/product', "ProductController@add_product")->name('product_add');
 
 Auth::routes();
