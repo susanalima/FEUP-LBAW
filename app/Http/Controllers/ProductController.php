@@ -9,8 +9,8 @@ class ProductController extends Controller
 {
  public function add_product(Request $request)
  {
-  print_r($request->input('product_name'));
-  print_r($request->post());
+  //print_r($request->input('product_name'));
+  //print_r($request->post());
 
   $validator = Validator::make($request->all(), [
    'product_name' => 'required',

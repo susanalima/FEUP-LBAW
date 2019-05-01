@@ -62,43 +62,43 @@
                     <form class="rating mt-1">
                         <fieldset class="starsRating">
                             <input type="radio" id="star5" name="rating" value="5" /><label
-                                class="full"
+                                class="full {{$product['rating'] >= 5.0 ? 'marked' : ''}}"
                                 for="star5"
                             ></label>
                             <input type="radio" id="star4half" name="rating" value="4.5" /><label
-                                class="half"
+                                class="half {{$product['rating'] >= 4.5 ? 'marked' : ''}}"
                                 for="star4half"
                             ></label>
                             <input type="radio" id="star4" name="rating" value="4" /><label
-                                class="full"
+                                class="full {{$product['rating'] >= 4 ? 'marked' : ''}}"
                                 for="star4"
                             ></label>
                             <input type="radio" id="star3half" name="rating" value="3.5" /><label
-                                class="half"
+                                class="half {{$product['rating'] >= 3.5 ? 'marked' : ''}}"
                                 for="star3half"
                             ></label>
                             <input type="radio" id="star3" name="rating" value="3" /><label
-                                class="full"
+                                class="full {{$product['rating'] >= 3.0 ? 'marked' : ''}}"
                                 for="star3"
                             ></label>
                             <input type="radio" id="star2half" name="rating" value="2.5" /><label
-                                class="half"
+                                class="half {{$product['rating'] >= 2.5 ? 'marked' : ''}}"
                                 for="star2half"
                             ></label>
                             <input type="radio" id="star2" name="rating" value="2" /><label
-                                class="full"
+                                class="full {{$product['rating'] >= 2.0 ? 'marked' : ''}}"
                                 for="star2"
                             ></label>
                             <input type="radio" id="star1half" name="rating" value="1.5" /><label
-                                class="half"
+                                class="half {{$product['rating'] >= 1.5 ? 'marked' : ''}}"
                                 for="star1half"
                             ></label>
                             <input type="radio" id="star1" name="rating" value="1" /><label
-                                class="full"
+                                class="full {{$product['rating'] >= 1.0 ? 'marked' : ''}}"
                                 for="star1"
                             ></label>
                             <input type="radio" id="star0half" name="rating" value="0.5" /><label
-                                class="half"
+                                class="half {{$product['rating'] >= 0.5 ? 'marked' : ''}}"
                                 for="star0half"
                             ></label>
                         </fieldset>
@@ -414,49 +414,50 @@
                             </button>
                         </div>
                         <div class="card-body" id="reviewsBox">
+                          @foreach($product['reviews'] as $review)
                             <div class="">
                                 <div class="card">
                                     <div class="card-body">
                                         <form class="rating mb-2">
                                             <fieldset class="starsRating">
                                                 <input type="radio" id="star5" name="rating" value="5" /><label
-                                                    class="full"
+                                                    class="full {{$review['rating'] >= 5.0 ? 'marked' : ''}}"
                                                     for="star5"
                                                 ></label>
                                                 <input type="radio" id="star4half" name="rating" value="4.5" /><label
-                                                    class="half"
+                                                    class="half {{$review['rating'] >= 4.5 ? 'marked' : ''}}"
                                                     for="star4half"
                                                 ></label>
                                                 <input type="radio" id="star4" name="rating" value="4" /><label
-                                                    class="full"
+                                                    class="full {{$review['rating'] >= 4 ? 'marked' : ''}}"
                                                     for="star4"
                                                 ></label>
                                                 <input type="radio" id="star3half" name="rating" value="3.5" /><label
-                                                    class="half"
+                                                    class="half {{$review['rating'] >= 3.5 ? 'marked' : ''}}"
                                                     for="star3half"
                                                 ></label>
                                                 <input type="radio" id="star3" name="rating" value="3" /><label
-                                                    class="full"
+                                                    class="full {{$review['rating'] >= 3.0 ? 'marked' : ''}}"
                                                     for="star3"
                                                 ></label>
                                                 <input type="radio" id="star2half" name="rating" value="2.5" /><label
-                                                    class="half"
+                                                    class="half {{$review['rating'] >= 2.5 ? 'marked' : ''}}"
                                                     for="star2half"
                                                 ></label>
                                                 <input type="radio" id="star2" name="rating" value="2" /><label
-                                                    class="full"
+                                                    class="full {{$review['rating'] >= 2.0 ? 'marked' : ''}}"
                                                     for="star2"
                                                 ></label>
                                                 <input type="radio" id="star1half" name="rating" value="1.5" /><label
-                                                    class="half"
+                                                    class="half {{$review['rating'] >= 1.5 ? 'marked' : ''}}"
                                                     for="star1half"
                                                 ></label>
                                                 <input type="radio" id="star1" name="rating" value="1" /><label
-                                                    class="full"
+                                                    class="full {{$review['rating'] >= 1.0 ? 'marked' : ''}}"
                                                     for="star1"
                                                 ></label>
                                                 <input type="radio" id="star0half" name="rating" value="0.5" /><label
-                                                    class="half"
+                                                    class="half {{$review['rating'] >= 0.5 ? 'marked' : ''}}"
                                                     for="star0half"
                                                 ></label>
                                             </fieldset>
@@ -464,274 +465,17 @@
                                         <br />
                                         <br />
                                         <span class="font-italic">
-                                            2/2/2019
+                                            {{$review['created_at']}}
                                             <br />
-                                            By Anonymous
+                                            By {{$review['user']}}
                                         </span>
                                         <br />
                                         <br />
-                                        <span class="font-weight-bold">Title</span>
-                                        <br />
-                                        Words cannot describe how happy I am with this product. Purchased it for my
-                                        daughter for Christmas because I didn’t want to spend the thousand dollars on a
-                                        new one ( she is a little clumsy). It’s a brand new computer! Fits all her needs
-                                        and you can’t tell it’s refurbished.
+                                        {{$review['content']}}
                                     </div>
                                 </div>
                             </div>
-                            <div class="">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <form class="rating mb-2">
-                                            <fieldset class="starsRating">
-                                                <input type="radio" id="star5" name="rating" value="5" /><label
-                                                    class="full"
-                                                    for="star5"
-                                                ></label>
-                                                <input type="radio" id="star4half" name="rating" value="4.5" /><label
-                                                    class="half"
-                                                    for="star4half"
-                                                ></label>
-                                                <input type="radio" id="star4" name="rating" value="4" /><label
-                                                    class="full"
-                                                    for="star4"
-                                                ></label>
-                                                <input type="radio" id="star3half" name="rating" value="3.5" /><label
-                                                    class="half"
-                                                    for="star3half"
-                                                ></label>
-                                                <input type="radio" id="star3" name="rating" value="3" /><label
-                                                    class="full active"
-                                                    for="star3"
-                                                ></label>
-                                                <input type="radio" id="star2half" name="rating" value="2.5" /><label
-                                                    class="half active"
-                                                    for="star2half"
-                                                ></label>
-                                                <input type="radio" id="star2" name="rating" value="2" /><label
-                                                    class="full active"
-                                                    for="star2"
-                                                ></label>
-                                                <input type="radio" id="star1half" name="rating" value="1.5" /><label
-                                                    class="half active"
-                                                    for="star1half"
-                                                ></label>
-                                                <input type="radio" id="star1" name="rating" value="1" /><label
-                                                    class="full active"
-                                                    for="star1"
-                                                ></label>
-                                                <input type="radio" id="star0half" name="rating" value="0.5" /><label
-                                                    class="half active"
-                                                    for="star0half"
-                                                ></label>
-                                            </fieldset>
-                                        </form>
-                                        <br />
-                                        <br />
-                                        <span class="font-italic">
-                                            2/2/2019
-                                            <br />
-                                            By Anonymous
-                                        </span>
-                                        <br />
-                                        <br />
-                                        <span class="font-weight-bold">Title</span>
-                                        <br />
-                                        Was nervous to order off of amazon, but I'm so glad that I did, it works
-                                        perfectly and looks just like the photo, no complaints from me, such a great
-                                        price and super fast shipping, ordered and it arrived 3 days later. Def
-                                        recommend if you're looking for a really good refurbished macbook
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <form class="rating mb-2">
-                                            <fieldset class="starsRating">
-                                                <input type="radio" id="star5" name="rating" value="5" /><label
-                                                    class="full"
-                                                    for="star5"
-                                                ></label>
-                                                <input type="radio" id="star4half" name="rating" value="4.5" /><label
-                                                    class="half"
-                                                    for="star4half"
-                                                ></label>
-                                                <input type="radio" id="star4" name="rating" value="4" /><label
-                                                    class="full"
-                                                    for="star4"
-                                                ></label>
-                                                <input type="radio" id="star3half" name="rating" value="3.5" /><label
-                                                    class="half active"
-                                                    for="star3half"
-                                                ></label>
-                                                <input type="radio" id="star3" name="rating" value="3" /><label
-                                                    class="full active"
-                                                    for="star3"
-                                                ></label>
-                                                <input type="radio" id="star2half" name="rating" value="2.5" /><label
-                                                    class="half active"
-                                                    for="star2half"
-                                                ></label>
-                                                <input type="radio" id="star2" name="rating" value="2" /><label
-                                                    class="full active"
-                                                    for="star2"
-                                                ></label>
-                                                <input type="radio" id="star1half" name="rating" value="1.5" /><label
-                                                    class="half active"
-                                                    for="star1half"
-                                                ></label>
-                                                <input type="radio" id="star1" name="rating" value="1" /><label
-                                                    class="full active"
-                                                    for="star1"
-                                                ></label>
-                                                <input type="radio" id="star0half" name="rating" value="0.5" /><label
-                                                    class="half active"
-                                                    for="star0half"
-                                                ></label>
-                                            </fieldset>
-                                        </form>
-                                        <br />
-                                        <br />
-                                        <span class="font-italic">
-                                            2/2/2019
-                                            <br />
-                                            By Anonymous
-                                        </span>
-                                        <br />
-                                        <br />
-                                        <span class="font-weight-bold">Title</span>
-                                        <br />
-                                        It works great. I’ve had it a little less than a month. I’ve had no troubles
-                                        with it thus far. I recommend!!
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <form class="rating mb-2">
-                                            <fieldset class="starsRating">
-                                                <input type="radio" id="star5" name="rating" value="5" /><label
-                                                    class="full"
-                                                    for="star5"
-                                                ></label>
-                                                <input type="radio" id="star4half" name="rating" value="4.5" /><label
-                                                    class="half"
-                                                    for="star4half"
-                                                ></label>
-                                                <input type="radio" id="star4" name="rating" value="4" /><label
-                                                    class="full"
-                                                    for="star4"
-                                                ></label>
-                                                <input type="radio" id="star3half" name="rating" value="3.5" /><label
-                                                    class="half"
-                                                    for="star3half"
-                                                ></label>
-                                                <input type="radio" id="star3" name="rating" value="3" /><label
-                                                    class="full"
-                                                    for="star3"
-                                                ></label>
-                                                <input type="radio" id="star2half" name="rating" value="2.5" /><label
-                                                    class="half"
-                                                    for="star2half"
-                                                ></label>
-                                                <input type="radio" id="star2" name="rating" value="2" /><label
-                                                    class="full"
-                                                    for="star2"
-                                                ></label>
-                                                <input type="radio" id="star1half" name="rating" value="1.5" /><label
-                                                    class="half active"
-                                                    for="star1half"
-                                                ></label>
-                                                <input type="radio" id="star1" name="rating" value="1" /><label
-                                                    class="full active"
-                                                    for="star1"
-                                                ></label>
-                                                <input type="radio" id="star0half" name="rating" value="0.5" /><label
-                                                    class="half active"
-                                                    for="star0half"
-                                                ></label>
-                                            </fieldset>
-                                        </form>
-                                        <br />
-                                        <br />
-                                        <span class="font-italic">
-                                            2/2/2019
-                                            <br />
-                                            By Anonymous
-                                        </span>
-                                        <br />
-                                        <br />
-                                        <span class="font-weight-bold">Title</span>
-                                        <br />
-                                        Great price and very satisfied
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <form class="rating mb-2">
-                                            <fieldset class="starsRating">
-                                                <input type="radio" id="star5" name="rating" value="5" /><label
-                                                    class="full"
-                                                    for="star5"
-                                                ></label>
-                                                <input type="radio" id="star4half" name="rating" value="4.5" /><label
-                                                    class="half"
-                                                    for="star4half"
-                                                ></label>
-                                                <input type="radio" id="star4" name="rating" value="4" /><label
-                                                    class="full"
-                                                    for="star4"
-                                                ></label>
-                                                <input type="radio" id="star3half" name="rating" value="3.5" /><label
-                                                    class="half"
-                                                    for="star3half"
-                                                ></label>
-                                                <input type="radio" id="star3" name="rating" value="3" /><label
-                                                    class="full"
-                                                    for="star3"
-                                                ></label>
-                                                <input type="radio" id="star2half" name="rating" value="2.5" /><label
-                                                    class="half"
-                                                    for="star2half"
-                                                ></label>
-                                                <input type="radio" id="star2" name="rating" value="2" /><label
-                                                    class="full"
-                                                    for="star2"
-                                                ></label>
-                                                <input type="radio" id="star1half" name="rating" value="1.5" /><label
-                                                    class="half"
-                                                    for="star1half"
-                                                ></label>
-                                                <input type="radio" id="star1" name="rating" value="1" /><label
-                                                    class="full"
-                                                    for="star1"
-                                                ></label>
-                                                <input type="radio" id="star0half" name="rating" value="0.5" /><label
-                                                    class="half"
-                                                    for="star0half"
-                                                ></label>
-                                            </fieldset>
-                                        </form>
-                                        <br />
-                                        <br />
-                                        <span class="font-italic">
-                                            2/2/2019
-                                            <br />
-                                            By Anonymous
-                                        </span>
-                                        <br />
-                                        <br />
-                                        <span class="font-weight-bold">Title</span>
-                                        <br />
-                                        Love my new MacBook Pro. Fast shipping once updated works perfectly. Small
-                                        scratches on front other then that it’s great. Thank you so much will buy again.
-                                    </div>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -763,61 +507,25 @@
                         </div>
 
                         <div class="qaContainer">
-                            <div class="card-body qaBox answered">
+                          @foreach ($product['q_a'] as $q_a)
+                              <div class="card-body qaBox answered">
                                 <div class="row">
                                     <div class="col questionCardLabel"></div>
                                     <div class="col-10 questionCard">
-                                        Is this laptop truly a 2017 model?
+                                        {{$q_a->q_content}}
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col answerCardLabel"></div>
                                     <div class="col-10 answerCard">
-                                        No.
+                                       {{$q_a->a_content}}
                                     </div>
                                 </div>
-                            </div>
-                            <div class="card-body qaBox">
-                                <div class="row">
-                                    <div class="col questionCardLabel"></div>
-                                    <div class="col-10 questionCard">
-                                        Is this laptop truly a 2017 model?
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col answerCardLabel"></div>
-                                    <div class="col-10 answerCard">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-body qaBox">
-                                <div class="row">
-                                    <div class="col questionCardLabel"></div>
-                                    <div class="col-10 questionCard">
-                                        Is this laptop truly a 2017 model?
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col answerCardLabel"></div>
-                                    <div class="col-10 answerCard">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-body qaBox">
-                                <div class="row">
-                                    <div class="col questionCardLabel"></div>
-                                    <div class="col-10 questionCard">
-                                        Is this laptop truly a 2017 model?
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col answerCardLabel"></div>
-                                    <div class="col-10 answerCard">
-                                    </div>
-                                </div>
-                            </div>
+                            </div>  
+                          @endforeach  
                         </div>
                     </div>
                 </div>
             </div>
+</div>
 @endsection

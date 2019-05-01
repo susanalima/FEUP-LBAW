@@ -21,7 +21,7 @@
             crossorigin="anonymous"
         />
         <link rel="stylesheet" href="{{ URL::asset('css/styles.css') }}" />
-
+        <link rel="stylesheet" href="{{ URL::asset('css/buttons.css') }}"" />
         <link rel="stylesheet" href="{{ URL::asset('css/topBar.css') }}"" />
         <link rel="stylesheet" href="{{ URL::asset('css/main.css') }}"" />
 

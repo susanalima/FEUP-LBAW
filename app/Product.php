@@ -21,6 +21,11 @@ class Product extends Model
   return $this->hasOne(Category::class, 'id', 'id_category');
  }
 
+ public function reviews()
+ {
+  return $this->hasManyThrough(Review::class, Message::class, 'id_product', 'id_message', 'id', 'id');
+ }
+
  public function images()
  {
   return $this->hasMany(Image::class, 'id_product', 'id');
