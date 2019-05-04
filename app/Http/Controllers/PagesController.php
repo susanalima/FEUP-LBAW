@@ -60,19 +60,9 @@ class PagesController extends Controller
    return array("id" => $category->id, "name" => $category->name);
   });
 
-  $specs = array( //TODO: Dinamico, is buscar a DB, evitando repetir código de preferência
-   array('name' => 'Color', 'id' => '25'),
-   array('name' => 'OS', 'id' => '15'),
-   array('name' => 'RAM', 'id' => '14'),
-   array('name' => 'HDD Tech', 'id' => '13'),
-   array('name' => 'HDD Size', 'id' => '12'),
-   array('name' => 'GPU', 'id' => '11'),
-   array('name' => 'CPU Count', 'id' => '10'),
-   array('name' => 'CPU Brand', 'id' => '9'),
-   array('name' => 'CPU', 'id' => '8'),
-   array('name' => 'Brand', 'id' => '2'),
-   array('name' => 'Weight', 'id' => '0'),
-  );
+  $specs = Category::all()[0]->specs->map(function ($header) {
+   return array('name' => Aux::formatHeader($header['name']), 'id' => $header['id']);
+  });
 
   $data = array(
    'type' => 'add_product',
