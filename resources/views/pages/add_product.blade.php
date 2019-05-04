@@ -38,7 +38,19 @@
                     <div class="form-group row">
                         <label for="addProductStock" class="col-sm-2 col-form-label px-0">Stock</label>
                         <div class="col-sm-8 px-0">
-                            <input type="text" class="form-control" id="addProductStock" placeholder="Stock">
+                            <input type="text" class="form-control" id="addProductStock" placeholder="Stock" name="stock">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="addProductPrice" class="col-sm-2 col-form-label px-0">Price (€)</label>
+                        <div class="col-sm-8 px-0">
+                            <input type="text" class="form-control" id="addProductPrice" placeholder="Price" name="price">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="addProductAvailable" class="col-sm-2 col-form-label px-0">Available</label>
+                        <div class="col-sm-8 px-0">
+                            <input type="checkbox" class="form-control w-auto" id="addProductPrice" name="available">
                         </div>
                     </div>
                 </div>
@@ -89,18 +101,14 @@
                 </div>
 
             </div>
-
-            <div class="form-group row">
-                <label for="addProductDescription" class="col-form-label px-0">Description</label>
-                <textarea class="form-control" id="addProductDescription"></textarea>
-            </div>
-            
+           
             <p class="row px-0" id="specs"> Specifications </p>
             @foreach ($specs as $spec)
                 <div class="form-group row insertSpec">
                 <label for="addProductName" class="col-sm-1 col-form-label">{{$spec["name"]}}</label>
                 <div class="col-sm-11 px-0">
-                    <input type="text" class="form-control" id="spec_{{$spec["id"]}}" placeholder="">
+                    <input type="text" class="form-control" id="spec_{{$spec["id"]}}" name="specs[]">
+                    <input type="hidden" class="form-control" id="spec_{{$spec["id"]}}" name="spec_header[]" value="{{$spec['id']}}"> {{-- TODO: Possible security breach --}} 
                 </div>
             </div>
             @endforeach
