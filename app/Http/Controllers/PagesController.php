@@ -105,7 +105,7 @@ class PagesController extends Controller
   $product['specs'] = $product->specifications->map(function ($a) {return $a->spec();});
   $product['reviews'] = $getReviews($product);
   $product['q_a'] = $getQA($product);
-  $product['rating'] = array_reduce($product['reviews'], function ($sum, $val) {$sum += $val['rating'];return $sum;}) / count($product['reviews']);
+  $product['rating'] = (count($product['reviews']) != 0) ? array_reduce($product['reviews'], function ($sum, $val) {$sum += $val['rating'];return $sum;}) / count($product['reviews']) : 0;
 
   $data = array(
    'type' => 'product',

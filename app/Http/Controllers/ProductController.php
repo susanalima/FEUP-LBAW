@@ -67,9 +67,7 @@ class ProductController extends Controller
 
   }
 
-  return $product;
-
-  return redirect()->route('product_page', ['id' => 150]);
+  return redirect()->route('product_page', ['id' => $product->id]);
   //return response("Product added with success", 200);
  }
 }
