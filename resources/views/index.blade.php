@@ -7,7 +7,7 @@
                     <div class="carousel-inner">
                         <div class="carousel-item active">
                             <a href="./product.html" class="">
-                                <img src="./images/products/surface.jpg" class="d-block w-100 " alt="..." />
+                                <img src="/storage/images/products/surface.jpg" class="d-block w-100 " alt="..." />
                                 <div class="img-text">
                                     <h3>Enjoy our promotions on all Surface Laptops</h3>
                                 </div>
@@ -15,7 +15,7 @@
                         </div>
                         <div class="carousel-item">
                             <a href="./product.html">
-                                <img src="./images/products/macbook.jpg" height="" class="d-block w-100 " alt="..." />
+                                <img src="/storage/images/products/macbook.jpg" height="" class="d-block w-100 " alt="..." />
                                 <div class="img-text">
                                     <h3>Meet the new MacBook</h3>
                                 </div>
@@ -23,7 +23,7 @@
                         </div>
                         <div class="carousel-item">
                             <a href="./product.html">
-                                <img src="./images/products/headphones.jpg" class="d-block w-100 " alt="..." />
+                                <img src="/storage/images/products/headphones.jpg" class="d-block w-100 " alt="..." />
                                 <div class="img-text">
                                     <h3>10€ off every headphone</h3>
                                 </div>
@@ -61,7 +61,7 @@
                                         </div>
                                         <img
                                             class="d-block w-100 img-blur"
-                                            src="./images/products/asusX50SA.jpg"
+                                            src="/storage/images/products/asusX50SA.jpg"
                                             alt="First slide"
                                         />
                                         <div class="productBot mr-auto d-flex">
@@ -126,7 +126,7 @@
                                         </div>
                                         <img
                                             class="d-block w-100 img-blur"
-                                            src="./images/products/acerExtensa2540.jpg"
+                                            src="/storage/images/products/acerExtensa2540.jpg"
                                             alt="Second slide"
                                         />
                                         <div class="productBot mr-auto d-flex">
@@ -191,7 +191,7 @@
                                         </div>
                                         <img
                                             class="d-block w-100 img-blur"
-                                            src="./images/products/laptop.jpg"
+                                            src="/storage/images/products/laptop.jpg"
                                             alt="First slide"
                                         />
                                         <div class="productBot mr-auto d-flex">
@@ -256,7 +256,7 @@
                                         </div>
                                         <img
                                             class="d-block w-100 img-blur"
-                                            src="./images/products/acerTravelmate.jpg"
+                                            src="/storage/images/products/acerTravelmate.jpg"
                                             alt="First slide"
                                         />
                                         <div class="productBot mr-auto d-flex">
@@ -321,7 +321,7 @@
                                         </div>
                                         <img
                                             class="d-block w-100 img-blur"
-                                            src="./images/products/asusX50SA.jpg"
+                                            src="/storage/images/products/asusX50SA.jpg"
                                             alt="First slide"
                                         />
                                         <div class="productBot mr-auto d-flex">
@@ -386,7 +386,7 @@
                                         </div>
                                         <img
                                             class="d-block w-100 img-blur"
-                                            src="./images/products/acerExtensa2540.jpg"
+                                            src="storage/images/products/acerExtensa2540.jpg"
                                             alt="Second slide"
                                         />
                                         <div class="productBot mr-auto d-flex">
@@ -451,7 +451,7 @@
                                         </div>
                                         <img
                                             class="d-block w-100 img-blur"
-                                            src="./images/products/laptop.jpg"
+                                            src="/storage/images/products/laptop.jpg"
                                             alt="First slide"
                                         />
                                         <div class="productBot mr-auto d-flex">
@@ -516,7 +516,7 @@
                                         </div>
                                         <img
                                             class="d-block w-100 img-blur"
-                                            src="./images/products/acerTravelmate.jpg"
+                                            src="/storage/images/products/acerTravelmate.jpg"
                                             alt="First slide"
                                         />
                                         <div class="productBot mr-auto d-flex">
@@ -593,7 +593,7 @@
                                                 </div>
                                                 <img
                                                     class="d-block w-100 img-blur"
-                                                    src="./images/products/asusX50SA.jpg"
+                                                    src="/storage/images/products/asusX50SA.jpg"
                                                     alt="First slide"
                                                 />
                                                 <div class="productBot mr-auto d-flex">
@@ -658,7 +658,7 @@
                                                 </div>
                                                 <img
                                                     class="d-block w-100 img-blur"
-                                                    src="./images/products/acerExtensa2540.jpg"
+                                                    src="/storage/images/products/acerExtensa2540.jpg"
                                                     alt="Second slide"
                                                 />
                                                 <div class="productBot mr-auto d-flex">
@@ -723,7 +723,7 @@
                                                 </div>
                                                 <img
                                                     class="d-block w-100 img-blur"
-                                                    src="./images/products/laptop.jpg"
+                                                    src="/storage/images/products/laptop.jpg"
                                                     alt="First slide"
                                                 />
                                                 <div class="productBot mr-auto d-flex">
@@ -788,7 +788,7 @@
                                                 </div>
                                                 <img
                                                     class="d-block w-100 img-blur"
-                                                    src="./images/products/acerTravelmate.jpg"
+                                                    src="/storage/images/products/acerTravelmate.jpg"
                                                     alt="First slide"
                                                 />
                                                 <div class="productBot mr-auto d-flex">
@@ -853,7 +853,7 @@
                                                 </div>
                                                 <img
                                                     class="d-block w-100 img-blur"
-                                                    src="./images/products/asusX50SA.jpg"
+                                                    src="/storage/images/products/asusX50SA.jpg"
                                                     alt="First slide"
                                                 />
                                                 <div class="productBot mr-auto d-flex">
@@ -918,7 +918,7 @@
                                                 </div>
                                                 <img
                                                     class="d-block w-100 img-blur"
-                                                    src="./images/products/acerExtensa2540.jpg"
+                                                    src="/storage/images/products/acerExtensa2540.jpg"
                                                     alt="Second slide"
                                                 />
                                                 <div class="productBot mr-auto d-flex">
@@ -983,7 +983,7 @@
                                                 </div>
                                                 <img
                                                     class="d-block w-100 img-blur"
-                                                    src="./images/products/laptop.jpg"
+                                                    src="/storage/images/products/laptop.jpg"
                                                     alt="First slide"
                                                 />
                                                 <div class="productBot mr-auto d-flex">
@@ -1048,7 +1048,7 @@
                                                 </div>
                                                 <img
                                                     class="d-block w-100 img-blur"
-                                                    src="./images/products/acerTravelmate.jpg"
+                                                    src="/storage/images/products/acerTravelmate.jpg"
                                                     alt="First slide"
                                                 />
                                                 <div class="productBot mr-auto d-flex">
@@ -1126,7 +1126,7 @@
                                                 </div>
                                                 <img
                                                     class="d-block w-100 img-blur"
-                                                    src="./images/products/asusX50SA.jpg"
+                                                    src="/storage/images/products/asusX50SA.jpg"
                                                     alt="First slide"
                                                 />
                                                 <div class="productBot mr-auto d-flex">
@@ -1191,7 +1191,7 @@
                                                 </div>
                                                 <img
                                                     class="d-block w-100 img-blur"
-                                                    src="./images/products/acerExtensa2540.jpg"
+                                                    src="/storage/images/products/acerExtensa2540.jpg"
                                                     alt="Second slide"
                                                 />
                                                 <div class="productBot mr-auto d-flex">
@@ -1256,7 +1256,7 @@
                                                 </div>
                                                 <img
                                                     class="d-block w-100 img-blur"
-                                                    src="./images/products/laptop.jpg"
+                                                    src="/storage/images/products/laptop.jpg"
                                                     alt="First slide"
                                                 />
                                                 <div class="productBot mr-auto d-flex">
@@ -1321,7 +1321,7 @@
                                                 </div>
                                                 <img
                                                     class="d-block w-100 img-blur"
-                                                    src="./images/products/acerTravelmate.jpg"
+                                                    src="/storage/images/products/acerTravelmate.jpg"
                                                     alt="First slide"
                                                 />
                                                 <div class="productBot mr-auto d-flex">
@@ -1386,7 +1386,7 @@
                                                 </div>
                                                 <img
                                                     class="d-block w-100 img-blur"
-                                                    src="./images/products/asusX50SA.jpg"
+                                                    src="/storage/images/products/asusX50SA.jpg"
                                                     alt="First slide"
                                                 />
                                                 <div class="productBot mr-auto d-flex">
@@ -1451,7 +1451,7 @@
                                                 </div>
                                                 <img
                                                     class="d-block w-100 img-blur"
-                                                    src="./images/products/acerExtensa2540.jpg"
+                                                    src="/storage/images/products/acerExtensa2540.jpg"
                                                     alt="Second slide"
                                                 />
                                                 <div class="productBot mr-auto d-flex">
@@ -1516,7 +1516,7 @@
                                                 </div>
                                                 <img
                                                     class="d-block w-100 img-blur"
-                                                    src="./images/products/laptop.jpg"
+                                                    src="/storage/images/products/laptop.jpg"
                                                     alt="First slide"
                                                 />
                                                 <div class="productBot mr-auto d-flex">
@@ -1581,7 +1581,7 @@
                                                 </div>
                                                 <img
                                                     class="d-block w-100 img-blur"
-                                                    src="./images/products/acerTravelmate.jpg"
+                                                    src="/storage/images/products/acerTravelmate.jpg"
                                                     alt="First slide"
                                                 />
                                                 <div class="productBot mr-auto d-flex">
@@ -1659,7 +1659,7 @@
                                                 </div>
                                                 <img
                                                     class="d-block w-100 img-blur"
-                                                    src="./images/products/asusX50SA.jpg"
+                                                    src="/storage/images/products/asusX50SA.jpg"
                                                     alt="First slide"
                                                 />
                                                 <div class="productBot mr-auto d-flex">
@@ -1724,7 +1724,7 @@
                                                 </div>
                                                 <img
                                                     class="d-block w-100 img-blur"
-                                                    src="./images/products/acerExtensa2540.jpg"
+                                                    src="/storage/images/products/acerExtensa2540.jpg"
                                                     alt="Second slide"
                                                 />
                                                 <div class="productBot mr-auto d-flex">
@@ -1789,7 +1789,7 @@
                                                 </div>
                                                 <img
                                                     class="d-block w-100 img-blur"
-                                                    src="./images/products/laptop.jpg"
+                                                    src="/storage/images/products/laptop.jpg"
                                                     alt="First slide"
                                                 />
                                                 <div class="productBot mr-auto d-flex">
@@ -1854,7 +1854,7 @@
                                                 </div>
                                                 <img
                                                     class="d-block w-100 img-blur"
-                                                    src="./images/products/acerTravelmate.jpg"
+                                                    src="/storage/images/products/acerTravelmate.jpg"
                                                     alt="First slide"
                                                 />
                                                 <div class="productBot mr-auto d-flex">
@@ -1919,7 +1919,7 @@
                                                 </div>
                                                 <img
                                                     class="d-block w-100 img-blur"
-                                                    src="./images/products/asusX50SA.jpg"
+                                                    src="/storage/images/products/asusX50SA.jpg"
                                                     alt="First slide"
                                                 />
                                                 <div class="productBot mr-auto d-flex">
@@ -1984,7 +1984,7 @@
                                                 </div>
                                                 <img
                                                     class="d-block w-100 img-blur"
-                                                    src="./images/products/acerExtensa2540.jpg"
+                                                    src="/storage/images/products/acerExtensa2540.jpg"
                                                     alt="Second slide"
                                                 />
                                                 <div class="productBot mr-auto d-flex">
@@ -2049,7 +2049,7 @@
                                                 </div>
                                                 <img
                                                     class="d-block w-100 img-blur"
-                                                    src="./images/products/laptop.jpg"
+                                                    src="/storage/images/products/laptop.jpg"
                                                     alt="First slide"
                                                 />
                                                 <div class="productBot mr-auto d-flex">
@@ -2114,7 +2114,7 @@
                                                 </div>
                                                 <img
                                                     class="d-block w-100 img-blur"
-                                                    src="./images/products/acerTravelmate.jpg"
+                                                    src="/storage/images/products/acerTravelmate.jpg"
                                                     alt="First slide"
                                                 />
                                                 <div class="productBot mr-auto d-flex">

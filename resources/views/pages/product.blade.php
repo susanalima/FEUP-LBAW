@@ -5,17 +5,23 @@
             <div id="intro" class="row d-flex justify-content-center p-5 w-100">
                 <div id="productImagesCarousel" class="carousel slide col-md-5" data-ride="carousel">
                     <ol class="carousel-indicators">
-                        <li data-target="#productImagesCarousel" data-slide-to="0" class="active"></li>
-                        <li data-target="#productImagesCarousel" data-slide-to="1"></li>
-                        <li data-target="#productImagesCarousel" data-slide-to="2"></li>
+                        @foreach ($product['images'] as $index => $image)
+                            <li data-target="#productImagesCarousel" data-slide-to="{{$index}}" {{$image['primary_img'] ? 'class = "active"' : ''}}></li>
+                        @endforeach  
                     </ol>
                     <div class="carousel-inner">
                       @foreach ($product['images'] as $image)
-                    <div class="carousel-item {{$image['primary_img'] ? 'active' : ''}}">
-                          <img src="{{ URL::asset($image['filepath']) }}" class="d-block w-100" alt="{{$image['description']}}" />
-                      </div>
+                        <div class="carousel-item {{$image['primary_img'] ? 'active' : ''}}">
+                            <img src="{{ '/storage/' . $image['filepath'] }}" class="d-block w-100" alt="{{$image['filepath']}}" />
+                        </div>
                       @endforeach  
                     </div>
+                    <a class="carousel-control-prev" href="#productImagesCarousel" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    </a>
+                    <a class="carousel-control-next" href="#productImagesCarousel" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    </a>
                 </div>
                 <div class="col-md-2 d-flex flex-column justify-content-end" id="productCtrl">
                     <h1 class="" id="name">{{$product['name']}}</h1>

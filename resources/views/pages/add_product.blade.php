@@ -11,7 +11,7 @@
     @endisset
 
     <h1 class="text-center p-3">Add Product</h1>
-    <form method="POST" action="{{ route('product_add') }}">
+    <form method="POST" action="{{ route('product_add') }}" enctype="multipart/form-data">
         {{ csrf_field() }}
         <div class="w-75 mx-auto my-5">
             <div class="row">
@@ -22,8 +22,11 @@
                             <input type="text" class="form-control" id="product_name" placeholder="Name" name="product_name" required>
                         </div>
                     </div>
-                    <div class="form-group row justify-content-center">
-                        <button class="btn button-action btn-sm btn-block col-sm-8">Load Images</button>
+                    <div class="form-group row">
+                        <label for ="addProductFiles" class ="col-sm-2 col-form-label px-0">Load Images</label>
+                        <div class ="col-sm-8 px-0">
+                            <input type="file" accept="image/*" multiple class="btn button-action btn-sm btn-block" name="images[]" />
+                        </div>
                     </div>
                     <div class="form-group row">
                         <label for="addProductCategory" class="col-sm-2 col-form-label px-0">Category</label>

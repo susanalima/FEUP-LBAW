@@ -41,7 +41,7 @@ title="Open Shopping cart"
     <article class="m-2 p-2 d-flex justify-content-between align-items-center">
         <div class="w-50 d-flex justify-content-left align-items-center">
             <a href="./product.html" class="cartProductImage">
-                <img src="{{ URL::asset('images/products/googlePixelBook.jpg')}}" class="" alt="..." />
+                <img src="{{ URL::asset('/storage/images/products/googlePixelBook.jpg')}}" class="" alt="..." />
             </a>
             <a href="./product.html">
                 <h4 class="cartProductName">Laptop Asus 950</h4>
@@ -76,7 +76,7 @@ title="Open Shopping cart"
     <article class="m-2 p-2 d-flex justify-content-between align-items-center">
         <div class="w-50 d-flex justify-content-left align-items-center">
             <a href="./product.html" class="cartProductImage">
-                <img src="{{ URL::asset('images/products/book_cover1984.jpg') }}" class="" alt="..." />
+                <img src="{{ URL::asset('/storage/images/products/book_cover1984.jpg') }}" class="" alt="..." />
             </a>
             <a href="./product.html">
                 <h4 class="cartProductName">1984</h4>
@@ -111,7 +111,7 @@ title="Open Shopping cart"
     <article class="m-2 p-2 d-flex justify-content-between align-items-center">
         <div class="w-50 d-flex justify-content-left align-items-center">
             <a href="./product.html" class="cartProductImage">
-                <img src="{{ URL::asset('images/products/headphones.jpg')}}" class="" alt="..." />
+                <img src="{{ URL::asset('/storage/images/products/headphones.jpg')}}" class="" alt="..." />
             </a>
             <a href="./product.html">
                 <h4 class="cartProductName">JBL Phones</h4>
