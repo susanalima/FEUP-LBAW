@@ -22,11 +22,12 @@ class ProductController extends Controller
    'category' => 'required',
   ];
 
-  $images = count($request->images);
-  foreach (range(0, $images) as $index) {
-   $rules['images' . $index] = 'image|mimes:jpeg,bmp,png|max:2000';
+  if (isset($request->images)) {
+   $images = count($request->images);
+   foreach (range(0, $images) as $index) {
+    $rules['images' . $index] = 'image|mimes:jpeg,bmp,png|max:2000';
+   }
   }
-
   $validator = Validator::make($request->all(), $rules);
 
   if ($validator->fails()) {
@@ -56,41 +57,43 @@ class ProductController extends Controller
   ]);
 
   Image::where('id_product', $product->id)->delete();
+  if (isset($request->images)) {
+   foreach ($request->images as $index => $image) {
+    $image_index = ($index == 0) ? 'main' : $index - 1;
 
-  foreach ($request->images as $index => $image) {
-   $image_index = ($index == 0) ? 'main' : $index - 1;
+    //$filename = Storage::put('images/products/' . $product->id . '_' . $image_index . '.' . $image->getClientOriginalExtension(), $image);
+    $filename = $image->storeAs('images/products', $product->id . '_' . $image_index . '.' . $image->getClientOriginalExtension());
 
-   //$filename = Storage::put('images/products/' . $product->id . '_' . $image_index . '.' . $image->getClientOriginalExtension(), $image);
-   $filename = $image->storeAs('images/products', $product->id . '_' . $image_index . '.' . $image->getClientOriginalExtension());
-
-   Image::create([
-    'filepath' => $filename,
-    'primary_img' => ($image_index === 'main') ? true : false,
-    'id_product' => $product->id,
-    'description' => '',
-   ]);
+    Image::create([
+     'filepath' => $filename,
+     'primary_img' => ($image_index === 'main') ? true : false,
+     'id_product' => $product->id,
+     'description' => '',
+    ]);
+   }
   }
-
   AssProductSpecification::where('id_product', $product->id)->delete();
 
-  foreach ($request->specs as $index => $value) {
-   if ($value != null) {
-    $header = $request['spec_header'][$index];
+  if (isset($request->images)) {
+   foreach ($request->specs as $index => $value) {
+    if ($value != null) {
+     $header = $request['spec_header'][$index];
 
-    SpecificationHeader::firstOrCreate([
-     'id' => $header,
-    ]);
+     SpecificationHeader::firstOrCreate([
+      'id' => $header,
+     ]);
 
-    $spec_body = SpecificationBody::firstOrCreate([
-     'content' => $value,
-    ]);
+     $spec_body = SpecificationBody::firstOrCreate([
+      'content' => $value,
+     ]);
 
-    $spec = Specification::firstOrCreate([
-     'id_specification_header' => $header,
-     'id_specification_body' => $spec_body->id,
-    ]);
+     $spec = Specification::firstOrCreate([
+      'id_specification_header' => $header,
+      'id_specification_body' => $spec_body->id,
+     ]);
 
-    DB::insert('insert into ass_product_specification (id_specification, id_product) values (?, ?)', [$spec->id, $product->id]);
+     DB::insert('insert into ass_product_specification (id_specification, id_product) values (?, ?)', [$spec->id, $product->id]);
+    }
    }
   }
 
