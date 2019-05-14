@@ -3,8 +3,10 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Image;
+use App\Address;
 use App\CreditCard;
+use App\NonAdmin;
+use App\WishList;
 
 class Client extends Model
 {
@@ -23,5 +25,20 @@ class Client extends Model
     public function credit_cards()
     {
      return $this->hasMany(CreditCard::class, 'id_client', 'id' );
+    }
+
+    public function nonAdmin()
+    {
+     return $this->hasOne(NonAdmin::class, 'id', 'id' );
+    }
+
+    public function wishLists()
+    {
+     return $this->hasMany(WishList::class, 'id_client', 'id' );
+    }
+
+    public function carts()
+    {
+     return $this->hasMany(Cart::class, 'id_client', 'id' );
     }
 }

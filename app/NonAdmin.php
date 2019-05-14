@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\User;
 
 class NonAdmin extends Model
 {
@@ -12,4 +13,9 @@ class NonAdmin extends Model
 
     protected $fillable = ['id', 'blocked',];
 
+
+    public function user()
+    {
+     return $this->hasOne(User::class, 'id', 'id' );
+    }
 }

@@ -159,20 +159,21 @@ class PagesController extends Controller
 
  public function profile($id)
  {
-     //todo change to reveive the id
-    $info = User::find($id);
-    $client = Client::find($id);
-    $info['nif'] = $client->nif;
-    $info['addresses'] = $client->addresses;
-    $info['cards'] = $client->credit_cards;
+    $info = Client::find($id);
+    $info['name'] = $info->nonAdmin->user->name;
+    $info['email'] = $info->nonAdmin->user->email;
+    $info['nif'] = $info->nif;
+    $info['addresses'] = $info->addresses;
+    $info['cards'] = $info->credit_cards;
+    $info['wishLists'] = $info->wishLists;
+    
+    $data = array(
+    'type' => 'profile',
+    'interactive' => true,
+    'info' => $info,
+    );
 
-  $data = array(
-   'type' => 'profile',
-   'interactive' => true,
-   'info' => $info,
-  );
-
-  return view("pages.profile")->with($data);
+    return view("pages.profile")->with($data);
  }
 
 }
