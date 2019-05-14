@@ -8,6 +8,7 @@ use App\Message;
 use App\Product;
 use App\Promotion;
 use App\User;
+use App\Client;
 use Illuminate\Support\Facades\DB;
 
 class PagesController extends Controller
@@ -153,6 +154,25 @@ class PagesController extends Controller
   );
 
   return view("pages.product")->with($data);
+ }
+
+
+ public function profile($id)
+ {
+     //todo change to reveive the id
+    $info = User::find($id);
+    $client = Client::find($id);
+    $info['nif'] = $client->nif;
+    $info['addresses'] = $client->addresses;
+    $info['cards'] = $client->credit_cards;
+
+  $data = array(
+   'type' => 'profile',
+   'interactive' => true,
+   'info' => $info,
+  );
+
+  return view("pages.profile")->with($data);
  }
 
 }

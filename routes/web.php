@@ -20,4 +20,6 @@ Route::get('/product/create/{error?}', "PagesController@product_create")->name('
 Route::get('/product/{id}', "PagesController@product")->name('product_page');
 Route::post('/product', "ProductController@add_product")->name('product_add');
 
+Route::get('/profile/{id}', "PagesController@profile")->name('profile');
+
 Auth::routes();
