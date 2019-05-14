@@ -5,27 +5,21 @@
             <div class="w-50 mx-auto mainCarousel mt-4">
                 <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <a href="./product.html" class="">
-                                <img src="/storage/images/products/surface.jpg" class="d-block w-100 " alt="..." />
+                        @foreach ($promos as $index => $promo)
+                        <div class="carousel-item {{$index == 0 ? 'active' : ''}}">
+                            <a href="./product/{{$promo['product_id']}}" class="">
+                                <img src="{{ '/storage/' . $promo['image'] }}" class="d-block w-100 " alt="..." />
                                 <div class="img-text">
-                                    <h3>Enjoy our promotions on all Surface Laptops</h3>
+                                <h3>Enjoy {{ $promo['discount'] }}% discount on {{$promo['name']}}</h3>
                                 </div>
                             </a>
                         </div>
+                        @endforeach
                         <div class="carousel-item">
-                            <a href="./product.html">
-                                <img src="/storage/images/products/macbook.jpg" height="" class="d-block w-100 " alt="..." />
+                            <a href="./product/{{$product['product_id']}}" class="">
+                                <img src="{{ '/storage/' . $product['image'][0]['filepath'] }}" class="d-block w-100 " alt="..." />
                                 <div class="img-text">
-                                    <h3>Meet the new MacBook</h3>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="carousel-item">
-                            <a href="./product.html">
-                                <img src="/storage/images/products/headphones.jpg" class="d-block w-100 " alt="..." />
-                                <div class="img-text">
-                                    <h3>10€ off every headphone</h3>
+                                <h3>Meet the new {{$product['name']}}</h3>
                                 </div>
                             </a>
                         </div>

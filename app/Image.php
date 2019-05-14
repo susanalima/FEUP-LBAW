@@ -12,4 +12,9 @@ class Image extends Model
 
  protected $fillable = ['id', 'filepath', 'description', 'primary_img', 'id_product'];
 
+ public function scopePrimary($query)
+ {
+  return $query->where('primary_img', true);
+ }
+
 }

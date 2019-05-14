@@ -6,6 +6,7 @@ use App\Aux\Aux;
 use App\Category;
 use App\Message;
 use App\Product;
+use App\Promotion;
 use App\User;
 use Illuminate\Support\Facades\DB;
 
@@ -13,9 +14,47 @@ class PagesController extends Controller
 {
  public function index()
  {
+
+  $promotions = Promotion::active()->get()->random(2)->map(function ($promotion) {
+
+   if (count($promotion->products) > 0) {
+
+    $product = $promotion->products->random(1)[0];
+    $images = $product->images->filter(function ($image) {
+     return ($image->primary_img);
+
+    });
+
+    $images = $images;
+    if (count($images) > 0) {
+     return [
+      'discount' => $promotion->discount,
+      'name' => $product->name,
+      'product_id' => $product->id,
+      'image' => $images->random(1)[0]->filepath,
+     ];
+    } else {
+     return null;
+    }
+   }
+
+  });
+
+  $product = Product::where('available', 'true')->orderBy('id', 'desc')->first();
+  $product = [
+   'name' => $product->name,
+   'product_id' => $product->id,
+   'image' => $product->images->filter(function ($image) {
+    return $image->primary_img;
+   }),
+  ];
+
   $data = array(
    'interactive' => true,
+   'promos' => $promotions,
+   'product' => $product,
   );
+
   return view("index")->with($data);
  }
 
