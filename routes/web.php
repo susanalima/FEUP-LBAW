@@ -22,4 +22,6 @@ Route::post('/product', "ProductController@add_product")->name('product_add');
 
 Route::get('/profile/{id}', "PagesController@profile")->name('profile');
 
+Route::get('/wishList/{list_id}', "PagesController@wishList")->name('wishList');
+
 Auth::routes();

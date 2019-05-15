@@ -175,4 +175,8 @@ class PagesController extends Controller
   return view("pages.profile")->with($data);
  }
 
+ public function wishList($list_id){
+   //TODO: still needs not implemented methods in wishList.php
+ }
+
 }
