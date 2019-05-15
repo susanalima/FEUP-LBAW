@@ -75,125 +75,74 @@
                       <tr>
                           <td>{{$address['name']}}</td>
                           <td>{{$address['address_line']}}, {{$address['postal_code']}}, {{$address['city']}}, {{$address['country']}}</td>
-                         </tr>
-                        @endforeach 
-                     
-                            <!--<div class="d-flex justify-content-center">
-                              <button type="button" class="btn btn-sm button-action m-2" data-toggle="modal"
-                                data-target="#editHellAddress">Edit</button>
-                              <div class="modal fade" id="editHellAddress" tabindex="-1" role="dialog" aria-labelledby="editHellAddressLabel"
-                                aria-hidden="true">
-                                <div class="modal-dialog" role="document">
-                                  <div class="modal-content">
-                                    <div class="modal-header">
-                                      <h5 class="modal-title" id="editHellAddress">Edit Hell Address</h5>
-                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                      </button>
-                                    </div>
-                                    <div class="modal-body">
-                                      <form>
-                                        <div class="form-group">
-                                          <label>Address</label>
-                                          <div class="input-group flex-nowrap">
-                                            <input type="text" class="form-control" id="editHellAddressName"
-                                              placeholder="Name" value="Hell" required>
-                                          </div>
-
-                                          <div class="input-group flex-nowrap mt-2">
-                                            <input type="text" class="form-control" id="editHellAddressStreet"
-                                              placeholder="Street and number, P.O. box, c/o" value="Alameda dos Jardins d'Arrábida"
-                                              required>
-                                          </div>
-
-                                          <div class="input-group flex-nowrap mt-2">
-
-                                            <input type="text" class="form-control mr-2 rounded" id="editHellAddressApartment"
-                                              placeholder="Flat, suite, unit, floor, etc" value="443" required>
-                                            <input type="text" class="form-control rounded" id="editHellAddressPostcode"
-                                              placeholder="Postcode" value="4400-478 " required>
-                                          </div>
-
-                                          <div class="input-group flex-nowrap mt-2">
-                                            <input type="text" class="form-control  mr-2 rounded" id="editHellAddressTown"
-                                              placeholder="Town, City" value="Porto" required>
-                                            <input type="text" class="form-control rounded" id="editHellAddressCountry"
-                                              placeholder="Country" value="Portugal" required>
-                                          </div>
-
-                                        </div>
-                                      </form>
-                                    </div>
-                                    <div class="modal-footer">
-                                      <button type="button" class="btn button-submit btn-sm">Finish</button>
-                                      <button type="button" class="btn button-negative btn-sm" data-dismiss="modal">Cancel</button>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                              <button type="button" class="btn btn-sm button-negative m-2">Delete</button>
-                            </div>
-                          </td>-->
-                     
-
-                        <!--<tr>
-                          <td>Work</td>
-                          <td>R. Dr. Roberto Frias, 4200-465 Porto, Portugal</td>
                           <td>
                             <div class="d-flex justify-content-center">
                               <button type="button" class="btn btn-sm button-action m-2" data-toggle="modal"
-                                data-target="#editWorkAddress">Edit</button>
-                              <div class="modal fade" id="editWorkAddress" tabindex="-1" role="dialog" aria-labelledby="editWorkAddressLabel"
+                                data-target="#edit{{$address['name']}}Address">Edit</button>
+                              <div class="modal fade" id="edit{{$address['name']}}Address" tabindex="-1" role="dialog" aria-labelledby="edit{{$address['name']}}AddressLabel"
                                 aria-hidden="true">
                                 <div class="modal-dialog" role="document">
                                   <div class="modal-content">
                                     <div class="modal-header">
-                                      <h5 class="modal-title" id="editWorkAddress">Edit Work Address</h5>
+                                      <h5 class="modal-title" id="edit{{$address['name']}}Address">Edit {{$address['name']}} Address</h5>
                                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                       </button>
                                     </div>
                                     <div class="modal-body">
-                                      <form>
+                                    <form  id="form" method="POST" action="{{ route('address_edit') }}" >
+                                    {{ csrf_field() }}
                                         <div class="form-group">
                                           <label>Address</label>
                                           <div class="input-group flex-nowrap">
-                                            <input type="text" class="form-control" id="editWorkAddressName"
-                                              placeholder="Name" value="Work" required>
+                                            <input type="text" class="form-control" id="edit{{$address['name']}}AddressName"
+                                              placeholder="Name" value="{{$address['name']}}" name="name" required>
                                           </div>
 
                                           <div class="input-group flex-nowrap mt-2">
-                                            <input type="text" class="form-control" id="editWorkAddressStreet"
-                                              placeholder="Street and number, P.O. box, c/o" value="R. Dr. Roberto Frias"
+                                            <input type="text" class="form-control" id="edit{{$address['name']}}AddressStreet"
+                                              placeholder="Street and number, P.O. box, c/o" value="{{$address['address_line']}}" name ="address_line"
                                               required>
+                                            <input type="text" class="form-control rounded" id="edit{{$address['name']}}AddressPOstalCode"
+                                              placeholder="Postcode"  value="{{$address['postal_code']}}" name ="postal_code" required>
                                           </div>
 
                                           <div class="input-group flex-nowrap mt-2">
-                                            <input type="text" class="form-control mr-2 rounded" id="editWorkAddressApartment"
-                                              placeholder="Flat, suite, unit, floor, etc" value="s/n" required>
-                                            <input type="text" class="form-control rounded" id="editWorkAddressPostCode"
-                                              placeholder="Postcode" value="4200-465" required>
+                                            <input type="text" class="form-control mr-2 rounded" id="edit{{$address['name']}}AddressTown"
+                                              placeholder="Town, City" value="{{$address['city']}}" name="city" required>
+                                            <input type="text" class="form-control rounded" id="edit{{$address['name']}}AddressCountry"
+                                              placeholder="Country" value="{{$address['country']}}" name = "country" required>
                                           </div>
 
                                           <div class="input-group flex-nowrap mt-2">
-                                            <input type="text" class="form-control mr-2 rounded" id="editWorkAddressTown"
-                                              placeholder="Town, City" value="Porto" required>
-                                            <input type="text" class="form-control rounded" id="editWorkAddressCountry"
-                                              placeholder="Country" value="Portugal" required>
-                                          </div>
+                                            <input type="hidden" class="form-control" id="address_{{$address["id"]}}" name="address_id" value="{{$address['id']}}"> {{-- TODO: Possible security breach --}} 
+                                            <input type="hidden" class="form-control" id="client{{$info["id"]}}" name="client_id" value="{{$info['id']}}"> {{-- TODO: Possible security breach --}} 
                                         </div>
-                                      </form>
+
+                                        </div>
+                               
                                     </div>
                                     <div class="modal-footer">
-                                      <button type="button" class="btn button-submit btn-sm">Finish</button>
+                                      <button type="submit" class="btn button-submit btn-sm">Finish</button>
                                       <button type="button" class="btn button-negative btn-sm" data-dismiss="modal">Cancel</button>
                                     </div>
+                                    </form>
                                   </div>
                                 </div>
                               </div>
                               <button type="button" class="btn btn-sm button-negative m-2">Delete</button>
                             </div>
                           </td>
+                      </tr>
+                        @endforeach 
+                     
+                   
+                     
+
+                        <!--<tr>
+                          <td>Work</td>
+                          <td>R. Dr. Roberto Frias, 4200-465 Porto, Portugal</td>
+                         
                         </tr>-->
                       </tbody>
                     </table>
@@ -279,6 +228,67 @@
                           <td>{{$card['expiration_date']}}</td>
                           <td id="cardTableName">{{$card['name']}}</td>
                           <td><i class="fab fa-cc-visa fa-2x"></i></td>
+                          <td>
+                            <div class="d-flex justify-content-center ml-2 pl-5">
+                              <button type="button" class="btn btn-sm button-action m-2" data-toggle="modal"
+                                data-target="#editCard1">Edit</button>
+                              <div class="modal fade" id="editCard1" tabindex="-1" role="dialog" aria-labelledby="editCard1Label"
+                                aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                  <div class="modal-content">
+                                    <div class="modal-header">
+                                      <h5 class="modal-title" id="editCard1Label">New Card</h5>
+                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                      </button>
+                                    </div>
+                                    <div class="modal-body">
+                                      <form>
+                                        <div class="row">
+                                          <div class="col-md-7">
+                                            <div class="form-group">
+                                              <label for="editCardNumber">Card Number</label>
+                                              <input type="tel" class="form-control" id="editCardNumber" placeholder="Valid Card Number"
+                                                value="{{$card['last_digits']}}" required>
+                                            </div>
+                                          </div>
+                                          <div class=" col-md-5 pull-right">
+                                            <div class="form-group">
+                                              <label for="editCardName">Name</label>
+                                              <input type="tel" class="form-control" id="editCardName" placeholder="Name"
+                                                value="{{$card['name']}}" required />
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <div class="row">
+                                          <div class="col-md-7">
+                                            <div class="form-group">
+                                              <label for="editCardExpDate">Expiration Date</label>
+                                              <input type="tel" class="form-control" id="editCardExpDate" placeholder="YYYY / MM"
+                                                value="{{$card['expiration_date']}}" required />
+                                            </div>
+                                          </div>
+                                          <div class="col-md-5 pull-right">
+                                            <div class="form-group">
+                                              <label for="editCardCVC">CV Code</label>
+                                              <input type="tel" class="form-control" id="editCardCVC" placeholder="CVC"
+                                                required />
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                      <button type="button" class="btn button-submit btn-sm">Finish</button>
+                                      <button type="button" class="btn button-negative btn-sm" data-dismiss="modal">Cancel</button>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <button type="button" class="btn btn-sm button-negative m-2">Delete</button>
+                            </div>
+                          </td>
+
                          </tr>
                         @endforeach 
                           <!--<td>
@@ -897,7 +907,7 @@
                         </form>
                       </div>
                       <div class="modal-footer">
-                        <button type="button" class="btn button-submit btn-sm">Finish</button>
+                        <button type="button" class="btn button-submit btn-sm" >Finish</button>
                         <button type="button" class="btn button-negative btn-sm" data-dismiss="modal">Cancel</button>
                       </div>
                     </div>

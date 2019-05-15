@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Client;
+use App\Address;
 use Illuminate\Http\Request;
 
 class ClientController extends Controller
@@ -82,4 +83,26 @@ class ClientController extends Controller
  {
   //
  }
+
+
+ public function address_edit(Request $request)
+ {
+
+    $address = Address::find($request->address_id);
+
+    $address->name = $request->name;
+    $address->address_line = $request->address_line;
+    $address->postal_code = $request->postal_code;
+    $address->city = $request->city;
+    $address->country = $request->country;
+    
+    $address->save();
+
+  
+
+  // return response("Product added with success", 200);
+  return redirect()->route('profile', ['id' => $request->client_id]);
+
+ }
+
 }

@@ -21,5 +21,5 @@ Route::get('/product/{id}', "PagesController@product")->name('product_page');
 Route::post('/product', "ProductController@add_product")->name('product_add');
 
 Route::get('/profile/{id}', "PagesController@profile")->name('profile');
-
+Route::post('/profile', "ClientController@address_edit")->name('address_edit');
 Auth::routes();

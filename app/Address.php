@@ -12,4 +12,6 @@ class Address extends Model
     protected $table = 'address';
 
     protected $fillable = ['id', 'id_client', 'name', 'address_line', 'postal_code', 'country', 'city'];   
+
+    //$string = str_replace(' ', '', $string);
 }

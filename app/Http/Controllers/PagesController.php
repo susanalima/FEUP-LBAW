@@ -160,6 +160,7 @@ class PagesController extends Controller
  public function profile($id)
  {
     $info = Client::find($id);
+    $info['id'] = $info->id;
     $info['name'] = $info->nonAdmin->user->name;
     $info['email'] = $info->nonAdmin->user->email;
     $info['nif'] = $info->nif;
@@ -168,7 +169,7 @@ class PagesController extends Controller
     $info['wishLists'] = $info->wishLists;
     
     $data = array(
-    'type' => 'profile',
+    'type' => 'information',
     'interactive' => true,
     'info' => $info,
     );
@@ -176,4 +177,19 @@ class PagesController extends Controller
     return view("pages.profile")->with($data);
  }
 
+/*
+ public function address_update($error = null)
+ {
+  $data = array(
+   'type' => 'edit_address',
+   'interactive' => true,
+  );
+
+  if ($error !== null) {
+   $data['error'] = $error;
+  }
+
+  return view("pages.address_edit")->with($data);
+ }
+*/
 }
