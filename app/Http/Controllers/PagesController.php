@@ -177,19 +177,8 @@ class PagesController extends Controller
     return view("pages.profile")->with($data);
  }
 
-/*
- public function address_update($error = null)
- {
-  $data = array(
-   'type' => 'edit_address',
-   'interactive' => true,
-  );
-
-  if ($error !== null) {
-   $data['error'] = $error;
-  }
-
-  return view("pages.address_edit")->with($data);
+ public function wishList($list_id){
+   //TODO: still needs not implemented methods in wishList.php
  }
-*/
+
 }
