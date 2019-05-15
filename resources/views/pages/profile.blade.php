@@ -837,6 +837,7 @@
               </div>
             </div>
           </div>
+
           <div class="card">
             <div class="card-header" id="wishListsHeading">
               <h2 class="mb-0">
@@ -851,10 +852,11 @@
                 <div class="table-responsive">
                   <table class="table">
                     <tbody>
-                      <tr>
+                    @foreach ($info['wishLists'] as $wishList)
+                    <tr>
                         <th scope="row">1</th>
-                        <td><a class="btn-link" href="./wishList.html">When I'm a millionaire</a></td>
-                        <td>Things I'm going to buy when I'm a millionaire!!!!!!!!!!!</td>
+                        <td><a class="btn-link" href="./wishList.html">{{$wishList['name']}}</a></td>
+                        <td>{{$wishList['description']}}</td>
                         <td>
                           <div class="d-flex justify-content-center">
                             <button type="button" class="btn btn-sm button-action m-2">Share</button>
@@ -862,28 +864,7 @@
                           </div>
                         </td>
                       </tr>
-                      <tr>
-                        <th scope="row">2</th>
-                        <td><a class="btn-link" href="./wishList.html">Birthday</a></td>
-                        <td>Anniversary gifts</td>
-                        <td>
-                          <div class="d-flex justify-content-center">
-                            <button type="button" class="btn btn-sm button-action m-2">Share</button>
-                            <button type="button" class="btn btn-sm button-negative m-2">Delete</button>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <th scope="row">3</th>
-                        <td><a class="btn-link" href="./wishList.html">School</a></td>
-                        <td>Stuff I have to buy for school as soon as I have money</td>
-                        <td>
-                          <div class="d-flex justify-content-center">
-                            <button type="button" class="btn btn-sm button-action m-2">Share</button>
-                            <button type="button" class="btn btn-sm button-negative m-2">Delete</button>
-                          </div>
-                        </td>
-                      </tr>
+                        @endforeach
                     </tbody>
                   </table>
                 </div>
