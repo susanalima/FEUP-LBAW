@@ -157,6 +157,7 @@ class PagesController extends Controller
  }
 
 
+
  public function profile($id)
  {
     $info = Client::find($id);
@@ -167,7 +168,19 @@ class PagesController extends Controller
     $info['addresses'] = $info->addresses;
     $info['cards'] = $info->credit_cards;
     $info['wishLists'] = $info->wishLists;
-    
+    $info['carts'] = $info->carts->map(function ($cart) {  
+      return [
+         'checkout' => $cart->checkout,
+         'address_line' => $cart->address->address_line,
+         'postal_code' => $cart->address->postal_code,
+         'country' => $cart->address->country,
+         'city' => $cart->address->city,
+         'address_name' => $cart->address->name,
+         'shipping' => $cart->shipping->method,
+         'card' => $cart->creditCard->last_digits,
+      ];
+    });
+
     $data = array(
     'type' => 'information',
     'interactive' => true,

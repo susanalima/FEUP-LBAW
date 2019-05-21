@@ -78,45 +78,45 @@
                           <td>
                             <div class="d-flex justify-content-center">
                               <button type="button" class="btn btn-sm button-action m-2" data-toggle="modal"
-                                data-target="#edit{{$address['name']}}Address">Edit</button>
-                              <div class="modal fade" id="edit{{$address['name']}}Address" tabindex="-1" role="dialog" aria-labelledby="edit{{$address['name']}}AddressLabel"
+                                data-target="#edit{{$address['id']}}Address">Edit</button>
+                              <div class="modal fade" id="edit{{$address['id']}}Address" tabindex="-1" role="dialog" aria-labelledby="edit{{$address['id']}}AddressLabel"
                                 aria-hidden="true">
                                 <div class="modal-dialog" role="document">
                                   <div class="modal-content">
                                     <div class="modal-header">
-                                      <h5 class="modal-title" id="edit{{$address['name']}}Address">Edit {{$address['name']}} Address</h5>
+                                      <h5 class="modal-title" id="edit{{$address['id']}}Address">Edit {{$address['name']}} Address</h5>
                                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                       </button>
                                     </div>
                                     <div class="modal-body">
-                                    <form  id="form" method="POST" action="{{ route('address_edit') }}" >
+                                    <form  id="formEdit{{$address['id']}}Address" method="POST" action="{{ route('address_edit') }}" >
                                     {{ csrf_field() }}
                                         <div class="form-group">
                                           <label>Address</label>
                                           <div class="input-group flex-nowrap">
-                                            <input type="text" class="form-control" id="edit{{$address['name']}}AddressName"
+                                            <input type="text" class="form-control" id="edit{{$address['id']}}AddressName"
                                               placeholder="Name" value="{{$address['name']}}" name="name" required>
                                           </div>
 
                                           <div class="input-group flex-nowrap mt-2">
-                                            <input type="text" class="form-control" id="edit{{$address['name']}}AddressStreet"
+                                            <input type="text" class="form-control" id="edit{{$address['id']}}AddressStreet"
                                               placeholder="Street and number, P.O. box, c/o" value="{{$address['address_line']}}" name ="address_line"
                                               required>
-                                            <input type="text" class="form-control rounded" id="edit{{$address['name']}}AddressPOstalCode"
+                                            <input type="text" class="form-control rounded" id="edit{{$address['id']}}AddressPOstalCode"
                                               placeholder="Postcode"  value="{{$address['postal_code']}}" name ="postal_code" required>
                                           </div>
 
                                           <div class="input-group flex-nowrap mt-2">
-                                            <input type="text" class="form-control mr-2 rounded" id="edit{{$address['name']}}AddressTown"
+                                            <input type="text" class="form-control mr-2 rounded" id="edit{{$address['id']}}AddressTown"
                                               placeholder="Town, City" value="{{$address['city']}}" name="city" required>
-                                            <input type="text" class="form-control rounded" id="edit{{$address['name']}}AddressCountry"
+                                            <input type="text" class="form-control rounded" id="edit{{$address['id']}}AddressCountry"
                                               placeholder="Country" value="{{$address['country']}}" name = "country" required>
                                           </div>
 
                                           <div class="input-group flex-nowrap mt-2">
-                                            <input type="hidden" class="form-control" id="address_{{$address["id"]}}" name="address_id" value="{{$address['id']}}"> {{-- TODO: Possible security breach --}} 
-                                            <input type="hidden" class="form-control" id="client{{$info["id"]}}" name="client_id" value="{{$info['id']}}"> {{-- TODO: Possible security breach --}} 
+                                            <input type="hidden" class="form-control"  name="address_id" value="{{$address['id']}}"> {{-- TODO: Possible security breach --}} 
+                                            <input type="hidden" class="form-control"  name="client_id" value="{{$info['id']}}"> {{-- TODO: Possible security breach --}} 
                                         </div>
 
                                         </div>
@@ -135,15 +135,6 @@
                           </td>
                       </tr>
                         @endforeach 
-                     
-                   
-                     
-
-                        <!--<tr>
-                          <td>Work</td>
-                          <td>R. Dr. Roberto Frias, 4200-465 Porto, Portugal</td>
-                         
-                        </tr>-->
                       </tbody>
                     </table>
                   </div>
@@ -153,6 +144,7 @@
                     <button type="button" class="btn button-action mr-3 btn-sm " data-toggle="modal" data-target="#addAddress">Add
                       address</button>
                   </div>
+                  <!--add address-->
                   <div class="modal fade" id="addAddress" tabindex="-1" role="dialog" aria-labelledby="addAddressLabel"
                     aria-hidden="true">
                     <div class="modal-dialog" role="document">
@@ -164,7 +156,8 @@
                           </button>
                         </div>
                         <div class="modal-body">
-                          <form>
+                        <form  id="formAddAddress" method="POST" action="{{ route('card_edit') }}" >
+                              {{ csrf_field() }}
                             <div class="form-group">
                               <label>Address</label>
                               <div class="input-group flex-nowrap">
@@ -193,15 +186,18 @@
                                   required>
                               </div>
                             </div>
+
+                            <div class="modal-footer">
+                              <button type="submit" class="btn button-submit btn-sm">Finish</button>
+                              <button type="button" class="btn button-negative btn-sm" data-dismiss="modal">Cancel</button>
+                          </div>
+
                           </form>
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn button-submit btn-sm">Finish</button>
-                          <button type="button" class="btn button-negative btn-sm" data-dismiss="modal">Cancel</button>
                         </div>
                       </div>
                     </div>
                   </div>
+                  <!--add address-->
                 </div>
               </div>
 
@@ -231,57 +227,67 @@
                           <td>
                             <div class="d-flex justify-content-center ml-2 pl-5">
                               <button type="button" class="btn btn-sm button-action m-2" data-toggle="modal"
-                                data-target="#editCard1">Edit</button>
-                              <div class="modal fade" id="editCard1" tabindex="-1" role="dialog" aria-labelledby="editCard1Label"
+                                data-target="#editCard{{$card['last_digits']}}">Edit</button> 
+                              <div class="modal fade" id="editCard{{$card['last_digits']}}" tabindex="-1" role="dialog" aria-labelledby="editCard{{$card['last_digits']}}Label"
                                 aria-hidden="true">
                                 <div class="modal-dialog" role="document">
                                   <div class="modal-content">
                                     <div class="modal-header">
-                                      <h5 class="modal-title" id="editCard1Label">New Card</h5>
+                                      <h5 class="modal-title" id="editCard{{$card['last_digits']}}Label">Edit Card {{$card['last_digits']}}</h5>
                                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                       </button>
                                     </div>
                                     <div class="modal-body">
-                                      <form>
+                                    <form  id="formEdit{{$card['id']}}Card" method="POST" action="{{ route('card_edit') }}" >
+                                       {{ csrf_field() }}
                                         <div class="row">
                                           <div class="col-md-7">
                                             <div class="form-group">
-                                              <label for="editCardNumber">Card Number</label>
-                                              <input type="tel" class="form-control" id="editCardNumber" placeholder="Valid Card Number"
-                                                value="{{$card['last_digits']}}" required>
+                                              <label for="editCard{{$card['id']}}Number">Card Number</label>
+                                              <input type="tel" class="form-control" id="editCard{{$card['id']}}Number" placeholder="Valid Card Number"
+                                                value="{{$card['last_digits']}}" name="last_digits" required>
                                             </div>
                                           </div>
                                           <div class=" col-md-5 pull-right">
                                             <div class="form-group">
-                                              <label for="editCardName">Name</label>
-                                              <input type="tel" class="form-control" id="editCardName" placeholder="Name"
-                                                value="{{$card['name']}}" required />
+                                              <label for="editCard{{$card['id']}}Name">Name</label>
+                                              <input type="tel" class="form-control" id="editCard{{$card['id']}}Name" placeholder="Name"
+                                                value="{{$card['name']}}" name="name" required />
                                             </div>
                                           </div>
                                         </div>
                                         <div class="row">
                                           <div class="col-md-7">
                                             <div class="form-group">
-                                              <label for="editCardExpDate">Expiration Date</label>
-                                              <input type="tel" class="form-control" id="editCardExpDate" placeholder="YYYY / MM"
-                                                value="{{$card['expiration_date']}}" required />
+                                              <label for="editCard{{$card['id']}}ExpDate">Expiration Date</label>
+                                              <input type="tel" class="form-control" id="editCard{{$card['id']}}ExpDate" placeholder="YYYY / MM"
+                                                value="{{$card['expiration_date']}}" name="expiration_date" required />
                                             </div>
                                           </div>
+                                          <!--Cena do token-->
                                           <div class="col-md-5 pull-right">
                                             <div class="form-group">
-                                              <label for="editCardCVC">CV Code</label>
-                                              <input type="tel" class="form-control" id="editCardCVC" placeholder="CVC"
-                                                required />
+                                              <label for="editCard{{$card['id']}}CVC">CV Code</label>
+                                              <input type="tel" class="form-control" id="editCard{{$card['id']}}CVC" placeholder="CVC"
+                                               name="cvc" required />
                                             </div>
                                           </div>
+
+                                        
+                                          <div class="input-group flex-nowrap mt-2">
+                                            <input type="hidden" class="form-control" name="card_id" value="{{$card['id']}}"> {{-- TODO: Possible security breach --}} 
+                                            <input type="hidden" class="form-control"  name="client_id" value="{{$info['id']}}"> {{-- TODO: Possible security breach --}} 
                                         </div>
-                                      </form>
-                                    </div>
-                                    <div class="modal-footer">
-                                      <button type="button" class="btn button-submit btn-sm">Finish</button>
+
+                                        </div>
+                                        <div class="modal-footer">
+                                      <button type="submit" class="btn button-submit btn-sm">Finish</button>
                                       <button type="button" class="btn button-negative btn-sm" data-dismiss="modal">Cancel</button>
                                     </div>
+                                      </form>
+                                    </div>
+
                                   </div>
                                 </div>
                               </div>
@@ -291,67 +297,7 @@
 
                          </tr>
                         @endforeach 
-                          <!--<td>
-                            <div class="d-flex justify-content-center ml-2 pl-5">
-                              <button type="button" class="btn btn-sm button-action m-2" data-toggle="modal"
-                                data-target="#editCard1">Edit</button>
-                              <div class="modal fade" id="editCard1" tabindex="-1" role="dialog" aria-labelledby="editCard1Label"
-                                aria-hidden="true">
-                                <div class="modal-dialog" role="document">
-                                  <div class="modal-content">
-                                    <div class="modal-header">
-                                      <h5 class="modal-title" id="editCard1Label">New Card</h5>
-                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                      </button>
-                                    </div>
-                                    <div class="modal-body">
-                                      <form>
-                                        <div class="row">
-                                          <div class="col-md-7">
-                                            <div class="form-group">
-                                              <label for="editCardNumber">Card Number</label>
-                                              <input type="tel" class="form-control" id="editCardNumber" placeholder="Valid Card Number"
-                                                value="1111" required>
-                                            </div>
-                                          </div>
-                                          <div class=" col-md-5 pull-right">
-                                            <div class="form-group">
-                                              <label for="editCardName">Name</label>
-                                              <input type="tel" class="form-control" id="editCardName" placeholder="Name"
-                                                value="John Doe" required />
-                                            </div>
-                                          </div>
-                                        </div>
-                                        <div class="row">
-                                          <div class="col-md-7">
-                                            <div class="form-group">
-                                              <label for="editCardExpDate">Expiration Date</label>
-                                              <input type="tel" class="form-control" id="editCardExpDate" placeholder="YYYY / MM"
-                                                value="2019/11" required />
-                                            </div>
-                                          </div>
-                                          <div class="col-md-5 pull-right">
-                                            <div class="form-group">
-                                              <label for="editCardCVC">CV Code</label>
-                                              <input type="tel" class="form-control" id="editCardCVC" placeholder="CVC"
-                                                required />
-                                            </div>
-                                          </div>
-                                        </div>
-                                      </form>
-                                    </div>
-                                    <div class="modal-footer">
-                                      <button type="button" class="btn button-submit btn-sm">Finish</button>
-                                      <button type="button" class="btn button-negative btn-sm" data-dismiss="modal">Cancel</button>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                              <button type="button" class="btn btn-sm button-negative m-2">Delete</button>
-                            </div>
-                          </td>
-                        </tr>-->
+                  
                         
                       </tbody>
                     </table>
@@ -543,8 +489,10 @@
                     </tr>
                   </thead>
                   <tbody>
+                  @foreach ($info['carts'] as $cart)
+             
                     <tr>
-                      <td>2012-03-11</td>
+                      <td>{{$cart['checkout']}}</td>
                       <td>14.89€</td>
                       <td>
                         <button class="btn button-action btn-sm m-2" role="button" data-toggle="modal" data-target=".viewCard1Modal">View
@@ -567,7 +515,7 @@
                                         <h4>Address:</h4>
                                       </div>
                                       <div class="col-6 col-md-8 p-0">
-                                        <h4>Hell-Alameda dos Jardins d'Arrábida 443, 4400-478 Porto, Portugal</h4>
+                                        <h4>{{$cart['address_name']}}- {{$cart['address_line']}}, {{$cart['postal_code']}} {{$cart['city']}}, {{$cart['country']}}</h4>
                                       </div>
                                     </div>
                                     <div class="row mb-1">
@@ -575,7 +523,7 @@
                                         <h4>Card:</h4>
                                       </div>
                                       <div class="col-6 col-md-8 p-0">
-                                        <h4>1111</h4>
+                                        <h4>{{$cart['card']}}</h4>
                                       </div>
                                     </div>
                                     <div class="row mb-1">
@@ -583,7 +531,7 @@
                                         <h4>Shipping:</h4>
                                       </div>
                                       <div class="col-6 col-md-8 p-0">
-                                        <h4>Regular</h4>
+                                        <h4>{{$cart['shipping']}}</h4>
                                       </div>
                                     </div>
                                     <div class="row mb-1">
@@ -640,208 +588,9 @@
                             </div>
                           </div>
                       </td>
+                      @endforeach 
                     </tr>
-                    <tr>
-                      <td>2017-02-11</td>
-                      <td>109.99€</td>
-                      <td>
-                        <button class="btn button-action btn-sm m-2" role="button" data-toggle="modal" data-target=".viewCard2Modal">View
-                          cart</button>
-                        <div class="modal fade viewCard2Modal" tabindex="-1" role="dialog" aria-labelledby="viewCard2ModalLabel"
-                          aria-hidden="true">
-                          <div class="modal-dialog">
-                            <div class="modal-content">
-                              <div class="modal-body previousCart">
-                                <div class="d-flex justify-content-between" id="shoppingCartHeader">
-                                  <h2 class="pt-4 pl-2 mb-4">Shopping Cart</h2>
-                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                  </button>
-                                </div>
-                                <div class="d-flex flex-column text-left ml-4">
-                                    <div id="shoppingCartCartTotal">
-                                      <div class="row mb-1">
-                                        <div class="col-6 col-md-2 p-0">
-                                          <h4>Address:</h4>
-                                        </div>
-                                        <div class="col-6 col-md-8 p-0">
-                                          <h4>Hell-Alameda dos Jardins d'Arrábida 443, 4400-478 Porto, Portugal</h4>
-                                        </div>
-                                      </div>
-                                      <div class="row mb-1">
-                                        <div class="col-6 col-md-2 p-0">
-                                          <h4>Card:</h4>
-                                        </div>
-                                        <div class="col-6 col-md-8 p-0">
-                                          <h4>1111</h4>
-                                        </div>
-                                      </div>
-                                      <div class="row mb-1">
-                                        <div class="col-6 col-md-2 p-0">
-                                          <h4>Shipping:</h4>
-                                        </div>
-                                        <div class="col-6 col-md-8 p-0">
-                                          <h4>Regular</h4>
-                                        </div>
-                                      </div>
-                                      <div class="row mb-1">
-                                        <div class="col-6 col-md-2 p-0">
-                                          <h4>Total:</h4>
-                                        </div>
-                                        <div class="col-6 col-md-8 p-0">
-                                          <h4> 984.97€</h4>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                
 
-                                <div class="d-flex flex-column justify-content-between" id="shoppingCartCart">
-                                  <article class="m-2 p-2 d-flex justify-content-between align-items-center">
-                                    <a href="./product.html" class="cartProductImage">
-                                      <img src="images/products/googlePixelBook.jpg" class="" alt="..." />
-                                    </a>
-                                    <a href="./product.html">
-                                      <h4 class="cartProductName">Laptop Asus 950</h4>
-                                      <h5 class="cartProductSpec font-italic">Intel Core I9</h5>
-                                    </a>
-                                    <h4>1</h4>
-                                    <h4 class="cartProductSubTotal">899.99</h4>
-
-                                  </article>
-
-                                  <article class="m-2 p-2 d-flex justify-content-between align-items-center">
-                                    <a href="./product.html" class="cartProductImage">
-                                      <img src="images/products/book_cover1984.jpg" class="" alt="..." />
-                                    </a>
-                                    <a href="./product.html">
-                                      <h4 class="cartProductName">1984</h4>
-                                      <h5 class="cartProductSpec font-italic">G. Orwell</h5>
-                                    </a>
-                                    <h4>1</h4>
-                                    <h4 class="cartProductSubTotal">14.99</h4>
-
-                                  </article>
-
-                                  <article class="m-2 p-2 d-flex justify-content-between align-items-center">
-                                    <a href="./product.html" class="cartProductImage">
-                                      <img src="images/products/headphones.jpg" class="" alt="..." />
-                                    </a>
-                                    <a href="./product.html">
-                                      <h4 class="cartProductName">JBL Phones</h4>
-                                      <h5 class="cartProductSpec font-italic">Wireless HQ</h5>
-                                    </a>
-                                    <h4>1</h4>
-                                    <h4 class="cartProductSubTotal">69.99</h4>
-
-                                  </article>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>2019-01-21</td>
-                      <td>999.99€</td>
-                      <td>
-                        <button class="btn button-action btn-sm m-2" role="button" data-toggle="modal" data-target=".viewCard3Modal">View
-                          cart</button>
-                        <div class="modal fade viewCard3Modal" tabindex="-1" role="dialog" aria-labelledby="viewCard3ModalLabel"
-                          aria-hidden="true">
-                          <div class="modal-dialog">
-                            <div class="modal-content">
-                              <div class="modal-body previousCart">
-                                <div class="d-flex justify-content-between" id="shoppingCartHeader">
-                                  <h2 class="pt-4 pl-2 mb-4">Shopping Cart</h2>
-                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                  </button>
-                                </div>
-
-                                <div class="d-flex flex-column text-left ml-4">
-                                    <div id="shoppingCartCartTotal">
-                                      <div class="row mb-1">
-                                        <div class="col-6 col-md-2 p-0">
-                                          <h4>Address:</h4>
-                                        </div>
-                                        <div class="col-6 col-md-8 p-0">
-                                          <h4>Hell-Alameda dos Jardins d'Arrábida 443, 4400-478 Porto, Portugal</h4>
-                                        </div>
-                                      </div>
-                                      <div class="row mb-1">
-                                        <div class="col-6 col-md-2 p-0">
-                                          <h4>Card:</h4>
-                                        </div>
-                                        <div class="col-6 col-md-8 p-0">
-                                          <h4>1111</h4>
-                                        </div>
-                                      </div>
-                                      <div class="row mb-1">
-                                        <div class="col-6 col-md-2 p-0">
-                                          <h4>Shipping:</h4>
-                                        </div>
-                                        <div class="col-6 col-md-8 p-0">
-                                          <h4>Regular</h4>
-                                        </div>
-                                      </div>
-                                      <div class="row mb-1">
-                                        <div class="col-6 col-md-2 p-0">
-                                          <h4>Total:</h4>
-                                        </div>
-                                        <div class="col-6 col-md-8 p-0">
-                                          <h4> 984.97€</h4>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                <div class="d-flex flex-column justify-content-between" id="shoppingCartCart">
-                                  <article class="m-2 p-2 d-flex justify-content-between align-items-center">
-                                    <a href="./product.html" class="cartProductImage">
-                                      <img src="images/products/googlePixelBook.jpg" class="" alt="..." />
-                                    </a>
-                                    <a href="./product.html">
-                                      <h4 class="cartProductName">Laptop Asus 950</h4>
-                                      <h5 class="cartProductSpec font-italic">Intel Core I9</h5>
-                                    </a>
-                                    <h4>1</h4>
-                                    <h4 class="cartProductSubTotal">899.99</h4>
-
-                                  </article>
-
-                                  <article class="m-2 p-2 d-flex justify-content-between align-items-center">
-                                    <a href="./product.html" class="cartProductImage">
-                                      <img src="images/products/book_cover1984.jpg" class="" alt="..." />
-                                    </a>
-                                    <a href="./product.html">
-                                      <h4 class="cartProductName">1984</h4>
-                                      <h5 class="cartProductSpec font-italic">G. Orwell</h5>
-                                    </a>
-                                    <h4>1</h4>
-                                    <h4 class="cartProductSubTotal">14.99</h4>
-
-                                  </article>
-
-                                  <article class="m-2 p-2 d-flex justify-content-between align-items-center">
-                                    <a href="./product.html" class="cartProductImage">
-                                      <img src="images/products/headphones.jpg" class="" alt="..." />
-                                    </a>
-                                    <a href="./product.html">
-                                      <h4 class="cartProductName">JBL Phones</h4>
-                                      <h5 class="cartProductSpec font-italic">Wireless HQ</h5>
-                                    </a>
-                                    <h4>1</h4>
-                                    <h4 class="cartProductSubTotal">69.99</h4>
-
-                                  </article>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </td>
-                    </tr>
                   </tbody>
                 </table>
               </div>

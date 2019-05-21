@@ -21,7 +21,12 @@ Route::get('/product/{id}', "PagesController@product")->name('product_page');
 Route::post('/product', "ProductController@add_product")->name('product_add');
 
 Route::get('/profile/{id}', "PagesController@profile")->name('profile');
-Route::post('/profile', "ClientController@address_edit")->name('address_edit');
+Route::post('/profile/cardEdit', "ClientController@card_edit")->name('card_edit');
+Route::post('/profile/addressEdit', "ClientController@address_edit")->name('address_edit');
+Route::post('/profile/addressAdd', "ClientController@address_add")->name('address_add');
+
+
+
 
 Route::get('/wishList/{list_id}', "PagesController@wishList")->name('wishList');
 

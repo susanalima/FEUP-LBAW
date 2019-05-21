@@ -17,23 +17,23 @@ class Cart extends Model
     protected $fillable = ['id', 'id_client', 'checkout', 'id_card', 'id_address', 'id_shipping'];   
 
 
-    public function ProductList()
+    public function productList()
     {
      return $this->hasOne(ProductList::class, 'id', 'id' );
     }
 
-    public function Address()
+    public function address()
     {
-     return $this->hasOne(Address::class, 'id_address', 'id' );
+     return $this->hasOne(Address::class, 'id', 'id_address' );
     }
 
-    public function CreditCard()
+    public function creditCard()
     {
-     return $this->hasOne(CreditCard::class, 'id_card', 'id' );
+     return $this->hasOne(CreditCard::class, 'id', 'id_card' );
     }
 
-    public function Shipping()
+    public function shipping()
     {
-     return $this->hasOne(Shipping::class, 'id_shipping', 'id' );
+     return $this->hasOne(Shipping::class, 'id', 'id_shipping' );
     }
 }
