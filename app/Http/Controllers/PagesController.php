@@ -4,12 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Aux\Aux;
 use App\Category;
-use App\Message;
+use App\Client;
 use App\Product;
 use App\Promotion;
 use App\User;
-use App\Client;
-use Illuminate\Support\Facades\DB;
 
 class PagesController extends Controller
 {
@@ -45,15 +43,39 @@ class PagesController extends Controller
   $product = [
    'name' => $product->name,
    'product_id' => $product->id,
-   'image' => $product->images->filter(function ($image) {
-    return $image->primary_img;
-   }),
+   'image' => $product->primary_image(),
   ];
+
+  $wished = array();
+  $categories = array(1, 4, 6);
+
+  foreach ($categories as $key => $category) {
+   $temp = Product::all()->where('id_category', $category)->sortBy(function ($prod) {
+    return -1 * $prod->wished();
+   })->take(10)->map(function ($p) {
+    return $p;
+   });
+
+   $prods = array();
+   foreach ($temp as $key => $value) {
+    array_push($prods,
+     [
+      'name' => str_before($value->name, ' -'),
+      'price' => $value->price,
+      'rating' => $value->rating(),
+      'image' => $value->primary_image(),
+      'id' => $value->id,
+     ]);
+   }
+
+   $wished[Aux::formatHeader(Category::find($category)->name)] = $prods;
+  }
 
   $data = array(
    'interactive' => true,
    'promos' => $promotions,
    'product' => $product,
+   'wished' => $wished,
   );
 
   return view("index")->with($data);
@@ -120,32 +142,13 @@ class PagesController extends Controller
 
  public function product($id)
  {
-  $getReviews = function ($product) {
-   $messages = $product->reviews;
-   $messagesC = array();
-   foreach ($messages as $message) {
-    $res = Message::find($message['id_message']);
-    $user = User::find($res['id_non_admin']);
-    $res['rating'] = $message['rating'];
-    $res['user'] = $user['name'];
-
-    array_push($messagesC, $res);
-   }
-   return $messagesC;
-  };
-
-  $getQA = function ($product) {
-   return DB::select("SELECT M.created_at as Q_created_at, M.content as Q_content, M.id_non_admin as Q_id, A.created_at as A_created_at, A.content as A_content, A.id_non_admin as A_id FROM  message  M, q_a QA, message A WHERE  QA.id_message = M.id AND  M.id_product = {$product['id']} AND  A.id = QA.id_answer");
-
-  }; // TODO: Not catching questions without answers
-
   $product = Product::find($id);
   $product['category'] = Aux::formatHeader($product->category['name']);
   $product['images'] = $product->images;
   $product['specs'] = $product->specifications->map(function ($a) {return $a->spec();});
-  $product['reviews'] = $getReviews($product);
-  $product['q_a'] = $getQA($product);
-  $product['rating'] = (count($product['reviews']) != 0) ? array_reduce($product['reviews'], function ($sum, $val) {$sum += $val['rating'];return $sum;}) / count($product['reviews']) : 0;
+  $product['reviews'] = $product->getReviews();
+  $product['q_a'] = $product->getQA();
+  $product['rating'] = $product->rating();
 
   $data = array(
    'type' => 'product',
@@ -156,42 +159,41 @@ class PagesController extends Controller
   return view("pages.product")->with($data);
  }
 
-
-
  public function profile($id)
  {
-    $info = Client::find($id);
-    $info['id'] = $info->id;
-    $info['name'] = $info->nonAdmin->user->name;
-    $info['email'] = $info->nonAdmin->user->email;
-    $info['nif'] = $info->nif;
-    $info['addresses'] = $info->addresses;
-    $info['cards'] = $info->credit_cards;
-    $info['wishLists'] = $info->wishLists;
-    $info['carts'] = $info->carts->map(function ($cart) {  
-      return [
-         'checkout' => $cart->checkout,
-         'address_line' => $cart->address->address_line,
-         'postal_code' => $cart->address->postal_code,
-         'country' => $cart->address->country,
-         'city' => $cart->address->city,
-         'address_name' => $cart->address->name,
-         'shipping' => $cart->shipping->method,
-         'card' => $cart->creditCard->last_digits,
-      ];
-    });
+  $info = Client::find($id);
+  $info['id'] = $info->id;
+  $info['name'] = $info->nonAdmin->user->name;
+  $info['email'] = $info->nonAdmin->user->email;
+  $info['nif'] = $info->nif;
+  $info['addresses'] = $info->addresses;
+  $info['cards'] = $info->credit_cards;
+  $info['wishLists'] = $info->wishLists;
+  $info['carts'] = $info->carts->map(function ($cart) {
+   return [
+    'checkout' => $cart->checkout,
+    'address_line' => $cart->address->address_line,
+    'postal_code' => $cart->address->postal_code,
+    'country' => $cart->address->country,
+    'city' => $cart->address->city,
+    'address_name' => $cart->address->name,
+    'shipping' => $cart->shipping->method,
+    'card' => $cart->creditCard->last_digits,
+   ];
+  });
 
-    $data = array(
-    'type' => 'information',
-    'interactive' => true,
-    'info' => $info,
-    );
+  $data = array(
+   'type' => 'information',
+   'interactive' => true,
+   'info' => $info,
+  );
 
-    return view("pages.profile")->with($data);
+  return view("pages.profile")->with($data);
  }
 
- public function wishList($list_id){
-   //TODO: still needs not implemented methods in wishList.php
+ public function wishList($list_id)
+ {
+  //TODO: still needs not implemented methods in wishList.php
  }
 
 }
