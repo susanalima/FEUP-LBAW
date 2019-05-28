@@ -8,7 +8,7 @@ use App\ProductList;
 use Illuminate\Database\Eloquent\Model;
 
 
-class wishList extends Model{
+class WishList extends Model{
     public $timestamps = false;
 
     protected $table = 'wish_list';
@@ -17,16 +17,12 @@ class wishList extends Model{
 
     //TODO: Association to ass_list_products/product_list
 
-    protected function id(){
+    public function id_list(){
         return $this->hasOne(ProductList::class, 'id', 'id');
     }
 
-    protected function id_client(){
-        return $this->hasOne(Client::class, 'id', 'id_client');
-    }
-
-    protected function wish_list(){
-        //TODO?
+    public function id_client(){
+        return $this->hasOne(Client::class, 'id_client', 'id');
     }
 }
 
