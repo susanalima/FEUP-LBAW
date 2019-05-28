@@ -100,7 +100,7 @@
                                           </div>
 
                                           <div class="input-group flex-nowrap mt-2">
-                                            <input type="text" class="form-control" id="edit{{$address['id']}}AddressStreet"
+                                            <input type="text" class="form-control  mr-2 rounded" id="edit{{$address['id']}}AddressStreet"
                                               placeholder="Street and number, P.O. box, c/o" value="{{$address['address_line']}}" name ="address_line"
                                               required>
                                             <input type="text" class="form-control rounded" id="edit{{$address['id']}}AddressPOstalCode"
@@ -130,7 +130,44 @@
                                   </div>
                                 </div>
                               </div>
-                              <button type="button" class="btn btn-sm button-negative m-2">Delete</button>
+                              <button type="button" class="btn btn-sm button-negative m-2"  data-toggle="modal" data-target="#delete{{$address['id']}}AddressModal">Delete</button>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="delete{{$address['id']}}AddressModal" tabindex="-1" role="dialog" aria-labelledby="delete{{$address['id']}}AddressModalLabel" aria-hidden="true">
+                              <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <h5 class="modal-title" id="delete{{$address['id']}}AddressModalLabel">Modal title</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                      <span aria-hidden="true">&times;</span>
+                                    </button>
+                                  </div>
+                                  <div class="modal-body">
+                                    Are you sure you want to delete "{{$address['name']}}" address?
+                                  </div>
+                                  <div class="modal-footer">
+                                  
+                                  <form  id="formDelete{{$address['id']}}Address" method="POST" action="{{ route('address_delete') }}" >
+                                  {{ csrf_field() }}
+
+                                    <div class="input-group flex-nowrap mt-2">
+                                            <input type="hidden" class="form-control"  name="address_id" value="{{$address['id']}}"> {{-- TODO: Possible security breach --}} 
+                                            <input type="hidden" class="form-control"  name="client_id" value="{{$info['id']}}"> {{-- TODO: Possible security breach --}} 
+                                        </div>
+
+                                    <button type="submit" class="btn button-submit btn-sm">Yes</button>
+                                    <button type="button" class="btn button-negative btn-sm" data-dismiss="modal">No</button>
+                           
+                                </form>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <!-- -->
+         
+
+
                             </div>
                           </td>
                       </tr>
@@ -156,34 +193,32 @@
                           </button>
                         </div>
                         <div class="modal-body">
-                        <form  id="formAddAddress" method="POST" action="{{ route('card_edit') }}" >
+                        <form  id="formAddAddress" method="POST" action="{{ route('address_add') }}" >
                               {{ csrf_field() }}
                             <div class="form-group">
                               <label>Address</label>
                               <div class="input-group flex-nowrap">
-                                <input type="text" class="form-control" id="addAddressName" placeholder="Name" required>
-                              </div>
-
-                              <div class="input-group flex-nowrap mt-2">
-                                <input type="text" class="form-control" id="addAddressStreet" placeholder="Street and number, P.O. box, c/o"
-                                  required>
+                                <input type="text" class="form-control" id="addAddressName" placeholder="Name"   name="name" required>
                               </div>
 
                               <div class="input-group flex-nowrap mt-2">
 
-                                <input type="text" class="form-control mr-2 rounded" id="addAddressApartment"
-                                  placeholder="Flat, suite, unit, floor, etc" required>
+                              <input type="text" class="form-control mr-2 rounded" id="addAddressStreet" placeholder="Street and number, P.O. box, c/o"
+                                  name="address_line" required>
                                 <input type="text" class="form-control rounded" id="addAddressPostCode" placeholder="Postcode"
-                                  required>
+                                name="postal_code" required>
                               </div>
 
                               <div class="input-group flex-nowrap mt-2">
 
                                 <input type="text" class="form-control mr-2 rounded" id="addAddressTown" placeholder="Town, City"
-                                  required>
+                                name="city" required>
 
                                 <input type="text" class="form-control rounded" id="addAddressCountry" placeholder="Country"
-                                  required>
+                                name="country" required>
+
+                                  <input type="hidden" class="form-control"  name="client_id" value="{{$info['id']}}"> {{-- TODO: Possible security breach --}} 
+
                               </div>
                             </div>
 
@@ -291,7 +326,46 @@
                                   </div>
                                 </div>
                               </div>
-                              <button type="button" class="btn btn-sm button-negative m-2">Delete</button>
+                            
+                              <button type="button" class="btn btn-sm button-negative m-2"  data-toggle="modal" data-target="#delete{{$card['id']}}CardModal">Delete</button>
+
+                              <!-- Modal -->
+                              <div class="modal fade" id="delete{{$card['id']}}CardModal" tabindex="-1" role="dialog" aria-labelledby="delete{{$card['id']}}CardModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                  <div class="modal-content">
+                                    <div class="modal-header">
+                                      <h5 class="modal-title" id="delete{{$card['id']}}CardModalLabel">Modal title</h5>
+                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                      </button>
+                                    </div>
+                                    <div class="modal-body">
+                                      Are you sure you want to delete "{{$card['last_digits']}}" card?
+                                    </div>
+                                    <div class="modal-footer">
+                                    
+                                    <form  id="formCard{{$card['id']}}Card" method="POST" action="{{ route('card_delete') }}" >
+                                    {{ csrf_field() }}
+
+                                      <div class="input-group flex-nowrap mt-2">
+                                        <input type="hidden" class="form-control" name="card_id" value="{{$card['id']}}"> {{-- TODO: Possible security breach --}} 
+                                        <input type="hidden" class="form-control"  name="client_id" value="{{$info['id']}}"> {{-- TODO: Possible security breach --}} 
+                                      </div>
+
+                                      <button type="submit" class="btn button-submit btn-sm">Yes</button>
+                                      <button type="button" class="btn button-negative btn-sm" data-dismiss="modal">No</button>
+
+                                  </form>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+
+                              <!-- -->
+                            
+                            
+                            
+                            
                             </div>
                           </td>
 
@@ -302,11 +376,52 @@
                       </tbody>
                     </table>
                   </div>
-                  <div class="d-flex flex-row-reverse  mx-3 mb-3">
-                    <button type="button" class="btn btn-sm button-negative mr-2  btn-sm">Delete all</button>
-                    <button type="button" class="btn button-action  mr-3  btn-sm" data-toggle="modal" data-target="#addCard">Add
-                      card</button>
+                  <div class="d-flex flex-row-reverse mx-3 mb-3">
+
+                  <button type="button" class="btn button-negative mr-2 btn-sm" data-toggle="modal" data-target="#deleteAllCardsModal">Delete All</button>
+                  
+                  <!-- Modal -->
+                  <div class="modal fade" id="deleteAllCardsModal" tabindex="-1" role="dialog" aria-labelledby="deleteAllCardsModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="deleteAllCardsModalLabel">Modal title</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          Are you sure you want to delete all the cards?
+                        </div>
+                        <div class="modal-footer">
+                        
+                        <form  id="formDeleteAllCards" method="POST" action="{{ route('cards_delete') }}" >
+                        {{ csrf_field() }}
+
+                          <div class="input-group flex-nowrap mt-2">
+                            <input type="hidden" class="form-control"  name="client_id" value="{{$info['id']}}"> {{-- TODO: Possible security breach --}} 
+                          </div>
+
+                          <button type="submit" class="btn button-submit btn-sm">Yes</button>
+                          <button type="button" class="btn button-negative btn-sm" data-dismiss="modal">No</button>
+
+                      </form>
+                        </div>
+                      </div>
+                    </div>
                   </div>
+
+                  <!-- -->
+
+
+                  
+                  
+                  
+                  
+                  <button type="button" class="btn button-action mr-3 btn-sm " data-toggle="modal" data-target="#addCard">Add
+                    card</button>
+                  </div>
+                  
                   <div class="modal fade" id="addCard" tabindex="-1" role="dialog" aria-labelledby="addCardLabel"
                     aria-hidden="true">
                     <div class="modal-dialog" role="document">
