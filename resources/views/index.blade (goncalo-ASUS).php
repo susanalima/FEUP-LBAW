@@ -8,7 +8,7 @@
                         @foreach ($promos as $index => $promo)
                         <div class="carousel-item {{$index == 0 ? 'active' : ''}}">
                             <a href="./product/{{$promo['product_id']}}" class="">
-                                <img src="{{ '/storage/' . $promo['image'] }}" class="d-block w-100 " style="height:30em;width:auto;object-fit: contain;" alt="..." />
+                                <img src="{{ '/storage/' . $promo['image'] }}" class="d-block w-100 " style="height:800px;width:auto;object-fit: contain;" alt="..." />
                                 <div class="img-text">
                                 <h3>Enjoy {{ $promo['discount'] }}% discount on {{$promo['name']}}</h3>
                                 </div>
@@ -17,7 +17,7 @@
                         @endforeach
                         <div class="carousel-item">
                             <a href="./product/{{$product['product_id']}}" class="">
-                                <img src="{{ '/storage/' . $product['image']['filepath'] }}" class="d-block w-100 " style="height:30em;width:auto;object-fit: contain;"    alt="..." />
+                                <img src="{{ '/storage/' . $product['image']['filepath'] }}" class="d-block w-100 " style="height:800px;width:auto;object-fit: contain;"    alt="..." />
                                 <div class="img-text">
                                 <h3>Meet the new {{$product['name']}}</h3>
                                 </div>
@@ -43,8 +43,8 @@
                     <div class="bd-example  w-100">
                         <div class="hotProducts">
                             @foreach ($products as $product)
-                            <div>
-                            <a href="./product/{{$product['id']}}" class="prodCard">
+                            <div class="height:5em">
+                            <a href="./product/{{$product['id']}}">
                                 <div class="productName">
                                             <span>
                                                 {{$product['name']}}
@@ -55,14 +55,13 @@
                                                 {{$product['price']}}
                                             </span>
                                         </div>
-                                        <div class="spacer"></div>
                                         <img
                                             class="d-block w-100 img-blur"
                                             src="/storage/{{$product['image']['filepath'] }}"
                                             alt="First slide"
                                         />
-                                        <div class="productBot mt-auto mr-auto d-flex">
-                                        <form class="ratingMain">
+                                        <div class="productBot mr-auto d-flex">
+                                        <form class="rating">
                                             <fieldset class="starsRating">
                                                 <input type="radio" id="star5" name="rating" value="5" /><label
                                                     class="full {{$product['rating'] >= 5.0 ? 'marked' : ''}}"
