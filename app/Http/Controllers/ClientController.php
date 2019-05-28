@@ -105,7 +105,6 @@ class ClientController extends Controller
 
  public function address_add(Request $request)
  {
-
     $address = new address;
 
     $address->id_client = $request->client_id;
@@ -117,7 +116,16 @@ class ClientController extends Controller
     
     $address->save();
 
-  return redirect()->route('profile', ['id' => $request->client_id]);
+    return redirect()->route('profile', ['id' => $request->client_id]);
+ }
+
+
+ public function address_delete(Request $request)
+ {
+    $address = Address::find($request->address_id);
+    $address->delete();
+
+    return redirect()->route('profile', ['id' => $request->client_id ]);
  }
 
 
@@ -136,5 +144,27 @@ class ClientController extends Controller
  }
 
 
+
+ public function card_delete(Request $request)
+ {
+    $card = CreditCard::find($request->card_id);    
+    $card->delete();
+    return redirect()->route('profile', ['id' => $request->client_id ]);
+ }
+
+
+
+ public function cards_delete(Request $request)
+ {
+
+    $info = Client::find($request->client_id);
+   $cards = $info->credit_cards;
+  
+    foreach($cards as $card_id) {
+      $card = CreditCard::find($card_id->id);    
+      $card->delete();
+    }
+    return redirect()->route('profile', ['id' => $request->client_id ]);
+ }
 
 }

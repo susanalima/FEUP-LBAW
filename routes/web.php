@@ -22,8 +22,12 @@ Route::post('/product', "ProductController@add_product")->name('product_add');
 
 Route::get('/profile/{id}', "PagesController@profile")->name('profile');
 Route::post('/profile/cardEdit', "ClientController@card_edit")->name('card_edit');
+Route::post('/profile/cardDelete', "ClientController@card_delete")->name('card_delete');
+Route::post('/profile/cardsDelete', "ClientController@cards_delete")->name('cards_delete');
+
 Route::post('/profile/addressEdit', "ClientController@address_edit")->name('address_edit');
 Route::post('/profile/addressAdd', "ClientController@address_add")->name('address_add');
+Route::post('/profile/addressDelete', "ClientController@address_delete")->name('address_delete');
 
 
 
