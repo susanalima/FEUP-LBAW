@@ -12,9 +12,9 @@
                     PuzzleWood
                 </a>
                 @if($interactive)
-                    <span classphp artisan serve
-                        <buttonphp artisan serve
-                            class="btn  dropdown-toggle"
+                    <span class="dropdown navText">
+                        <button
+                            class="btn dropdown-toggle"
                             type="button"
                             id="dropdownAllCategories"
                             data-toggle="dropdown"
