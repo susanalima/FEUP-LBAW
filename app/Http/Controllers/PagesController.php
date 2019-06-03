@@ -8,7 +8,6 @@ use App\Client;
 use App\Product;
 use App\Promotion;
 use App\User;
-use App\Client;
 use App\WishList;
 use App\ProductList;
 use Illuminate\Support\Facades\DB;
@@ -221,7 +220,6 @@ class PagesController extends Controller
       $img_src = $c_product->images[0]['filepath'];
       $img_src = trim($img_src, ".");
       $img_src = "/app/public" . $img_src;
-      var_dump($img_src);
       $product->image = $img_src;
       //$product->name = Aux::formatHeader($product->name);
    }
@@ -232,7 +230,6 @@ class PagesController extends Controller
 
    $list['name'] = Aux::formatHeader($info->name);
    $list['products'] =$info->list_products($id);
-   //var_dump($list['products']);
 
    $this->getProductExtras($list['products']);
 
