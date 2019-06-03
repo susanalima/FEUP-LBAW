@@ -117,7 +117,6 @@
 
                                           <div class="input-group flex-nowrap mt-2">
                                             <input type="hidden" class="form-control"  name="address_id" value="{{$address['id']}}"> {{-- TODO: Possible security breach --}} 
-                                            <input type="hidden" class="form-control"  name="client_id" value="{{$info['id']}}"> {{-- TODO: Possible security breach --}} 
                                         </div>
 
                                         </div>
@@ -153,7 +152,6 @@
 
                                     <div class="input-group flex-nowrap mt-2">
                                             <input type="hidden" class="form-control"  name="address_id" value="{{$address['id']}}"> {{-- TODO: Possible security breach --}} 
-                                            <input type="hidden" class="form-control"  name="client_id" value="{{$info['id']}}"> {{-- TODO: Possible security breach --}} 
                                         </div>
 
                                     <button type="submit" class="btn button-submit btn-sm">Yes</button>
@@ -199,7 +197,6 @@
                         {{ csrf_field() }}
 
                           <div class="input-group flex-nowrap mt-2">
-                            <input type="hidden" class="form-control"  name="client_id" value="{{$info['id']}}"> {{-- TODO: Possible security breach --}} 
                           </div>
 
                           <button type="submit" class="btn button-submit btn-sm">Yes</button>
@@ -252,7 +249,6 @@
                                 <input type="text" class="form-control rounded" id="addAddressCountry" placeholder="Country"
                                 name="country" required>
 
-                                  <input type="hidden" class="form-control"  name="client_id" value="{{$info['id']}}"> {{-- TODO: Possible security breach --}} 
 
                               </div>
                             </div>
@@ -387,7 +383,6 @@
                                         
                                           <div class="input-group flex-nowrap mt-2">
                                             <input type="hidden" class="form-control" name="card_id" value="{{$card['id']}}"> {{-- TODO: Possible security breach --}} 
-                                            <input type="hidden" class="form-control"  name="client_id" value="{{$info['id']}}"> {{-- TODO: Possible security breach --}} 
                                         </div>
 
                                         </div>
@@ -424,7 +419,6 @@
 
                                       <div class="input-group flex-nowrap mt-2">
                                         <input type="hidden" class="form-control" name="card_id" value="{{$card['id']}}"> {{-- TODO: Possible security breach --}} 
-                                        <input type="hidden" class="form-control"  name="client_id" value="{{$info['id']}}"> {{-- TODO: Possible security breach --}} 
                                       </div>
 
                                       <button type="submit" class="btn button-submit btn-sm">Yes</button>
@@ -473,10 +467,6 @@
                         
                         <form  id="formDeleteAllCards" method="POST" action="{{ route('cards_delete') }}" >
                         {{ csrf_field() }}
-
-                          <div class="input-group flex-nowrap mt-2">
-                            <input type="hidden" class="form-control"  name="client_id" value="{{$info['id']}}"> {{-- TODO: Possible security breach --}} 
-                          </div>
 
                           <button type="submit" class="btn button-submit btn-sm">Yes</button>
                           <button type="button" class="btn button-negative btn-sm" data-dismiss="modal">No</button>
@@ -556,9 +546,7 @@
                                 </div>
                               </div>
                             </div>
-                            <div class="input-group flex-nowrap mt-2">
-                            <input type="hidden" class="form-control"  name="client_id" value="{{$info['id']}}"> {{-- TODO: Possible security breach --}} 
-                          </div>
+                           
                         </div>
                         <div class="modal-footer">
                           <button type="submit" class="btn button-submit btn-sm">Finish</button>
@@ -618,31 +606,33 @@
                       </button>
                     </div>
                     <div class="modal-body">
-                      <form>
+                    <form  id="formChangePWD" method="POST" action="{{ route('password_change') }}" >
+                        {{ csrf_field() }}
                         <div class="form-group row">
                           <label for="clientCurrentPassword" class="col-sm-4 col-form-label pr-0"><b>Current Password</b></label>
                           <div class="col-sm-8">
-                            <input type="password" class="form-control" id="clientCurrentPassword" placeholder="Password">
+                            <input type="password" class="form-control" id="clientCurrentPassword" placeholder="Password" name="currentPassword" required>
                           </div>
                         </div>
                         <div class="form-group row">
                           <label for="clientNewPassword" class="col-sm-4 col-form-label pr-0"><b>New Password</b></label>
                           <div class="col-sm-8">
-                            <input type="password" class="form-control" id="clientNewPassword" placeholder="Password">
+                            <input type="password" class="form-control" id="clientNewPassword" placeholder="Password" name="newPassword" required>
                           </div>
                         </div>
                         <div class="form-group row">
                           <label for="clientConfirmPassword" class="col-sm-4 col-form-label pr-0"><b>Confirm Password</b></label>
                           <div class="col-sm-8">
-                            <input type="password" class="form-control" id="clientConfirmPassword" placeholder="Password">
+                            <input type="password" class="form-control" id="clientConfirmPassword" placeholder="Password" name="confirmationPassword" required>
                           </div>
                         </div>
-                      </form>
+                  
                     </div>
                     <div class="modal-footer">
-                      <button type="button" class="btn button-submit btn-sm">Finish</button>
+                      <button type="submit" class="btn button-submit btn-sm">Finish</button>
                       <button type="button" class="btn button-negative btn-sm" data-dismiss="modal">Cancel</button>
                     </div>
+                    </form>
                   </div>
                 </div>
               </div>
@@ -901,10 +891,6 @@
                         
                         <form  id="formDeleteAllWL" method="POST" action="{{ route('cards_delete') }}" > //TODO
                         {{ csrf_field() }}
-
-                          <div class="input-group flex-nowrap mt-2">
-                            <input type="hidden" class="form-control"  name="client_id" value="{{$info['id']}}"> {{-- TODO: Possible security breach --}} 
-                          </div>
 
                           <button type="submit" class="btn button-submit btn-sm">Yes</button>
                           <button type="button" class="btn button-negative btn-sm" data-dismiss="modal">No</button>

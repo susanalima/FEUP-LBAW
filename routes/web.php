@@ -22,6 +22,8 @@ Route::post('/product', "ProductController@add_product")->name('product_add');
 
 Route::get('/profile', "PagesController@profile")->name('profile');
 Route::post('/profile/accountDelete', "ClientController@account_delete")->name('account_delete');
+Route::post('/profile/passwordChange', "ClientController@password_change")->name('password_change');
+
 
 Route::post('/profile/cardEdit', "ClientController@card_edit")->name('card_edit');
 Route::post('/profile/cardAdd', "ClientController@card_add")->name('card_add');
