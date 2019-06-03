@@ -41,4 +41,9 @@ class Client extends Model
     {
      return $this->hasMany(Cart::class, 'id_client', 'id' );
     }
+
+    public function user()
+    {
+        return $this->morphOne('App\User', 'userable');
+    }
 }
