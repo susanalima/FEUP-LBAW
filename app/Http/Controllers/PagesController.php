@@ -219,14 +219,6 @@ class PagesController extends Controller
       $address_deleted = 'false';
     }
 
-   if ($cart->address != null) {
-    $address_line = $cart->address->address_line;
-    $postal_code = $cart->address->postal_code;
-    $country = $cart->address->country;
-    $city = $cart->address->city;
-    $address_name = $cart->address->name;
-   }
-
    if ($cart->creditCard != null) {
     $card = $cart->creditCard->last_digits;
    }
