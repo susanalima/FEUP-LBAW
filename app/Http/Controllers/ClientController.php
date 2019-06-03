@@ -7,6 +7,7 @@ use App\Address;
 use App\CreditCard;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 
 class ClientController extends Controller
 {
@@ -17,7 +18,7 @@ class ClientController extends Controller
   */
  public function index()
  {
-  return Client::all();
+  return Auth::user()->id;
  }
 
  /**
@@ -100,7 +101,7 @@ class ClientController extends Controller
     
     $address->save();
 
-  return redirect()->route('profile', ['id' => $request->client_id]);
+  return redirect()->route('profile');
  }
 
 
@@ -117,7 +118,7 @@ class ClientController extends Controller
     
     $address->save();
 
-    return redirect()->route('profile', ['id' => $request->client_id]);
+    return redirect()->route('profile');
  }
 
 
@@ -126,7 +127,7 @@ class ClientController extends Controller
     $address = Address::find($request->address_id);
     $address->delete();
 
-    return redirect()->route('profile', ['id' => $request->client_id ]);
+    return redirect()->route('profile');
  }
 
 
@@ -140,7 +141,7 @@ class ClientController extends Controller
       $address = Address::find($address_id->id);    
       $address->delete();
     }
-    return redirect()->route('profile', ['id' => $request->client_id ]);
+    return redirect()->route('profile');
  }
 
 
@@ -178,7 +179,7 @@ class ClientController extends Controller
     
     $card->save();
 
-    return redirect()->route('profile', ['id' => $request->client_id]);
+    return redirect()->route('profile');
  }
 
 
@@ -197,7 +198,7 @@ class ClientController extends Controller
     
     $card->save();
 
-   return redirect()->route('profile', ['id' => $request->client_id]);
+   return redirect()->route('profile');
  }
 
 
@@ -206,7 +207,7 @@ class ClientController extends Controller
  {
     $card = CreditCard::find($request->card_id);    
     $card->delete();
-    return redirect()->route('profile', ['id' => $request->client_id ]);
+    return redirect()->route('profile');
  }
 
 
@@ -221,7 +222,20 @@ class ClientController extends Controller
       $card = CreditCard::find($card_id->id);    
       $card->delete();
     }
-    return redirect()->route('profile', ['id' => $request->client_id ]);
+
+    return redirect()->route('profile');
+ }
+
+ 
+ public function account_delete() {
+
+   $user = Client::find(Auth::user()->id);
+
+   Auth::logout();
+
+   if ($user->delete()) {
+        return redirect()->route('index')->with('global', 'Your account has been deleted!');
+   }
  }
 
 }

@@ -11,7 +11,7 @@
 |
  */
 
-Route::get('/', "PagesController@index");
+Route::get('/', "PagesController@index")->name('index');
 Route::get('/help', "PagesController@help");
 Route::get('/contacts', "PagesController@contacts");
 Route::get('/faq', "PagesController@faq");
@@ -20,7 +20,8 @@ Route::get('/product/create/{error?}', "PagesController@product_create")->name('
 Route::get('/product/{id}', "PagesController@product")->name('product_page');
 Route::post('/product', "ProductController@add_product")->name('product_add');
 
-Route::get('/profile/{id}', "PagesController@profile")->name('profile');
+Route::get('/profile', "PagesController@profile")->name('profile');
+Route::post('/profile/accountDelete', "ClientController@account_delete")->name('account_delete');
 
 Route::post('/profile/cardEdit', "ClientController@card_edit")->name('card_edit');
 Route::post('/profile/cardAdd', "ClientController@card_add")->name('card_add');
