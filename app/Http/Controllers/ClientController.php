@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Client;
 use App\Address;
+use App\CreditCard;
 use Illuminate\Http\Request;
 
 class ClientController extends Controller
@@ -98,11 +99,86 @@ class ClientController extends Controller
     
     $address->save();
 
-  
-
-  // return response("Product added with success", 200);
   return redirect()->route('profile', ['id' => $request->client_id]);
+ }
 
+
+ public function address_add(Request $request)
+ {
+    $address = new address;
+
+    $address->id_client = $request->client_id;
+    $address->name = $request->name;
+    $address->address_line = $request->address_line;
+    $address->postal_code = $request->postal_code;
+    $address->city = $request->city;
+    $address->country = $request->country;
+    
+    $address->save();
+
+    return redirect()->route('profile', ['id' => $request->client_id]);
+ }
+
+
+ public function address_delete(Request $request)
+ {
+    $address = Address::find($request->address_id);
+    $address->delete();
+
+    return redirect()->route('profile', ['id' => $request->client_id ]);
+ }
+
+
+ public function addresses_delete(Request $request)
+ {
+
+    $info = Client::find($request->client_id);
+    $addresss = $info->addresses;
+  
+    foreach($adresses as $address_id) {
+      $address = Address::find($card_id->id);    
+      $address->delete();
+    }
+    return redirect()->route('profile', ['id' => $request->client_id ]);
+ }
+
+
+ public function card_edit(Request $request)
+ {
+
+    $card = CreditCard::find($request->card_id);
+
+    $card->name = $request->name;
+    $card->last_digits = $request->last_digits;
+    $card->expiration_date = $request->expiration_date;
+    
+    $card->save();
+
+  return redirect()->route('profile', ['id' => $request->client_id]);
+ }
+
+
+
+ public function card_delete(Request $request)
+ {
+    $card = CreditCard::find($request->card_id);    
+    $card->delete();
+    return redirect()->route('profile', ['id' => $request->client_id ]);
+ }
+
+
+
+ public function cards_delete(Request $request)
+ {
+
+    $info = Client::find($request->client_id);
+   $cards = $info->credit_cards;
+  
+    foreach($cards as $card_id) {
+      $card = CreditCard::find($card_id->id);    
+      $card->delete();
+    }
+    return redirect()->route('profile', ['id' => $request->client_id ]);
  }
 
 }

@@ -373,7 +373,7 @@ fieldset {
 }
 
 .img-blur {
-  max-height: 150px;
+  max-height: 250px;
   max-width: 250px;
   margin-right: auto;
 }
@@ -640,4 +640,15 @@ fieldset {
 
 .starsRating .marked {
   color: var(--var-main-color);
+}
+
+.prodCard {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  margin-right: 1em;
+}
+
+.spacer {
+  flex-grow: 1;
 }
