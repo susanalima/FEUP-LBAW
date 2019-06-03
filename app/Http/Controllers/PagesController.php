@@ -253,8 +253,6 @@ class PagesController extends Controller
    foreach($products as $product){
       $c_product = Product::find($product->id);
       $img_src = $c_product->images[0]['filepath'];
-      $img_src = trim($img_src, ".");
-      $img_src = "/app/public" . $img_src;
       $product->image = $img_src;
       //$product->name = Aux::formatHeader($product->name);
    }
@@ -262,7 +260,7 @@ class PagesController extends Controller
 
  public function wishList($id){
    $info = WishList::find($id);
-
+   $list['id'] = $id;  
    $list['name'] = Aux::formatHeader($info->name);
    $list['products'] =$info->list_products($id);
 

@@ -12,10 +12,13 @@ use App\Product;
         <div class="wishListContent">
         <nav id="wishListsTabs" class="d-flex" aria-label="Page navigation example">
             <ul class="pagination mb-0">
-                <li class="page-item active"><a class="page-link" href="#">Wish List 1</a></li>
-                <li class="page-item"><a class="page-link" href="#">Wedding</a></li>
-                <li class="page-item"><a class="page-link" href="#">Christmas</a></li>
-                <li class="page-item"><a class="page-link" href="#">Wish List 2</a></li>
+                @foreach ($info['all_lists'] as $list)
+                <?php if($info['id'] == $list->id){?>
+                <li class="page-item active"><a class="page-link" href="#">{{$list->name}}</a></li>
+                <?php }else {?>
+                <li class="page-item"><a class="page-link" href="{{$list->id}}">{{$list->name}}</a></li> <?php }?>
+               
+                @endforeach
             </ul>
         </nav>
         <div id="mainContainer" class="container">
@@ -27,7 +30,7 @@ use App\Product;
                         <h4 class="product_name">{{ $product->name }}</h4>
                         <div class="container">
                             <div class="row">
-                                <img class="card-img-top product_img" src="{{ '/storage' . $product->image}}"
+                                <img class="card-img-top product_img" src="{{ '/storage/' . $product->image}}"
                                     alt="Card image cap">
 
                                 <div class="col-sm">
