@@ -96,7 +96,7 @@ class PagesController extends Controller
 
  public function help()
  {
-  $cart = cart();
+  $cart = $this->cart();
 
   $data = array(
    'type' => 'help',
@@ -109,7 +109,7 @@ class PagesController extends Controller
  public function contacts()
  {
 
-  $cart = cart();
+  $cart = $this->cart();
 
   $data = array(
    'type' => 'contacts',
@@ -122,7 +122,7 @@ class PagesController extends Controller
  public function faq()
  {
 
-  $cart = cart();
+  $cart = $this->cart();
 
   $data = array(
    'type' => 'faq',
@@ -166,7 +166,7 @@ class PagesController extends Controller
 
  public function product($id)
  {
-  $cart = cart();
+  $cart = $this->cart();
 
   $product = Product::find($id);
   $product['category'] = Aux::formatHeader($product->category['name']);
@@ -189,7 +189,7 @@ class PagesController extends Controller
  public function profile($id)
  {
 
-  $cart = cart();
+  $cart = $this->cart();
 
   $info = Client::find($id);
   $info['id'] = $info->id;
