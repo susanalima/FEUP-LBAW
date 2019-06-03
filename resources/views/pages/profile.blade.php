@@ -1,10 +1,11 @@
 @extends('templates.app')
 
+<link rel="stylesheet" href="{{ URL::asset('css/clientAccount.css') }}"" />
+
 @section('content')
 <div class="mainContent">
     <!-- Image and text -->
    
-
 
     <div class="mx-auto accordionDiv">
       <h1 class="text-center p-3 mt-4">Your Account</h1>
@@ -137,7 +138,7 @@
                               <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                   <div class="modal-header">
-                                    <h5 class="modal-title" id="delete{{$address['id']}}AddressModalLabel">Modal title</h5>
+                                    <h5 class="modal-title" id="delete{{$address['id']}}AddressModalLabel">Delete Address</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                       <span aria-hidden="true">&times;</span>
                                     </button>
@@ -165,8 +166,7 @@
                             </div>
 
                             <!-- -->
-         
-
+        
 
                             </div>
                           </td>
@@ -177,8 +177,43 @@
                   </div>
                   <div class="d-flex flex-row-reverse mx-3 mb-3">
 
-                    <button type="button" class="btn button-negative mr-2 btn-sm">Delete All</button>
-                    <button type="button" class="btn button-action mr-3 btn-sm " data-toggle="modal" data-target="#addAddress">Add
+                  @if(sizeof($info['addresses']) !== 0)
+                    <button type="button" class="btn button-negative mr-2 btn-sm" data-toggle="modal" data-target="#deleteAllAddressesModal">Delete All</button>
+                  @endif
+                  <!-- Modal -->
+                  <div class="modal fade" id="deleteAllAddressesModal" tabindex="-1" role="dialog" aria-labelledby="deleteAllAddressesModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="deleteAllAddressesModalLabel">Delete All Addresses</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          Are you sure you want to delete all the addresses?
+                        </div>
+                        <div class="modal-footer">
+                        
+                        <form  id="formDeleteAllAddresses" method="POST" action="{{ route('addresses_delete') }}" >
+                        {{ csrf_field() }}
+
+                          <div class="input-group flex-nowrap mt-2">
+                            <input type="hidden" class="form-control"  name="client_id" value="{{$info['id']}}"> {{-- TODO: Possible security breach --}} 
+                          </div>
+
+                          <button type="submit" class="btn button-submit btn-sm">Yes</button>
+                          <button type="button" class="btn button-negative btn-sm" data-dismiss="modal">No</button>
+
+                      </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- -->
+
+                  <button type="button" class="btn button-action mr-3 btn-sm " data-toggle="modal" data-target="#addAddress">Add
                       address</button>
                   </div>
                   <!--add address-->
@@ -258,7 +293,16 @@
                           <td>{{$card['last_digits']}}</td>
                           <td>{{$card['expiration_date']}}</td>
                           <td id="cardTableName">{{$card['name']}}</td>
-                          <td><i class="fab fa-cc-visa fa-2x"></i></td>
+
+                          <?php
+                          $type = "fa-cc-visa";
+                          if($card['type'] === "Mastercard") {
+                              $type = "fa-cc-mastercard";
+                          }
+
+                          ?>
+
+                          <td><i class="fab {{$type}} fa-2x"></i></td>
                           <td>
                             <div class="d-flex justify-content-center ml-2 pl-5">
                               <button type="button" class="btn btn-sm button-action m-2" data-toggle="modal"
@@ -276,7 +320,7 @@
                                     <div class="modal-body">
                                     <form  id="formEdit{{$card['id']}}Card" method="POST" action="{{ route('card_edit') }}" >
                                        {{ csrf_field() }}
-                                        <div class="row">
+                                        <!--<div class="row">
                                           <div class="col-md-7">
                                             <div class="form-group">
                                               <label for="editCard{{$card['id']}}Number">Card Number</label>
@@ -291,13 +335,44 @@
                                                 value="{{$card['name']}}" name="name" required />
                                             </div>
                                           </div>
-                                        </div>
+                                        </div>-->
                                         <div class="row">
                                           <div class="col-md-7">
                                             <div class="form-group">
-                                              <label for="editCard{{$card['id']}}ExpDate">Expiration Date</label>
+                                              <!--<label for="editCard{{$card['id']}}ExpDate">Expiration Date</label>
                                               <input type="tel" class="form-control" id="editCard{{$card['id']}}ExpDate" placeholder="YYYY / MM"
-                                                value="{{$card['expiration_date']}}" name="expiration_date" required />
+                                                value="{{$card['expiration_date']}}" name="expiration_date" required />-->
+                                                <label for="editCard{{$card['id']}}ExpDate">Expiration Date</label>
+                                              
+                                                <?php
+                                                $tokens = explode("-", $card['expiration_date']);
+                                                $expYear = $tokens['0'];
+                                                $expMonth = $tokens['1'];
+                                                $expDay = $tokens['2'];
+                                                
+                                                ?>
+
+                                                <div class="row">
+
+                                                    <div class="col-md-4 pr-2">
+                                                    <input type="tel" class="form-control" id="editCard{{$card['id']}}ExpYear" placeholder="YYYY"
+                                                    value="{{$expYear}}" name="expiration_year" required />
+                                                    </div>
+                                                    -
+
+                                                    <div class="col-md-3 p-0 pl-2 pr-2">
+                                                    <input type="tel" class="form-control" id="editCard{{$card['id']}}ExpMonth" placeholder="MM"
+                                                    value="{{$expMonth}}" name="expiration_month" required />
+                                                    </div>
+                                                      -
+
+                                                    <div class="col-md-3 p-0 pl-2 pr-2">
+                                                    <input type="tel" class="form-control" id="editCard{{$card['id']}}ExpDay" placeholder="DD"
+                                                    value="{{$expDay}}" name="expiration_day" required />
+                                                    </div>
+                                              
+                                              </div>
+                          
                                             </div>
                                           </div>
                                           <!--Cena do token-->
@@ -305,7 +380,7 @@
                                             <div class="form-group">
                                               <label for="editCard{{$card['id']}}CVC">CV Code</label>
                                               <input type="tel" class="form-control" id="editCard{{$card['id']}}CVC" placeholder="CVC"
-                                               name="cvc" required />
+                                               name="cvc" />
                                             </div>
                                           </div>
 
@@ -334,7 +409,7 @@
                                 <div class="modal-dialog" role="document">
                                   <div class="modal-content">
                                     <div class="modal-header">
-                                      <h5 class="modal-title" id="delete{{$card['id']}}CardModalLabel">Modal title</h5>
+                                      <h5 class="modal-title" id="delete{{$card['id']}}CardModalLabel">Delete Card</h5>
                                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                       </button>
@@ -377,15 +452,16 @@
                     </table>
                   </div>
                   <div class="d-flex flex-row-reverse mx-3 mb-3">
-
+                 
+                  @if(sizeof($info['cards']) !== 0)
                   <button type="button" class="btn button-negative mr-2 btn-sm" data-toggle="modal" data-target="#deleteAllCardsModal">Delete All</button>
-                  
+                  @endif
                   <!-- Modal -->
                   <div class="modal fade" id="deleteAllCardsModal" tabindex="-1" role="dialog" aria-labelledby="deleteAllCardsModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                       <div class="modal-content">
                         <div class="modal-header">
-                          <h5 class="modal-title" id="deleteAllCardsModalLabel">Modal title</h5>
+                          <h5 class="modal-title" id="deleteAllCardsModalLabel">Delete All Cards</h5>
                           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                           </button>
@@ -412,11 +488,6 @@
                   </div>
 
                   <!-- -->
-
-
-                  
-                  
-                  
                   
                   <button type="button" class="btn button-action mr-3 btn-sm " data-toggle="modal" data-target="#addCard">Add
                     card</button>
@@ -433,43 +504,67 @@
                           </button>
                         </div>
                         <div class="modal-body">
-                          <form>
+                        <form  id="formAddCard" method="POST" action="{{ route('card_add') }}" >
+                         {{ csrf_field() }}
                             <div class="row">
                               <div class="col-md-7">
                                 <div class="form-group">
                                   <label for="cardNumber">Card Number</label>
                                   <input type="tel" class="form-control" id="cardNumber" placeholder="Valid Card Number"
-                                    required>
+                                   name="number" required>
                                 </div>
                               </div>
                               <div class=" col-md-5 pull-right">
                                 <div class="form-group">
                                   <label for="cardName">Name</label>
-                                  <input type="tel" class="form-control" id="cardName" placeholder="Name" required />
+                                  <input type="tel" class="form-control" id="cardName" placeholder="Name" name="name" required />
                                 </div>
                               </div>
                             </div>
                             <div class="row">
                               <div class="col-md-7">
-                                <div class="form-group">
-                                  <label for="cardExpDate">Expiration Date</label>
-                                  <input type="tel" class="form-control" id="cardExpDate" placeholder="YYYY / MM"
-                                    required />
+                                  <div class="form-group">
+                                      <label for="cardExpDate">Expiration Date</label>
+                                    
+                                      <div class="row">
+
+                                          <div class="col-md-4 pr-2">
+                                          <input type="tel" class="form-control" id="cardExpYear" placeholder="YYYY"
+                                            name="expiration_year" required />
+                                          </div>
+                                          -
+
+                                          <div class="col-md-3 p-0 pl-2 pr-2">
+                                          <input type="tel" class="form-control" id="cardExpMonth" placeholder="MM"
+                                          name="expiration_month"  required />
+                                          </div>
+                                            -
+
+                                          <div class="col-md-3 p-0 pl-2 pr-2">
+                                          <input type="tel" class="form-control" id="cardExpDay" placeholder="DD"
+                                          name="expiration_day"  required />
+                                          </div>
+                                    
+                                    </div>
+                                
                                 </div>
                               </div>
                               <div class="col-md-5 pull-right">
                                 <div class="form-group">
                                   <label for="cardCVC">CV Code</label>
-                                  <input type="tel" class="form-control" id="cardCVC" placeholder="CVC" required />
+                                  <input type="tel" class="form-control" id="cardCVC" placeholder="CVC" name="cvc" required />
                                 </div>
                               </div>
                             </div>
-                          </form>
+                            <div class="input-group flex-nowrap mt-2">
+                            <input type="hidden" class="form-control"  name="client_id" value="{{$info['id']}}"> {{-- TODO: Possible security breach --}} 
+                          </div>
                         </div>
                         <div class="modal-footer">
-                          <button type="button" class="btn button-submit btn-sm">Finish</button>
+                          <button type="submit" class="btn button-submit btn-sm">Finish</button>
                           <button type="button" class="btn button-negative btn-sm" data-dismiss="modal">Cancel</button>
                         </div>
+                        </form>
                       </div>
                     </div>
                   </div>
@@ -630,7 +725,11 @@
                                         <h4>Address:</h4>
                                       </div>
                                       <div class="col-6 col-md-8 p-0">
+                                        @if($cart['address_deleted'] === "false")
                                         <h4>{{$cart['address_name']}}- {{$cart['address_line']}}, {{$cart['postal_code']}} {{$cart['city']}}, {{$cart['country']}}</h4>
+                                        @else
+                                        <h4>Deleted</h4>
+                                        @endif
                                       </div>
                                     </div>
                                     <div class="row mb-1">
@@ -726,9 +825,12 @@
                 <div class="table-responsive">
                   <table class="table">
                     <tbody>
+                    <?php
+                      $counter = 1;
+                    ?>
                     @foreach ($info['wishLists'] as $wishList)
                     <tr>
-                        <th scope="row">1</th>
+                        <th scope="row">{{$counter}}</th>
                         <td><a class="btn-link" href="./wishList.html">{{$wishList['name']}}</a></td>
                         <td>{{$wishList['description']}}</td>
                         <td>
@@ -738,13 +840,53 @@
                           </div>
                         </td>
                       </tr>
-                        @endforeach
+                      <?php
+                        $counter = $counter +1;
+                      ?>
+                      @endforeach
                     </tbody>
                   </table>
                 </div>
 
                 <div class="d-flex flex-row-reverse mx-3 mb-3">
-                  <button type="button" class="btn btn-sm button-negative mr-2 btn-sm">Delete all</button>
+
+                  @if(sizeof($info['wishLists']) !== 0)
+                  <button type="button" class="btn button-negative mr-2 btn-sm" data-toggle="modal" data-target="#deleteAllWLModal">Delete All</button>
+                  @endif
+
+                <!-- Modal -->
+                <div class="modal fade" id="deleteAllWLModal" tabindex="-1" role="dialog" aria-labelledby="deleteAllWLModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="deleteAllWLModalLabel">Delete All Wishlists</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          Are you sure you want to delete all the wishists?
+                        </div>
+                        <div class="modal-footer">
+                        
+                        <form  id="formDeleteAllWL" method="POST" action="{{ route('cards_delete') }}" > //TODO
+                        {{ csrf_field() }}
+
+                          <div class="input-group flex-nowrap mt-2">
+                            <input type="hidden" class="form-control"  name="client_id" value="{{$info['id']}}"> {{-- TODO: Possible security breach --}} 
+                          </div>
+
+                          <button type="submit" class="btn button-submit btn-sm">Yes</button>
+                          <button type="button" class="btn button-negative btn-sm" data-dismiss="modal">No</button>
+
+                      </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- -->
+
                   <button type="button" class="btn btn-sm button-action mr-3 btn-sm " data-toggle="modal" data-target="#createWListModal">Add
                     Wish List</button>
                 </div>

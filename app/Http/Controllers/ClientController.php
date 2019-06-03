@@ -6,6 +6,7 @@ use App\Client;
 use App\Address;
 use App\CreditCard;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class ClientController extends Controller
 {
@@ -133,13 +134,51 @@ class ClientController extends Controller
  {
 
     $info = Client::find($request->client_id);
-    $addresss = $info->addresses;
+    $addresses = $info->addresses;
   
-    foreach($adresses as $address_id) {
-      $address = Address::find($card_id->id);    
+    foreach($addresses as $address_id) {
+      $address = Address::find($address_id->id);    
       $address->delete();
     }
     return redirect()->route('profile', ['id' => $request->client_id ]);
+ }
+
+
+
+ public function card_add(Request $request)
+ {
+    $card = new creditCard;
+
+    //4 - visa, 5- mastercard
+    $card_number = $request->number;
+    $first_digit = $card_number[0];
+    $last_digits = substr($card_number, -4);
+    $cvc = $request->cvc;
+
+    switch($first_digit) {
+       case '4':
+       $card->type = "Visa";
+       break;
+       case '5' :
+       $card->type = "Mastercard";
+       break;
+       default:
+
+      break; //todo error message
+
+    }
+
+    $card->token = Hash::make($last_digits . $cvc);
+
+    $card->id_client = $request->client_id;
+    $card->last_digits = $last_digits;
+    $card->name = $request->name;
+    $card->expiration_date = $request->expiration_year . "-" . $request->expiration_month . "-" . $request->expiration_day;
+
+    
+    $card->save();
+
+    return redirect()->route('profile', ['id' => $request->client_id]);
  }
 
 
@@ -148,13 +187,17 @@ class ClientController extends Controller
 
     $card = CreditCard::find($request->card_id);
 
-    $card->name = $request->name;
-    $card->last_digits = $request->last_digits;
-    $card->expiration_date = $request->expiration_date;
+    $cvc = $request->cvc;
+   
+    if($cvc !== "NULL") {
+      $card->token = Hash::make($card->last_digits . $cvc);
+    }
+
+    $card->expiration_date = $request->expiration_year . "-" . $request->expiration_month . "-" . $request->expiration_day;
     
     $card->save();
 
-  return redirect()->route('profile', ['id' => $request->client_id]);
+   return redirect()->route('profile', ['id' => $request->client_id]);
  }
 
 
