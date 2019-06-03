@@ -26,11 +26,11 @@ title="Open Shopping cart"
     </div>
 </div>
 @if (!Auth::guest())
-    @if(count($cart) == 0)
+    @if(isset($cart) && count($cart) == 0)
 <div class="m-2 p-2 d-flex flex-column justify-content-end" id="shoppingCartCartTotal">
 <h3 class="">Your cart is empty, try to add something to it</h4>
 </div>
-    @else     
+    @elseif (isset($cart))     
 <div class="m-2 p-2 d-flex flex-column justify-content-end" id="shoppingCartCartTotal">
     <div class="totalPrice d-flex align-self-end">
         <h4 class="">Total:</h4>
