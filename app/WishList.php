@@ -6,9 +6,10 @@ namespace App;
 use App\Client;
 use App\ProductList;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 
-class wishList extends Model{
+class WishList extends Model{
     public $timestamps = false;
 
     protected $table = 'wish_list';
@@ -17,16 +18,17 @@ class wishList extends Model{
 
     //TODO: Association to ass_list_products/product_list
 
-    protected function id(){
+    public function id_list(){
         return $this->hasOne(ProductList::class, 'id', 'id');
     }
 
-    protected function id_client(){
-        return $this->hasOne(Client::class, 'id', 'id_client');
+    public function id_client(){
+        return $this->hasOne(Client::class, 'id_client', 'id');
     }
 
-    protected function wish_list(){
-        //TODO?
+    public function list_products($id)
+    {
+        return DB::select("select id_list, name , product.id from product_list join ass_list_product on product_list.id = id_list join product on id_product = product.id where id_list = $id");
     }
 }
 

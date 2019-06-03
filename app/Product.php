@@ -80,4 +80,25 @@ class Product extends Model
    return $image->primary_img;
   })->first();
  }
+ public function organizeToArray($products){
+    $arr; 
+        foreach($products as $product){
+        $category = $this->category;
+        $reviews = $this->reviews;
+        $images = $this->images;
+        $specifications = $this->specifications;
+        $prod = [
+        'id' => $this->id,
+        'name' => $this->name,
+        'price' => $this->price,
+        'stock' => $this->stock,
+        'available' => $this->available,
+        'category' => Aux::formatHeader($category['name']), 
+        'images' => Aux::formatHeader($images['filepath']),
+        'specifciations' => $specifications->spec(),
+        ];
+        $arr.array_push($prod);
+    } 
+  return $arr;
+  }
 }

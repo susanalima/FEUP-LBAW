@@ -38,6 +38,6 @@ Route::post('/profile/addressesDelete', "ClientController@addresses_delete")->na
 
 
 
-Route::get('/wishList/{list_id}', "PagesController@wishList")->name('wishList');
+Route::get('/wishList/{id}', "PagesController@wishList")->name('wishList');
 
 Auth::routes();

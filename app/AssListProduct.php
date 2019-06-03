@@ -19,7 +19,7 @@ class AssListProduct extends Model
 
  protected function id_list()
  {
-    return $this->hasOne(ProductList::class, 'id', 'id_list');
+    return $this->belongsTo(ProductList::class, 'id', 'id_list');
  }
 
  protected function id_product()

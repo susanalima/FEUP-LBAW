@@ -8,6 +8,9 @@ use App\Client;
 use App\Product;
 use App\Promotion;
 use App\User;
+use App\WishList;
+use App\ProductList;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
 class PagesController extends Controller
@@ -246,9 +249,36 @@ class PagesController extends Controller
   return view("pages.profile")->with($data);
  }
 
- public function wishList($list_id)
- {
-  //TODO: still needs not implemented methods in wishList.php
+ public function getProductExtras($products){
+   foreach($products as $product){
+      $c_product = Product::find($product->id);
+      $img_src = $c_product->images[0]['filepath'];
+      $product->image = $img_src;
+      //$product->name = Aux::formatHeader($product->name);
+   }
+ }
+
+ public function wishList($id){
+   $info = WishList::find($id);
+   $list['id'] = $id;  
+   $list['name'] = Aux::formatHeader($info->name);
+   $list['products'] =$info->list_products($id);
+
+   $this->getProductExtras($list['products']);
+
+   $client_id = $info->id_client;
+   $client = Client::find($client_id);
+ 
+   $list['all_lists'] = $client->wishLists;
+  
+   
+   $data = array(
+    'type' => 'information',
+    'interactive' => true,
+    'info' => $list,
+    );
+    
+   return view("pages.wish_list")->with($data);
  }
 
 }
