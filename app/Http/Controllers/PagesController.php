@@ -186,12 +186,12 @@ class PagesController extends Controller
   return view("pages.product")->with($data);
  }
 
- public function profile($id)
+ public function profile()
  {
 
   $cart = $this->cart();
 
-  $info = Client::find($id);
+  $info = Client::find(Auth::user()->id);
   $info['id'] = $info->id;
   $info['name'] = $info->nonAdmin->user->name;
   $info['email'] = $info->nonAdmin->user->email;

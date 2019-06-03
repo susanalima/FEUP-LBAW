@@ -573,10 +573,40 @@
             </div>
             <div class="px-2">
               <div class="d-flex flex-row-reverse  mb-3" id="passwordBtns">
-                <button type="button" class="btn button-negative mr-2 btn-sm">Delete Account</button>
+                <button type="button" class="btn button-negative mr-2 btn-sm" data-toggle="modal" data-target="#deleteAccountModal">Delete Account</button>
                 <button type="button" class="btn button-action mr-3  btn-sm " data-toggle="modal" data-target="#changePwdModal">Change
                   Password</button>
               </div>
+
+                <!-- Modal -->
+                <div class="modal fade" id="deleteAccountModal" tabindex="-1" role="dialog" aria-labelledby="deleteAccountModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="deleteAccountModalLabel">Delete Account</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          Are you sure you want to delete your account?
+                        </div>
+                        <div class="modal-footer">
+                        
+                        <form  id="formDeleteAccount" method="POST" action="{{ route('account_delete') }}" >
+                        {{ csrf_field() }}
+
+                          <button type="submit" class="btn button-submit btn-sm">Yes</button>
+                          <button type="button" class="btn button-negative btn-sm" data-dismiss="modal">No</button>
+
+                      </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- -->
+
               <div class="modal fade" id="changePwdModal" tabindex="-1" role="dialog" aria-labelledby="changePwdModalLabel"
                 aria-hidden="true">
                 <div class="modal-dialog" role="document">

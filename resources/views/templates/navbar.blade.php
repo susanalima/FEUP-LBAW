@@ -78,7 +78,7 @@
                                 >Register
                             </a>
                         @else
-                            <a class="nav-link" href="clientAccount.html" tabindex="-1" aria-disabled="true"
+                            <a class="nav-link" href="{{ route('profile') }}" tabindex="-1" aria-disabled="true"
                                 >Your Account
                             </a>
                             <a href="{{ route('logout') }}" class="nav-link" href="{{ route('logout') }}" tabindex="-1" aria-disabled="true"
