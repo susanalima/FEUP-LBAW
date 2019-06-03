@@ -23,6 +23,6 @@ Route::post('/product', "ProductController@add_product")->name('product_add');
 Route::get('/profile/{id}', "PagesController@profile")->name('profile');
 Route::post('/profile', "ClientController@address_edit")->name('address_edit');
 
-Route::get('/wishList/{list_id}', "PagesController@wishList")->name('wishList');
+Route::get('/wishList/{id}', "PagesController@wishList")->name('wishList');
 
 Auth::routes();

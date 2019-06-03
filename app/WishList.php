@@ -6,6 +6,7 @@ namespace App;
 use App\Client;
 use App\ProductList;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 
 class WishList extends Model{
@@ -23,6 +24,11 @@ class WishList extends Model{
 
     public function id_client(){
         return $this->hasOne(Client::class, 'id_client', 'id');
+    }
+
+    public function list_products($id)
+    {
+        return DB::select("select id_list, name , product.id from product_list join ass_list_product on product_list.id = id_list join product on id_product = product.id where id_list = $id");
     }
 }
 

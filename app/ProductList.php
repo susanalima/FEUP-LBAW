@@ -22,10 +22,14 @@ class ProductList extends Model{
      return $this->hasManyThrough(Product::class, AssListProduct::class,  'id_product', 'id' , 'id', 'id_list');
  }
 
+ public function ass_list_product(){
+     return $this->hasOne(AssListProduct::class, 'id_list', 'id');
+ }
+
  public function all_products(){
      $products = $this->list_products;
-
-     return Aux::formatHeader($products);
+     
+     return Product::organizeToArray($products);
  }
 }
 
