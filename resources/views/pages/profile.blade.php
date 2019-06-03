@@ -851,7 +851,7 @@
                     @foreach ($info['wishLists'] as $wishList)
                     <tr>
                         <th scope="row">{{$counter}}</th>
-                        <td><a class="btn-link" href="./wishList.html">{{$wishList['name']}}</a></td>
+                        <td><a class="btn-link"  href="{{ route('wishList', ['id' => $wishList['id']]) }}">{{$wishList['name']}}</a></td>
                         <td>{{$wishList['description']}}</td>
                         <td>
                           <div class="d-flex justify-content-center">
@@ -917,21 +917,23 @@
                         </button>
                       </div>
                       <div class="modal-body">
-                        <form>
+                      <form  id="formAddWishList" method="POST" action="{{ route('wishlist_add') }}" > //TODO
+                        {{ csrf_field() }}
                           <div class="form-group">
                             <label for="wishListName" class="col-form-label">Name</label>
-                            <input type="text" class="form-control" id="wishListName">
+                            <input type="text" class="form-control" id="wishListName" name="name" required>
                           </div>
                           <div class="form-group">
                             <label for="wishListDescription" class="col-form-label">Description</label>
-                            <textarea class="form-control" id="wishListDescription"></textarea>
+                            <textarea class="form-control" id="wishListDescription" name="description"></textarea>
                           </div>
-                        </form>
+                     
                       </div>
                       <div class="modal-footer">
-                        <button type="button" class="btn button-submit btn-sm" >Finish</button>
+                        <button type="submit" class="btn button-submit btn-sm" >Finish</button>
                         <button type="button" class="btn button-negative btn-sm" data-dismiss="modal">Cancel</button>
                       </div>
+                      </form>
                     </div>
                   </div>
                 </div>

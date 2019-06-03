@@ -7,6 +7,8 @@ use App\User;
 use App\NonAdmin;
 use App\Address;
 use App\CreditCard;
+use App\ProductList;
+use App\WishList;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
@@ -252,6 +254,23 @@ class ClientController extends Controller
       $card = CreditCard::find($card_id->id);    
       $card->delete();
     }
+
+    return redirect()->route('profile');
+ }
+
+
+ public function wishlist_add(Request $request)
+ {
+   
+    $productList = ProductList::create(["id" => ProductList::max('id') + 1]);
+
+    $wishList = new wishlist;
+    $wishList->id = $productList->id;
+    $wishList->id_client = Auth::user()->id;
+    $wishList->name = $request->name;
+    $wishList->description = $request->description;
+    
+    $wishList->save();
 
     return redirect()->route('profile');
  }
