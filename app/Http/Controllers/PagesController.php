@@ -177,6 +177,7 @@ class PagesController extends Controller
     $city = '';
     $address_name = '';
     $card = 'Deleted';
+    $address_deleted = 'true';
 
     if( $cart->address != null){
       $address_line = $cart->address->address_line;
@@ -184,6 +185,8 @@ class PagesController extends Controller
       $country = $cart->address->country;
       $city = $cart->address->city;
       $address_name = $cart->address->name;
+      $card = 'Deleted';
+      $address_deleted = 'false';
     }
 
     if($cart->creditCard != null) {
@@ -192,6 +195,7 @@ class PagesController extends Controller
 
    return [
     'checkout' => $cart->checkout,
+    'address_deleted' => $address_deleted,
     'address_line' => $address_line,
     'postal_code' => $postal_code,
     'country' => $country,
