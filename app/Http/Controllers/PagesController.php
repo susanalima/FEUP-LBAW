@@ -8,11 +8,23 @@ use App\Client;
 use App\Product;
 use App\Promotion;
 use App\User;
+use Illuminate\Support\Facades\Auth;
 
 class PagesController extends Controller
 {
+ private function cart()
+ {
+  if (Auth::check()) {
+   return Client::find(Auth::user()->id)->cart();
+  } else {
+   return [];
+  }
+
+ }
+
  public function index()
  {
+  $cart = $this->cart();
 
   $promotions = Promotion::active()->get()->random(2)->map(function ($promotion) {
 
@@ -76,6 +88,7 @@ class PagesController extends Controller
    'promos' => $promotions,
    'product' => $product,
    'wished' => $wished,
+   'cart' => $cart,
   );
 
   return view("index")->with($data);
@@ -83,27 +96,38 @@ class PagesController extends Controller
 
  public function help()
  {
+  $cart = cart();
+
   $data = array(
    'type' => 'help',
    'interactive' => true,
+   'cart' => $cart,
   );
   return view("pages.help")->with($data);
  }
 
  public function contacts()
  {
+
+  $cart = cart();
+
   $data = array(
    'type' => 'contacts',
    'interactive' => true,
+   'cart' => $cart,
   );
   return view("pages.help")->with($data);
  }
 
  public function faq()
  {
+
+  $cart = cart();
+
   $data = array(
    'type' => 'faq',
    'interactive' => true,
+   'cart' => $cart,
   );
   return view("pages.help")->with($data);
  }
@@ -142,6 +166,8 @@ class PagesController extends Controller
 
  public function product($id)
  {
+  $cart = cart();
+
   $product = Product::find($id);
   $product['category'] = Aux::formatHeader($product->category['name']);
   $product['images'] = $product->images;
@@ -154,6 +180,7 @@ class PagesController extends Controller
    'type' => 'product',
    'interactive' => true,
    'product' => $product,
+   'cart' => $cart,
   );
 
   return view("pages.product")->with($data);
@@ -161,6 +188,9 @@ class PagesController extends Controller
 
  public function profile($id)
  {
+
+  $cart = cart();
+
   $info = Client::find($id);
   $info['id'] = $info->id;
   $info['name'] = $info->nonAdmin->user->name;
@@ -170,25 +200,25 @@ class PagesController extends Controller
   $info['cards'] = $info->credit_cards;
   $info['wishLists'] = $info->wishLists;
   $info['carts'] = $info->carts->map(function ($cart) {
-   
-    $address_line = '';
-    $postal_code = '';
-    $country = '';
-    $city = '';
-    $address_name = '';
-    $card = 'Deleted';
 
-    if( $cart->address != null){
-      $address_line = $cart->address->address_line;
-      $postal_code = $cart->address->postal_code;
-      $country = $cart->address->country;
-      $city = $cart->address->city;
-      $address_name = $cart->address->name;
-    }
+   $address_line = '';
+   $postal_code = '';
+   $country = '';
+   $city = '';
+   $address_name = '';
+   $card = 'Deleted';
 
-    if($cart->creditCard != null) {
-      $card = $cart->creditCard->last_digits;
-    }
+   if ($cart->address != null) {
+    $address_line = $cart->address->address_line;
+    $postal_code = $cart->address->postal_code;
+    $country = $cart->address->country;
+    $city = $cart->address->city;
+    $address_name = $cart->address->name;
+   }
+
+   if ($cart->creditCard != null) {
+    $card = $cart->creditCard->last_digits;
+   }
 
    return [
     'checkout' => $cart->checkout,
@@ -206,6 +236,7 @@ class PagesController extends Controller
    'type' => 'information',
    'interactive' => true,
    'info' => $info,
+   'cart' => $cart,
   );
 
   return view("pages.profile")->with($data);
