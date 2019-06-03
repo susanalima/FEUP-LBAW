@@ -129,6 +129,20 @@ class ClientController extends Controller
  }
 
 
+ public function addresses_delete(Request $request)
+ {
+
+    $info = Client::find($request->client_id);
+    $addresss = $info->addresses;
+  
+    foreach($adresses as $address_id) {
+      $address = Address::find($card_id->id);    
+      $address->delete();
+    }
+    return redirect()->route('profile', ['id' => $request->client_id ]);
+ }
+
+
  public function card_edit(Request $request)
  {
 

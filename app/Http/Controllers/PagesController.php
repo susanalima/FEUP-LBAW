@@ -170,15 +170,35 @@ class PagesController extends Controller
   $info['cards'] = $info->credit_cards;
   $info['wishLists'] = $info->wishLists;
   $info['carts'] = $info->carts->map(function ($cart) {
+   
+    $address_line = '';
+    $postal_code = '';
+    $country = '';
+    $city = '';
+    $address_name = '';
+    $card = 'Deleted';
+
+    if( $cart->address != null){
+      $address_line = $cart->address->address_line;
+      $postal_code = $cart->address->postal_code;
+      $country = $cart->address->country;
+      $city = $cart->address->city;
+      $address_name = $cart->address->name;
+    }
+
+    if($cart->creditCard != null) {
+      $card = $cart->creditCard->last_digits;
+    }
+
    return [
     'checkout' => $cart->checkout,
-    'address_line' => $cart->address->address_line,
-    'postal_code' => $cart->address->postal_code,
-    'country' => $cart->address->country,
-    'city' => $cart->address->city,
-    'address_name' => $cart->address->name,
+    'address_line' => $address_line,
+    'postal_code' => $postal_code,
+    'country' => $country,
+    'city' => $city,
+    'address_name' => $address_name,
     'shipping' => $cart->shipping->method,
-    'card' => $cart->creditCard->last_digits,
+    'card' => $card,
    ];
   });
 
