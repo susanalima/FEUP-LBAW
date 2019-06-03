@@ -6,14 +6,16 @@
                 <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner">
                         @foreach ($promos as $index => $promo)
-                        <div class="carousel-item {{$index == 0 ? 'active' : ''}}">
-                            <a href="./product/{{$promo['product_id']}}" class="">
-                                <img src="{{ '/storage/' . $promo['image'] }}" class="d-block w-100 " style="height:30em;width:auto;object-fit: contain;" alt="..." />
-                                <div class="img-text">
-                                <h3>Enjoy {{ $promo['discount'] }}% discount on {{$promo['name']}}</h3>
+                            @if(isset($promo['product_id']))
+                                <div class="carousel-item {{$index == 0 ? 'active' : ''}}">
+                                    <a href="./product/{{$promo['product_id']}}" class="">
+                                        <img src="{{ '/storage/' . $promo['image'] }}" class="d-block w-100 " style="height:30em;width:auto;object-fit: contain;" alt="..." />
+                                        <div class="img-text">
+                                        <h3>Enjoy {{ $promo['discount'] }}% discount on {{$promo['name']}}</h3>
+                                        </div>
+                                    </a>
                                 </div>
-                            </a>
-                        </div>
+                            @endif
                         @endforeach
                         <div class="carousel-item">
                             <a href="./product/{{$product['product_id']}}" class="">
