@@ -189,18 +189,21 @@ class PagesController extends Controller
   return view("pages.product")->with($data);
  }
 
+ //TODO NAO IR BUSCAR O CART ATUAL
  public function profile()
  {
 
   $cart = $this->cart();
 
   $info = Client::find(Auth::user()->id);
+  //$info = Client::find($id);
   $info['id'] = $info->id;
   $info['name'] = $info->nonAdmin->user->name;
   $info['email'] = $info->nonAdmin->user->email;
   $info['nif'] = $info->nif;
   $info['addresses'] = $info->addresses;
   $info['cards'] = $info->credit_cards;
+  
   $info['wishLists'] = $info->wishLists;
   $info['carts'] = $info->carts->map(function ($cart) {
    
@@ -226,7 +229,16 @@ class PagesController extends Controller
     $card = $cart->creditCard->last_digits;
    }
 
+   $products =$cart->list_products($cart->id);
+
+   $this->getProductExtras($products);
+
+   $collection = collect($products);
+
+   $totalPrice = $collection->sum('price');
+
    return [
+     'id' => $cart->id,
     'checkout' => $cart->checkout,
     'address_deleted' => $address_deleted,
     'address_line' => $address_line,
@@ -235,7 +247,9 @@ class PagesController extends Controller
     'city' => $city,
     'address_name' => $address_name,
     'shipping' => $cart->shipping->method,
-    'card' => $card,
+    'card' => $card, 
+    'products' => $collection,
+    'total' => $totalPrice,
    ];
   });
 
@@ -254,9 +268,12 @@ class PagesController extends Controller
       $c_product = Product::find($product->id);
       $img_src = $c_product->images[0]['filepath'];
       $product->image = $img_src;
+      $product->price = $c_product->price;
       //$product->name = Aux::formatHeader($product->name);
    }
  }
+
+
 
  public function wishList($id){
    $info = WishList::find($id);

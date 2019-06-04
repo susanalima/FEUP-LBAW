@@ -723,11 +723,11 @@
              
                     <tr>
                       <td>{{$cart['checkout']}}</td>
-                      <td>14.89€</td>
+                      <td>{{$cart['total']}}€</td>
                       <td>
-                        <button class="btn button-action btn-sm m-2" role="button" data-toggle="modal" data-target=".viewCard1Modal">View
+                        <button class="btn button-action btn-sm m-2" role="button" data-toggle="modal" data-target="#viewCart{{$cart['id']}}Modal">View
                           cart</button>
-                        <div class="modal fade viewCard1Modal" tabindex="-1" role="dialog" aria-labelledby="viewCard1ModalLabel"
+                        <div class="modal fade" id="viewCart{{$cart['id']}}Modal" tabindex="-1" role="dialog" aria-labelledby="viewCart{{$cart['id']}}ModalLabel"
                           aria-hidden="true">
                           <div class="modal-dialog">
                             <div class="modal-content">
@@ -773,50 +773,26 @@
                                         <h4>Total:</h4>
                                       </div>
                                       <div class="col-6 col-md-8 p-0">
-                                        <h4> 984.97€</h4>
+                                        <h4>{{$cart['total']}}€</h4>
                                       </div>
                                     </div>
                                   </div>
                                 </div>
                                 <div class="d-flex flex-column justify-content-between" id="shoppingCartCart">
+                                @foreach($cart['products'] as $product)
                                   <article class="m-2 p-2 d-flex justify-content-between align-items-center">
-                                    <a href="./product.html" class="cartProductImage">
-                                      <img src="images/products/googlePixelBook.jpg" class="" alt="..." />
+                                    <a href="{{ route('product_page', ['id' => $product->id]) }}" class="cartProductImage">
+                                      <img src="{{ '/storage/' . $product->image}}"
+                                    alt="Cart image" class=""/>
                                     </a>
-                                    <a href="./product.html">
-                                      <h4 class="cartProductName">Laptop Asus 950</h4>
-                                      <h5 class="cartProductSpec font-italic">Intel Core I9</h5>
+                                    <a  href="{{ route('product_page', ['id' => $product->id]) }}">
+                                      <h4 class="cartProductName">{{$product->name}}</h4>
                                     </a>
-                                    <h4>1</h4>
-                                    <h4 class="cartProductSubTotal">899.99 €</h4>
+                                    <h4>{{$product->quantity}} </h4>
+                                    <h4 class="cartProductSubTotal">{{$product->price}}€</h4>
 
                                   </article>
-
-                                  <article class="m-2 p-2 d-flex justify-content-between align-items-center">
-                                    <a href="./product.html" class="cartProductImage">
-                                      <img src="images/products/book_cover1984.jpg" class="" alt="..." />
-                                    </a>
-                                    <a href="./product.html">
-                                      <h4 class="cartProductName">1984</h4>
-                                      <h5 class="cartProductSpec font-italic">G. Orwell</h5>
-                                    </a>
-                                    <h4>1</h4>
-                                    <h4 class="cartProductSubTotal">14.99</h4>
-
-                                  </article>
-
-                                  <article class="m-2 p-2 d-flex justify-content-between align-items-center">
-                                    <a href="./product.html" class="cartProductImage">
-                                      <img src="images/products/headphones.jpg" class="" alt="..." />
-                                    </a>
-                                    <a href="./product.html">
-                                      <h4 class="cartProductName">JBL Phones</h4>
-                                      <h5 class="cartProductSpec font-italic">Wireless HQ</h5>
-                                    </a>
-                                    <h4>1</h4>
-                                    <h4 class="cartProductSubTotal">69.99</h4>
-
-                                  </article>
+                                @endforeach
                                 </div>
                               </div>
                             </div>
@@ -917,7 +893,7 @@
                         </button>
                       </div>
                       <div class="modal-body">
-                      <form  id="formAddWishList" method="POST" action="{{ route('wishlist_add') }}" > //TODO
+                      <form  id="formAddWishList" method="POST" action="{{ route('wishlist_add') }}" > 
                         {{ csrf_field() }}
                           <div class="form-group">
                             <label for="wishListName" class="col-form-label">Name</label>
