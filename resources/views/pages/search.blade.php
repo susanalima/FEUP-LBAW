@@ -25,30 +25,16 @@
                   </select>
               </div>
               <span>Brand</span>
-              <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" />
-                  <label class="form-check-label" for="defaultCheck1">
-                      Brand1
+              @foreach ($brands as $brand => $_)
+              @if($brand != '')
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="check_{{$brand}}" />
+                  <label class="form-check-label" for="check_{{$brand}}">
+                      {{$brand}}
                   </label>
-              </div>
-              <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" />
-                  <label class="form-check-label" for="defaultCheck1">
-                      Brand2
-                  </label>
-              </div>
-              <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" />
-                  <label class="form-check-label" for="defaultCheck1">
-                      Brand3
-                  </label>
-              </div>
-              <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck2" disabled />
-                  <label class="form-check-label" for="defaultCheck2">
-                      Brand4
-                  </label>
-              </div>
+                </div>
+              @endif
+              @endforeach
           </div>
           <form>
               <div class="form-group">
@@ -61,9 +47,9 @@
                               oninput="verifyValMin(this)"
                               class="form-control-range pwRange"
                               id="priceControlRangeMin"
-                              value="0"
-                              min="0"
-                              max="100"
+                              value="{{$price_range['low']}}"
+                              min="{{$price_range['low']}}"
+                              max="{{$price_range['high']}}"
                           />
                           <input
                               type="range"
@@ -71,15 +57,15 @@
                               oninput="verifyValMax(this)"
                               class="form-control-range pwRange"
                               id="priceControlRangeMax"
-                              value="100"
-                              min="0"
-                              max="100"
+                              value="{{$price_range['high']}}"
+                              min="{{$price_range['low']}}"
+                              max="{{$price_range['high']}}"
                           />
                           <script src="scripts/priceRange.js" defer></script>
                       </div>
                       <div class="d-flex justify-content-between pt-4">
-                          <span id="minPrice">0</span>
-                          <span id="maxPrice">100</span>
+                          <span id="minPrice">{{$price_range['low']}}</span>
+                          <span id="maxPrice">{{$price_range['high']}}</span>
                       </div>
                   </div>
               </div>
@@ -89,7 +75,7 @@
       <div class="d-flex justify-content-around flex-wrap p-4 m-2" id="results">
         @foreach ($products as $product)
           <div class="product d-flex flex-column">
-              <a href="./product.html">
+              <a href="/product/{{$product['id']}}">
                   <div class="productName d-flex align-items-end">
                       <span>{{$product['name']}}</span>
                   </div>
@@ -98,7 +84,7 @@
                   </div>
               </a>
               <div class="d-flex flex-column flex-wrap productMid">
-                  <a href="./product.html">
+              <a href="/product/{{$product['id']}}">
                       <div class="productImage">
                       <img src="{{'../storage/' . $product['images'][count($product['images']) - 1]['filepath']}}" class="" alt="..." />
                       </div>
@@ -135,50 +121,50 @@
                   </div>
               </div>
               <div class="productBot d-flex justify-content-left">
-                  <form class="rating">
-                      <fieldset class="starsRating">
-                          <input type="radio" id="star5" name="rating" value="5" /><label
-                              class="full"
-                              for="star5"
-                          ></label>
-                          <input type="radio" id="star4half" name="rating" value="4.5" /><label
-                              class="half"
-                              for="star4half"
-                          ></label>
-                          <input type="radio" id="star4" name="rating" value="4" /><label
-                              class="full"
-                              for="star4"
-                          ></label>
-                          <input type="radio" id="star3half" name="rating" value="3.5" /><label
-                              class="half"
-                              for="star3half"
-                          ></label>
-                          <input type="radio" id="star3" name="rating" value="3" /><label
-                              class="full"
-                              for="star3"
-                          ></label>
-                          <input type="radio" id="star2half" name="rating" value="2.5" /><label
-                              class="half"
-                              for="star2half"
-                          ></label>
-                          <input type="radio" id="star2" name="rating" value="2" /><label
-                              class="full"
-                              for="star2"
-                          ></label>
-                          <input type="radio" id="star1half" name="rating" value="1.5" /><label
-                              class="half"
-                              for="star1half"
-                          ></label>
-                          <input type="radio" id="star1" name="rating" value="1" /><label
-                              class="full"
-                              for="star1"
-                          ></label>
-                          <input type="radio" id="star0half" name="rating" value="0.5" /><label
-                              class="half"
-                              for="star0half"
-                          ></label>
-                      </fieldset>
-                  </form>
+                    <form class="rating mt-1">
+                        <fieldset class="starsRating">
+                            <input type="radio" id="star5" name="rating" value="5" /><label
+                                class="full {{$product['rating'] >= 5.0 ? 'marked' : ''}}"
+                                for="star5"
+                            ></label>
+                            <input type="radio" id="star4half" name="rating" value="4.5" /><label
+                                class="half {{$product['rating'] >= 4.5 ? 'marked' : ''}}"
+                                for="star4half"
+                            ></label>
+                            <input type="radio" id="star4" name="rating" value="4" /><label
+                                class="full {{$product['rating'] >= 4 ? 'marked' : ''}}"
+                                for="star4"
+                            ></label>
+                            <input type="radio" id="star3half" name="rating" value="3.5" /><label
+                                class="half {{$product['rating'] >= 3.5 ? 'marked' : ''}}"
+                                for="star3half"
+                            ></label>
+                            <input type="radio" id="star3" name="rating" value="3" /><label
+                                class="full {{$product['rating'] >= 3.0 ? 'marked' : ''}}"
+                                for="star3"
+                            ></label>
+                            <input type="radio" id="star2half" name="rating" value="2.5" /><label
+                                class="half {{$product['rating'] >= 2.5 ? 'marked' : ''}}"
+                                for="star2half"
+                            ></label>
+                            <input type="radio" id="star2" name="rating" value="2" /><label
+                                class="full {{$product['rating'] >= 2.0 ? 'marked' : ''}}"
+                                for="star2"
+                            ></label>
+                            <input type="radio" id="star1half" name="rating" value="1.5" /><label
+                                class="half {{$product['rating'] >= 1.5 ? 'marked' : ''}}"
+                                for="star1half"
+                            ></label>
+                            <input type="radio" id="star1" name="rating" value="1" /><label
+                                class="full {{$product['rating'] >= 1.0 ? 'marked' : ''}}"
+                                for="star1"
+                            ></label>
+                            <input type="radio" id="star0half" name="rating" value="0.5" /><label
+                                class="half {{$product['rating'] >= 0.5 ? 'marked' : ''}}"
+                                for="star0half"
+                            ></label>
+                        </fieldset>
+                    </form>
               </div>
           </div>
         @endforeach

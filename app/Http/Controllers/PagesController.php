@@ -191,17 +191,45 @@ class PagesController extends Controller
  {
   $size = 15;
   $cart = $this->cart();
-  $categoryName = ($category != null ? Aux::formatHeader(Category::find($category)->name) : 'All');
 
-  if ($category == null) {
+  $catAux = Category::find($category);
+  $categoryName = ($catAux != null ? Aux::formatHeader($catAux->name) : 'All');
+
+  if ($catAux == null) {
    $products = Product::paginate($size);
   } else {
-   $products = Product::with(['category' => function ($query) use ($category) {
-    $query->where('id', '=', $category);
-   }])->paginate($size);
+   $products = Product::where('id_category', $category)->paginate($size);
   }
-  $json = json_decode($products->toJson(), true);
 
+  $brands = [];
+  $priceRange = [
+   'low' => INF,
+   'high' => 0,
+  ];
+
+  foreach ($products as $product) {
+   $product['rating'] = $product->rating();
+   $specs = $product->specifications->filter(function ($spec) {
+    return ($spec['header']['name'] == 'brand');
+   });
+
+   foreach ($specs as $spec) {
+    $brand = $spec['body']['content'];
+    $brands[Aux::formatHeader($brand)] = 0;
+   }
+
+   $price = $product['price'];
+   if ($price < $priceRange['low']) {
+    $priceRange['low'] = (float) $price;
+   }
+
+   if ($price > $priceRange['high']) {
+    $priceRange['high'] = (float) $price;
+   }
+
+  }
+
+  $json = json_decode($products->toJson(), true);
   $data = array(
    'type' => 'product',
    'interactive' => true,
@@ -210,6 +238,8 @@ class PagesController extends Controller
    'cart' => $cart,
    'category' => $categoryName,
    'text' => $text,
+   'brands' => $brands,
+   'price_range' => $priceRange,
   );
 
   return view("pages.search")->with($data);
