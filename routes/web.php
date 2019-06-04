@@ -27,13 +27,8 @@ Route::post('/profile/accountDelete', "ClientController@account_delete")->name('
 Route::post('/profile/passwordChange', "ClientController@password_change")->name('password_change');
 Route::post('/profile/infoEdit', "ClientController@info_edit")->name('info_edit');
 
-Route::post('/profile/cardEdit', "ClientController@card_edit")->name('card_edit');
-Route::post('/profile/cardAdd', "ClientController@card_add")->name('card_add');
-Route::post('/profile/cardDelete', "ClientController@card_delete")->name('card_delete');
-Route::post('/profile/cardsDelete', "ClientController@cards_delete")->name('cards_delete');
 
-Route::post('/profile/addressAdd', "ClientController@address_add")->name('address_add');
-Route::post('/profile/addressDelete', "ClientController@address_delete")->name('address_delete');
+Route::post('/profile/cardsDelete', "ClientController@cards_delete")->name('cards_delete');
 Route::post('/profile/addressesDelete', "ClientController@addresses_delete")->name('addresses_delete');
 
 Route::post('/profile/wishlistAdd', "ClientController@wishlist_add")->name('wishlist_add');

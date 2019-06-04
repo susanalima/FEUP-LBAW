@@ -3,10 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 use Validator;
 
 use App\Address;
+use App\CreditCard;
+use App\Client;
+use App\User;
+
+
 
 class ApiController extends Controller
 {
@@ -87,6 +93,141 @@ class ApiController extends Controller
 
     return response()->json($address);
  }
+
+
+
+
+ public function card_add(Request $request)
+ {
+
+   $card_number = $request->number;
+   $first_digit = $card_number[0];
+
+   $request['date'] =  $request->expiration_day . "-" . $request->expiration_month . "-" . $request->expiration_year;
+   $request['first_digit'] = $first_digit;
+   
+   $rules = [
+      'number' => 'required|digits_between:8,19',
+      'date' => 'required|Date|after:yesterday',
+      'cvc' => 'required|regex:/^[0-9]+$/',
+      'first_digit' => 'required|in:5,4',
+   ];
+
+   $validator = Validator::make($request->all(), $rules);
+   if ($validator->fails()) {
+      $data = [
+       'type' => 'error',
+      ];
+      $data['error'] =' credit card number must be a 8 to 19 digits numeric value';
+      return response()->json("error");
+   }
+
+    $card = new creditCard;
+
+    //4 - visa, 5- mastercard
+
+    $last_digits = substr($card_number, -4);
+    $cvc = $request->cvc;
+
+    switch($first_digit) {
+       case '4':
+       $card->type = "Visa";
+       break;
+       case '5' :
+       $card->type = "Mastercard";
+       break;
+       default:
+      break; 
+
+    }
+
+    $card->token = Hash::make($last_digits . $cvc);
+
+    $card->id_client = $request->client_id;
+    $card->last_digits = $last_digits;
+    $card->name = $request->name;
+    $card->expiration_date = $request->expiration_year . "-" . $request->expiration_month . "-" . $request->expiration_day;
+
+    
+    $card->save();
+
+    return response()->json($card);
+ }
+
+
+ public function card_edit(Request $request)
+ {
+
+   $request['date'] =  $request->expiration_day . "-" . $request->expiration_month . "-" . $request->expiration_year;
+   
+   $rules = [
+      'date' => 'required|Date|after:yesterday',
+      'cvc' => 'nullable|regex:/^[0-9]+$/',
+   ];
+
+   $validator = Validator::make($request->all(), $rules);
+   if ($validator->fails()) {
+      $data = [
+       'type' => 'error',
+      ];
+      $data['error'] =' ';
+      return response()->json("error");
+   }
+
+    $card = CreditCard::find($request->card_id);
+
+    $cvc = $request->cvc;
+   
+    if($cvc !== "NULL") {
+      $card->token = Hash::make($card->last_digits . $cvc);
+    }
+
+    $card->expiration_date = $request->expiration_year . "-" . $request->expiration_month . "-" . $request->expiration_day;
+    
+    $card->save();
+
+    return response()->json($card);
+ }
+
+
+
+ public function card_delete(Request $request)
+ {
+    $card = CreditCard::find($request->card_id);    
+    $card->delete();
+    return response()->json($request);
+ }
+
+
+ public function info_edit(Request $request){
+
+  $rules = [
+     'nif' => 'required|digits:9'
+  ];
+  $validator = Validator::make($request->all(), $rules);
+  if ($validator->fails()) {
+     $data = [
+      'type' => 'error',
+     ];
+     $data['error'] =' nif must be a 9 digits numeric value';
+     return response()->json("error");
+  }
+
+  $client = Client::find($request->id);
+
+  $client->nif = $request->nif;
+   
+  $client->save();
+
+  $user = User::find($request->id);
+
+  $user->name = $request->name;
+    
+  $user->save();
+
+  return response()->json($request);
+
+}
 
 
 }

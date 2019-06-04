@@ -86,11 +86,10 @@
                           </div>
                         </div>
 
-                     
                             </div>
 
                             <div class="modal-footer">
-                              <button type="submit" class="btn button-submit btn-sm">Finish</button>
+                              <button type="button" onclick="editInfo('{{$info['id']}}')"  class="btn button-submit btn-sm" data-dismiss="modal">Finish</button>
                               <button type="button" class="btn button-negative btn-sm" data-dismiss="modal">Cancel</button>
                           </div>
 
@@ -327,13 +326,13 @@
                           <th scope="col"></th>
                         </tr>
                       </thead>
-                      <tbody>
+                      <tbody id="cardTable">
                     
                           
                         @foreach ($info['cards'] as $card)
-                        <tr>
+                        <tr id="card{{$card['id']}}">
                           <td>{{$card['last_digits']}}</td>
-                          <td>{{$card['expiration_date']}}</td>
+                          <td id="card{{$card['id']}}ExpDate">{{$card['expiration_date']}}</td>
                           <td id="cardTableName">{{$card['name']}}</td>
 
                           <?php
@@ -348,19 +347,19 @@
                           <td>
                             <div class="d-flex justify-content-center ml-2 pl-5">
                               <button type="button" class="btn btn-sm button-action m-2" data-toggle="modal"
-                                data-target="#editCard{{$card['last_digits']}}">Edit</button> 
-                              <div class="modal fade" id="editCard{{$card['last_digits']}}" tabindex="-1" role="dialog" aria-labelledby="editCard{{$card['last_digits']}}Label"
+                                data-target="#editCard{{$card['id']}}">Edit</button> 
+                              <div class="modal fade" id="editCard{{$card['id']}}" tabindex="-1" role="dialog" aria-labelledby="editCard{{$card['id']}}Label"
                                 aria-hidden="true">
                                 <div class="modal-dialog" role="document">
                                   <div class="modal-content">
                                     <div class="modal-header">
-                                      <h5 class="modal-title" id="editCard{{$card['last_digits']}}Label">Edit Card {{$card['last_digits']}}</h5>
+                                      <h5 class="modal-title" id="editCard{{$card['id']}}Label">Edit Card {{$card['last_digits']}}</h5>
                                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                       </button>
                                     </div>
                                     <div class="modal-body">
-                                    <form  id="formEdit{{$card['id']}}Card" method="POST" action="{{ route('card_edit') }}" >
+                                    <form >
                                        {{ csrf_field() }}
                                         <!--<div class="row">
                                           <div class="col-md-7">
@@ -433,7 +432,7 @@
 
                                         </div>
                                         <div class="modal-footer">
-                                      <button type="submit" class="btn button-submit btn-sm">Finish</button>
+                                      <button type="button"  onclick="editCard('{{$card['id']}}')" class="btn button-submit btn-sm" data-dismiss="modal">Finish</button>
                                       <button type="button" class="btn button-negative btn-sm" data-dismiss="modal">Cancel</button>
                                     </div>
                                       </form>
@@ -460,14 +459,14 @@
                                     </div>
                                     <div class="modal-footer">
                                     
-                                    <form  id="formCard{{$card['id']}}Card" method="POST" action="{{ route('card_delete') }}" >
+                                    <form >
                                     {{ csrf_field() }}
 
                                       <div class="input-group flex-nowrap mt-2">
                                         <input type="hidden" class="form-control" name="card_id" value="{{$card['id']}}"> {{-- TODO: Possible security breach --}} 
                                       </div>
 
-                                      <button type="submit" class="btn button-submit btn-sm">Yes</button>
+                                      <button type="button" onclick="deleteCard('{{$card['id']}}')"  class="btn button-submit btn-sm" data-dismiss="modal">Yes</button>
                                       <button type="button" class="btn button-negative btn-sm" data-dismiss="modal">No</button>
 
                                   </form>
@@ -540,7 +539,7 @@
                           </button>
                         </div>
                         <div class="modal-body">
-                        <form  id="formAddCard" method="POST" action="{{ route('card_add') }}" >
+                        <form>
                          {{ csrf_field() }}
                             <div class="row">
                               <div class="col-md-7">
@@ -595,7 +594,7 @@
                            
                         </div>
                         <div class="modal-footer">
-                          <button type="submit" class="btn button-submit btn-sm">Finish</button>
+                          <button type="button" onclick="addCard('{{$info['id']}}')" class="btn button-submit btn-sm" data-dismiss="modal">Finish</button>
                           <button type="button" class="btn button-negative btn-sm" data-dismiss="modal">Cancel</button>
                         </div>
                         </form>
