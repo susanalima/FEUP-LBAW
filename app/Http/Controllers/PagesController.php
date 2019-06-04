@@ -253,10 +253,11 @@ class PagesController extends Controller
   $cart = $this->cart();
 
   $info = Client::find(Auth::user()->id);
+  $userInfo = User::find(Auth::user()->id);
   //$info = Client::find($id);
   $info['id'] = $info->id;
-  $info['name'] = $info->nonAdmin->user->name;
-  $info['email'] = $info->nonAdmin->user->email;
+  $info['name'] = $userInfo->name;
+  $info['email'] = $userInfo->email;
   $info['nif'] = $info->nif;
   $info['addresses'] = $info->addresses;
   $info['cards'] = $info->credit_cards;
