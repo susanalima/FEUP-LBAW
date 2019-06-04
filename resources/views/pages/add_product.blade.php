@@ -41,13 +41,13 @@
                     <div class="form-group row">
                         <label for="addProductStock" class="col-sm-2 col-form-label px-0">Stock</label>
                         <div class="col-sm-8 px-0">
-                            <input type="text" class="form-control" id="addProductStock" placeholder="Stock" name="stock">
+                            <input type="number" step="1" min="0" class="form-control" id="addProductStock" placeholder="Stock" name="stock">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="addProductPrice" class="col-sm-2 col-form-label px-0">Price (€)</label>
                         <div class="col-sm-8 px-0">
-                            <input type="text" class="form-control" id="addProductPrice" placeholder="Price" name="price">
+                            <input type="number" step="0.01" min="0" class="form-control" id="addProductPrice" placeholder="Price" name="price">
                         </div>
                     </div>
                     <div class="form-group row">

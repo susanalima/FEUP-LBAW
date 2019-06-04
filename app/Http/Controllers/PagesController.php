@@ -10,6 +10,7 @@ use App\Promotion;
 use App\User;
 use App\WishList;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cookie;
 
 class PagesController extends Controller
 {
@@ -141,7 +142,7 @@ class PagesController extends Controller
   return view("pages.login")->with($data);
  }
 
- public function product_create($error = null)
+ public function product_create()
  {
   $cats = Category::all()->map(function ($category) {
    return array("id" => $category->id, "name" => $category->name);
@@ -158,10 +159,12 @@ class PagesController extends Controller
    'specs' => $specs,
   );
 
+  $error = Cookie::get('error');
   if ($error !== null) {
    $data['error'] = $error;
   }
 
+  Cookie::queue(Cookie::forget('error'));
   return view("pages.add_product")->with($data);
  }
 
@@ -193,7 +196,7 @@ class PagesController extends Controller
   $cart = $this->cart();
 
   $catAux = Category::find($category);
-  $categoryName = ($catAux != null ? Aux::formatHeader($catAux->name) : 'All');
+  $categoryName = ($catAux != null ? Aux::formatHeader($catAux->name) : 'All Categories');
 
   if ($catAux == null) {
    $products = Product::paginate($size);
