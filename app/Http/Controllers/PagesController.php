@@ -9,25 +9,23 @@ use App\Product;
 use App\Promotion;
 use App\User;
 use App\WishList;
-use App\ProductList;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
 class PagesController extends Controller
 {
- private function cart()
- {
-  if (Auth::check()) {
-   return Client::find(Auth::user()->id)->cart();
-  } else {
-   return [];
-  }
+    private function cart()
+    {
+        if (Auth::check()) {
+            return Client::find(Auth::user()->id)->cart();
+        } else {
+            return [];
+        }
 
- }
+    }
 
- public function index()
- {
-  $cart = $this->cart();
+    public function index()
+    {
+        $cart = $this->cart();
 
         $promotions = Promotion::active()->get()->random(2)->map(function ($promotion) {
 
@@ -54,86 +52,86 @@ class PagesController extends Controller
 
         });
 
-  $product = Product::where('available', 'true')->orderBy('id', 'desc')->first();
-  $product = [
-   'name' => $product->name,
-   'product_id' => $product->id,
-   'image' => $product->primary_image(),
-  ];
+        $product = Product::where('available', 'true')->orderBy('id', 'desc')->first();
+        $product = [
+            'name' => $product->name,
+            'product_id' => $product->id,
+            'image' => $product->primary_image(),
+        ];
 
-  $wished = array();
-  $categories = array(1, 4, 6);
+        $wished = array();
+        $categories = array(1, 4, 6);
 
-  foreach ($categories as $key => $category) {
-   $temp = Product::all()->where('id_category', $category)->sortBy(function ($prod) {
-    return -1 * $prod->wished();
-   })->take(10)->map(function ($p) {
-    return $p;
-   });
+        foreach ($categories as $key => $category) {
+            $temp = Product::all()->where('id_category', $category)->sortBy(function ($prod) {
+                return -1 * $prod->wished();
+            })->take(10)->map(function ($p) {
+                return $p;
+            });
 
-   $prods = array();
-   foreach ($temp as $key => $value) {
-    array_push($prods,
-     [
-      'name' => str_before($value->name, ' -'),
-      'price' => $value->price,
-      'rating' => $value->rating(),
-      'image' => $value->primary_image(),
-      'id' => $value->id,
-     ]);
-   }
+            $prods = array();
+            foreach ($temp as $key => $value) {
+                array_push($prods,
+                    [
+                        'name' => str_before($value->name, ' -'),
+                        'price' => $value->price,
+                        'rating' => $value->rating(),
+                        'image' => $value->primary_image(),
+                        'id' => $value->id,
+                    ]);
+            }
 
-   $wished[Aux::formatHeader(Category::find($category)->name)] = $prods;
-  }
+            $wished[Aux::formatHeader(Category::find($category)->name)] = $prods;
+        }
 
-  $data = array(
-   'interactive' => true,
-   'promos' => $promotions,
-   'product' => $product,
-   'wished' => $wished,
-   'cart' => $cart,
-  );
+        $data = array(
+            'interactive' => true,
+            'promos' => $promotions,
+            'product' => $product,
+            'wished' => $wished,
+            'cart' => $cart,
+        );
 
         return view("index")->with($data);
     }
 
- public function help()
- {
-  $cart = $this->cart();
+    public function help()
+    {
+        $cart = $this->cart();
 
-  $data = array(
-   'type' => 'help',
-   'interactive' => true,
-   'cart' => $cart,
-  );
-  return view("pages.help")->with($data);
- }
+        $data = array(
+            'type' => 'help',
+            'interactive' => true,
+            'cart' => $cart,
+        );
+        return view("pages.help")->with($data);
+    }
 
- public function contacts()
- {
+    public function contacts()
+    {
 
-  $cart = $this->cart();
+        $cart = $this->cart();
 
-  $data = array(
-   'type' => 'contacts',
-   'interactive' => true,
-   'cart' => $cart,
-  );
-  return view("pages.help")->with($data);
- }
+        $data = array(
+            'type' => 'contacts',
+            'interactive' => true,
+            'cart' => $cart,
+        );
+        return view("pages.help")->with($data);
+    }
 
- public function faq()
- {
+    public function faq()
+    {
 
-  $cart = $this->cart();
+        $cart = $this->cart();
 
-  $data = array(
-   'type' => 'faq',
-   'interactive' => true,
-   'cart' => $cart,
-  );
-  return view("pages.help")->with($data);
- }
+        $data = array(
+            'type' => 'faq',
+            'interactive' => true,
+            'cart' => $cart,
+        );
+        return view("pages.help")->with($data);
+    }
 
     public function login()
     {
@@ -167,147 +165,143 @@ class PagesController extends Controller
         return view("pages.add_product")->with($data);
     }
 
- public function product($id)
- {
-  $cart = $this->cart();
+    public function product($id)
+    {
+        $cart = $this->cart();
 
-  $product = Product::find($id);
-  $product['category'] = Aux::formatHeader($product->category['name']);
-  $product['images'] = $product->images;
-  $product['specs'] = $product->specifications->map(function ($a) {return $a->spec();});
-  $product['reviews'] = $product->getReviews();
-  $product['q_a'] = $product->getQA();
-  $product['rating'] = $product->rating();
+        $product = Product::find($id);
+        $product['category'] = Aux::formatHeader($product->category['name']);
+        $product['images'] = $product->images;
+        $product['specs'] = $product->specifications->map(function ($a) {return $a->spec();});
+        $product['reviews'] = $product->getReviews();
+        $product['q_a'] = $product->getQA();
+        $product['rating'] = $product->rating();
 
-  $data = array(
-   'type' => 'product',
-   'interactive' => true,
-   'product' => $product,
-   'cart' => $cart,
-  );
+        $data = array(
+            'type' => 'product',
+            'interactive' => true,
+            'product' => $product,
+            'cart' => $cart,
+        );
 
         return view("pages.product")->with($data);
     }
 
- //TODO NAO IR BUSCAR O CART ATUAL
- public function profile()
- {
+    //TODO NAO IR BUSCAR O CART ATUAL
+    public function profile()
+    {
 
-  $cart = $this->cart();
+        $cart = $this->cart();
 
-  $info = Client::find(Auth::user()->id);
-  //$info = Client::find($id);
-  $info['id'] = $info->id;
-  $info['name'] = $info->nonAdmin->user->name;
-  $info['email'] = $info->nonAdmin->user->email;
-  $info['nif'] = $info->nif;
-  $info['addresses'] = $info->addresses;
-  $info['cards'] = $info->credit_cards;
-  
-  $info['wishLists'] = $info->wishLists;
-  $info['carts'] = $info->carts->map(function ($cart) {
-   
-    $address_line = '';
-    $postal_code = '';
-    $country = '';
-    $city = '';
-    $address_name = '';
-    $card = 'Deleted';
-    $address_deleted = 'true';
+        $info = Client::find(Auth::user()->id);
+        //$info = Client::find($id);
+        $info['id'] = $info->id;
+        $info['name'] = $info->nonAdmin->user->name;
+        $info['email'] = $info->nonAdmin->user->email;
+        $info['nif'] = $info->nif;
+        $info['addresses'] = $info->addresses;
+        $info['cards'] = $info->credit_cards;
 
-    if( $cart->address != null){
-      $address_line = $cart->address->address_line;
-      $postal_code = $cart->address->postal_code;
-      $country = $cart->address->country;
-      $city = $cart->address->city;
-      $address_name = $cart->address->name;
-      $card = 'Deleted';
-      $address_deleted = 'false';
+        $info['wishLists'] = $info->wishLists;
+        $info['carts'] = $info->carts->map(function ($cart) {
+
+            $address_line = '';
+            $postal_code = '';
+            $country = '';
+            $city = '';
+            $address_name = '';
+            $card = 'Deleted';
+            $address_deleted = 'true';
+
+            if ($cart->address != null) {
+                $address_line = $cart->address->address_line;
+                $postal_code = $cart->address->postal_code;
+                $country = $cart->address->country;
+                $city = $cart->address->city;
+                $address_name = $cart->address->name;
+                $card = 'Deleted';
+                $address_deleted = 'false';
+            }
+
+            if ($cart->creditCard != null) {
+                $card = $cart->creditCard->last_digits;
+            }
+
+            $products = $cart->list_products($cart->id);
+
+            $this->getProductExtras($products);
+
+            $collection = collect($products);
+
+            $totalPrice = $collection->sum('price');
+
+            return [
+                'id' => $cart->id,
+                'checkout' => $cart->checkout,
+                'address_deleted' => $address_deleted,
+                'address_line' => $address_line,
+                'postal_code' => $postal_code,
+                'country' => $country,
+                'city' => $city,
+                'address_name' => $address_name,
+                'shipping' => $cart->shipping->method,
+                'card' => $card,
+                'products' => $collection,
+                'total' => $totalPrice,
+            ];
+        });
+
+        $data = array(
+            'type' => 'information',
+            'interactive' => true,
+            'info' => $info,
+            'cart' => $cart,
+        );
+
+        return view("pages.profile")->with($data);
     }
 
-   if ($cart->creditCard != null) {
-    $card = $cart->creditCard->last_digits;
-   }
-
-   $products =$cart->list_products($cart->id);
-
-   $this->getProductExtras($products);
-
-   $collection = collect($products);
-
-   $totalPrice = $collection->sum('price');
-
-   return [
-     'id' => $cart->id,
-    'checkout' => $cart->checkout,
-    'address_deleted' => $address_deleted,
-    'address_line' => $address_line,
-    'postal_code' => $postal_code,
-    'country' => $country,
-    'city' => $city,
-    'address_name' => $address_name,
-    'shipping' => $cart->shipping->method,
-    'card' => $card, 
-    'products' => $collection,
-    'total' => $totalPrice,
-   ];
-  });
-
-  $data = array(
-   'type' => 'information',
-   'interactive' => true,
-   'info' => $info,
-   'cart' => $cart,
-  );
-
-  return view("pages.profile")->with($data);
- }
-
- public function getProductExtras($products){
-   foreach($products as $product){
-      $c_product = Product::find($product->id);
-      $img_src = $c_product->images[0]['filepath'];
-      $product->image = $img_src;
-      $product->price = $c_product->price;
-      //$product->name = Aux::formatHeader($product->name);
-   }
- }
-
-
-
- public function wishList($id){
-   $info = WishList::find($id);
-   $list['id'] = $id;  
-   $list['name'] = Aux::formatHeader($info->name);
-   $list['products'] =$info->list_products($id);
-
-   $this->getProductExtras($list['products']);
-
-   $client_id = $info->id_client;
-   $client = Client::find($client_id);
- 
-   $list['all_lists'] = $client->wishLists;
-  
-   
-   $data = array(
-    'type' => 'information',
-    'interactive' => true,
-    'info' => $list,
-    );
-    
-   return view("pages.wish_list")->with($data);
- }
-	public function profile_manager($id)
+    public function getProductExtras($products)
     {
-        //TODO 
-	}
-	
-	public function profile_admin($id)
-    {
-        //TODO 
+        foreach ($products as $product) {
+            $c_product = Product::find($product->id);
+            $img_src = $c_product->images[0]['filepath'];
+            $product->image = $img_src;
+            $product->price = $c_product->price;
+            //$product->name = Aux::formatHeader($product->name);
+        }
     }
 
-}
-	
+    public function wishList($id)
+    {
+        $info = WishList::find($id);
+        $list['id'] = $id;
+        $list['name'] = Aux::formatHeader($info->name);
+        $list['products'] = $info->list_products($id);
+
+        $this->getProductExtras($list['products']);
+
+        $client_id = $info->id_client;
+        $client = Client::find($client_id);
+
+        $list['all_lists'] = $client->wishLists;
+
+        $data = array(
+            'type' => 'information',
+            'interactive' => true,
+            'info' => $list,
+        );
+
+        return view("pages.wish_list")->with($data);
+    }
+    public function profile_manager($id)
+    {
+        //TODO
+    }
+
+    public function profile_admin($id)
+    {
+        //TODO
+    }
 
 }
