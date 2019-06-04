@@ -3,11 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Client;
+use App\User;
+use App\NonAdmin;
 use App\Address;
 use App\CreditCard;
+use App\ProductList;
+use App\WishList;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class ClientController extends Controller
 {
@@ -88,6 +93,33 @@ class ClientController extends Controller
  }
 
 
+
+ public function nif_edit(Request $request)
+ {
+
+    $client = Client::find(Auth::user()->id);
+
+    $client->nif = $request->nif;
+    
+    $client->save();
+
+  return redirect()->route('profile');
+ }
+
+
+ public function name_edit(Request $request)
+ {
+
+     $client = User::find(Auth::user()->id);
+
+     $client->name = $request->name;
+     
+     $client->save();
+
+   return redirect()->route('profile');
+ }
+
+
  public function address_edit(Request $request)
  {
 
@@ -109,7 +141,7 @@ class ClientController extends Controller
  {
     $address = new address;
 
-    $address->id_client = $request->client_id;
+    $address->id_client = Auth::user()->id;
     $address->name = $request->name;
     $address->address_line = $request->address_line;
     $address->postal_code = $request->postal_code;
@@ -134,7 +166,7 @@ class ClientController extends Controller
  public function addresses_delete(Request $request)
  {
 
-    $info = Client::find($request->client_id);
+    $info = Client::find(Auth::user()->id);
     $addresses = $info->addresses;
   
     foreach($addresses as $address_id) {
@@ -171,7 +203,7 @@ class ClientController extends Controller
 
     $card->token = Hash::make($last_digits . $cvc);
 
-    $card->id_client = $request->client_id;
+    $card->id_client = Auth::user()->id;
     $card->last_digits = $last_digits;
     $card->name = $request->name;
     $card->expiration_date = $request->expiration_year . "-" . $request->expiration_month . "-" . $request->expiration_day;
@@ -215,7 +247,7 @@ class ClientController extends Controller
  public function cards_delete(Request $request)
  {
 
-    $info = Client::find($request->client_id);
+    $info = Client::find(Auth::user()->id);
    $cards = $info->credit_cards;
   
     foreach($cards as $card_id) {
@@ -226,15 +258,84 @@ class ClientController extends Controller
     return redirect()->route('profile');
  }
 
- 
+
+ public function wishlist_add(Request $request)
+ {
+   
+    $productList = ProductList::create(["id" => ProductList::max('id') + 1]);
+
+    $wishList = new wishlist;
+    $wishList->id = $productList->id;
+    $wishList->id_client = Auth::user()->id;
+    $wishList->name = $request->name;
+    $wishList->description = $request->description;
+    
+    $wishList->save();
+
+    return redirect()->route('profile');
+ }
+
+
  public function account_delete() {
 
-   $user = Client::find(Auth::user()->id);
-
+   $client = Client::find(Auth::user()->id);
+   $nonAdmin = NonAdmin::find(Auth::user()->id);
+   $user = User::find(Auth::user()->id);
+ 
    Auth::logout();
 
-   if ($user->delete()) {
+   if ($client->delete() && $nonAdmin->delete() && $user->delete()) {
         return redirect()->route('index')->with('global', 'Your account has been deleted!');
+   }
+ }
+
+ public function password_change_rules(array $data){
+  $messages = [
+    'currentPassword.required' => 'Please enter current password',
+    'newPassword.required' => 'Please enter password',
+  ];
+
+  $validator = Validator::make($data, [
+    'currentPassword' => 'required',
+    'newPassword' => 'required|same:newPassword',
+    'confirmationPassword' => 'required|same:newPassword',     
+  ], $messages);
+
+  return $validator;
+} 
+
+//todo how to display the response??
+public function password_change(Request $request) {
+
+   if(Auth::Check())
+   {
+      $request_data = $request->All();
+      $validator = $this->password_change_rules($request_data);
+      if($validator->fails())
+      {
+         return response()->json(array('error' => $validator->getMessageBag()->toArray()), 400);
+      }
+      else
+      {  
+         $current_password = Auth::User()->password;           
+         if(Hash::check($request_data['currentPassword'], $current_password))
+         {           
+            $user_id = Auth::User()->id;                       
+            $user = User::find($user_id);
+            $user->password = Hash::make($request_data['newPassword']);;
+            $user->save(); 
+            return "ok";
+         }
+         else
+         {           
+            $error = array('current-password' => 'Please enter correct current password');
+            return response()->json(array('error' => $error), 400);   
+         }
+      }        
+   }
+   else
+   {
+      return redirect()->route('profile');
    }
  }
 

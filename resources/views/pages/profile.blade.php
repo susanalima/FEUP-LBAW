@@ -117,7 +117,6 @@
 
                                           <div class="input-group flex-nowrap mt-2">
                                             <input type="hidden" class="form-control"  name="address_id" value="{{$address['id']}}"> {{-- TODO: Possible security breach --}} 
-                                            <input type="hidden" class="form-control"  name="client_id" value="{{$info['id']}}"> {{-- TODO: Possible security breach --}} 
                                         </div>
 
                                         </div>
@@ -153,7 +152,6 @@
 
                                     <div class="input-group flex-nowrap mt-2">
                                             <input type="hidden" class="form-control"  name="address_id" value="{{$address['id']}}"> {{-- TODO: Possible security breach --}} 
-                                            <input type="hidden" class="form-control"  name="client_id" value="{{$info['id']}}"> {{-- TODO: Possible security breach --}} 
                                         </div>
 
                                     <button type="submit" class="btn button-submit btn-sm">Yes</button>
@@ -199,7 +197,6 @@
                         {{ csrf_field() }}
 
                           <div class="input-group flex-nowrap mt-2">
-                            <input type="hidden" class="form-control"  name="client_id" value="{{$info['id']}}"> {{-- TODO: Possible security breach --}} 
                           </div>
 
                           <button type="submit" class="btn button-submit btn-sm">Yes</button>
@@ -252,7 +249,6 @@
                                 <input type="text" class="form-control rounded" id="addAddressCountry" placeholder="Country"
                                 name="country" required>
 
-                                  <input type="hidden" class="form-control"  name="client_id" value="{{$info['id']}}"> {{-- TODO: Possible security breach --}} 
 
                               </div>
                             </div>
@@ -387,7 +383,6 @@
                                         
                                           <div class="input-group flex-nowrap mt-2">
                                             <input type="hidden" class="form-control" name="card_id" value="{{$card['id']}}"> {{-- TODO: Possible security breach --}} 
-                                            <input type="hidden" class="form-control"  name="client_id" value="{{$info['id']}}"> {{-- TODO: Possible security breach --}} 
                                         </div>
 
                                         </div>
@@ -424,7 +419,6 @@
 
                                       <div class="input-group flex-nowrap mt-2">
                                         <input type="hidden" class="form-control" name="card_id" value="{{$card['id']}}"> {{-- TODO: Possible security breach --}} 
-                                        <input type="hidden" class="form-control"  name="client_id" value="{{$info['id']}}"> {{-- TODO: Possible security breach --}} 
                                       </div>
 
                                       <button type="submit" class="btn button-submit btn-sm">Yes</button>
@@ -473,10 +467,6 @@
                         
                         <form  id="formDeleteAllCards" method="POST" action="{{ route('cards_delete') }}" >
                         {{ csrf_field() }}
-
-                          <div class="input-group flex-nowrap mt-2">
-                            <input type="hidden" class="form-control"  name="client_id" value="{{$info['id']}}"> {{-- TODO: Possible security breach --}} 
-                          </div>
 
                           <button type="submit" class="btn button-submit btn-sm">Yes</button>
                           <button type="button" class="btn button-negative btn-sm" data-dismiss="modal">No</button>
@@ -556,9 +546,7 @@
                                 </div>
                               </div>
                             </div>
-                            <div class="input-group flex-nowrap mt-2">
-                            <input type="hidden" class="form-control"  name="client_id" value="{{$info['id']}}"> {{-- TODO: Possible security breach --}} 
-                          </div>
+                           
                         </div>
                         <div class="modal-footer">
                           <button type="submit" class="btn button-submit btn-sm">Finish</button>
@@ -618,31 +606,33 @@
                       </button>
                     </div>
                     <div class="modal-body">
-                      <form>
+                    <form  id="formChangePWD" method="POST" action="{{ route('password_change') }}" >
+                        {{ csrf_field() }}
                         <div class="form-group row">
                           <label for="clientCurrentPassword" class="col-sm-4 col-form-label pr-0"><b>Current Password</b></label>
                           <div class="col-sm-8">
-                            <input type="password" class="form-control" id="clientCurrentPassword" placeholder="Password">
+                            <input type="password" class="form-control" id="clientCurrentPassword" placeholder="Password" name="currentPassword" required>
                           </div>
                         </div>
                         <div class="form-group row">
                           <label for="clientNewPassword" class="col-sm-4 col-form-label pr-0"><b>New Password</b></label>
                           <div class="col-sm-8">
-                            <input type="password" class="form-control" id="clientNewPassword" placeholder="Password">
+                            <input type="password" class="form-control" id="clientNewPassword" placeholder="Password" name="newPassword" required>
                           </div>
                         </div>
                         <div class="form-group row">
                           <label for="clientConfirmPassword" class="col-sm-4 col-form-label pr-0"><b>Confirm Password</b></label>
                           <div class="col-sm-8">
-                            <input type="password" class="form-control" id="clientConfirmPassword" placeholder="Password">
+                            <input type="password" class="form-control" id="clientConfirmPassword" placeholder="Password" name="confirmationPassword" required>
                           </div>
                         </div>
-                      </form>
+                  
                     </div>
                     <div class="modal-footer">
-                      <button type="button" class="btn button-submit btn-sm">Finish</button>
+                      <button type="submit" class="btn button-submit btn-sm">Finish</button>
                       <button type="button" class="btn button-negative btn-sm" data-dismiss="modal">Cancel</button>
                     </div>
+                    </form>
                   </div>
                 </div>
               </div>
@@ -733,11 +723,11 @@
              
                     <tr>
                       <td>{{$cart['checkout']}}</td>
-                      <td>14.89€</td>
+                      <td>{{$cart['total']}}€</td>
                       <td>
-                        <button class="btn button-action btn-sm m-2" role="button" data-toggle="modal" data-target=".viewCard1Modal">View
+                        <button class="btn button-action btn-sm m-2" role="button" data-toggle="modal" data-target="#viewCart{{$cart['id']}}Modal">View
                           cart</button>
-                        <div class="modal fade viewCard1Modal" tabindex="-1" role="dialog" aria-labelledby="viewCard1ModalLabel"
+                        <div class="modal fade" id="viewCart{{$cart['id']}}Modal" tabindex="-1" role="dialog" aria-labelledby="viewCart{{$cart['id']}}ModalLabel"
                           aria-hidden="true">
                           <div class="modal-dialog">
                             <div class="modal-content">
@@ -783,50 +773,26 @@
                                         <h4>Total:</h4>
                                       </div>
                                       <div class="col-6 col-md-8 p-0">
-                                        <h4> 984.97€</h4>
+                                        <h4>{{$cart['total']}}€</h4>
                                       </div>
                                     </div>
                                   </div>
                                 </div>
                                 <div class="d-flex flex-column justify-content-between" id="shoppingCartCart">
+                                @foreach($cart['products'] as $product)
                                   <article class="m-2 p-2 d-flex justify-content-between align-items-center">
-                                    <a href="./product.html" class="cartProductImage">
-                                      <img src="images/products/googlePixelBook.jpg" class="" alt="..." />
+                                    <a href="{{ route('product_page', ['id' => $product->id]) }}" class="cartProductImage">
+                                      <img src="{{ '/storage/' . $product->image}}"
+                                    alt="Cart image" class=""/>
                                     </a>
-                                    <a href="./product.html">
-                                      <h4 class="cartProductName">Laptop Asus 950</h4>
-                                      <h5 class="cartProductSpec font-italic">Intel Core I9</h5>
+                                    <a  href="{{ route('product_page', ['id' => $product->id]) }}">
+                                      <h4 class="cartProductName">{{$product->name}}</h4>
                                     </a>
-                                    <h4>1</h4>
-                                    <h4 class="cartProductSubTotal">899.99 €</h4>
+                                    <h4>{{$product->quantity}} </h4>
+                                    <h4 class="cartProductSubTotal">{{$product->price}}€</h4>
 
                                   </article>
-
-                                  <article class="m-2 p-2 d-flex justify-content-between align-items-center">
-                                    <a href="./product.html" class="cartProductImage">
-                                      <img src="images/products/book_cover1984.jpg" class="" alt="..." />
-                                    </a>
-                                    <a href="./product.html">
-                                      <h4 class="cartProductName">1984</h4>
-                                      <h5 class="cartProductSpec font-italic">G. Orwell</h5>
-                                    </a>
-                                    <h4>1</h4>
-                                    <h4 class="cartProductSubTotal">14.99</h4>
-
-                                  </article>
-
-                                  <article class="m-2 p-2 d-flex justify-content-between align-items-center">
-                                    <a href="./product.html" class="cartProductImage">
-                                      <img src="images/products/headphones.jpg" class="" alt="..." />
-                                    </a>
-                                    <a href="./product.html">
-                                      <h4 class="cartProductName">JBL Phones</h4>
-                                      <h5 class="cartProductSpec font-italic">Wireless HQ</h5>
-                                    </a>
-                                    <h4>1</h4>
-                                    <h4 class="cartProductSubTotal">69.99</h4>
-
-                                  </article>
+                                @endforeach
                                 </div>
                               </div>
                             </div>
@@ -861,7 +827,7 @@
                     @foreach ($info['wishLists'] as $wishList)
                     <tr>
                         <th scope="row">{{$counter}}</th>
-                        <td><a class="btn-link" href="./wishList.html">{{$wishList['name']}}</a></td>
+                        <td><a class="btn-link"  href="{{ route('wishList', ['id' => $wishList['id']]) }}">{{$wishList['name']}}</a></td>
                         <td>{{$wishList['description']}}</td>
                         <td>
                           <div class="d-flex justify-content-center">
@@ -902,10 +868,6 @@
                         <form  id="formDeleteAllWL" method="POST" action="{{ route('cards_delete') }}" > //TODO
                         {{ csrf_field() }}
 
-                          <div class="input-group flex-nowrap mt-2">
-                            <input type="hidden" class="form-control"  name="client_id" value="{{$info['id']}}"> {{-- TODO: Possible security breach --}} 
-                          </div>
-
                           <button type="submit" class="btn button-submit btn-sm">Yes</button>
                           <button type="button" class="btn button-negative btn-sm" data-dismiss="modal">No</button>
 
@@ -931,21 +893,23 @@
                         </button>
                       </div>
                       <div class="modal-body">
-                        <form>
+                      <form  id="formAddWishList" method="POST" action="{{ route('wishlist_add') }}" > 
+                        {{ csrf_field() }}
                           <div class="form-group">
                             <label for="wishListName" class="col-form-label">Name</label>
-                            <input type="text" class="form-control" id="wishListName">
+                            <input type="text" class="form-control" id="wishListName" name="name" required>
                           </div>
                           <div class="form-group">
                             <label for="wishListDescription" class="col-form-label">Description</label>
-                            <textarea class="form-control" id="wishListDescription"></textarea>
+                            <textarea class="form-control" id="wishListDescription" name="description"></textarea>
                           </div>
-                        </form>
+                     
                       </div>
                       <div class="modal-footer">
-                        <button type="button" class="btn button-submit btn-sm" >Finish</button>
+                        <button type="submit" class="btn button-submit btn-sm" >Finish</button>
                         <button type="button" class="btn button-negative btn-sm" data-dismiss="modal">Cancel</button>
                       </div>
+                      </form>
                     </div>
                   </div>
                 </div>
