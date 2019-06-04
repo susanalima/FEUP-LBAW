@@ -873,9 +873,9 @@
                     <tr id="wishlist{{$wishList['id']}}">
                         <th scope="row">{{$counter}}</th>
                         <td><a class="btn-link"  href="{{ route('wishList', ['id' => $wishList['id']]) }}">{{$wishList['name']}}</a></td>
-                        <td>{{$wishList['description']}}</td>
+                        <td style="max-width: 280px;">{{$wishList['description']}}</td>
                         <td>
-                          <div class="d-flex justify-content-center">
+                          <div class="d-flex float-right mr-2">
                             <button type="button" class="btn btn-sm button-action m-2">Share</button>
                             <button type="button" class="btn btn-sm button-negative m-2"  data-toggle="modal" data-target="#delete{{$wishList['id']}}WLModal">Delete</button>
 
