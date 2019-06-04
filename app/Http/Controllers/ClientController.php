@@ -93,9 +93,7 @@ class ClientController extends Controller
  }
 
 
-
- public function nif_edit(Request $request)
- {
+ public function info_edit(Request $request){
 
    $rules = [
       'nif' => 'required|digits:9'
@@ -109,26 +107,20 @@ class ClientController extends Controller
       return redirect()->route('profile', ['error' => $data['error']]);
    }
 
-    $client = Client::find(Auth::user()->id);
+   $client = Client::find(Auth::user()->id);
 
-    $client->nif = $request->nif;
+   $client->nif = $request->nif;
     
-    $client->save();
+   $client->save();
+
+   $user = User::find(Auth::user()->id);
+
+   $user->name = $request->name;
+     
+   $user->save();
 
   return redirect()->route('profile');
- }
 
-
- public function name_edit(Request $request)
- {
-
-     $client = User::find(Auth::user()->id);
-
-     $client->name = $request->name;
-     
-     $client->save();
-
-   return redirect()->route('profile');
  }
 
 

@@ -1,6 +1,10 @@
 @extends('templates.app')
 
 <link rel="stylesheet" href="{{ URL::asset('css/clientAccount.css') }}"" />
+<script src="{{ URL::asset('js/wishList.js') }}"></script>
+
+<script src="{{ URL::asset('js/edition.js') }}"></script>
+
 
 @section('content')
 <div class="mainContent">
@@ -32,10 +36,6 @@
                           <td><b>Name</b></td>
                           <td id="clientName">{{$info['name']}}</td>
                           <td>
-                            <div class="d-flex justify-content-center">
-                              <button type="button" class="btn btn-sm button-action" onclick='editClientName(this, "John Doe")'
-                                value="edit">Edit</button>
-                            </div>
                           </td>
                         </tr>
                         <tr>
@@ -48,16 +48,61 @@
                           <td><b>NIF</b></td>
                           <td id="clientNif">{{$info['nif']}}</td>
                           <td>
-                            <div class="d-flex justify-content-center">
-                              <button type="button" class="btn btn-sm button-action" onclick='editClientNif(this, "123456789")'
-                                value="edit">Edit</button>
-                            </div>
                           </td>
                         </tr>
                       </tbody>
                     </table>
                   </div>
+                
+                     <!-- -->
+
+                    <button type="button" class="btn button-action mr-3 btn-sm float-right" data-toggle="modal" data-target="#editInfoModal">Edit</button>
+        
+                      <div class="modal fade" id="editInfoModal" tabindex="-1" role="dialog" aria-labelledby="editInfoModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="editInfoModalLabel">Edit Personal Information</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                        <form  id="formEditInfo" method="POST" action="{{ route('info_edit') }}" >
+                              {{ csrf_field() }}
+                            <div class="form-group">
+                     
+                            <div class="form-group row">
+                          <label for="clientNewPassword" class="col-sm-4 col-form-label pr-0"><b>Name</b></label>
+                          <div class="col-sm-8">
+                            <input type="text" class="form-control" id="clientEditName" placeholder="Name" name="name" value="{{$info['name']}}" required>
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <label for="clientConfirmPassword" class="col-sm-4 col-form-label pr-0"><b>NIF</b></label>
+                          <div class="col-sm-8">
+                            <input type="text" class="form-control" id="clientEditNIF" placeholder="nif" name="nif" value="{{$info['nif']}}" required>
+                          </div>
+                        </div>
+
+                     
+                            </div>
+
+                            <div class="modal-footer">
+                              <button type="submit" class="btn button-submit btn-sm">Finish</button>
+                              <button type="button" class="btn button-negative btn-sm" data-dismiss="modal">Cancel</button>
+                          </div>
+
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                 
+             
                 </div>
+             
               </div>
               <div class="card px-3 infoCard">
                 <div class="card-body">
@@ -74,8 +119,8 @@
                       <tbody>
                       @foreach ($info['addresses'] as $address)
                       <tr>
-                          <td>{{$address['name']}}</td>
-                          <td>{{$address['address_line']}}, {{$address['postal_code']}}, {{$address['city']}}, {{$address['country']}}</td>
+                          <td id="address{{$address['id']}}Name">{{$address['name']}}</td>
+                          <td id="address{{$address['id']}}Line">{{$address['address_line']}}, {{$address['postal_code']}}, {{$address['city']}}, {{$address['country']}}</td>
                           <td>
                             <div class="d-flex justify-content-center">
                               <button type="button" class="btn btn-sm button-action m-2" data-toggle="modal"
@@ -101,15 +146,15 @@
                                           </div>
 
                                           <div class="input-group flex-nowrap mt-2">
-                                            <input type="text" class="form-control  mr-2 rounded" id="edit{{$address['id']}}AddressStreet"
+                                            <input type="text" class="form-control  mr-2 rounded" id="edit{{$address['id']}}AddressLine"
                                               placeholder="Street and number, P.O. box, c/o" value="{{$address['address_line']}}" name ="address_line"
                                               required>
-                                            <input type="text" class="form-control rounded" id="edit{{$address['id']}}AddressPOstalCode"
+                                            <input type="text" class="form-control rounded" id="edit{{$address['id']}}AddressPostalCode"
                                               placeholder="Postcode"  value="{{$address['postal_code']}}" name ="postal_code" required>
                                           </div>
 
                                           <div class="input-group flex-nowrap mt-2">
-                                            <input type="text" class="form-control mr-2 rounded" id="edit{{$address['id']}}AddressTown"
+                                            <input type="text" class="form-control mr-2 rounded" id="edit{{$address['id']}}AddressCity"
                                               placeholder="Town, City" value="{{$address['city']}}" name="city" required>
                                             <input type="text" class="form-control rounded" id="edit{{$address['id']}}AddressCountry"
                                               placeholder="Country" value="{{$address['country']}}" name = "country" required>
@@ -123,7 +168,7 @@
                                
                                     </div>
                                     <div class="modal-footer">
-                                      <button type="submit" class="btn button-submit btn-sm">Finish</button>
+                                      <button type="button" onclick="editAddress('{{$address['id']}}')" class="btn button-submit btn-sm" data-dismiss="modal">Finish</button>
                                       <button type="button" class="btn button-negative btn-sm" data-dismiss="modal">Cancel</button>
                                     </div>
                                     </form>
@@ -164,8 +209,7 @@
                             </div>
 
                             <!-- -->
-        
-
+      
                             </div>
                           </td>
                       </tr>
@@ -235,7 +279,7 @@
 
                               <div class="input-group flex-nowrap mt-2">
 
-                              <input type="text" class="form-control mr-2 rounded" id="addAddressStreet" placeholder="Street and number, P.O. box, c/o"
+                              <input type="text" class="form-control mr-2 rounded" id="addAddressLine" placeholder="Street and number, P.O. box, c/o"
                                   name="address_line" required>
                                 <input type="text" class="form-control rounded" id="addAddressPostCode" placeholder="Postcode"
                                 name="postal_code" required>
@@ -243,7 +287,7 @@
 
                               <div class="input-group flex-nowrap mt-2">
 
-                                <input type="text" class="form-control mr-2 rounded" id="addAddressTown" placeholder="Town, City"
+                                <input type="text" class="form-control mr-2 rounded" id="addAddressCity" placeholder="Town, City"
                                 name="city" required>
 
                                 <input type="text" class="form-control rounded" id="addAddressCountry" placeholder="Country"

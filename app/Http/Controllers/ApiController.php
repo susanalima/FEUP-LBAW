@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Validator;
 
+use App\Address;
+
+
 class ApiController extends Controller
 {
  public function category_specs(Request $request)
@@ -42,4 +45,21 @@ class ApiController extends Controller
     DB::delete("DELETE FROM ass_list_product WHERE id_list = {$list_id} and id_product = {$product_id}");
     return response()->json("Success");
   }
+
+
+
+ public function address_edit(Request $request)
+ {
+    $address = Address::find($request->address_id);
+
+    $address->name = $request->name;
+    $address->address_line = $request->address_line;
+    $address->postal_code = $request->postal_code;
+    $address->city = $request->city;
+    $address->country = $request->country;
+    
+    $address->save();
+
+    return response()->json($address);
+ }
 }
