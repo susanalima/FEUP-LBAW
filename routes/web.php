@@ -25,6 +25,9 @@ Route::post('/profile/cardEdit', "ClientController@card_edit")->name('card_edit'
 Route::post('/profile/addressEdit', "ClientController@address_edit")->name('address_edit');
 Route::post('/profile/addressAdd', "ClientController@address_add")->name('address_add');
 
+Route::get('/profile_manager/{id}', "PagesController@profile_manager")->name('profile_manager');
+Route::get('/profile_admin/{id}', "PagesController@profile_admin")->name('profile_admin');
+
 
 
 
