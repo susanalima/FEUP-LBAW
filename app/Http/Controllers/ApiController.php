@@ -56,6 +56,24 @@ class ApiController extends Controller
 
  public function address_edit(Request $request)
  {
+
+    $rules = [
+        'address_id' => 'required',
+        'name' => 'required',
+        'address_line' => 'required',
+        'postal_code' => 'required',
+        'city' => 'required',
+        'country' => 'required',
+    ];
+    $validator = Validator::make($request->all(), $rules);
+    if ($validator->fails()) {
+        $data = [
+        'type' => 'error',
+        ];
+        $data['error'] = $validator->errors()->first();
+        return response()->json($data);
+    }
+
     $address = Address::find($request->address_id);
 
     $address->name = $request->name;
@@ -72,6 +90,23 @@ class ApiController extends Controller
 
  public function address_add(Request $request)
  {
+
+    $rules = [
+        'client_id' => 'required',
+        'name' => 'required',
+        'address_line' => 'required',
+        'postal_code' => 'required',
+        'city' => 'required',
+        'country' => 'required',
+    ];
+    $validator = Validator::make($request->all(), $rules);
+    if ($validator->fails()) {
+        $data = [
+        'type' => 'error',
+        ];
+        $data['error'] = $validator->errors()->first();
+        return response()->json($data);
+    }
  
     $address = new address;
 
@@ -89,6 +124,17 @@ class ApiController extends Controller
 
  public function address_delete(Request $request)
  {
+    $rules = [
+        'address_id' => 'required',
+    ];
+    $validator = Validator::make($request->all(), $rules);
+    if ($validator->fails()) {
+        $data = [
+        'type' => 'error',
+        ];
+        $data['error'] = $validator->errors()->first();
+        return response()->json($data);
+    }
     $address = Address::find($request->address_id);
     $address->delete();
 
@@ -119,8 +165,8 @@ class ApiController extends Controller
       $data = [
        'type' => 'error',
       ];
-      $data['error'] =' credit card number must be a 8 to 19 digits numeric value';
-      return response()->json("error");
+      $data['error'] = $validator->errors()->first();
+      return response()->json($data);
    }
 
     $card = new creditCard;
@@ -138,6 +184,7 @@ class ApiController extends Controller
        $card->type = "Mastercard";
        break;
        default:
+       return;
       break; 
 
     }
@@ -171,8 +218,8 @@ class ApiController extends Controller
       $data = [
        'type' => 'error',
       ];
-      $data['error'] =' ';
-      return response()->json("error");
+      $data['error'] = $validator->errors()->first();
+      return response()->json($data);
    }
 
     $card = CreditCard::find($request->card_id);
@@ -194,6 +241,17 @@ class ApiController extends Controller
 
  public function card_delete(Request $request)
  {
+    $rules = [
+        'card_id' => 'required',
+    ];
+    $validator = Validator::make($request->all(), $rules);
+    if ($validator->fails()) {
+        $data = [
+        'type' => 'error',
+        ];
+        $data['error'] = $validator->errors()->first();
+        return response()->json($data);
+    }
     $card = CreditCard::find($request->card_id);    
     $card->delete();
     return response()->json($request);
@@ -210,8 +268,8 @@ class ApiController extends Controller
      $data = [
       'type' => 'error',
      ];
-     $data['error'] =' nif must be a 9 digits numeric value';
-     return response()->json("error");
+     $data['error'] = $validator->errors()->first();
+     return response()->json($data);
   }
 
   $client = Client::find($request->id);
@@ -233,7 +291,19 @@ class ApiController extends Controller
 
 public function wishlist_add(Request $request)
 {
-  
+    $rules = [
+        'id' => 'required',
+        'name' => 'required',
+        'description' => 'nullable',
+    ];
+    $validator = Validator::make($request->all(), $rules);
+    if ($validator->fails()) {
+        $data = [
+        'type' => 'error',
+        ];
+        $data['error'] = $validator->errors()->first();
+        return response()->json($data);
+    }
    $productList = ProductList::create(["id" => ProductList::max('id') + 1]);
    $wishList = new wishlist;
    $wishList->id = $productList->id;
@@ -248,6 +318,17 @@ public function wishlist_add(Request $request)
 
 public function wishlist_delete(Request $request)
 {
+      $rules = [
+        'wishlist_id' => 'required',
+    ];
+    $validator = Validator::make($request->all(), $rules);
+    if ($validator->fails()) {
+        $data = [
+        'type' => 'error',
+        ];
+        $data['error'] = $validator->errors()->first();
+        return response()->json($data);
+    }
    $wl = WishList::find($request->wishlist_id);    
    $wl->delete();
    $pl = ProductList::find($request->wishlist_id);    

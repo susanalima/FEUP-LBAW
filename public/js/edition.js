@@ -1,8 +1,27 @@
 
 
+function setAlert(header,response) {
+  let mc = document.getElementById("alert");
+  mc.innerHTML += 
+  `
+  <div class="alert alert-danger mb-0">
+  <div class="container mx-auto">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <b> ${header} :</b>  ${response['error']}
+  </div>
+</div>`
+  return;
+}
+
 
 function editAddressLoaded(){
   let response = JSON.parse(this.responseText);
+  if(response['type'] === "error") {
+    setAlert("error editing address",response);
+    return;
+   }
   document.getElementById(`address${response['id']}Name`).innerHTML = response['name'];
   document.getElementById(`address${response['id']}Line`).innerHTML = response['address_line'] + "," + response['postal_code'] + "," +  response['city'] + "," + response['country'];
 }
@@ -19,7 +38,10 @@ function editAddress(id){
 
 function deleteAddressLoaded(){
   let response = JSON.parse(this.responseText);
-  console.log(response);
+  if(response['type'] === "error") {
+    setAlert("error deleting address",address);
+    return;
+   }
   document.getElementById(`address${response['id']}`).remove();
 }
 
@@ -32,6 +54,12 @@ function deleteAddress(id){
 function addAddressLoaded(){
   let address = JSON.parse(this.responseText);
   console.log(address);
+
+  if(address['type'] === "error") {
+    setAlert("error adding address", address);
+    return;
+   }
+
   let table = document.getElementById("addressTable");
 
   let row = table.insertRow(0);
@@ -41,7 +69,7 @@ function addAddressLoaded(){
   <td id="address${address['id']}Name">${address['name']}</td>
   <td id="address${address['id']}Line">${address['address_line']}, ${address['postal_code']}, ${address['city']}, ${address['country']}</td>
   <td>
-    <div class="d-flex justify-content-center">
+  <div class="d-flex justify-content-center mr-2 float-right">
       <button type="button" class="btn btn-sm button-action m-2" data-toggle="modal"
         data-target="#edit${address['id']}Address">Edit</button>
       <div class="modal fade" id="edit${address['id']}Address" tabindex="-1" role="dialog" aria-labelledby="edit${address['id']}AddressLabel"
@@ -145,6 +173,11 @@ function addAddress(id){
 
 function editCardLoaded(){
   let response = JSON.parse(this.responseText);
+  console.log(response);
+  if(response['type'] === "error") {
+   setAlert("error editing credit card",response);
+   return;
+  }
   document.getElementById(`card${response['id']}ExpDate`).innerHTML = response['expiration_date'];
 }
 
@@ -159,6 +192,10 @@ function editCard(id){
 
 function deleteCardLoaded(){
   let response = JSON.parse(this.responseText);
+  if(response['type'] === "error") {
+    setAlert("error deleting credit card",response);
+    return;
+   }
   document.getElementById(`card${response['card_id']}`).remove();
 }
 
@@ -172,6 +209,12 @@ function deleteCard(id){
 function addCardLoaded(){
   let card = JSON.parse(this.responseText);
   console.log(card);
+
+  if(card['type'] === "error") {
+    setAlert("error adding credit card",card);
+    return;
+   }
+
   let table = document.getElementById("cardTable");
 
   let row = table.insertRow(0);
@@ -243,20 +286,20 @@ function addCardLoaded(){
 
                         <div class="row">
 
-                            <div class="col-md-4 pr-2">
-                            <input type="tel" class="form-control" id="editCard${card['id']}ExpYear" placeholder="YYYY"
+                            <div class="col-md-4 pr-1">
+                            <input type="number" step="1" min="0" class="form-control" id="editCard${card['id']}ExpYear" placeholder="YYYY"
                             value="${expYear}" name="expiration_year" required />
                             </div>
                             -
 
-                            <div class="col-md-3 p-0 pl-2 pr-2">
-                            <input type="tel" class="form-control" id="editCard${card['id']}ExpMonth" placeholder="MM"
+                            <div class="col-md-3 p-0 pl-2 pr-1">
+                            <input type="number" step="1" min="0" class="form-control" id="editCard${card['id']}ExpMonth" placeholder="MM"
                             value="${expMonth}" name="expiration_month" required />
                             </div>
                               -
 
-                            <div class="col-md-3 p-0 pl-2 pr-2">
-                            <input type="tel" class="form-control" id="editCard${card['id']}ExpDay" placeholder="DD"
+                            <div class="col-md-3 p-0 pl-2 pr-1">
+                            <input type="number" step="1" min="0" class="form-control" id="editCard${card['id']}ExpDay" placeholder="DD"
                             value="${expDay}" name="expiration_day" required />
                             </div>
                       
@@ -340,6 +383,10 @@ function addCard(id){
 
 function editInfoLoaded(){
   let response = JSON.parse(this.responseText);
+  if(response['type'] === "error") {
+    setAlert("error editing information",response);
+    return;
+   }
   document.getElementById(`clientNif`).innerHTML = response['nif'];
   document.getElementById(`clientName`).innerHTML = response['name'];
 }
@@ -354,6 +401,10 @@ function editInfo(id){
 function deleteWishlistLoad(){
   let response = JSON.parse(this.responseText);
   console.log(response);
+  if(response['type'] === "error") {
+    setAlert("error deleting wishlist",response);
+    return;
+   }
   document.getElementById(`wishlist${response['wishlist_id']}`).remove();
 }
 
@@ -365,6 +416,10 @@ function deleteWishlist(id){
 function addWishlistLoaded(){
   let wishList = JSON.parse(this.responseText);
   console.log(wishList);
+  if(wishList['type'] === "error") {
+    setAlert("error adding wishlist",wishList);
+    return;
+   }
   let table = document.getElementById("wlTable");
   let counter = table.getElementsByTagName("tr").length;
   console.log(counter);

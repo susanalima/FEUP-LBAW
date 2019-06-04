@@ -9,6 +9,12 @@
 @section('content')
 <div class="mainContent">
     <!-- Image and text -->
+
+    
+    <div id="alert" style="max-width: 75%; margin: auto">
+     
+    </div>
+ 
    
 
     <div class="mx-auto accordionDiv">
@@ -82,7 +88,7 @@
                         <div class="form-group row">
                           <label for="clientConfirmPassword" class="col-sm-4 col-form-label pr-0"><b>NIF</b></label>
                           <div class="col-sm-8">
-                            <input type="text" class="form-control" id="clientEditNIF" placeholder="nif" name="nif" value="{{$info['nif']}}" required>
+                            <input type="number" step="1" min="0" class="form-control" id="clientEditNIF" placeholder="nif" name="nif" value="{{$info['nif']}}" required>
                           </div>
                         </div>
 
@@ -121,7 +127,7 @@
                           <td id="address{{$address['id']}}Name">{{$address['name']}}</td>
                           <td id="address{{$address['id']}}Line">{{$address['address_line']}}, {{$address['postal_code']}}, {{$address['city']}}, {{$address['country']}}</td>
                           <td>
-                            <div class="d-flex justify-content-center">
+                            <div class="d-flex justify-content-center mr-2 float-right">
                               <button type="button" class="btn btn-sm button-action m-2" data-toggle="modal"
                                 data-target="#edit{{$address['id']}}Address">Edit</button>
                               <div class="modal fade" id="edit{{$address['id']}}Address" tabindex="-1" role="dialog" aria-labelledby="edit{{$address['id']}}AddressLabel"
@@ -361,28 +367,11 @@
                                     <div class="modal-body">
                                     <form >
                                        {{ csrf_field() }}
-                                        <!--<div class="row">
-                                          <div class="col-md-7">
-                                            <div class="form-group">
-                                              <label for="editCard{{$card['id']}}Number">Card Number</label>
-                                              <input type="tel" class="form-control" id="editCard{{$card['id']}}Number" placeholder="Valid Card Number"
-                                                value="{{$card['last_digits']}}" name="last_digits" required>
-                                            </div>
-                                          </div>
-                                          <div class=" col-md-5 pull-right">
-                                            <div class="form-group">
-                                              <label for="editCard{{$card['id']}}Name">Name</label>
-                                              <input type="tel" class="form-control" id="editCard{{$card['id']}}Name" placeholder="Name"
-                                                value="{{$card['name']}}" name="name" required />
-                                            </div>
-                                          </div>
-                                        </div>-->
+      
                                         <div class="row">
                                           <div class="col-md-7">
                                             <div class="form-group">
-                                              <!--<label for="editCard{{$card['id']}}ExpDate">Expiration Date</label>
-                                              <input type="tel" class="form-control" id="editCard{{$card['id']}}ExpDate" placeholder="YYYY / MM"
-                                                value="{{$card['expiration_date']}}" name="expiration_date" required />-->
+                                              
                                                 <label for="editCard{{$card['id']}}ExpDate">Expiration Date</label>
                                               
                                                 <?php
@@ -395,20 +384,20 @@
 
                                                 <div class="row">
 
-                                                    <div class="col-md-4 pr-2">
-                                                    <input type="tel" class="form-control" id="editCard{{$card['id']}}ExpYear" placeholder="YYYY"
+                                                    <div class="col-md-4 pr-1">
+                                                    <input type="number" step="1" min="0" class="form-control" id="editCard{{$card['id']}}ExpYear" placeholder="YYYY"
                                                     value="{{$expYear}}" name="expiration_year" required />
                                                     </div>
                                                     -
 
-                                                    <div class="col-md-3 p-0 pl-2 pr-2">
-                                                    <input type="tel" class="form-control" id="editCard{{$card['id']}}ExpMonth" placeholder="MM"
+                                                    <div class="col-md-3 p-0 pl-2 pr-1">
+                                                    <input type="number" step="1" min="0" class="form-control" id="editCard{{$card['id']}}ExpMonth" placeholder="MM"
                                                     value="{{$expMonth}}" name="expiration_month" required />
                                                     </div>
                                                       -
 
-                                                    <div class="col-md-3 p-0 pl-2 pr-2">
-                                                    <input type="tel" class="form-control" id="editCard{{$card['id']}}ExpDay" placeholder="DD"
+                                                    <div class="col-md-3 p-0 pl-2 pr-1">
+                                                    <input type="number" step="1" min="0" class="form-control" id="editCard{{$card['id']}}ExpDay" placeholder="DD"
                                                     value="{{$expDay}}" name="expiration_day" required />
                                                     </div>
                                               
@@ -462,10 +451,7 @@
                                     <form >
                                     {{ csrf_field() }}
 
-                                      <div class="input-group flex-nowrap mt-2">
-                                        <input type="hidden" class="form-control" name="card_id" value="{{$card['id']}}"> {{-- TODO: Possible security breach --}} 
-                                      </div>
-
+                                
                                       <button type="button" onclick="deleteCard('{{$card['id']}}')"  class="btn button-submit btn-sm" data-dismiss="modal">Yes</button>
                                       <button type="button" class="btn button-negative btn-sm" data-dismiss="modal">No</button>
 
@@ -545,7 +531,7 @@
                               <div class="col-md-7">
                                 <div class="form-group">
                                   <label for="cardNumber">Card Number</label>
-                                  <input type="tel" class="form-control" id="cardNumber" placeholder="Valid Card Number"
+                                  <input type="number" step="1" min="0" class="form-control" id="cardNumber" placeholder="Valid Card Number"
                                    name="number" required>
                                 </div>
                               </div>
@@ -563,20 +549,20 @@
                                     
                                       <div class="row">
 
-                                          <div class="col-md-4 pr-2">
-                                          <input type="tel" class="form-control" id="cardExpYear" placeholder="YYYY"
+                                          <div class="col-md-4 pr-1">
+                                          <input type="number" step="1" min="0" class="form-control" id="cardExpYear" placeholder="YYYY"
                                             name="expiration_year" required />
                                           </div>
                                           -
 
-                                          <div class="col-md-3 p-0 pl-2 pr-2">
-                                          <input type="tel" class="form-control" id="cardExpMonth" placeholder="MM"
+                                          <div class="col-md-3 p-0 pl-2 pr-1">
+                                          <input type="number" step="1" min="0" class="form-control" id="cardExpMonth" placeholder="MM"
                                           name="expiration_month"  required />
                                           </div>
                                             -
 
-                                          <div class="col-md-3 p-0 pl-2 pr-2">
-                                          <input type="tel" class="form-control" id="cardExpDay" placeholder="DD"
+                                          <div class="col-md-3 p-0 pl-2 pr-1">
+                                          <input type="number" step="1" min="0" class="form-control" id="cardExpDay" placeholder="DD"
                                           name="expiration_day"  required />
                                           </div>
                                     
