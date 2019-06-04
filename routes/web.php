@@ -43,5 +43,6 @@ Route::post('/profile/wishlistsDelete', "ClientController@wishlists_delete")->na
 
 
 Route::get('/wishList/{id}', "PagesController@wishList")->name('wishList');
+Route::delete('wishList/{id}', "WishListController@removeProduct")->name('remove_product_wl');
 
 Auth::routes();

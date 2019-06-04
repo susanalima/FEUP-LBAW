@@ -1,6 +1,9 @@
 <?php
 use App\Product; 
 ?>
+    <link rel="stylesheet" href="{{ URL::asset('css/wishListStyle.css') }}" />
+    <script src="{{ URL::asset('js/wishList.js') }}"></script>
+
 
 @extends('templates.app')
 
@@ -36,8 +39,10 @@ use App\Product;
                                 <div class="col-sm">
                                     <div class="product_buttons"> <button class="btn addToCartBtn"
                                             onClick="addToCart(this)" type="submit" id="addToCart"><i class="fa fa-cart-plus"></i></button>
+                                            
                                         <button class="btn removeWishItem" type="submit"
-                                            id="removeWishItem" onclick="removeFromWishList(this)"><i class="fa fa-times"></i></button></div>
+                                            id="removeWishItem" onclick="removeFromWishList(this, '{{$product->id}}', {{$info['id']}})"><i class="fa fa-times"></i></button></div>
+                                          
                                             <div class="rating">
                                                 <fieldset class="starsRating">
                                                     <label class="full" for="star5"></label>

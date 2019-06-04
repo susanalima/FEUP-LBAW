@@ -24,7 +24,6 @@
         <link rel="stylesheet" href="{{ URL::asset('css/buttons.css') }}" />
         <link rel="stylesheet" href="{{ URL::asset('css/topBar.css') }}" />
         <link rel="stylesheet" href="{{ URL::asset('css/main.css') }}" />
-        <link rel="stylesheet" href="{{ URL::asset('css/wishListStyle.css') }}" />
 
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">

@@ -25,4 +25,21 @@ class ApiController extends Controller
 
   return response()->json($data);
  }
+
+ public function remove_productWL(Request $request){
+
+    $validator = Validator::make($request->all(), [
+        'list_id' => 'required',
+        'product_id' => 'required',
+       ]);
+     
+       if ($validator->fails()) {
+        return response()->json("Product and list must be defined");
+       }
+
+    $list_id = $request->list_id;
+    $product_id = $request->product_id;
+    DB::delete("DELETE FROM ass_list_product WHERE id_list = {$list_id} and id_product = {$product_id}");
+    return response()->json("Success");
+  }
 }
