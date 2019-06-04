@@ -8,7 +8,6 @@ use Validator;
 
 use App\Address;
 
-
 class ApiController extends Controller
 {
  public function category_specs(Request $request)
@@ -62,4 +61,32 @@ class ApiController extends Controller
 
     return response()->json($address);
  }
+
+
+ public function address_add(Request $request)
+ {
+ 
+    $address = new address;
+
+    $address->id_client = $request->client_id;
+    $address->name = $request->name;
+    $address->address_line = $request->address_line;
+    $address->postal_code = $request->postal_code;
+    $address->city = $request->city;
+    $address->country = $request->country;
+    
+    $address->save();
+    return response()->json($address);
+ }
+
+
+ public function address_delete(Request $request)
+ {
+    $address = Address::find($request->address_id);
+    $address->delete();
+
+    return response()->json($address);
+ }
+
+
 }

@@ -32,7 +32,6 @@ Route::post('/profile/cardAdd', "ClientController@card_add")->name('card_add');
 Route::post('/profile/cardDelete', "ClientController@card_delete")->name('card_delete');
 Route::post('/profile/cardsDelete', "ClientController@cards_delete")->name('cards_delete');
 
-Route::post('/profile/addressEdit', "ClientController@address_edit")->name('address_edit');
 Route::post('/profile/addressAdd', "ClientController@address_add")->name('address_add');
 Route::post('/profile/addressDelete', "ClientController@address_delete")->name('address_delete');
 Route::post('/profile/addressesDelete', "ClientController@addresses_delete")->name('addresses_delete');

@@ -116,9 +116,9 @@
                           <th scope="col"></th>
                         </tr>
                       </thead>
-                      <tbody>
+                      <tbody id="addressTable">
                       @foreach ($info['addresses'] as $address)
-                      <tr>
+                      <tr id="address{{$address['id']}}">
                           <td id="address{{$address['id']}}Name">{{$address['name']}}</td>
                           <td id="address{{$address['id']}}Line">{{$address['address_line']}}, {{$address['postal_code']}}, {{$address['city']}}, {{$address['country']}}</td>
                           <td>
@@ -136,7 +136,7 @@
                                       </button>
                                     </div>
                                     <div class="modal-body">
-                                    <form  id="formEdit{{$address['id']}}Address" method="POST" action="{{ route('address_edit') }}" >
+                                    <form >
                                     {{ csrf_field() }}
                                         <div class="form-group">
                                           <label>Address</label>
@@ -192,14 +192,14 @@
                                   </div>
                                   <div class="modal-footer">
                                   
-                                  <form  id="formDelete{{$address['id']}}Address" method="POST" action="{{ route('address_delete') }}" >
+                                  <form >
                                   {{ csrf_field() }}
 
                                     <div class="input-group flex-nowrap mt-2">
                                             <input type="hidden" class="form-control"  name="address_id" value="{{$address['id']}}"> {{-- TODO: Possible security breach --}} 
                                         </div>
 
-                                    <button type="submit" class="btn button-submit btn-sm">Yes</button>
+                                    <button type="button" onclick="deleteAddress('{{$address['id']}}')" class="btn button-submit btn-sm" data-dismiss="modal">Yes</button>
                                     <button type="button" class="btn button-negative btn-sm" data-dismiss="modal">No</button>
                            
                                 </form>
@@ -269,7 +269,7 @@
                           </button>
                         </div>
                         <div class="modal-body">
-                        <form  id="formAddAddress" method="POST" action="{{ route('address_add') }}" >
+                        <form >
                               {{ csrf_field() }}
                             <div class="form-group">
                               <label>Address</label>
@@ -281,7 +281,7 @@
 
                               <input type="text" class="form-control mr-2 rounded" id="addAddressLine" placeholder="Street and number, P.O. box, c/o"
                                   name="address_line" required>
-                                <input type="text" class="form-control rounded" id="addAddressPostCode" placeholder="Postcode"
+                                <input type="text" class="form-control rounded" id="addAddressPostalCode" placeholder="Postcode"
                                 name="postal_code" required>
                               </div>
 
@@ -295,10 +295,12 @@
 
 
                               </div>
+
+                       
                             </div>
 
                             <div class="modal-footer">
-                              <button type="submit" class="btn button-submit btn-sm">Finish</button>
+                              <button type="button" onclick="addAddress('{{$info['id']}}')" class="btn button-submit btn-sm" data-dismiss="modal">Finish</button>
                               <button type="button" class="btn button-negative btn-sm" data-dismiss="modal">Cancel</button>
                           </div>
 
