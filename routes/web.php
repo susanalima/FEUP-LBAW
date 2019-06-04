@@ -19,6 +19,7 @@ Route::get('/faq', "PagesController@faq");
 Route::get('/product/create/{error?}', "PagesController@product_create")->name('product_create');
 Route::get('/product/{id}', "PagesController@product")->name('product_page');
 Route::post('/product', "ProductController@add_product")->name('product_add');
+Route::get('/search/{category?}/{text?}', "PagesController@search")->name('search');
 
 //Route::get('/profile/{id}', "PagesController@profile")->name('profile');
 Route::get('/profile/{error?}', "PagesController@profile")->name('profile');
@@ -38,8 +39,6 @@ Route::post('/profile/addressesDelete', "ClientController@addresses_delete")->na
 Route::post('/profile/wishlistAdd', "ClientController@wishlist_add")->name('wishlist_add');
 Route::post('/profile/wishlistDelete', "ClientController@wishlist_delete")->name('wishlist_delete');
 Route::post('/profile/wishlistsDelete', "ClientController@wishlists_delete")->name('wishlists_delete');
-
-
 
 
 Route::get('/wishList/{id}', "PagesController@wishList")->name('wishList');
