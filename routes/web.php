@@ -40,6 +40,9 @@ Route::post('/profile/wishlistAdd', "ClientController@wishlist_add")->name('wish
 Route::post('/profile/wishlistDelete', "ClientController@wishlist_delete")->name('wishlist_delete');
 Route::post('/profile/wishlistsDelete', "ClientController@wishlists_delete")->name('wishlists_delete');
 
+Route::get('/profile_manager/{id}', "PagesController@profile_manager")->name('profile_manager');
+Route::get('/profile_admin/{id}', "PagesController@profile_admin")->name('profile_admin');
+
 
 Route::get('/wishList/{id}', "PagesController@wishList")->name('wishList');
 Route::delete('wishList/{id}', "WishListController@removeProduct")->name('remove_product_wl');

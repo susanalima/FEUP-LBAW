@@ -353,5 +353,14 @@ class PagesController extends Controller
 
   return view("pages.wish_list")->with($data);
  }
+ public function profile_manager($id)
+ {
+  //TODO
+ }
+
+ public function profile_admin($id)
+ {
+  //TODO
+ }
 
 }
