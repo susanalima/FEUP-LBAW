@@ -9,8 +9,6 @@ use App\Product;
 use App\Promotion;
 use App\User;
 use App\WishList;
-use App\ProductList;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
 class PagesController extends Controller
@@ -189,6 +187,65 @@ class PagesController extends Controller
   return view("pages.product")->with($data);
  }
 
+ public function search($category = null, $text = null)
+ {
+  $size = 15;
+  $cart = $this->cart();
+
+  $catAux = Category::find($category);
+  $categoryName = ($catAux != null ? Aux::formatHeader($catAux->name) : 'All');
+
+  if ($catAux == null) {
+   $products = Product::paginate($size);
+  } else {
+   $products = Product::where('id_category', $category)->paginate($size);
+  }
+
+  $brands = [];
+  $priceRange = [
+   'low' => INF,
+   'high' => 0,
+  ];
+
+  foreach ($products as $product) {
+   $product['rating'] = $product->rating();
+   $specs = $product->specifications->filter(function ($spec) {
+    return ($spec['header']['name'] == 'brand');
+   });
+
+   foreach ($specs as $spec) {
+    $brand = $spec['body']['content'];
+    $brands[Aux::formatHeader($brand)] = 0;
+   }
+
+   $price = $product['price'];
+   if ($price < $priceRange['low']) {
+    $priceRange['low'] = (float) $price;
+   }
+
+   if ($price > $priceRange['high']) {
+    $priceRange['high'] = (float) $price;
+   }
+
+  }
+
+  $json = json_decode($products->toJson(), true);
+  $data = array(
+   'type' => 'product',
+   'interactive' => true,
+   'products' => $products,
+   'json' => $json,
+   'cart' => $cart,
+   'category' => $categoryName,
+   'text' => $text,
+   'brands' => $brands,
+   'price_range' => $priceRange,
+  );
+
+  return view("pages.search")->with($data);
+
+ }
+
  //TODO NAO IR BUSCAR O CART ATUAL
  public function profile()
  {
@@ -203,33 +260,33 @@ class PagesController extends Controller
   $info['nif'] = $info->nif;
   $info['addresses'] = $info->addresses;
   $info['cards'] = $info->credit_cards;
-  
+
   $info['wishLists'] = $info->wishLists;
   $info['carts'] = $info->carts->map(function ($cart) {
-   
-    $address_line = '';
-    $postal_code = '';
-    $country = '';
-    $city = '';
-    $address_name = '';
-    $card = 'Deleted';
-    $address_deleted = 'true';
 
-    if( $cart->address != null){
-      $address_line = $cart->address->address_line;
-      $postal_code = $cart->address->postal_code;
-      $country = $cart->address->country;
-      $city = $cart->address->city;
-      $address_name = $cart->address->name;
-      $card = 'Deleted';
-      $address_deleted = 'false';
-    }
+   $address_line = '';
+   $postal_code = '';
+   $country = '';
+   $city = '';
+   $address_name = '';
+   $card = 'Deleted';
+   $address_deleted = 'true';
+
+   if ($cart->address != null) {
+    $address_line = $cart->address->address_line;
+    $postal_code = $cart->address->postal_code;
+    $country = $cart->address->country;
+    $city = $cart->address->city;
+    $address_name = $cart->address->name;
+    $card = 'Deleted';
+    $address_deleted = 'false';
+   }
 
    if ($cart->creditCard != null) {
     $card = $cart->creditCard->last_digits;
    }
 
-   $products =$cart->list_products($cart->id);
+   $products = $cart->list_products($cart->id);
 
    $this->getProductExtras($products);
 
@@ -238,7 +295,7 @@ class PagesController extends Controller
    $totalPrice = $collection->sum('price');
 
    return [
-     'id' => $cart->id,
+    'id' => $cart->id,
     'checkout' => $cart->checkout,
     'address_deleted' => $address_deleted,
     'address_line' => $address_line,
@@ -247,7 +304,7 @@ class PagesController extends Controller
     'city' => $city,
     'address_name' => $address_name,
     'shipping' => $cart->shipping->method,
-    'card' => $card, 
+    'card' => $card,
     'products' => $collection,
     'total' => $totalPrice,
    ];
@@ -263,39 +320,47 @@ class PagesController extends Controller
   return view("pages.profile")->with($data);
  }
 
- public function getProductExtras($products){
-   foreach($products as $product){
-      $c_product = Product::find($product->id);
-      $img_src = $c_product->images[0]['filepath'];
-      $product->image = $img_src;
-      $product->price = $c_product->price;
-      //$product->name = Aux::formatHeader($product->name);
-   }
+ public function getProductExtras($products)
+ {
+  foreach ($products as $product) {
+   $c_product = Product::find($product->id);
+   $img_src = $c_product->images[0]['filepath'];
+   $product->image = $img_src;
+   $product->price = $c_product->price;
+   //$product->name = Aux::formatHeader($product->name);
+  }
  }
 
+ public function wishList($id)
+ {
+  $info = WishList::find($id);
+  $list['id'] = $id;
+  $list['name'] = Aux::formatHeader($info->name);
+  $list['products'] = $info->list_products($id);
 
+  $this->getProductExtras($list['products']);
 
- public function wishList($id){
-   $info = WishList::find($id);
-   $list['id'] = $id;  
-   $list['name'] = Aux::formatHeader($info->name);
-   $list['products'] =$info->list_products($id);
+  $client_id = $info->id_client;
+  $client = Client::find($client_id);
 
-   $this->getProductExtras($list['products']);
+  $list['all_lists'] = $client->wishLists;
 
-   $client_id = $info->id_client;
-   $client = Client::find($client_id);
- 
-   $list['all_lists'] = $client->wishLists;
-  
-   
-   $data = array(
-    'type' => 'information',
-    'interactive' => true,
-    'info' => $list,
-    );
-    
-   return view("pages.wish_list")->with($data);
+  $data = array(
+   'type' => 'information',
+   'interactive' => true,
+   'info' => $list,
+  );
+
+  return view("pages.wish_list")->with($data);
+ }
+ public function profile_manager($id)
+ {
+  //TODO
+ }
+
+ public function profile_admin($id)
+ {
+  //TODO
  }
 
 }

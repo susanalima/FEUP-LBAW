@@ -8,7 +8,7 @@ class Aux
  {
 
   $capitalizeWord = function ($word) {
-   if ((strlen($word) > 3 || $word === "no") && !strpos($word, "isbn")) {
+   if ((strlen($word) > 3 || $word === "no" || $word === 'the' || $word === 'ed') && !strpos($word, "isbn")) {
     return ucfirst($word);
    } else {
     return strtoupper($word);
@@ -16,8 +16,10 @@ class Aux
   };
 
   $ret = str_replace("_", " ", $header);
+  $ret = str_replace(".", "", $header);
   $ret = explode(" ", $ret);
   $ret = array_map($capitalizeWord, $ret);
+
   return implode(" ", $ret);
  }
 }

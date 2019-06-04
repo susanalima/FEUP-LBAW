@@ -48,7 +48,7 @@ title="Open Shopping cart"
     @foreach ($cart as $product)
     <article class="m-2 p-2 d-flex justify-content-between align-items-center">
         <div class="w-50 d-flex justify-content-left align-items-center">
-            <a href="./product.html" class="cartProductImage">
+            <a href="/product/{{$product['id']}}" class="cartProductImage">
                 <img src="{{ '/storage/' . $product['image'] }}" class="" alt="..." />
             </a>
             <a href="./product.html">
