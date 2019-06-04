@@ -29,30 +29,30 @@ class PagesController extends Controller
  {
   $cart = $this->cart();
 
-  $promotions = Promotion::active()->get()->random(2)->map(function ($promotion) {
+        $promotions = Promotion::active()->get()->random(2)->map(function ($promotion) {
 
-   if (count($promotion->products) > 0) {
+            if (count($promotion->products) > 0) {
 
-    $product = $promotion->products->random(1)[0];
-    $images = $product->images->filter(function ($image) {
-     return ($image->primary_img);
+                $product = $promotion->products->random(1)[0];
+                $images = $product->images->filter(function ($image) {
+                    return ($image->primary_img);
 
-    });
+                });
 
-    $images = $images;
-    if (count($images) > 0) {
-     return [
-      'discount' => $promotion->discount,
-      'name' => $product->name,
-      'product_id' => $product->id,
-      'image' => $images->random(1)[0]->filepath,
-     ];
-    } else {
-     return null;
-    }
-   }
+                $images = $images;
+                if (count($images) > 0) {
+                    return [
+                        'discount' => $promotion->discount,
+                        'name' => $product->name,
+                        'product_id' => $product->id,
+                        'image' => $images->random(1)[0]->filepath,
+                    ];
+                } else {
+                    return null;
+                }
+            }
 
-  });
+        });
 
   $product = Product::where('available', 'true')->orderBy('id', 'desc')->first();
   $product = [
@@ -94,8 +94,8 @@ class PagesController extends Controller
    'cart' => $cart,
   );
 
-  return view("index")->with($data);
- }
+        return view("index")->with($data);
+    }
 
  public function help()
  {
@@ -135,37 +135,37 @@ class PagesController extends Controller
   return view("pages.help")->with($data);
  }
 
- public function login()
- {
-  $data = array(
-   'interactive' => false,
-  );
-  return view("pages.login")->with($data);
- }
+    public function login()
+    {
+        $data = array(
+            'interactive' => false,
+        );
+        return view("pages.login")->with($data);
+    }
 
- public function product_create($error = null)
- {
-  $cats = Category::all()->map(function ($category) {
-   return array("id" => $category->id, "name" => $category->name);
-  });
+    public function product_create($error = null)
+    {
+        $cats = Category::all()->map(function ($category) {
+            return array("id" => $category->id, "name" => $category->name);
+        });
 
-  $specs = Category::all()[0]->specs->map(function ($header) {
-   return array('name' => Aux::formatHeader($header['name']), 'id' => $header['id']);
-  });
+        $specs = Category::all()[0]->specs->map(function ($header) {
+            return array('name' => Aux::formatHeader($header['name']), 'id' => $header['id']);
+        });
 
-  $data = array(
-   'type' => 'add_product',
-   'interactive' => true,
-   'categories' => $cats,
-   'specs' => $specs,
-  );
+        $data = array(
+            'type' => 'add_product',
+            'interactive' => true,
+            'categories' => $cats,
+            'specs' => $specs,
+        );
 
-  if ($error !== null) {
-   $data['error'] = $error;
-  }
+        if ($error !== null) {
+            $data['error'] = $error;
+        }
 
-  return view("pages.add_product")->with($data);
- }
+        return view("pages.add_product")->with($data);
+    }
 
  public function product($id)
  {
@@ -186,8 +186,8 @@ class PagesController extends Controller
    'cart' => $cart,
   );
 
-  return view("pages.product")->with($data);
- }
+        return view("pages.product")->with($data);
+    }
 
  //TODO NAO IR BUSCAR O CART ATUAL
  public function profile()
@@ -297,5 +297,17 @@ class PagesController extends Controller
     
    return view("pages.wish_list")->with($data);
  }
+	public function profile_manager($id)
+    {
+        //TODO 
+	}
+	
+	public function profile_admin($id)
+    {
+        //TODO 
+    }
+
+}
+	
 
 }

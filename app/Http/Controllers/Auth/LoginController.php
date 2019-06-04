@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
+use Illuminate\Http\Request;
+use App\User;
+
 class LoginController extends Controller
 {
     /*
@@ -36,4 +39,33 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+    /**
+     * Post authentication, used for redirect depending on user type 
+     * 
+     * @var Request
+     * @var User
+     * 
+     * @return redirect()
+     */
+    protected function authenticated(Request $request, User $user) 
+    {
+        $type = $user->userable_type;
+
+        if ($type == "App\Client") {
+            //return redirect("/profile/".$user->id);
+            return redirect($redirectTo);
+        } else if ($type == "App\Administrator") {
+            //return redirect("/profile_admin/".$user->id);
+            return redirect($redirectTo);
+        } else if ($type == "App\ClientManager") {
+            //return redirect("/profile_manager/".$user->id);
+            return redirect($redirectTo);
+        } else if ($type == "App\SalesManager") {
+            //return redirect("/profile_manager/".$user->id);
+            return redirect($redirectTo);
+        } else {
+            return redirect($redirectTo);
+        }
+   }
 }
