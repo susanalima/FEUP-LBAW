@@ -2,11 +2,11 @@
 use App\Product; 
 ?>
     <link rel="stylesheet" href="{{ URL::asset('css/wishListStyle.css') }}" />
-
+    <script src="{{ URL::asset('js/wishList.js') }}"></script>
 
 
 @extends('templates.app')
-<script src="{{ URL::asset('js/wishList.js') }}"></script>
+
 
 
 @section('content')
@@ -32,11 +32,13 @@ use App\Product;
                     $product_count = 1;?>
                     @foreach ($info['products'] as $product)
                     <div id="list-item-{{ $product_count }}" class="card product_card">
-                        <h4 class="product_name">{{ $product->name }}</h4>
+                        <h4  class="product_name"><a href="../product/{{$product->id}}">{{ $product->name }}</a></h4>
                         <div class="container">
                             <div class="row">
-                                <img class="card-img-top product_img" src="{{ '/storage/' . $product->image}}"
+                                <a href="../product/{{$product->id}}">
+                                    <img class="card-img-top product_img" src="{{ '/storage/' . $product->image}}"
                                     alt="Card image cap">
+                                    </a>
 
                                 <div class="col-sm">
                                     <div class="product_buttons"> <button class="btn addToCartBtn"

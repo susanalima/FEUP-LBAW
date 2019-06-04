@@ -65,9 +65,13 @@ h4.product_name {
   margin-bottom: 1em;
 }
 
-.product_img {
+a{
   max-width: 40%;
   height: 75%;
+}
+
+.product_img {
+ 
   background-size: cover;
   margin-left: 0.5em;
 }
@@ -216,10 +220,13 @@ div.col-sm p {
 }
 
 @media screen and (max-width: 575px) {
-  .product_img {
+  a {
     max-width: 100%;
     margin-left: 0;
     margin-bottom: 1.5em;
+  }
+  .product_img{
+    margin-left:0;
   }
   
 }
