@@ -21,7 +21,7 @@ Route::get('/product/{id}', "PagesController@product")->name('product_page');
 Route::post('/product', "ProductController@add_product")->name('product_add');
 
 //Route::get('/profile/{id}', "PagesController@profile")->name('profile');
-Route::get('/profile', "PagesController@profile")->name('profile');
+Route::get('/profile/{error?}', "PagesController@profile")->name('profile');
 Route::post('/profile/accountDelete', "ClientController@account_delete")->name('account_delete');
 Route::post('/profile/passwordChange', "ClientController@password_change")->name('password_change');
 
@@ -35,8 +35,10 @@ Route::post('/profile/addressAdd', "ClientController@address_add")->name('addres
 Route::post('/profile/addressDelete', "ClientController@address_delete")->name('address_delete');
 Route::post('/profile/addressesDelete', "ClientController@addresses_delete")->name('addresses_delete');
 
-
 Route::post('/profile/wishlistAdd', "ClientController@wishlist_add")->name('wishlist_add');
+Route::post('/profile/wishlistDelete', "ClientController@wishlist_delete")->name('wishlist_delete');
+Route::post('/profile/wishlistsDelete', "ClientController@wishlists_delete")->name('wishlists_delete');
+
 
 
 

@@ -97,6 +97,18 @@ class ClientController extends Controller
  public function nif_edit(Request $request)
  {
 
+   $rules = [
+      'nif' => 'required|digits:9'
+   ];
+   $validator = Validator::make($request->all(), $rules);
+   if ($validator->fails()) {
+      $data = [
+       'type' => 'error',
+      ];
+      $data['error'] =' nif must be a 9 digits numeric value';
+      return redirect()->route('profile', ['error' => $data['error']]);
+   }
+
     $client = Client::find(Auth::user()->id);
 
     $client->nif = $request->nif;
@@ -178,13 +190,36 @@ class ClientController extends Controller
 
 
 
+
  public function card_add(Request $request)
  {
+
+   $card_number = $request->number;
+   $first_digit = $card_number[0];
+
+   $request['date'] =  $request->expiration_day . "-" . $request->expiration_month . "-" . $request->expiration_year;
+   $request['first_digit'] = $first_digit;
+   
+   $rules = [
+      'number' => 'required|digits_between:8,19',
+      'date' => 'required|Date|after:yesterday',
+      'cvc' => 'required|regex:/^[0-9]+$/',
+      'first_digit' => 'required|in:5,4',
+   ];
+
+   $validator = Validator::make($request->all(), $rules);
+   if ($validator->fails()) {
+      $data = [
+       'type' => 'error',
+      ];
+      $data['error'] =' credit card number must be a 8 to 19 digits numeric value';
+      return redirect()->route('profile', ['error' => $data['error']]);
+   }
+
     $card = new creditCard;
 
     //4 - visa, 5- mastercard
-    $card_number = $request->number;
-    $first_digit = $card_number[0];
+
     $last_digits = substr($card_number, -4);
     $cvc = $request->cvc;
 
@@ -196,8 +231,7 @@ class ClientController extends Controller
        $card->type = "Mastercard";
        break;
        default:
-
-      break; //todo error message
+      break; 
 
     }
 
@@ -217,6 +251,22 @@ class ClientController extends Controller
 
  public function card_edit(Request $request)
  {
+
+   $request['date'] =  $request->expiration_day . "-" . $request->expiration_month . "-" . $request->expiration_year;
+   
+   $rules = [
+      'date' => 'required|Date|after:yesterday',
+      'cvc' => 'nullable|regex:/^[0-9]+$/',
+   ];
+
+   $validator = Validator::make($request->all(), $rules);
+   if ($validator->fails()) {
+      $data = [
+       'type' => 'error',
+      ];
+      $data['error'] =' ';
+      return redirect()->route('profile', ['error' => $data['error']]);
+   }
 
     $card = CreditCard::find($request->card_id);
 
@@ -241,7 +291,6 @@ class ClientController extends Controller
     $card->delete();
     return redirect()->route('profile');
  }
-
 
 
  public function cards_delete(Request $request)
@@ -271,6 +320,33 @@ class ClientController extends Controller
     $wishList->description = $request->description;
     
     $wishList->save();
+
+    return redirect()->route('profile');
+ }
+
+ public function wishlist_delete(Request $request)
+ {
+    $wl = WishList::find($request->wishlist_id);    
+    $wl->delete();
+    $pl = ProductList::find($request->wishlist_id);    
+    $pl->delete();
+    return redirect()->route('profile');
+ }
+
+
+
+ public function wishlists_delete(Request $request)
+ {
+
+    $info = Client::find(Auth::user()->id);
+   $wls = $info->wishLists;
+  
+    foreach($wls as $wl_id) {
+      $wl = WishList::find($wl_id->id);    
+      $wl->delete();
+      $pl = ProductList::find($wl_id->id);    
+      $pl->delete();
+    }
 
     return redirect()->route('profile');
  }

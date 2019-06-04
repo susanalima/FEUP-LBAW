@@ -832,7 +832,40 @@
                         <td>
                           <div class="d-flex justify-content-center">
                             <button type="button" class="btn btn-sm button-action m-2">Share</button>
-                            <button type="button" class="btn btn-sm button-negative m-2">Delete</button>
+                            <button type="button" class="btn btn-sm button-negative m-2"  data-toggle="modal" data-target="#delete{{$wishList['id']}}WLModal">Delete</button>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="delete{{$wishList['id']}}WLModal" tabindex="-1" role="dialog" aria-labelledby="delete{{$wishList['id']}}WLModalLabel" aria-hidden="true">
+                              <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <h5 class="modal-title" id="delete{{$wishList['id']}}WLModalLabel">Delete wishList</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                      <span aria-hidden="true">&times;</span>
+                                    </button>
+                                  </div>
+                                  <div class="modal-body">
+                                    Are you sure you want to delete "{{$wishList['name']}}" wishlist?
+                                  </div>
+                                  <div class="modal-footer">
+                                  
+                                  <form  id="formDelete{{$wishList['id']}}WL" method="POST" action="{{ route('wishlist_delete') }}" >
+                                  {{ csrf_field() }}
+
+                                    <div class="input-group flex-nowrap mt-2">
+                                            <input type="hidden" class="form-control"  name="wishlist_id" value="{{$wishList['id']}}"> 
+                                        </div>
+
+                                    <button type="submit" class="btn button-submit btn-sm">Yes</button>
+                                    <button type="button" class="btn button-negative btn-sm" data-dismiss="modal">No</button>
+
+                                </form>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <!-- -->
                           </div>
                         </td>
                       </tr>
@@ -865,7 +898,7 @@
                         </div>
                         <div class="modal-footer">
                         
-                        <form  id="formDeleteAllWL" method="POST" action="{{ route('cards_delete') }}" > //TODO
+                        <form  id="formDeleteAllWL" method="POST" action="{{ route('wishlists_delete') }}" > 
                         {{ csrf_field() }}
 
                           <button type="submit" class="btn button-submit btn-sm">Yes</button>
