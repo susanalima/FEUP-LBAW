@@ -9,6 +9,7 @@ use App\Specification;
 use App\SpecificationBody;
 use App\SpecificationHeader;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\DB;
 use Validator;
 
@@ -20,6 +21,8 @@ class ProductController extends Controller
   $rules = [
    'product_name' => 'required',
    'category' => 'required',
+   'price' => 'nullable|numeric',
+   'stock' => 'nullable|numeric',
   ];
 
   if (isset($request->images)) {
@@ -31,21 +34,11 @@ class ProductController extends Controller
   $validator = Validator::make($request->all(), $rules);
 
   if ($validator->fails()) {
-   $data = [
-    'type' => 'error',
-   ];
 
-   if ($request['product_name'] === null) {
-    $data['error'] = 'Product Name';
-   } else if ($request['category'] === null) {
-    $data['error'] = 'Category';
-   } else {
-    $data['error'] = 'Pictures should be jpeg, bmp or png less than 2000 KB';
-   }
+   $error = $validator->errors()->first();
+   $cookie = cookie('error', $error);
 
-   $data['error'] = $data['error'] . ' must be defined';
-
-   return redirect()->route('product_create', ['error' => $data['error']]);
+   return redirect()->route('product_create')->withCookies([$cookie]);
   }
 
   $product = Product::firstOrCreate([

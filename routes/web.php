@@ -16,7 +16,7 @@ Route::get('/help', "PagesController@help");
 Route::get('/contacts', "PagesController@contacts");
 Route::get('/faq', "PagesController@faq");
 
-Route::get('/product/create/{error?}', "PagesController@product_create")->name('product_create');
+Route::get('/product/create', "PagesController@product_create")->name('product_create');
 Route::get('/product/{id}', "PagesController@product")->name('product_page');
 Route::post('/product', "ProductController@add_product")->name('product_add');
 Route::get('/search/{category?}/{text?}', "PagesController@search")->name('search');
@@ -43,10 +43,7 @@ Route::post('/profile/wishlistsDelete', "ClientController@wishlists_delete")->na
 Route::get('/profile_manager/{id}', "PagesController@profile_manager")->name('profile_manager');
 Route::get('/profile_admin/{id}', "PagesController@profile_admin")->name('profile_admin');
 
-
 Route::get('/wishList/{id}', "PagesController@wishList")->name('wishList');
 Route::delete('wishList/{id}', "WishListController@removeProduct")->name('remove_product_wl');
-
-
 
 Auth::routes();

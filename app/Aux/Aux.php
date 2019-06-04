@@ -15,8 +15,8 @@ class Aux
    }
   };
 
-  $ret = str_replace("_", " ", $header);
   $ret = str_replace(".", "", $header);
+  $ret = str_replace("_", " ", $header);
   $ret = explode(" ", $ret);
   $ret = array_map($capitalizeWord, $ret);
 
