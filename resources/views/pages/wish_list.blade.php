@@ -41,7 +41,7 @@ use App\Product;
                                             onClick="addToCart(this)" type="submit" id="addToCart"><i class="fa fa-cart-plus"></i></button>
                                             
                                         <button class="btn removeWishItem" type="submit"
-                                            id="removeWishItem" onclick="removeFromWishList(this, '{{$product->name}}', {{$info['id']}})"><i class="fa fa-times"></i></button></div>
+                                            id="removeWishItem" onclick="removeFromWishList(this, '{{$product->id}}', {{$info['id']}})"><i class="fa fa-times"></i></button></div>
                                           
                                             <div class="rating">
                                                 <fieldset class="starsRating">

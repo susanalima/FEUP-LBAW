@@ -24,10 +24,10 @@ function encodeForAjax(data) {
 
   }
 
-function removeFromWishList(removeButton, product_name, list_id){
+function removeFromWishList(removeButton, product_id, list_id){
     let list_element = removeButton.closest(".product_card");
     list_element.remove();
-    console.log(list_element, product_name, list_id);
-    sendAjaxRequest('POST', '/api/remove_productWL', {product_name: product_name , list_id: list_id}, nothing);
+    console.log(list_element, product_id, list_id);
+    sendAjaxRequest('POST', '/api/remove_productWL', {product_id: product_id , list_id: list_id}, nothing);
 }
 
