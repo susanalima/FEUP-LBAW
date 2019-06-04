@@ -34,8 +34,7 @@ Route::post('/profile/addressDelete', "ClientController@address_delete")->name('
 Route::post('/profile/addressesDelete', "ClientController@addresses_delete")->name('addresses_delete');
 
 
-
-
 Route::get('/wishList/{id}', "PagesController@wishList")->name('wishList');
+Route::delete('wishList/{id}', "WishListController@removeProduct")->name('remove_product_wl');
 
 Auth::routes();
