@@ -349,3 +349,82 @@ function editInfo(id){
   let name = document.getElementById(`clientEditName`).value;
   sendAjaxRequest('POST', '/api/info_edit', {id:id, name: name , nif: nif}, editInfoLoaded);
 }
+
+
+function deleteWishlistLoad(){
+  let response = JSON.parse(this.responseText);
+  console.log(response);
+  document.getElementById(`wishlist${response['wishlist_id']}`).remove();
+}
+
+function deleteWishlist(id){
+  sendAjaxRequest('POST', '/api/wishlist_delete', {wishlist_id:id}, deleteWishlistLoad);
+}
+
+
+function addWishlistLoaded(){
+  let wishList = JSON.parse(this.responseText);
+  console.log(wishList);
+  let table = document.getElementById("wlTable");
+  let counter = table.getElementsByTagName("tr").length;
+  console.log(counter);
+
+  if(wishList['description'] === null)
+      wishList['description'] = "";
+
+  let row = table.insertRow(counter);
+  row.setAttribute('id', `wishlist${wishList['id']}`);
+  counter++;
+  row.innerHTML = 
+  `
+  <th scope="row">${counter}</th>
+  <td><a class="btn-link"  href="{{ route('wishList', ['id' => $wishList['id']]) }}">${wishList['name']}</a></td>
+  <td>${wishList['description']}</td>
+  <td>
+    <div class="d-flex justify-content-center">
+      <button type="button" class="btn btn-sm button-action m-2">Share</button>
+      <button type="button" class="btn btn-sm button-negative m-2"  data-toggle="modal" data-target="#delete${wishList['id']}WLModal">Delete</button>
+
+      <!-- Modal -->
+      <div class="modal fade" id="delete${wishList['id']}WLModal" tabindex="-1" role="dialog" aria-labelledby="delete${wishList['id']}WLModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="delete${wishList['id']}WLModalLabel">Delete wishList</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              Are you sure you want to delete "${wishList['name']}" wishlist?
+            </div>
+            <div class="modal-footer">
+            
+            <form >
+
+              <div class="input-group flex-nowrap mt-2">
+                      <input type="hidden" class="form-control"  name="wishlist_id" value="${wishList['id']}"> 
+                  </div>
+
+              <button type="button" onclick="deleteWishlist('${wishList['id']}')" class="btn button-submit btn-sm"data-dismiss="modal">Yes</button>
+              <button type="button" class="btn button-negative btn-sm" data-dismiss="modal">No</button>
+
+          </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- -->
+    </div>
+  </td>
+`
+}
+
+
+function addWishlist(id){
+  let name = document.getElementById(`wishListName`).value;
+  let description = document.getElementById(`wishListDescription`).value;
+
+  sendAjaxRequest('POST', '/api/wishlist_add', {id:id, name:name, description:description}, addWishlistLoaded);
+}

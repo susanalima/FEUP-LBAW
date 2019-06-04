@@ -24,3 +24,5 @@ Route::post('/card_delete', 'ApiController@card_delete');
 Route::post('/card_add', 'ApiController@card_add');
 
 Route::post('/info_edit', 'ApiController@info_edit');
+Route::post('/wishlist_add', 'ApiController@wishlist_add');
+Route::post('/wishlist_delete', 'ApiController@wishlist_delete');

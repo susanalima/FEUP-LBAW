@@ -11,7 +11,8 @@ use App\Address;
 use App\CreditCard;
 use App\Client;
 use App\User;
-
+use App\WishList;
+use App\ProductList;
 
 
 class ApiController extends Controller
@@ -227,6 +228,31 @@ class ApiController extends Controller
 
   return response()->json($request);
 
+}
+
+
+public function wishlist_add(Request $request)
+{
+  
+   $productList = ProductList::create(["id" => ProductList::max('id') + 1]);
+   $wishList = new wishlist;
+   $wishList->id = $productList->id;
+   $wishList->id_client = $request->id;
+   $wishList->name = $request->name;
+   $wishList->description = $request->description;
+   
+   $wishList->save();
+
+   return response()->json($wishList);
+}
+
+public function wishlist_delete(Request $request)
+{
+   $wl = WishList::find($request->wishlist_id);    
+   $wl->delete();
+   $pl = ProductList::find($request->wishlist_id);    
+   $pl->delete();
+   return response()->json($request);
 }
 
 

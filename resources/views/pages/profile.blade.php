@@ -69,7 +69,7 @@
                           </button>
                         </div>
                         <div class="modal-body">
-                        <form  id="formEditInfo" method="POST" action="{{ route('info_edit') }}" >
+                        <form >
                               {{ csrf_field() }}
                             <div class="form-group">
                      
@@ -865,12 +865,12 @@
               <div class="card-body">
                 <div class="table-responsive">
                   <table class="table">
-                    <tbody>
+                    <tbody id="wlTable">
                     <?php
                       $counter = 1;
                     ?>
                     @foreach ($info['wishLists'] as $wishList)
-                    <tr>
+                    <tr id="wishlist{{$wishList['id']}}">
                         <th scope="row">{{$counter}}</th>
                         <td><a class="btn-link"  href="{{ route('wishList', ['id' => $wishList['id']]) }}">{{$wishList['name']}}</a></td>
                         <td>{{$wishList['description']}}</td>
@@ -894,14 +894,14 @@
                                   </div>
                                   <div class="modal-footer">
                                   
-                                  <form  id="formDelete{{$wishList['id']}}WL" method="POST" action="{{ route('wishlist_delete') }}" >
+                                  <form >
                                   {{ csrf_field() }}
 
                                     <div class="input-group flex-nowrap mt-2">
                                             <input type="hidden" class="form-control"  name="wishlist_id" value="{{$wishList['id']}}"> 
                                         </div>
 
-                                    <button type="submit" class="btn button-submit btn-sm">Yes</button>
+                                    <button type="button" onclick="deleteWishlist('{{$wishList['id']}}')" class="btn button-submit btn-sm"data-dismiss="modal">Yes</button>
                                     <button type="button" class="btn button-negative btn-sm" data-dismiss="modal">No</button>
 
                                 </form>
@@ -971,7 +971,7 @@
                         </button>
                       </div>
                       <div class="modal-body">
-                      <form  id="formAddWishList" method="POST" action="{{ route('wishlist_add') }}" > 
+                      <form> 
                         {{ csrf_field() }}
                           <div class="form-group">
                             <label for="wishListName" class="col-form-label">Name</label>
@@ -984,7 +984,7 @@
                      
                       </div>
                       <div class="modal-footer">
-                        <button type="submit" class="btn button-submit btn-sm" >Finish</button>
+                        <button type="button" onclick="addWishlist('{{$info['id']}}')"  class="btn button-submit btn-sm" data-dismiss="modal">Finish</button>
                         <button type="button" class="btn button-negative btn-sm" data-dismiss="modal">Cancel</button>
                       </div>
                       </form>
