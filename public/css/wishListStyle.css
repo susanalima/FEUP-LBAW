@@ -1,5 +1,11 @@
 #wishListsTabs {
   margin-top: 2em;
+  max-width: 1140px;
+  position: relative;
+  margin: auto;
+  margin-top:3em;
+
+
 }
 
 #wishListsTabs ul li.active a {
@@ -60,7 +66,7 @@ h4.product_name {
 }
 
 .product_img {
-  width: 40%;
+  max-width: 40%;
   height: 75%;
   background-size: cover;
   margin-left: 0.5em;
@@ -83,26 +89,31 @@ h4.product_name {
   font-size: 1.5vmax;
 }
 
-.addToCartBtn {
+button.addToCartBtn {
   min-height: 5%;
   max-height: 8%;
 }
 
-.addToCartBtn:hover {
+button.addToCartBtn:hover {
   min-height: 5%;
   max-height: 8%;
   color: white;
   background-color: var(--var-main-color);
 }
 
-.removeWishItem {
+button.removeWishItem {
   min-height: 15%;
   max-height: 8%;
+  width: 50px;
+  height: 50px;
+
 }
 
-.removeWishItem:hover {
+button.removeWishItem:hover {
   min-height: 15%;
   max-height: 8%;
+  width: 50px;
+  height: 50px;
   color: white;
   background-color: var(--var-main-color);
 }
@@ -174,6 +185,10 @@ div.col-sm p {
   .product_card .col-sm {
     margin-left: 0;
   }
+  #wishListsTabs {
+    justify-content: center;
+    max-width: 100%;
+  }
 }
 
 @media screen and (max-width: 1260px) {
@@ -181,10 +196,7 @@ div.col-sm p {
     display: none;
   }
 
-  #wishListsTabs {
-    justify-content: center;
-    width: 100%;
-  }
+  
 
   #listItems {
     margin: auto;
@@ -200,14 +212,16 @@ div.col-sm p {
   .rating {
     display: none;
   }
+ 
 }
 
 @media screen and (max-width: 575px) {
   .product_img {
-    width: 100%;
+    max-width: 100%;
     margin-left: 0;
     margin-bottom: 1.5em;
   }
+  
 }
 
 @media screen and (max-width: 400px) {

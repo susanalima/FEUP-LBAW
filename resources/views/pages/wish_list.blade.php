@@ -2,10 +2,12 @@
 use App\Product; 
 ?>
     <link rel="stylesheet" href="{{ URL::asset('css/wishListStyle.css') }}" />
-    <script src="{{ URL::asset('js/wishList.js') }}"></script>
+
 
 
 @extends('templates.app')
+<script src="{{ URL::asset('js/wishList.js') }}"></script>
+
 
 @section('content')
     <div class="mainContent">
@@ -38,10 +40,10 @@ use App\Product;
 
                                 <div class="col-sm">
                                     <div class="product_buttons"> <button class="btn addToCartBtn"
-                                            onClick="addToCart(this)" type="submit" id="addToCart"><i class="fa fa-cart-plus"></i></button>
+                                            onClick="addToCart(this)" type="submit"><i class="fa fa-cart-plus"></i></button>
                                             
                                         <button class="btn removeWishItem" type="submit"
-                                            id="removeWishItem" onclick="removeFromWishList(this, '{{$product->id}}', {{$info['id']}})"><i class="fa fa-times"></i></button></div>
+                                             onclick="removeFromWishList(this, '{{$product->id}}', {{$info['id']}})"><i class="fa fa-times"></i></button></div>
                                           
                                             <div class="rating">
                                                 <fieldset class="starsRating">
