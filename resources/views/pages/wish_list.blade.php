@@ -46,7 +46,7 @@ use App\Product;
                                     
                                 <div class="col-sm">
                                     
-                                    <div class="product_buttons">  <button class="btn addToCartBtn button-toggable mr-1" onclick="addProductToCart('{{Auth::id()}}' ,'{{$product->id}}', 1)"
+                                    <div class="product_buttons">  <button class="btn addToCartBtn button-toggable mr-1" onclick="addProductToCart(this,'{{Auth::id()}}' ,'{{$product->id}}', 1)"
                                     type="submit"
                                     title="Add To Cart"
                                     >

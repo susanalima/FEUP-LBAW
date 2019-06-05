@@ -34,7 +34,7 @@
                     <div class="d-flex justify-content-between w-100">
                         <button
                             class="btn addToCartBtn button-toggable w-100 mr-1"
-                            onClick="addToCart(this)"
+                            onclick="addProductToCart(this,'{{Auth::id()}}','{{$product['id']}}',1)"
                             type="submit"
                             id="addToCart"
                             title="Add To Cart"
@@ -132,9 +132,10 @@
                         <div class="modal-body d-flex justify-content-between">
                             <div class="productForComparison d-flex flex-column align-items-center pb-5">
                                 <div>
+                                     <!-- TODO: Might need to be changed -->
                                     <button
                                         class="btn btn addToCartBtn button-toggable "
-                                        onClick="addToCart(this)"
+                                        onClick="addProductToCart(this,'{{Auth::id()}}','{{$product['id']}}',1)"
                                         type="submit"
                                         id="addToCart"
                                         title="Add To Cart"

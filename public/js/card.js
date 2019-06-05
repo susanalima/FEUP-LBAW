@@ -31,9 +31,8 @@ function opener() {
     var overlay = document.getElementById("overlay");
     overlay.classList.toggle("active");
 }
-function addToCart(elem) {
-    elem.classList.toggle("active");
-}
+
+   
 function addToWishList(elem) {
     elem.classList.toggle("active");
 }
@@ -80,4 +79,22 @@ function minusOne(elem, prod_id, cart_id) {
 
 function removeFromCart(prod_id, cart_id){
     sendAjaxRequest('POST', '/api/remove_prod', {product_id: prod_id, cart_id: cart_id}, cartOpHandler);
+}
+
+function addProductToCart(elem, client_id, product_id, quantity){
+    elem.classList.toggle("active");
+    
+    console.log(client_id, product_id, quantity);
+
+    function addToCartHandler(){
+      console.log(this.responseText);
+      let response = JSON.parse(this.responseText);  
+      
+      console.log(response);
+    }
+    
+    if(client_id != '')
+      sendAjaxRequest('POST', '/api/add_product_cart', {product_id: product_id, client_id: client_id, quantity: quantity}, addToCartHandler);
+    else
+      console.log("User not logged in\n");  
 }
