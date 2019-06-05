@@ -43,10 +43,15 @@ class Product extends Model
  {
   $result = DB::select('select id_product, count(*) from product_list join wish_list using (id) join ass_list_product on id_list = id where id_product = ' . $this->id . 'group by id_product;');
   if (isset($result) && !empty($result)) {
-   return $result[0]->count;
+   return count($result);
   } else {
    return 0;
   }
+ }
+
+ public function lists()
+ {
+  return $this->hasMany(AssListProduct::class, 'id_product', 'id');
  }
 
  public function getReviews()
