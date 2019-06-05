@@ -42,4 +42,23 @@ class ApiController extends Controller
     DB::delete("DELETE FROM ass_list_product WHERE id_list = {$list_id} and id_product = {$product_id}");
     return response()->json("Success");
   }
+
+  public function add_product_cart(Request $request){
+    $validator = Validator::make($request->all(), [
+      'client_id' => 'required',
+      'product_id' => 'required',
+      'quantity' => 'required',
+     ]);
+   
+     if ($validator->fails()) {
+      return response()->json("Product and client must be defined");
+     }
+
+     $client_id = $request->client_id;
+     $product_id = $request->product_id;
+     $quantity = $request->quantity;
+     DB::insert("INSERT INTO ass_list_product (id_list, is_product,quantity,added_to,bought,return) VALUES ()", []);
+     return response()->json("Success");
+
+  }
 }

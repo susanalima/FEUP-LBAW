@@ -14,3 +14,5 @@
 Route::get('/category_specs', 'ApiController@category_specs');
 
 Route::post('/remove_productWL', 'ApiController@remove_productWL');
+
+Route::post('/add_product_cart', 'ApiController@add_product_cart');
