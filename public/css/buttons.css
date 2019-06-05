@@ -42,30 +42,34 @@
 
 }
 
-.button-toggable{
+.button-toggable,
+.page-item .page-link{
     color:var(--var-main-color);
     background-color:white;
     border-color: var(--var-main-color);
 
 }
 
-.button-toggable:hover{
-    color:white;
-    background-color:var(--var-thir-color);
-    border-color: var(--var-main-color);
+.button-toggable:hover,
+.page-item .page-link:hover{
+    color:white !important;
+    background-color:var(--var-thir-color) !important;
+    border-color: var(--var-main-color) !important;
 
 }
 
-.button-toggable.active{
+.button-toggable.active,
+.page-item.active .page-link{
     color:white;
     background-color:var(--var-main-color);   
-     border-color: var(--var-main-color);
+    border-color: var(--var-main-color);
 
 }
 
 .button-action, .button-action:hover, .button-submit,.button-submit:hover,
 .button-negative, .button-negative:hover, .button-toggable, .button-toggable:hover,
-.button-toggable:focus{
+.button-toggable:focus, .page-item .page-link, .page-item .page-link:hover,
+.page-item .page-link:focus {
     outline: none !important;
     border-width: 1px;
    
