@@ -9,6 +9,7 @@ use App\Address;
 use App\CreditCard;
 use App\ProductList;
 use App\WishList;
+use App\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;

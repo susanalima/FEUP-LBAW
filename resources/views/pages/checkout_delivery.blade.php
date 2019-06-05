@@ -49,9 +49,14 @@
                                 data-target="#edit{{$address['id']}}Address">Edit</button>
                          @include('templates.edit_address')
 
-                        <form class="button_form  mr-2" action="checkoutShipping.html"> <button type="submit"
-                                class="btn button-submit btn-sm">Deliver here</button>
+                       
+                      
+                        <form action="{{ route('checkout_shipping') }}">
+                        <button type="submit" onclick="checkoutDelivery('{{$address['id']}}', '{{$info['id']}}')"  class="btn button-submit btn-sm">Deliver here</button>
                         </form>
+                
+
+                    
                     </div>
                 </div>
                 @endforeach    

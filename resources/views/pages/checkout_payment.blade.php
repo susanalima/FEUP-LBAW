@@ -64,12 +64,11 @@
                               @include('templates.edit_card')
                         
                     </div>
-                  
-
-                    <form class="button_form mr-2" action="checkoutConfirmation.html"> <button type="submit"
-                            class="btn button-submit btn-sm">Pay</button>
-                    </form>
+                        <form action="{{ route('checkout_confirmation') }}">
+                        <button type="submit" onclick="checkoutPayment('{{$card['id']}}', '{{$info['id']}}')"  class="btn button-submit btn-sm">Pay</button>
+                        </form>
                     </div>
+
                 </div>
                 @endforeach
               

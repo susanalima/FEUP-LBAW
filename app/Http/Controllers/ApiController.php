@@ -11,6 +11,7 @@ use App\Address;
 use App\CreditCard;
 use App\Client;
 use App\User;
+use App\Cart;
 use App\WishList;
 use App\ProductList;
 use App\AssListProduct;
@@ -425,6 +426,49 @@ public function wishlist_delete(Request $request)
    $pl->delete();
    return response()->json($request);
 }
+
+
+
+public function checkout_delivery(Request $request) {
+
+   $tmpcart = Client::find($request->client_id)->cart();
+
+   $cart = Cart::find($tmpcart->get(0)->id);
+
+   $cart->id_address = $request->address_id;
+
+   $cart->save();
+
+   return response()->json($request);
+ }
+
+
+ public function checkout_shipping(Request $request) {
+
+   $tmpcart = Client::find($request->client_id)->cart();
+
+   $cart = Cart::find($tmpcart->get(0)->id);
+
+   $cart->id_shipping = $request->shipping_id;
+
+   $cart->save();
+
+   return response()->json($request);
+ }
+
+
+ public function checkout_payment(Request $request) {
+
+   $tmpcart = Client::find($request->client_id)->cart();
+
+   $cart = Cart::find($tmpcart->get(0)->id);
+
+   $cart->id_card = $request->card_id;
+
+   $cart->save();
+
+   return response()->json($request);
+ }
 
 
 }

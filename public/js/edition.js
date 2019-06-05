@@ -182,7 +182,7 @@ function addAddressProfileLoaded(){
 
 function addAddressCheckoutLoaded(){
   let address = JSON.parse(this.responseText);
-
+console.log(address);
   if(address['type'] === "error") {
     setAlert("error adding address", address);
     return;
@@ -255,9 +255,9 @@ function addAddressCheckoutLoaded(){
     </div>
     </div>
 
-        <form class="button_form  mr-2" action="checkoutShipping.html"> <button type="submit"
-                class="btn button-submit btn-sm">Deliver here</button>
-        </form>
+    <form action="/checkout/shipping">
+    <button type="submit" onclick="checkoutDelivery('${address['id']}', '${address['id_client']}')"  class="btn button-submit btn-sm">Deliver here</button>
+    </form>
     </div>
 </div>
 `
@@ -523,6 +523,7 @@ function addCardCheckoutLoaded(){
   
  let table = document.getElementById("checkoutCards");
  let dv = document.createElement("div");
+
  dv.setAttribute("class", "d-flex flex-column card checkoutCard");
  dv.innerHTML = 
 `
@@ -611,9 +612,12 @@ function addCardCheckoutLoaded(){
   </div>
 
 
-  <form class="button_form mr-2" action="checkoutConfirmation.html"> <button type="submit"
-          class="btn button-submit btn-sm">Pay</button>
+  <form action="/checkout/confirmation">
+  <button type="submit" onclick="checkoutPayment('${card['id']}', '${card['id_client']}')"  class="btn button-submit btn-sm">Pay</button>
   </form>
+
+  
+</div>
   </div>
 
 `
@@ -741,4 +745,16 @@ function addWishlist(id){
   let description = document.getElementById(`wishListDescription`).value;
 
   sendAjaxRequest('POST', '/api/wishlist_add', {id:id, name:name, description:description}, addWishlistLoaded);
+}
+
+
+function checkoutPayment(card_id, client_id){
+  console.log("here");
+  sendAjaxRequest('POST', '/api/checkout_payment', {card_id:card_id, client_id:client_id}, nothing);
+}
+
+
+function checkoutDelivery(address_id, client_id){
+  console.log("here");
+  sendAjaxRequest('POST', '/api/checkout_delivery', {address_id:address_id, client_id:client_id}, nothing);
 }
