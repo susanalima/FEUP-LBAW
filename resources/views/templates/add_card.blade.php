@@ -37,17 +37,11 @@
                             <input type="number" step="1" min="0" class="form-control" id="cardExpYear" placeholder="YYYY"
                             name="expiration_year" required />
                             </div>
-                            -
+                            /
 
                             <div class="col-md-3 p-0 pl-2 pr-1">
                             <input type="number" step="1" min="0" class="form-control" id="cardExpMonth" placeholder="MM"
                             name="expiration_month"  required />
-                            </div>
-                            -
-
-                            <div class="col-md-3 p-0 pl-2 pr-1">
-                            <input type="number" step="1" min="0" class="form-control" id="cardExpDay" placeholder="DD"
-                            name="expiration_day"  required />
                             </div>
                     
                     </div>

@@ -50,7 +50,12 @@
                             <dt class="col-sm-5">Number</dt>
                             <dd class="col-sm-5">{{$card['last_digits']}}</dd>
                             <dt class="col-sm-5">Expiration </dt>
-                            <dd id="card{{$card['id']}}ExpDate" class="col-sm-5">{{$card['expiration_date']}}</dd>
+                            <?php
+                                $tokens = explode("-", $card['expiration_date']);
+                                $expYear = $tokens['0'];
+                                $expMonth = $tokens['1'];
+                            ?>
+                            <dd id="card{{$card['id']}}ExpDate" class="col-sm-5">{{$expYear}}/{{$expMonth}}</dd>
                         </dl>
                     </div>
                     <div class="d-flex flex-row-reverse mb-4 mx-3">

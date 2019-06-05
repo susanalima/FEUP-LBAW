@@ -237,7 +237,13 @@
                         @foreach ($info['cards'] as $card)
                         <tr id="card{{$card['id']}}">
                           <td>{{$card['last_digits']}}</td>
-                          <td id="card{{$card['id']}}ExpDate">{{$card['expiration_date']}}</td>
+                          <?php
+                            $tokens = explode("-", $card['expiration_date']);
+                            $expYear = $tokens['0'];
+                            $expMonth = $tokens['1'];
+                            
+                          ?>
+                          <td id="card{{$card['id']}}ExpDate">{{$expYear}}/{{$expMonth}}</td>
                           <td id="cardTableName">{{$card['name']}}</td>
 
                           <?php

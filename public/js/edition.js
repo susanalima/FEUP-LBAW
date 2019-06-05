@@ -290,7 +290,10 @@ function editCardProfileLoaded(){
    setAlert("error editing credit card",response);
    return;
   }
-  document.getElementById(`card${response['id']}ExpDate`).innerHTML = response['expiration_date'];
+  let tokens = response['expiration_date'].split("-");
+  let expMonth = tokens[1];
+  let expYear = tokens[0];
+  document.getElementById(`card${response['id']}ExpDate`).innerHTML = expYear + "/" + expMonth;
 }
 
 
@@ -302,13 +305,16 @@ function editCardCheckoutLoaded(){
    setAlert("error editing credit card",response);
    return;
   }
-  document.getElementById(`card${response['id']}ExpDate`).innerHTML = response['expiration_date'];
+  let tokens = response['expiration_date'].split("-");
+  let expMonth = tokens[1];
+  let expYear = tokens[0];
+  document.getElementById(`card${response['id']}ExpDate`).innerHTML = expYear + "/" + expMonth;
 }
 
 function editCard(id, page){
   let expiration_year = document.getElementById(`editCard${id}ExpYear`).value;
   let expiration_month = document.getElementById(`editCard${id}ExpMonth`).value;
-  let expiration_day = document.getElementById(`editCard${id}ExpDay`).value;
+  let expiration_day = "1";
   let cvc = document.getElementById(`editCard${id}CVC`).value;
 
   if(page === "profile")
@@ -359,7 +365,6 @@ function addCardProfileLoaded(){
 
  let tokens = card['expiration_date'].split("-");
 
- let expDay = tokens[2];
  let expMonth = tokens[1];
  let expYear = tokens[0];
   
@@ -368,7 +373,7 @@ function addCardProfileLoaded(){
   `
   <tr id="card${card['id']}">
   <td>${card['last_digits']}</td>
-  <td id="card${card['id']}ExpDate">${card['expiration_date']}</td>
+  <td id="card${card['id']}ExpDate">${expYear}/${expMonth}</td>
   <td id="cardTableName">${card['name']}</td>
 
 
@@ -414,7 +419,7 @@ function addCardProfileLoaded(){
                         value="${card['expiration_date']}" name="expiration_date" required />-->
                         <label for="editCard${card['id']}ExpDate">Expiration Date</label>
                       
-                 «
+                 
 
                         <div class="row">
 
@@ -422,18 +427,13 @@ function addCardProfileLoaded(){
                             <input type="number" step="1" min="0" class="form-control" id="editCard${card['id']}ExpYear" placeholder="YYYY"
                             value="${expYear}" name="expiration_year" required />
                             </div>
-                            -
+                            /
 
                             <div class="col-md-3 p-0 pl-2 pr-1">
                             <input type="number" step="1" min="0" class="form-control" id="editCard${card['id']}ExpMonth" placeholder="MM"
                             value="${expMonth}" name="expiration_month" required />
                             </div>
-                              -
 
-                            <div class="col-md-3 p-0 pl-2 pr-1">
-                            <input type="number" step="1" min="0" class="form-control" id="editCard${card['id']}ExpDay" placeholder="DD"
-                            value="${expDay}" name="expiration_day" required />
-                            </div>
                       
                       </div>
   
@@ -518,7 +518,6 @@ function addCardCheckoutLoaded(){
  
  let tokens = card['expiration_date'].split("-");
 
- let expDay = tokens[2];
  let expMonth = tokens[1];
  let expYear = tokens[0];
   
@@ -537,7 +536,7 @@ function addCardCheckoutLoaded(){
           <dt class="col-sm-5">Number</dt>
           <dd class="col-sm-5">${card['last_digits']}</dd>
           <dt class="col-sm-5">Expiration </dt>
-          <dd id="card${card['id']}ExpDate" class="col-sm-5">${card['expiration_date']}</dd>
+          <dd id="card${card['id']}ExpDate" class="col-sm-5">${expYear}/${expMonth}</dd>
       </dl>
   </div>
   <div class="d-flex flex-row-reverse mb-4 mx-3">
@@ -571,18 +570,13 @@ function addCardCheckoutLoaded(){
                         <input type="number" step="1" min="0" class="form-control" id="editCard${card['id']}ExpYear" placeholder="YYYY"
                         value="${expYear}" name="expiration_year" required />
                         </div>
-                        -
+                        /
 
                         <div class="col-md-3 p-0 pl-2 pr-1">
                         <input type="number" step="1" min="0" class="form-control" id="editCard${card['id']}ExpMonth" placeholder="MM"
                         value="${expMonth}" name="expiration_month" required />
                         </div>
-                            -
-
-                        <div class="col-md-3 p-0 pl-2 pr-1">
-                        <input type="number" step="1" min="0" class="form-control" id="editCard${card['id']}ExpDay" placeholder="DD"
-                        value="${expDay}" name="expiration_day" required />
-                        </div>
+         
                     
                     </div>
 
@@ -629,7 +623,7 @@ table.prepend(dv)
 function addCard(id, page){
   let expiration_year = document.getElementById(`cardExpYear`).value;
   let expiration_month = document.getElementById(`cardExpMonth`).value;
-  let expiration_day = document.getElementById(`cardExpDay`).value;
+  let expiration_day = "1"
   let cvc = document.getElementById(`cardCVC`).value;
   let name = document.getElementById(`cardName`).value;
   let number = document.getElementById(`cardNumber`).value;
