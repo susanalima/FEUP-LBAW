@@ -1,3 +1,5 @@
+<script src="{{ URL::asset('js/navBar.js') }}" defer></script>
+
 <nav class="navbar navbar-expand-lg navbar-light">
         <div class="collapse navbar-collapse d-flex" id="navbarSupportedContent">
             <nav class="navbar d-flex navbar-light" id="navbarLogo">
@@ -21,10 +23,10 @@
                             aria-haspopup="true"
                             aria-expanded="false"
                         >
-                            {{(isset($category) && !is_array($category) ? $category : 'All Categories')}}
+                            {{isset($category) && isset($categoryNumber)  ? $category : 'All Categories'}}
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownAllCategories">
-                            <a class="dropdown-item" href="/search/0">Desktops</a>
+                            <a class="dropdown-item" href="/search/0">Computer</a>
                             <a class="dropdown-item" href="/search/1">Laptops</a>
                             <a class="dropdown-item" href="/search/2">Keyboards</a>
                             <a class="dropdown-item" href="/search/3">Headphones</a>
@@ -45,22 +47,23 @@
                                         data-toggle="dropdown"
                                         aria-haspopup="true"
                                         aria-expanded="false"
+                                        id="catSearch"
+                                        data-value="{{isset($categoryNumber) ? $categoryNumber : 10}}"
                                     >
-                                        All
+                                        {{isset($category) && isset($categoryNumber) ? $category : 'All'}}
                                     </button>
-                                    <div class="dropdown-menu search-category-drop">
-                                        <a class="dropdown-item" href="">Desktops</a>
-                                        <a class="dropdown-item" href="">Laptops</a>
-                                        <a class="dropdown-item" href="">Keyboards</a>
-                                        <a class="dropdown-item" href="">Headphones</a>
-                                        <a class="dropdown-item" href="">Music</a>
-                                        <a class="dropdown-item" href="">Mouse</a>
-                                    </div>
+                                    <ul class="dropdown-menu search-category-drop">
+                                        <li><a class="dropdown-item drop-cat" data-value="0" href="">Computer</a></li>
+                                        <li><a class="dropdown-item drop-cat" data-value="1" href="">Laptops</a></li>
+                                        <li><a class="dropdown-item drop-cat" data-value="2" href="">Keyboards</a></li>
+                                        <li><a class="dropdown-item drop-cat" data-value="3" href="">Headphones</a></li>
+                                        <li><a class="dropdown-item drop-cat" data-value="4" href="">Music</a></li>
+                                        <li><a class="dropdown-item drop-cat" data-value="6" href="">Mouse</a></li>
+                                    </ul>
                                 </div>
                                 <form class="form-inline my-lg-0 d-flex justify-content-between">
-                                    <input class="form-control" type="text" placeholder="Search" id="searchBar" />
-
-                                    <button id="searchBtn" class="fas fa-search" type="submit" id="searchBtn"></button>
+                                    <input class="form-control" type="text" placeholder="Search" id="searchBar" value="{{isset($searchContent) ? $searchContent : ''}}"/>
+                                    <button id="searchBtn" class="fas fa-search" type="submit" onClick=search(this) id="searchBtn"></button>
                                 </form>
                             </div>
                         </div>

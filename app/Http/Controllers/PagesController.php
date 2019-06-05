@@ -79,16 +79,12 @@ class PagesController extends Controller
   ];
 
   $wished = array();
-  $categories = array(1, 4, 6);
 
-  foreach ($categories as $key => $category) {
-   $temp = Product::all()->where('id_category', $category)->sortBy(function ($prod) {
-    return -1 * $prod->wished();
-   })->take(10)->map(function ($p) {
-    return $p;
-   });
+  $cats = array(1, 4, 6);
 
+  foreach ($cats as $key => $cat) {
    $prods = array();
+   $temp = Product::where('id_category', '=', $cat)->withCount('lists')->orderBy('lists_count', 'desc')->take(10)->get();
    foreach ($temp as $key => $value) {
     array_push($prods,
      [
@@ -99,8 +95,7 @@ class PagesController extends Controller
       'id' => $value->id,
      ]);
    }
-
-   $wished[Aux::formatHeader(Category::find($category)->name)] = $prods;
+   $wished[Aux::formatHeader(Category::find($cat)->name)] = $prods;
   }
 
   $data = array(
@@ -218,10 +213,12 @@ class PagesController extends Controller
   $catAux = Category::find($category);
   $categoryName = ($catAux != null ? Aux::formatHeader($catAux->name) : 'All Categories');
 
-  if ($catAux == null) {
-   $products = Product::paginate($size);
+  $prods = Product::search($text);
+
+  if ($catAux === null) {
+   $products = $prods->paginate($size);
   } else {
-   $products = Product::where('id_category', $category)->paginate($size);
+   $products = $prods->where('id_category', $category)->paginate($size);
   }
 
   $brands = [];
@@ -260,7 +257,8 @@ class PagesController extends Controller
    'json' => $json,
    'cart' => $cart,
    'category' => $categoryName,
-   'text' => $text,
+   'categoryNumber' => $category,
+   'searchContent' => $text,
    'brands' => $brands,
    'price_range' => $priceRange,
   );
@@ -273,7 +271,7 @@ class PagesController extends Controller
  public function profile()
  {
 
-  $cart = $this->cart();
+  $ccart = $this->cart();
 
   $info = Client::find(Auth::user()->id);
   $userInfo = User::find(Auth::user()->id);
@@ -286,6 +284,7 @@ class PagesController extends Controller
   $info['cards'] = $info->credit_cards;
 
   $info['wishLists'] = $info->wishLists;
+  $info['page'] = 'profile';
   $info['carts'] = $info->carts->map(function ($cart) {
 
    $address_line = '';
@@ -338,7 +337,7 @@ class PagesController extends Controller
    'type' => 'information',
    'interactive' => true,
    'info' => $info,
-   'cart' => $cart,
+   'cart' => $ccart,
   );
 
   return view("pages.profile")->with($data);
@@ -377,6 +376,7 @@ class PagesController extends Controller
 
   return view("pages.wish_list")->with($data);
  }
+
  public function profile_manager($id)
  {
   //TODO
@@ -386,5 +386,107 @@ class PagesController extends Controller
  {
   //TODO
  }
+
+ public function checkout_delivery()
+ {
+  $cart = $this->cart();
+
+  $totalPrice = 10; //TODO GET CURRENT CART TOTAL PRICE
+
+  $info = Client::find(Auth::user()->id);
+  $info['addresses'] = $info->addresses;
+  $info['total'] = $totalPrice;
+  $info['page'] = 'checkout';
+
+  $data = array(
+   'type' => 'help',
+   'interactive' => true,
+   'info' => $info,
+   'cart' => $cart,
+  );
+  return view("pages.checkout_delivery")->with($data);
+ }
+
+
+ public function checkout_shipping()
+ {
+  $cart = $this->cart();
+
+  $totalPrice = 10; //TODO GET CURRENT CART TOTAL PRICE
+
+  $info['total'] = $totalPrice;
+  $info['page'] = 'checkout';
+
+  $data = array(
+   'type' => 'help',
+   'interactive' => true,
+   'info' => $info,
+   'cart' => $cart,
+  );
+  return view("pages.checkout_shipping")->with($data);
+ }
+
+
+ public function checkout_payment()
+ {
+  $cart = $this->cart();
+
+  $totalPrice = 10; //TODO GET CURRENT CART TOTAL PRICE
+  
+  $info = Client::find(Auth::user()->id);
+  $info['cards'] = $info->credit_cards;
+
+  $info['total'] = $totalPrice;
+  $info['page'] = 'checkout';
+
+  $data = array(
+   'type' => 'help',
+   'interactive' => true,
+   'info' => $info,
+   'cart' => $cart,
+  );
+  return view("pages.checkout_payment")->with($data);
+ }
+
+
+ public function checkout_confirmation()
+ {
+  $cart = $this->cart();
+
+  $totalPrice = 10; //TODO GET CURRENT CART TOTAL PRICE
+
+
+  $info['total'] = $totalPrice;
+  $info['page'] = 'checkout';
+
+  $data = array(
+   'type' => 'help',
+   'interactive' => true,
+   'info' => $info,
+   'cart' => $cart,
+  );
+  return view("pages.checkout_confirmation")->with($data);
+ }
+
+
+ public function checkout_products()
+ {
+  $cart = $this->cart();
+
+  $totalPrice = 10; //TODO GET CURRENT CART TOTAL PRICE
+
+
+  $info['total'] = $totalPrice;
+  $info['page'] = 'checkout';
+
+  $data = array(
+   'type' => 'help',
+   'interactive' => true,
+   'info' => $info,
+   'cart' => $cart,
+  );
+  return view("pages.checkout_product")->with($data);
+ }
+
 
 }

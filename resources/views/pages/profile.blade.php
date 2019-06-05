@@ -2,7 +2,6 @@
 
 <link rel="stylesheet" href="{{ URL::asset('css/clientAccount.css') }}"" />
 <script src="{{ URL::asset('js/wishList.js') }}"></script>
-
 <script src="{{ URL::asset('js/edition.js') }}"></script>
 
 
@@ -14,8 +13,7 @@
     <div id="alert" style="max-width: 75%; margin: auto">
      
     </div>
- 
-   
+
 
     <div class="mx-auto accordionDiv">
       <h1 class="text-center p-3 mt-4">Your Account</h1>
@@ -130,56 +128,9 @@
                             <div class="d-flex justify-content-center mr-2 float-right">
                               <button type="button" class="btn btn-sm button-action m-2" data-toggle="modal"
                                 data-target="#edit{{$address['id']}}Address">Edit</button>
-                              <div class="modal fade" id="edit{{$address['id']}}Address" tabindex="-1" role="dialog" aria-labelledby="edit{{$address['id']}}AddressLabel"
-                                aria-hidden="true">
-                                <div class="modal-dialog" role="document">
-                                  <div class="modal-content">
-                                    <div class="modal-header">
-                                      <h5 class="modal-title" id="edit{{$address['id']}}Address">Edit {{$address['name']}} Address</h5>
-                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                      </button>
-                                    </div>
-                                    <div class="modal-body">
-                                    <form >
-                                    {{ csrf_field() }}
-                                        <div class="form-group">
-                                          <label>Address</label>
-                                          <div class="input-group flex-nowrap">
-                                            <input type="text" class="form-control" id="edit{{$address['id']}}AddressName"
-                                              placeholder="Name" value="{{$address['name']}}" name="name" required>
-                                          </div>
+                              
+                                @include('templates.edit_address')
 
-                                          <div class="input-group flex-nowrap mt-2">
-                                            <input type="text" class="form-control  mr-2 rounded" id="edit{{$address['id']}}AddressLine"
-                                              placeholder="Street and number, P.O. box, c/o" value="{{$address['address_line']}}" name ="address_line"
-                                              required>
-                                            <input type="text" class="form-control rounded" id="edit{{$address['id']}}AddressPostalCode"
-                                              placeholder="Postcode"  value="{{$address['postal_code']}}" name ="postal_code" required>
-                                          </div>
-
-                                          <div class="input-group flex-nowrap mt-2">
-                                            <input type="text" class="form-control mr-2 rounded" id="edit{{$address['id']}}AddressCity"
-                                              placeholder="Town, City" value="{{$address['city']}}" name="city" required>
-                                            <input type="text" class="form-control rounded" id="edit{{$address['id']}}AddressCountry"
-                                              placeholder="Country" value="{{$address['country']}}" name = "country" required>
-                                          </div>
-
-                                          <div class="input-group flex-nowrap mt-2">
-                                            <input type="hidden" class="form-control"  name="address_id" value="{{$address['id']}}"> {{-- TODO: Possible security breach --}} 
-                                        </div>
-
-                                        </div>
-                               
-                                    </div>
-                                    <div class="modal-footer">
-                                      <button type="button" onclick="editAddress('{{$address['id']}}')" class="btn button-submit btn-sm" data-dismiss="modal">Finish</button>
-                                      <button type="button" class="btn button-negative btn-sm" data-dismiss="modal">Cancel</button>
-                                    </div>
-                                    </form>
-                                  </div>
-                                </div>
-                              </div>
                               <button type="button" class="btn btn-sm button-negative m-2"  data-toggle="modal" data-target="#delete{{$address['id']}}AddressModal">Delete</button>
 
                             <!-- Modal -->
@@ -262,59 +213,7 @@
                   <button type="button" class="btn button-action mr-3 btn-sm " data-toggle="modal" data-target="#addAddress">Add
                       address</button>
                   </div>
-                  <!--add address-->
-                  <div class="modal fade" id="addAddress" tabindex="-1" role="dialog" aria-labelledby="addAddressLabel"
-                    aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h5 class="modal-title" id="addAddressLabel">New Address</h5>
-                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                          </button>
-                        </div>
-                        <div class="modal-body">
-                        <form >
-                              {{ csrf_field() }}
-                            <div class="form-group">
-                              <label>Address</label>
-                              <div class="input-group flex-nowrap">
-                                <input type="text" class="form-control" id="addAddressName" placeholder="Name"   name="name" required>
-                              </div>
-
-                              <div class="input-group flex-nowrap mt-2">
-
-                              <input type="text" class="form-control mr-2 rounded" id="addAddressLine" placeholder="Street and number, P.O. box, c/o"
-                                  name="address_line" required>
-                                <input type="text" class="form-control rounded" id="addAddressPostalCode" placeholder="Postcode"
-                                name="postal_code" required>
-                              </div>
-
-                              <div class="input-group flex-nowrap mt-2">
-
-                                <input type="text" class="form-control mr-2 rounded" id="addAddressCity" placeholder="Town, City"
-                                name="city" required>
-
-                                <input type="text" class="form-control rounded" id="addAddressCountry" placeholder="Country"
-                                name="country" required>
-
-
-                              </div>
-
-                       
-                            </div>
-
-                            <div class="modal-footer">
-                              <button type="button" onclick="addAddress('{{$info['id']}}')" class="btn button-submit btn-sm" data-dismiss="modal">Finish</button>
-                              <button type="button" class="btn button-negative btn-sm" data-dismiss="modal">Cancel</button>
-                          </div>
-
-                          </form>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <!--add address-->
+                  @include('templates.add_address')
                 </div>
               </div>
 
@@ -338,7 +237,13 @@
                         @foreach ($info['cards'] as $card)
                         <tr id="card{{$card['id']}}">
                           <td>{{$card['last_digits']}}</td>
-                          <td id="card{{$card['id']}}ExpDate">{{$card['expiration_date']}}</td>
+                          <?php
+                            $tokens = explode("-", $card['expiration_date']);
+                            $expYear = $tokens['0'];
+                            $expMonth = $tokens['1'];
+                            
+                          ?>
+                          <td id="card{{$card['id']}}ExpDate">{{$expYear}}/{{$expMonth}}</td>
                           <td id="cardTableName">{{$card['name']}}</td>
 
                           <?php
@@ -346,90 +251,15 @@
                           if($card['type'] === "Mastercard") {
                               $type = "fa-cc-mastercard";
                           }
-
                           ?>
 
                           <td><i class="fab {{$type}} fa-2x"></i></td>
                           <td>
-                            <div class="d-flex justify-content-center ml-2 pl-5">
+                          <div class="d-flex justify-content-center ml-2 pl-5">
                               <button type="button" class="btn btn-sm button-action m-2" data-toggle="modal"
                                 data-target="#editCard{{$card['id']}}">Edit</button> 
-                              <div class="modal fade" id="editCard{{$card['id']}}" tabindex="-1" role="dialog" aria-labelledby="editCard{{$card['id']}}Label"
-                                aria-hidden="true">
-                                <div class="modal-dialog" role="document">
-                                  <div class="modal-content">
-                                    <div class="modal-header">
-                                      <h5 class="modal-title" id="editCard{{$card['id']}}Label">Edit Card {{$card['last_digits']}}</h5>
-                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                      </button>
-                                    </div>
-                                    <div class="modal-body">
-                                    <form >
-                                       {{ csrf_field() }}
-      
-                                        <div class="row">
-                                          <div class="col-md-7">
-                                            <div class="form-group">
-                                              
-                                                <label for="editCard{{$card['id']}}ExpDate">Expiration Date</label>
-                                              
-                                                <?php
-                                                $tokens = explode("-", $card['expiration_date']);
-                                                $expYear = $tokens['0'];
-                                                $expMonth = $tokens['1'];
-                                                $expDay = $tokens['2'];
-                                                
-                                                ?>
-
-                                                <div class="row">
-
-                                                    <div class="col-md-4 pr-1">
-                                                    <input type="number" step="1" min="0" class="form-control" id="editCard{{$card['id']}}ExpYear" placeholder="YYYY"
-                                                    value="{{$expYear}}" name="expiration_year" required />
-                                                    </div>
-                                                    -
-
-                                                    <div class="col-md-3 p-0 pl-2 pr-1">
-                                                    <input type="number" step="1" min="0" class="form-control" id="editCard{{$card['id']}}ExpMonth" placeholder="MM"
-                                                    value="{{$expMonth}}" name="expiration_month" required />
-                                                    </div>
-                                                      -
-
-                                                    <div class="col-md-3 p-0 pl-2 pr-1">
-                                                    <input type="number" step="1" min="0" class="form-control" id="editCard{{$card['id']}}ExpDay" placeholder="DD"
-                                                    value="{{$expDay}}" name="expiration_day" required />
-                                                    </div>
-                                              
-                                              </div>
-                          
-                                            </div>
-                                          </div>
-                                          <!--Cena do token-->
-                                          <div class="col-md-5 pull-right">
-                                            <div class="form-group">
-                                              <label for="editCard{{$card['id']}}CVC">CV Code</label>
-                                              <input type="tel" class="form-control" id="editCard{{$card['id']}}CVC" placeholder="CVC"
-                                               name="cvc" />
-                                            </div>
-                                          </div>
-
-                                        
-                                          <div class="input-group flex-nowrap mt-2">
-                                            <input type="hidden" class="form-control" name="card_id" value="{{$card['id']}}"> {{-- TODO: Possible security breach --}} 
-                                        </div>
-
-                                        </div>
-                                        <div class="modal-footer">
-                                      <button type="button"  onclick="editCard('{{$card['id']}}')" class="btn button-submit btn-sm" data-dismiss="modal">Finish</button>
-                                      <button type="button" class="btn button-negative btn-sm" data-dismiss="modal">Cancel</button>
-                                    </div>
-                                      </form>
-                                    </div>
-
-                                  </div>
-                                </div>
-                              </div>
+                              @include('templates.edit_card')
+                            </div>
                             
                               <button type="button" class="btn btn-sm button-negative m-2"  data-toggle="modal" data-target="#delete{{$card['id']}}CardModal">Delete</button>
 
@@ -514,78 +344,8 @@
                     card</button>
                   </div>
                   
-                  <div class="modal fade" id="addCard" tabindex="-1" role="dialog" aria-labelledby="addCardLabel"
-                    aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h5 class="modal-title" id="addCardLabel">New Card</h5>
-                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                          </button>
-                        </div>
-                        <div class="modal-body">
-                        <form>
-                         {{ csrf_field() }}
-                            <div class="row">
-                              <div class="col-md-7">
-                                <div class="form-group">
-                                  <label for="cardNumber">Card Number</label>
-                                  <input type="number" step="1" min="0" class="form-control" id="cardNumber" placeholder="Valid Card Number"
-                                   name="number" required>
-                                </div>
-                              </div>
-                              <div class=" col-md-5 pull-right">
-                                <div class="form-group">
-                                  <label for="cardName">Name</label>
-                                  <input type="tel" class="form-control" id="cardName" placeholder="Name" name="name" required />
-                                </div>
-                              </div>
-                            </div>
-                            <div class="row">
-                              <div class="col-md-7">
-                                  <div class="form-group">
-                                      <label for="cardExpDate">Expiration Date</label>
-                                    
-                                      <div class="row">
+                  @include('templates.add_card')
 
-                                          <div class="col-md-4 pr-1">
-                                          <input type="number" step="1" min="0" class="form-control" id="cardExpYear" placeholder="YYYY"
-                                            name="expiration_year" required />
-                                          </div>
-                                          -
-
-                                          <div class="col-md-3 p-0 pl-2 pr-1">
-                                          <input type="number" step="1" min="0" class="form-control" id="cardExpMonth" placeholder="MM"
-                                          name="expiration_month"  required />
-                                          </div>
-                                            -
-
-                                          <div class="col-md-3 p-0 pl-2 pr-1">
-                                          <input type="number" step="1" min="0" class="form-control" id="cardExpDay" placeholder="DD"
-                                          name="expiration_day"  required />
-                                          </div>
-                                    
-                                    </div>
-                                
-                                </div>
-                              </div>
-                              <div class="col-md-5 pull-right">
-                                <div class="form-group">
-                                  <label for="cardCVC">CV Code</label>
-                                  <input type="tel" class="form-control" id="cardCVC" placeholder="CVC" name="cvc" required />
-                                </div>
-                              </div>
-                            </div>
-                           
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" onclick="addCard('{{$info['id']}}')" class="btn button-submit btn-sm" data-dismiss="modal">Finish</button>
-                          <button type="button" class="btn button-negative btn-sm" data-dismiss="modal">Cancel</button>
-                        </div>
-                        </form>
-                      </div>
-                    </div>
                   </div>
                 </div>
               </div>

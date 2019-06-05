@@ -16,6 +16,12 @@ Route::get('/help', "PagesController@help");
 Route::get('/contacts', "PagesController@contacts");
 Route::get('/faq', "PagesController@faq");
 
+Route::get('/checkout/delivery', "PagesController@checkout_delivery")->name('checkout_delivery');
+Route::get('/checkout/shipping', "PagesController@checkout_shipping")->name('checkout_shipping');
+Route::get('/checkout/payment', "PagesController@checkout_payment")->name('checkout_payment');
+Route::get('/checkout/confirmation', "PagesController@checkout_confirmation")->name('checkout_confirmation');
+Route::get('/checkout/products', "PagesController@checkout_products")->name('checkout_products');
+
 Route::get('/product/create', "PagesController@product_create")->name('product_create');
 Route::get('/product/{id}', "PagesController@product")->name('product_page');
 Route::post('/product', "ProductController@add_product")->name('product_add');

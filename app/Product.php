@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\DB;
 
 class Product extends Model
 {
+
  public $timestamps = false;
 
  protected $table = 'product';
@@ -18,6 +19,8 @@ class Product extends Model
  protected $fillable = ['id', 'name', 'price', 'stock', 'id_category', 'available'];
 
  protected $with = ['images'];
+
+ protected $searchable = ['name'];
 
  public function category()
  {
@@ -43,10 +46,15 @@ class Product extends Model
  {
   $result = DB::select('select id_product, count(*) from product_list join wish_list using (id) join ass_list_product on id_list = id where id_product = ' . $this->id . 'group by id_product;');
   if (isset($result) && !empty($result)) {
-   return $result[0]->count;
+   return count($result);
   } else {
    return 0;
   }
+ }
+
+ public function lists()
+ {
+  return $this->hasMany(AssListProduct::class, 'id_product', 'id');
  }
 
  public function getReviews()
@@ -103,5 +111,16 @@ class Product extends Model
    $arr . array_push($prod);
   }
   return $arr;
+ }
+
+ public function scopeSearch($query, $search)
+ {
+  if (!$search) {
+   return $query;
+  }
+
+  return $query->whereRaw('to_tsvector(\'english\', name) @@ plainto_tsquery(\'english\', ?)', [$search])
+   ->orderByRaw('ts_rank(to_tsvector(\'english\', name), plainto_tsquery(\'english\', ?)) desc', [$search]);
+
  }
 }
