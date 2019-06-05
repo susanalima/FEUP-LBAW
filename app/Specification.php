@@ -15,12 +15,14 @@ class Specification extends Model
 
  protected $fillable = ['id', 'id_specification_header', 'id_specification_body'];
 
- protected function header()
+ protected $with = ['header', 'body'];
+
+ public function header()
  {
   return $this->hasOne(SpecificationHeader::class, 'id', 'id_specification_header');
  }
 
- protected function body()
+ public function body()
  {
   return $this->hasOne(SpecificationBody::class, 'id', 'id_specification_body');
  }

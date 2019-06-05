@@ -17,6 +17,8 @@ class Product extends Model
 
  protected $fillable = ['id', 'name', 'price', 'stock', 'id_category', 'available'];
 
+ protected $with = ['images'];
+
  public function category()
  {
   return $this->hasOne(Category::class, 'id', 'id_category');
@@ -80,25 +82,26 @@ class Product extends Model
    return $image->primary_img;
   })->first();
  }
- public function organizeToArray($products){
-    $arr; 
-        foreach($products as $product){
-        $category = $this->category;
-        $reviews = $this->reviews;
-        $images = $this->images;
-        $specifications = $this->specifications;
-        $prod = [
-        'id' => $this->id,
-        'name' => $this->name,
-        'price' => $this->price,
-        'stock' => $this->stock,
-        'available' => $this->available,
-        'category' => Aux::formatHeader($category['name']), 
-        'images' => Aux::formatHeader($images['filepath']),
-        'specifciations' => $specifications->spec(),
-        ];
-        $arr.array_push($prod);
-    } 
-  return $arr;
+ public function organizeToArray($products)
+ {
+  $arr;
+  foreach ($products as $product) {
+   $category = $this->category;
+   $reviews = $this->reviews;
+   $images = $this->images;
+   $specifications = $this->specifications;
+   $prod = [
+    'id' => $this->id,
+    'name' => $this->name,
+    'price' => $this->price,
+    'stock' => $this->stock,
+    'available' => $this->available,
+    'category' => Aux::formatHeader($category['name']),
+    'images' => Aux::formatHeader($images['filepath']),
+    'specifciations' => $specifications->spec(),
+   ];
+   $arr . array_push($prod);
   }
+  return $arr;
+ }
 }

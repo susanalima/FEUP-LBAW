@@ -81,7 +81,6 @@ html {
 
 .product {
   width: 300px;
-  height: 350px;
   margin: 40px 40px;
   border-bottom: 1px solid var(--var-gray-light);
 }

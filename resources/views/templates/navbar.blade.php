@@ -21,14 +21,15 @@
                             aria-haspopup="true"
                             aria-expanded="false"
                         >
-                            All Categories
+                            {{(isset($category) && !is_array($category) ? $category : 'All Categories')}}
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownAllCategories">
-                            <a class="dropdown-item" href="search.html">Desktops</a>
-                            <a class="dropdown-item" href="search.html">Laptops</a>
-                            <a class="dropdown-item" href="search.html">Books</a>
-                            <a class="dropdown-item" href="search.html">Headphones</a>
-                            <a class="dropdown-item" href="search.html">Music</a>
+                            <a class="dropdown-item" href="/search/0">Desktops</a>
+                            <a class="dropdown-item" href="/search/1">Laptops</a>
+                            <a class="dropdown-item" href="/search/2">Keyboards</a>
+                            <a class="dropdown-item" href="/search/3">Headphones</a>
+                            <a class="dropdown-item" href="/search/4">Music</a>
+                            <a class="dropdown-item" href="/search/6">Mouse</a>
                         </div>
                     </span>
                 @endif
@@ -48,11 +49,12 @@
                                         All
                                     </button>
                                     <div class="dropdown-menu search-category-drop">
-                                        <a class="dropdown-item" href="#">Desktops</a>
-                                        <a class="dropdown-item" href="#">Laptops</a>
-                                        <a class="dropdown-item" href="#">Books</a>
-                                        <a class="dropdown-item" href="#">Headphones</a>
-                                        <a class="dropdown-item" href="#">Music</a>
+                                        <a class="dropdown-item" href="">Desktops</a>
+                                        <a class="dropdown-item" href="">Laptops</a>
+                                        <a class="dropdown-item" href="">Keyboards</a>
+                                        <a class="dropdown-item" href="">Headphones</a>
+                                        <a class="dropdown-item" href="">Music</a>
+                                        <a class="dropdown-item" href="">Mouse</a>
                                     </div>
                                 </div>
                                 <form class="form-inline my-lg-0 d-flex justify-content-between">
