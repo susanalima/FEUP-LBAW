@@ -43,7 +43,7 @@
             <div class="modal-footer">
                 <!--<button type="submit" onclick="addAddress('{{$info['id']}}')" class="btn button-submit btn-sm" >Finish</button>
                 -->
-                <button type="button" onclick="addAddress('{{$info['id']}}')" class="btn button-submit btn-sm"  data-dismiss="modal" >Finish</button>
+                <button type="button" onclick="addAddress('{{$info['id']}}', '{{$info['page']}}')" class="btn button-submit btn-sm"  data-dismiss="modal" >Finish</button>
 
                 <button type="button" class="btn button-negative btn-sm" data-dismiss="modal">Cancel</button>
             </div>

@@ -11,11 +11,11 @@
  
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="checkoutProducts.html">1.Products</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('checkout_products') }}">1.Products</a></li>
             <li class="breadcrumb-item active" aria-current="page">2.Delivery</li>
-            <li class="breadcrumb-item"><a href="checkoutShipping.html">3.Shipping</a></li>
-            <li class="breadcrumb-item"><a href="checkoutPayment.html">4.Payment</a></li>
-            <li class="breadcrumb-item"><a href="checkoutConfirmation.html">5.Confirmation</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('checkout_shipping') }}">3.Shipping</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('checkout_payment') }}">4.Payment</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('checkout_confirmation') }}">5.Confirmation</a></li>
         </ol>
     </nav>
 
@@ -31,17 +31,17 @@
                     </div>
             
             <h2 class="checkoutTextTop">Select or add an address where your purchase will be delivered!</h2>
-            <div class="d-flex all_elements2">
+            <div id="checkoutAddresses" class="d-flex all_elements2">
                 
            
                 @foreach($info['addresses'] as $address)
                 <div class="d-flex flex-column card checkoutCard">
                     <div class="card-body">
-                        <h2 class="card-title mb-3 text-muted">{{$address->name}}</h2>
+                        <h2 id="address{{$address['id']}}Name" class="card-title mb-3 text-muted">{{$address->name}}</h2>
                         <div class="card-text">
-                            <p>{{$address->address_line}}</p>
-                            <p>{{$address->postal_code}} {{$address->city}}</p>
-                            <p>{{$address->country}}</p>
+                            <p id="address{{$address['id']}}Line">{{$address->address_line}}</p>
+                            <p id="address{{$address['id']}}PostalCode">{{$address->postal_code}} {{$address->city}}</p>
+                            <p id="address{{$address['id']}}Country">{{$address->country}}</p>
                         </div>
                     </div>
                     <div class="d-flex flex-row-reverse mb-4 mx-3">
