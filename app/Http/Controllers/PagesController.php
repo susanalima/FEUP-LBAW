@@ -29,16 +29,23 @@ class PagesController extends Controller
 
  public function makeCart(){
   $cart = $this->cart();
-  $cart['products'] = $cart->get(0)->list_products();
-  $cart['total'] = 0;
-  $total = 0;
+  if($cart != []){
+    $cart['products'] = $cart->get(0)->list_products();
+    $cart['total'] = 0;
+    $total = 0;
 
-  foreach($cart['products'] as $product){    
-    $total += $product->price;
-    $product->name = str_before($product->name, ' -');
-    $product->quantity = DB::select("SELECT quantity FROM ass_list_product WHERE id_list = {$cart[0]['id']} and id_product = $product->id")[0]->quantity;
+    foreach($cart['products'] as $product){    
+      $total += $product->price;
+      $product->name = str_before($product->name, ' -');
+      $product->quantity = DB::select("SELECT quantity FROM ass_list_product WHERE id_list = {$cart[0]['id']} and id_product = $product->id")[0]->quantity;
+    }
+    $cart['total'] = $total;
   }
-  $cart['total'] = $total;
+  else{
+
+    $cart['products'] = [];
+    $cart['total'] = 0;
+  }
   return $cart;
  }
 
@@ -361,6 +368,9 @@ class PagesController extends Controller
 
  public function wishList($id)
  {
+
+  $cart = PagesController::makeCart();
+
   $info = WishList::find($id);
   $list['id'] = $id;
   $list['name'] = Aux::formatHeader($info->name);
@@ -377,6 +387,7 @@ class PagesController extends Controller
    'type' => 'information',
    'interactive' => true,
    'info' => $list,
+   'cart' => $cart,
   );
 
   return view("pages.wish_list")->with($data);
