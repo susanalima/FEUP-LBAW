@@ -54,18 +54,18 @@ class LoginController extends Controller
 
         if ($type == "App\Client") {
             //return redirect("/profile/".$user->id);
-            return redirect($redirectTo);
+            return redirect($this->redirectTo);
         } else if ($type == "App\Administrator") {
             //return redirect("/profile_admin/".$user->id);
-            return redirect($redirectTo);
+            return redirect($this->redirectTo);
         } else if ($type == "App\ClientManager") {
             //return redirect("/profile_manager/".$user->id);
-            return redirect($redirectTo);
+            return redirect($this->redirectTo);
         } else if ($type == "App\SalesManager") {
             //return redirect("/profile_manager/".$user->id);
-            return redirect($redirectTo);
+            return redirect($this->redirectTo);
         } else {
-            return redirect($redirectTo);
+            return redirect($this->redirectTo);
         }
    }
 }

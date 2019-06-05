@@ -1,8 +1,7 @@
 @extends('templates.app', ['interactive' => false])
 
-<link rel="stylesheet" href="css/root.css" />
-<link rel="stylesheet" href="css/login.css" />
-<link rel="stylesheet" href="css/buttons.css" />
+<link rel="stylesheet" href="{{ asset('css/root.css') }}" />
+<link rel="stylesheet" href="{{ asset('css/login.css') }}" />
 
 @section('content')
 
@@ -47,7 +46,8 @@
         </div>
         <div class="d-flex justify-content-center text-center flex-wrap loginFlex">
             <div class="p-2 rounded loginForm mx-4">
-                <h4 class="m-0">New to PuzzleWood? <a  class="loginHref" href="{{ route('register') }}">Create Account</a></h4>
+                <h4 class="m-0 mt-1 mb-1">New to PuzzleWood? <a  class="loginHref" href="{{ route('register') }}">Create Account</a></h4>
+                <h4 class="m-0 mb-1">Forgot your password? <a  class="loginHref" href="{{ route('password.request') }}">Reset Password</a></h4>
             </div>
         </div>
     </div>
