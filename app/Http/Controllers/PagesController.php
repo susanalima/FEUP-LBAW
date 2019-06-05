@@ -215,8 +215,7 @@ class PagesController extends Controller
  public function search($category = null, $text = null)
  {
   $size = 15;
-  $cart = $this->cart();
-
+  $cart = PagesController::makeCart();
   $catAux = Category::find($category);
   $categoryName = ($catAux != null ? Aux::formatHeader($catAux->name) : 'All Categories');
 
@@ -363,6 +362,9 @@ class PagesController extends Controller
 
  public function wishList($id)
  {
+
+  $cart = PagesController::makeCart();
+
   $info = WishList::find($id);
   $list['id'] = $id;
   $list['name'] = Aux::formatHeader($info->name);
@@ -379,6 +381,7 @@ class PagesController extends Controller
    'type' => 'information',
    'interactive' => true,
    'info' => $list,
+   'cart' => $cart,
   );
 
   return view("pages.wish_list")->with($data);
