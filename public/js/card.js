@@ -1,3 +1,29 @@
+function encodeForAjax(data) {
+    if (data == null) return null;
+    return Object.keys(data)
+      .map(function(k) {
+        return encodeURIComponent(k) + "=" + encodeURIComponent(data[k]);
+      })
+      .join("&");
+  }
+  
+  function sendAjaxRequest(method, url, data, handler) {
+    let request = new XMLHttpRequest();
+  
+    request.open(method, url, true);
+    request.setRequestHeader(
+      "X-CSRF-TOKEN",
+      document.querySelector('meta[name="csrf-token"]').content
+    );
+    request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    request.addEventListener("load", handler);
+    request.send(encodeForAjax(data));
+  }
+
+
+
+
+
 function opener() {
     var cart = document.getElementById("shoppingCart");
     cart.classList.toggle("active");
@@ -17,19 +43,41 @@ function addToComparison(elem) {
 function writeModal(elem) {
     elem.classList.toggle("active");
 }
-function plusOne(elem) {
+
+
+
+function cartOpHandler(e){
+
+    if(e.readyState === e.DONE && e.status ===200){
+        console.log(e.response);
+        console.log(e.responseText);
+    }
+}
+
+function plusOne(elem, prod_id, cart_id) {
     var textfield = elem.parentElement.parentElement.getElementsByTagName("INPUT")[0];
     var quantity = parseInt(textfield.value) + 1;
     if (isNaN(quantity)) {
         quantity = 2;
     }
     textfield.value = quantity;
+
+    sendAjaxRequest('POST', '/api/inc_prod', {product_id: prod_id, cart_id: cart_id}, cartOpHandler);
+
 }
-function minusOne(elem) {
+function minusOne(elem, prod_id, cart_id) {
     var textfield = elem.parentElement.parentElement.getElementsByTagName("INPUT")[0];
     var quantity = parseInt(textfield.value) - 1;
     if (isNaN(quantity) || quantity < 0) {
         quantity = 0;
     }
     textfield.value = quantity;
+
+    sendAjaxRequest('POST', '/api/dec_prod', {product_id: prod_id, cart_id: cart_id}, cartOpHandler);
+
+}
+
+
+function removeFromCart(prod_id, cart_id){
+    sendAjaxRequest('POST', '/api/remove_prod', {product_id: prod_id, cart_id: cart_id}, cartOpHandler);
 }

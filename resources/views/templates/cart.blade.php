@@ -45,37 +45,35 @@ title="Open Shopping cart"
     </button>
 </div>
 <div class="d-flex flex-column justify-content-between" id="shoppingCartCart">
-    @foreach ($cart as $product)
+    @foreach ($cart['products'] as $product)
     <article class="m-2 p-2 d-flex justify-content-between align-items-center">
         <div class="w-50 d-flex justify-content-left align-items-center">
-            <a href="/product/{{$product['id']}}" class="cartProductImage">
-                <img src="{{ '/storage/' . $product['image'] }}" class="" alt="..." />
-            </a>
-            <a href="./product.html">
-                <h4 class="cartProductName">{{$product['name']}}</h4>
+            
+            <a href="./product.html" class="ml-4">
+                <h4 class="cartProductName">{{$product->name}}</h4>
             </a>
         </div>
         <div class="d-flex align-items-center">
-            <input type="text" class="form-control cartQuantitySelector" placeholder="1" />
+            <input type="text" class="form-control cartQuantitySelector" value="{{$product->quantity}}" />
             <div class="cartQuantitySelectorController d-flex flex-column align-items-center">
                 <button
                     class="btn cartQuantitySelectorControllerBtn button-toggable border border-white"
-                    onClick="plusOne(this)"
+                    onclick="plusOne(this, {{$product->id}}, {{$product->id_list}})"
                     type="submit"
                 >
                     <i class="fas fa-plus"></i>
                 </button>
                 <button
                     class="btn cartQuantitySelectorControllerBtn button-toggable border border-white"
-                    onClick="minusOne(this)"
+                    onclick="minusOne(this,{{$product->id}}, {{$product->id_list}})"
                     type="submit"
                 >
                     <i class="fas fa-minus"></i>
                 </button>
             </div>
         </div>
-    <h4 class="cartProductSubTotal totalPrice">{{$product['price']}}</h4>
-        <button class="button-toggable btn border border-white">
+    <h4 class="cartProductSubTotal totalPrice">{{$product->price}}</h4>
+        <button class="button-toggable btn border border-white" onclick="removeFromCart( {{$product->id}}, {{$product->id_list}})">
             <i class="fas fa-times"></i>
         </button>
     </article>

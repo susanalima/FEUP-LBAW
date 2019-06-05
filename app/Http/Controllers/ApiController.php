@@ -13,7 +13,7 @@ use App\Client;
 use App\User;
 use App\WishList;
 use App\ProductList;
-
+use App\AssListProduct;
 
 class ApiController extends Controller
 {
@@ -66,9 +66,80 @@ class ApiController extends Controller
      $client_id = $request->client_id;
      $product_id = $request->product_id;
      $quantity = $request->quantity;
-     DB::insert("INSERT INTO ass_list_product (id_list, is_product,quantity,added_to,bought,return) VALUES ()", []);
+     var_dump($client_id, $product_id, $quantity);
+
+     $query_result = DB::select("SELECT id FROM cart where checkout is NULL AND id_client = {$client_id}");
+     var_dump($query_result);
+     $list_id = $query_result[0]->id;
+     var_dump($list_id);
+   
+     date_default_timezone_set('UTC');
+
+     DB::insert("INSERT INTO ass_list_product (id_list, id_product,quantity,added_to,bought,return) 
+     VALUES (?, ?, ?, ?, ?, ?)", 
+     [$list_id, $product_id, $quantity, date("Y-m-d"), false, false]);
      return response()->json("Success");
 
+  }
+
+  public function inc_prod(Request $request){
+   $validator = Validator::make($request->all(), [
+      'cart_id' => 'required',
+      'product_id' => 'required',
+     ]);
+   
+     if ($validator->fails()) {
+      return response()->json("Product and client must be defined");
+     }
+
+     $cart_id = $request->cart_id;
+     $product_id = $request->product_id;
+     /*
+     $tuple = AssListProduct::where([['id_list', $cart_id], ['id_product', $product_id]])->first();
+
+     $tuple->quantity = $tuple->quantity +1;
+     $tuple->save();*/
+     DB::update("UPDATE ass_list_product SET quantity = quantity + 1 WHERE id_list = {$cart_id} and id_product = {$product_id}");
+
+     return response()->json("Success");
+
+  }
+
+  public function dec_prod(Request $request){
+   $validator = Validator::make($request->all(), [
+      'cart_id' => 'required',
+      'product_id' => 'required',
+     ]);
+   
+     if ($validator->fails()) {
+      return response()->json("Product and client must be defined");
+     }
+
+     $cart_id = $request->cart_id;
+     $product_id = $request->product_id;
+
+     DB::update("UPDATE ass_list_product SET quantity = quantity - 1 WHERE id_list = {$cart_id} and id_product = {$product_id}");
+
+     return response()->json("Success");
+
+  }
+
+  public function remove_prod(Request $request){
+   $validator = Validator::make($request->all(), [
+      'cart_id' => 'required',
+      'product_id' => 'required',
+     ]);
+   
+     if ($validator->fails()) {
+      return response()->json("Product and client must be defined");
+     }
+
+     $cart_id = $request->cart_id;
+     $product_id = $request->product_id;
+
+     DB::delete("DELETE FROM ass_list_product WHERE id_list = {$cart_id} and id_product = {$product_id}");
+
+     return response()->json("Success");
   }
 
 

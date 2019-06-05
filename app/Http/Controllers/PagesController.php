@@ -11,6 +11,8 @@ use App\User;
 use App\WishList;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Facades\DB;
+
 
 class PagesController extends Controller
 {
@@ -24,10 +26,26 @@ class PagesController extends Controller
 
  }
 
+
+ public function makeCart(){
+  $cart = $this->cart();
+  $cart['products'] = $cart->get(0)->list_products();
+  $cart['total'] = 0;
+  $total = 0;
+
+  foreach($cart['products'] as $product){    
+    $total += $product->price;
+    $product->name = str_before($product->name, ' -');
+    $product->quantity = DB::select("SELECT quantity FROM ass_list_product WHERE id_list = {$cart[0]['id']} and id_product = $product->id")[0]->quantity;
+  }
+  $cart['total'] = $total;
+  return $cart;
+ }
+
+
  public function index()
  {
-  $cart = $this->cart();
-
+  $cart = PagesController::makeCart();
   $promotions = Promotion::active()->get()->random(2)->map(function ($promotion) {
 
    if (count($promotion->products) > 0) {
@@ -95,6 +113,8 @@ class PagesController extends Controller
 
   return view("index")->with($data);
  }
+
+
 
  public function help()
  {
@@ -170,7 +190,7 @@ class PagesController extends Controller
 
  public function product($id)
  {
-  $cart = $this->cart();
+  $cart = PagesController::makeCart();
 
   $product = Product::find($id);
   $product['category'] = Aux::formatHeader($product->category['name']);
@@ -290,7 +310,7 @@ class PagesController extends Controller
     $card = $cart->creditCard->last_digits;
    }
 
-   $products = $cart->list_products($cart->id);
+   $products = $cart->list_products();
 
    $this->getProductExtras($products);
 
@@ -340,7 +360,7 @@ class PagesController extends Controller
   $info = WishList::find($id);
   $list['id'] = $id;
   $list['name'] = Aux::formatHeader($info->name);
-  $list['products'] = $info->list_products($id);
+  $list['products'] = $info->list_products();
 
   $this->getProductExtras($list['products']);
 

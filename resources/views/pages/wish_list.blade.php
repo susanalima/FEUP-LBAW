@@ -3,6 +3,8 @@ use App\Product;
 ?>
     <link rel="stylesheet" href="{{ URL::asset('css/wishListStyle.css') }}" />
     <script src="{{ URL::asset('js/wishList.js') }}"></script>
+    <script src="{{ URL::asset('js/cart.js') }}"></script>
+
 
 
 @extends('templates.app')
@@ -43,7 +45,8 @@ use App\Product;
                                 </a>
                                     
                                 <div class="col-sm">
-                                    <div class="product_buttons">  <button class="btn addToCartBtn button-toggable mr-1" onclick="addToCart(this)"
+                                    
+                                    <div class="product_buttons">  <button class="btn addToCartBtn button-toggable mr-1" onclick="addProductToCart('{{Auth::id()}}' ,'{{$product->id}}', 1)"
                                     type="submit"
                                     title="Add To Cart"
                                     >

@@ -27,9 +27,7 @@ class AssListProduct extends Model
     return $this->hasOne(Product::class, 'id', 'id_product');
  }
 
- protected function ass_list_product(){
-     //TODO?
- }
+
 
 }
 

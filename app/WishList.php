@@ -26,9 +26,9 @@ class WishList extends Model{
         return $this->hasOne(Client::class, 'id_client', 'id');
     }
 
-    public function list_products($id)
+    public function list_products()
     {
-        return DB::select("select id_list, name , product.id from product_list join ass_list_product on product_list.id = id_list join product on id_product = product.id where id_list = $id");
+        return DB::select("select id_list, name , product.id from product_list join ass_list_product on product_list.id = id_list join product on id_product = product.id where id_list = $this->id");
     }
 
 

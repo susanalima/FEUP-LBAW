@@ -22,12 +22,20 @@ function encodeForAjax(data) {
 
 
 
-function addToCartHandler(){
-
-}
 
 //TODO: change quantity?
 function addProductToCart(client_id, product_id, quantity){
     console.log(client_id, product_id, quantity);
-    sendAjaxRequest('POST', 'api/add_product_cart', {product_id: product_id, client_id: client_id, quantity: 1}, addToCartHandler);
+
+    function addToCartHandler(){
+      console.log(this.responseText);
+      let response = JSON.parse(this.responseText);  
+      
+      console.log(response);
+    }
+    
+    if(client_id != '')
+      sendAjaxRequest('POST', '/api/add_product_cart', {product_id: product_id, client_id: client_id, quantity: quantity}, addToCartHandler);
+    else
+      console.log("User not logged in\n");  
 }
