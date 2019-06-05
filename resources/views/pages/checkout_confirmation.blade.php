@@ -22,7 +22,7 @@
         <div class="all_deliveries">
             <div class="card-body m-auto checkoutListCards">
                     <div class="d-flex justify-content-between price1 p-0">
-                            <h1 class="final_label">Total: 311.96€</h1>
+                            <h1 class="final_label">Total: {{$info['total']}}€</h1>
                             <form action="index.html">
                             <button class="btn button-action next_button " type="submit" value="Go to Delivery">Confirm Purchase <i
                                 class="fa fa-check" aria-hidden="true"></i></button></form>

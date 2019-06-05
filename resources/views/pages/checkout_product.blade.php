@@ -22,7 +22,7 @@
         </nav>
     
         <div class="d-flex justify-content-between price1">
-                <h1 class="final_label">Total: 311.96€</h1>
+                <h1 class="final_label">Total:  {{$info['total']}}€</h1>
                 <form action="checkoutDelivery.html">
                 <button class="btn button-action next_button w-auto" type="submit" value="Go to Delivery">Confirm Products <i
                     class="fa fa-caret-right" aria-hidden="true"></i></button></form>

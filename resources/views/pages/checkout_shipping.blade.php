@@ -15,14 +15,14 @@
                 <li class="breadcrumb-item"><a href="{{ route('checkout_delivery') }}">2.Delivery</a></li>
                 <li class="breadcrumb-item active" aria-current="page">3.Shipping</li>
                 <li class="breadcrumb-item"><a href="{{ route('checkout_payment') }}">4.Payment</a></li>
-                <li class="breadcrumb-item"><a href="checkoutConfirmation.html">5.Confirmation</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('checkout_confirmation') }}">5.Confirmation</a></li>
             </ol>
         </nav>
 
 
         <div class="card-body m-auto checkoutListCards">
             <div class="d-flex price">
-                <h1 class="final_label">Total: 311.96€</h1>
+                <h1 class="final_label">Total:  {{$info['total']}}€</h1>
             </div>
             <h2 class="checkoutTextTop">Select a shipping method for your purchase!</h2>
             <div class="d-flex all_elements2">

@@ -388,12 +388,12 @@ class PagesController extends Controller
   return view("pages.checkout_delivery")->with($data);
  }
 
+
  public function checkout_shipping()
  {
   $cart = $this->cart();
 
   $totalPrice = 10; //TODO GET CURRENT CART TOTAL PRICE
-
 
   $info['total'] = $totalPrice;
   $info['page'] = 'checkout';
@@ -407,12 +407,15 @@ class PagesController extends Controller
   return view("pages.checkout_shipping")->with($data);
  }
 
+
  public function checkout_payment()
  {
   $cart = $this->cart();
 
   $totalPrice = 10; //TODO GET CURRENT CART TOTAL PRICE
-
+  
+  $info = Client::find(Auth::user()->id);
+  $info['cards'] = $info->credit_cards;
 
   $info['total'] = $totalPrice;
   $info['page'] = 'checkout';
