@@ -151,11 +151,8 @@
                                   <form >
                                   {{ csrf_field() }}
 
-                                    <div class="input-group flex-nowrap mt-2">
-                                            <input type="hidden" class="form-control"  name="address_id" value="{{$address['id']}}"> {{-- TODO: Possible security breach --}} 
-                                        </div>
 
-                                    <button type="button" onclick="deleteAddress('{{$address['id']}}')" class="btn button-submit btn-sm" data-dismiss="modal">Yes</button>
+                                    <button type="button" onclick="deleteAddress('{{$address['id']}}')" class="btn button-submit btn-sm deleteAddressBtn" data-dismiss="modal">Yes</button>
                                     <button type="button" class="btn button-negative btn-sm" data-dismiss="modal">No</button>
                            
                                 </form>
@@ -176,7 +173,9 @@
                   <div class="d-flex flex-row-reverse mx-3 mb-3">
 
                   @if(sizeof($info['addresses']) !== 0)
-                    <button type="button" class="btn button-negative mr-2 btn-sm" data-toggle="modal" data-target="#deleteAllAddressesModal">Delete All</button>
+                    <button id="deleteAllAddresses" type="button" class="btn button-negative mr-2 btn-sm" data-toggle="modal" data-target="#deleteAllAddressesModal">Delete All</button>
+                  @else
+                    <button id="deleteAllAddresses" type="button" class="btn button-negative mr-2 btn-sm" data-toggle="modal" data-target="#deleteAllAddressesModal" disabled>Delete All</button>
                   @endif
                   <!-- Modal -->
                   <div class="modal fade" id="deleteAllAddressesModal" tabindex="-1" role="dialog" aria-labelledby="deleteAllAddressesModalLabel" aria-hidden="true">
@@ -193,16 +192,12 @@
                         </div>
                         <div class="modal-footer">
                         
-                        <form  id="formDeleteAllAddresses" method="POST" action="{{ route('addresses_delete') }}" >
-                        {{ csrf_field() }}
+        
 
-                          <div class="input-group flex-nowrap mt-2">
-                          </div>
-
-                          <button type="submit" class="btn button-submit btn-sm">Yes</button>
+                          <button type="button" onclick="deleteAllAddresses()"  class="btn button-submit btn-sm" data-dismiss="modal" >Yes</button>
                           <button type="button" class="btn button-negative btn-sm" data-dismiss="modal">No</button>
 
-                      </form>
+                     
                         </div>
                       </div>
                     </div>
@@ -282,7 +277,7 @@
                                     {{ csrf_field() }}
 
                                 
-                                      <button type="button" onclick="deleteCard('{{$card['id']}}')"  class="btn button-submit btn-sm" data-dismiss="modal">Yes</button>
+                                      <button type="button" onclick="deleteCard('{{$card['id']}}')"  class="btn button-submit btn-sm deleteCardBtn" data-dismiss="modal">Yes</button>
                                       <button type="button" class="btn button-negative btn-sm" data-dismiss="modal">No</button>
 
                                   </form>
@@ -309,7 +304,9 @@
                   <div class="d-flex flex-row-reverse mx-3 mb-3">
                  
                   @if(sizeof($info['cards']) !== 0)
-                  <button type="button" class="btn button-negative mr-2 btn-sm" data-toggle="modal" data-target="#deleteAllCardsModal">Delete All</button>
+                  <button id="deleteAllCards" type="button" class="btn button-negative mr-2 btn-sm" data-toggle="modal" data-target="#deleteAllCardsModal">Delete All</button>
+                  @else
+                  <button id="deleteAllCards" type="button" class="btn button-negative mr-2 btn-sm" data-toggle="modal" data-target="#deleteAllCardsModal" disabled>Delete All</button>
                   @endif
                   <!-- Modal -->
                   <div class="modal fade" id="deleteAllCardsModal" tabindex="-1" role="dialog" aria-labelledby="deleteAllCardsModalLabel" aria-hidden="true">
@@ -326,13 +323,12 @@
                         </div>
                         <div class="modal-footer">
                         
-                        <form  id="formDeleteAllCards" method="POST" action="{{ route('cards_delete') }}" >
-                        {{ csrf_field() }}
+                     
 
-                          <button type="submit" class="btn button-submit btn-sm">Yes</button>
+                          <button type="button" onclick="deleteAllCards()"  class="btn button-submit btn-sm" data-dismiss="modal">Yes</button>
                           <button type="button" class="btn button-negative btn-sm" data-dismiss="modal">No</button>
 
-                      </form>
+                     
                         </div>
                       </div>
                     </div>
@@ -647,7 +643,7 @@
                                             <input type="hidden" class="form-control"  name="wishlist_id" value="{{$wishList['id']}}"> 
                                         </div>
 
-                                    <button type="button" onclick="deleteWishlist('{{$wishList['id']}}')" class="btn button-submit btn-sm"data-dismiss="modal">Yes</button>
+                                    <button type="button" onclick="deleteWishlist('{{$wishList['id']}}')" class="btn button-submit btn-sm deleteWishlistBtn" data-dismiss="modal">Yes</button>
                                     <button type="button" class="btn button-negative btn-sm" data-dismiss="modal">No</button>
 
                                 </form>
@@ -671,7 +667,9 @@
                 <div class="d-flex flex-row-reverse mx-3 mb-3">
 
                   @if(sizeof($info['wishLists']) !== 0)
-                  <button type="button" class="btn button-negative mr-2 btn-sm" data-toggle="modal" data-target="#deleteAllWLModal">Delete All</button>
+                  <button id="deleteAllWishlists" type="button" class="btn button-negative mr-2 btn-sm" data-toggle="modal" data-target="#deleteAllWLModal">Delete All</button>
+                  @else
+                  <button id="deleteAllWishlists" type="button" class="btn button-negative mr-2 btn-sm" data-toggle="modal" data-target="#deleteAllWLModal" disabled>Delete All</button>
                   @endif
 
                 <!-- Modal -->
@@ -688,14 +686,11 @@
                           Are you sure you want to delete all the wishists?
                         </div>
                         <div class="modal-footer">
-                        
-                        <form  id="formDeleteAllWL" method="POST" action="{{ route('wishlists_delete') }}" > 
-                        {{ csrf_field() }}
+                    
 
-                          <button type="submit" class="btn button-submit btn-sm">Yes</button>
+                          <button type="button" onclick="deleteAllWishLists()" class="btn button-submit btn-sm" data-dismiss="modal">Yes</button>
                           <button type="button" class="btn button-negative btn-sm" data-dismiss="modal">No</button>
 
-                      </form>
                         </div>
                       </div>
                     </div>

@@ -63,6 +63,11 @@ function deleteAddressLoaded(){
     setAlert("error deleting address",address);
     return;
    }
+   let table = document.getElementById("addressTable");
+   let length = table.rows.length;
+   if(length === 1) {
+     document.getElementById("deleteAllAddresses").disabled = true;
+   }
   document.getElementById(`address${response['id']}`).remove();
 }
 
@@ -81,7 +86,10 @@ function addAddressProfileLoaded(){
    }
 
   let table = document.getElementById("addressTable");
-
+  let length = table.rows.length;
+  if(length === 0) {
+    document.getElementById("deleteAllAddresses").disabled = false;
+  }
   let row = table.insertRow(0);
   row.setAttribute('id', `address${address['id']}`);
   row.innerHTML = 
@@ -164,7 +172,7 @@ function addAddressProfileLoaded(){
                     <input type="hidden" class="form-control"  name="address_id" value="${address['id']}"> 
                 </div>
 
-            <button type="button" onclick="deleteAddress('${address['id']}')" class="btn button-submit btn-sm" data-dismiss="modal">Yes</button>
+            <button type="button" onclick="deleteAddress('${address['id']}')" class="btn button-submit btn-sm deleteAddressBtn" data-dismiss="modal">Yes</button>
             <button type="button" class="btn button-negative btn-sm" data-dismiss="modal">No</button>
    
         </form>
@@ -334,6 +342,12 @@ function deleteCardLoaded(){
     setAlert("error deleting credit card",response);
     return;
    }
+
+   let table = document.getElementById("cardTable");
+   let length = table.rows.length;
+   if(length === 1) {
+     document.getElementById("deleteAllCards").disabled = true;
+   }
   document.getElementById(`card${response['card_id']}`).remove();
 }
 
@@ -354,6 +368,10 @@ function addCardProfileLoaded(){
    }
 
   let table = document.getElementById("cardTable");
+  let length = table.rows.length;
+  if(length === 0) {
+    document.getElementById("deleteAllCards").disabled = false;
+  }
 
   let row = table.insertRow(0);
   row.setAttribute('id', `card${card['id']}`);
@@ -455,7 +473,7 @@ function addCardProfileLoaded(){
 
                 </div>
                 <div class="modal-footer">
-              <button type="button"  onclick="editCard('${card['id']}', 'profile')" class="btn button-submit btn-sm" data-dismiss="modal">Finish</button>
+              <button type="button"  onclick="editCard('${card['id']}', 'profile')" class="btn button-submit btn-sm " data-dismiss="modal">Finish</button>
               <button type="button" class="btn button-negative btn-sm" data-dismiss="modal">Cancel</button>
             </div>
               </form>
@@ -487,7 +505,7 @@ function addCardProfileLoaded(){
                 <input type="hidden" class="form-control" name="card_id" value="${card['id']}"> 
               </div>
 
-              <button type="button" onclick="deleteCard('${card['id']}')"  class="btn button-submit btn-sm" data-dismiss="modal">Yes</button>
+              <button type="button" onclick="deleteCard('${card['id']}')"  class="btn button-submit btn-sm deleteCardBtn" data-dismiss="modal">Yes</button>
               <button type="button" class="btn button-negative btn-sm" data-dismiss="modal">No</button>
 
           </form>
@@ -668,6 +686,11 @@ function deleteWishlistLoad(){
     setAlert("error deleting wishlist",response);
     return;
    }
+   let table = document.getElementById("wlTable");
+   let counter = table.getElementsByTagName("tr").length;
+   if(counter === 1) {
+     document.getElementById("deleteAllWishlists").disabled = true;
+   }
   document.getElementById(`wishlist${response['wishlist_id']}`).remove();
 }
 
@@ -685,6 +708,9 @@ function addWishlistLoaded(){
    }
   let table = document.getElementById("wlTable");
   let counter = table.getElementsByTagName("tr").length;
+  if(counter === 0) {
+    document.getElementById("deleteAllWishlists").disabled = false;
+  }
   //console.log(counter);
 
   if(wishList['description'] === null)
@@ -724,7 +750,7 @@ function addWishlistLoaded(){
                       <input type="hidden" class="form-control"  name="wishlist_id" value="${wishList['id']}"> 
                   </div>
 
-              <button type="button" onclick="deleteWishlist('${wishList['id']}')" class="btn button-submit btn-sm"data-dismiss="modal">Yes</button>
+              <button type="button" onclick="deleteWishlist('${wishList['id']}')" class="btn button-submit btn-sm deleteWishlistBtn" data-dismiss="modal">Yes</button>
               <button type="button" class="btn button-negative btn-sm" data-dismiss="modal">No</button>
 
           </form>
@@ -745,4 +771,26 @@ function addWishlist(id){
   let description = document.getElementById(`wishListDescription`).value;
 
   sendAjaxRequest('POST', '/api/wishlist_add', {id:id, name:name, description:description}, addWishlistLoaded);
+}
+
+
+function deleteAllAddresses(){
+  let btns = document.getElementsByClassName("deleteAddressBtn");
+  for(let i = 0; i < btns.length; i++){
+    btns[i].click();
+  }
+}
+
+function deleteAllCards(){
+  let btns = document.getElementsByClassName("deleteCardBtn");
+  for(let i = 0; i < btns.length; i++){
+    btns[i].click();
+  }
+}
+
+function deleteAllWishLists(){
+  let btns = document.getElementsByClassName("deleteWishlistBtn");
+  for(let i = 0; i < btns.length; i++){
+    btns[i].click();
+  }
 }

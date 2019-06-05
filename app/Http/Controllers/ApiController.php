@@ -511,6 +511,7 @@ public function checkout_delivery(Request $request) {
 
    $cart->save();
    
+   //CHECK IF CART IS NOT EMPTY
    //TODO CREATE NEW EMPTY CART
 
    return response()->json($cart);
