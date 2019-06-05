@@ -2,6 +2,8 @@
 
 
 <link rel="stylesheet" href="{{ URL::asset('css/checkoutProducts.css') }}"" />
+<script src="{{ URL::asset('js/wishList.js') }}"></script>
+<script src="{{ URL::asset('js/checkout.js') }}"></script>
 
 @section('content')
 <div class="mainContent">
@@ -18,14 +20,22 @@
             </ol>
         </nav>
 
+        <div id="alert" style="max-width: 75%; margin: auto;">
      
+        </div>
+
         <div class="all_deliveries">
             <div class="card-body m-auto checkoutListCards">
                     <div class="d-flex justify-content-between price1 p-0">
                             <h1 class="final_label">Total: {{$info['total']}}€</h1>
-                            <form action="index.html">
-                            <button class="btn button-action next_button " type="submit" value="Go to Delivery">Confirm Purchase <i
-                                class="fa fa-check" aria-hidden="true"></i></button></form>
+                            
+                            <form id="confirmForm" action="{{ route('index') }}">
+                            <button class="btn button-action next_button " type="button" onclick="checkoutConfirmation('{{$info['id']}}')" value="Go to Delivery">Confirm Purchase <i
+                                class="fa fa-check" aria-hidden="true"></i>
+                            </button>
+                            </form>
+                           
+
                        </div>
                     <h2 class="checkoutTextTop">Confirm all the information for your purchase!</h2>
                 <div class="d-flex all_elements2">
@@ -34,29 +44,16 @@
                             <h2 class="card-title mb-3 text-muted">Products</h2>
                             <div style="overflow-y: scroll; overflow-x: hidden; max-height: 7.5em;">
                                 <dl class="row">
-                                    <dt class="col-sm-8">God's Autobiography</dt>
-                                    <dd class="col-sm-4 text-truncate">29.99€</dd>
-                                    <dt class="col-sm-8">Overpriced Phones</dt>
-                                    <dd class="col-sm-4">199.49€</dd>
-                                    <dt class="col-sm-8">PsycMixTape</dt>
-                                    <dd class="col-sm-4">59.99€</dd>
-                                    <dt class="col-sm-8">God's Autobiography</dt>
-                                    <dd class="col-sm-4 text-truncate">29.99€</dd>
-                                    <dt class="col-sm-8">Overpriced Phones</dt>
-                                    <dd class="col-sm-4">199.49€</dd>
-                                    <dt class="col-sm-8">PsycMixTape</dt>
-                                    <dd class="col-sm-4">59.99€</dd>
-                                    <dt class="col-sm-8">God's Autobiography</dt>
-                                    <dd class="col-sm-4 text-truncate">29.99€</dd>
-                                    <dt class="col-sm-8">Overpriced Phones</dt>
-                                    <dd class="col-sm-4">199.49€</dd>
-                                    <dt class="col-sm-8">PsycMixTape</dt>
-                                    <dd class="col-sm-4">59.99€</dd>
+                                    @foreach($info['products'] as $product)
+                                    <dt class="col-sm-8 text-truncate">{{$product->name}}</dt>
+                                    <dd class="col-sm-4 text-truncate">{{$product->price}}€</dd>
+                                    @endforeach
+                                   
                                 </dl>
                             </div>
                         </div>
                         <div class="d-flex flex-row-reverse mb-4 mx-3">
-                            <form class="button_form mr-2" action="checkoutProducts.html"> <button type="submit" class="btn button-action btn-sm">Edit</button>
+                            <form class="button_form mr-2" action="{{ route('checkout_products') }}"> <button type="submit" class="btn button-action btn-sm">Edit</button>
                             </form>
                         </div>
                     </div>
@@ -64,13 +61,14 @@
                         <div class="card-body ">
                             <h2 class="card-title mb-3 text-muted">Delivery Address</h2>
                             <div class="card-text">
-                                <p>Alameda dos Jardins d'Arrábida 443</p>
-                                <p>4400-478 Porto</p>
-                                <p>Portugal</p>
+                                <p><strong>{{$info['address']->name}}</strong></p>
+                                <p>{{$info['address']->address_line}}</p>
+                                <p>{{$info['address']->postal_code}} {{$info['address']->city}}</p>
+                                <p>{{$info['address']->country}}</p>
                             </div>
                         </div>
                         <div class="d-flex flex-row-reverse mb-4 mx-3">
-                            <form class="button_form mr-2" action="checkoutDelivery.html"> <button type="submit" class="btn button-action btn-sm">Edit</button>
+                            <form class="button_form mr-2" action="{{ route('checkout_delivery') }}"> <button type="submit" class="btn button-action btn-sm">Edit</button>
                             </form>
                         </div>
                     </div>
@@ -79,34 +77,47 @@
                         <div class="card-body">
                             <h2 class="card-title mb-3 text-muted">Shipping Method</h2>
                             <div class="card-text">
-                                <strong>Regular</strong>
-                                <p>Delivered within 15 days after purchase</p>
-                                <p>No additional costs!</p>
+                             
+                                <p><strong>{{$info['shipping']->method}}</strong></p>
+                                <p>{{$info['shipping']->description}}</p>
+                                <p>{{$info['shipping']->price}}</p>
                             </div>
                         </div>
                         <div class="d-flex flex-row-reverse mb-4 mx-3">
-                            <form class="button_form mr-2" action="checkoutShipping.html"> <button type="submit" class="btn button-action btn-sm">Edit</button>
+                            <form class="button_form mr-2" action="{{ route('checkout_shipping') }}"> <button type="submit" class="btn button-action btn-sm">Edit</button>
                             </form>
                         </div>
                     </div>
 
                     <div class="d-flex flex-column card checkoutCard">
                             <div class="card-body">
+                                <?php
+                                    $type = "fa-cc-visa";
+                                    if($info['card']->type === "Mastercard") {
+                                        $type = "fa-cc-mastercard";
+                                    }
+                                ?>
                                 <h2 class="card-title mb-3 text-muted">Payment Method
-                                    <i class="float-right fab fa-cc-visa fa-2x"></i>
+                                    <i class="float-right fab {{$type}} fa-2x"></i>
                                 </h2>
     
                                 <dl class="row">
                                     <dt class="col-sm-5">Name</dt>
-                                    <dd class="col-sm-5 text-truncate">John Doe</dd>
-                                    <dt class="col-sm-5">Ends in</dt>
-                                    <dd class="col-sm-5">1111</dd>
-                                    <dt class="col-sm-5">Expiration Date</dt>
-                                    <dd class="col-sm-5">2019/11</dd>
+                                    <dd class="col-sm-5 text-truncate">{{$info['card']->name}}</dd>
+                                    <dt class="col-sm-5">Number</dt>
+                                    <dd class="col-sm-5">{{$info['card']->last_digits}}</dd>
+                                    <dt class="col-sm-5">Expiration</dt>
+                                    <?php
+                                        $tokens = explode("-", $info['card']->expiration_date);
+                                        $expYear = $tokens['0'];
+                                        $expMonth = $tokens['1'];
+                                        
+                                    ?>
+                                    <dd class="col-sm-5">{{$expYear}}/{{$expMonth}}</dd>
                                 </dl>
                             </div>
                             <div class="d-flex flex-row-reverse mb-4 mx-3">
-                                <form class="button_form mr-2" action="checkoutPayment.html"> <button type="submit" class="btn button-action btn-sm">Edit</button>
+                                <form class="button_form mr-2" action="{{ route('checkout_payment') }}"> <button type="submit" class="btn button-action btn-sm">Edit</button>
                                 </form>
                             </div>
                         </div>

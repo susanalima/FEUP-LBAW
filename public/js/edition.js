@@ -746,15 +746,3 @@ function addWishlist(id){
 
   sendAjaxRequest('POST', '/api/wishlist_add', {id:id, name:name, description:description}, addWishlistLoaded);
 }
-
-
-function checkoutPayment(card_id, client_id){
-  console.log("here");
-  sendAjaxRequest('POST', '/api/checkout_payment', {card_id:card_id, client_id:client_id}, nothing);
-}
-
-
-function checkoutDelivery(address_id, client_id){
-  console.log("here");
-  sendAjaxRequest('POST', '/api/checkout_delivery', {address_id:address_id, client_id:client_id}, nothing);
-}

@@ -409,7 +409,7 @@ public function wishlist_add(Request $request)
 
 public function wishlist_delete(Request $request)
 {
-      $rules = [
+    $rules = [
         'wishlist_id' => 'required',
     ];
     $validator = Validator::make($request->all(), $rules);
@@ -468,6 +468,52 @@ public function checkout_delivery(Request $request) {
    $cart->save();
 
    return response()->json($request);
+ }
+
+
+ public function checkout_confirm(Request $request) {
+
+   $tmpcart = Client::find($request->client_id)->cart();
+
+   $cart = Cart::find($tmpcart->get(0)->id);
+
+   $id_address = $cart->id_address;
+
+   $id_card = $cart->id_card;
+
+   $id_shipping = $cart->id_shipping;
+
+   if($id_address === null){
+      $data = [
+         'type' => 'error',
+      ];
+      $data['error'] = "To make a purchase the delivery address must be specified";
+      return response()->json($data);
+   }
+   
+   if($id_card === null){
+      $data = [
+         'type' => 'error',
+      ];
+      $data['error'] = "To make a purchase the payment method must be specified";
+      return response()->json($data);
+   }
+
+   if($id_shipping === null){
+      $data = [
+         'type' => 'error',
+      ];
+      $data['error'] = "To make a purchase the shipping method must be specified";
+      return response()->json($data);
+   }
+
+   $cart->checkout = date("Y-m-d");
+
+   $cart->save();
+   
+   //TODO CREATE NEW EMPTY CART
+
+   return response()->json($cart);
  }
 
 
