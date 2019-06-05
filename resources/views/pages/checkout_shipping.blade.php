@@ -2,7 +2,8 @@
 
 
 <link rel="stylesheet" href="{{ URL::asset('css/checkoutProducts.css') }}"" />
-
+<script src="{{ URL::asset('js/wishList.js') }}"></script>
+<script src="{{ URL::asset('js/edition.js') }}"></script>
 
 @section('content')
 
@@ -33,11 +34,14 @@
                         <p class="card-text">No additional costs!</p>
                     </div>
                     <div class="d-flex flex-row-reverse mb-4 mx-3">
-                        <form class="button_form mr-2" action="checkoutPayment.html"> <button type="submit"
-                                class="btn button-submit btn-sm">Ship</button>
+
+                        <form class="button_form mr-2" action="{{ route('checkout_payment') }}"> 
+                        <button type="submit" onclick="checkoutShipping('1', '{{$info['id']}}')"class="btn button-submit btn-sm">Ship</button>
                         </form>
+
                     </div>
                 </div>
+
                 <div class="d-flex flex-column card checkoutCard">
                     <div class="card-body">
                         <h2 class="card-title mb-3 text-muted">Fast</h2>
@@ -45,11 +49,12 @@
                         <p class="card-text">Additional 2.99€ cost</p>
                     </div>
                     <div class="d-flex flex-row-reverse mb-4 mx-3">
-                        <form class="button_form mr-2" action="checkoutPayment.html"> <button type="submit"
-                                class="btn button-submit btn-sm">Ship</button>
+                    <form class="button_form mr-2" action="{{ route('checkout_payment') }}"> 
+                        <button type="submit" onclick="checkoutShipping('2', '{{$info['id']}}')"class="btn button-submit btn-sm">Ship</button>
                         </form>
                     </div>
                 </div>
+
                 <div class="d-flex flex-column card checkoutCard">
                     <div class="card-body">
                         <h2 class="card-title mb-3 text-muted">Urgent</h2>
@@ -57,11 +62,12 @@
                         <p class="card-text">Additional 5.99€ cost</p>
                     </div>
                     <div class="d-flex flex-row-reverse mb-4 mx-3">
-                        <form class="button_form mr-2" action="checkoutPayment.html"> <button type="submit"
-                                class="btn button-submit btn-sm">Ship</button>
+                         <form class="button_form mr-2" action="{{ route('checkout_payment') }}"> 
+                        <button type="submit" onclick="checkoutShipping('3', '{{$info['id']}}')"class="btn button-submit btn-sm">Ship</button>
                         </form>
                     </div>
                 </div>
+
             </div>
         </div>
     </div>

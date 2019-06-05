@@ -64,9 +64,10 @@
                         <div class="card-body ">
                             <h2 class="card-title mb-3 text-muted">Delivery Address</h2>
                             <div class="card-text">
-                                <p>Alameda dos Jardins d'Arrábida 443</p>
-                                <p>4400-478 Porto</p>
-                                <p>Portugal</p>
+                                <p><strong>{{$info['address']->name}}</strong></p>
+                                <p>{{$info['address']->address_line}}</p>
+                                <p>{{$info['address']->postal_code}} {{$info['address']->city}}</p>
+                                <p>{{$info['address']->country}}</p>
                             </div>
                         </div>
                         <div class="d-flex flex-row-reverse mb-4 mx-3">
@@ -79,9 +80,10 @@
                         <div class="card-body">
                             <h2 class="card-title mb-3 text-muted">Shipping Method</h2>
                             <div class="card-text">
-                                <strong>Regular</strong>
-                                <p>Delivered within 15 days after purchase</p>
-                                <p>No additional costs!</p>
+                             
+                                <p><strong>{{$info['shipping']->method}}</strong></p>
+                                <p>{{$info['shipping']->description}}</p>
+                                <p>{{$info['shipping']->price}}</p>
                             </div>
                         </div>
                         <div class="d-flex flex-row-reverse mb-4 mx-3">
@@ -92,17 +94,29 @@
 
                     <div class="d-flex flex-column card checkoutCard">
                             <div class="card-body">
+                                <?php
+                                    $type = "fa-cc-visa";
+                                    if($info['card']->type === "Mastercard") {
+                                        $type = "fa-cc-mastercard";
+                                    }
+                                ?>
                                 <h2 class="card-title mb-3 text-muted">Payment Method
-                                    <i class="float-right fab fa-cc-visa fa-2x"></i>
+                                    <i class="float-right fab {{$type}} fa-2x"></i>
                                 </h2>
     
                                 <dl class="row">
                                     <dt class="col-sm-5">Name</dt>
-                                    <dd class="col-sm-5 text-truncate">John Doe</dd>
-                                    <dt class="col-sm-5">Ends in</dt>
-                                    <dd class="col-sm-5">1111</dd>
-                                    <dt class="col-sm-5">Expiration Date</dt>
-                                    <dd class="col-sm-5">2019/11</dd>
+                                    <dd class="col-sm-5 text-truncate">{{$info['card']->name}}</dd>
+                                    <dt class="col-sm-5">Number</dt>
+                                    <dd class="col-sm-5">{{$info['card']->last_digits}}</dd>
+                                    <dt class="col-sm-5">Expiration</dt>
+                                    <?php
+                                        $tokens = explode("-", $info['card']->expiration_date);
+                                        $expYear = $tokens['0'];
+                                        $expMonth = $tokens['1'];
+                                        
+                                    ?>
+                                    <dd class="col-sm-5">{{$expYear}}/{{$expMonth}}</dd>
                                 </dl>
                             </div>
                             <div class="d-flex flex-row-reverse mb-4 mx-3">

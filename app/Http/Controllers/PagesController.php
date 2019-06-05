@@ -428,6 +428,7 @@ class PagesController extends Controller
   $totalPrice = 10; //TODO GET CURRENT CART TOTAL PRICE
 
   $info['total'] = $totalPrice;
+  $info['id'] = Auth::user()->id;
   $info['page'] = 'checkout';
 
   $data = array(
@@ -464,9 +465,30 @@ class PagesController extends Controller
 
   $totalPrice = 10; //TODO GET CURRENT CART TOTAL PRICE
 
+  $cart = $this->cart();
+
+  $address = $cart->get(0)->get_address();
+  $card = $cart->get(0)->get_card();
+  $shipping = $cart->get(0)->get_shipping();
+
+
 
   $info['total'] = $totalPrice;
+  $info['address'] = $address[0];
+  $info['card'] = $card[0];
+  $info['shipping'] = $shipping[0];
   $info['page'] = 'checkout';
+
+  $description = '';
+  $price = '';
+
+  if($info['shipping']->method === "Regular"){
+    $description = "Delivered within 15 days after purchase";
+    $price = "No additional costs!";
+  }
+
+  $info['shipping']->description = $description;
+  $info['shipping']->price = $price;
 
   $data = array(
    'type' => 'help',
