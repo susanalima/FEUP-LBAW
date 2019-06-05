@@ -2,6 +2,8 @@
 
 
 <link rel="stylesheet" href="{{ URL::asset('css/checkoutProducts.css') }}"" />
+<script src="{{ URL::asset('js/wishList.js') }}"></script>
+<script src="{{ URL::asset('js/checkout.js') }}"></script>
 
 @section('content')
 <div class="mainContent">
@@ -18,14 +20,22 @@
             </ol>
         </nav>
 
+        <div id="alert" style="max-width: 75%; margin: auto;">
      
+        </div>
+
         <div class="all_deliveries">
             <div class="card-body m-auto checkoutListCards">
                     <div class="d-flex justify-content-between price1 p-0">
                             <h1 class="final_label">Total: {{$info['total']}}€</h1>
-                            <form action="index.html">
-                            <button class="btn button-action next_button " type="submit" value="Go to Delivery">Confirm Purchase <i
-                                class="fa fa-check" aria-hidden="true"></i></button></form>
+                            
+                            <form id="confirmForm" action="{{ route('index') }}">
+                            <button class="btn button-action next_button " type="button" onclick="checkoutConfirmation('{{$info['id']}}')" value="Go to Delivery">Confirm Purchase <i
+                                class="fa fa-check" aria-hidden="true"></i>
+                            </button>
+                            </form>
+                           
+
                        </div>
                     <h2 class="checkoutTextTop">Confirm all the information for your purchase!</h2>
                 <div class="d-flex all_elements2">
@@ -34,29 +44,16 @@
                             <h2 class="card-title mb-3 text-muted">Products</h2>
                             <div style="overflow-y: scroll; overflow-x: hidden; max-height: 7.5em;">
                                 <dl class="row">
-                                    <dt class="col-sm-8">God's Autobiography</dt>
-                                    <dd class="col-sm-4 text-truncate">29.99€</dd>
-                                    <dt class="col-sm-8">Overpriced Phones</dt>
-                                    <dd class="col-sm-4">199.49€</dd>
-                                    <dt class="col-sm-8">PsycMixTape</dt>
-                                    <dd class="col-sm-4">59.99€</dd>
-                                    <dt class="col-sm-8">God's Autobiography</dt>
-                                    <dd class="col-sm-4 text-truncate">29.99€</dd>
-                                    <dt class="col-sm-8">Overpriced Phones</dt>
-                                    <dd class="col-sm-4">199.49€</dd>
-                                    <dt class="col-sm-8">PsycMixTape</dt>
-                                    <dd class="col-sm-4">59.99€</dd>
-                                    <dt class="col-sm-8">God's Autobiography</dt>
-                                    <dd class="col-sm-4 text-truncate">29.99€</dd>
-                                    <dt class="col-sm-8">Overpriced Phones</dt>
-                                    <dd class="col-sm-4">199.49€</dd>
-                                    <dt class="col-sm-8">PsycMixTape</dt>
-                                    <dd class="col-sm-4">59.99€</dd>
+                                    @foreach($info['products'] as $product)
+                                    <dt class="col-sm-8 text-truncate">{{$product->name}}</dt>
+                                    <dd class="col-sm-4 text-truncate">{{$product->price}}€</dd>
+                                    @endforeach
+                                   
                                 </dl>
                             </div>
                         </div>
                         <div class="d-flex flex-row-reverse mb-4 mx-3">
-                            <form class="button_form mr-2" action="checkoutProducts.html"> <button type="submit" class="btn button-action btn-sm">Edit</button>
+                            <form class="button_form mr-2" action="{{ route('checkout_products') }}"> <button type="submit" class="btn button-action btn-sm">Edit</button>
                             </form>
                         </div>
                     </div>
@@ -71,7 +68,7 @@
                             </div>
                         </div>
                         <div class="d-flex flex-row-reverse mb-4 mx-3">
-                            <form class="button_form mr-2" action="checkoutDelivery.html"> <button type="submit" class="btn button-action btn-sm">Edit</button>
+                            <form class="button_form mr-2" action="{{ route('checkout_delivery') }}"> <button type="submit" class="btn button-action btn-sm">Edit</button>
                             </form>
                         </div>
                     </div>
@@ -87,7 +84,7 @@
                             </div>
                         </div>
                         <div class="d-flex flex-row-reverse mb-4 mx-3">
-                            <form class="button_form mr-2" action="checkoutShipping.html"> <button type="submit" class="btn button-action btn-sm">Edit</button>
+                            <form class="button_form mr-2" action="{{ route('checkout_shipping') }}"> <button type="submit" class="btn button-action btn-sm">Edit</button>
                             </form>
                         </div>
                     </div>
@@ -120,7 +117,7 @@
                                 </dl>
                             </div>
                             <div class="d-flex flex-row-reverse mb-4 mx-3">
-                                <form class="button_form mr-2" action="checkoutPayment.html"> <button type="submit" class="btn button-action btn-sm">Edit</button>
+                                <form class="button_form mr-2" action="{{ route('checkout_payment') }}"> <button type="submit" class="btn button-action btn-sm">Edit</button>
                                 </form>
                             </div>
                         </div>

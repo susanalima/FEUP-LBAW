@@ -37,7 +37,13 @@ class PagesController extends Controller
     foreach($cart['products'] as $product){    
       $total += $product->price;
       $product->name = str_before($product->name, ' -');
-      $product->quantity = DB::select("SELECT quantity FROM ass_list_product WHERE id_list = {$cart[0]['id']} and id_product = $product->id")[0]->quantity;
+      $tmp = DB::select("SELECT quantity, added_to FROM ass_list_product WHERE id_list = {$cart[0]['id']} and id_product = $product->id")[0];
+      $img = DB::select("SELECT filepath, description FROM image WHERE primary_img = true and id_product = $product->id")[0];
+      $product->img_path = $img->filepath;
+      $product->img_description = $img->description;
+     
+      $product->quantity = $tmp->quantity;
+      $product->date = $tmp->added_to;
     }
     $cart['total'] = $total;
   }
@@ -327,7 +333,7 @@ class PagesController extends Controller
 
    $collection = collect($products);
 
-   $totalPrice = $collection->sum('price');
+   $totalPrice = $collection->sum('price'); //TODO O PREÇO TEM DE SER MULTIPLICADO PELO QUANTIDADE
 
    return [
     'id' => $cart->id,
@@ -470,14 +476,15 @@ class PagesController extends Controller
   $address = $cart->get(0)->get_address();
   $card = $cart->get(0)->get_card();
   $shipping = $cart->get(0)->get_shipping();
+  $products = $cart->get(0)->list_products();
 
-
-
+  $info['id'] = Auth::user()->id;
   $info['total'] = $totalPrice;
   $info['address'] = $address[0];
   $info['card'] = $card[0];
   $info['shipping'] = $shipping[0];
   $info['page'] = 'checkout';
+  $info['products'] = $products;
 
   $description = '';
   $price = '';
@@ -485,6 +492,12 @@ class PagesController extends Controller
   if($info['shipping']->method === "Regular"){
     $description = "Delivered within 15 days after purchase";
     $price = "No additional costs!";
+  } else if($info['shipping']->method === "Fast"){
+    $description = "Delivered within 7 days after purchase";
+    $price = "Additional 2.99€ cost";
+  } else  if($info['shipping']->method === "Urgent"){
+    $description = "Delivered within 5 days after purchase";
+    $price = "Additional 5.99€ cost";
   }
 
   $info['shipping']->description = $description;
@@ -504,9 +517,14 @@ class PagesController extends Controller
 
   $totalPrice = 10; //TODO GET CURRENT CART TOTAL PRICE
 
+  $cart = PagesController::makeCart();
+
 
   $info['total'] = $totalPrice;
   $info['page'] = 'checkout';
+  $info['products'] = $cart['products'];
+
+ 
 
   $data = array(
    'type' => 'help',
