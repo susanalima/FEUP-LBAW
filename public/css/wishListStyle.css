@@ -65,15 +65,24 @@ h4.product_name {
   margin-bottom: 1em;
 }
 
-a{
-  max-width: 40%;
-  height: 75%;
+.image_link{
+  width: 40%;
+  padding-bottom: 2em;
+
+}
+
+div.d-flex{
+  max-height: 300px;
+  min-height: 250px;
 }
 
 .product_img {
- 
-  background-size: cover;
-  margin-left: 0.5em;
+  max-width: 250px;
+  max-height: 250px;
+  background-size: 250px 250px;
+  margin:auto;
+  margin-top:0;
+
 }
 
 .review_score {
@@ -93,33 +102,13 @@ a{
   font-size: 1.5vmax;
 }
 
-button.addToCartBtn {
+
+
+button, button.addToCartBtn{
   min-height: 5%;
   max-height: 8%;
-}
-
-button.addToCartBtn:hover {
-  min-height: 5%;
-  max-height: 8%;
-  color: white;
-  background-color: var(--var-main-color);
-}
-
-button.removeWishItem {
-  min-height: 15%;
-  max-height: 8%;
-  width: 50px;
+  width: 75px;
   height: 50px;
-
-}
-
-button.removeWishItem:hover {
-  min-height: 15%;
-  max-height: 8%;
-  width: 50px;
-  height: 50px;
-  color: white;
-  background-color: var(--var-main-color);
 }
 
 .shop_button {
@@ -161,6 +150,7 @@ label {
   position: absolute;
 }
 
+
 div.col-sm p {
   width: 90%;
   margin-left: 0em;
@@ -193,6 +183,19 @@ div.col-sm p {
     justify-content: center;
     max-width: 100%;
   }
+
+  .image_link {
+    width: 100%;
+    margin-left: 0;
+    margin-bottom: 1.5em;
+  }
+
+
+
+  img.product_img{
+    margin:auto;
+    width:90%;
+  }
 }
 
 @media screen and (max-width: 1260px) {
@@ -220,14 +223,21 @@ div.col-sm p {
 }
 
 @media screen and (max-width: 575px) {
-  a {
-    max-width: 100%;
+  .image_link {
+    width: 100%;
     margin-left: 0;
     margin-bottom: 1.5em;
   }
-  .product_img{
-    margin-left:0;
+
+
+  button, button.addToCartBtn{
+    width:50px;
   }
+  img.product_img{
+    margin:auto;
+    width:90%;
+  }
+  
   
 }
 

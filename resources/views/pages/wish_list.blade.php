@@ -35,16 +35,22 @@ use App\Product;
                         <h4  class="product_name"><a href="../product/{{$product->id}}">{{ $product->name }}</a></h4>
                         <div class="container">
                             <div class="row">
-                                <a href="../product/{{$product->id}}">
+                                <a class="image_link" href="../product/{{$product->id}}">
+                                <div class="d-flex">
                                     <img class="card-img-top product_img" src="{{ '/storage/' . $product->image}}"
                                     alt="Card image cap">
-                                    </a>
-
+                                    </div>   
+                                </a>
+                                    
                                 <div class="col-sm">
-                                    <div class="product_buttons"> <button class="btn addToCartBtn"
-                                            onClick="addToCart(this)" type="submit"><i class="fa fa-cart-plus"></i></button>
+                                    <div class="product_buttons">  <button class="btn addToCartBtn button-toggable mr-1" onClick="addToCart(this)"
+                                    type="submit"
+                                    title="Add To Cart"
+                                    >
+                            <i class="fas fa-cart-plus"></i>
+                        </button>
                                             
-                                        <button class="btn removeWishItem" type="submit"
+                                        <button class="btn removeWishItem button-action" type="submit"
                                              onclick="removeFromWishList(this, '{{$product->id}}', {{$info['id']}})"><i class="fa fa-times"></i></button></div>
                                           
                                             <div class="rating">
