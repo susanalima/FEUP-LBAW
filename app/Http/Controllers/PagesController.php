@@ -253,7 +253,7 @@ class PagesController extends Controller
  public function profile()
  {
 
-  $cart = $this->cart();
+  $ccart = $this->cart();
 
   $info = Client::find(Auth::user()->id);
   $userInfo = User::find(Auth::user()->id);
@@ -318,7 +318,7 @@ class PagesController extends Controller
    'type' => 'information',
    'interactive' => true,
    'info' => $info,
-   'cart' => $cart,
+   'cart' => $ccart,
   );
 
   return view("pages.profile")->with($data);
@@ -357,6 +357,8 @@ class PagesController extends Controller
 
   return view("pages.wish_list")->with($data);
  }
+
+
  public function profile_manager($id)
  {
   //TODO
@@ -366,5 +368,26 @@ class PagesController extends Controller
  {
   //TODO
  }
+
+
+ public function checkout_delivery()
+ {
+  $cart = $this->cart();
+
+  $totalPrice = 10; //TODO GET CURRENT CART TOTAL PRICE
+
+  $info = Client::find(Auth::user()->id);
+  $info['addresses'] = $info->addresses;
+  $info['total'] = $totalPrice;
+
+  $data = array(
+   'type' => 'help',
+   'interactive' => true,
+   'info' => $info,
+   'cart' => $cart,
+  );
+  return view("pages.checkout_delivery")->with($data);
+ }
+
 
 }
