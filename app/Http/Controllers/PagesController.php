@@ -264,6 +264,7 @@ class PagesController extends Controller
   $info['cards'] = $info->credit_cards;
 
   $info['wishLists'] = $info->wishLists;
+  $info['page'] = 'profile';
   $info['carts'] = $info->carts->map(function ($cart) {
 
    $address_line = '';
@@ -375,6 +376,7 @@ class PagesController extends Controller
   $info = Client::find(Auth::user()->id);
   $info['addresses'] = $info->addresses;
   $info['total'] = $totalPrice;
+  $info['page'] = 'checkout';
 
   $data = array(
    'type' => 'help',
@@ -384,5 +386,84 @@ class PagesController extends Controller
   );
   return view("pages.checkout_delivery")->with($data);
  }
+
+ public function checkout_shipping()
+ {
+  $cart = $this->cart();
+
+  $totalPrice = 10; //TODO GET CURRENT CART TOTAL PRICE
+
+
+  $info['total'] = $totalPrice;
+  $info['page'] = 'checkout';
+
+  $data = array(
+   'type' => 'help',
+   'interactive' => true,
+   'info' => $info,
+   'cart' => $cart,
+  );
+  return view("pages.checkout_shipping")->with($data);
+ }
+
+ public function checkout_payment()
+ {
+  $cart = $this->cart();
+
+  $totalPrice = 10; //TODO GET CURRENT CART TOTAL PRICE
+
+
+  $info['total'] = $totalPrice;
+  $info['page'] = 'checkout';
+
+  $data = array(
+   'type' => 'help',
+   'interactive' => true,
+   'info' => $info,
+   'cart' => $cart,
+  );
+  return view("pages.checkout_payment")->with($data);
+ }
+
+
+ public function checkout_confirmation()
+ {
+  $cart = $this->cart();
+
+  $totalPrice = 10; //TODO GET CURRENT CART TOTAL PRICE
+
+
+  $info['total'] = $totalPrice;
+  $info['page'] = 'checkout';
+
+  $data = array(
+   'type' => 'help',
+   'interactive' => true,
+   'info' => $info,
+   'cart' => $cart,
+  );
+  return view("pages.checkout_confirmation")->with($data);
+ }
+
+
+ public function checkout_products()
+ {
+  $cart = $this->cart();
+
+  $totalPrice = 10; //TODO GET CURRENT CART TOTAL PRICE
+
+
+  $info['total'] = $totalPrice;
+  $info['page'] = 'checkout';
+
+  $data = array(
+   'type' => 'help',
+   'interactive' => true,
+   'info' => $info,
+   'cart' => $cart,
+  );
+  return view("pages.checkout_product")->with($data);
+ }
+
 
 }

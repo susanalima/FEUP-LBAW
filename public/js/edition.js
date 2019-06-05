@@ -16,7 +16,7 @@ function setAlert(header,response) {
 }
 
 
-function editAddressLoaded(){
+function editAddressProfileLoaded(){
   let response = JSON.parse(this.responseText);
   if(response['type'] === "error") {
     setAlert("error editing address",response);
@@ -26,13 +26,34 @@ function editAddressLoaded(){
   document.getElementById(`address${response['id']}Line`).innerHTML = response['address_line'] + "," + response['postal_code'] + "," +  response['city'] + "," + response['country'];
 }
 
-function editAddress(id){
+function editAddressCheckoutLoaded(){
+  let response = JSON.parse(this.responseText);
+  if(response['type'] === "error") {
+    setAlert("error editing address",response);
+    return;
+   }
+  document.getElementById(`address${response['id']}Name`).innerHTML = response['name'];
+  document.getElementById(`address${response['id']}Line`).innerHTML = response['address_line'];
+  document.getElementById(`address${response['id']}PostalCode`).innerHTML =  response['postal_code'] + " " +  response['city'];
+  document.getElementById(`address${response['id']}Country`).innerHTML = response['country'];
+
+}
+
+function editAddress(id, page){
   let address_line = document.getElementById(`edit${id}AddressLine`).value;
   let name = document.getElementById(`edit${id}AddressName`).value;
   let postal_code = document.getElementById(`edit${id}AddressPostalCode`).value;
   let city = document.getElementById(`edit${id}AddressCity`).value;
   let country = document.getElementById(`edit${id}AddressCountry`).value;
-  sendAjaxRequest('POST', '/api/address_edit', {address_id:id, name: name , address_line: address_line, postal_code:postal_code, city:city, country:country}, editAddressLoaded);
+  
+  if(page === "profile")
+    loadFunction = editAddressProfileLoaded;
+  else if(page === "checkout")
+    loadFunction = editAddressCheckoutLoaded;
+  else
+    return;
+    
+  sendAjaxRequest('POST', '/api/address_edit', {address_id:id, name: name , address_line: address_line, postal_code:postal_code, city:city, country:country}, loadFunction);
 }
 
 
@@ -51,9 +72,8 @@ function deleteAddress(id){
 
 
 
-function addAddressLoaded(){
+function addAddressProfileLoaded(){
   let address = JSON.parse(this.responseText);
-  console.log(address);
 
   if(address['type'] === "error") {
     setAlert("error adding address", address);
@@ -114,7 +134,7 @@ function addAddressLoaded(){
        
             </div>
             <div class="modal-footer">
-              <button type="button" onclick="editAddress('${address['id']}')" class="btn button-submit btn-sm" data-dismiss="modal">Finish</button>
+              <button type="button" onclick="editAddress('${address['id']}', 'profile')" class="btn button-submit btn-sm" data-dismiss="modal">Finish</button>
               <button type="button" class="btn button-negative btn-sm" data-dismiss="modal">Cancel</button>
             </div>
             </form>
@@ -157,17 +177,109 @@ function addAddressLoaded(){
 
     </div>
   </td>
-
 `
 }
 
-function addAddress(id){
+function addAddressCheckoutLoaded(){
+  let address = JSON.parse(this.responseText);
+
+  if(address['type'] === "error") {
+    setAlert("error adding address", address);
+    return;
+   }
+
+  let table = document.getElementById("checkoutAddresses");
+  let dv = document.createElement("div");
+  dv.setAttribute("class", "d-flex flex-column card checkoutCard");
+  dv.innerHTML = 
+  `
+    <div class="card-body">
+        <h2 id="address${address['id']}Name" class="card-title mb-3 text-muted">${address['name']}</h2>
+        <div class="card-text">
+            <p id="address${address['id']}Line">${address['address_line']}</p>
+            <p id="address${address['id']}PostalCode">${address['postal_code']} ${address['city']}</p>
+            <p id="address${address['id']}Country">${address['country']}</p>
+        </div>
+    </div>
+    <div class="d-flex flex-row-reverse mb-4 mx-3">
+        <button type="button" class="btn btn-sm button-action" data-toggle="modal"
+                data-target="#edit${address['id']}Address">Edit</button>
+
+                <div class="modal fade" id="edit${address['id']}Address" tabindex="-1" role="dialog" aria-labelledby="edit${address['id']}AddressLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="edit${address['id']}Address">Edit ${address['name']} Address</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+        <form >
+            <div class="form-group">
+                <label>Address</label>
+                <div class="input-group flex-nowrap">
+                <input type="text" class="form-control" id="edit${address['id']}AddressName"
+                    placeholder="Name" value="${address['name']}" name="name" required>
+                </div>
+
+                <div class="input-group flex-nowrap mt-2">
+                <input type="text" class="form-control  mr-2 rounded" id="edit${address['id']}AddressLine"
+                    placeholder="Street and number, P.O. box, c/o" value="${address['address_line']}" name ="address_line"
+                    required>
+                <input type="text" class="form-control rounded" id="edit${address['id']}AddressPostalCode"
+                    placeholder="Postcode"  value="${address['postal_code']}" name ="postal_code" required>
+                </div>
+
+                <div class="input-group flex-nowrap mt-2">
+                <input type="text" class="form-control mr-2 rounded" id="edit${address['id']}AddressCity"
+                    placeholder="Town, City" value="${address['city']}" name="city" required>
+                <input type="text" class="form-control rounded" id="edit${address['id']}AddressCountry"
+                    placeholder="Country" value="${address['country']}" name = "country" required>
+                </div>
+
+                <div class="input-group flex-nowrap mt-2">
+                <input type="hidden" class="form-control"  name="address_id" value="${address['id']}"> 
+            </div>
+
+            </div>
+    
+        </div>
+        <div class="modal-footer">
+            <button type="button" onclick="editAddress('${address['id']}', 'checkout')" class="btn button-submit btn-sm" data-dismiss="modal">Finish</button>
+            <button type="button" class="btn button-negative btn-sm" data-dismiss="modal">Cancel</button>
+        </div>
+        </form>
+        </div>
+    </div>
+    </div>
+
+        <form class="button_form  mr-2" action="checkoutShipping.html"> <button type="submit"
+                class="btn button-submit btn-sm">Deliver here</button>
+        </form>
+    </div>
+</div>
+`
+table.prepend(dv)
+}
+
+function addAddress(id, page){
+
   let address_line = document.getElementById(`addAddressLine`).value;
   let name = document.getElementById(`addAddressName`).value;
   let postal_code = document.getElementById(`addAddressPostalCode`).value;
   let city = document.getElementById(`addAddressCity`).value;
   let country = document.getElementById(`addAddressCountry`).value;
-  sendAjaxRequest('POST', '/api/address_add', { client_id:id, name: name , address_line: address_line, postal_code:postal_code, city:city, country:country}, addAddressLoaded);
+
+  if(page === "profile")
+    loadFunction = addAddressProfileLoaded;
+  else if(page === "checkout")
+    loadFunction = addAddressCheckoutLoaded;
+  else
+    return;
+
+  sendAjaxRequest('POST', '/api/address_add', { client_id:id, name: name , address_line: address_line, postal_code:postal_code, city:city, country:country}, loadFunction);
 }
 
 

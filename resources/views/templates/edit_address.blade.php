@@ -41,7 +41,7 @@
     
         </div>
         <div class="modal-footer">
-            <button type="button" onclick="editAddress('{{$address['id']}}')" class="btn button-submit btn-sm" data-dismiss="modal">Finish</button>
+            <button type="button" onclick="editAddress('{{$address['id']}}', '{{$info['page']}}')" class="btn button-submit btn-sm" data-dismiss="modal">Finish</button>
             <button type="button" class="btn button-negative btn-sm" data-dismiss="modal">Cancel</button>
         </div>
         </form>

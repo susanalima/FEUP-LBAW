@@ -2,7 +2,6 @@
 
 <link rel="stylesheet" href="{{ URL::asset('css/clientAccount.css') }}"" />
 <script src="{{ URL::asset('js/wishList.js') }}"></script>
-
 <script src="{{ URL::asset('js/edition.js') }}"></script>
 
 
@@ -14,8 +13,7 @@
     <div id="alert" style="max-width: 75%; margin: auto">
      
     </div>
- 
-   
+
 
     <div class="mx-auto accordionDiv">
       <h1 class="text-center p-3 mt-4">Your Account</h1>
