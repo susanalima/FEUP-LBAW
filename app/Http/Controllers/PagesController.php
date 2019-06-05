@@ -64,13 +64,9 @@ class PagesController extends Controller
   $categories = array(1, 4, 6);
 
   foreach ($categories as $key => $category) {
-   $temp = Product::all()->where('id_category', $category)->sortBy(function ($prod) {
-    return -1 * $prod->wished();
-   })->take(10)->map(function ($p) {
-    return $p;
-   });
-
    $prods = array();
+   $temp = Product::where('id_category', '=', $category)->withCount('lists')->orderBy('lists_count', 'desc')->take(10)->get();
+
    foreach ($temp as $key => $value) {
     array_push($prods,
      [
@@ -91,6 +87,7 @@ class PagesController extends Controller
    'product' => $product,
    'wished' => $wished,
    'cart' => $cart,
+   'category' => 'All Categories',
   );
 
   return view("index")->with($data);
