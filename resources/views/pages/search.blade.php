@@ -6,9 +6,9 @@
 
   <div class="" id="searchInfo">
           {{$json['from']}}-{{$json['to']}} of {{$json['total']}} results for <span class="brandName">{{$category}}</span>
-          @if($text != null)
-           : <span class="searchContent">{{$text}}</span> 
-          @endif      
+            @if($searchContent != null)
+            : <span class="searchContent">{{$searchContent}}</span> 
+            @endif      
   </div>
 
   <div class="d-flex justify-content-around pb-3 pt-3" id="searchBody">
@@ -86,7 +86,7 @@
               <div class="d-flex flex-column flex-wrap productMid">
               <a href="/product/{{$product['id']}}">
                       <div class="productImage">
-                      <img src="{{'../storage/' . $product['images'][count($product['images']) - 1]['filepath']}}" class="" alt="..." />
+                      <img src="{{'/storage/' . $product['images'][count($product['images']) - 1]['filepath']}}" class="" alt="..." />
                       </div>
                   </a>
                   <div class="ProductBtnsContainer d-flex flex-column justify-content-center h-100">

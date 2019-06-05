@@ -61,12 +61,12 @@ class PagesController extends Controller
   ];
 
   $wished = array();
-  $categories = array(1, 4, 6);
 
-  foreach ($categories as $key => $category) {
+  $cats = array(1, 4, 6);
+
+  foreach ($cats as $key => $cat) {
    $prods = array();
-   $temp = Product::where('id_category', '=', $category)->withCount('lists')->orderBy('lists_count', 'desc')->take(10)->get();
-
+   $temp = Product::where('id_category', '=', $cat)->withCount('lists')->orderBy('lists_count', 'desc')->take(10)->get();
    foreach ($temp as $key => $value) {
     array_push($prods,
      [
@@ -77,8 +77,7 @@ class PagesController extends Controller
       'id' => $value->id,
      ]);
    }
-
-   $wished[Aux::formatHeader(Category::find($category)->name)] = $prods;
+   $wished[Aux::formatHeader(Category::find($cat)->name)] = $prods;
   }
 
   $data = array(
@@ -87,7 +86,6 @@ class PagesController extends Controller
    'product' => $product,
    'wished' => $wished,
    'cart' => $cart,
-   'category' => 'All Categories',
   );
 
   return view("index")->with($data);
@@ -195,10 +193,12 @@ class PagesController extends Controller
   $catAux = Category::find($category);
   $categoryName = ($catAux != null ? Aux::formatHeader($catAux->name) : 'All Categories');
 
-  if ($catAux == null) {
-   $products = Product::paginate($size);
+  $prods = Product::search($text);
+
+  if ($catAux === null) {
+   $products = $prods->paginate($size);
   } else {
-   $products = Product::where('id_category', $category)->paginate($size);
+   $products = $prods->where('id_category', $category)->paginate($size);
   }
 
   $brands = [];
@@ -237,7 +237,8 @@ class PagesController extends Controller
    'json' => $json,
    'cart' => $cart,
    'category' => $categoryName,
-   'text' => $text,
+   'categoryNumber' => $category,
+   'searchContent' => $text,
    'brands' => $brands,
    'price_range' => $priceRange,
   );
@@ -356,7 +357,6 @@ class PagesController extends Controller
   return view("pages.wish_list")->with($data);
  }
 
-
  public function profile_manager($id)
  {
   //TODO
@@ -366,7 +366,6 @@ class PagesController extends Controller
  {
   //TODO
  }
-
 
  public function checkout_delivery()
  {
