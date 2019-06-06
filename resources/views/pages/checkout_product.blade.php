@@ -33,16 +33,12 @@
                     <div class="d-flex price flex-wrap">
                             <h1 class="final_label">Total: {{$info['total']}}€</h1>
                        </div>
-            <!-- <form action="{{ route('checkout_delivery') }}">
-                
-                <button class="btn button-action next_button" type="submit" value="Go to Delivery">Confirm Products <i
-                    class="fa fa-caret-right" aria-hidden="true"></i></button>
-                </form>-->
+       
                 <form id="confirmProductsForm" action="{{ route('checkout_delivery') }}">
                 <button class="btn button-action next_button"  onclick="checkoutProducts('{{$info['cart_id']}}')" type="button" value="Go to Delivery">Confirm Products <i
                     class="fa fa-caret-right" aria-hidden="true"></i></button>
                 </form>
-</div>
+            </div>
             <h2 class="checkoutTextTop">Confirm the products for your purchase!</h2>
 
        
@@ -51,7 +47,7 @@
     
 
         @foreach($info['products'] as $product)      
-        <div class="card checkoutProductCard d-flex flex-column">
+        <div id="product{{$product->id}}" class="card checkoutProductCard d-flex flex-column">
  
             
             <h6 class="productName m-4" ><strong>{{$product->name}}</strong></h6>
@@ -61,8 +57,9 @@
                     <img class="card-img-top ck_product_img col-sm" src="{{ '/storage/' . $product->img_path }}" alt="{{$product->img_description}}">
                     <div class="col-sm">
                         <div>
-                            <button class="btn btn-light button-toggable" type="button"><i class="fa fa-times"
+                            <button class="btn btn-light button-toggable" onclick="removeProductCart('{{$product->id}}','{{$info['cart_id']}}')" type="button"><i class="fa fa-times"
                                     aria-hidden="true"></i></button>
+
                             <p class="price_tag">{{$product->price}}€</p>
                         </div>
 

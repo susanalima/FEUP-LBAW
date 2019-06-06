@@ -59,6 +59,19 @@ function checkoutConfirmation(client_id){
     sendAjaxRequest('POST', '/api/checkout_confirm', {client_id:client_id}, checkoutConfirmationLoad);
 }
 
+
+function removeProductCartLoad() {
+  let response = JSON.parse(this.responseText)
+  let product = document.getElementById(`product${response['product_id']}`)
+  product.remove();
+}
+
+
+function removeProductCart(product_id, cart_id){
+  sendAjaxRequest('POST', '/api/remove_product_cart', {product_id: product_id , cart_id: cart_id}, removeProductCartLoad);
+}
+
+
 function setAlert(header,response) {
     let mc = document.getElementById("alert");
     mc.innerHTML += 

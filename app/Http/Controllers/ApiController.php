@@ -543,5 +543,22 @@ public function checkout_delivery(Request $request) {
    return response()->json($cart);
  }
 
+ public function remove_product_cart(Request $request){
+
+   $validator = Validator::make($request->all(), [
+       'cart_id' => 'required',
+       'product_id' => 'required',
+      ]);
+    
+      if ($validator->fails()) {
+       return response()->json("Product and cart must be defined");
+      }
+
+   $cart_id = $request->cart_id;
+   $product_id = $request->product_id;
+   DB::delete("DELETE FROM ass_list_product WHERE id_list = {$cart_id} and id_product = {$product_id}");
+   return response()->json($request);
+ }
+
 
 }
