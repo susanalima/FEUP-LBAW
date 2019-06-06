@@ -93,4 +93,25 @@ class ProductController extends Controller
   return redirect()->route('product_page', ['id' => $product->id]);
   //return response("Product added with success", 200);
  }
+
+ public function getProductsSpecs(Request $request)
+ {
+  $rules = [
+   'products' => 'required',
+  ];
+
+  if (isset($request->products)) {
+   $images = count($request->products);
+   foreach (range(0, $images) as $index) {
+    $rules['products' . $index] = 'required|numeric';
+   }
+  }
+
+  $validator = Validator::make($request->all(), $rules);
+
+  if ($validator->fails()) {
+   return Response::make("", 400);
+  }
+
+ }
 }
