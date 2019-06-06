@@ -473,6 +473,11 @@ class PagesController extends Controller
   //TODO
  }
 
+ public function manager_client()
+ {
+    return view("pages.manager_client");
+ }
+
  public function checkout_delivery()
  {
 
