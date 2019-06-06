@@ -75,26 +75,37 @@
                         </button>
 
                         @if(Auth::check())
-                        <button
-                            class="btn addToWishListBtn button-toggable w-100 ml-1"
-                          
-                            type="submit"
-                            id="addToWishList{{$product['id']}}"
-                            title="Add To Wish List"
-                            data-toggle="modal"
-                            data-target="#wishListModal"
-                        >
-                            <i class="fas fa-heart"></i>
-                        </button>
+                            @if($product['number_wl'] > 0)
+                            <button
+                                class="btn addToWishListBtn button-toggable w-100 ml-1 active"
+                                type="submit"
+                                id="addToWishList{{$product['id']}}"
+                                title="Add To Wish List"
+                                data-toggle="modal"
+                                data-target="#wishListModal{{$product['id']}}"
+                            >
+                                <i class="fas fa-heart"></i>
+                            </button>
+                            @else()
+                            <button
+                                class="btn addToWishListBtn button-toggable w-100 ml-1"
+                                type="submit"
+                                id="addToWishList{{$product['id']}}"
+                                title="Add To Wish List"
+                                data-toggle="modal"
+                                data-target="#wishListModal{{$product['id']}}"
+                            >
+                                <i class="fas fa-heart"></i>
+                            </button>
+                            @endif
                         @else 
                         <button
                             class="btn addToWishListBtn button-toggable w-100 ml-1"
-                           
                             type="submit"
                             id="addToWishList{{$product['id']}}"
                             title="Add To Wish List"
                             data-toggle="modal"
-                            data-target="#wishListModal"
+                            data-target="#wishListModal{{$product['id']}}"
                         disabled>
                             <i class="fas fa-heart"></i>
                         </button>

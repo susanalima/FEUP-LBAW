@@ -8,6 +8,7 @@ use App\Image;
 use App\Specification;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class Product extends Model
 {
@@ -147,4 +148,11 @@ class Product extends Model
    ->orderByRaw('ts_rank(to_tsvector(\'english\', name), plainto_tsquery(\'english\', ?)) desc', [$search]);
 
  }
+
+ public function wishlists(){
+  $client_id = Auth::user()->id;
+  $result = DB::select("SELECT id_list from ass_list_product ALP, wish_list WL where id_product =  {$this->id} AND ALP.id_list = WL.id AND id_client = {$client_id} ");
+  return $result;
+ }
+
 }

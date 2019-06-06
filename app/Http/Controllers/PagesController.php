@@ -69,6 +69,7 @@ class PagesController extends Controller
         return $cart;
     }
 
+
     public function index()
     {
         $cart = PagesController::makeCart();
@@ -209,21 +210,31 @@ class PagesController extends Controller
 
     public function product($id)
     {
-        $wishlists = array();
-        if(Auth::check()) {
-            $client = Client::find(Auth::user()->id);  
-            $wishlists = $client->wishLists;
-        }
+   
 
         $cart = PagesController::makeCart();
 
         $product = Product::find($id);
+
+        $wishlists = array();
+        $collection = array();
+        if(Auth::check()) {
+            $client = Client::find(Auth::user()->id);  
+            $wishlists = $client->wishLists;
+            $product_wl = $product->wishlists();
+            foreach($product_wl as $prwl) {
+                array_push($collection, $prwl->id_list);
+            }
+        }
+
         $product['category'] = Aux::formatHeader($product->category['name']);
         $product['images'] = $product->images;
         $product['specs'] = $product->specifications->map(function ($a) {return $a->spec();});
         $product['reviews'] = $product->getReviews();
         $product['q_a'] = $product->getQA();
         $product['rating'] = $product->rating();
+        $product['wishlists'] = $collection;
+        $product['number_wl'] = count($product_wl);
 
         $data = array(
             'type' => 'product',
@@ -317,6 +328,20 @@ class PagesController extends Controller
         ];
 
         foreach ($products as $product) {
+
+            $collection = array();
+            if(Auth::check()) {
+                $client = Client::find(Auth::user()->id);  
+                $wishlists = $client->wishLists;
+                $product_wl = $product->wishlists();
+                foreach($product_wl as $prwl) {
+                    array_push($collection, $prwl->id_list);
+                }
+            }
+
+            $product['wishlists'] = $collection ;
+            $product['number_wl'] = count($product_wl);
+
             $product['rating'] = $product->rating();
             $specs = $product->specifications->filter(function ($spec) {
                 return ($spec['header']['name'] == 'brand');
