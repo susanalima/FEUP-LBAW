@@ -30,18 +30,32 @@ class PagesController extends Controller
  public function makeCart()
  {
   $cart = $this->cart();
-  if ($cart != []) {
-   $cart['products'] = $cart->get(0)->list_products();
-   $cart['total'] = 0;
-   $total = 0;
+  if($cart != []){
+    $cart['products'] = $cart->get(0)->list_products();
+    $cart['total'] = 0;
+    $prod_ids = [];
+    $total = 0;
 
-   foreach ($cart['products'] as $product) {
-    $total += $product->price;
-    $product->name = str_before($product->name, ' -');
-    $tmp = DB::select("SELECT quantity, added_to FROM ass_list_product WHERE id_list = {$cart[0]['id']} and id_product = $product->id")[0];
-    $img = DB::select("SELECT filepath, description FROM image WHERE primary_img = true and id_product = $product->id")[0];
-    $product->img_path = $img->filepath;
-    $product->img_description = $img->description;
+    foreach($cart['products'] as $product){    
+      $total += $product->price;
+
+      array_push($prod_ids, $product->id);
+
+      $product->name = str_before($product->name, ' -');
+      
+      $tmp = DB::select("SELECT quantity, added_to FROM ass_list_product WHERE id_list = {$cart[0]['id']} and id_product = $product->id")[0];
+      $img = DB::select("SELECT filepath, description FROM image WHERE primary_img = true and id_product = $product->id")[0];
+      
+      $product->img_path = $img->filepath;
+      $product->img_description = $img->description;
+     
+      $product->quantity = $tmp->quantity;
+      $product->date = $tmp->added_to;
+    }
+    $cart['total'] = $total;
+    $cart['prod_ids'] = $prod_ids;
+  }
+  else{
 
     $product->quantity = $tmp->quantity;
     $product->date = $tmp->added_to;
@@ -197,6 +211,7 @@ class PagesController extends Controller
  {
   $cart = PagesController::makeCart();
 
+  
   $product = Product::find($id);
   $product['category'] = Aux::formatHeader($product->category['name']);
   $product['images'] = $product->images;
@@ -583,6 +598,7 @@ class PagesController extends Controller
   $info['total'] = $totalPrice;
   $info['page'] = 'checkout';
   $info['products'] = $cart['products'];
+  $info['cart_id'] = $cart->get(0)->id;
 
   $data = array(
    'type' => 'help',

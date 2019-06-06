@@ -77,11 +77,16 @@ function minusOne(elem, prod_id, cart_id) {
 }
 
 
-function removeFromCart(prod_id, cart_id){
+function removeFromCart(elem, prod_id, cart_id){
+    elem.classList.toggle("active");
+    console.log(cart_id, prod_id);
+  
+
     sendAjaxRequest('POST', '/api/remove_prod', {product_id: prod_id, cart_id: cart_id}, cartOpHandler);
 }
 
 function addProductToCart(elem, client_id, product_id, quantity){
+    
     elem.classList.toggle("active");
     
     console.log(client_id, product_id, quantity);
