@@ -438,14 +438,28 @@ public function checkout_products(Request $request) {
    $counter = 0;
 
    foreach($tokens as $token){
+
+      if($token === "")
+         continue;
+      if($counter === $size -1);
+         break;
       $ts = explode(":", $token);
+
       $product_id = $ts[0];
       $quantity = $ts[1];
+
+      if($quantity === ""){
+         $data = [
+         'type' => 'error',
+         ];
+         $data['error'] = "all products must have a specified quantity";
+         return response()->json($data);
+      }
+
       $counter = $counter + 1;
       DB::update("UPDATE ass_list_product SET quantity = {$quantity} WHERE id_list = {$cart_id} and id_product = {$product_id}");
 
-      if($counter === $size -1);
-         break;
+   
    }
    
    return response()->json($tokens);
@@ -496,6 +510,19 @@ public function checkout_delivery(Request $request) {
 
 
  public function checkout_confirm(Request $request) {
+
+   $rules = [
+         'client_id' => 'required',
+         'number_products' => 'required|numeric|min:0|not_in:0',
+   ];
+   $validator = Validator::make($request->all(), $rules);
+   if ($validator->fails()) {
+         $data = [
+         'type' => 'error',
+         ];
+         $data['error'] = $validator->errors()->first();
+         return response()->json($data);
+   }
 
    $tmpcart = Client::find($request->client_id)->cart();
 

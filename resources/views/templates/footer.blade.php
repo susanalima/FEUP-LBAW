@@ -2,7 +2,7 @@
 <div class="overlay transitions" id="overlay"></div>
         
 <div class="d-flex justify-content-between text-white p-5 flex-wrap" id="footer">
-    <div class="d-flex flex-column mx-auto">
+    <div class="d-flex flex-column mx-auto support-links">
         <a href="/help">Help</a>
         <a href="/contacts">Contacts</a>
         <a href="./faq">FAQs</a>

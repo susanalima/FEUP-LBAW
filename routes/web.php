@@ -34,6 +34,8 @@ Route::post('/profile/passwordChange', "ClientController@password_change")->name
 Route::get('/profile_manager/{id}', "PagesController@profile_manager")->name('profile_manager');
 Route::get('/profile_admin/{id}', "PagesController@profile_admin")->name('profile_admin');
 
+Route::get('/message/{id}', "PagesController@show_messages")->name('show_messages');
+
 Route::get('/wishList/{id}', "PagesController@wishList")->name('wishList');
 Route::delete('wishList/{id}', "WishListController@removeProduct")->name('remove_product_wl');
 

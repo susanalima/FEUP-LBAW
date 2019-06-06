@@ -22,10 +22,11 @@
         </nav>
     
      
+        <div id="alert" style="max-width: 75%; margin: auto">
+     
+        </div>
      
         <div class="all_deliveries">
-
-  
      
             <div class="card-body m-auto checkoutListCards">
 
@@ -50,11 +51,13 @@
         <div id="product{{$product->id}}" class="card checkoutProductCard d-flex flex-column">
  
             
-            <h6 class="productName m-4" ><strong>{{$product->name}}</strong></h6>
+            <h6 class="productName m-4" ><strong><a href="../product/{{$product->id}}">{{ $product->name }}</a></strong></h6>
            
             <div class="container" style="margin-left: 0.4em;">
                 <div class="row flex-row d-flex justify-content-start">
-                    <img class="card-img-top ck_product_img col-sm" src="{{ '/storage/' . $product->img_path }}" alt="{{$product->img_description}}">
+                    <a class="ck_product_img" href="../product/{{$product->id}}">
+                        <img class=" col-sm" src="{{ '/storage/' . $product->img_path }}" alt="{{$product->img_description}}">
+                    </a>
                     <div class="col-sm">
                         <div>
                             <button class="btn btn-light button-toggable" onclick="removeProductCart('{{$product->id}}','{{$info['cart_id']}}')" type="button"><i class="fa fa-times"
