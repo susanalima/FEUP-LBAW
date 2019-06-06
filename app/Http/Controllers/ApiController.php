@@ -54,6 +54,27 @@ class ApiController extends Controller
     return response()->json("Success");
   }
 
+
+  public function add_product_wl(Request $request){
+   $validator = Validator::make($request->all(), [
+     'product_id' => 'required',
+     'list_id' => 'required',
+    ]);
+  
+    if ($validator->fails()) {
+     return response()->json("Product and client must be defined");
+    }
+
+    $product_id = $request->product_id;
+    $list_id = $request->list_id;
+
+    DB::insert("INSERT INTO ass_list_product (id_list, id_product,quantity,added_to,bought,return) 
+    VALUES (?, ?, ?, ?, ?, ?)", 
+    [$list_id, $product_id, 1, date("Y-m-d"), false, false]);
+    return response()->json("Success");
+ }
+
+
   public function add_product_cart(Request $request){
     $validator = Validator::make($request->all(), [
       'client_id' => 'required',
@@ -78,7 +99,6 @@ class ApiController extends Controller
      VALUES (?, ?, ?, ?, ?, ?)", 
      [$list_id, $product_id, $quantity, date("Y-m-d"), false, false]);
      return response()->json("Success");
-
   }
 
   public function inc_prod(Request $request){

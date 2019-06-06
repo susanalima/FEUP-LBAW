@@ -2,6 +2,8 @@
 
 @section('content')
 <script src="{{ URL::asset('js/buttons.js') }}"></script>
+<script src="{{ URL::asset('js/request.js') }}"></script>
+<script src="{{ URL::asset('js/wishList.js') }}"></script>
 <script src="{{ URL::asset('js/compare.js') }}" defer></script>
 
 <div class="mainContent">
@@ -146,16 +148,45 @@
                       >
                           <i class="fas fa-exchange-alt"></i>
                       </button>
-                      <button
-                          type="button"
-                          class="btn addToWishListBtn button-toggable"
-                          onClick="addToWishList(this)"
-                          title="Add To Wish List"
-                          data-toggle="modal"
-                          data-target="#wishListModal"
-                      >
-                          <i class="fas fa-heart"></i>
-                      </button>
+                    
+                      @if(Auth::check())
+                      @if($product['number_wl'] > 0)
+                            <button
+                                class="btn addToWishListBtn button-toggable w-100  active"
+                                type="submit"
+                                id="addToWishList{{$product['id']}}"
+                                title="Add To Wish List"
+                                data-toggle="modal"
+                                data-target="#wishListModal{{$product['id']}}"
+                            >
+                                <i class="fas fa-heart"></i>
+                            </button>
+                            @else()
+                            <button
+                                class="btn addToWishListBtn button-toggable w-100 "
+                                type="submit"
+                                id="addToWishList{{$product['id']}}"
+                                title="Add To Wish List"
+                                data-toggle="modal"
+                                data-target="#wishListModal{{$product['id']}}"
+                            >
+                                <i class="fas fa-heart"></i>
+                            </button>
+                            @endif
+                        @else 
+                        <button
+                            class="btn addToWishListBtn button-toggable w-100 "
+                            type="submit"
+                            id="addToWishList{{$product['id']}}"
+                            title="Add To Wish List"
+                            data-toggle="modal"
+                            data-target="#wishListModal{{$product['id']}}"
+                        disabled>
+                            <i class="fas fa-heart"></i>
+                        </button>
+                        @endif
+
+                      @include('templates.add_to_wishlist')
                   </div>
               </div>
               <div class="productBot d-flex justify-content-left">
