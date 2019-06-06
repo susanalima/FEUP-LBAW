@@ -11,6 +11,7 @@ use App\SpecificationHeader;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\DB;
+use Response;
 use Validator;
 
 class ProductController extends Controller
@@ -92,6 +93,29 @@ class ProductController extends Controller
 
   return redirect()->route('product_page', ['id' => $product->id]);
   //return response("Product added with success", 200);
+ }
+
+ public function getSimpleProd(Request $request)
+ {
+  $rules = [
+   'products' => 'required',
+   'products.*' => 'required|numeric|distinct',
+  ];
+
+  if (isset($request->products)) {
+   $request->products = json_decode($request->products);
+  }
+
+  $validator = Validator::make($request->all(), $rules);
+
+  if ($validator->fails()) {
+   return Response::make($validator->errors()->first(), 400);
+  }
+
+  return Response::make(json_encode(Product::findMany($request->products)->map(function ($product) {
+   return ['name' => $product['name'], 'price' => $product['price'], 'image' => $product->primary_image()->filepath, 'id' => $product['id']];
+  })), 200);
+
  }
 
  public function getProductsSpecs(Request $request)

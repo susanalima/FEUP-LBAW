@@ -8,7 +8,9 @@ class Aux
  {
 
   $capitalizeWord = function ($word) {
-   if ((strlen($word) > 3 || $word === "no" || $word === 'the' || $word === 'ed') && !strpos($word, "isbn")) {
+   $allowed_words = ['no', 'the', 'ed', 'may', 'el', 'duo'];
+
+   if ((strlen($word) > 3 || in_array($word, $allowed_words)) && !strpos($word, "isbn") && $word !== 'emmc') {
     return ucfirst($word);
    } else {
     return strtoupper($word);

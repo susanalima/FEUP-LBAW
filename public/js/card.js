@@ -35,7 +35,12 @@ function addToComparison(elem, eraseAll = false) {
   const name = "comparisonData";
   if (eraseAll) {
     eraseCookie(name);
-    document.querySelector("#addToCmp").classList.toggle("active");
+    document
+      .querySelectorAll(".addToCmp")
+      .forEach(b => b.classList.remove("active"));
+    document
+      .querySelectorAll(".addToCmpBtn")
+      .forEach(b => b.classList.remove("active"));
   } else {
     elem.classList.toggle("active");
 
@@ -48,8 +53,15 @@ function addToComparison(elem, eraseAll = false) {
     }
     if (!ids.includes("" + id)) ids.push(id);
     else ids = ids.filter(i => i !== id);
+
+    if (ids.length > 3) {
+      ids.splice(ids.length - 3);
+    }
+
     setCookie(name, JSON.stringify(ids));
   }
+
+  if (eraseAll !== null) updateComparison(false);
 }
 
 function writeModal(elem) {
