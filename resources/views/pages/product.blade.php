@@ -1,5 +1,8 @@
 @extends('templates.app')
 
+<script src="{{ URL::asset('js/request.js') }}"></script>
+<script src="{{ URL::asset('js/product.js') }}"></script>
+
 @section('content')
 <div class="mainContent">
             <div id="intro" class="row d-flex justify-content-center p-5 w-100">
@@ -280,57 +283,57 @@
                             </button>
                         </div>
                         <form class="align-self-center d-flex flex-column align-items-start w-75 pt-4">
-                            <fieldset class="starsRating mutable">
-                                <input type="radio" id="star5" name="rating" value="5" /><label
+                            <fieldset id="writeReviewFS" class="starsRating mutable">
+                                <input type="radio" id="wrstar5" name="rating" value="5" /><label
                                     class="full"
-                                    for="star5"
+                                    for="wrstar5"
                                 ></label>
-                                <input type="radio" id="star4half" name="rating" value="4.5" /><label
+                                <input type="radio" id="wrstar4half" name="rating" value="4.5" /><label
                                     class="half"
-                                    for="star4half"
+                                    for="wrstar4half"
                                 ></label>
-                                <input type="radio" id="star4" name="rating" value="4" /><label
+                                <input type="radio" id="wrstar4" name="rating" value="4" /><label
                                     class="full"
-                                    for="star4"
+                                    for="wrstar4"
                                 ></label>
-                                <input type="radio" id="star3half" name="rating" value="3.5" /><label
+                                <input type="radio" id="wrstar3half" name="rating" value="3.5" /><label
                                     class="half"
-                                    for="star3half"
+                                    for="wrstar3half"
                                 ></label>
-                                <input type="radio" id="star3" name="rating" value="3" /><label
+                                <input type="radio" id="wrstar3" name="rating" value="3" /><label
                                     class="full"
-                                    for="star3"
+                                    for="wrstar3"
                                 ></label>
-                                <input type="radio" id="star2half" name="rating" value="2.5" /><label
+                                <input type="radio" id="wrstar2half" name="rating" value="2.5" /><label
                                     class="half"
-                                    for="star2half"
+                                    for="wrstar2half"
                                 ></label>
-                                <input type="radio" id="star2" name="rating" value="2" /><label
+                                <input type="radio" id="wrstar2" name="rating" value="2" /><label
                                     class="full"
-                                    for="star2"
+                                    for="wrstar2"
                                 ></label>
-                                <input type="radio" id="star1half" name="rating" value="1.5" /><label
+                                <input type="radio" id="wrstar1half" name="rating" value="1.5" /><label
                                     class="half"
-                                    for="star1half"
+                                    for="wrstar1half"
                                 ></label>
-                                <input type="radio" id="star1" name="rating" value="1" /><label
+                                <input type="radio" id="wrstar1" name="rating" value="1" /><label
                                     class="full"
-                                    for="star1"
+                                    for="wrstar1"
                                 ></label>
-                                <input type="radio" id="star0half" name="rating" value="0.5" /><label
+                                <input type="radio" id="wrstar0half" name="rating" value="0.5" /><label
                                     class="half"
-                                    for="star0half"
+                                    for="wrstar0half"
                                 ></label>
                             </fieldset>
                             <div class="form-group w-100">
-                                <label for="exampleFormControlTextarea1">Write Your Review Here</label>
-                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                <label for="reviewContent">Write Your Review Here</label>
+                                <textarea class="form-control" id="reviewContent" rows="3"></textarea>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" onclick="addReview('{{$product['id']}}', '{{Auth::user()->id}}')" class="btn modalBtn" data-dismiss="modal">Save changes</button>
+                                <button type="button" class="btn modalBtn" data-dismiss="modal">Close</button>
                             </div>
                         </form>
-                        <div class="modal-footer">
-                            <button type="button" class="btn modalBtn">Save changes</button>
-                            <button type="button" class="btn modalBtn" data-dismiss="modal">Close</button>
-                        </div>
                     </div>
                 </div>
             </div>

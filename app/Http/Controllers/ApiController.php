@@ -15,6 +15,7 @@ use App\Cart;
 use App\WishList;
 use App\ProductList;
 use App\AssListProduct;
+use App\Message;
 
 class ApiController extends Controller
 {
@@ -562,7 +563,6 @@ public function checkout_delivery(Request $request) {
 
    $cart->save();
    
-   //CHECK IF CART IS NOT EMPTY
    //TODO CREATE NEW EMPTY CART
 
    return response()->json($cart);
@@ -584,6 +584,35 @@ public function checkout_delivery(Request $request) {
    DB::delete("DELETE FROM ass_list_product WHERE id_list = {$cart_id} and id_product = {$product_id}");
    return response()->json($request);
  }
+
+ public function add_review(Request $request) {
+
+   $content = $request->content;
+   $client_id = $request->client_id;
+   $product_id = $request->product_id;
+   $rating = $request->rating;
+   $date =  date("Y-m-d");
+
+   $user = User::find($client_id);
+
+   $id = Message::max('id') + 1;
+   DB::insert("INSERT INTO message (id, content, created_at, report_counter, blocked, id_product, id_non_admin)  
+   VALUES (?, ?, ?, ?, ?, ?, ?)", 
+   [$id, $content, $date, 0, false, $product_id, $client_id]);
+
+   DB::insert("INSERT INTO review (id_message, rating) 
+   VALUES (?, ?)",
+   [$id, $rating]);
+   
+   $data = [
+      'content' => $content,
+      'rating' => $rating,
+      'user' => $user->name,
+      'created_at' => $date,
+   ];
+   return response()->json($data);
+ }
+
 
 
 }

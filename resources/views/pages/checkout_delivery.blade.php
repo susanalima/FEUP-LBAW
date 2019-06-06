@@ -2,7 +2,7 @@
 
 
 <link rel="stylesheet" href="{{ URL::asset('css/checkoutProducts.css') }}"" />
-<script src="{{ URL::asset('js/wishList.js') }}"></script>
+<script src="{{ URL::asset('js/request.js') }}"></script>
 <script src="{{ URL::asset('js/checkout.js') }}"></script>
 <script src="{{ URL::asset('js/edition.js') }}"></script>
 
