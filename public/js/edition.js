@@ -705,7 +705,7 @@ function addWishlistLoaded(){
   row.innerHTML = 
   `
   <th scope="row">${counter}</th>
-  <td><a class="btn-link"  href="{{ route('wishList', ['id' => $wishList['id']]) }}">${wishList['name']}</a></td>
+  <td><a class="btn-link"  href="./wishList/${wishList['id']}">${wishList['name']}</a></td>
   <td style="max-width: 280px;">${wishList['description']}</td>
   <td>
   <div class="d-flex float-right mr-2">

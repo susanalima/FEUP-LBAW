@@ -615,4 +615,14 @@ class PagesController extends Controller
         return view("pages.checkout_product")->with($data);
     }
 
+
+    public function compare()
+    {
+        $data = array(
+            'type' => 'help',
+            'interactive' => true,
+        );
+        return view("pages.compare")->with($data);
+    }
+
 }
