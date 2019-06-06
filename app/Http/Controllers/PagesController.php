@@ -37,7 +37,6 @@ class PagesController extends Controller
             $prod_ids = [];
 
             foreach ($cart['products'] as $product) {
-                $total += $product->price;
 
                 array_push($prod_ids, $product->id);
 
@@ -51,6 +50,8 @@ class PagesController extends Controller
 
                 $product->quantity = $tmp->quantity;
                 $product->date = $tmp->added_to;
+
+                $total += $product->price* $product->quantity;
             }
             $cart['total'] = $total;
             $cart['prod_ids'] = $prod_ids;
@@ -393,9 +394,12 @@ class PagesController extends Controller
 
             $this->getProductExtras($products);
 
-            $collection = collect($products);
+            $tp =0;
+            foreach($products as $pt){
+                $tp = $tp + $pt->price*$pt->quantity;
+            }
 
-            $totalPrice = $collection->sum('price'); //TODO O PREÇO TEM DE SER MULTIPLICADO PELO QUANTIDADE
+            $collection = collect($products);
 
             return [
                 'id' => $cart->id,
@@ -409,7 +413,7 @@ class PagesController extends Controller
                 'shipping' => $cart->shipping->method,
                 'card' => $card,
                 'products' => $collection,
-                'total' => $totalPrice,
+                'total' => $tp,
             ];
         });
 
@@ -483,11 +487,13 @@ class PagesController extends Controller
     public function checkout_delivery()
     {
 
+        $cart = PagesController::makeCart();
+
         $totalPrice = 10; //TODO GET CURRENT CART TOTAL PRICE
 
         $info = Client::find(Auth::user()->id);
         $info['addresses'] = $info->addresses;
-        $info['total'] = $totalPrice;
+        $info['total'] = $cart['total'];
         $info['page'] = 'checkout';
 
         $data = array(
@@ -501,9 +507,9 @@ class PagesController extends Controller
     public function checkout_shipping()
     {
 
-        $totalPrice = 10; //TODO GET CURRENT CART TOTAL PRICE
+        $cart = PagesController::makeCart();
 
-        $info['total'] = $totalPrice;
+        $info['total'] = $cart['total'];
         $info['id'] = Auth::user()->id;
         $info['page'] = 'checkout';
 
@@ -517,13 +523,11 @@ class PagesController extends Controller
 
     public function checkout_payment()
     {
-
-        $totalPrice = 10; //TODO GET CURRENT CART TOTAL PRICE
+        $cart = PagesController::makeCart();
 
         $info = Client::find(Auth::user()->id);
         $info['cards'] = $info->credit_cards;
-
-        $info['total'] = $totalPrice;
+        $info['total'] = $cart['total'];
         $info['page'] = 'checkout';
 
         $data = array(
@@ -537,9 +541,7 @@ class PagesController extends Controller
     public function checkout_confirmation()
     {
 
-        $totalPrice = 10; //TODO GET CURRENT CART TOTAL PRICE
-
-        $cart = $this->cart();
+        $cart = PagesController::makeCart();
 
         $address = $cart->get(0)->get_address();
         $card = $cart->get(0)->get_card();
@@ -563,7 +565,7 @@ class PagesController extends Controller
         }
 
         $info['id'] = Auth::user()->id;
-        $info['total'] = $totalPrice;
+        $info['total'] = $cart['total'];
         $info['address'] = $address[0];
         $info['card'] = $card[0];
         $info['shipping'] = $shipping[0];
@@ -598,11 +600,9 @@ class PagesController extends Controller
     public function checkout_products()
     {
 
-        $totalPrice = 10; //TODO GET CURRENT CART TOTAL PRICE
-
         $cart = PagesController::makeCart();
 
-        $info['total'] = $totalPrice;
+        $info['total'] = $cart['total'];
         $info['page'] = 'checkout';
         $info['products'] = $cart['products'];
         $info['cart_id'] = $cart->get(0)->id;
