@@ -1,7 +1,7 @@
 @extends('templates.app')
 
 <link rel="stylesheet" href="{{ URL::asset('css/clientAccount.css') }}"" />
-<script src="{{ URL::asset('js/wishList.js') }}"></script>
+<script src="{{ URL::asset('js/request.js') }}"></script>
 <script src="{{ URL::asset('js/edition.js') }}"></script>
 
 
@@ -573,10 +573,10 @@
                                     alt="Cart image" class=""/>
                                     </a>
                                     <a  href="{{ route('product_page', ['id' => $product->id]) }}">
-                                      <h4 class="cartProductName">{{$product->name}}</h4>
+                                      <h4 class="cartProfileProductName">{{$product->name}}</h4>
                                     </a>
-                                    <h4>{{$product->quantity}} </h4>
-                                    <h4 class="cartProductSubTotal">{{$product->price}}€</h4>
+                                    <h4 class="cartProfileProductQuantity">{{$product->quantity}} </h4>
+                                    <h4 class="cartProfileProductSubTotal">{{$product->price}}€</h4>
 
                                   </article>
                                 @endforeach

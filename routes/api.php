@@ -39,3 +39,5 @@ Route::post('/checkout_delivery', "ApiController@checkout_delivery")->name('chec
 Route::post('/checkout_shipping', "ApiController@checkout_shipping")->name('checkout_shipping');
 Route::post('/checkout_payment', "ApiController@checkout_payment")->name('checkout_payment');
 Route::post('/checkout_confirm', "ApiController@checkout_confirm")->name('checkout_confirm');
+
+Route::post('/add_review', 'ApiController@add_review');

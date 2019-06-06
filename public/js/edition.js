@@ -211,7 +211,7 @@ console.log(address);
     </div>
     <div class="d-flex flex-row-reverse mb-4 mx-3">
         <button type="button" class="btn btn-sm button-action" data-toggle="modal"
-                data-target="#edit${address['id']}Address">Edit</button>
+                data-target="#edit${address['id']}Address" style="height: 33px">Edit</button>
 
                 <div class="modal fade" id="edit${address['id']}Address" tabindex="-1" role="dialog" aria-labelledby="edit${address['id']}AddressLabel"
     aria-hidden="true">
@@ -263,7 +263,7 @@ console.log(address);
     </div>
     </div>
 
-    <form action="/checkout/shipping">
+    <form class="button_form mr-2" action="/checkout/shipping">
     <button type="submit" onclick="checkoutDelivery('${address['id']}', '${address['id_client']}')"  class="btn button-submit btn-sm">Deliver here</button>
     </form>
     </div>
@@ -560,7 +560,7 @@ function addCardCheckoutLoaded(){
   </div>
   <div class="d-flex flex-row-reverse mb-4 mx-3">
       <button type="button" class="btn btn-sm button-action" data-toggle="modal"
-              data-target="#editCard${card['id']}">Edit</button> 
+              data-target="#editCard${card['id']}" style="height: 33px">Edit</button> 
       
     <div class="modal fade" id="editCard${card['id']}" tabindex="-1" role="dialog" aria-labelledby="editCard${card['id']}Label"
     aria-hidden="true">
@@ -630,7 +630,7 @@ function addCardCheckoutLoaded(){
   </div>
 
 
-  <form action="/checkout/confirmation">
+  <form class="button_form mr-2" action="/checkout/confirmation">
   <button type="submit" onclick="checkoutPayment('${card['id']}', '${card['id_client']}')"  class="btn button-submit btn-sm">Pay</button>
   </form>
 
