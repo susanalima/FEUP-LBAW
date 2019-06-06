@@ -618,9 +618,27 @@ class PagesController extends Controller
 
     public function compare()
     {
+        $prod = array(
+            '12', '13'
+        );
+        $spec = array(
+            'name' => "price",
+            'products' => $prod,
+        );
+        $specs = array($spec, $spec);
+
+        $p = array(
+            'name' => "asus",
+            'image' => "",
+            'id' => "203",
+        );
+        $products = array($p);
+
         $data = array(
             'type' => 'help',
             'interactive' => true,
+            'specs' =>$specs,
+            'products'=> $products,
         );
         return view("pages.compare")->with($data);
     }
