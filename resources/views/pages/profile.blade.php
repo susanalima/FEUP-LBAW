@@ -4,7 +4,6 @@
 <script src="{{ URL::asset('js/request.js') }}"></script>
 <script src="{{ URL::asset('js/edition.js') }}"></script>
 
-
 @section('content')
 <div class="mainContent">
     <!-- Image and text -->
@@ -618,7 +617,7 @@
                         <td style="max-width: 280px;">{{$wishList['description']}}</td>
                         <td>
                           <div class="d-flex float-right mr-2">
-                            <button type="button" class="btn btn-sm button-action m-2">Share</button>
+                            <button type="button" onclick="shareWishList('{{$wishList['id']}}')"  class="btn btn-sm button-action m-2">Share</button>
                             <button type="button" class="btn btn-sm button-negative m-2"  data-toggle="modal" data-target="#delete{{$wishList['id']}}WLModal">Delete</button>
 
                             <!-- Modal -->

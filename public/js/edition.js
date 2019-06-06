@@ -709,8 +709,8 @@ function addWishlistLoaded(){
   <td style="max-width: 280px;">${wishList['description']}</td>
   <td>
   <div class="d-flex float-right mr-2">
-      <button type="button" class="btn btn-sm button-action m-2">Share</button>
-      <button type="button" class="btn btn-sm button-negative m-2"  data-toggle="modal" data-target="#delete${wishList['id']}WLModal">Delete</button>
+  <button type="button" onclick="shareWishList('${wishList['id']}')"  class="btn btn-sm button-action m-2">Share</button>
+  <button type="button" class="btn btn-sm button-negative m-2"  data-toggle="modal" data-target="#delete${wishList['id']}WLModal">Delete</button>
 
       <!-- Modal -->
       <div class="modal fade" id="delete${wishList['id']}WLModal" tabindex="-1" role="dialog" aria-labelledby="delete${wishList['id']}WLModalLabel" aria-hidden="true">
@@ -777,3 +777,26 @@ function deleteAllWishLists(){
     btns[i].click();
   }
 }
+
+function copyStringToClipboard (str) {
+  let tmp = document.createElement('textarea');
+  tmp.value = str;
+  tmp.setAttribute('readonly', '');
+  tmp.style = {position: 'absolute', left: '-9999px'};
+  document.body.appendChild(tmp);
+  tmp.select();
+  document.execCommand('copy');
+  document.body.removeChild(tmp);
+}
+
+function shareWishList(id){
+  console.log(id);
+  let ref = window.location.href;
+
+  ref = ref.substring(0, ref.length-7);
+  ref += "wishList/" + id;
+   console.log(ref);
+  copyStringToClipboard(ref);
+  alert("Wish list link copied to clipboard! " + ref);
+}
+
