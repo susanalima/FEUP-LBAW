@@ -45,22 +45,25 @@
                             <p id="address{{$address['id']}}Country">{{$address->country}}</p>
                         </div>
                     </div>
-                    <div class="d-flex flex-row-reverse mb-4 mx-3">
-                         <button type="button" class="btn btn-sm button-action" data-toggle="modal"
-                                data-target="#edit{{$address['id']}}Address">Edit</button>
-                         @include('templates.edit_address')
 
-                       
-                      
-                        <form action="{{ route('checkout_shipping') }}">
-                        <button type="submit" onclick="checkoutDelivery('{{$address['id']}}', '{{$info['id']}}')"  class="btn button-submit btn-sm">Deliver here</button>
-                        </form>
                 
 
-                    
+                    <div class="d-flex flex-row-reverse mb-4 mx-3">
+                         <button type="button" class="btn  button-action btn-sm" data-toggle="modal"
+                                data-target="#edit{{$address['id']}}Address" style="height: 33px" >Edit</button>
+                                
+                                @include('templates.edit_address')
+                        <form class="button_form mr-2" action="{{ route('checkout_shipping') }}">
+                            <button type="submit" onclick="checkoutDelivery('{{$address['id']}}', '{{$info['id']}}')"  class="btn button-submit btn-sm ">Deliver here</button>
+                        </form>
                     </div>
+
+                
+
                 </div>
                 @endforeach    
+
+    
 
                 <div class="d-flex flex-column card align-items-center justify-content-center checkoutCard otherInfo"
                     data-toggle="modal" data-target="#addAddress">
