@@ -651,3 +651,7 @@ fieldset {
 .spacer {
   flex-grow: 1;
 }
+
+.navbar #navbarLogo a span {
+  margin-left: 2px;
+}

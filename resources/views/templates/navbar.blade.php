@@ -11,7 +11,7 @@
                         class="d-inline-block align-top"
                         alt=""
                     />
-                    PuzzleWood
+                    <span>PuzzleWood</span>
                 </a>
                 @if($interactive)
                     <span class="dropdown navText">
@@ -37,7 +37,7 @@
                 @endif
             </nav>
                 @if($interactive)
-                    <nav class="navbar navbar-expand-lg navbar-light flex-grow-1 d-flex">
+                    <nav class="navbar navbar-expand-lg navbar-light flex-grow-1 d-flex" id="searchContainer">
                         <div class="search-bar navbar-nav flex-grow-1" id="searchNavContainer">
                             <div class="input-group" id="searchNav">
                                 <div class=" input-group-prepend" id="searchCategorySelector">

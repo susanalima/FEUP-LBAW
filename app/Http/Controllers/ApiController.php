@@ -67,12 +67,9 @@ class ApiController extends Controller
      $client_id = $request->client_id;
      $product_id = $request->product_id;
      $quantity = $request->quantity;
-     var_dump($client_id, $product_id, $quantity);
 
      $query_result = DB::select("SELECT id FROM cart where checkout is NULL AND id_client = {$client_id}");
-     var_dump($query_result);
      $list_id = $query_result[0]->id;
-     var_dump($list_id);
    
      date_default_timezone_set('UTC');
 
@@ -137,6 +134,7 @@ class ApiController extends Controller
 
      $cart_id = $request->cart_id;
      $product_id = $request->product_id;
+
 
      DB::delete("DELETE FROM ass_list_product WHERE id_list = {$cart_id} and id_product = {$product_id}");
 

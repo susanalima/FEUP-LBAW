@@ -49,7 +49,7 @@ title="Open Shopping cart"
     <article class="m-2 p-2 d-flex justify-content-between align-items-center">
         <div class="w-50 d-flex justify-content-left align-items-center">
             
-            <a href="./product.html" class="ml-4">
+            <a href="/product/{{$product->id}}" class="ml-4">
                 <h4 class="cartProductName">{{$product->name}}</h4>
             </a>
         </div>
@@ -73,7 +73,7 @@ title="Open Shopping cart"
             </div>
         </div>
     <h4 class="cartProductSubTotal totalPrice">{{$product->price}}</h4>
-        <button class="button-toggable btn border border-white" onclick="removeFromCart( {{$product->id}}, {{$product->id_list}})">
+        <button class="button-toggable btn border border-white" onclick="removeFromCart(this, {{$product->id}}, {{$product->id_list}})">
             <i class="fas fa-times"></i>
         </button>
     </article>
