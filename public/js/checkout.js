@@ -5,9 +5,9 @@ function load(){
 
 function checkoutProductsLoad() {
   let response = JSON.parse(this.responseText);
-  console.log(this.responseText);
+  //console.log(this.responseText);
   if(response['type'] === "error") {
-    setAlert("error validating purchase",response);
+    setAlert("error confirming products",response);
     return;
   }
   document.getElementById("confirmProductsForm").submit();
@@ -17,10 +17,26 @@ function checkoutProductsLoad() {
 function checkoutProducts(cart_id) {
   let quantityInfo = document.getElementsByClassName('quantityInfo');
   let str ="";
+
+  if(quantityInfo.length === 0){
+    setAlertString("error confirming products", "you can't buy an empty cart");
+    return;
+  }
+
   for(let i = 0; i < quantityInfo.length; i++) {
     let qI = quantityInfo[i];
-  
     let quantity = qI.getElementsByClassName('productQuantity')[0].value;
+
+    if(quantity === ""){
+      setAlertString("error confirming products", "all products must have a specified quantity");
+      return;
+    }
+
+    if(quantity < 1){
+      setAlertString("error confirming products", "all products must have a quantity of more than 1");
+      return;
+    }
+
     let id = qI.getElementsByClassName('productId')[0].value;
 
     str += id + ":" +  quantity + ",";
@@ -55,8 +71,12 @@ function checkoutConfirmationLoad(){
     document.getElementById("confirmForm").submit();
 }
 
-function checkoutConfirmation(client_id){
-    sendAjaxRequest('POST', '/api/checkout_confirm', {client_id:client_id}, checkoutConfirmationLoad);
+function checkoutConfirmation(client_id, nr_products){
+    if(nr_products < 1) {
+      setAlertString("error validating purchase","you can't buy an empty cart");
+      return;
+    }
+    sendAjaxRequest('POST', '/api/checkout_confirm', {client_id:client_id, number_products:nr_products}, checkoutConfirmationLoad);
 }
 
 
@@ -82,6 +102,22 @@ function setAlert(header,response) {
         <span aria-hidden="true">&times;</span>
       </button>
       <b> ${header} :</b>  ${response['error']}
+    </div>
+  </div>`
+    return;
+  }
+
+
+  function setAlertString(header,response) {
+    let mc = document.getElementById("alert");
+    mc.innerHTML += 
+    `
+    <div class="alert alert-danger mb-0">
+    <div class="container mx-auto">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <b> ${header} :</b>  ${response}
     </div>
   </div>`
     return;

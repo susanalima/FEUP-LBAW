@@ -30,7 +30,7 @@
                             <h1 class="final_label">Total: {{$info['total']}}€</h1>
                             
                             <form id="confirmForm" action="{{ route('index') }}">
-                            <button class="btn button-action next_button " type="button" onclick="checkoutConfirmation('{{$info['id']}}')" value="Go to Delivery">Confirm Purchase <i
+                            <button class="btn button-action next_button " type="button" onclick="checkoutConfirmation('{{$info['id']}}', '{{count($info['products'])}}')" value="Go to Delivery">Confirm Purchase <i
                                 class="fa fa-check" aria-hidden="true"></i>
                             </button>
                             </form>

@@ -61,11 +61,11 @@
                     </div>
                     <div class="d-flex flex-row-reverse mb-4 mx-3">
                         <button type="button" class="btn btn-sm button-action" data-toggle="modal"
-                                data-target="#editCard{{$card['id']}}">Edit</button> 
+                                data-target="#editCard{{$card['id']}}" style="height: 33px">Edit</button> 
                               @include('templates.edit_card')
                         
                     </div>
-                        <form action="{{ route('checkout_confirmation') }}">
+                        <form class="button_form mr-2" action="{{ route('checkout_confirmation') }}">
                         <button type="submit" onclick="checkoutPayment('{{$card['id']}}', '{{$info['id']}}')"  class="btn button-submit btn-sm">Pay</button>
                         </form>
                     </div>
