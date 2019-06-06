@@ -14,9 +14,10 @@
   <div class="d-flex justify-content-around pb-3 pt-3" id="searchBody">
       <div class="p-4 m-2" id="filters">
           <div class="pb-4">
+          <form action="/search/{{$categoryNumber}}/{{$searchContent}}" method="GET">
               <div class="form-group">
                   <label for="orderSelector">Order products by</label>
-                  <select class="form-control" id="orderSelector">
+                  <select class="form-control" id="orderSelector" name="order">
                       <option>Featured</option>
                       <option>Popularity</option>
                       <option>Most Recent</option>
@@ -28,7 +29,7 @@
               @foreach ($brands as $brand => $_)
               @if($brand != '')
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="check_{{$brand}}" />
+                  <input class="form-check-input" type="checkbox" value="{{$brand}}" id="check_{{$brand}}" name="brands[]" />
                   <label class="form-check-label" for="check_{{$brand}}">
                       {{$brand}}
                   </label>
@@ -36,7 +37,6 @@
               @endif
               @endforeach
           </div>
-          <form>
               <div class="form-group">
                   <label for="formControlRange">Price Range</label>
                   <div>
@@ -50,6 +50,7 @@
                               value="{{$price_range['low']}}"
                               min="{{$price_range['low']}}"
                               max="{{$price_range['high']}}"
+                              name="minPrice"
                           />
                           <input
                               type="range"
@@ -60,6 +61,7 @@
                               value="{{$price_range['high']}}"
                               min="{{$price_range['low']}}"
                               max="{{$price_range['high']}}"
+                              name="maxPrice"
                           />
                           <script src="scripts/priceRange.js" defer></script>
                       </div>
@@ -69,6 +71,13 @@
                       </div>
                   </div>
               </div>
+                <button
+                    class="btn button-toggable mt-1"
+                    title="Filter"
+                    type="submit"
+                >
+                    Filter
+                </button>
           </form>
       </div>
 

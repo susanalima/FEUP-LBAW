@@ -21,6 +21,10 @@ class Product extends Model
  protected $with = ['images'];
 
  protected $searchable = ['name'];
+ 
+ public function brand() {
+   return $this->specifications->where('header', 'brand');
+ }
 
  public function category()
  {
