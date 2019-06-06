@@ -427,6 +427,32 @@ public function wishlist_delete(Request $request)
 
 
 
+public function checkout_products(Request $request) {
+
+   $cart_id = $request->cart_id;
+   $quantities = $request->quantities;
+
+   $tokens = explode(",", $quantities);
+
+   $size = count($tokens);
+   $counter = 0;
+
+   foreach($tokens as $token){
+      $ts = explode(":", $token);
+      $product_id = $ts[0];
+      $quantity = $ts[1];
+      $counter = $counter + 1;
+      DB::update("UPDATE ass_list_product SET quantity = {$quantity} WHERE id_list = {$cart_id} and id_product = {$product_id}");
+
+      if($counter === $size -1);
+         break;
+   }
+   
+   return response()->json($tokens);
+ }
+
+
+
 public function checkout_delivery(Request $request) {
 
    $tmpcart = Client::find($request->client_id)->cart();
@@ -513,6 +539,23 @@ public function checkout_delivery(Request $request) {
    //TODO CREATE NEW EMPTY CART
 
    return response()->json($cart);
+ }
+
+ public function remove_product_cart(Request $request){
+
+   $validator = Validator::make($request->all(), [
+       'cart_id' => 'required',
+       'product_id' => 'required',
+      ]);
+    
+      if ($validator->fails()) {
+       return response()->json("Product and cart must be defined");
+      }
+
+   $cart_id = $request->cart_id;
+   $product_id = $request->product_id;
+   DB::delete("DELETE FROM ass_list_product WHERE id_list = {$cart_id} and id_product = {$product_id}");
+   return response()->json($request);
  }
 
 
