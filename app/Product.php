@@ -20,10 +20,15 @@ class Product extends Model
 
  protected $with = ['images'];
 
- protected $searchable = ['name'];
- 
- public function brand() {
-   return $this->specifications->where('header', 'brand');
+ public function brand()
+ {
+  try {
+   return $this->specifications/*->map(function ($spec) {
+   return ['header' => $spec->header->name, 'body' => $spec->body->content];
+   })*/ ->where('header.name', 'brand');
+  } catch (Exception $e) {
+   return 'undefined';
+  }
  }
 
  public function category()

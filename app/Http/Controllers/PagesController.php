@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\DB;
-
+use Validator;
 
 class PagesController extends Controller
 {
@@ -27,35 +27,33 @@ class PagesController extends Controller
 
  }
 
-
- public function makeCart(){
+ public function makeCart()
+ {
   $cart = $this->cart();
-  if($cart != []){
-    $cart['products'] = $cart->get(0)->list_products();
-    $cart['total'] = 0;
-    $total = 0;
+  if ($cart != []) {
+   $cart['products'] = $cart->get(0)->list_products();
+   $cart['total'] = 0;
+   $total = 0;
 
-    foreach($cart['products'] as $product){    
-      $total += $product->price;
-      $product->name = str_before($product->name, ' -');
-      $tmp = DB::select("SELECT quantity, added_to FROM ass_list_product WHERE id_list = {$cart[0]['id']} and id_product = $product->id")[0];
-      $img = DB::select("SELECT filepath, description FROM image WHERE primary_img = true and id_product = $product->id")[0];
-      $product->img_path = $img->filepath;
-      $product->img_description = $img->description;
-     
-      $product->quantity = $tmp->quantity;
-      $product->date = $tmp->added_to;
-    }
-    $cart['total'] = $total;
-  }
-  else{
+   foreach ($cart['products'] as $product) {
+    $total += $product->price;
+    $product->name = str_before($product->name, ' -');
+    $tmp = DB::select("SELECT quantity, added_to FROM ass_list_product WHERE id_list = {$cart[0]['id']} and id_product = $product->id")[0];
+    $img = DB::select("SELECT filepath, description FROM image WHERE primary_img = true and id_product = $product->id")[0];
+    $product->img_path = $img->filepath;
+    $product->img_description = $img->description;
 
-    $cart['products'] = [];
-    $cart['total'] = 0;
+    $product->quantity = $tmp->quantity;
+    $product->date = $tmp->added_to;
+   }
+   $cart['total'] = $total;
+  } else {
+
+   $cart['products'] = [];
+   $cart['total'] = 0;
   }
   return $cart;
  }
-
 
  public function index()
  {
@@ -122,8 +120,6 @@ class PagesController extends Controller
 
   return view("index")->with($data);
  }
-
-
 
  public function help()
  {
@@ -221,6 +217,22 @@ class PagesController extends Controller
 
  public function search($category = null, $text = null, Request $request)
  {
+  $rules = [
+   'minPrice' => 'nullable|numeric',
+   'maxPrice' => 'nullable|numeric',
+   'order' => 'nullable|alpha|max:5',
+   'stock' => 'nullable|numeric',
+  ];
+
+  $validator = Validator::make($request->all(), $rules);
+  if ($validator->fails()) {
+
+   $error = $validator->errors()->first();
+   $cookie = cookie('error', $error);
+
+   return redirect()->route('search')->withCookies([$cookie]);
+  }
+
   $restrictions = ($request->all());
 
   $size = 15;
@@ -231,14 +243,43 @@ class PagesController extends Controller
 
   $prods = Product::search($text);
 
+  $selectedBrands = [];
+  $order = '';
+  $orderDir = '';
   if (count($restrictions) !== 0) {
-   $prods = $prods->where([
-    ['price', '<=', $restrictions['maxPrice']],
-    ['price', '>=', $restrictions['minPrice']],
-   ]);
 
-   if (isset($restrictions['brands']) && count($restrictions['brands']) !== 0) {
-    $prods = $prods->with('brand')->whereIn('brand', $restrictions['brands']);
+   if (isset($restrictions['order'])) {
+    $order = $restrictions['order'];
+    $orderDir = $restrictions['orderDir'];
+
+    switch ($order) {
+     case 'price':
+     case 'name':
+      $prods = $prods->orderBy($order, $orderDir);
+      break;
+
+     case 'date':
+      $prods = $prods->orderBy('id', $orderDir);
+      break;
+
+     default:
+      break;
+    }
+
+   }
+   if (isset($restrictions['maxPrice']) && isset($restrictions['minPrice'])) {
+    $prods = $prods->where([
+     ['price', '<=', $restrictions['maxPrice']],
+     ['price', '>=', $restrictions['minPrice']],
+    ]);
+   }
+
+   if (isset($restrictions['brands'])) {
+    $selectedBrands = $restrictions['brands'];
+   }
+
+   if (count($selectedBrands) !== 0) {
+    $prods = $prods; //->whereIn('brand', $restrictions['brands']);
    }
   }
 
@@ -250,8 +291,8 @@ class PagesController extends Controller
 
   $brands = [];
   $priceRange = [
-   'low' => INF,
-   'high' => 0,
+   'low' => (isset($restrictions['minPrice']) ? $restrictions['minPrice'] : Product::min('price')),
+   'high' => (isset($restrictions['maxPrice']) ? $restrictions['maxPrice'] : Product::max('price')),
   ];
 
   foreach ($products as $product) {
@@ -263,15 +304,6 @@ class PagesController extends Controller
    foreach ($specs as $spec) {
     $brand = $spec['body']['content'];
     $brands[Aux::formatHeader($brand)] = 0;
-   }
-
-   $price = $product['price'];
-   if ($price < $priceRange['low']) {
-    $priceRange['low'] = (float) $price;
-   }
-
-   if ($price > $priceRange['high']) {
-    $priceRange['high'] = (float) $price;
    }
 
   }
@@ -287,7 +319,10 @@ class PagesController extends Controller
    'categoryNumber' => $category,
    'searchContent' => $text,
    'brands' => $brands,
+   'selectedBrands' => $selectedBrands,
    'price_range' => $priceRange,
+   'order' => $order,
+   'orderDir' => $orderDir,
   );
 
   return view("pages.search")->with($data);
@@ -314,7 +349,7 @@ class PagesController extends Controller
   $info['page'] = 'profile';
 
   $previousCarts = $info->carts->filter(function ($cart) {
-    return $cart->checkout != null;
+   return $cart->checkout != null;
   });
 
   $info['carts'] = $previousCarts->map(function ($cart) {
@@ -489,17 +524,21 @@ class PagesController extends Controller
   $shipping = $cart->get(0)->get_shipping();
   $products = $cart->get(0)->list_products();
 
-  if(count($products) === 0)
-  return redirect()->back();
+  if (count($products) === 0) {
+   return redirect()->back();
+  }
 
-  if(count($address) === 0)
-  return redirect()->back();
+  if (count($address) === 0) {
+   return redirect()->back();
+  }
 
-  if(count($card) === 0)
-  return redirect()->back();
+  if (count($card) === 0) {
+   return redirect()->back();
+  }
 
-  if(count($shipping) === 0)
-  return redirect()->back();
+  if (count($shipping) === 0) {
+   return redirect()->back();
+  }
 
   $info['id'] = Auth::user()->id;
   $info['total'] = $totalPrice;
@@ -512,15 +551,15 @@ class PagesController extends Controller
   $description = '';
   $price = '';
 
-  if($info['shipping']->method === "Regular"){
-    $description = "Delivered within 15 days after purchase";
-    $price = "No additional costs!";
-  } else if($info['shipping']->method === "Fast"){
-    $description = "Delivered within 7 days after purchase";
-    $price = "Additional 2.99€ cost";
-  } else  if($info['shipping']->method === "Urgent"){
-    $description = "Delivered within 5 days after purchase";
-    $price = "Additional 5.99€ cost";
+  if ($info['shipping']->method === "Regular") {
+   $description = "Delivered within 15 days after purchase";
+   $price = "No additional costs!";
+  } else if ($info['shipping']->method === "Fast") {
+   $description = "Delivered within 7 days after purchase";
+   $price = "Additional 2.99€ cost";
+  } else if ($info['shipping']->method === "Urgent") {
+   $description = "Delivered within 5 days after purchase";
+   $price = "Additional 5.99€ cost";
   }
 
   $info['shipping']->description = $description;
@@ -541,12 +580,9 @@ class PagesController extends Controller
 
   $cart = PagesController::makeCart();
 
-
   $info['total'] = $totalPrice;
   $info['page'] = 'checkout';
   $info['products'] = $cart['products'];
-
- 
 
   $data = array(
    'type' => 'help',

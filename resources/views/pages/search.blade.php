@@ -1,6 +1,7 @@
 @extends('templates.app')
 
 @section('content')
+<script src="{{ URL::asset('js/buttons.js') }}"></script>
 
 <div class="mainContent">
 
@@ -17,19 +18,29 @@
           <form action="/search/{{$categoryNumber}}/{{$searchContent}}" method="GET">
               <div class="form-group">
                   <label for="orderSelector">Order products by</label>
-                  <select class="form-control" id="orderSelector" name="order">
-                      <option>Featured</option>
-                      <option>Popularity</option>
-                      <option>Most Recent</option>
-                      <option>Most Sold</option>
-                      <option>Price</option>
-                  </select>
+                <div class="d-flex">
+                <select class="form-control" id="orderSelector" name="order">
+                    <option value="name" {{($order !== null && $order === 'name' ? 'selected aria-selected' : '' )}}>Name</option>
+                    <option value="date" {{($order !== null && $order === 'date' ? 'selected aria-selected' : '' )}}>Most Recent</option>
+                    <option value="price" {{($order !== null && $order === 'price' ? 'selected aria-selected' : '' )}}>Price</option>
+                </select>
+            <button
+            class="button-toggable filterBtn btn ml-2 {{(isset($orderDir) && $orderDir === 'desc' ? 'rotated' : 'notRotated' )}}"
+                type="button"
+                onclick="rotateButton(this)"
+                name="orderDir"
+                id="orderDir"
+                value="{{(isset($orderDir) ? $orderDir : 'desc' )}}"
+            >
+                    <i class="fas fa-sort-amount-up"></i>
+                </button>
+                </div>
               </div>
               <span>Brand</span>
               @foreach ($brands as $brand => $_)
               @if($brand != '')
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="{{$brand}}" id="check_{{$brand}}" name="brands[]" />
+                  <input class="form-check-input" type="checkbox" value="{{$brand}}" {{(in_array($brand, $selectedBrands) ? 'checked' : '')}} id="check_{{$brand}}" name="brands[]" />
                   <label class="form-check-label" for="check_{{$brand}}">
                       {{$brand}}
                   </label>
@@ -63,7 +74,7 @@
                               max="{{$price_range['high']}}"
                               name="maxPrice"
                           />
-                          <script src="scripts/priceRange.js" defer></script>
+                        <script src="{{ URL::asset('js/priceRange.js') }}"></script>
                       </div>
                       <div class="d-flex justify-content-between pt-4">
                           <span id="minPrice">{{$price_range['low']}}</span>
@@ -75,6 +86,9 @@
                     class="btn button-toggable mt-1"
                     title="Filter"
                     type="submit"
+                    onclick="submitFilter(this)"
+                    name="orderDir"
+                    value=""
                 >
                     Filter
                 </button>
@@ -95,7 +109,7 @@
               <div class="d-flex flex-column flex-wrap productMid">
               <a href="/product/{{$product['id']}}">
                       <div class="productImage">
-                      <img src="{{'/storage/' . $product['images'][count($product['images']) - 1]['filepath']}}" class="" alt="..." />
+                      <img src="{{'/storage/' . (count($product['images']) > 0 ? $product['images'][count($product['images']) - 1]['filepath'] : 'images/placeholder.png')}}" class="" alt="..." />
                       </div>
                   </a>
                   <div class="ProductBtnsContainer d-flex flex-column justify-content-center h-100">
@@ -217,7 +231,7 @@
                           </div>
                           <a href="./product.html" class="d-flex flex-column">
                               <div class="productImageCompare pb-2">
-                                  <img src="images/placeholder.png" class="" alt="..." />
+                                  <img src="/storage/images/placeholder.png" class="" alt="..." />
                               </div>
                               <span class="text-center">Product Name</span>
                           </a>
@@ -239,7 +253,7 @@
                           </div>
                           <a href="./product.html" class="d-flex flex-column">
                               <div class="productImageCompare pb-2">
-                                  <img src="images/placeholder.png" class="" alt="..." />
+                                  <img src="/storage/images/placeholder.png" class="" alt="..." />
                               </div>
                               <span class="text-center">Product Name</span>
                           </a>
@@ -261,7 +275,7 @@
                           </div>
                           <a href="./product.html" class="d-flex flex-column">
                               <div class="productImageCompare pb-2">
-                                  <img src="images/placeholder.png" class="" alt="..." />
+                                  <img src="/storage/images/placeholder.png" class="" alt="..." />
                               </div>
                               <span class="text-center">Product Name</span>
                           </a>
