@@ -9,6 +9,7 @@ use App\Address;
 use App\CreditCard;
 use App\ProductList;
 use App\WishList;
+use App\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
@@ -92,36 +93,6 @@ class ClientController extends Controller
   //
  }
 
-
-
- public function addresses_delete(Request $request)
- {
-
-    $info = Client::find(Auth::user()->id);
-    $addresses = $info->addresses;
-  
-    foreach($addresses as $address_id) {
-      $address = Address::find($address_id->id);    
-      $address->delete();
-    }
-    return redirect()->route('profile');
- }
-
-
-
- public function cards_delete(Request $request)
- {
-
-    $info = Client::find(Auth::user()->id);
-   $cards = $info->credit_cards;
-  
-    foreach($cards as $card_id) {
-      $card = CreditCard::find($card_id->id);    
-      $card->delete();
-    }
-
-    return redirect()->route('profile');
- }
 
 
  public function account_delete() {

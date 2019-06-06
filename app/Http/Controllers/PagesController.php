@@ -37,7 +37,13 @@ class PagesController extends Controller
     foreach($cart['products'] as $product){    
       $total += $product->price;
       $product->name = str_before($product->name, ' -');
-      $product->quantity = DB::select("SELECT quantity FROM ass_list_product WHERE id_list = {$cart[0]['id']} and id_product = $product->id")[0]->quantity;
+      $tmp = DB::select("SELECT quantity, added_to FROM ass_list_product WHERE id_list = {$cart[0]['id']} and id_product = $product->id")[0];
+      $img = DB::select("SELECT filepath, description FROM image WHERE primary_img = true and id_product = $product->id")[0];
+      $product->img_path = $img->filepath;
+      $product->img_description = $img->description;
+     
+      $product->quantity = $tmp->quantity;
+      $product->date = $tmp->added_to;
     }
     $cart['total'] = $total;
   }
@@ -120,7 +126,7 @@ class PagesController extends Controller
 
  public function help()
  {
-  $cart = $this->cart();
+  $cart = PagesController::makeCart();
 
   $data = array(
    'type' => 'help',
@@ -133,7 +139,7 @@ class PagesController extends Controller
  public function contacts()
  {
 
-  $cart = $this->cart();
+  $cart = PagesController::makeCart();
 
   $data = array(
    'type' => 'contacts',
@@ -146,7 +152,7 @@ class PagesController extends Controller
  public function faq()
  {
 
-  $cart = $this->cart();
+  $cart = PagesController::makeCart();
 
   $data = array(
    'type' => 'faq',
@@ -216,6 +222,7 @@ class PagesController extends Controller
  {
   $size = 15;
   $cart = PagesController::makeCart();
+
   $catAux = Category::find($category);
   $categoryName = ($catAux != null ? Aux::formatHeader($catAux->name) : 'All Categories');
 
@@ -277,7 +284,7 @@ class PagesController extends Controller
  public function profile()
  {
 
-  $ccart = $this->cart();
+  $ccart = PagesController::makeCart();
 
   $info = Client::find(Auth::user()->id);
   $userInfo = User::find(Auth::user()->id);
@@ -291,7 +298,12 @@ class PagesController extends Controller
 
   $info['wishLists'] = $info->wishLists;
   $info['page'] = 'profile';
-  $info['carts'] = $info->carts->map(function ($cart) {
+
+  $previousCarts = $info->carts->filter(function ($cart) {
+    return $cart->checkout != null;
+  });
+
+  $info['carts'] = $previousCarts->map(function ($cart) {
 
    $address_line = '';
    $postal_code = '';
@@ -321,7 +333,7 @@ class PagesController extends Controller
 
    $collection = collect($products);
 
-   $totalPrice = $collection->sum('price');
+   $totalPrice = $collection->sum('price'); //TODO O PREÇO TEM DE SER MULTIPLICADO PELO QUANTIDADE
 
    return [
     'id' => $cart->id,
@@ -399,7 +411,6 @@ class PagesController extends Controller
 
  public function checkout_delivery()
  {
-  $cart = $this->cart();
 
   $totalPrice = 10; //TODO GET CURRENT CART TOTAL PRICE
 
@@ -412,7 +423,6 @@ class PagesController extends Controller
    'type' => 'help',
    'interactive' => true,
    'info' => $info,
-   'cart' => $cart,
   );
   return view("pages.checkout_delivery")->with($data);
  }
@@ -420,18 +430,17 @@ class PagesController extends Controller
 
  public function checkout_shipping()
  {
-  $cart = $this->cart();
 
   $totalPrice = 10; //TODO GET CURRENT CART TOTAL PRICE
 
   $info['total'] = $totalPrice;
+  $info['id'] = Auth::user()->id;
   $info['page'] = 'checkout';
 
   $data = array(
    'type' => 'help',
    'interactive' => true,
    'info' => $info,
-   'cart' => $cart,
   );
   return view("pages.checkout_shipping")->with($data);
  }
@@ -439,7 +448,6 @@ class PagesController extends Controller
 
  public function checkout_payment()
  {
-  $cart = $this->cart();
 
   $totalPrice = 10; //TODO GET CURRENT CART TOTAL PRICE
   
@@ -453,7 +461,6 @@ class PagesController extends Controller
    'type' => 'help',
    'interactive' => true,
    'info' => $info,
-   'cart' => $cart,
   );
   return view("pages.checkout_payment")->with($data);
  }
@@ -461,19 +468,57 @@ class PagesController extends Controller
 
  public function checkout_confirmation()
  {
-  $cart = $this->cart();
 
   $totalPrice = 10; //TODO GET CURRENT CART TOTAL PRICE
 
+  $cart = $this->cart();
 
+  $address = $cart->get(0)->get_address();
+  $card = $cart->get(0)->get_card();
+  $shipping = $cart->get(0)->get_shipping();
+  $products = $cart->get(0)->list_products();
+
+  if(count($products) === 0)
+  return redirect()->back();
+
+  if(count($address) === 0)
+  return redirect()->back();
+
+  if(count($card) === 0)
+  return redirect()->back();
+
+  if(count($shipping) === 0)
+  return redirect()->back();
+
+  $info['id'] = Auth::user()->id;
   $info['total'] = $totalPrice;
+  $info['address'] = $address[0];
+  $info['card'] = $card[0];
+  $info['shipping'] = $shipping[0];
   $info['page'] = 'checkout';
+  $info['products'] = $products;
+
+  $description = '';
+  $price = '';
+
+  if($info['shipping']->method === "Regular"){
+    $description = "Delivered within 15 days after purchase";
+    $price = "No additional costs!";
+  } else if($info['shipping']->method === "Fast"){
+    $description = "Delivered within 7 days after purchase";
+    $price = "Additional 2.99€ cost";
+  } else  if($info['shipping']->method === "Urgent"){
+    $description = "Delivered within 5 days after purchase";
+    $price = "Additional 5.99€ cost";
+  }
+
+  $info['shipping']->description = $description;
+  $info['shipping']->price = $price;
 
   $data = array(
    'type' => 'help',
    'interactive' => true,
    'info' => $info,
-   'cart' => $cart,
   );
   return view("pages.checkout_confirmation")->with($data);
  }
@@ -481,19 +526,22 @@ class PagesController extends Controller
 
  public function checkout_products()
  {
-  $cart = $this->cart();
 
   $totalPrice = 10; //TODO GET CURRENT CART TOTAL PRICE
+
+  $cart = PagesController::makeCart();
 
 
   $info['total'] = $totalPrice;
   $info['page'] = 'checkout';
+  $info['products'] = $cart['products'];
+
+ 
 
   $data = array(
    'type' => 'help',
    'interactive' => true,
    'info' => $info,
-   'cart' => $cart,
   );
   return view("pages.checkout_product")->with($data);
  }

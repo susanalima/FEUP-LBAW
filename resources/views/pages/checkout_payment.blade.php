@@ -3,6 +3,7 @@
 
 <link rel="stylesheet" href="{{ URL::asset('css/checkoutProducts.css') }}"" />
 <script src="{{ URL::asset('js/wishList.js') }}"></script>
+<script src="{{ URL::asset('js/checkout.js') }}"></script>
 <script src="{{ URL::asset('js/edition.js') }}"></script>
 
 @section('content')
@@ -64,12 +65,11 @@
                               @include('templates.edit_card')
                         
                     </div>
-                  
-
-                    <form class="button_form mr-2" action="checkoutConfirmation.html"> <button type="submit"
-                            class="btn button-submit btn-sm">Pay</button>
-                    </form>
+                        <form action="{{ route('checkout_confirmation') }}">
+                        <button type="submit" onclick="checkoutPayment('{{$card['id']}}', '{{$info['id']}}')"  class="btn button-submit btn-sm">Pay</button>
+                        </form>
                     </div>
+
                 </div>
                 @endforeach
               
