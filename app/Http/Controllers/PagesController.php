@@ -478,6 +478,18 @@ class PagesController extends Controller
   $shipping = $cart->get(0)->get_shipping();
   $products = $cart->get(0)->list_products();
 
+  if(count($products) === 0)
+  return redirect()->back();
+
+  if(count($address) === 0)
+  return redirect()->back();
+
+  if(count($card) === 0)
+  return redirect()->back();
+
+  if(count($shipping) === 0)
+  return redirect()->back();
+
   $info['id'] = Auth::user()->id;
   $info['total'] = $totalPrice;
   $info['address'] = $address[0];

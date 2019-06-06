@@ -20,29 +20,49 @@
             </ol>
         </nav>
     
-        <div class="d-flex justify-content-between price1">
-                <h1 class="final_label">Total:  {{$info['total']}}€</h1>
-                <form action="{{ route('checkout_delivery') }}">
-                <button class="btn button-action next_button w-auto" type="submit" value="Go to Delivery">Confirm Products <i
-                    class="fa fa-caret-right" aria-hidden="true"></i></button></form>
-           </div>
-        <div class="all_elements d-flex flex-wrap">
+     
+     
+        <div class="all_deliveries">
+
+  
+     
+            <div class="card-body m-auto checkoutListCards">
+
+   <div class="d-flex justify-content-between">
+                    <div class="d-flex price flex-wrap">
+                            <h1 class="final_label">Total: {{$info['total']}}€</h1>
+                       </div>
+                       <form action="{{ route('checkout_delivery') }}">
+                
+                <button class="btn button-action next_button" type="submit" value="Go to Delivery">Confirm Products <i
+                    class="fa fa-caret-right" aria-hidden="true"></i></button>
+                </form>
+</div>
+            <h2 class="checkoutTextTop">Confirm the products for your purchase!</h2>
+
+       
+    <div id="checkoutCards" class="d-flex all_elements2">
+
+    
 
         @foreach($info['products'] as $product)      
-        <div class="card product_card d-flex flex-column">
-            <h4 class="product_name">{{$product->name}}</h4>
+        <div class="card checkoutProductCard d-flex flex-column">
+ 
+            
+            <h6 class="productName m-4" ><strong>{{$product->name}}</strong></h6>
+           
             <div class="container" style="margin-left: 0.4em;">
                 <div class="row flex-row d-flex justify-content-start">
-                    <img class="card-img-top product_img col-sm" src="{{ '/storage/' . $product->img_path }}" alt="{{$product->img_description}}">
+                    <img class="card-img-top ck_product_img col-sm" src="{{ '/storage/' . $product->img_path }}" alt="{{$product->img_description}}">
                     <div class="col-sm">
                         <div>
                             <button class="btn btn-light button-toggable" type="button"><i class="fa fa-times"
                                     aria-hidden="true"></i></button>
-                            <h1 class="price_tag">{{$product->price}}€</h1>
+                            <p class="price_tag">{{$product->price}}€</p>
                         </div>
 
                         <div class="quantity_field">
-                            <h1 class="quantity_label">Quantity: {{$product->quantity}}</h1>
+                            <p class="quantity_label">Quantity: {{$product->quantity}}</p>
                             <div class="quantity_buttons">
                                 <button class="add_quantity btn" type="button"><i class="fa fa-plus"
                                         aria-hidden="true"></i></button>
@@ -54,10 +74,12 @@
                     </div>
                 </div>
             </div>
+       
         </div>
         @endforeach
     
-  
+</div>
+</div>
     </div>
 </div>
 

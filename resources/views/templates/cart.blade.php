@@ -38,7 +38,7 @@ title="Open Shopping cart"
     </div>
     <button
         class="btn button-toggable mt-1"
-        onclick="window.location.href = './checkoutProducts.html';"
+        onclick="window.location.href = '{{ route('checkout_products') }}';"
         title="Checkout"
     >
         Checkout
