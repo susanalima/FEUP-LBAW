@@ -57,7 +57,7 @@ class PagesController extends Controller
         } else {
 
             /*$product->quantity = $tmp->quantity;
-            $product->date = $tmp->added_to;*/
+        $product->date = $tmp->added_to;*/
         }
         $cart['total'] = $total;
         /*} else {
@@ -471,9 +471,13 @@ class PagesController extends Controller
         //TODO
     }
 
-    public function manager_client()
+    public function show_messages()
     {
-        return view("pages.manager_client");
+        $data = array(
+            'type' => 'message_board',
+            'interactive' => true,
+        );
+        return view("pages.messages")->with($data);
     }
 
     public function checkout_delivery()
