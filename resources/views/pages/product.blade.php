@@ -21,7 +21,7 @@
                     <div class="carousel-inner">
                       @foreach ($product['images'] as $image)
                         <div class="carousel-item {{$image['primary_img'] ? 'active' : ''}}">
-                            <img src="{{ '/storage/' . $image['filepath'] }}" class="d-block w-100" alt="{{$image['filepath']}}" />
+                            <img src="{{ '/storage/' . $image['filepath'] }}" class="d-block w-100 carouselImgSearch" alt="{{$image['filepath']}}" />
                         </div>
                       @endforeach  
                     </div>
