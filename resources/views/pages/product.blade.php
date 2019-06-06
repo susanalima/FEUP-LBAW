@@ -3,6 +3,7 @@
 <script src="{{ URL::asset('js/request.js') }}"></script>
 <script src="{{ URL::asset('js/product.js') }}"></script>
 <script src="{{ URL::asset('js/wishList.js') }}"></script>
+<script src="{{ URL::asset('js/compare.js') }}" defer></script>
 
 @section('content')
 
@@ -11,7 +12,7 @@
      </div>
 
 <div class="mainContent">
-            <div id="intro" class="row d-flex justify-content-center p-5 w-100">
+            <div id="intro" class="row d-flex justify-content-center p-5 w-100 prod" data-id="{{$product['id']}}">
                 <div id="productImagesCarousel" class="carousel slide col-md-5" data-ride="carousel">
                     <ol class="carousel-indicators">
                         @foreach ($product['images'] as $index => $image)
@@ -63,7 +64,7 @@
                         </button>
                         @endif
                         <button
-                            class="btn addToCmpBtn button-toggable w-100"
+                    class="btn addToCmpBtn button-toggable w-100"
                             onClick="addToComparison(this)"
                             type="submit"
                             id="addToCmp"
@@ -160,106 +161,7 @@
                 </div>
             </div>
 
-            <!-- Modal -->
-            <div
-                class="modal fade"
-                id="comparisonModal"
-                tabindex="-1"
-                role="dialog"
-                aria-labelledby="comparisonModalLabel"
-                aria-hidden="true"
-            >
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="comparisonModalLabel">Products Added For Comparison</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body d-flex justify-content-between">
-                            <div class="productForComparison d-flex flex-column align-items-center pb-5">
-                                <div>
-                                     <!-- TODO: Might need to be changed -->
-                                    <button
-                                        class="btn btn addToCartBtn button-toggable "
-                                        onClick="addProductToCart(this,'{{Auth::id()}}','{{$product['id']}}',1)"
-                                        type="submit"
-                                        id="addToCart"
-                                        title="Add To Cart"
-                                    >
-                                        <i class="fas fa-cart-plus"></i>
-                                    </button>
-                                    <button class="btn delBtn button-negative" title="Remove From Comparison">
-                                        <i class="fas fa-times"></i>
-                                    </button>
-                                </div>
-                                <a href="./product.html" class="d-flex flex-column">
-                                    <div class="productImageCompare pb-2">
-                                        <img src="{{ URL::asset('images/placeholder.png') }}" class="" alt="..." />
-                                    </div>
-                                    <span class="text-center">Product Name</span>
-                                </a>
-                            </div>
-                            <div class="productForComparison d-flex flex-column align-items-center pb-5">
-                                <div>
-                                    <button
-                                        class="btn btn addToCartBtn button-toggable "
-                                        onClick="addToCart(this)"
-                                        type="submit"
-                                        id="addToCart"
-                                        title="Add To Cart"
-                                    >
-                                        <i class="fas fa-cart-plus"></i>
-                                    </button>
-                                    <button class="btn delBtn button-negative" title="Remove From Comparison">
-                                        <i class="fas fa-times"></i>
-                                    </button>
-                                </div>
-                                <a href="./product.html" class="d-flex flex-column">
-                                    <div class="productImageCompare pb-2">
-                                        <img src="{{ URL::asset('images/placeholder.png') }}" class="" alt="..." />
-                                    </div>
-                                    <span class="text-center">Product Name</span>
-                                </a>
-                            </div>
-                            <div class="productForComparison d-flex flex-column align-items-center pb-5">
-                                <div>
-                                    <button
-                                        class="btn btn addToCartBtn button-toggable "
-                                        onClick="addToCart(this)"
-                                        type="submit"
-                                        id="addToCart"
-                                        title="Add To Cart"
-                                    >
-                                        <i class="fas fa-cart-plus"></i>
-                                    </button>
-                                    <button class="btn delBtn button-negative" title="Remove From Comparison">
-                                        <i class="fas fa-times"></i>
-                                    </button>
-                                </div>
-                                <a href="./product.html" class="d-flex flex-column">
-                                    <div class="productImageCompare pb-2">
-                                        <img src="{{ URL::asset('images/placeholder.png') }}" class="" alt="..." />
-                                    </div>
-                                    <span class="text-center">Product Name</span>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button
-                                type="button"
-                                onclick="window.location.href = './compare.html';"
-                                class="btn button-submit"
-                                data-dismiss="modal"
-                            >
-                                Go To Comparison
-                            </button>
-                            <button type="button" class="btn button-negative" data-dismiss="modal">Close</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @include('templates.compare')
 
             <!-- Modal -->
             @include('templates.add_to_wishlist')

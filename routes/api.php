@@ -22,7 +22,6 @@ Route::post('/inc_prod', 'ApiController@inc_prod');
 Route::post('/dec_prod', 'ApiController@dec_prod');
 Route::post('remove_prod', 'ApiController@remove_prod');
 
-
 Route::post('/address_edit', 'ApiController@address_edit');
 Route::post('/address_delete', 'ApiController@address_delete');
 Route::post('/address_add', 'ApiController@address_add');
@@ -43,3 +42,5 @@ Route::post('/checkout_confirm', "ApiController@checkout_confirm")->name('checko
 
 Route::post('/add_review', 'ApiController@add_review');
 Route::post('/add_question', 'ApiController@add_question');
+
+Route::get('/productSimple', "ProductController@getSimpleProd")->name('getSimpleProd');

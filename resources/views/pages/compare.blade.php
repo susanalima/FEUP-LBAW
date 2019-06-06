@@ -1,11 +1,17 @@
 @extends('templates.app')
 
+<script src="{{ URL::asset('js/comparePage.js') }}"></script>
+<script src="{{ URL::asset('js/card.js') }}"></script>
+<link rel="stylesheet" href="{{ URL::asset('css/checkoutProducts.css') }}" />
 
-<link rel="stylesheet" href="{{ URL::asset('css/checkoutProducts.css') }}"" />
 
 
 @section('content')
-
+    @isset ($error)
+    <div class="alert alert-danger" role="alert">
+        {{$error}}
+    </div>
+    @endisset
             <div
                 id="specsCol"
                 class="collapse show mx-auto compareTable"
@@ -17,9 +23,10 @@
                         <tr>
                             <th scope="col" id="compareTableCorner">Details</th>
                       
+                            @isset($products)
                             @foreach($products as $product)
-                            <th scope="col">
-                                <div>
+                        <th scope="col" class="prod" data-id="{{$product['id']}}">
+                                <div class="my-2">
                                     <button
                                         class="btn btn addToCartBtn button-toggable "
                                         onClick="addToCart(this)"
@@ -29,7 +36,7 @@
                                     >
                                         <i class="fas fa-cart-plus"></i>
                                     </button>
-                                    <button class="btn delBtn button-negative" title="Remove From Comparison">
+                                    <button class="btn delBtn button-negative" title="Remove From Comparison" onclick="removeComparePage(this)">
                                         <i class="fas fa-times"></i>
                                     </button>
                                 </div>
@@ -41,11 +48,12 @@
                                 </a>
                             </th>
                             @endforeach
-
+                            @endisset
                    
                         </tr>
                     </thead>
                     <tbody>
+                        @isset($products)
                         @foreach($specs as $spec)
                         <tr>
                             <th scope="row">{{$spec['name']}}</th>
@@ -54,7 +62,7 @@
                             @endforeach
                         </tr>
                         @endforeach
-                 
+                        @endisset
                     </tbody>
                 </table>
             </div>

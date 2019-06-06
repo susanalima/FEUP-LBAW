@@ -4,6 +4,7 @@
 <script src="{{ URL::asset('js/buttons.js') }}"></script>
 <script src="{{ URL::asset('js/request.js') }}"></script>
 <script src="{{ URL::asset('js/wishList.js') }}"></script>
+<script src="{{ URL::asset('js/compare.js') }}" defer></script>
 
 <div class="mainContent">
 
@@ -99,7 +100,7 @@
 
       <div class="d-flex justify-content-around flex-wrap p-4 m-2" id="results">
         @foreach ($products as $product)
-          <div class="product d-flex flex-column">
+          <div class="product d-flex flex-column prod" data-id="{{$product['id']}}">
               <a href="/product/{{$product['id']}}">
                   <div class="productName d-flex align-items-end">
                       <span>{{$product['name']}}</span>
@@ -241,105 +242,10 @@
             {{ $products->links() }}
           </nav>
       </div>
-      <!-- Modal -->
-      <div
-          class="modal fade"
-          id="comparisonModal"
-          tabindex="-1"
-          role="dialog"
-          aria-labelledby="comparisonModalLabel"
-          aria-hidden="true"
-      >
-          <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                  <div class="modal-header">
-                      <h5 class="modal-title" id="comparisonModalLabel">Products Added For Comparison</h5>
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                      </button>
-                  </div>
-                  <div class="modal-body d-flex justify-content-between">
-                      <div class="productForComparison d-flex flex-column align-items-center pb-5">
-                          <div>
-                              <button
-                                  class="btn btn addToCartBtn button-toggable "
-                                  onClick="addToCart(this)"
-                                  type="submit"
-                                  id="addToCart"
-                                  title="Add To Cart"
-                              >
-                                  <i class="fas fa-cart-plus"></i>
-                              </button>
-                              <button class="btn delBtn button-negative" title="Remove From Comparison">
-                                  <i class="fas fa-times"></i>
-                              </button>
-                          </div>
-                          <a href="./product.html" class="d-flex flex-column">
-                              <div class="productImageCompare pb-2">
-                                  <img src="/storage/images/placeholder.png" class="" alt="..." />
-                              </div>
-                              <span class="text-center">Product Name</span>
-                          </a>
-                      </div>
-                      <div class="productForComparison d-flex flex-column align-items-center pb-5">
-                          <div>
-                              <button
-                                  class="btn btn addToCartBtn button-toggable "
-                                  onClick="addToCart(this)"
-                                  type="submit"
-                                  id="addToCart"
-                                  title="Add To Cart"
-                              >
-                                  <i class="fas fa-cart-plus"></i>
-                              </button>
-                              <button class="btn delBtn button-negative" title="Remove From Comparison">
-                                  <i class="fas fa-times"></i>
-                              </button>
-                          </div>
-                          <a href="./product.html" class="d-flex flex-column">
-                              <div class="productImageCompare pb-2">
-                                  <img src="/storage/images/placeholder.png" class="" alt="..." />
-                              </div>
-                              <span class="text-center">Product Name</span>
-                          </a>
-                      </div>
-                      <div class="productForComparison d-flex flex-column align-items-center pb-5">
-                          <div>
-                              <button
-                                  class="btn btn addToCartBtn button-toggable "
-                                  onClick="addToCart(this)"
-                                  type="submit"
-                                  id="addToCart"
-                                  title="Add To Cart"
-                              >
-                                  <i class="fas fa-cart-plus"></i>
-                              </button>
-                              <button class="btn delBtn button-negative" title="Remove From Comparison">
-                                  <i class="fas fa-times"></i>
-                              </button>
-                          </div>
-                          <a href="./product.html" class="d-flex flex-column">
-                              <div class="productImageCompare pb-2">
-                                  <img src="/storage/images/placeholder.png" class="" alt="..." />
-                              </div>
-                              <span class="text-center">Product Name</span>
-                          </a>
-                      </div>
-                  </div>
-                  <div class="modal-footer">
-                      <button
-                          type="button"
-                          onclick="window.location.href = './compare.html';"
-                          class="btn button-submit"
-                          data-dismiss="modal"
-                      >
-                          Go To Comparison
-                      </button>
-                      <button type="button" class="btn button-negative" data-dismiss="modal">Close</button>
-                  </div>
-              </div>
-          </div>
-      </div>
+    
+    
+      @include('templates.compare')
+
 
 
 
