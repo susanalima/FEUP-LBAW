@@ -9,6 +9,7 @@ use App\Product;
 use App\Promotion;
 use App\User;
 use App\WishList;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cookie;
 
@@ -185,8 +186,10 @@ class PagesController extends Controller
   return view("pages.product")->with($data);
  }
 
- public function search($category = null, $text = null)
+ public function search($category = null, $text = null, Request $request)
  {
+  $restrictions = ($request->all());
+
   $size = 15;
   $cart = $this->cart();
 
@@ -194,6 +197,17 @@ class PagesController extends Controller
   $categoryName = ($catAux != null ? Aux::formatHeader($catAux->name) : 'All Categories');
 
   $prods = Product::search($text);
+
+  if (count($restrictions) !== 0) {
+   $prods = $prods->where([
+    ['price', '<=', $restrictions['maxPrice']],
+    ['price', '>=', $restrictions['minPrice']],
+   ]);
+
+   if (isset($restrictions['brands']) && count($restrictions['brands']) !== 0) {
+    $prods = $prods->with('brand')->whereIn('brand', $restrictions['brands']);
+   }
+  }
 
   if ($catAux === null) {
    $products = $prods->paginate($size);
@@ -387,7 +401,6 @@ class PagesController extends Controller
   return view("pages.checkout_delivery")->with($data);
  }
 
-
  public function checkout_shipping()
  {
   $cart = $this->cart();
@@ -406,13 +419,12 @@ class PagesController extends Controller
   return view("pages.checkout_shipping")->with($data);
  }
 
-
  public function checkout_payment()
  {
   $cart = $this->cart();
 
   $totalPrice = 10; //TODO GET CURRENT CART TOTAL PRICE
-  
+
   $info = Client::find(Auth::user()->id);
   $info['cards'] = $info->credit_cards;
 
@@ -428,13 +440,11 @@ class PagesController extends Controller
   return view("pages.checkout_payment")->with($data);
  }
 
-
  public function checkout_confirmation()
  {
   $cart = $this->cart();
 
   $totalPrice = 10; //TODO GET CURRENT CART TOTAL PRICE
-
 
   $info['total'] = $totalPrice;
   $info['page'] = 'checkout';
@@ -448,13 +458,11 @@ class PagesController extends Controller
   return view("pages.checkout_confirmation")->with($data);
  }
 
-
  public function checkout_products()
  {
   $cart = $this->cart();
 
   $totalPrice = 10; //TODO GET CURRENT CART TOTAL PRICE
-
 
   $info['total'] = $totalPrice;
   $info['page'] = 'checkout';
@@ -467,6 +475,5 @@ class PagesController extends Controller
   );
   return view("pages.checkout_product")->with($data);
  }
-
 
 }
