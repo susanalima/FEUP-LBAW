@@ -1,7 +1,8 @@
 @extends('templates.app')
-
+<script src="{{ URL::asset('js/buttons.js') }}"></script>
 <script src="{{ URL::asset('js/request.js') }}"></script>
 <script src="{{ URL::asset('js/product.js') }}"></script>
+<script src="{{ URL::asset('js/wishList.js') }}"></script>
 
 @section('content')
 
@@ -72,17 +73,33 @@
                         >
                             <i class="fas fa-exchange-alt"></i>
                         </button>
+
+                        @if(Auth::check())
                         <button
                             class="btn addToWishListBtn button-toggable w-100 ml-1"
-                            onClick="addToWishList(this)"
+                          
                             type="submit"
-                            id="addToWishList"
+                            id="addToWishList{{$product['id']}}"
                             title="Add To Wish List"
                             data-toggle="modal"
                             data-target="#wishListModal"
                         >
                             <i class="fas fa-heart"></i>
                         </button>
+                        @else 
+                        <button
+                            class="btn addToWishListBtn button-toggable w-100 ml-1"
+                           
+                            type="submit"
+                            id="addToWishList{{$product['id']}}"
+                            title="Add To Wish List"
+                            data-toggle="modal"
+                            data-target="#wishListModal"
+                        disabled>
+                            <i class="fas fa-heart"></i>
+                        </button>
+                        @endif
+
                     </div>
 
                     <form class="rating mt-1">
@@ -234,41 +251,7 @@
             </div>
 
             <!-- Modal -->
-            <div
-                class="modal fade"
-                id="wishListModal"
-                tabindex="-1"
-                role="dialog"
-                aria-labelledby="wishListModalLabel"
-                aria-hidden="true"
-            >
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="wishListModalLabel">Add to Wish List</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <form class="d-flex justify-content-center p-3">
-                            <div class="form-group">
-                                <label for="exampleFormControlSelect1">Select Wish List</label>
-                                <select class="form-control" id="exampleFormControlSelect1">
-                                    <option>Wish List 1</option>
-                                    <option>Wish List 2</option>
-                                    <option>Wish List 3</option>
-                                    <option>Wish List 4</option>
-                                    <option>Wish List 5</option>
-                                </select>
-                            </div>
-                        </form>
-                        <div class="modal-footer">
-                            <button type="button" class="btn button-submit">Save changes</button>
-                            <button type="button" class="btn button-negative" data-dismiss="modal">Close</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @include('templates.add_to_wishlist')
 
             <!-- Modal -->
             <div

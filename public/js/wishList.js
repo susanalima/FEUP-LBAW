@@ -27,7 +27,16 @@ function encodeForAjax(data) {
 function removeFromWishList(removeButton, product_id, list_id){
     let list_element = removeButton.closest(".product_card");
     list_element.remove();
-    console.log(list_element, product_id, list_id);
+    //console.log(list_element, product_id, list_id);
     sendAjaxRequest('POST', '/api/remove_productWL', {product_id: product_id , list_id: list_id}, nothing);
+}
+
+
+function addProductToWishList(product_id) {
+  let opts = document.getElementById("selectWL");
+  let list_id = opts.options[opts.selectedIndex].value;
+  let btn = document.getElementById(`addToWishList${product_id}`);
+  btn.classList.toggle("active");
+  sendAjaxRequest('POST', '/api/add_product_wl', {product_id: product_id , list_id: list_id}, nothing);
 }
 

@@ -103,3 +103,4 @@ function addProductToCart(elem, client_id, product_id, quantity){
     else
       console.log("User not logged in\n");  
 }
+

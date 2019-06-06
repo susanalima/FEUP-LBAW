@@ -209,6 +209,12 @@ class PagesController extends Controller
 
     public function product($id)
     {
+        $wishlists = array();
+        if(Auth::check()) {
+            $client = Client::find(Auth::user()->id);  
+            $wishlists = $client->wishLists;
+        }
+
         $cart = PagesController::makeCart();
 
         $product = Product::find($id);
@@ -223,6 +229,7 @@ class PagesController extends Controller
             'type' => 'product',
             'interactive' => true,
             'product' => $product,
+            'wishlists' => $wishlists,
             'cart' => $cart,
         );
 
@@ -323,6 +330,13 @@ class PagesController extends Controller
         }
 
         $json = json_decode($products->toJson(), true);
+
+        $wishlists = array();
+        if(Auth::check()) {
+            $client = Client::find(Auth::user()->id);  
+            $wishlists = $client->wishLists;
+        }
+
         $data = array(
             'type' => 'product',
             'interactive' => true,
@@ -337,16 +351,16 @@ class PagesController extends Controller
             'price_range' => $priceRange,
             'order' => $order,
             'orderDir' => $orderDir,
+            'wishlists' => $wishlists,
         );
 
         return view("pages.search")->with($data);
 
     }
 
-    //TODO NAO IR BUSCAR O CART ATUAL
+
     public function profile()
     {
-
         $ccart = PagesController::makeCart();
 
         $info = Client::find(Auth::user()->id);
