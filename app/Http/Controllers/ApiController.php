@@ -429,6 +429,32 @@ public function wishlist_delete(Request $request)
 
 
 
+public function checkout_products(Request $request) {
+
+   $cart_id = $request->cart_id;
+   $quantities = $request->quantities;
+
+   $tokens = explode(",", $quantities);
+
+   $size = count($tokens);
+   $counter = 0;
+
+   foreach($tokens as $token){
+      $ts = explode(":", $token);
+      $product_id = $ts[0];
+      $quantity = $ts[1];
+      $counter = $counter + 1;
+      DB::update("UPDATE ass_list_product SET quantity = {$quantity} WHERE id_list = {$cart_id} and id_product = {$product_id}");
+
+      if($counter === $size -1);
+         break;
+   }
+   
+   return response()->json($tokens);
+ }
+
+
+
 public function checkout_delivery(Request $request) {
 
    $tmpcart = Client::find($request->client_id)->cart();

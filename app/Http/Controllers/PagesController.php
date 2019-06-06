@@ -535,6 +535,7 @@ class PagesController extends Controller
   $info['total'] = $totalPrice;
   $info['page'] = 'checkout';
   $info['products'] = $cart['products'];
+  $info['cart_id'] = $cart->get(0)->id;
 
  
 

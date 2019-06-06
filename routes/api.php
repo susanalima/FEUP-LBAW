@@ -32,6 +32,7 @@ Route::post('/info_edit', 'ApiController@info_edit');
 Route::post('/wishlist_add', 'ApiController@wishlist_add');
 Route::post('/wishlist_delete', 'ApiController@wishlist_delete');
 
+Route::post('/checkout_products', "ApiController@checkout_products")->name('checkout_products');
 Route::post('/checkout_delivery', "ApiController@checkout_delivery")->name('checkout_delivery');
 Route::post('/checkout_shipping', "ApiController@checkout_shipping")->name('checkout_shipping');
 Route::post('/checkout_payment', "ApiController@checkout_payment")->name('checkout_payment');

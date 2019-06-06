@@ -2,6 +2,35 @@ function load(){
 
 }
 
+
+function checkoutProductsLoad() {
+  let response = JSON.parse(this.responseText);
+  console.log(this.responseText);
+  if(response['type'] === "error") {
+    setAlert("error validating purchase",response);
+    return;
+  }
+  document.getElementById("confirmProductsForm").submit();
+
+}
+
+function checkoutProducts(cart_id) {
+  let quantityInfo = document.getElementsByClassName('quantityInfo');
+  let str ="";
+  for(let i = 0; i < quantityInfo.length; i++) {
+    let qI = quantityInfo[i];
+  
+    let quantity = qI.getElementsByClassName('productQuantity')[0].value;
+    let id = qI.getElementsByClassName('productId')[0].value;
+
+    str += id + ":" +  quantity + ",";
+  }
+
+  sendAjaxRequest('POST', '/api/checkout_products', {cart_id:cart_id, quantities:str}, checkoutProductsLoad);
+
+}
+
+
 function checkoutPayment(card_id, client_id){
     sendAjaxRequest('POST', '/api/checkout_payment', {card_id:card_id, client_id:client_id}, load);
 }
