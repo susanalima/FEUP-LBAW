@@ -91,34 +91,3 @@ function removeProductCart(product_id, cart_id){
   sendAjaxRequest('POST', '/api/remove_product_cart', {product_id: product_id , cart_id: cart_id}, removeProductCartLoad);
 }
 
-
-function setAlert(header,response) {
-    let mc = document.getElementById("alert");
-    mc.innerHTML += 
-    `
-    <div class="alert alert-danger mb-0">
-    <div class="container mx-auto">
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
-      <b> ${header} :</b>  ${response['error']}
-    </div>
-  </div>`
-    return;
-  }
-
-
-  function setAlertString(header,response) {
-    let mc = document.getElementById("alert");
-    mc.innerHTML += 
-    `
-    <div class="alert alert-danger mb-0">
-    <div class="container mx-auto">
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
-      <b> ${header} :</b>  ${response}
-    </div>
-  </div>`
-    return;
-  }

@@ -1,21 +1,4 @@
 
-
-function setAlert(header,response) {
-  let mc = document.getElementById("alert");
-  mc.innerHTML += 
-  `
-  <div class="alert alert-danger mb-0">
-  <div class="container mx-auto">
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-      <span aria-hidden="true">&times;</span>
-    </button>
-    <b> ${header} :</b>  ${response['error']}
-  </div>
-</div>`
-  return;
-}
-
-
 function editAddressProfileLoaded(){
   let response = JSON.parse(this.responseText);
   if(response['type'] === "error") {

@@ -83,9 +83,24 @@ class Product extends Model
 
  public function getQA()
  {
-  return DB::select("SELECT M.created_at as Q_created_at, M.content as Q_content, M.id_non_admin as Q_id, A.created_at as A_created_at, A.content as A_content, A.id_non_admin as A_id FROM  message  M, q_a QA, message A WHERE  QA.id_message = M.id AND  M.id_product = {$this->id} AND  A.id = QA.id_answer");
+   $messages = DB::select(" SELECT M.created_at as Q_created_at, M.content as Q_content, M.id_non_admin as Q_id, Q.id_answer as A_id
+   from q_a Q, message M
+   where Q.id_message = M.id and M.id_product =  {$this->id}");
 
- } // TODO: Not catching questions without answers
+    foreach ($messages as $message) {
+      if($message->a_id === null) {
+        $message->a_content = "";
+        $message->a_id = "";
+        $message->a_created_at = "";
+      } else {
+        $answer = Message::find($message->a_id);
+        $message->a_content = $answer->content;
+        $message->a_id = $answer->id_non_admin;
+        $message->a_created_at = $answer->created_at;
+      }
+    }
+    return $messages;
+ } 
 
  public function rating()
  {

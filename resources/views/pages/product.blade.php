@@ -4,6 +4,11 @@
 <script src="{{ URL::asset('js/product.js') }}"></script>
 
 @section('content')
+
+<div id="alert" style="max-width: 75%; margin: auto">
+     
+     </div>
+
 <div class="mainContent">
             <div id="intro" class="row d-flex justify-content-center p-5 w-100">
                 <div id="productImagesCarousel" class="carousel slide col-md-5" data-ride="carousel">
@@ -357,12 +362,12 @@
                         </div>
                         <form class="align-self-center d-flex flex-column align-items-start w-75 pt-4">
                             <div class="form-group w-100">
-                                <label for="exampleFormControlTextarea1">Write Your Question Here</label>
-                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                <label for="questionContent">Write Your Question Here</label>
+                                <textarea class="form-control" id="questionContent" rows="3"></textarea>
                             </div>
                         </form>
                         <div class="modal-footer">
-                            <button type="button" class="btn modalBtn">Save changes</button>
+                            <button type="button" onclick="addQuestion('{{$product['id']}}', '{{Auth::user()->id}}')" class="btn modalBtn" data-dismiss="modal">Save changes</button>
                             <button type="button" class="btn modalBtn" data-dismiss="modal">Close</button>
                         </div>
                     </div>
@@ -528,7 +533,7 @@
                             </button>
                         </div>
 
-                        <div class="qaContainer">
+                        <div id="qaBox" class="qaContainer">
                           @foreach ($product['q_a'] as $q_a)
                               <div class="card-body qaBox answered">
                                 <div class="row">

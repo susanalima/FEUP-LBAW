@@ -1,11 +1,13 @@
 
 function addReviewLoaded(){
     let review = JSON.parse(this.responseText);
-    console.log(review);
-
+    if(response['type'] === "error") {
+        setAlert("error adding review",review);
+        return;
+    }
     let table = document.getElementById("reviewsBox");
     let dv = document.createElement("div");
-    dv.setAttribute("class", "d-flex flex-column card checkoutCard");
+    dv.setAttribute("class", "");
     dv.innerHTML = 
     ` 
     <div class="card">
@@ -72,6 +74,11 @@ table.append(dv);
 
 function addReview(product_id, client_id){
     let content = document.getElementById('reviewContent').value;
+
+    if(content === ""){
+        setAlertString("error adding review","you can't add a review without a text body");
+        return;
+    }
     
     let rating = 0;
 
@@ -125,4 +132,46 @@ function addReview(product_id, client_id){
         }
     }
     sendAjaxRequest('POST', '/api/add_review', {product_id: product_id, client_id:client_id, content: content, rating:rating}, addReviewLoaded);
+}
+
+
+function addQuestionLoaded(){
+    let response = JSON.parse(this.responseText);
+    if(response['type'] === "error") {
+        setAlert("error adding question",response);
+        return;
+    }
+    let table = document.getElementById("qaBox");
+    let dv = document.createElement("div");
+    dv.setAttribute("class", "card-body qaBox answered");
+    dv.innerHTML = 
+        `    
+        <div class="row">
+            <div class="col questionCardLabel"></div>
+            <div class="col-10 questionCard">
+                ${response['content']}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col answerCardLabel"></div>
+            <div class="col-10 answerCard">
+          
+            </div>
+        </div>
+    `
+    table.append(dv);
+    console.log(response);
+}
+
+
+function addQuestion(product_id, client_id){
+
+    let content = document.getElementById('questionContent').value;
+
+    if(content === ""){
+        setAlertString("error adding questing","you can't add a question without a text body");
+        return;
+    }
+
+    sendAjaxRequest('POST', '/api/add_question', {product_id: product_id, client_id:client_id, content: content}, addQuestionLoaded);
 }

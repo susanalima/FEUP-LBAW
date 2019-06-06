@@ -587,6 +587,21 @@ public function checkout_delivery(Request $request) {
 
  public function add_review(Request $request) {
 
+   $rules = [
+         'client_id' => 'required',
+         'product_id' => 'required',
+         'rating' => 'required',
+         'content' => 'required',    
+   ];
+   $validator = Validator::make($request->all(), $rules);
+   if ($validator->fails()) {
+         $data = [
+         'type' => 'error',
+         ];
+         $data['error'] = $validator->errors()->first();
+         return response()->json($data);
+   }
+
    $content = $request->content;
    $client_id = $request->client_id;
    $product_id = $request->product_id;
@@ -607,6 +622,48 @@ public function checkout_delivery(Request $request) {
    $data = [
       'content' => $content,
       'rating' => $rating,
+      'user' => $user->name,
+      'created_at' => $date,
+   ];
+   return response()->json($data);
+ }
+
+
+
+ public function add_question(Request $request) {
+
+   $rules = [
+         'client_id' => 'required',
+         'product_id' => 'required',
+         'content' => 'required',    
+   ];
+   $validator = Validator::make($request->all(), $rules);
+   if ($validator->fails()) {
+         $data = [
+         'type' => 'error',
+         ];
+         $data['error'] = $validator->errors()->first();
+         return response()->json($data);
+   }
+
+   $content = $request->content;
+   $client_id = $request->client_id;
+   $product_id = $request->product_id;
+   $date =  date("Y-m-d");
+
+   $user = User::find($client_id);
+
+   $id = Message::max('id') + 1;
+   DB::insert("INSERT INTO message (id, content, created_at, report_counter, blocked, id_product, id_non_admin)  
+   VALUES (?, ?, ?, ?, ?, ?, ?)", 
+   [$id, $content, $date, 0, false, $product_id, $client_id]);
+
+   DB::insert("INSERT INTO q_a (id_message)
+   VALUES (?)",
+   [$id]);
+   
+   $data = [
+      'content' => $content,
       'user' => $user->name,
       'created_at' => $date,
    ];
