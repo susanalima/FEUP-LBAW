@@ -110,7 +110,6 @@ html {
   margin: 0.8em;
 }
 
-
 .cartProfileProductSubTotal {
   margin: 0.8em;
 }
@@ -160,6 +159,7 @@ html {
   width: 250px;
   min-height: 40px;
   margin-right: 50px;
+  margin-top: auto;
 }
 
 .productName {
