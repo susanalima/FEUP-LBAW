@@ -15,5 +15,12 @@ COPY .env_production /var/www/.env
 COPY docker_run.sh /docker_run.sh
 RUN mkdir /var/run/php
 
+
+# Clear configuration cache
+WORKDIR "/var/www"
+RUN php artisan config:cache
+RUN php artisan config:clear
+
+
 # Start command
 CMD sh /docker_run.sh
