@@ -33,7 +33,7 @@ function removeFromWishList(removeButton, product_id, list_id){
 
 
 function addProductToWishList(product_id) {
-  let opts = document.getElementById("selectWL");
+  let opts = document.getElementById(`selectWL${product_id}`);
   let list_id = opts.options[opts.selectedIndex].value;
 
   console.log(list_id);
@@ -43,6 +43,7 @@ function addProductToWishList(product_id) {
 
   let sl = document.getElementById(`optionP${product_id}WL${list_id}`);
   sl.remove();
+
   sendAjaxRequest('POST', '/api/add_product_wl', {product_id: product_id , list_id: list_id}, nothing);
 }
 

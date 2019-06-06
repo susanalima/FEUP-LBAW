@@ -18,7 +18,7 @@
                         <form class="d-flex justify-content-center p-3">
                             <div class="form-group">
                                 <label for="selectWL">Select a Wish List</label>
-                                <select class="form-control" id="selectWL">
+                                <select class="form-control" id="selectWL{{$product['id']}}">
                                     @foreach($wishlists as $wishlist)
                                         @if(!in_array($wishlist->id, $product['wishlists']))
                                             <option id="optionP{{$product['id']}}WL{{$wishlist->id}}" value="{{$wishlist->id}}">{{$wishlist->name}}</option>
