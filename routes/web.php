@@ -31,10 +31,6 @@ Route::get('/profile', "PagesController@profile")->name('profile');
 Route::post('/profile/accountDelete', "ClientController@account_delete")->name('account_delete');
 Route::post('/profile/passwordChange', "ClientController@password_change")->name('password_change');
 
-Route::post('/profile/cardsDelete', "ClientController@cards_delete")->name('cards_delete');
-Route::post('/profile/addressesDelete', "ClientController@addresses_delete")->name('addresses_delete');
-Route::post('/profile/wishlistsDelete', "ClientController@wishlists_delete")->name('wishlists_delete');
-
 Route::get('/profile_manager/{id}', "PagesController@profile_manager")->name('profile_manager');
 Route::get('/profile_admin/{id}', "PagesController@profile_admin")->name('profile_admin');
 

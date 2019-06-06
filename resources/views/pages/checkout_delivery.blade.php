@@ -3,6 +3,7 @@
 
 <link rel="stylesheet" href="{{ URL::asset('css/checkoutProducts.css') }}"" />
 <script src="{{ URL::asset('js/wishList.js') }}"></script>
+<script src="{{ URL::asset('js/checkout.js') }}"></script>
 <script src="{{ URL::asset('js/edition.js') }}"></script>
 
 @section('content')
@@ -20,7 +21,7 @@
     </nav>
 
     
-    <div id="alert" style="max-width: 75%; margin: auto">
+    <div id="alert" style="max-width: 75%; margin: auto;">
      
      </div>
 
@@ -49,9 +50,14 @@
                                 data-target="#edit{{$address['id']}}Address">Edit</button>
                          @include('templates.edit_address')
 
-                        <form class="button_form  mr-2" action="checkoutShipping.html"> <button type="submit"
-                                class="btn button-submit btn-sm">Deliver here</button>
+                       
+                      
+                        <form action="{{ route('checkout_shipping') }}">
+                        <button type="submit" onclick="checkoutDelivery('{{$address['id']}}', '{{$info['id']}}')"  class="btn button-submit btn-sm">Deliver here</button>
                         </form>
+                
+
+                    
                     </div>
                 </div>
                 @endforeach    

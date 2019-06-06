@@ -102,7 +102,7 @@
                       <button
                           type="button"
                           class="btn addToCartBtn button-toggable"
-                          onClick="addToCart(this)"
+                          onClick="addProductToCart(this,'{{Auth::id()}}','{{$product['id']}}',1)"
                           title="Add To Cart"
                       >
                           <i class="fas fa-cart-plus"></i>

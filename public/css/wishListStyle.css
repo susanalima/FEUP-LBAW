@@ -71,7 +71,7 @@ h4.product_name {
 
 }
 
-div.d-flex{
+div.div_img{
   max-height: 300px;
   min-height: 250px;
 }
@@ -104,7 +104,7 @@ div.d-flex{
 
 
 
-button, button.addToCartBtn{
+button.removeWishItem, button.addToCartBtn{
   min-height: 5%;
   max-height: 8%;
   width: 75px;
@@ -230,7 +230,7 @@ div.col-sm p {
   }
 
 
-  button, button.addToCartBtn{
+  button.removeWishItem, button.addToCartBtn{
     width:50px;
   }
   img.product_img{

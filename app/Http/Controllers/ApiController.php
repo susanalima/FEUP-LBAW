@@ -11,9 +11,10 @@ use App\Address;
 use App\CreditCard;
 use App\Client;
 use App\User;
+use App\Cart;
 use App\WishList;
 use App\ProductList;
-
+use App\AssListProduct;
 
 class ApiController extends Controller
 {
@@ -66,9 +67,80 @@ class ApiController extends Controller
      $client_id = $request->client_id;
      $product_id = $request->product_id;
      $quantity = $request->quantity;
-     DB::insert("INSERT INTO ass_list_product (id_list, is_product,quantity,added_to,bought,return) VALUES ()", []);
+     var_dump($client_id, $product_id, $quantity);
+
+     $query_result = DB::select("SELECT id FROM cart where checkout is NULL AND id_client = {$client_id}");
+     var_dump($query_result);
+     $list_id = $query_result[0]->id;
+     var_dump($list_id);
+   
+     date_default_timezone_set('UTC');
+
+     DB::insert("INSERT INTO ass_list_product (id_list, id_product,quantity,added_to,bought,return) 
+     VALUES (?, ?, ?, ?, ?, ?)", 
+     [$list_id, $product_id, $quantity, date("Y-m-d"), false, false]);
      return response()->json("Success");
 
+  }
+
+  public function inc_prod(Request $request){
+   $validator = Validator::make($request->all(), [
+      'cart_id' => 'required',
+      'product_id' => 'required',
+     ]);
+   
+     if ($validator->fails()) {
+      return response()->json("Product and client must be defined");
+     }
+
+     $cart_id = $request->cart_id;
+     $product_id = $request->product_id;
+     /*
+     $tuple = AssListProduct::where([['id_list', $cart_id], ['id_product', $product_id]])->first();
+
+     $tuple->quantity = $tuple->quantity +1;
+     $tuple->save();*/
+     DB::update("UPDATE ass_list_product SET quantity = quantity + 1 WHERE id_list = {$cart_id} and id_product = {$product_id}");
+
+     return response()->json("Success");
+
+  }
+
+  public function dec_prod(Request $request){
+   $validator = Validator::make($request->all(), [
+      'cart_id' => 'required',
+      'product_id' => 'required',
+     ]);
+   
+     if ($validator->fails()) {
+      return response()->json("Product and client must be defined");
+     }
+
+     $cart_id = $request->cart_id;
+     $product_id = $request->product_id;
+
+     DB::update("UPDATE ass_list_product SET quantity = quantity - 1 WHERE id_list = {$cart_id} and id_product = {$product_id}");
+
+     return response()->json("Success");
+
+  }
+
+  public function remove_prod(Request $request){
+   $validator = Validator::make($request->all(), [
+      'cart_id' => 'required',
+      'product_id' => 'required',
+     ]);
+   
+     if ($validator->fails()) {
+      return response()->json("Product and client must be defined");
+     }
+
+     $cart_id = $request->cart_id;
+     $product_id = $request->product_id;
+
+     DB::delete("DELETE FROM ass_list_product WHERE id_list = {$cart_id} and id_product = {$product_id}");
+
+     return response()->json("Success");
   }
 
 
@@ -337,7 +409,7 @@ public function wishlist_add(Request $request)
 
 public function wishlist_delete(Request $request)
 {
-      $rules = [
+    $rules = [
         'wishlist_id' => 'required',
     ];
     $validator = Validator::make($request->all(), $rules);
@@ -354,6 +426,96 @@ public function wishlist_delete(Request $request)
    $pl->delete();
    return response()->json($request);
 }
+
+
+
+public function checkout_delivery(Request $request) {
+
+   $tmpcart = Client::find($request->client_id)->cart();
+
+   $cart = Cart::find($tmpcart->get(0)->id);
+
+   $cart->id_address = $request->address_id;
+
+   $cart->save();
+
+   return response()->json($request);
+ }
+
+
+ public function checkout_shipping(Request $request) {
+
+   $tmpcart = Client::find($request->client_id)->cart();
+
+   $cart = Cart::find($tmpcart->get(0)->id);
+
+   $cart->id_shipping = $request->shipping_id;
+
+   $cart->save();
+
+   return response()->json($request);
+ }
+
+
+ public function checkout_payment(Request $request) {
+
+   $tmpcart = Client::find($request->client_id)->cart();
+
+   $cart = Cart::find($tmpcart->get(0)->id);
+
+   $cart->id_card = $request->card_id;
+
+   $cart->save();
+
+   return response()->json($request);
+ }
+
+
+ public function checkout_confirm(Request $request) {
+
+   $tmpcart = Client::find($request->client_id)->cart();
+
+   $cart = Cart::find($tmpcart->get(0)->id);
+
+   $id_address = $cart->id_address;
+
+   $id_card = $cart->id_card;
+
+   $id_shipping = $cart->id_shipping;
+
+   if($id_address === null){
+      $data = [
+         'type' => 'error',
+      ];
+      $data['error'] = "To make a purchase the delivery address must be specified";
+      return response()->json($data);
+   }
+   
+   if($id_card === null){
+      $data = [
+         'type' => 'error',
+      ];
+      $data['error'] = "To make a purchase the payment method must be specified";
+      return response()->json($data);
+   }
+
+   if($id_shipping === null){
+      $data = [
+         'type' => 'error',
+      ];
+      $data['error'] = "To make a purchase the shipping method must be specified";
+      return response()->json($data);
+   }
+
+   $cart->checkout = date("Y-m-d");
+
+   $cart->save();
+   
+   //CHECK IF CART IS NOT EMPTY
+   //TODO CREATE NEW EMPTY CART
+
+   return response()->json($cart);
+ }
 
 
 }

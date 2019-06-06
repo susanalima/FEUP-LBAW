@@ -63,6 +63,11 @@ function deleteAddressLoaded(){
     setAlert("error deleting address",address);
     return;
    }
+   let table = document.getElementById("addressTable");
+   let length = table.rows.length;
+   if(length === 1) {
+     document.getElementById("deleteAllAddresses").disabled = true;
+   }
   document.getElementById(`address${response['id']}`).remove();
 }
 
@@ -81,7 +86,10 @@ function addAddressProfileLoaded(){
    }
 
   let table = document.getElementById("addressTable");
-
+  let length = table.rows.length;
+  if(length === 0) {
+    document.getElementById("deleteAllAddresses").disabled = false;
+  }
   let row = table.insertRow(0);
   row.setAttribute('id', `address${address['id']}`);
   row.innerHTML = 
@@ -164,7 +172,7 @@ function addAddressProfileLoaded(){
                     <input type="hidden" class="form-control"  name="address_id" value="${address['id']}"> 
                 </div>
 
-            <button type="button" onclick="deleteAddress('${address['id']}')" class="btn button-submit btn-sm" data-dismiss="modal">Yes</button>
+            <button type="button" onclick="deleteAddress('${address['id']}')" class="btn button-submit btn-sm deleteAddressBtn" data-dismiss="modal">Yes</button>
             <button type="button" class="btn button-negative btn-sm" data-dismiss="modal">No</button>
    
         </form>
@@ -182,7 +190,7 @@ function addAddressProfileLoaded(){
 
 function addAddressCheckoutLoaded(){
   let address = JSON.parse(this.responseText);
-
+console.log(address);
   if(address['type'] === "error") {
     setAlert("error adding address", address);
     return;
@@ -255,9 +263,9 @@ function addAddressCheckoutLoaded(){
     </div>
     </div>
 
-        <form class="button_form  mr-2" action="checkoutShipping.html"> <button type="submit"
-                class="btn button-submit btn-sm">Deliver here</button>
-        </form>
+    <form action="/checkout/shipping">
+    <button type="submit" onclick="checkoutDelivery('${address['id']}', '${address['id_client']}')"  class="btn button-submit btn-sm">Deliver here</button>
+    </form>
     </div>
 </div>
 `
@@ -290,7 +298,10 @@ function editCardProfileLoaded(){
    setAlert("error editing credit card",response);
    return;
   }
-  document.getElementById(`card${response['id']}ExpDate`).innerHTML = response['expiration_date'];
+  let tokens = response['expiration_date'].split("-");
+  let expMonth = tokens[1];
+  let expYear = tokens[0];
+  document.getElementById(`card${response['id']}ExpDate`).innerHTML = expYear + "/" + expMonth;
 }
 
 
@@ -302,13 +313,16 @@ function editCardCheckoutLoaded(){
    setAlert("error editing credit card",response);
    return;
   }
-  document.getElementById(`card${response['id']}ExpDate`).innerHTML = response['expiration_date'];
+  let tokens = response['expiration_date'].split("-");
+  let expMonth = tokens[1];
+  let expYear = tokens[0];
+  document.getElementById(`card${response['id']}ExpDate`).innerHTML = expYear + "/" + expMonth;
 }
 
 function editCard(id, page){
   let expiration_year = document.getElementById(`editCard${id}ExpYear`).value;
   let expiration_month = document.getElementById(`editCard${id}ExpMonth`).value;
-  let expiration_day = document.getElementById(`editCard${id}ExpDay`).value;
+  let expiration_day = "1";
   let cvc = document.getElementById(`editCard${id}CVC`).value;
 
   if(page === "profile")
@@ -327,6 +341,12 @@ function deleteCardLoaded(){
   if(response['type'] === "error") {
     setAlert("error deleting credit card",response);
     return;
+   }
+
+   let table = document.getElementById("cardTable");
+   let length = table.rows.length;
+   if(length === 1) {
+     document.getElementById("deleteAllCards").disabled = true;
    }
   document.getElementById(`card${response['card_id']}`).remove();
 }
@@ -348,6 +368,10 @@ function addCardProfileLoaded(){
    }
 
   let table = document.getElementById("cardTable");
+  let length = table.rows.length;
+  if(length === 0) {
+    document.getElementById("deleteAllCards").disabled = false;
+  }
 
   let row = table.insertRow(0);
   row.setAttribute('id', `card${card['id']}`);
@@ -359,7 +383,6 @@ function addCardProfileLoaded(){
 
  let tokens = card['expiration_date'].split("-");
 
- let expDay = tokens[2];
  let expMonth = tokens[1];
  let expYear = tokens[0];
   
@@ -368,7 +391,7 @@ function addCardProfileLoaded(){
   `
   <tr id="card${card['id']}">
   <td>${card['last_digits']}</td>
-  <td id="card${card['id']}ExpDate">${card['expiration_date']}</td>
+  <td id="card${card['id']}ExpDate">${expYear}/${expMonth}</td>
   <td id="cardTableName">${card['name']}</td>
 
 
@@ -414,7 +437,7 @@ function addCardProfileLoaded(){
                         value="${card['expiration_date']}" name="expiration_date" required />-->
                         <label for="editCard${card['id']}ExpDate">Expiration Date</label>
                       
-                 «
+                 
 
                         <div class="row">
 
@@ -422,18 +445,13 @@ function addCardProfileLoaded(){
                             <input type="number" step="1" min="0" class="form-control" id="editCard${card['id']}ExpYear" placeholder="YYYY"
                             value="${expYear}" name="expiration_year" required />
                             </div>
-                            -
+                            /
 
                             <div class="col-md-3 p-0 pl-2 pr-1">
                             <input type="number" step="1" min="0" class="form-control" id="editCard${card['id']}ExpMonth" placeholder="MM"
                             value="${expMonth}" name="expiration_month" required />
                             </div>
-                              -
 
-                            <div class="col-md-3 p-0 pl-2 pr-1">
-                            <input type="number" step="1" min="0" class="form-control" id="editCard${card['id']}ExpDay" placeholder="DD"
-                            value="${expDay}" name="expiration_day" required />
-                            </div>
                       
                       </div>
   
@@ -455,7 +473,7 @@ function addCardProfileLoaded(){
 
                 </div>
                 <div class="modal-footer">
-              <button type="button"  onclick="editCard('${card['id']}', 'profile')" class="btn button-submit btn-sm" data-dismiss="modal">Finish</button>
+              <button type="button"  onclick="editCard('${card['id']}', 'profile')" class="btn button-submit btn-sm " data-dismiss="modal">Finish</button>
               <button type="button" class="btn button-negative btn-sm" data-dismiss="modal">Cancel</button>
             </div>
               </form>
@@ -487,7 +505,7 @@ function addCardProfileLoaded(){
                 <input type="hidden" class="form-control" name="card_id" value="${card['id']}"> 
               </div>
 
-              <button type="button" onclick="deleteCard('${card['id']}')"  class="btn button-submit btn-sm" data-dismiss="modal">Yes</button>
+              <button type="button" onclick="deleteCard('${card['id']}')"  class="btn button-submit btn-sm deleteCardBtn" data-dismiss="modal">Yes</button>
               <button type="button" class="btn button-negative btn-sm" data-dismiss="modal">No</button>
 
           </form>
@@ -518,12 +536,12 @@ function addCardCheckoutLoaded(){
  
  let tokens = card['expiration_date'].split("-");
 
- let expDay = tokens[2];
  let expMonth = tokens[1];
  let expYear = tokens[0];
   
  let table = document.getElementById("checkoutCards");
  let dv = document.createElement("div");
+
  dv.setAttribute("class", "d-flex flex-column card checkoutCard");
  dv.innerHTML = 
 `
@@ -537,7 +555,7 @@ function addCardCheckoutLoaded(){
           <dt class="col-sm-5">Number</dt>
           <dd class="col-sm-5">${card['last_digits']}</dd>
           <dt class="col-sm-5">Expiration </dt>
-          <dd id="card${card['id']}ExpDate" class="col-sm-5">${card['expiration_date']}</dd>
+          <dd id="card${card['id']}ExpDate" class="col-sm-5">${expYear}/${expMonth}</dd>
       </dl>
   </div>
   <div class="d-flex flex-row-reverse mb-4 mx-3">
@@ -571,18 +589,13 @@ function addCardCheckoutLoaded(){
                         <input type="number" step="1" min="0" class="form-control" id="editCard${card['id']}ExpYear" placeholder="YYYY"
                         value="${expYear}" name="expiration_year" required />
                         </div>
-                        -
+                        /
 
                         <div class="col-md-3 p-0 pl-2 pr-1">
                         <input type="number" step="1" min="0" class="form-control" id="editCard${card['id']}ExpMonth" placeholder="MM"
                         value="${expMonth}" name="expiration_month" required />
                         </div>
-                            -
-
-                        <div class="col-md-3 p-0 pl-2 pr-1">
-                        <input type="number" step="1" min="0" class="form-control" id="editCard${card['id']}ExpDay" placeholder="DD"
-                        value="${expDay}" name="expiration_day" required />
-                        </div>
+         
                     
                     </div>
 
@@ -617,9 +630,12 @@ function addCardCheckoutLoaded(){
   </div>
 
 
-  <form class="button_form mr-2" action="checkoutConfirmation.html"> <button type="submit"
-          class="btn button-submit btn-sm">Pay</button>
+  <form action="/checkout/confirmation">
+  <button type="submit" onclick="checkoutPayment('${card['id']}', '${card['id_client']}')"  class="btn button-submit btn-sm">Pay</button>
   </form>
+
+  
+</div>
   </div>
 
 `
@@ -629,7 +645,7 @@ table.prepend(dv)
 function addCard(id, page){
   let expiration_year = document.getElementById(`cardExpYear`).value;
   let expiration_month = document.getElementById(`cardExpMonth`).value;
-  let expiration_day = document.getElementById(`cardExpDay`).value;
+  let expiration_day = "1"
   let cvc = document.getElementById(`cardCVC`).value;
   let name = document.getElementById(`cardName`).value;
   let number = document.getElementById(`cardNumber`).value;
@@ -670,6 +686,11 @@ function deleteWishlistLoad(){
     setAlert("error deleting wishlist",response);
     return;
    }
+   let table = document.getElementById("wlTable");
+   let counter = table.getElementsByTagName("tr").length;
+   if(counter === 1) {
+     document.getElementById("deleteAllWishlists").disabled = true;
+   }
   document.getElementById(`wishlist${response['wishlist_id']}`).remove();
 }
 
@@ -687,6 +708,9 @@ function addWishlistLoaded(){
    }
   let table = document.getElementById("wlTable");
   let counter = table.getElementsByTagName("tr").length;
+  if(counter === 0) {
+    document.getElementById("deleteAllWishlists").disabled = false;
+  }
   //console.log(counter);
 
   if(wishList['description'] === null)
@@ -726,7 +750,7 @@ function addWishlistLoaded(){
                       <input type="hidden" class="form-control"  name="wishlist_id" value="${wishList['id']}"> 
                   </div>
 
-              <button type="button" onclick="deleteWishlist('${wishList['id']}')" class="btn button-submit btn-sm"data-dismiss="modal">Yes</button>
+              <button type="button" onclick="deleteWishlist('${wishList['id']}')" class="btn button-submit btn-sm deleteWishlistBtn" data-dismiss="modal">Yes</button>
               <button type="button" class="btn button-negative btn-sm" data-dismiss="modal">No</button>
 
           </form>
@@ -747,4 +771,26 @@ function addWishlist(id){
   let description = document.getElementById(`wishListDescription`).value;
 
   sendAjaxRequest('POST', '/api/wishlist_add', {id:id, name:name, description:description}, addWishlistLoaded);
+}
+
+
+function deleteAllAddresses(){
+  let btns = document.getElementsByClassName("deleteAddressBtn");
+  for(let i = 0; i < btns.length; i++){
+    btns[i].click();
+  }
+}
+
+function deleteAllCards(){
+  let btns = document.getElementsByClassName("deleteCardBtn");
+  for(let i = 0; i < btns.length; i++){
+    btns[i].click();
+  }
+}
+
+function deleteAllWishLists(){
+  let btns = document.getElementsByClassName("deleteWishlistBtn");
+  for(let i = 0; i < btns.length; i++){
+    btns[i].click();
+  }
 }

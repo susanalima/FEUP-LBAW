@@ -23,7 +23,6 @@
                     $tokens = explode("-", $card['expiration_date']);
                     $expYear = $tokens['0'];
                     $expMonth = $tokens['1'];
-                    $expDay = $tokens['2'];
                     
                     ?>
 
@@ -33,17 +32,11 @@
                         <input type="number" step="1" min="0" class="form-control" id="editCard{{$card['id']}}ExpYear" placeholder="YYYY"
                         value="{{$expYear}}" name="expiration_year" required />
                         </div>
-                        -
+                        /
 
                         <div class="col-md-3 p-0 pl-2 pr-1">
                         <input type="number" step="1" min="0" class="form-control" id="editCard{{$card['id']}}ExpMonth" placeholder="MM"
                         value="{{$expMonth}}" name="expiration_month" required />
-                        </div>
-                            -
-
-                        <div class="col-md-3 p-0 pl-2 pr-1">
-                        <input type="number" step="1" min="0" class="form-control" id="editCard{{$card['id']}}ExpDay" placeholder="DD"
-                        value="{{$expDay}}" name="expiration_day" required />
                         </div>
                     
                     </div>

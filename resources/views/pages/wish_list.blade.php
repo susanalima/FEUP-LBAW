@@ -3,6 +3,8 @@ use App\Product;
 ?>
     <link rel="stylesheet" href="{{ URL::asset('css/wishListStyle.css') }}" />
     <script src="{{ URL::asset('js/wishList.js') }}"></script>
+    <script src="{{ URL::asset('js/cart.js') }}"></script>
+
 
 
 @extends('templates.app')
@@ -36,14 +38,15 @@ use App\Product;
                         <div class="container">
                             <div class="row">
                                 <a class="image_link" href="../product/{{$product->id}}">
-                                <div class="d-flex">
+                                <div class="d-flex div_img">
                                     <img class="card-img-top product_img" src="{{ '/storage/' . $product->image}}"
                                     alt="Card image cap">
                                     </div>   
                                 </a>
                                     
                                 <div class="col-sm">
-                                    <div class="product_buttons">  <button class="btn addToCartBtn button-toggable mr-1" onClick="addToCart(this)"
+                                    
+                                    <div class="product_buttons">  <button class="btn addToCartBtn button-toggable mr-1" onclick="addProductToCart(this,'{{Auth::id()}}' ,'{{$product->id}}', 1)"
                                     type="submit"
                                     title="Add To Cart"
                                     >

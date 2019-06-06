@@ -3,6 +3,7 @@
 
 <link rel="stylesheet" href="{{ URL::asset('css/checkoutProducts.css') }}"" />
 <script src="{{ URL::asset('js/wishList.js') }}"></script>
+<script src="{{ URL::asset('js/checkout.js') }}"></script>
 <script src="{{ URL::asset('js/edition.js') }}"></script>
 
 @section('content')
@@ -50,7 +51,12 @@
                             <dt class="col-sm-5">Number</dt>
                             <dd class="col-sm-5">{{$card['last_digits']}}</dd>
                             <dt class="col-sm-5">Expiration </dt>
-                            <dd id="card{{$card['id']}}ExpDate" class="col-sm-5">{{$card['expiration_date']}}</dd>
+                            <?php
+                                $tokens = explode("-", $card['expiration_date']);
+                                $expYear = $tokens['0'];
+                                $expMonth = $tokens['1'];
+                            ?>
+                            <dd id="card{{$card['id']}}ExpDate" class="col-sm-5">{{$expYear}}/{{$expMonth}}</dd>
                         </dl>
                     </div>
                     <div class="d-flex flex-row-reverse mb-4 mx-3">
@@ -59,12 +65,11 @@
                               @include('templates.edit_card')
                         
                     </div>
-                  
-
-                    <form class="button_form mr-2" action="checkoutConfirmation.html"> <button type="submit"
-                            class="btn button-submit btn-sm">Pay</button>
-                    </form>
+                        <form action="{{ route('checkout_confirmation') }}">
+                        <button type="submit" onclick="checkoutPayment('{{$card['id']}}', '{{$info['id']}}')"  class="btn button-submit btn-sm">Pay</button>
+                        </form>
                     </div>
+
                 </div>
                 @endforeach
               

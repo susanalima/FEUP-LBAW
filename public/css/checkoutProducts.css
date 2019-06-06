@@ -31,7 +31,7 @@
 
 .all_elements,
 .all_elements2 {
-  width: 75%;
+  width: 80%;
   margin-left: auto;
   margin-right: auto;
   height: auto;
@@ -65,8 +65,8 @@
 }
 
 .next_button {
-  display: inline-block;
 
+  display: inline-block;
   width: auto;
   border-color: var(--var-gray-mid);
   background-color: var(--var-gray);
@@ -75,6 +75,7 @@
   border-width: 2px;
   outline: none;
   margin-right: 2em;
+  align-content: flex-end;
 }
 
 .next_button:hover {
@@ -110,6 +111,12 @@
   border-radius: 0;
   width: 450px;
   height: auto;
+}
+
+.checkoutProductCard {
+  width: 25rem;
+  margin: 0.2em;
+  border: 1px solid var(--var-thir-color) !important
 }
 
 .quantity {
@@ -153,6 +160,35 @@
   margin-bottom: 0.2rem;
   padding: 0;
 }
+
+
+.productName {
+  width: auto;
+  max-width: 95%;
+  -webkit-column-width: 150px; 
+  column-width: 150px;
+  height: 100%;
+  max-height: 35%;
+  position: relative;
+  display: block;
+  /* Required for text-overflow to do anything */
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.ck_product_img {
+  background-size: 100% auto;
+  max-width: 140px;
+  max-height: 140px;
+  width: 130px;
+  height: 130px;
+  min-width: 140px;
+  min-height: 140px;
+  margin-left: 0.5em;
+  margin-bottom: 0.2rem;
+  padding: 0;
+}
+
 
 .stars_field {
   display: inline-block;
@@ -244,8 +280,9 @@ label.half {
 }
 
 .checkoutCard {
-  width: 22rem;
   height: 16rem;
+  margin: 0.2em;
+  width: 20rem;
 }
 
 .price_row {
@@ -274,15 +311,10 @@ label.half {
   cursor: pointer;
 }
 
-.checkoutCard {
-  margin: 0.2em;
-}
+
 
 .checkoutListCards {
   width: 85%;
-}
-.checkoutCard {
-  width: 20rem;
 }
 
 @media screen and (max-width: 1440px) {
@@ -327,6 +359,18 @@ label.half {
     justify-content: center;
     padding-left: 0%;
   }
+  .ck_product_img {
+    max-width: 200px;
+    max-height: 200px;
+    width: 200px;
+    height: 200px;
+    min-width: 200px;
+    min-height: 200px;
+    margin:auto;
+    align-self: auto;
+  }
+
+
 }
 
 @media screen and (max-width: 1070px) {
@@ -334,6 +378,7 @@ label.half {
     justify-content: center;
     padding-left: 0%;
   }
+
 }
 
 @media screen and (max-width: 576px) {
