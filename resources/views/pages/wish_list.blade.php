@@ -45,13 +45,23 @@ use App\Product;
                                 </a>
                                     
                                 <div class="col-sm">
-                                    
-                                    <div class="product_buttons">  <button class="btn addToCartBtn button-toggable mr-1" onclick="addProductToCart(this,'{{Auth::id()}}' ,'{{$product->id}}', 1)"
+                                
+                                    <div class="product_buttons">  
+                                    @if(in_array($product->id, $cart['prod_ids']))
+                                    <button class="btn addToCartBtn button-toggable mr-1 active" onclick="removeFromCart(this, {{$product->id}}, {{$cart[0]['id']}})" type="submit"
+                                    title="Add To Cart"
+                                    > <i class="fas fa-cart-plus"></i>
+                                    </button>
+                                   
+                                    @else
+                                    <button class="btn addToCartBtn button-toggable mr-1" onclick="addProductToCart(this,{{Auth::id()}} , {{$product->id}} , 1, '{{$product->name}}', {{$cart[0]['id']}}, {{$product->price}})"
                                     type="submit"
                                     title="Add To Cart"
                                     >
-                            <i class="fas fa-cart-plus"></i>
-                        </button>
+                                    <i class="fas fa-cart-plus"></i>
+                                    </button>
+                                    @endif
+
                                             
                                         <button class="btn removeWishItem button-action" type="submit"
                                              onclick="removeFromWishList(this, '{{$product->id}}', {{$info['id']}})"><i class="fa fa-times"></i></button></div>
