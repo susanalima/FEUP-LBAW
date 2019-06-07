@@ -61,7 +61,7 @@ function requestUpdateSpecsHeaders(event) {
         )}</label>` +
         '<div class="col-sm-11 px-0">' +
         `  <input type="text" class="form-control" id="spec_${id}" placeholder="" name="specs[]">` +
-        `<input type="hidden" class="form-control" id="spec_${id}" name="spec_header[]" value="${id}"> ` + // TODO: Possible security breach
+        `<input type="hidden" class="form-control" id="spec_${id}" name="spec_header[]" value="${id}"> ` +
         "</div>";
 
       root.insertAdjacentElement("afterend", newNode);

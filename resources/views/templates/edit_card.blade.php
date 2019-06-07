@@ -54,7 +54,7 @@
 
             
                 <div class="input-group flex-nowrap mt-2">
-                <input type="hidden" class="form-control" name="card_id" value="{{$card['id']}}"> {{-- TODO: Possible security breach --}} 
+                <input type="hidden" class="form-control" name="card_id" value="{{$card['id']}}">
             </div>
 
             </div>
