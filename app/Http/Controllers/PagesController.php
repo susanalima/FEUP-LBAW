@@ -61,43 +61,30 @@ class PagesController extends Controller
          
             foreach ($cart['products'] as $product) {
 
-   foreach ($cart['products'] as $product) {
+                array_push($prod_ids, $product->id);
 
-    array_push($prod_ids, $product->id);
+                $product->name = str_before($product->name, ' -');
 
-    $product->name = str_before($product->name, ' -');
+                $tmp = DB::select("SELECT quantity, added_to FROM ass_list_product WHERE id_list = {$cart[0]['id']} and id_product = $product->id")[0];
+                $img = DB::select("SELECT filepath, description FROM image WHERE primary_img = true and id_product = $product->id")[0];
 
-    $tmp = DB::select("SELECT quantity, added_to FROM ass_list_product WHERE id_list = {$cart[0]['id']} and id_product = $product->id")[0];
-    $img = DB::select("SELECT filepath, description FROM image WHERE primary_img = true and id_product = $product->id")[0];
-
-    $product->img_path = $img->filepath;
-    $product->img_description = $img->description;
+                $product->img_path = $img->filepath;
+                $product->img_description = $img->description;
 
                 $total += $product->price* $product->quantity;
             }
             $cart['total'] = $total;
             $cart['prod_ids'] = $prod_ids;
 
-          
+                    
         } else {
             $cart['products'] = [];
             $cart['total'] = 0;
         }
-        $cart['prod_ids'] = $prod_ids;
-        return $cart;
-    }
 
-   /*$product->quantity = $tmp->quantity;
-  $product->date = $tmp->added_to;*/
-  }
-  $cart['prod_ids'] = $prod_ids;
-  $cart['total'] = $total;
-  /*} else {
-
-  $cart['products'] = [];
-  $cart['total'] = 0;
-  }*/
-  return $cart;
+    $cart['prod_ids'] = $prod_ids;
+  
+    return $cart;
  }
 
  public function index()
