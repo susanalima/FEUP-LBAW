@@ -44,11 +44,12 @@ class Client extends Model
 
  public function cart()
  {
-  return $this->carts()->get();
+  return Cart::where('id_client', $this->id)->where('checkout', null)->get();
  }
-    public function user()
-    {
-        return $this->morphOne('App\User', 'userable');
-    }
+
+public function user()
+{
+    return $this->morphOne('App\User', 'userable');
+}
 
 }
