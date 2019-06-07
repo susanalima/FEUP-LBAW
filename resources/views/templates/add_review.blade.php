@@ -62,11 +62,12 @@
                                 <label for="reviewContent">Write Your Review Here</label>
                                 <textarea class="form-control" id="reviewContent" rows="3"></textarea>
                             </div>
-                            <div class="modal-footer">
-                                    <button type="button" onclick="addReview('{{$product['id']}}', '{{Auth::user()->id}}')" class="btn modalBtn" data-dismiss="modal">Save changes</button>
-                                <button type="button" class="btn modalBtn" data-dismiss="modal">Close</button>
-                            </div>
+                           
                         </form>
+                        <div class="modal-footer">
+                                    <button type="button" onclick="addReview('{{$product['id']}}', '{{Auth::user()->id}}')" class="btn  button-submit" data-dismiss="modal">Finish</button>
+                                <button type="button" class="btn  button-negative" data-dismiss="modal">Close</button>
+                            </div>
                     </div>
                 </div>
             </div>
