@@ -172,6 +172,7 @@
                 </div>
             </div>
 
+            @include('templates.comparison')
             @include('templates.compare')
 
             <!-- Modal -->
