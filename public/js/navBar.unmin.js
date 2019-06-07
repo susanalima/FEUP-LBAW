@@ -21,17 +21,3 @@ document.querySelectorAll(".drop-cat").forEach(elem => {
     console.dir(btn);
   });
 });
-
-/*
-$(".search-category-drop li a").click(function() {
-  console.log("HEY");
-  $(this)
-    .parents(".dropdown")
-    .find(".btn")
-    .html($(this).text() + ' <span class="caret"></span>');
-  $(this)
-    .parents(".dropdown")
-    .find(".btn")
-    .val($(this).data("value"));
-});
-*/
