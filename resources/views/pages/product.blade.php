@@ -36,7 +36,7 @@
                 </div>
                 <div class="col-md-2 d-flex flex-column justify-content-end" id="productCtrl">
                     <h1 class="" id="name">{{$product['name']}}</h1>
-                    <h2 class="" id="category">{{$product['category']}}</h2>
+                <a href="/search/{{$product['id_category']}}"> <h2 class="" id="category">{{$product['category']}}</h2> </a>
 
                     <div class="d-flex" id="price">
                         <h3 id="priceVal" class="">{{$product['price']}}</h3>
