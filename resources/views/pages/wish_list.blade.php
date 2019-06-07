@@ -49,7 +49,7 @@ use App\Product;
                                     <div class="product_buttons">
                                     @if(!Auth::check())
                                     <button
-                                                class="btn addToCartBtn button-toggable w-100 mr-1 "
+                                                class="btn addToCartBtn button-toggable mr-1 "
                                                 type="submit"
                                                 id="addToCart"
                                                 title="Add To Cart"
