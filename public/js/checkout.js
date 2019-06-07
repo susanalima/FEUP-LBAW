@@ -5,13 +5,12 @@ function load(){
 
 function checkoutProductsLoad() {
   let response = JSON.parse(this.responseText);
-  //console.log(this.responseText);
+  console.log(this.responseText);
   if(response['type'] === "error") {
     setAlert("error confirming products",response);
     return;
   }
   document.getElementById("confirmProductsForm").submit();
-
 }
 
 function checkoutProducts(cart_id) {
@@ -41,9 +40,8 @@ function checkoutProducts(cart_id) {
 
     str += id + ":" +  quantity + ",";
   }
-
+  //console.log(str);
   sendAjaxRequest('POST', '/api/checkout_products', {cart_id:cart_id, quantities:str}, checkoutProductsLoad);
-
 }
 
 

@@ -455,16 +455,11 @@ public function checkout_products(Request $request) {
 
    $tokens = explode(",", $quantities);
 
-   $size = count($tokens);
-   $counter = 0;
+   array_pop($tokens);
 
    foreach($tokens as $token){
-
-      if($token === "")
-         continue;
-      if($counter === $size -1);
-         break;
-      $ts = explode(":", $token);
+    
+     $ts = explode(":", $token);
 
       $product_id = $ts[0];
       $quantity = $ts[1];
@@ -477,10 +472,8 @@ public function checkout_products(Request $request) {
          return response()->json($data);
       }
 
-      $counter = $counter + 1;
       DB::update("UPDATE ass_list_product SET quantity = {$quantity} WHERE id_list = {$cart_id} and id_product = {$product_id}");
 
-   
    }
    
    return response()->json($tokens);
@@ -584,6 +577,18 @@ public function checkout_delivery(Request $request) {
    $cart->save();
    
    //TODO CREATE NEW EMPTY CART
+
+   $productList = ProductList::create(["id" => ProductList::max('id') + 1]);
+
+   $ncart = new cart;
+   $ncart->id = $productList->id;
+   $ncart->id_client = $request->client_id;
+   $ncart->id_address =null;
+   $ncart->id_card = null;
+   $ncart->id_shipping = null;
+   $ncart->checkout = null;
+   $ncart->save();
+
 
    return response()->json($cart);
  }
