@@ -1,1 +1,248 @@
-#wishListsTabs{margin-top:2em;max-width:1140px;position:relative;margin:auto;margin-top:3em}#wishListsTabs ul li.active a{background-color:var(--var-main-color);color:#fff}#wishListsTabs ul li:hover a{color:var(--var-text)}#list-example{width:auto;height:auto}.wishListContent{width:75%;margin:auto}#listItems{max-width:80%;overflow-y:auto;min-height:30em;max-height:50rem}.col-sm{padding-right:0;padding-left:0;margin-left:1.25em}#mainContainer{width:100%;padding:0}.product_card{min-height:auto;padding-left:.4em;padding-bottom:2em;display:inline-block;min-width:45%;border-top:none;border-right:none;border-left:none}#mainContainer :not(:last-child).product_card{border-bottom:solid;border-bottom-color:var(--var-main-color);border-radius:0}h4.product_name{margin:0;margin-left:.5em;margin-top:1em;margin-bottom:1em}.image_link{width:40%;padding-bottom:2em}div.div_img{max-height:300px;min-height:250px}.product_img{max-width:250px;max-height:250px;background-size:250px 250px;margin:auto;margin-top:0}.review_score{width:auto;height:1.5em;margin-left:0;margin-top:0}.product_name{font-size:1.5em;margin-left:.5em;margin-top:.3em}.page-link{font-size:1.5vmax}button.addToCartBtn,button.removeWishItem{min-height:5%;max-height:8%;width:75px;height:50px}.shop_button{border-radius:2em;display:block;border-radius:50%;outline:0!important}.rating{width:auto;height:auto;display:inline-block;margin-bottom:0}.starsRating{border:none;float:left}.starsRating>input{display:none}label{margin-bottom:0}.starsRating>label:before{margin:5px;font-size:1.25em;font-family:"Font Awesome 5 Free";display:inline-block;content:"\f005"}.starsRating>.half:before{content:"\f089";position:absolute}div.col-sm p{width:90%;margin-left:0;margin-bottom:0}@media screen and (max-width:750px){div.col-sm p{display:none}ul.pagination{justify-content:center}#mainContainer{text-align:center}.product_card{width:60%;margin:auto;padding-left:0}.product_card .col-sm,.product_card h4{margin-left:0}#wishListsTabs{justify-content:center;max-width:100%}.image_link{width:100%;margin-left:0;margin-bottom:1.5em}img.product_img{margin:auto;width:90%}}@media screen and (max-width:1260px){#list-example{display:none}#listItems{margin:auto;width:auto}.page-link{font-size:1.5vmax}}@media screen and (max-width:960px){.rating{display:none}}@media screen and (max-width:575px){.image_link{width:100%;margin-left:0;margin-bottom:1.5em}button.addToCartBtn,button.removeWishItem{width:50px}img.product_img{margin:auto;width:90%}}@media screen and (max-width:400px){.wishListContent{width:100%}}
+#wishListsTabs {
+  margin-top: 2em;
+  max-width: 1140px;
+  position: relative;
+  margin: auto;
+  margin-top:3em;
+
+
+}
+
+#wishListsTabs ul li.active a {
+  background-color: var(--var-main-color);
+  color: white;
+}
+
+#wishListsTabs ul li:hover a {
+  color: var(--var-text);
+}
+
+#list-example {
+  width: auto;
+  height: auto;
+}
+.wishListContent {
+  width: 75%;
+  margin: auto;
+}
+
+#listItems {
+  max-width: 80%;
+  overflow-y: auto;
+  min-height: 30em;
+  max-height: 50rem;
+}
+.col-sm {
+  padding-right: 0;
+  padding-left: 0;
+  margin-left: 1.25em;
+}
+#mainContainer {
+  width: 100%;
+  padding: 0;
+}
+.product_card {
+  min-height: auto;
+  padding-left: 0.4em;
+  padding-bottom: 2em;
+  display: inline-block;
+  min-width: 45%;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+}
+
+#mainContainer :not(:last-child).product_card {
+  border-bottom: solid;
+  border-bottom-color: var(--var-main-color);
+  border-radius: 0;
+}
+
+h4.product_name {
+  margin: 0;
+  margin-left: 0.5em;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.image_link{
+  width: 40%;
+  padding-bottom: 2em;
+
+}
+
+div.div_img{
+  max-height: 300px;
+  min-height: 250px;
+}
+
+.product_img {
+  max-width: 250px;
+  max-height: 250px;
+  background-size: 250px 250px;
+  margin:auto;
+  margin-top:0;
+
+}
+
+.review_score {
+  width: auto;
+  height: 1.5em;
+  margin-left: 0em;
+  margin-top: 0em;
+}
+
+.product_name {
+  font-size: 1.5em;
+  margin-left: 0.5em;
+  margin-top: 0.3em;
+}
+
+.page-link {
+  font-size: 1.5vmax;
+}
+
+
+
+button.removeWishItem, button.addToCartBtn{
+  min-height: 5%;
+  max-height: 8%;
+  width: 75px;
+  height: 50px;
+}
+
+.shop_button {
+  border-radius: 2em;
+  display: block;
+  border-radius: 50%;
+  outline: none !important;
+}
+
+.rating {
+  width: auto;
+  height: auto;
+  display: inline-block;
+  margin-bottom: 0;
+}
+
+.starsRating {
+  border: none;
+  float: left;
+}
+
+.starsRating > input {
+  display: none;
+}
+
+label {
+  margin-bottom: 0;
+}
+.starsRating > label:before {
+  margin: 5px;
+  font-size: 1.25em;
+  font-family: "Font Awesome 5 Free";
+  display: inline-block;
+  content: "\f005";
+}
+
+.starsRating > .half:before {
+  content: "\f089";
+  position: absolute;
+}
+
+
+div.col-sm p {
+  width: 90%;
+  margin-left: 0em;
+  margin-bottom: 0;
+}
+
+@media screen and (max-width: 750px) {
+  div.col-sm p {
+    display: none;
+  }
+
+  ul.pagination {
+    justify-content: center;
+  }
+
+  #mainContainer {
+    text-align: center;
+  }
+  .product_card {
+    width: 60%;
+    margin: auto;
+    padding-left: 0;
+  }
+
+  .product_card h4,
+  .product_card .col-sm {
+    margin-left: 0;
+  }
+  #wishListsTabs {
+    justify-content: center;
+    max-width: 100%;
+  }
+
+  .image_link {
+    width: 100%;
+    margin-left: 0;
+    margin-bottom: 1.5em;
+  }
+
+
+
+  img.product_img{
+    margin:auto;
+    width:90%;
+  }
+}
+
+@media screen and (max-width: 1260px) {
+  #list-example {
+    display: none;
+  }
+
+  
+
+  #listItems {
+    margin: auto;
+    width: auto;
+  }
+
+  .page-link {
+    font-size: 1.5vmax;
+  }
+}
+
+@media screen and (max-width: 960px) {
+  .rating {
+    display: none;
+  }
+ 
+}
+
+@media screen and (max-width: 575px) {
+  .image_link {
+    width: 100%;
+    margin-left: 0;
+    margin-bottom: 1.5em;
+  }
+
+
+  button.removeWishItem, button.addToCartBtn{
+    width:50px;
+  }
+  img.product_img{
+    margin:auto;
+    width:90%;
+  }
+  
+  
+}
+
+@media screen and (max-width: 400px) {
+  .wishListContent {
+    width: 100%;
+  }
+}

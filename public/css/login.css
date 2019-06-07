@@ -1,1 +1,35 @@
-@media screen and (max-width:1450px){.loginForm{width:30%}}@media screen and (max-width:1080px){.loginForm{width:50%}}@media screen and (max-width:760px){.loginForm{width:100%}}.loginForm{border:1px solid var(--var-thir-color)}.loginFlex{margin-bottom:1em}.loginHref{color:var(--var-secon-color)}.loginHref:hover{color:var(--var-main-color)}
+@media screen and (max-width: 1450px) {
+    .loginForm {
+        width: 30%;
+    }
+}
+
+@media screen and (max-width: 1080px) {
+    .loginForm {
+        width: 50%;
+     
+    }
+}
+
+@media screen and (max-width: 760px) {
+    .loginForm {
+        width: 100%;
+       
+    }
+}
+
+.loginForm {
+    border: 1px solid var(--var-thir-color);
+}
+
+.loginFlex {
+    margin-bottom: 1em;
+}
+
+.loginHref {
+    color: var(--var-secon-color);
+}
+
+.loginHref:hover {
+    color: var(--var-main-color);
+}
