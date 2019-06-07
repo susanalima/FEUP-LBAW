@@ -85,16 +85,55 @@ function removeFromCart(elem, prod_id, cart_id){
     sendAjaxRequest('POST', '/api/remove_prod', {product_id: prod_id, cart_id: cart_id}, cartOpHandler);
 }
 
-function createCartCard(product_name, product_price){
+function createCartCard(product_name, product_price, product_id, list_id){
 
   let cart = document.getElementById("shoppingCartCart");
-  let newCartElem = cart.appendChild("")
+  cart.innerHTML.append(
+  `<article class="m-2 p-2 d-flex justify-content-between align-items-center"> 
+  <div class="w-50 d-flex justify-content-left align-items-center">   
+      <a href="/product/` + product_id +`" class="ml-4">
+          <h4 class="cartProductName">` + product_name + `</h4>
+      </a>
+  </div>
+  <div class="d-flex align-items-center">
+      <input type="text" class="form-control cartQuantitySelector" value=1 />
+      <div class="cartQuantitySelectorController d-flex flex-column align-items-center">
+          <button
+              class="btn cartQuantitySelectorControllerBtn button-toggable border border-white"
+              onclick="plusOne(this,` + product_id + "," + list_id + `)"
+              type="submit"
+          >
+              <i class="fas fa-plus"></i>
+          </button>
+          <button
+              class="btn cartQuantitySelectorControllerBtn button-toggable border border-white"
+              onclick="minusOne(this,` + product_id + "," + list_id + `)"
+              type="submit"
+          >
+              <i class="fas fa-minus"></i>
+          </button>
+      </div>
+  </div>
+<h4 class="cartProductSubTotal totalPrice">`+ product_price +`</h4>
+  <button class="button-toggable btn border border-white" onclick="removeFromCart(this, ` + product_id + "," + list_id + `)">
+      <i class="fas fa-times"></i>
+  </button>
+</article>`);
+
 }
 
 function addProductToCart(elem, client_id, product_id, quantity){
-    
+
+  
+
     elem.classList.toggle("active");
+    if(client_id == -1)
+    {
+      console.log("The Client must be logged in.\n");
+      return;
+    }
     
+    createCartCard(product_name, product_price, product_id, list_id)
     console.log(client_id, product_id, quantity);
 
     function addToCartHandler(){

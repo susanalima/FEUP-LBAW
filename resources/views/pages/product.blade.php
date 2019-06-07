@@ -31,27 +31,38 @@
                         <h3 id="priceVal" class="">{{$product['price']}}</h3>
                     </div>
                     <div class="d-flex justify-content-between w-100">
-
-                    @if(in_array($product['id'], $cart['prod_ids']))
-                        <button
-                            class="btn addToCartBtn button-toggable w-100 mr-1 active "
-                            onclick="removeFromCart(this, {{$product->id}}, {{$cart[0]['id']}})"  
-                            type="submit"
-                            id="addToCart"
-                            title="Add To Cart"
-                        >
-                        <i class="fas fa-cart-plus"></i>
-                        </button>
-                    @else
-                        <button
-                            class="btn addToCartBtn button-toggable w-100 mr-1"
-                            onclick="addProductToCart(this,{{Auth::id()}} , {{$product['id']}} , 1)"  
-                            type="submit"
-                            id="addToCart"
-                            title="Add To Cart"
-                        >
+                    @if(!Auth::check())
+                    <button
+                                class="btn addToCartBtn button-toggable w-100 mr-1 "
+                                
+                                type="submit"
+                                id="addToCart"
+                                title="Add To Cart"
+                            >
                             <i class="fas fa-cart-plus"></i>
-                        </button>
+                    </button>
+                    @else
+                        @if(in_array($product['id'], $cart['prod_ids']))
+                            <button
+                                class="btn addToCartBtn button-toggable w-100 mr-1 active "
+                                onclick="removeFromCart(this, {{$product->id}}, {{$cart[0]['id']}})"  
+                                type="submit"
+                                id="addToCart"
+                                title="Add To Cart"
+                            >
+                            <i class="fas fa-cart-plus"></i>
+                            </button>
+                        @else
+                            <button
+                                class="btn addToCartBtn button-toggable w-100 mr-1"
+                                onclick="addProductToCart(this,{{Auth::id()}} , {{$product['id']}} , 1)"  
+                                type="submit"
+                                id="addToCart"
+                                title="Add To Cart"
+                            >
+                                <i class="fas fa-cart-plus"></i>
+                            </button>
+                                @endif
                         @endif
                         <button
                             class="btn addToCmpBtn button-toggable w-100"
