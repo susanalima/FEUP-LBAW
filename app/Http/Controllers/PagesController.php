@@ -69,6 +69,8 @@ class PagesController extends Controller
 
     $product->img_path = $img->filepath;
     $product->img_description = $img->description;
+    $product->date = $tmp->added_to;
+    $product->quantity = $tmp->quantity;
 
     $total += $product->price * $product->quantity;
    }

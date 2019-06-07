@@ -36,8 +36,6 @@
                 @include('templates.navbar')
                 @yield('content')
                 <div class="d-flex flex-row">
-                @include('templates.comparison')
-                @include('templates.compare')
                 @include('templates.cart')
             </div>
         </div>
