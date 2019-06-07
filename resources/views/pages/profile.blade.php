@@ -425,65 +425,7 @@
             </div>
           </div>
         </div>
-        <div class="card">
-          <div class="card-header" id="notfsHeading">
-            <h2 class="mb-0 d-flex justify-content-between align-items-center">
-              <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#clientNotfs"
-                aria-expanded="false" aria-controls="clientNotfs">
-                Notifications
-              </button>
-            </h2>
-          </div>
-          <div id="clientNotfs" class="collapse" aria-labelledby="notfsHeading" data-parent="#profileOptions">
-            <div class="card-body">
-              <!--info alert-->
-              <div class="alert alert-info">
-                <div class="container">
-                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                  <b>2019-02-22 :</b> Jane Doe answered your question on bla bla...
-                </div>
-              </div>
-              <!--primary alert-->
-              <div class="alert alert-primary">
-                <div class="container">
-                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                  <b>2019-02-21 :</b> 90% off in laptops! Don't miss this opportunity!
-                </div>
-              </div>
-              <!--success alert-->
-              <div class="alert alert-success">
-                <div class="container">
-                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                  <b>2019-02-21 :</b> Purchase of shopping cart #3 successfull
-                </div>
-              </div>
-              <!--warning alert-->
-              <div class="alert alert-warning">
-                <div class="container">
-                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                  <b>2019-02-19 :</b> Your account was blocked, contact support ASAP
-                </div>
-              </div>
-              <!--info danger-->
-              <div class="alert alert-danger">
-                <div class="container">
-                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                  <b>2019-02-19 :</b> Invalid purchase
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+ 
         <div class="card">
           <div class="card-header" id="purchaseHistHeading">
             <h2 class="mb-0">
