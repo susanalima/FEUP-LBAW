@@ -242,6 +242,10 @@ class PagesController extends Controller
    }
   }
 
+  if ($product === null) {
+   abort('404');
+  }
+
   $product['category'] = Aux::formatHeader($product->category['name']);
   $product['images'] = $product->images;
   $product['specs'] = $product->specifications->map(function ($a) {return $a->spec();});
