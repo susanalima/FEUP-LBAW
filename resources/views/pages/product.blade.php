@@ -172,7 +172,7 @@
                 </div>
             </div>
 
-            @include('templates.compare')
+            <!--@include('templates.compare')-->
 
             <!-- Modal -->
             @include('templates.add_to_wishlist')

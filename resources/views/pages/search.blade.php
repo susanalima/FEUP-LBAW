@@ -255,7 +255,7 @@
       </div>
     
     
-      @include('templates.compare')
+<!--@include('templates.compare')-->
 
 
 
