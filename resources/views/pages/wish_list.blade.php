@@ -59,7 +59,7 @@ use App\Product;
                                     @else  
                                         @if(in_array($product->id, $cart['prod_ids']))
                                             <button
-                                                class="btn addToCartBtn button-toggable  mr-1 active "
+                                                class="btn addToCartBtn button-toggable  mr-1 cart-button-{{$product->id}} active "
                                                 onclick="addProductButtonAction(this,{{Auth::id()}} , {{$product->id}} , 1, '{{$product->name}}', {{$cart[0]['id']}}, {{$product->price}})"  
                                                 type="submit"
                                                 id="addToCart"
@@ -69,7 +69,7 @@ use App\Product;
                                             </button>
                                         @else
                                             <button
-                                                class="btn addToCartBtn button-toggable  mr-1"
+                                                class="btn addToCartBtn button-toggable  mr-1 cart-button-{{$product->id}}"
                                                 onclick="addProductButtonAction(this,{{Auth::id()}} , {{$product->id}} , 1, '{{$product->name}}', {{$cart[0]['id']}}, {{$product->price}})"  
                                                 type="submit"
                                                 id="addToCart"

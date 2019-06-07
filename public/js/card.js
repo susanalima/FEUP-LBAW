@@ -132,7 +132,10 @@ function minusOne(elem, prod_id, cart_id, prod_price) {
 }
 
 function removeFromCart(elem, prod_id, cart_id, prod_price) {
-  elem.classList.toggle("active");
+  let cartButton = document.getElementsByClassName("cart-button-" + prod_id);
+  if(cartButton.length > 0)
+    cartButton[0].classList.toggle('active');
+
   console.log(cart_id, prod_id);
 
   let quantity = document.getElementById("product-quantity-" + prod_id).value;
