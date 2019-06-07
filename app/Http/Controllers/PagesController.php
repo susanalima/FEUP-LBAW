@@ -31,11 +31,11 @@ class PagesController extends Controller
     {
         $cart = $this->cart();
         $total = 0;
+        $prod_ids = [];
         if ($cart != []) {
             $cart['products'] = $cart->get(0)->list_products();
             $cart['total'] = 0;
-            $prod_ids = [];
-
+         
             foreach ($cart['products'] as $product) {
 
                 array_push($prod_ids, $product->id);
@@ -54,12 +54,13 @@ class PagesController extends Controller
                 $total += $product->price* $product->quantity;
             }
             $cart['total'] = $total;
-            $cart['prod_ids'] = $prod_ids;
+          
         } else {
 
             /*$product->quantity = $tmp->quantity;
         $product->date = $tmp->added_to;*/
         }
+        $cart['prod_ids'] = $prod_ids;
         $cart['total'] = $total;
         /*} else {
 
@@ -218,6 +219,7 @@ class PagesController extends Controller
 
         $wishlists = array();
         $collection = array();
+        $product_wl = array();
         if(Auth::check()) {
             $client = Client::find(Auth::user()->id);  
             $wishlists = $client->wishLists;
