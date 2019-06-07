@@ -235,7 +235,7 @@ class PagesController extends Controller
   $wishlists = array();
   $collection = array();
   $product_wl = array();
-  if (Auth::check()) {
+  if (Auth::check() && Client::find(Auth::user()->id) !== null) {
    $client = Client::find(Auth::user()->id);
    $wishlists = $client->wishLists;
    $product_wl = $product->wishlists();
@@ -352,7 +352,7 @@ class PagesController extends Controller
 
    $product_wl = [];
    $collection = array();
-   if (Auth::check()) {
+   if (Auth::check() && Client::find(Auth::user()->id) !== null) {
     $client = Client::find(Auth::user()->id);
     $wishlists = $client->wishLists;
     $product_wl = $product->wishlists();
@@ -379,7 +379,7 @@ class PagesController extends Controller
   $json = json_decode($products->toJson(), true);
 
   $wishlists = array();
-  if (Auth::check()) {
+  if (Auth::check() && Client::find(Auth::user()->id) !== null) {
    $client = Client::find(Auth::user()->id);
    $wishlists = $client->wishLists;
   }
@@ -408,7 +408,7 @@ class PagesController extends Controller
  public function profile()
  {
 
-  if (!Auth::check()) {
+  if (!Auth::check() || Client::find(Auth::user()->id) === null) {
    abort(404);
   }
 
@@ -551,7 +551,7 @@ class PagesController extends Controller
 
  public function checkout_delivery()
  {
-  if (!Auth::check()) {
+  if (!Auth::check() || App\Client::find(Auth::user()->id) === null) {
    abort(404);
   }
 
@@ -575,7 +575,7 @@ class PagesController extends Controller
  public function checkout_shipping()
  {
 
-  if (!Auth::check()) {
+  if (!Auth::check() || App\Client::find(Auth::user()->id) === null) {
    abort(404);
   }
 
@@ -596,7 +596,7 @@ class PagesController extends Controller
  public function checkout_payment()
  {
 
-  if (!Auth::check()) {
+  if (!Auth::check() || App\Client::find(Auth::user()->id) === null) {
    abort(404);
   }
 
@@ -618,7 +618,7 @@ class PagesController extends Controller
  public function checkout_confirmation()
  {
 
-  if (!Auth::check()) {
+  if (!Auth::check() || App\Client::find(Auth::user()->id) === null) {
    abort(404);
   }
 
@@ -681,7 +681,7 @@ class PagesController extends Controller
  public function checkout_products()
  {
 
-  if (!Auth::check()) {
+  if (!Auth::check() || App\Client::find(Auth::user()->id) === null) {
    abort(404);
   }
 
@@ -699,8 +699,6 @@ class PagesController extends Controller
   );
   return view("pages.checkout_product")->with($data);
  }
-
-
 
  public function compare($product1 = null, $product2 = null, $product3 = null)
  {

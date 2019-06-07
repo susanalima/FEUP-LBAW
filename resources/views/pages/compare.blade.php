@@ -30,7 +30,7 @@
 
                                  
 
-                                    @if(!Auth::check())
+                                    @if(!Auth::check() || App\Client::find(Auth::user()->id) === null)
                                     <button
                                                 class="btn addToCartBtn button-toggable "
                                                 type="submit"
