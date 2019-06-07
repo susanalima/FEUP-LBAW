@@ -18,6 +18,9 @@ class ProductController extends Controller
 {
  public function add_product(Request $request)
  {
+  if (!Auth::check() || (Auth::check() && Auth::user()->userable_type === "App\Client")) {
+   return Response::make("", 401);
+  }
 
   $rules = [
    'product_name' => 'required',

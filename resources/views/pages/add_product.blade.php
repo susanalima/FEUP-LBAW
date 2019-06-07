@@ -2,7 +2,6 @@
 
 @section('content')
 <script type="text/javascript" src="{{ URL::asset('js/app.js') }}" defer></script>
-<script type="text/javascript" src="{{ URL::asset('js/uploadImages.js') }}" defer></script>
 <div class="mainContent">
     <!-- Image and text -->
     @isset ($error)

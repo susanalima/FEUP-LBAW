@@ -201,6 +201,10 @@ class PagesController extends Controller
 
  public function product_create()
  {
+  if (!Auth::check() || (Auth::check() && Auth::user()->userable_type === "App\Client")) {
+   abort(401);
+  }
+
   $cats = Category::all()->map(function ($category) {
    return array("id" => $category->id, "name" => $category->name);
   });

@@ -71,10 +71,15 @@
                 
                     <nav class="nav-item text-right navText d-flex justify-content-between" id="accountLinks">
 
+                        @if( (Auth::check() && App\Client::find(Auth::user()->id) !== null) || !Auth::check())
                         <a class="nav-link text-nowrap" href="#" onclick="opener()" tabindex="-1" aria-disabled="true"
                             >Shopping Cart
                         </a>
-
+                        @else
+                        <a class="nav-link text-nowrap" href="/product/create" tabindex="-1" aria-disabled="true"
+                            >Add new product
+                        </a>
+                        @endif
                         @if(Auth::guest())
                             <a class="nav-link" href="{{ route('login') }}" tabindex="-1" aria-disabled="true"
                                 >Login
