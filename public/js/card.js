@@ -122,32 +122,13 @@ function removeFromCart(elem, prod_id, cart_id) {
   );
 }
 
-function addProductToCart(elem, client_id, product_id, quantity) {
-  elem.classList.toggle("active");
 
-  console.log(client_id, product_id, quantity);
-
-  function addToCartHandler() {
-    console.log(this.responseText);
-    let response = JSON.parse(this.responseText);
-
-    console.log(response);
-  }
-
-  if (client_id != "")
-    sendAjaxRequest(
-      "POST",
-      "/api/add_product_cart",
-      { product_id: product_id, client_id: client_id, quantity: quantity },
-      addToCartHandler
-    );
-  else console.log("User not logged in\n");
-}
 
 function createCartCard(product_name, product_price, product_id, list_id){
 
   let cart = document.getElementById("shoppingCartCart");
-  cart.innerHTML.append(
+  let oldCard = cart.innerHTML;
+  let newCart = oldCard +
   `<article class="m-2 p-2 d-flex justify-content-between align-items-center"> 
   <div class="w-50 d-flex justify-content-left align-items-center">   
       <a href="/product/` + product_id +`" class="ml-4">
@@ -177,13 +158,14 @@ function createCartCard(product_name, product_price, product_id, list_id){
   <button class="button-toggable btn border border-white" onclick="removeFromCart(this, ` + product_id + "," + list_id + `)">
       <i class="fas fa-times"></i>
   </button>
-</article>`);
+</article>`;
+
+cart.innerHTML = newCart;
 
 }
 
-function addProductToCart(elem, client_id, product_id, quantity){
+function addProductToCart(elem, client_id, product_id, quantity, product_name, list_id, product_price){
 
-  
 
     elem.classList.toggle("active");
     if(client_id == -1)
@@ -202,13 +184,13 @@ function addProductToCart(elem, client_id, product_id, quantity){
         
         console.log(response);
       }
-      
-      if(client_id != '')
-        sendAjaxRequest('POST', '/api/add_product_cart', {product_id: product_id, client_id: client_id, quantity: quantity}, addToCartHandler);
-      else
-        console.log("User not logged in\n");  
-  }
-  
+    
+    if(client_id != '')
+      sendAjaxRequest('POST', '/api/add_product_cart', {product_id: product_id, client_id: client_id, quantity: quantity}, addToCartHandler);
+    else
+      console.log("User not logged in\n");  
+}
+
 //auxiliary functions https://stackoverflow.com/questions/14573223/set-cookie-and-get-cookie-with-javascript
 function setCookie(name, value, days = 8) {
   var expires = "";
