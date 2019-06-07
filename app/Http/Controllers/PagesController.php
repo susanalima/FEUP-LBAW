@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Aux\Aux;
-use App\Category;
 use App\Cart;
+use App\Category;
 use App\Client;
 use App\Product;
 use App\ProductList;
@@ -29,62 +29,60 @@ class PagesController extends Controller
 
  }
 
+ private function createCart($client_id)
+ {
+  $request = [];
 
-    private function createCart($client_id){
-        $request = [];
-        
-        $request['client_id'] = $client_id;
-        $request['list_id'] = ProductList::firstOrCreate(['id'=>ProductList::max('id') + 1]);
-        Cart::firstOrCreate([ 
-        'id' => $request['list_id']['id'],
-        'id_client' => $request['client_id'],
-        'checkout' => null,
-        'id_card' => null,
-        'id_address' => null,
-        'id_shipping' => null,]);
-    }
+  $request['client_id'] = $client_id;
+  $request['list_id'] = ProductList::firstOrCreate(['id' => ProductList::max('id') + 1]);
+  Cart::firstOrCreate([
+   'id' => $request['list_id']['id'],
+   'id_client' => $request['client_id'],
+   'checkout' => null,
+   'id_card' => null,
+   'id_address' => null,
+   'id_shipping' => null]);
+ }
 
+ public function makeCart()
+ {
+  $cart = $this->cart();
 
-    public function makeCart()
-    {
-        $cart = $this->cart();
-        
-        if(Auth::check() && $cart->get(0) === null){
-            PagesController::createCart(Auth::user()->id);
-            $cart = $this->cart();
-        }
-        $total = 0;
-        $prod_ids = [];
-        if ($cart != []) {
-            $cart['products'] = $cart->get(0)->list_products();
-            $cart['total'] = 0;
-         
-            foreach ($cart['products'] as $product) {
+  if (Auth::check() && $cart->get(0) === null) {
+   PagesController::createCart(Auth::user()->id);
+   $cart = $this->cart();
+  }
+  $total = 0;
+  $prod_ids = [];
+  if ($cart != []) {
+   $cart['products'] = $cart->get(0)->list_products();
+   $cart['total'] = 0;
 
-                array_push($prod_ids, $product->id);
+   foreach ($cart['products'] as $product) {
 
-                $product->name = str_before($product->name, ' -');
+    array_push($prod_ids, $product->id);
 
-                $tmp = DB::select("SELECT quantity, added_to FROM ass_list_product WHERE id_list = {$cart[0]['id']} and id_product = $product->id")[0];
-                $img = DB::select("SELECT filepath, description FROM image WHERE primary_img = true and id_product = $product->id")[0];
+    $product->name = str_before($product->name, ' -');
 
-                $product->img_path = $img->filepath;
-                $product->img_description = $img->description;
+    $tmp = DB::select("SELECT quantity, added_to FROM ass_list_product WHERE id_list = {$cart[0]['id']} and id_product = $product->id")[0];
+    $img = DB::select("SELECT filepath, description FROM image WHERE primary_img = true and id_product = $product->id")[0];
 
-                $total += $product->price* $product->quantity;
-            }
-            $cart['total'] = $total;
-            $cart['prod_ids'] = $prod_ids;
+    $product->img_path = $img->filepath;
+    $product->img_description = $img->description;
 
-                    
-        } else {
-            $cart['products'] = [];
-            $cart['total'] = 0;
-        }
+    $total += $product->price * $product->quantity;
+   }
+   $cart['total'] = $total;
+   $cart['prod_ids'] = $prod_ids;
 
-    $cart['prod_ids'] = $prod_ids;
-  
-    return $cart;
+  } else {
+   $cart['products'] = [];
+   $cart['total'] = 0;
+  }
+
+  $cart['prod_ids'] = $prod_ids;
+
+  return $cart;
  }
 
  public function index()
@@ -346,6 +344,7 @@ class PagesController extends Controller
 
   foreach ($products as $product) {
 
+   $product_wl = [];
    $collection = array();
    if (Auth::check()) {
     $client = Client::find(Auth::user()->id);
