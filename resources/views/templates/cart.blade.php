@@ -46,7 +46,7 @@ title="Open Shopping cart"
 </div>
 <div class="d-flex flex-column justify-content-between" id="shoppingCartCart">
     @foreach ($cart['products'] as $product)
-    <article class="m-2 p-2 d-flex justify-content-between align-items-center">
+    <article id="cart-product-{{$product->id}}" class="m-2 p-2 d-flex justify-content-between align-items-center">
         <div class="w-50 d-flex justify-content-left align-items-center">
             
             <a href="/product/{{$product->id}}" class="ml-4">

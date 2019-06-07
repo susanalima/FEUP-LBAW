@@ -13,7 +13,7 @@
 
 <div class="mainContent">
             <div id="intro" class="row d-flex justify-content-center p-5 w-100 prod" data-id="{{$product['id']}}">
-                <div id="productImagesCarousel" class="carousel slide col-md-5" data-ride="carousel">
+                <div id="productImagesCarousel" class="carousel slide col-md-5 h-100" data-ride="carousel">
                     <ol class="carousel-indicators">
                         @foreach ($product['images'] as $index => $image)
                             <li data-target="#productImagesCarousel" data-slide-to="{{$index}}" {{$image['primary_img'] ? 'class = "active"' : ''}}></li>
@@ -54,7 +54,7 @@
                         @if(in_array($product['id'], $cart['prod_ids']))
                             <button
                                 class="btn addToCartBtn button-toggable w-100 mr-1 active "
-                                onclick="removeFromCart(this, {{$product->id}}, {{$cart[0]['id']}})"  
+                                onclick="addProductButtonAction(this,{{Auth::id()}} , {{$product['id']}} , 1, '{{$product['name']}}', {{$cart[0]['id']}}, {{$product['price']}})"  
                                 type="submit"
                                 id="addToCart"
                                 title="Add To Cart"
@@ -64,7 +64,7 @@
                         @else
                             <button
                                 class="btn addToCartBtn button-toggable w-100 mr-1"
-                                onclick="addProductToCart(this,{{Auth::id()}} , {{$product['id']}} , 1, '{{$product['name']}}', {{$cart[0]['id']}}, {{$product['price']}})"  
+                                onclick="addProductButtonAction(this,{{Auth::id()}} , {{$product['id']}} , 1, '{{$product['name']}}', {{$cart[0]['id']}}, {{$product['price']}})"  
                                 type="submit"
                                 id="addToCart"
                                 title="Add To Cart"

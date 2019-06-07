@@ -68,6 +68,9 @@ function writeModal(elem) {
   elem.classList.toggle("active");
 }
 
+
+
+
 function cartOpHandler(e) {
   if (e.readyState === e.DONE && e.status === 200) {
     console.log(e.response);
@@ -113,7 +116,8 @@ function minusOne(elem, prod_id, cart_id) {
 function removeFromCart(elem, prod_id, cart_id) {
   elem.classList.toggle("active");
   console.log(cart_id, prod_id);
-
+  let elementDelete = document.getElementById("cart-product-" + prod_id);
+  elementDelete.remove();
   sendAjaxRequest(
     "POST",
     "/api/remove_prod",
@@ -129,7 +133,7 @@ function createCartCard(product_name, product_price, product_id, list_id){
   let cart = document.getElementById("shoppingCartCart");
   let oldCard = cart.innerHTML;
   let newCart = oldCard +
-  `<article class="m-2 p-2 d-flex justify-content-between align-items-center"> 
+  `<article id="cart-product-` + product_id + `" class="m-2 p-2 d-flex justify-content-between align-items-center"> 
   <div class="w-50 d-flex justify-content-left align-items-center">   
       <a href="/product/` + product_id +`" class="ml-4">
           <h4 class="cartProductName">` + product_name + `</h4>
@@ -189,6 +193,15 @@ function addProductToCart(elem, client_id, product_id, quantity, product_name, l
       sendAjaxRequest('POST', '/api/add_product_cart', {product_id: product_id, client_id: client_id, quantity: quantity}, addToCartHandler);
     else
       console.log("User not logged in\n");  
+}
+
+function addProductButtonAction(elem, client_id, product_id, quantity, product_name, list_id, product_price){
+    if(elem.classList.contains('active')){
+        removeFromCart(elem, product_id, list_id);
+    }
+    else{
+        addProductToCart(elem, client_id, product_id, quantity, product_name, list_id, product_price);
+    }
 }
 
 //auxiliary functions https://stackoverflow.com/questions/14573223/set-cookie-and-get-cookie-with-javascript
