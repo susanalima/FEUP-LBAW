@@ -513,6 +513,11 @@ class PagesController extends Controller
         $list['name'] = Aux::formatHeader($info->name);
         $list['products'] = $info->list_products();
 
+        foreach($list['products'] as $product){
+            $prod = Product::find($product->id);
+            $product->rating = $prod->rating();
+        }
+
         $this->getProductExtras($list['products']);
 
         $client_id = $info->id_client;

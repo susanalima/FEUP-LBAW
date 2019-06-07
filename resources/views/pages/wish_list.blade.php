@@ -82,22 +82,54 @@ use App\Product;
                                             
                                         <button class="btn removeWishItem button-action" type="submit"
                                              onclick="removeFromWishList(this, '{{$product->id}}', {{$info['id']}})"><i class="fa fa-times"></i></button></div>
-                                          
-                                            <div class="rating">
+                                              
+                                            <form class="rating mt-1">
+                                                <div class="rating">
                                                 <fieldset class="starsRating">
-                                                    <label class="full" for="star5"></label>
-                                                    <label class="half" for="star4half"></label>
-                                                    <label class="full" for="star4"></label>
-                                                    <label class="half marked" for="star3half"></label>
-                                                    <label class="full marked" for="star3"></label>
-                                                    <label class="half marked" for="star2half"></label>
-                                                    <label class="full marked" for="star2"></label>
-                                                    <label class="half marked" for="star1half"></label>
-                                                    <label class="full marked" for="star1"></label>
-                                                    <label class="half marked" for="star0half"></label>
+                                                    <input type="radio" id="star5" name="rating" value="5" /><label
+                                                        class="full {{$product->rating >= 5.0 ? 'marked' : ''}}"
+                                                        for="star5"
+                                                    ></label>
+                                                    <input type="radio" id="star4half" name="rating" value="4.5" /><label
+                                                        class="half {{$product->rating >= 4.5 ? 'marked' : ''}}"
+                                                        for="star4half"
+                                                    ></label>
+                                                    <input type="radio" id="star4" name="rating" value="4" /><label
+                                                        class="full {{$product->rating >= 4 ? 'marked' : ''}}"
+                                                        for="star4"
+                                                    ></label>
+                                                    <input type="radio" id="star3half" name="rating" value="3.5" /><label
+                                                        class="half {{$product->rating >= 3.5 ? 'marked' : ''}}"
+                                                        for="star3half"
+                                                    ></label>
+                                                    <input type="radio" id="star3" name="rating" value="3" /><label
+                                                        class="full {{$product->rating >= 3.0 ? 'marked' : ''}}"
+                                                        for="star3"
+                                                    ></label>
+                                                    <input type="radio" id="star2half" name="rating" value="2.5" /><label
+                                                        class="half {{$product->rating >= 2.5 ? 'marked' : ''}}"
+                                                        for="star2half"
+                                                    ></label>
+                                                    <input type="radio" id="star2" name="rating" value="2" /><label
+                                                        class="full {{$product->rating >= 2.0 ? 'marked' : ''}}"
+                                                        for="star2"
+                                                    ></label>
+                                                    <input type="radio" id="star1half" name="rating" value="1.5" /><label
+                                                        class="half {{$product->rating >= 1.5 ? 'marked' : ''}}"
+                                                        for="star1half"
+                                                    ></label>
+                                                    <input type="radio" id="star1" name="rating" value="1" /><label
+                                                        class="full {{$product->rating >= 1.0 ? 'marked' : ''}}"
+                                                        for="star1"
+                                                    ></label>
+                                                    <input type="radio" id="star0half" name="rating" value="0.5" /><label
+                                                        class="half {{$product->rating >= 0.5 ? 'marked' : ''}}"
+                                                        for="star0half"
+                                                    ></label>
                                                 </fieldset>
-                                            </div>
-                                   
+                                                </div>
+                                            </form>
+                                                        
                                     
                                 </div>
                             </div>
