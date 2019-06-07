@@ -34,7 +34,7 @@
                 </div>
 
                 <div class="input-group flex-nowrap mt-2">
-                <input type="hidden" class="form-control"  name="address_id" value="{{$address['id']}}"> {{-- TODO: Possible security breach --}} 
+                <input type="hidden" class="form-control"  name="address_id" value="{{$address['id']}}">
             </div>
 
             </div>

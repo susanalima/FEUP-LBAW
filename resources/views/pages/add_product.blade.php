@@ -65,7 +65,7 @@
                 <label for="addProductName" class="col-sm-1 col-form-label">{{$spec["name"]}}</label>
                 <div class="col-sm-11 px-0">
                     <input type="text" class="form-control" id="spec_{{$spec["id"]}}" name="specs[]">
-                    <input type="hidden" class="form-control" id="spec_{{$spec["id"]}}" name="spec_header[]" value="{{$spec['id']}}"> {{-- TODO: Possible security breach --}} 
+                    <input type="hidden" class="form-control" id="spec_{{$spec["id"]}}" name="spec_header[]" value="{{$spec['id']}}">
                 </div>
             </div>
             @endforeach
