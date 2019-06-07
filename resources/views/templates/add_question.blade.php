@@ -1,4 +1,5 @@
     @if(Auth::check())
+    <div>
             <div
                 class="modal fade"
                 id="writeQuestionModal"
@@ -22,8 +23,8 @@
                             </div>
                         </form>
                         <div class="modal-footer">
-                            <button type="button" onclick="addQuestion('{{$product['id']}}', '{{Auth::user()->id}}')" class="btn modalBtn" data-dismiss="modal">Save changes</button>
-                            <button type="button" class="btn modalBtn" data-dismiss="modal">Close</button>
+                            <button type="button" onclick="addQuestion('{{$product['id']}}', '{{Auth::user()->id}}')" class="btn  button-submit" data-dismiss="modal">Finish</button>
+                            <button type="button" class="btn  button-negative" data-dismiss="modal">Close</button>
                         </div>
                     </div>
                 </div>
