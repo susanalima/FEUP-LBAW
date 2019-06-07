@@ -14,7 +14,7 @@
 
 <div class="mainContent">
             <div id="intro" class="row d-flex justify-content-center p-5 w-100 prod" data-id="{{$product['id']}}">
-                <div id="productImagesCarousel" class="carousel slide col-md-5" data-ride="carousel">
+                <div id="productImagesCarousel" class="carousel slide col-md-5 h-100" data-ride="carousel">
                     <ol class="carousel-indicators">
                         @foreach ($product['images'] as $index => $image)
                             <li data-target="#productImagesCarousel" data-slide-to="{{$index}}" {{$image['primary_img'] ? 'class = "active"' : ''}}></li>
@@ -42,27 +42,37 @@
                         <h3 id="priceVal" class="">{{$product['price']}}</h3>
                     </div>
                     <div class="d-flex justify-content-between w-100">
-
-                    @if(in_array($product['id'], $cart['prod_ids']))
-                        <button
-                            class="btn addToCartBtn button-toggable w-100 mr-1 active "
-                            onclick="removeFromCart(this, {{$product->id}}, {{$cart[0]['id']}})"  
-                            type="submit"
-                            id="addToCart"
-                            title="Add To Cart"
-                        >
-                        <i class="fas fa-cart-plus"></i>
-                        </button>
-                    @else
-                        <button
-                            class="btn addToCartBtn button-toggable w-100 mr-1"
-                            onclick="addProductToCart(this,{{Auth::id()}} , {{$product['id']}} , 1)"  
-                            type="submit"
-                            id="addToCart"
-                            title="Add To Cart"
-                        >
+                    @if(!Auth::check())
+                    <button
+                                class="btn addToCartBtn button-toggable w-100 mr-1 "
+                                type="submit"
+                                id="addToCart"
+                                title="Add To Cart"
+                            >
                             <i class="fas fa-cart-plus"></i>
-                        </button>
+                    </button>
+                    @else
+                        @if(in_array($product['id'], $cart['prod_ids']))
+                            <button
+                                class="btn addToCartBtn button-toggable w-100 mr-1 active "
+                                onclick="addProductButtonAction(this,{{Auth::id()}} , {{$product['id']}} , 1, '{{$product['name']}}', {{$cart[0]['id']}}, {{$product['price']}})"  
+                                type="submit"
+                                id="addToCart"
+                                title="Add To Cart"
+                            >
+                            <i class="fas fa-cart-plus"></i>
+                            </button>
+                        @else
+                            <button
+                                class="btn addToCartBtn button-toggable w-100 mr-1"
+                                onclick="addProductButtonAction(this,{{Auth::id()}} , {{$product['id']}} , 1, '{{$product['name']}}', {{$cart[0]['id']}}, {{$product['price']}})"  
+                                type="submit"
+                                id="addToCart"
+                                title="Add To Cart"
+                            >
+                                <i class="fas fa-cart-plus"></i>
+                            </button>
+                            @endif
                         @endif
                         <button
                     class="btn addToCmpBtn button-toggable w-100"

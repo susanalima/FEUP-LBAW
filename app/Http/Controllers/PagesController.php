@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Aux\Aux;
+use App\Cart;
 use App\Category;
 use App\Client;
 use App\Product;
+use App\ProductList;
 use App\Promotion;
 use App\User;
 use App\WishList;
@@ -27,15 +29,33 @@ class PagesController extends Controller
 
  }
 
+ private function createCart($client_id)
+ {
+  $request = [];
+
+  $request['client_id'] = $client_id;
+  $request['list_id'] = ProductList::firstOrCreate(['id' => ProductList::max('id') + 1]);
+  Cart::firstOrCreate([
+   'id' => $request['list_id']['id'],
+   'id_client' => $request['client_id'],
+   'checkout' => null,
+   'id_card' => null,
+   'id_address' => null,
+   'id_shipping' => null]);
+ }
+
  public function makeCart()
  {
   $cart = $this->cart();
+
+  if (Auth::check() && $cart->get(0) === null) {
+   PagesController::createCart(Auth::user()->id);
+   $cart = $this->cart();
+  }
   $total = 0;
   $prod_ids = [];
-  if ($cart !== [] && $cart->get(0) !== null) {
-   $temp = $cart->get(0);
-
-   $cart['products'] = $temp->list_products();
+  if ($cart != []) {
+   $cart['products'] = $cart->get(0)->list_products();
    $cart['total'] = 0;
 
    foreach ($cart['products'] as $product) {
@@ -50,20 +70,18 @@ class PagesController extends Controller
     $product->img_path = $img->filepath;
     $product->img_description = $img->description;
 
-    $product->quantity = $tmp->quantity;
-    $product->date = $tmp->added_to;
-
     $total += $product->price * $product->quantity;
    }
    $cart['total'] = $total;
    $cart['prod_ids'] = $prod_ids;
 
   } else {
-
-   $cart['prod_ids'] = [];
    $cart['products'] = [];
    $cart['total'] = 0;
   }
+
+  $cart['prod_ids'] = $prod_ids;
+
   return $cart;
  }
 
@@ -326,6 +344,7 @@ class PagesController extends Controller
 
   foreach ($products as $product) {
 
+   $product_wl = [];
    $collection = array();
    if (Auth::check()) {
     $client = Client::find(Auth::user()->id);

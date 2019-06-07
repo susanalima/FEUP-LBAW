@@ -17,7 +17,16 @@ class ProductList extends Model{
  //Not sure if needed
  protected $fillable = ['id'];
 
- //TODO: test function, not sure if correct
+ public function store(){
+    $list = new ProductList;
+    
+    $list->id = ProductList::max('id') + 1;
+    $list->create();
+
+    return $list['id'];
+ }
+
+
  public function list_products(){
      return $this->hasManyThrough(Product::class, AssListProduct::class,  'id_product', 'id' , 'id', 'id_list');
  }

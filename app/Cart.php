@@ -20,6 +20,22 @@ class Cart extends Model
 
     protected $with = ['all_products'];
 
+
+    public function store($info){
+        
+        $cart = new Cart;
+        var_dump($info);
+
+        $cart->id = $info['list_id'];
+        $cart->id_client = $info['client_id'];
+        $cart->checkout = null;
+        $cart->id_card = null;
+        $cart->id_address = null;
+        $cart->id_shipping = null;
+
+        $cart->save();
+    }
+
     public function productList()
     {
      return $this->hasOne(ProductList::class, 'id', 'id' );

@@ -68,6 +68,9 @@ function writeModal(elem) {
   elem.classList.toggle("active");
 }
 
+
+
+
 function cartOpHandler(e) {
   if (e.readyState === e.DONE && e.status === 200) {
     console.log(e.response);
@@ -113,7 +116,8 @@ function minusOne(elem, prod_id, cart_id) {
 function removeFromCart(elem, prod_id, cart_id) {
   elem.classList.toggle("active");
   console.log(cart_id, prod_id);
-
+  let elementDelete = document.getElementById("cart-product-" + prod_id);
+  elementDelete.remove();
   sendAjaxRequest(
     "POST",
     "/api/remove_prod",
@@ -122,26 +126,82 @@ function removeFromCart(elem, prod_id, cart_id) {
   );
 }
 
-function addProductToCart(elem, client_id, product_id, quantity) {
-  elem.classList.toggle("active");
 
-  console.log(client_id, product_id, quantity);
 
-  function addToCartHandler() {
-    console.log(this.responseText);
-    let response = JSON.parse(this.responseText);
+function createCartCard(product_name, product_price, product_id, list_id){
 
-    console.log(response);
-  }
+  let cart = document.getElementById("shoppingCartCart");
+  let oldCard = cart.innerHTML;
+  let newCart = oldCard +
+  `<article id="cart-product-` + product_id + `" class="m-2 p-2 d-flex justify-content-between align-items-center"> 
+  <div class="w-50 d-flex justify-content-left align-items-center">   
+      <a href="/product/` + product_id +`" class="ml-4">
+          <h4 class="cartProductName">` + product_name + `</h4>
+      </a>
+  </div>
+  <div class="d-flex align-items-center">
+      <input type="text" class="form-control cartQuantitySelector" value=1 />
+      <div class="cartQuantitySelectorController d-flex flex-column align-items-center">
+          <button
+              class="btn cartQuantitySelectorControllerBtn button-toggable border border-white"
+              onclick="plusOne(this,` + product_id + "," + list_id + `)"
+              type="submit"
+          >
+              <i class="fas fa-plus"></i>
+          </button>
+          <button
+              class="btn cartQuantitySelectorControllerBtn button-toggable border border-white"
+              onclick="minusOne(this,` + product_id + "," + list_id + `)"
+              type="submit"
+          >
+              <i class="fas fa-minus"></i>
+          </button>
+      </div>
+  </div>
+<h4 class="cartProductSubTotal totalPrice">`+ product_price +`</h4>
+  <button class="button-toggable btn border border-white" onclick="removeFromCart(this, ` + product_id + "," + list_id + `)">
+      <i class="fas fa-times"></i>
+  </button>
+</article>`;
 
-  if (client_id != "")
-    sendAjaxRequest(
-      "POST",
-      "/api/add_product_cart",
-      { product_id: product_id, client_id: client_id, quantity: quantity },
-      addToCartHandler
-    );
-  else console.log("User not logged in\n");
+cart.innerHTML = newCart;
+
+}
+
+function addProductToCart(elem, client_id, product_id, quantity, product_name, list_id, product_price){
+
+
+    elem.classList.toggle("active");
+    if(client_id == -1)
+    {
+      console.log("The Client must be logged in.\n");
+      return;
+    }
+    
+    createCartCard(product_name, product_price, product_id, list_id)
+    console.log(client_id, product_id, quantity);
+
+
+    function addToCartHandler(){
+        console.log(this.responseText);
+        let response = JSON.parse(this.responseText);  
+        
+        console.log(response);
+      }
+    
+    if(client_id != '')
+      sendAjaxRequest('POST', '/api/add_product_cart', {product_id: product_id, client_id: client_id, quantity: quantity}, addToCartHandler);
+    else
+      console.log("User not logged in\n");  
+}
+
+function addProductButtonAction(elem, client_id, product_id, quantity, product_name, list_id, product_price){
+    if(elem.classList.contains('active')){
+        removeFromCart(elem, product_id, list_id);
+    }
+    else{
+        addProductToCart(elem, client_id, product_id, quantity, product_name, list_id, product_price);
+    }
 }
 
 //auxiliary functions https://stackoverflow.com/questions/14573223/set-cookie-and-get-cookie-with-javascript
