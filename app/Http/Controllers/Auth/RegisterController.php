@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Auth;
 use App\User;
 use App\Client;
 use App\NonAdmin;
+use App\ProductList;
+use App\Cart;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -80,6 +82,18 @@ class RegisterController extends Controller
             'id' => $person->id,
             'nif' => $data['nif'],
         ]);
+
+
+        $productList = ProductList::create(["id" => ProductList::max('id') + 1]);
+
+        $ncart = new cart;
+        $ncart->id = $productList->id;
+        $ncart->id_client = $person->id;
+        $ncart->id_address =null;
+        $ncart->id_card = null;
+        $ncart->id_shipping = null;
+        $ncart->checkout = null;
+        $ncart->save();
 
         return $person;
     }

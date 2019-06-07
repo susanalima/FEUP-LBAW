@@ -576,7 +576,6 @@ public function checkout_delivery(Request $request) {
 
    $cart->save();
    
-   //TODO CREATE NEW EMPTY CART
 
    $productList = ProductList::create(["id" => ProductList::max('id') + 1]);
 

@@ -168,13 +168,13 @@
 
             <!-- Modal -->
 
-            @if(Auth::Check())
+            @if(Auth::check())
                 @include('templates.add_review')
             @endif
 
             <!-- Modal -->
 
-            @if(Auth::Check())
+            @if(Auth::check())
                 @include('templates.add_question')
             @endif
 
@@ -236,6 +236,7 @@
                     </div>
                     <div id="reviewsHeading" class="collapse" aria-labelledby="reviewsCol" data-parent="#infoSection">
                         <div class="d-flex justify-content-end pt-2 pr-1">
+                            @if(Auth::check())
                             <button
                                 class="btn writeCommentBtn button-toggable align-self-end"
                                 onClick="writeModal(this)"
@@ -244,6 +245,14 @@
                             >
                                 <i class="fas fa-pencil-alt"></i>
                             </button>
+                            @else
+                            <button
+                                class="btn writeCommentBtn button-toggable align-self-end"
+                                disabled
+                            >
+                                <i class="fas fa-pencil-alt"></i>
+                            </button>
+                            @endif
                         </div>
                         <div class="card-body" id="reviewsBox">
                           @foreach($product['reviews'] as $review)
@@ -328,6 +337,7 @@
                     </div>
                     <div id="qaCol" class="collapse" aria-labelledby="qaHeading" data-parent="#infoSection">
                         <div class="d-flex justify-content-end pt-2 pr-1">
+                        @if(Auth::check())
                             <button
                                 class="btn writeCommentBtn button-toggable align-self-end"
                                 onClick="writeModal(this)"
@@ -336,6 +346,14 @@
                             >
                                 <i class="fas fa-pencil-alt"></i>
                             </button>
+                        @else
+                        <button
+                                class="btn writeCommentBtn button-toggable align-self-end"
+                                disabled
+                            >
+                                <i class="fas fa-pencil-alt"></i>
+                            </button>
+                        @endif
                         </div>
 
                         <div id="qaBox" class="qaContainer">
