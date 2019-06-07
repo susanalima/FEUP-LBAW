@@ -54,18 +54,18 @@ title="Open Shopping cart"
             </a>
         </div>
         <div class="d-flex align-items-center">
-            <input type="text" class="form-control cartQuantitySelector" value="{{$product->quantity}}" />
+            <input id="product-quantity-{{$product->id}}" type="text" class="form-control cartQuantitySelector" value="{{$product->quantity}}" />
             <div class="cartQuantitySelectorController d-flex flex-column align-items-center">
                 <button
                     class="btn cartQuantitySelectorControllerBtn button-toggable border border-white"
-                    onclick="plusOne(this, {{$product->id}}, {{$product->id_list}})"
+                    onclick="plusOne(this, {{$product->id}}, {{$product->id_list}}, {{$product->price}})"
                     type="submit"
                 >
                     <i class="fas fa-plus"></i>
                 </button>
                 <button
                     class="btn cartQuantitySelectorControllerBtn button-toggable border border-white"
-                    onclick="minusOne(this,{{$product->id}}, {{$product->id_list}})"
+                    onclick="minusOne(this,{{$product->id}}, {{$product->id_list}}, {{$product->price}})"
                     type="submit"
                 >
                     <i class="fas fa-minus"></i>
