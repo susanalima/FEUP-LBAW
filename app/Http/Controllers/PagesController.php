@@ -305,6 +305,9 @@ class PagesController extends Controller
                 $order = $restrictions['order'];
                 $orderDir = $restrictions['orderDir'];
 
+                if ($orderDir === null) {
+                    $orderDir = 'asc';
+                }
                 switch ($order) {
                     case 'price':
                     case 'name':
@@ -533,25 +536,6 @@ class PagesController extends Controller
         );
 
         return view("pages.wish_list")->with($data);
-    }
-
-    public function profile_manager($id)
-    {
-        //TODO
-    }
-
-    public function profile_admin($id)
-    {
-        //TODO
-    }
-
-    public function show_messages()
-    {
-        $data = array(
-            'type' => 'message_board',
-            'interactive' => true,
-        );
-        return view("pages.messages")->with($data);
     }
 
     public function checkout_delivery()

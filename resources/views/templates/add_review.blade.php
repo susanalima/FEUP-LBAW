@@ -17,6 +17,7 @@
                         </div>
                         <form class="align-self-center d-flex flex-column align-items-start w-75 pt-4">
                             <fieldset id="writeReviewFS" class="starsRating mutable">
+                                <legend>Rating of Product:</legend>
                                 <input type="radio" id="wrstar5" name="rating" value="5" /><label
                                     class="full"
                                     for="wrstar5"

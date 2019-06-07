@@ -23,7 +23,7 @@
                     <div class="carousel-inner">
                       @foreach ($product['images'] as $image)
                         <div class="carousel-item {{$image['primary_img'] ? 'active' : ''}}">
-                            <img src="{{ '/storage/' . $image['filepath'] }}" class="d-block w-100 carouselImgSearch" alt="{{$image['filepath']}}" />
+                            <img src="{{ '/storage/' . $image['filepath'] }}" class="d-block w-100 carouselImgSearch" alt="product image" />
                         </div>
                       @endforeach  
                     </div>
@@ -127,6 +127,7 @@
 
                     <form class="rating mt-1">
                         <fieldset class="starsRating">
+                            <legend>Rating of Product:</legend>
                             <input type="radio" id="star5" name="rating" value="5" /><label
                                 class="full {{$product['rating'] >= 5.0 ? 'marked' : ''}}"
                                 for="star5"
@@ -273,6 +274,7 @@
                                     <div class="card-body">
                                         <form class="rating mb-2">
                                             <fieldset class="starsRating">
+                                            <legend>Rating of Product:</legend>
                                                 <input type="radio" id="star5" name="rating" value="5" /><label
                                                     class="full {{$review['rating'] >= 5.0 ? 'marked' : ''}}"
                                                     for="star5"
