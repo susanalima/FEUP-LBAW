@@ -73,7 +73,7 @@ title="Open Shopping cart"
             </div>
         </div>
     <h4 class="cartProductSubTotal totalPrice">{{$product->price}}</h4>
-        <button class="button-toggable btn border border-white" onclick="removeFromCart(this, {{$product->id}}, {{$product->id_list}})">
+        <button class="button-toggable btn border border-white" onclick="removeFromCart(this, {{$product->id}}, {{$product->id_list}}, {{$product->price}})">
             <i class="fas fa-times"></i>
         </button>
     </article>
