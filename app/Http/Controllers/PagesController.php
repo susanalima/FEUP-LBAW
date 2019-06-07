@@ -32,8 +32,10 @@ class PagesController extends Controller
   $cart = $this->cart();
   $total = 0;
   $prod_ids = [];
-  if ($cart != []) {
-   $cart['products'] = $cart->get(0)->list_products();
+  if ($cart !== [] && $cart->get(0) !== null) {
+   $temp = $cart->get(0);
+
+   $cart['products'] = $temp->list_products();
    $cart['total'] = 0;
 
    foreach ($cart['products'] as $product) {
@@ -54,19 +56,14 @@ class PagesController extends Controller
     $total += $product->price * $product->quantity;
    }
    $cart['total'] = $total;
+   $cart['prod_ids'] = $prod_ids;
 
   } else {
 
-   /*$product->quantity = $tmp->quantity;
-  $product->date = $tmp->added_to;*/
+   $cart['prod_ids'] = [];
+   $cart['products'] = [];
+   $cart['total'] = 0;
   }
-  $cart['prod_ids'] = $prod_ids;
-  $cart['total'] = $total;
-  /*} else {
-
-  $cart['products'] = [];
-  $cart['total'] = 0;
-  }*/
   return $cart;
  }
 
