@@ -1,17 +1,1 @@
-function rotateButton(elem) {
-  if (elem.classList.contains("rotated")) {
-    elem.classList.remove("rotated");
-  } else {
-    elem.classList.add("rotated");
-  }
-
-  if (elem.value === "desc") {
-    elem.value = "asc";
-  } else {
-    elem.value = "desc";
-  }
-}
-
-function submitFilter(elem) {
-  elem.value = document.querySelector("#orderDir").value;
-}
+function rotateButton(t){t.classList.contains("rotated")?t.classList.remove("rotated"):t.classList.add("rotated"),"desc"===t.value?t.value="asc":t.value="desc"}function submitFilter(t){t.value=document.querySelector("#orderDir").value}

@@ -23,7 +23,7 @@
                     <div class="carousel-inner">
                       @foreach ($product['images'] as $image)
                         <div class="carousel-item {{$image['primary_img'] ? 'active' : ''}}">
-                            <img src="{{ '/storage/' . $image['filepath'] }}" class="d-block w-100 carouselImgSearch" alt="{{$image['filepath']}}" />
+                            <img src="{{ '/storage/' . $image['filepath'] }}" class="d-block w-100 carouselImgSearch" alt="product image" />
                         </div>
                       @endforeach  
                     </div>
@@ -99,16 +99,16 @@
                                 <i class="fas fa-heart"></i>
                             </button>
                             @else()
-                                <button
-                                    class="btn addToWishListBtn button-toggable w-100 ml-1"
-                                    type="submit"
-                                    id="addToWishList{{$product['id']}}"
-                                    title="Add To Wish List"
-                                    data-toggle="modal"
-                                    data-target="#wishListModal{{$product['id']}}"
-                                >
-                                    <i class="fas fa-heart"></i>
-                                </button>
+                            <button
+                                class="btn addToWishListBtn button-toggable w-100 ml-1"
+                                type="submit"
+                                id="addToWishList{{$product['id']}}"
+                                title="Add To Wish List"
+                                data-toggle="modal"
+                                data-target="#wishListModal{{$product['id']}}"
+                            >
+                                <i class="fas fa-heart"></i>
+                            </button>
                             @endif
                         @else 
                         <button
@@ -127,6 +127,7 @@
 
                     <form class="rating mt-1">
                         <fieldset class="starsRating">
+                            <legend>Rating of Product:</legend>
                             <input type="radio" id="star5" name="rating" value="5" /><label
                                 class="full {{$product['rating'] >= 5.0 ? 'marked' : ''}}"
                                 for="star5"
@@ -171,7 +172,6 @@
                     </form>
                 </div>
             </div>
-       
 
             @include('templates.comparison')
             @include('templates.compare')
@@ -190,8 +190,6 @@
             @if(Auth::check() && App\Client::find(Auth::user()->id) !== null)
                 @include('templates.add_question')
             @endif
-
-        
 
 
             <div class="accordion accordionDiv pb-4 mx-auto" id="infoSection">
@@ -276,6 +274,7 @@
                                     <div class="card-body">
                                         <form class="rating mb-2">
                                             <fieldset class="starsRating">
+                                            <legend>Rating of Product:</legend>
                                                 <input type="radio" id="star5" name="rating" value="5" /><label
                                                     class="full {{$review['rating'] >= 5.0 ? 'marked' : ''}}"
                                                     for="star5"

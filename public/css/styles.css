@@ -390,11 +390,10 @@ fieldset {
   min-width: 60%;
 }
 
-.carouselImgSearch{
-
-  min-height: 60%;
-  max-height: 60%;
-  height: 60%;
+.carouselImgSearch {
+  height: 30em;
+  width: auto;
+  object-fit: contain;
 }
 
 .cartQuantitySelectorControllerBtn {
@@ -691,4 +690,8 @@ fieldset {
 
 .navbar #navbarLogo a span {
   margin-left: 2px;
+}
+
+legend {
+  visibility: hidden;
 }

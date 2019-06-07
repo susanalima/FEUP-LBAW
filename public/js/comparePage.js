@@ -1,12 +1,1 @@
-function removeComparePage(elem) {
-  addToComparison(elem, null);
-
-  const id = elem.closest(".prod").dataset.id;
-
-  let url = window.location.href;
-  url = url.split("/");
-  url.splice(url.indexOf(id), 1);
-  url = url.join("/");
-
-  window.location = url;
-}
+function removeComparePage(o){addToComparison(o,null);const i=o.closest(".prod").dataset.id;let n=window.location.href;n=n.split("/"),n.splice(n.indexOf(i),1),n=n.join("/"),window.location=n}
