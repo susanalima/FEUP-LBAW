@@ -305,6 +305,9 @@ class PagesController extends Controller
                 $order = $restrictions['order'];
                 $orderDir = $restrictions['orderDir'];
 
+                if ($orderDir === null) {
+                    $orderDir = 'asc';
+                }
                 switch ($order) {
                     case 'price':
                     case 'name':

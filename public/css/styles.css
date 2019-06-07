@@ -691,3 +691,7 @@ fieldset {
 .navbar #navbarLogo a span {
   margin-left: 2px;
 }
+
+legend {
+  visibility: hidden;
+}

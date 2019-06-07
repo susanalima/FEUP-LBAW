@@ -85,6 +85,7 @@ use App\Product;
                                           
                                             <div class="rating">
                                                 <fieldset class="starsRating">
+                                                    <legend>Rating of Product:</legend>
                                                     <label class="full" for="star5"></label>
                                                     <label class="half" for="star4half"></label>
                                                     <label class="full" for="star4"></label>

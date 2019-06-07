@@ -57,7 +57,7 @@
             <div class="container" style="margin-left: 0.4em;">
                 <div class="row flex-row d-flex justify-content-start">
                     <a class="ck_product_img" href="../product/{{$product->id}}">
-                        <img class=" col-sm" src="{{ '/storage/' . $product->img_path }}" alt="{{$product->img_description}}">
+                        <img class=" col-sm" src="{{ '/storage/' . $product->img_path }}" alt="image of product">
                     </a>
                     <div class="col-sm">
                         <div>
