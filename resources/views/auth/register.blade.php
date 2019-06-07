@@ -13,7 +13,7 @@
         {{ csrf_field() }}
 
         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-            <label for="name" class="">Name</label>
+            <label for="name" class="">Name *</label>
 
             <div class="input-group flex-nowrap">
                 <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required
@@ -27,7 +27,7 @@
             </div>
         </div>
         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-            <label for="email" class="">E-Mail Address</label>
+            <label for="email" class="">E-Mail Address *</label>
 
             <div class="input-group flex-nowrap">
                 <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
@@ -40,7 +40,7 @@
             </div>
         </div>
         <div class="form-group{{ $errors->has('nif') ? ' has-error' : '' }}">
-            <label for="nif" class="">NIF</label>
+            <label for="nif" class="">NIF *</label>
 
             <div class="input-group flex-nowrap">
                 <input id="nif" type="text" class="form-control" name="nif" value="{{ old('nif') }}" required autofocus>
@@ -53,7 +53,7 @@
             </div>
         </div>
         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-            <label for="password" class="">Password</label>
+            <label for="password" class="">Password *</label>
 
             <div class="input-group flex-nowrap">
                 <input id="password" type="password" class="form-control" name="password" required>
@@ -67,7 +67,7 @@
         </div>
 
         <div class="form-group">
-            <label for="password-confirm" class="">Confirm Password</label>
+            <label for="password-confirm" class="">Confirm Password *</label>
 
             <div class="input-group flex-nowrap">
                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
