@@ -27,15 +27,43 @@
                             @foreach($products as $product)
                         <th scope="col" class="prod" data-id="{{$product['id']}}">
                                 <div class="my-2">
+
+                                 
+
+                                    @if(!Auth::check())
                                     <button
-                                        class="btn btn addToCartBtn button-toggable "
-                                        onClick="addToCart(this)"
-                                        type="submit"
-                                        id="addToCart"
-                                        title="Add To Cart"
-                                    >
-                                        <i class="fas fa-cart-plus"></i>
+                                                class="btn addToCartBtn button-toggable "
+                                                type="submit"
+                                                id="addToCart"
+                                                title="Add To Cart"
+                                            >
+                                            <i class="fas fa-cart-plus"></i>
                                     </button>
+                                    @else
+                                        @if(in_array($product['id'], $cart['prod_ids']))
+                                            <button
+                                                class="btn addToCartBtn button-toggable active "
+                                                onclick="addProductButtonAction(this,{{Auth::id()}} , {{$product['id']}} , 1, '{{$product['name']}}', {{$cart[0]['id']}}, {{$product['price']}})"  
+                                                type="submit"
+                                                id="addToCart"
+                                                title="Add To Cart"
+                                            >
+                                            <i class="fas fa-cart-plus"></i>
+                                            </button>
+                                        @else
+                                            <button
+                                                class="btn addToCartBtn button-toggable"
+                                                onclick="addProductButtonAction(this,{{Auth::id()}} , {{$product['id']}} , 1, '{{$product['name']}}', {{$cart[0]['id']}}, {{$product['price']}})"  
+                                                type="submit"
+                                                id="addToCart"
+                                                title="Add To Cart"
+                                            >
+                                                <i class="fas fa-cart-plus"></i>
+                                            </button>
+                                            @endif
+                                        @endif
+
+
                                     <button class="btn delBtn button-negative" title="Remove From Comparison" onclick="removeComparePage(this)">
                                         <i class="fas fa-times"></i>
                                     </button>

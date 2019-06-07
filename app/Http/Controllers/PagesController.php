@@ -694,6 +694,8 @@ class PagesController extends Controller
   return view("pages.checkout_product")->with($data);
  }
 
+
+
  public function compare($product1 = null, $product2 = null, $product3 = null)
  {
   $specs = [];
@@ -701,8 +703,9 @@ class PagesController extends Controller
   $products = Product::findMany($products)->map(function ($p) {
    $specs = $p->specifications;
    $cat = $p->id_category;
+   $price = $p->price;
 
-   return ['name' => $p->name, 'image' => $p->primary_image()->filepath, 'id' => $p->id, 'specs' => $specs, 'cat' => $cat];
+   return ['name' => $p->name, 'image' => $p->primary_image()->filepath, 'id' => $p->id, 'specs' => $specs, 'cat' => $cat, 'price' => $price];
   });
 
   $cats = [];
@@ -742,11 +745,14 @@ class PagesController extends Controller
    }
   }
 
+  $cart = PagesController::makeCart();
+
   $data = array(
    'type' => 'help',
    'interactive' => true,
    'specs' => $specs,
    'products' => $products,
+   'cart' => $cart,
   );
   return view("pages.compare")->with($data);
  }
