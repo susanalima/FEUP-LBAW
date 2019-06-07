@@ -86,7 +86,7 @@
                             <i class="fas fa-exchange-alt"></i>
                         </button>
 
-                        @if(Auth::check() || App\Client::find(Auth::user()->id) === null)
+                        @if(Auth::check() && App\Client::find(Auth::user()->id) !== null)
                             @if($product['number_wl'] > 0)
                             <button
                                 class="btn addToWishListBtn button-toggable w-100 ml-1 active"
@@ -180,13 +180,13 @@
 
             <!-- Modal -->
 
-            @if(Auth::check() || App\Client::find(Auth::user()->id) === null)
+            @if(Auth::check() && App\Client::find(Auth::user()->id) !== null)
                 @include('templates.add_review')
             @endif
 
             <!-- Modal -->
 
-            @if(Auth::check() || App\Client::find(Auth::user()->id) === null)
+            @if(Auth::check() && App\Client::find(Auth::user()->id) !== null)
                 @include('templates.add_question')
             @endif
 
@@ -248,7 +248,7 @@
                     </div>
                     <div id="reviewsHeading" class="collapse" aria-labelledby="reviewsCol" data-parent="#infoSection">
                         <div class="d-flex justify-content-end pt-2 pr-1">
-                            @if(Auth::check() || App\Client::find(Auth::user()->id) === null)
+                            @if(Auth::check() && App\Client::find(Auth::user()->id) !== null)
                             <button
                                 class="btn writeCommentBtn button-toggable align-self-end"
                                 onClick="writeModal(this)"
@@ -349,7 +349,7 @@
                     </div>
                     <div id="qaCol" class="collapse" aria-labelledby="qaHeading" data-parent="#infoSection">
                         <div class="d-flex justify-content-end pt-2 pr-1">
-                        @if(Auth::check() || App\Client::find(Auth::user()->id) === null)
+                        @if(Auth::check() && App\Client::find(Auth::user()->id) !== null)
                             <button
                                 class="btn writeCommentBtn button-toggable align-self-end"
                                 onClick="writeModal(this)"

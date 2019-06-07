@@ -160,7 +160,7 @@
                           <i class="fas fa-exchange-alt"></i>
                       </button>
                     
-                      @if(Auth::check() || App\Client::find(Auth::user()->id) === null)
+                      @if(Auth::check() && App\Client::find(Auth::user()->id) !== null)
                       @if($product['number_wl'] > 0)
                             <button
                                 class="btn addToWishListBtn button-toggable w-100  active"
