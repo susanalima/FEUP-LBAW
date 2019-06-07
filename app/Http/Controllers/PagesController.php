@@ -21,7 +21,7 @@ class PagesController extends Controller
 {
  private function cart()
  {
-  if (Auth::check()) {
+  if (Auth::check() && Client::find(Auth::user()->id) !== null) {
    return Client::find(Auth::user()->id)->cart();
   } else {
    return [];
@@ -48,7 +48,7 @@ class PagesController extends Controller
  {
   $cart = $this->cart();
 
-  if (Auth::check() && $cart->get(0) === null) {
+  if (Auth::check() && $cart && $cart->get(0) === null) {
    PagesController::createCart(Auth::user()->id);
    $cart = $this->cart();
   }
