@@ -67,10 +67,10 @@ class PagesController extends Controller
                 $tmp = DB::select("SELECT quantity, added_to FROM ass_list_product WHERE id_list = {$cart[0]['id']} and id_product = $product->id")[0];
                 $img = DB::select("SELECT filepath, description FROM image WHERE primary_img = true and id_product = $product->id")[0];
 
-    $product->img_path = $img->filepath;
-    $product->img_description = $img->description;
-    $product->date = $tmp->added_to;
-    $product->quantity = $tmp->quantity;
+                $product->img_path = $img->filepath;
+                $product->img_description = $img->description;
+                $product->date = $tmp->added_to;
+                $product->quantity = $tmp->quantity;
 
                 $total += $product->price * $product->quantity;
             }
@@ -542,11 +542,39 @@ class PagesController extends Controller
 
     public function show_messages()
     {
-        $data = array(
-            'type' => 'message_board',
-            'interactive' => true,
-        );
-        return view("pages.messages")->with($data);
+        if (Auth::check()) {
+
+            $type = Auth::user()->userable_type;
+
+            if ($type == "App\Client") {
+                $data = array(
+                    'type' => 'message_board',
+                    'interactive' => true,
+                    'messages_c' => DB::table('message_client')->where('id_client', Auth::user()->id)->orderBy('date', 'desc')->get(),
+                    'messages_p' => DB::table('message_product')->where('id_client', Auth::user()->id)->orderBy('date', 'desc')->get()
+                );
+                return view("pages.messages")->with($data);
+            } else if ($type == "App\ClientManager") {
+                $data = array(
+                    'type' => 'message_board',
+                    'interactive' => true,
+                    'messages' => DB::table('message_client')->where('id_client_manager', Auth::user()->id)->orderBy('date', 'desc')->get()
+                );
+                return view("pages.messages")->with($data);
+            } else if ($type == "App\SalesManager") {
+                $data = array(
+                    'type' => 'message_board',
+                    'interactive' => true,
+                    'messages' => DB::table('message_product')->where('id_sales_manager', Auth::user()->id)->orderBy('date', 'desc')->get()
+                );
+                return view("pages.messages")->with($data);
+            } else if ($type == "App\Administrator") {
+                abort(404);
+            }
+            //
+        } else {
+            abort(404);
+        }
     }
 
     public function checkout_delivery()
