@@ -85,6 +85,12 @@ function removeFromCart(elem, prod_id, cart_id){
     sendAjaxRequest('POST', '/api/remove_prod', {product_id: prod_id, cart_id: cart_id}, cartOpHandler);
 }
 
+function createCartCard(product_name, product_price){
+
+  let cart = document.getElementById("shoppingCartCart");
+  let newCartElem = cart.appendChild("")
+}
+
 function addProductToCart(elem, client_id, product_id, quantity){
     
     elem.classList.toggle("active");

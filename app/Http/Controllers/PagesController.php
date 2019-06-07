@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Aux\Aux;
 use App\Category;
+use App\Cart;
 use App\Client;
 use App\Product;
+use App\ProductList;
 use App\Promotion;
 use App\User;
 use App\WishList;
@@ -27,14 +29,36 @@ class PagesController extends Controller
 
     }
 
+
+    private function createCart($client_id){
+        $request = [];
+        
+        $request['client_id'] = $client_id;
+        $request['list_id'] = ProductList::firstOrCreate(['id'=>ProductList::max('id') + 1]);
+        Cart::firstOrCreate([ 
+        'id' => $request['list_id']['id'],
+        'id_client' => $request['client_id'],
+        'checkout' => null,
+        'id_card' => null,
+        'id_address' => null,
+        'id_shipping' => null,]);
+    }
+
+
     public function makeCart()
     {
         $cart = $this->cart();
+        
+        if(Auth::check() && $cart->get(0) === null){
+            PagesController::createCart(Auth::user()->id);
+            $cart = $this->cart();
+        }
         $total = 0;
+        $prod_ids = [];
         if ($cart != []) {
             $cart['products'] = $cart->get(0)->list_products();
             $cart['total'] = 0;
-            $prod_ids = [];
+            
 
             foreach ($cart['products'] as $product) {
                 $total += $product->price;
@@ -53,18 +77,13 @@ class PagesController extends Controller
                 $product->date = $tmp->added_to;
             }
             $cart['total'] = $total;
-            $cart['prod_ids'] = $prod_ids;
+           
         } else {
-
-            /*$product->quantity = $tmp->quantity;
-        $product->date = $tmp->added_to;*/
-        }
-        $cart['total'] = $total;
-        /*} else {
 
         $cart['products'] = [];
         $cart['total'] = 0;
-        }*/
+        }
+        $cart['prod_ids'] = $prod_ids;
         return $cart;
     }
 
