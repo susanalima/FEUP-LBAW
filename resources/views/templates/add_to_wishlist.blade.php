@@ -16,12 +16,12 @@
                         </div>
                         @if(count($wishlists) > 0)
                             @if(count($wishlists) != count($product['wishlists']))
-                            <div class="form-group m-3">
-                                <label for="selectWL">Select a Wish List</label>
+                            <div class="form-group m-3" id="optDiv{{$product['id']}}">
+                                <label for="selectWL{{$product['id']}}">Select a Wish List</label>
                                 <select class="form-control" id="selectWL{{$product['id']}}">
                                     @foreach($wishlists as $wishlist)
                                         @if(!in_array($wishlist->id, $product['wishlists']))
-                                            <option id="optionP{{$product['id']}}WL{{$wishlist->id}}" value="{{$wishlist->id}}">{{$wishlist->name}}</option>
+                                            <option class="option{{$product['id']}}" id="optionP{{$product['id']}}WL{{$wishlist->id}}" value="{{$wishlist->id}}">{{$wishlist->name}}</option>
                                         @endif
                                     @endforeach
                                 </select>                                
@@ -37,7 +37,7 @@
 
                       
                         <div class="modal-footer">
-                            <button type="button"  onclick="addProductToWishList('{{$product->id}}')" class="btn button-submit" data-dismiss="modal" >Add</button>
+                            <button type="button"  onclick="addProductToWishList('{{$product->id}}', this)" class="btn button-submit" data-dismiss="modal" >Add</button>
                             <button type="button" class="btn button-negative" data-dismiss="modal">Close</button>
                         </div>
                     </div>
