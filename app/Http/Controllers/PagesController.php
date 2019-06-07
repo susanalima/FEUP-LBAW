@@ -386,6 +386,11 @@ class PagesController extends Controller
 
     public function profile()
     {
+
+        if(!Auth::check()) {
+            abort(404);
+        }
+
         $ccart = PagesController::makeCart();
 
         $info = Client::find(Auth::user()->id);
@@ -525,6 +530,9 @@ class PagesController extends Controller
 
     public function checkout_delivery()
     {
+        if(!Auth::check()) {
+            abort(404);
+        }
 
         $cart = PagesController::makeCart();
 
@@ -546,6 +554,10 @@ class PagesController extends Controller
     public function checkout_shipping()
     {
 
+        if(!Auth::check()) {
+            abort(404);
+        }
+
         $cart = PagesController::makeCart();
 
         $info['total'] = $cart['total'];
@@ -562,6 +574,11 @@ class PagesController extends Controller
 
     public function checkout_payment()
     {
+
+        if(!Auth::check()) {
+            abort(404);
+        }
+
         $cart = PagesController::makeCart();
 
         $info = Client::find(Auth::user()->id);
@@ -579,6 +596,10 @@ class PagesController extends Controller
 
     public function checkout_confirmation()
     {
+
+        if(!Auth::check()) {
+            abort(404);
+        }
 
         $cart = PagesController::makeCart();
 
@@ -638,6 +659,10 @@ class PagesController extends Controller
 
     public function checkout_products()
     {
+
+        if(!Auth::check()) {
+            abort(404);
+        }
 
         $cart = PagesController::makeCart();
 
