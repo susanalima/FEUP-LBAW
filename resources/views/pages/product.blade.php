@@ -99,16 +99,16 @@
                                 <i class="fas fa-heart"></i>
                             </button>
                             @else()
-                                <button
-                                    class="btn addToWishListBtn button-toggable w-100 ml-1"
-                                    type="submit"
-                                    id="addToWishList{{$product['id']}}"
-                                    title="Add To Wish List"
-                                    data-toggle="modal"
-                                    data-target="#wishListModal{{$product['id']}}"
-                                >
-                                    <i class="fas fa-heart"></i>
-                                </button>
+                            <button
+                                class="btn addToWishListBtn button-toggable w-100 ml-1"
+                                type="submit"
+                                id="addToWishList{{$product['id']}}"
+                                title="Add To Wish List"
+                                data-toggle="modal"
+                                data-target="#wishListModal{{$product['id']}}"
+                            >
+                                <i class="fas fa-heart"></i>
+                            </button>
                             @endif
                         @else 
                         <button
@@ -172,7 +172,6 @@
                     </form>
                 </div>
             </div>
-       
 
             @include('templates.comparison')
             @include('templates.compare')
@@ -191,8 +190,6 @@
             @if(Auth::check() && App\Client::find(Auth::user()->id) !== null)
                 @include('templates.add_question')
             @endif
-
-        
 
 
             <div class="accordion accordionDiv pb-4 mx-auto" id="infoSection">
