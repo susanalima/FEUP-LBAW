@@ -9,7 +9,7 @@
                             @if(isset($promo['product_id']))
                                 <div class="carousel-item {{$index == 0 ? 'active' : ''}}">
                                     <a href="./product/{{$promo['product_id']}}" class="">
-                                        <img src="{{ '/storage/' . $promo['image'] }}" class="d-block w-100 " style="height:30em;width:auto;object-fit: contain;" alt="..." />
+                                        <img src="{{ '/storage/' . $promo['image'] }}" class="d-block w-100 carouselImgSearch" alt="image of product in promo" />
                                         <div class="img-text">
                                         <h3>Enjoy {{ $promo['discount'] }}% discount on {{$promo['name']}}</h3>
                                         </div>
@@ -19,7 +19,7 @@
                         @endforeach
                         <div class="carousel-item">
                             <a href="./product/{{$product['product_id']}}" class="">
-                                <img src="{{ '/storage/' . $product['image']['filepath'] }}" class="d-block w-100 " style="height:30em;width:auto;object-fit: contain;"    alt="..." />
+                                <img src="{{ '/storage/' . $product['image']['filepath'] }}" class="d-block w-100 " style="height:30em;width:auto;object-fit: contain;"    alt="image of the newest product" />
                                 <div class="img-text">
                                 <h3>Meet the new {{$product['name']}}</h3>
                                 </div>
@@ -37,7 +37,7 @@
                 </div>
             </div>
             @foreach ($wished as $category => $products)                
-            <div class="card mt-5 mb-5 mx-2" class="featured">
+            <div class="card mt-5 mb-5 mx-2 featured">
                 <div class="card-header">
                     Most wished for in {{$category}}
                 </div>
@@ -61,11 +61,12 @@
                                         <img
                                             class="d-block w-100 img-blur"
                                             src="/storage/{{$product['image']['filepath'] }}"
-                                            alt="First slide"
+                                            alt="image of product"
                                         />
                                         <div class="productBot mt-auto mr-auto d-flex">
                                         <form class="ratingMain">
                                             <fieldset class="starsRating">
+                                                <legend>Rating of Product:</legend>
                                                 <input type="radio" id="star5" name="rating" value="5" /><label
                                                     class="full {{$product['rating'] >= 5.0 ? 'marked' : ''}}"
                                                     for="star5"
@@ -111,7 +112,6 @@
                                         </div>
                           
                                     </a>
-                            </a>
                                 </div>
                             @endforeach
                         </div>

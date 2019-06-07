@@ -39,17 +39,6 @@
                 </button>
                 </div>
               </div>
-              <span>Brand</span>
-              @foreach ($brands as $brand => $_)
-              @if($brand != '')
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="{{$brand}}" {{(in_array($brand, $selectedBrands) ? 'checked' : '')}} id="check_{{$brand}}" name="brands[]" />
-                  <label class="form-check-label" for="check_{{$brand}}">
-                      {{$brand}}
-                  </label>
-                </div>
-              @endif
-              @endforeach
           </div>
               <div class="form-group">
                   <label for="formControlRange">Price Range</label>
@@ -112,7 +101,7 @@
               <div class="d-flex flex-column flex-wrap productMid">
               <a href="/product/{{$product['id']}}">
                       <div class="productImage">
-                      <img src="{{'/storage/' . (count($product['images']) > 0 ? $product['images'][count($product['images']) - 1]['filepath'] : 'images/placeholder.png')}}" class="" alt="..." />
+                      <img src="{{'/storage/' . (count($product['images']) > 0 ? $product['images'][count($product['images']) - 1]['filepath'] : 'images/placeholder.png')}}" class="" alt="image of product" />
                       </div>
                   </a>
                   <div class="ProductBtnsContainer d-flex flex-column justify-content-center h-100">
@@ -203,6 +192,7 @@
               <div class="productBot d-flex justify-content-left">
                     <form class="rating mt-1">
                         <fieldset class="starsRating">
+                        <legend>Rating of Product:</legend>
                             <input type="radio" id="star5" name="rating" value="5" /><label
                                 class="full {{$product['rating'] >= 5.0 ? 'marked' : ''}}"
                                 for="star5"

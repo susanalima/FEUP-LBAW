@@ -9,7 +9,7 @@
                         width="30"
                         height="30"
                         class="d-inline-block align-top"
-                        alt=""
+                        alt="puzzlewood logo"
                     />
                     <span>PuzzleWood</span>
                 </a>
@@ -26,10 +26,11 @@
                             {{isset($category) && isset($categoryNumber)  ? $category : 'All Categories'}}
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownAllCategories">
+                            <a class="dropdown-item" href="/search">All Categories</a>
                             <a class="dropdown-item" href="/search/0">Computer</a>
-                            <a class="dropdown-item" href="/search/1">Laptops</a>
-                            <a class="dropdown-item" href="/search/2">Keyboards</a>
-                            <a class="dropdown-item" href="/search/3">Headphones</a>
+                            <a class="dropdown-item" href="/search/1">Laptop</a>
+                            <a class="dropdown-item" href="/search/2">Keyboard</a>
+                            <a class="dropdown-item" href="/search/3">Headphone</a>
                             <a class="dropdown-item" href="/search/4">Music</a>
                             <a class="dropdown-item" href="/search/6">Mouse</a>
                         </div>
@@ -53,17 +54,18 @@
                                         {{isset($category) && isset($categoryNumber) ? $category : 'All'}}
                                     </button>
                                     <ul class="dropdown-menu search-category-drop">
+                                        <li><a class="dropdown-item drop-cat" data-value="10" href="">All</a></li>
                                         <li><a class="dropdown-item drop-cat" data-value="0" href="">Computer</a></li>
-                                        <li><a class="dropdown-item drop-cat" data-value="1" href="">Laptops</a></li>
-                                        <li><a class="dropdown-item drop-cat" data-value="2" href="">Keyboards</a></li>
-                                        <li><a class="dropdown-item drop-cat" data-value="3" href="">Headphones</a></li>
+                                        <li><a class="dropdown-item drop-cat" data-value="1" href="">Laptop</a></li>
+                                        <li><a class="dropdown-item drop-cat" data-value="2" href="">Keyboard</a></li>
+                                        <li><a class="dropdown-item drop-cat" data-value="3" href="">Headphone</a></li>
                                         <li><a class="dropdown-item drop-cat" data-value="4" href="">Music</a></li>
                                         <li><a class="dropdown-item drop-cat" data-value="6" href="">Mouse</a></li>
                                     </ul>
                                 </div>
-                                <form class="form-inline my-lg-0 d-flex justify-content-between">
+                                <form class="form-inline my-0 d-flex justify-content-between">
                                     <input class="form-control" type="text" placeholder="Search" id="searchBar" value="{{isset($searchContent) ? $searchContent : ''}}"/>
-                                    <button id="searchBtn" class="fas fa-search" type="submit" onClick=search(this) id="searchBtn"></button>
+                                    <button id="searchBtn" class="fas fa-search" type="submit" onClick=search(this)></button>
                                 </form>
                             </div>
                         </div>
@@ -88,18 +90,20 @@
                                 >Register
                             </a>
                         @else
+                            @if(App\Client::find(Auth::user()->id) !== null)
                             <a class="nav-link" href="{{ route('profile') }}" tabindex="-1" aria-disabled="true"
                                 >Your Account
                             </a>
-                            <a href="{{ route('logout') }}" class="nav-link" href="{{ route('logout') }}" tabindex="-1" aria-disabled="true"
+                            @endif
+                            <a href="{{ route('logout') }}" class="nav-link" tabindex="-1" aria-disabled="true"
                             onclick="event.preventDefault();
                                      document.getElementById('logout-form').submit();">
                                 Logout
                             </a>
-
+                            
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                {{ csrf_field() }}
-                            </form>
+                                    {{ csrf_field() }}
+                                </form>
                         @endif
 
                     </nav>
