@@ -61,7 +61,7 @@
                                         <li><a class="dropdown-item drop-cat" data-value="6" href="">Mouse</a></li>
                                     </ul>
                                 </div>
-                                <form class="form-inline my-lg-0 d-flex justify-content-between">
+                                <form class="form-inline my-0 d-flex justify-content-between">
                                     <input class="form-control" type="text" placeholder="Search" id="searchBar" value="{{isset($searchContent) ? $searchContent : ''}}"/>
                                     <button id="searchBtn" class="fas fa-search" type="submit" onClick=search(this) id="searchBtn"></button>
                                 </form>

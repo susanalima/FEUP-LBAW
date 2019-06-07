@@ -9,7 +9,7 @@
                             @if(isset($promo['product_id']))
                                 <div class="carousel-item {{$index == 0 ? 'active' : ''}}">
                                     <a href="./product/{{$promo['product_id']}}" class="">
-                                        <img src="{{ '/storage/' . $promo['image'] }}" class="d-block w-100 " style="height:30em;width:auto;object-fit: contain;" alt="..." />
+                                        <img src="{{ '/storage/' . $promo['image'] }}" class="d-block w-100 carouselImgSearch" alt="..." />
                                         <div class="img-text">
                                         <h3>Enjoy {{ $promo['discount'] }}% discount on {{$promo['name']}}</h3>
                                         </div>
