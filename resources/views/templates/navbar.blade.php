@@ -5,7 +5,7 @@
             <nav class="navbar d-flex navbar-light" id="navbarLogo">
                 <a class="navbar-brand" href="/">
                     <img
-                        src="{{ URL::asset('images/img.png') }}"
+                        src="{{ ('/storage/./images/logo_puzzlewood.png') }}"
                         width="30"
                         height="30"
                         class="d-inline-block align-top"
