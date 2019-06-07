@@ -15,8 +15,6 @@ class WishList extends Model
 
  protected $fillable = ['id', 'name', 'description', 'id_client'];
 
- //TODO: Association to ass_list_products/product_list
-
  public function id_list()
  {
   return $this->hasOne(ProductList::class, 'id', 'id');

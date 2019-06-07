@@ -1,12 +1,11 @@
 @extends('templates.app')
+@section('content')
+
 <script src="{{ URL::asset('js/buttons.js') }}"></script>
 <script src="{{ URL::asset('js/request.js') }}"></script>
 <script src="{{ URL::asset('js/product.js') }}"></script>
 <script src="{{ URL::asset('js/wishList.js') }}"></script>
 <script src="{{ URL::asset('js/compare.js') }}" defer></script>
-
-@section('content')
-
 
 <div id="alert">
      

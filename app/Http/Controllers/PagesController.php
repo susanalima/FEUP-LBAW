@@ -546,7 +546,7 @@ class PagesController extends Controller
 
         $cart = PagesController::makeCart();
 
-        $totalPrice = 10; //TODO GET CURRENT CART TOTAL PRICE
+        $totalPrice = 10;
 
         $info = Client::find(Auth::user()->id);
         $info['addresses'] = $info->addresses;
