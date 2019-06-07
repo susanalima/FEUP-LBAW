@@ -15,6 +15,7 @@ use App\Cart;
 use App\WishList;
 use App\ProductList;
 use App\AssListProduct;
+use App\Message;
 
 class ApiController extends Controller
 {
@@ -53,6 +54,27 @@ class ApiController extends Controller
     return response()->json("Success");
   }
 
+
+  public function add_product_wl(Request $request){
+   $validator = Validator::make($request->all(), [
+     'product_id' => 'required',
+     'list_id' => 'required',
+    ]);
+  
+    if ($validator->fails()) {
+     return response()->json("Product and client must be defined");
+    }
+
+    $product_id = $request->product_id;
+    $list_id = $request->list_id;
+
+    DB::insert("INSERT INTO ass_list_product (id_list, id_product,quantity,added_to,bought,return) 
+    VALUES (?, ?, ?, ?, ?, ?)", 
+    [$list_id, $product_id, 1, date("Y-m-d"), false, false]);
+    return response()->json("Success");
+ }
+
+
   public function add_product_cart(Request $request){
     $validator = Validator::make($request->all(), [
       'client_id' => 'required',
@@ -77,7 +99,6 @@ class ApiController extends Controller
      VALUES (?, ?, ?, ?, ?, ?)", 
      [$list_id, $product_id, $quantity, date("Y-m-d"), false, false]);
      return response()->json("Success");
-
   }
 
   public function inc_prod(Request $request){
@@ -434,16 +455,11 @@ public function checkout_products(Request $request) {
 
    $tokens = explode(",", $quantities);
 
-   $size = count($tokens);
-   $counter = 0;
+   array_pop($tokens);
 
    foreach($tokens as $token){
-
-      if($token === "")
-         continue;
-      if($counter === $size -1);
-         break;
-      $ts = explode(":", $token);
+    
+     $ts = explode(":", $token);
 
       $product_id = $ts[0];
       $quantity = $ts[1];
@@ -456,10 +472,8 @@ public function checkout_products(Request $request) {
          return response()->json($data);
       }
 
-      $counter = $counter + 1;
       DB::update("UPDATE ass_list_product SET quantity = {$quantity} WHERE id_list = {$cart_id} and id_product = {$product_id}");
 
-   
    }
    
    return response()->json($tokens);
@@ -562,8 +576,19 @@ public function checkout_delivery(Request $request) {
 
    $cart->save();
    
-   //CHECK IF CART IS NOT EMPTY
    //TODO CREATE NEW EMPTY CART
+
+   $productList = ProductList::create(["id" => ProductList::max('id') + 1]);
+
+   $ncart = new cart;
+   $ncart->id = $productList->id;
+   $ncart->id_client = $request->client_id;
+   $ncart->id_address =null;
+   $ncart->id_card = null;
+   $ncart->id_shipping = null;
+   $ncart->checkout = null;
+   $ncart->save();
+
 
    return response()->json($cart);
  }
@@ -584,6 +609,92 @@ public function checkout_delivery(Request $request) {
    DB::delete("DELETE FROM ass_list_product WHERE id_list = {$cart_id} and id_product = {$product_id}");
    return response()->json($request);
  }
+
+ public function add_review(Request $request) {
+
+   $rules = [
+         'client_id' => 'required',
+         'product_id' => 'required',
+         'rating' => 'required',
+         'content' => 'required',    
+   ];
+   $validator = Validator::make($request->all(), $rules);
+   if ($validator->fails()) {
+         $data = [
+         'type' => 'error',
+         ];
+         $data['error'] = $validator->errors()->first();
+         return response()->json($data);
+   }
+
+   $content = $request->content;
+   $client_id = $request->client_id;
+   $product_id = $request->product_id;
+   $rating = $request->rating;
+   $date =  date("Y-m-d");
+
+   $user = User::find($client_id);
+
+   $id = Message::max('id') + 1;
+   DB::insert("INSERT INTO message (id, content, created_at, report_counter, blocked, id_product, id_non_admin)  
+   VALUES (?, ?, ?, ?, ?, ?, ?)", 
+   [$id, $content, $date, 0, false, $product_id, $client_id]);
+
+   DB::insert("INSERT INTO review (id_message, rating) 
+   VALUES (?, ?)",
+   [$id, $rating]);
+   
+   $data = [
+      'content' => $content,
+      'rating' => $rating,
+      'user' => $user->name,
+      'created_at' => $date,
+   ];
+   return response()->json($data);
+ }
+
+
+
+ public function add_question(Request $request) {
+
+   $rules = [
+         'client_id' => 'required',
+         'product_id' => 'required',
+         'content' => 'required',    
+   ];
+   $validator = Validator::make($request->all(), $rules);
+   if ($validator->fails()) {
+         $data = [
+         'type' => 'error',
+         ];
+         $data['error'] = $validator->errors()->first();
+         return response()->json($data);
+   }
+
+   $content = $request->content;
+   $client_id = $request->client_id;
+   $product_id = $request->product_id;
+   $date =  date("Y-m-d");
+
+   $user = User::find($client_id);
+
+   $id = Message::max('id') + 1;
+   DB::insert("INSERT INTO message (id, content, created_at, report_counter, blocked, id_product, id_non_admin)  
+   VALUES (?, ?, ?, ?, ?, ?, ?)", 
+   [$id, $content, $date, 0, false, $product_id, $client_id]);
+
+   DB::insert("INSERT INTO q_a (id_message)
+   VALUES (?)",
+   [$id]);
+   
+   $data = [
+      'content' => $content,
+      'user' => $user->name,
+      'created_at' => $date,
+   ];
+   return response()->json($data);
+ }
+
 
 
 }

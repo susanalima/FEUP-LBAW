@@ -1,8 +1,18 @@
 @extends('templates.app')
+<script src="{{ URL::asset('js/buttons.js') }}"></script>
+<script src="{{ URL::asset('js/request.js') }}"></script>
+<script src="{{ URL::asset('js/product.js') }}"></script>
+<script src="{{ URL::asset('js/wishList.js') }}"></script>
+<script src="{{ URL::asset('js/compare.js') }}" defer></script>
 
 @section('content')
+
+<div id="alert" style="max-width: 75%; margin: auto">
+     
+     </div>
+
 <div class="mainContent">
-            <div id="intro" class="row d-flex justify-content-center p-5 w-100">
+            <div id="intro" class="row d-flex justify-content-center p-5 w-100 prod" data-id="{{$product['id']}}">
                 <div id="productImagesCarousel" class="carousel slide col-md-5" data-ride="carousel">
                     <ol class="carousel-indicators">
                         @foreach ($product['images'] as $index => $image)
@@ -12,7 +22,7 @@
                     <div class="carousel-inner">
                       @foreach ($product['images'] as $image)
                         <div class="carousel-item {{$image['primary_img'] ? 'active' : ''}}">
-                            <img src="{{ '/storage/' . $image['filepath'] }}" class="d-block w-100" alt="{{$image['filepath']}}" />
+                            <img src="{{ '/storage/' . $image['filepath'] }}" class="d-block w-100 carouselImgSearch" alt="{{$image['filepath']}}" />
                         </div>
                       @endforeach  
                     </div>
@@ -65,7 +75,7 @@
                                 @endif
                         @endif
                         <button
-                            class="btn addToCmpBtn button-toggable w-100"
+                    class="btn addToCmpBtn button-toggable w-100"
                             onClick="addToComparison(this)"
                             type="submit"
                             id="addToCmp"
@@ -75,17 +85,44 @@
                         >
                             <i class="fas fa-exchange-alt"></i>
                         </button>
+
+                        @if(Auth::check())
+                            @if($product['number_wl'] > 0)
+                            <button
+                                class="btn addToWishListBtn button-toggable w-100 ml-1 active"
+                                type="submit"
+                                id="addToWishList{{$product['id']}}"
+                                title="Add To Wish List"
+                                data-toggle="modal"
+                                data-target="#wishListModal{{$product['id']}}"
+                            >
+                                <i class="fas fa-heart"></i>
+                            </button>
+                            @else()
+                            <button
+                                class="btn addToWishListBtn button-toggable w-100 ml-1"
+                                type="submit"
+                                id="addToWishList{{$product['id']}}"
+                                title="Add To Wish List"
+                                data-toggle="modal"
+                                data-target="#wishListModal{{$product['id']}}"
+                            >
+                                <i class="fas fa-heart"></i>
+                            </button>
+                            @endif
+                        @else 
                         <button
                             class="btn addToWishListBtn button-toggable w-100 ml-1"
-                            onClick="addToWishList(this)"
                             type="submit"
-                            id="addToWishList"
+                            id="addToWishList{{$product['id']}}"
                             title="Add To Wish List"
                             data-toggle="modal"
-                            data-target="#wishListModal"
-                        >
+                            data-target="#wishListModal{{$product['id']}}"
+                        disabled>
                             <i class="fas fa-heart"></i>
                         </button>
+                        @endif
+
                     </div>
 
                     <form class="rating mt-1">
@@ -135,247 +172,23 @@
                 </div>
             </div>
 
-            <!-- Modal -->
-            <div
-                class="modal fade"
-                id="comparisonModal"
-                tabindex="-1"
-                role="dialog"
-                aria-labelledby="comparisonModalLabel"
-                aria-hidden="true"
-            >
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="comparisonModalLabel">Products Added For Comparison</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body d-flex justify-content-between">
-                            <div class="productForComparison d-flex flex-column align-items-center pb-5">
-                                <div>
-                                     <!-- TODO: Might need to be changed -->
-                                    <button
-                                        class="btn btn addToCartBtn button-toggable "
-                                        onClick="addProductToCart(this,'{{Auth::id()}}','{{$product['id']}}',1)"
-                                        type="submit"
-                                        id="addToCart"
-                                        title="Add To Cart"
-                                    >
-                                        <i class="fas fa-cart-plus"></i>
-                                    </button>
-                                    <button class="btn delBtn button-negative" title="Remove From Comparison">
-                                        <i class="fas fa-times"></i>
-                                    </button>
-                                </div>
-                                <a href="./product.html" class="d-flex flex-column">
-                                    <div class="productImageCompare pb-2">
-                                        <img src="{{ URL::asset('images/placeholder.png') }}" class="" alt="..." />
-                                    </div>
-                                    <span class="text-center">Product Name</span>
-                                </a>
-                            </div>
-                            <div class="productForComparison d-flex flex-column align-items-center pb-5">
-                                <div>
-                                    <button
-                                        class="btn btn addToCartBtn button-toggable "
-                                        onClick="addToCart(this)"
-                                        type="submit"
-                                        id="addToCart"
-                                        title="Add To Cart"
-                                    >
-                                        <i class="fas fa-cart-plus"></i>
-                                    </button>
-                                    <button class="btn delBtn button-negative" title="Remove From Comparison">
-                                        <i class="fas fa-times"></i>
-                                    </button>
-                                </div>
-                                <a href="./product.html" class="d-flex flex-column">
-                                    <div class="productImageCompare pb-2">
-                                        <img src="{{ URL::asset('images/placeholder.png') }}" class="" alt="..." />
-                                    </div>
-                                    <span class="text-center">Product Name</span>
-                                </a>
-                            </div>
-                            <div class="productForComparison d-flex flex-column align-items-center pb-5">
-                                <div>
-                                    <button
-                                        class="btn btn addToCartBtn button-toggable "
-                                        onClick="addToCart(this)"
-                                        type="submit"
-                                        id="addToCart"
-                                        title="Add To Cart"
-                                    >
-                                        <i class="fas fa-cart-plus"></i>
-                                    </button>
-                                    <button class="btn delBtn button-negative" title="Remove From Comparison">
-                                        <i class="fas fa-times"></i>
-                                    </button>
-                                </div>
-                                <a href="./product.html" class="d-flex flex-column">
-                                    <div class="productImageCompare pb-2">
-                                        <img src="{{ URL::asset('images/placeholder.png') }}" class="" alt="..." />
-                                    </div>
-                                    <span class="text-center">Product Name</span>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button
-                                type="button"
-                                onclick="window.location.href = './compare.html';"
-                                class="btn button-submit"
-                                data-dismiss="modal"
-                            >
-                                Go To Comparison
-                            </button>
-                            <button type="button" class="btn button-negative" data-dismiss="modal">Close</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @include('templates.compare')
 
             <!-- Modal -->
-            <div
-                class="modal fade"
-                id="wishListModal"
-                tabindex="-1"
-                role="dialog"
-                aria-labelledby="wishListModalLabel"
-                aria-hidden="true"
-            >
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="wishListModalLabel">Add to Wish List</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <form class="d-flex justify-content-center p-3">
-                            <div class="form-group">
-                                <label for="exampleFormControlSelect1">Select Wish List</label>
-                                <select class="form-control" id="exampleFormControlSelect1">
-                                    <option>Wish List 1</option>
-                                    <option>Wish List 2</option>
-                                    <option>Wish List 3</option>
-                                    <option>Wish List 4</option>
-                                    <option>Wish List 5</option>
-                                </select>
-                            </div>
-                        </form>
-                        <div class="modal-footer">
-                            <button type="button" class="btn button-submit">Save changes</button>
-                            <button type="button" class="btn button-negative" data-dismiss="modal">Close</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @include('templates.add_to_wishlist')
 
             <!-- Modal -->
-            <div
-                class="modal fade"
-                id="writeReviewModal"
-                tabindex="-1"
-                role="dialog"
-                aria-labelledby="writeReviewModalLabel"
-                aria-hidden="true"
-            >
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="writeReviewModalLabel">Leave a Review...</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <form class="align-self-center d-flex flex-column align-items-start w-75 pt-4">
-                            <fieldset class="starsRating mutable">
-                                <input type="radio" id="star5" name="rating" value="5" /><label
-                                    class="full"
-                                    for="star5"
-                                ></label>
-                                <input type="radio" id="star4half" name="rating" value="4.5" /><label
-                                    class="half"
-                                    for="star4half"
-                                ></label>
-                                <input type="radio" id="star4" name="rating" value="4" /><label
-                                    class="full"
-                                    for="star4"
-                                ></label>
-                                <input type="radio" id="star3half" name="rating" value="3.5" /><label
-                                    class="half"
-                                    for="star3half"
-                                ></label>
-                                <input type="radio" id="star3" name="rating" value="3" /><label
-                                    class="full"
-                                    for="star3"
-                                ></label>
-                                <input type="radio" id="star2half" name="rating" value="2.5" /><label
-                                    class="half"
-                                    for="star2half"
-                                ></label>
-                                <input type="radio" id="star2" name="rating" value="2" /><label
-                                    class="full"
-                                    for="star2"
-                                ></label>
-                                <input type="radio" id="star1half" name="rating" value="1.5" /><label
-                                    class="half"
-                                    for="star1half"
-                                ></label>
-                                <input type="radio" id="star1" name="rating" value="1" /><label
-                                    class="full"
-                                    for="star1"
-                                ></label>
-                                <input type="radio" id="star0half" name="rating" value="0.5" /><label
-                                    class="half"
-                                    for="star0half"
-                                ></label>
-                            </fieldset>
-                            <div class="form-group w-100">
-                                <label for="exampleFormControlTextarea1">Write Your Review Here</label>
-                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                            </div>
-                        </form>
-                        <div class="modal-footer">
-                            <button type="button" class="btn modalBtn">Save changes</button>
-                            <button type="button" class="btn modalBtn" data-dismiss="modal">Close</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
+            @if(Auth::Check())
+                @include('templates.add_review')
+            @endif
 
             <!-- Modal -->
-            <div
-                class="modal fade"
-                id="writeQuestionModal"
-                tabindex="-1"
-                role="dialog"
-                aria-labelledby="writeQuestionModalLabel"
-                aria-hidden="true"
-            >
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="writeQuestionModalLabel">Leave a Question...</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <form class="align-self-center d-flex flex-column align-items-start w-75 pt-4">
-                            <div class="form-group w-100">
-                                <label for="exampleFormControlTextarea1">Write Your Question Here</label>
-                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                            </div>
-                        </form>
-                        <div class="modal-footer">
-                            <button type="button" class="btn modalBtn">Save changes</button>
-                            <button type="button" class="btn modalBtn" data-dismiss="modal">Close</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
+            @if(Auth::Check())
+                @include('templates.add_question')
+            @endif
+
 
             <div class="accordion accordionDiv pb-4 mx-auto" id="infoSection">
                 <div class="card">
@@ -536,7 +349,7 @@
                             </button>
                         </div>
 
-                        <div class="qaContainer">
+                        <div id="qaBox" class="qaContainer">
                           @foreach ($product['q_a'] as $q_a)
                               <div class="card-body qaBox answered">
                                 <div class="row">

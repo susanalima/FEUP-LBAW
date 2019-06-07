@@ -58,10 +58,8 @@ class PagesController extends Controller
         if ($cart != []) {
             $cart['products'] = $cart->get(0)->list_products();
             $cart['total'] = 0;
-            
-
+         
             foreach ($cart['products'] as $product) {
-                $total += $product->price;
 
                 array_push($prod_ids, $product->id);
 
@@ -75,17 +73,21 @@ class PagesController extends Controller
 
                 $product->quantity = $tmp->quantity;
                 $product->date = $tmp->added_to;
+
+                $total += $product->price* $product->quantity;
             }
             $cart['total'] = $total;
-           
-        } else {
+            $cart['prod_ids'] = $prod_ids;
 
-        $cart['products'] = [];
-        $cart['total'] = 0;
+          
+        } else {
+            $cart['products'] = [];
+            $cart['total'] = 0;
         }
         $cart['prod_ids'] = $prod_ids;
         return $cart;
     }
+
 
     public function index()
     {
@@ -227,20 +229,38 @@ class PagesController extends Controller
 
     public function product($id)
     {
+   
+
         $cart = PagesController::makeCart();
 
         $product = Product::find($id);
+
+        $wishlists = array();
+        $collection = array();
+        $product_wl = array();
+        if(Auth::check()) {
+            $client = Client::find(Auth::user()->id);  
+            $wishlists = $client->wishLists;
+            $product_wl = $product->wishlists();
+            foreach($product_wl as $prwl) {
+                array_push($collection, $prwl->id_list);
+            }
+        }
+
         $product['category'] = Aux::formatHeader($product->category['name']);
         $product['images'] = $product->images;
         $product['specs'] = $product->specifications->map(function ($a) {return $a->spec();});
         $product['reviews'] = $product->getReviews();
         $product['q_a'] = $product->getQA();
         $product['rating'] = $product->rating();
+        $product['wishlists'] = $collection;
+        $product['number_wl'] = count($product_wl);
 
         $data = array(
             'type' => 'product',
             'interactive' => true,
             'product' => $product,
+            'wishlists' => $wishlists,
             'cart' => $cart,
         );
 
@@ -328,6 +348,20 @@ class PagesController extends Controller
         ];
 
         foreach ($products as $product) {
+
+            $collection = array();
+            if(Auth::check()) {
+                $client = Client::find(Auth::user()->id);  
+                $wishlists = $client->wishLists;
+                $product_wl = $product->wishlists();
+                foreach($product_wl as $prwl) {
+                    array_push($collection, $prwl->id_list);
+                }
+            }
+
+            $product['wishlists'] = $collection ;
+            $product['number_wl'] = count($product_wl);
+
             $product['rating'] = $product->rating();
             $specs = $product->specifications->filter(function ($spec) {
                 return ($spec['header']['name'] == 'brand');
@@ -341,6 +375,13 @@ class PagesController extends Controller
         }
 
         $json = json_decode($products->toJson(), true);
+
+        $wishlists = array();
+        if(Auth::check()) {
+            $client = Client::find(Auth::user()->id);  
+            $wishlists = $client->wishLists;
+        }
+
         $data = array(
             'type' => 'product',
             'interactive' => true,
@@ -355,15 +396,20 @@ class PagesController extends Controller
             'price_range' => $priceRange,
             'order' => $order,
             'orderDir' => $orderDir,
+            'wishlists' => $wishlists,
         );
 
         return view("pages.search")->with($data);
 
     }
 
-    //TODO NAO IR BUSCAR O CART ATUAL
+
     public function profile()
     {
+
+        if(!Auth::check()) {
+            abort(404);
+        }
 
         $ccart = PagesController::makeCart();
 
@@ -412,9 +458,12 @@ class PagesController extends Controller
 
             $this->getProductExtras($products);
 
-            $collection = collect($products);
+            $tp =0;
+            foreach($products as $pt){
+                $tp = $tp + $pt->price*$pt->quantity;
+            }
 
-            $totalPrice = $collection->sum('price'); //TODO O PREÇO TEM DE SER MULTIPLICADO PELO QUANTIDADE
+            $collection = collect($products);
 
             return [
                 'id' => $cart->id,
@@ -428,7 +477,7 @@ class PagesController extends Controller
                 'shipping' => $cart->shipping->method,
                 'card' => $card,
                 'products' => $collection,
-                'total' => $totalPrice,
+                'total' => $tp,
             ];
         });
 
@@ -501,12 +550,17 @@ class PagesController extends Controller
 
     public function checkout_delivery()
     {
+        if(!Auth::check()) {
+            abort(404);
+        }
+
+        $cart = PagesController::makeCart();
 
         $totalPrice = 10; //TODO GET CURRENT CART TOTAL PRICE
 
         $info = Client::find(Auth::user()->id);
         $info['addresses'] = $info->addresses;
-        $info['total'] = $totalPrice;
+        $info['total'] = $cart['total'];
         $info['page'] = 'checkout';
 
         $data = array(
@@ -520,9 +574,13 @@ class PagesController extends Controller
     public function checkout_shipping()
     {
 
-        $totalPrice = 10; //TODO GET CURRENT CART TOTAL PRICE
+        if(!Auth::check()) {
+            abort(404);
+        }
 
-        $info['total'] = $totalPrice;
+        $cart = PagesController::makeCart();
+
+        $info['total'] = $cart['total'];
         $info['id'] = Auth::user()->id;
         $info['page'] = 'checkout';
 
@@ -537,12 +595,15 @@ class PagesController extends Controller
     public function checkout_payment()
     {
 
-        $totalPrice = 10; //TODO GET CURRENT CART TOTAL PRICE
+        if(!Auth::check()) {
+            abort(404);
+        }
+
+        $cart = PagesController::makeCart();
 
         $info = Client::find(Auth::user()->id);
         $info['cards'] = $info->credit_cards;
-
-        $info['total'] = $totalPrice;
+        $info['total'] = $cart['total'];
         $info['page'] = 'checkout';
 
         $data = array(
@@ -556,9 +617,11 @@ class PagesController extends Controller
     public function checkout_confirmation()
     {
 
-        $totalPrice = 10; //TODO GET CURRENT CART TOTAL PRICE
+        if(!Auth::check()) {
+            abort(404);
+        }
 
-        $cart = $this->cart();
+        $cart = PagesController::makeCart();
 
         $address = $cart->get(0)->get_address();
         $card = $cart->get(0)->get_card();
@@ -582,7 +645,7 @@ class PagesController extends Controller
         }
 
         $info['id'] = Auth::user()->id;
-        $info['total'] = $totalPrice;
+        $info['total'] = $cart['total'];
         $info['address'] = $address[0];
         $info['card'] = $card[0];
         $info['shipping'] = $shipping[0];
@@ -617,11 +680,13 @@ class PagesController extends Controller
     public function checkout_products()
     {
 
-        $totalPrice = 10; //TODO GET CURRENT CART TOTAL PRICE
+        if(!Auth::check()) {
+            abort(404);
+        }
 
         $cart = PagesController::makeCart();
 
-        $info['total'] = $totalPrice;
+        $info['total'] = $cart['total'];
         $info['page'] = 'checkout';
         $info['products'] = $cart['products'];
         $info['cart_id'] = $cart->get(0)->id;
@@ -632,6 +697,34 @@ class PagesController extends Controller
             'info' => $info,
         );
         return view("pages.checkout_product")->with($data);
+    }
+
+
+    public function compare()
+    {
+        $prod = array(
+            '12', '13'
+        );
+        $spec = array(
+            'name' => "price",
+            'products' => $prod,
+        );
+        $specs = array($spec, $spec);
+
+        $p = array(
+            'name' => "asus",
+            'image' => "",
+            'id' => "203",
+        );
+        $products = array($p);
+
+        $data = array(
+            'type' => 'help',
+            'interactive' => true,
+            'specs' =>$specs,
+            'products'=> $products,
+        );
+        return view("pages.compare")->with($data);
     }
 
 }

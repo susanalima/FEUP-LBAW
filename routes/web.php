@@ -39,4 +39,6 @@ Route::get('/message/{id}', "PagesController@show_messages")->name('show_message
 Route::get('/wishList/{id}', "PagesController@wishList")->name('wishList');
 Route::delete('wishList/{id}', "WishListController@removeProduct")->name('remove_product_wl');
 
+Route::get('/compare/{p1?}/{p2?}/{p3?}', "PagesController@compare")->name('compare');
+
 Auth::routes();

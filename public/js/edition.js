@@ -1,21 +1,4 @@
 
-
-function setAlert(header,response) {
-  let mc = document.getElementById("alert");
-  mc.innerHTML += 
-  `
-  <div class="alert alert-danger mb-0">
-  <div class="container mx-auto">
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-      <span aria-hidden="true">&times;</span>
-    </button>
-    <b> ${header} :</b>  ${response['error']}
-  </div>
-</div>`
-  return;
-}
-
-
 function editAddressProfileLoaded(){
   let response = JSON.parse(this.responseText);
   if(response['type'] === "error") {
@@ -211,7 +194,7 @@ console.log(address);
     </div>
     <div class="d-flex flex-row-reverse mb-4 mx-3">
         <button type="button" class="btn btn-sm button-action" data-toggle="modal"
-                data-target="#edit${address['id']}Address">Edit</button>
+                data-target="#edit${address['id']}Address" style="height: 33px">Edit</button>
 
                 <div class="modal fade" id="edit${address['id']}Address" tabindex="-1" role="dialog" aria-labelledby="edit${address['id']}AddressLabel"
     aria-hidden="true">
@@ -263,7 +246,7 @@ console.log(address);
     </div>
     </div>
 
-    <form action="/checkout/shipping">
+    <form class="button_form mr-2" action="/checkout/shipping">
     <button type="submit" onclick="checkoutDelivery('${address['id']}', '${address['id_client']}')"  class="btn button-submit btn-sm">Deliver here</button>
     </form>
     </div>
@@ -560,7 +543,7 @@ function addCardCheckoutLoaded(){
   </div>
   <div class="d-flex flex-row-reverse mb-4 mx-3">
       <button type="button" class="btn btn-sm button-action" data-toggle="modal"
-              data-target="#editCard${card['id']}">Edit</button> 
+              data-target="#editCard${card['id']}" style="height: 33px">Edit</button> 
       
     <div class="modal fade" id="editCard${card['id']}" tabindex="-1" role="dialog" aria-labelledby="editCard${card['id']}Label"
     aria-hidden="true">
@@ -630,7 +613,7 @@ function addCardCheckoutLoaded(){
   </div>
 
 
-  <form action="/checkout/confirmation">
+  <form class="button_form mr-2" action="/checkout/confirmation">
   <button type="submit" onclick="checkoutPayment('${card['id']}', '${card['id_client']}')"  class="btn button-submit btn-sm">Pay</button>
   </form>
 
@@ -722,12 +705,12 @@ function addWishlistLoaded(){
   row.innerHTML = 
   `
   <th scope="row">${counter}</th>
-  <td><a class="btn-link"  href="{{ route('wishList', ['id' => $wishList['id']]) }}">${wishList['name']}</a></td>
+  <td><a class="btn-link"  href="./wishList/${wishList['id']}">${wishList['name']}</a></td>
   <td style="max-width: 280px;">${wishList['description']}</td>
   <td>
   <div class="d-flex float-right mr-2">
-      <button type="button" class="btn btn-sm button-action m-2">Share</button>
-      <button type="button" class="btn btn-sm button-negative m-2"  data-toggle="modal" data-target="#delete${wishList['id']}WLModal">Delete</button>
+  <button type="button" onclick="shareWishList('${wishList['id']}')"  class="btn btn-sm button-action m-2">Share</button>
+  <button type="button" class="btn btn-sm button-negative m-2"  data-toggle="modal" data-target="#delete${wishList['id']}WLModal">Delete</button>
 
       <!-- Modal -->
       <div class="modal fade" id="delete${wishList['id']}WLModal" tabindex="-1" role="dialog" aria-labelledby="delete${wishList['id']}WLModalLabel" aria-hidden="true">
@@ -794,3 +777,26 @@ function deleteAllWishLists(){
     btns[i].click();
   }
 }
+
+function copyStringToClipboard (str) {
+  let tmp = document.createElement('textarea');
+  tmp.value = str;
+  tmp.setAttribute('readonly', '');
+  tmp.style = {position: 'absolute', left: '-9999px'};
+  document.body.appendChild(tmp);
+  tmp.select();
+  document.execCommand('copy');
+  document.body.removeChild(tmp);
+}
+
+function shareWishList(id){
+  console.log(id);
+  let ref = window.location.href;
+
+  ref = ref.substring(0, ref.length-7);
+  ref += "wishList/" + id;
+   console.log(ref);
+  copyStringToClipboard(ref);
+  alert("Wish list link copied to clipboard! " + ref);
+}
+

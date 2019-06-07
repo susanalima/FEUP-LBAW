@@ -2,6 +2,7 @@
 
 @section('content')
 <script type="text/javascript" src="{{ URL::asset('js/app.js') }}" defer></script>
+<script type="text/javascript" src="{{ URL::asset('js/uploadImages.js') }}" defer></script>
 <div class="mainContent">
     <!-- Image and text -->
     @isset ($error)
@@ -15,7 +16,7 @@
         {{ csrf_field() }}
         <div class="w-75 mx-auto my-5">
             <div class="row">
-                <div class="col-12 col-md-8">
+                <div class="col-12 w-100">
                     <div class="form-group row">
                         <label for="addProductName" class="col-sm-2 col-form-label px-0">Product</label>
                         <div class="col-sm-8 px-0">
@@ -25,7 +26,7 @@
                     <div class="form-group row">
                         <label for ="addProductFiles" class ="col-sm-2 col-form-label px-0">Load Images</label>
                         <div class ="col-sm-8 px-0">
-                            <input type="file" accept="image/*" multiple class="btn button-action btn-sm btn-block" name="images[]" />
+                            <input type="file" id="fileUpload" accept="image/*" multiple class="btn button-action btn-sm btn-block" name="images[]" />
                         </div>
                     </div>
                     <div class="form-group row">
@@ -53,56 +54,10 @@
                     <div class="form-group row">
                         <label for="addProductAvailable" class="col-sm-2 col-form-label px-0">Available</label>
                         <div class="col-sm-8 px-0">
-                            <input type="checkbox" class="form-control w-auto" id="addProductPrice" name="available">
+                            <input type="checkbox" class="form-control w-auto " id="addProductPrice" name="available">
                         </div>
                     </div>
                 </div>
-                <div class="col-6 col-md-4 p-0">
-                    <div id="carouselImagePreviewCaptions" class="carousel slide" data-ride="carousel">
-                        <ol class="carousel-indicators">
-                            <li data-target="#carouselImagePreviewCaptions" data-slide-to="0" class="active"></li>
-                            <li data-target="#carouselImagePreviewCaptions" data-slide-to="1"></li>
-                            <li data-target="#carouselImagePreviewCaptions" data-slide-to="2"></li>
-                        </ol>
-                        <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <a href="./product.html">
-                                    <img src="{{ URL::asset('images/img.png') }}" class="d-block w-100" alt="Product Image" />
-                                </a>
-                                <div class="carousel-caption d-none d-md-block">
-                                    <h5>Image Preview</h5>
-                                </div>
-                            </div>
-                            <div class="carousel-item">
-                                <a href="./search.html">
-                                    <img src="{{ URL::asset('images/placeholder.png') }}" class="d-block w-100" alt="Product Image" />
-                                </a>
-                                <div class="carousel-caption d-none d-md-block">
-                                    <h5>Image Preview</h5>
-                                </div>
-                            </div>
-                            <div class="carousel-item">
-                                <a href="./product.html">
-                                    <img src="{{ URL::asset('images/img.png') }}" class="d-block w-100" alt="Product Image" />
-                                </a>
-                                <div class="carousel-caption d-none d-md-block">
-                                    <h5>Image Preview</h5>
-                                </div>
-                            </div>
-                        </div>
-                        <a class="carousel-control-prev" href="#carouselImagePreviewCaptions" role="button"
-                            data-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="sr-only">Previous</span>
-                        </a>
-                        <a class="carousel-control-next" href="#carouselImagePreviewCaptions" role="button"
-                            data-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="sr-only">Next</span>
-                        </a>
-                    </div>
-                </div>
-
             </div>
            
             <p class="row px-0" id="specs"> Specifications </p>

@@ -1,9 +1,8 @@
 @extends('templates.app')
 
 <link rel="stylesheet" href="{{ URL::asset('css/clientAccount.css') }}"" />
-<script src="{{ URL::asset('js/wishList.js') }}"></script>
+<script src="{{ URL::asset('js/request.js') }}"></script>
 <script src="{{ URL::asset('js/edition.js') }}"></script>
-
 
 @section('content')
 <div class="mainContent">
@@ -573,10 +572,10 @@
                                     alt="Cart image" class=""/>
                                     </a>
                                     <a  href="{{ route('product_page', ['id' => $product->id]) }}">
-                                      <h4 class="cartProductName">{{$product->name}}</h4>
+                                      <h4 class="cartProfileProductName">{{$product->name}}</h4>
                                     </a>
-                                    <h4>{{$product->quantity}} </h4>
-                                    <h4 class="cartProductSubTotal">{{$product->price}}€</h4>
+                                    <h4 class="cartProfileProductQuantity">{{$product->quantity}} </h4>
+                                    <h4 class="cartProfileProductSubTotal">{{$product->price}}€</h4>
 
                                   </article>
                                 @endforeach
@@ -618,7 +617,7 @@
                         <td style="max-width: 280px;">{{$wishList['description']}}</td>
                         <td>
                           <div class="d-flex float-right mr-2">
-                            <button type="button" class="btn btn-sm button-action m-2">Share</button>
+                            <button type="button" onclick="shareWishList('{{$wishList['id']}}')"  class="btn btn-sm button-action m-2">Share</button>
                             <button type="button" class="btn btn-sm button-negative m-2"  data-toggle="modal" data-target="#delete{{$wishList['id']}}WLModal">Delete</button>
 
                             <!-- Modal -->
