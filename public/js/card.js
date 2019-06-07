@@ -78,7 +78,20 @@ function cartOpHandler(e) {
   }
 }
 
-function plusOne(elem, prod_id, cart_id) {
+function updateCartValue(add, value){
+  let priceTag = document.getElementsByClassName("totalPrice")[0].getElementsByTagName("h3")[0];
+  
+  if(add)
+    priceTag.innerHTML = (Number.parseFloat(priceTag.innerHTML) + value).toFixed(2);
+  else
+    priceTag.innerHTML = (Number.parseFloat(priceTag.innerHTML) - value).toFixed(2);
+
+  if(priceTag.innerHTML <= 0)
+    priceTag.innerHTML = 0;
+
+}
+
+function plusOne(elem, prod_id, cart_id, prod_price) {
   var textfield = elem.parentElement.parentElement.getElementsByTagName(
     "INPUT"
   )[0];
@@ -88,6 +101,8 @@ function plusOne(elem, prod_id, cart_id) {
   }
   textfield.value = quantity;
 
+  updateCartValue(true, prod_price);
+  
   sendAjaxRequest(
     "POST",
     "/api/inc_prod",
@@ -95,15 +110,18 @@ function plusOne(elem, prod_id, cart_id) {
     cartOpHandler
   );
 }
-function minusOne(elem, prod_id, cart_id) {
+function minusOne(elem, prod_id, cart_id, prod_price) {
   var textfield = elem.parentElement.parentElement.getElementsByTagName(
     "INPUT"
   )[0];
   var quantity = parseInt(textfield.value) - 1;
   if (isNaN(quantity) || quantity < 0) {
     quantity = 0;
+    return ;
   }
   textfield.value = quantity;
+
+  updateCartValue(false, prod_price);
 
   sendAjaxRequest(
     "POST",
@@ -113,11 +131,20 @@ function minusOne(elem, prod_id, cart_id) {
   );
 }
 
-function removeFromCart(elem, prod_id, cart_id) {
+function removeFromCart(elem, prod_id, cart_id, prod_price) {
   elem.classList.toggle("active");
   console.log(cart_id, prod_id);
+
+  let quantity = document.getElementById("product-quantity-" + prod_id).value;
+  let value = prod_price * quantity;
+  if(quantity > 0)
+    updateCartValue(false, value);
+  
   let elementDelete = document.getElementById("cart-product-" + prod_id);
   elementDelete.remove();
+  
+
+
   sendAjaxRequest(
     "POST",
     "/api/remove_prod",
@@ -128,7 +155,7 @@ function removeFromCart(elem, prod_id, cart_id) {
 
 
 
-function createCartCard(product_name, product_price, product_id, list_id){
+function createCartCard(product_name, product_price, product_id, list_id, quantity){
 
   let cart = document.getElementById("shoppingCartCart");
   let oldCard = cart.innerHTML;
@@ -140,18 +167,18 @@ function createCartCard(product_name, product_price, product_id, list_id){
       </a>
   </div>
   <div class="d-flex align-items-center">
-      <input type="text" class="form-control cartQuantitySelector" value=1 />
+      <input id="product-quantity-` + product_id + `" type="text" class="form-control cartQuantitySelector" value=1 />
       <div class="cartQuantitySelectorController d-flex flex-column align-items-center">
           <button
               class="btn cartQuantitySelectorControllerBtn button-toggable border border-white"
-              onclick="plusOne(this,` + product_id + "," + list_id + `)"
+              onclick="plusOne(this,` + product_id + "," + list_id + "," + product_price + `)"
               type="submit"
           >
               <i class="fas fa-plus"></i>
           </button>
           <button
               class="btn cartQuantitySelectorControllerBtn button-toggable border border-white"
-              onclick="minusOne(this,` + product_id + "," + list_id + `)"
+              onclick="minusOne(this,` + product_id + "," + list_id + "," + product_price + `)"
               type="submit"
           >
               <i class="fas fa-minus"></i>
@@ -159,7 +186,7 @@ function createCartCard(product_name, product_price, product_id, list_id){
       </div>
   </div>
 <h4 class="cartProductSubTotal totalPrice">`+ product_price +`</h4>
-  <button class="button-toggable btn border border-white" onclick="removeFromCart(this, ` + product_id + "," + list_id + `)">
+  <button class="button-toggable btn border border-white" onclick="removeFromCart(this, ` + product_id + "," + list_id + "," + product_price +`)">
       <i class="fas fa-times"></i>
   </button>
 </article>`;
@@ -178,7 +205,8 @@ function addProductToCart(elem, client_id, product_id, quantity, product_name, l
       return;
     }
     
-    createCartCard(product_name, product_price, product_id, list_id)
+    createCartCard(product_name, product_price, product_id, list_id, quantity)
+    updateCartValue(true, product_price);
     console.log(client_id, product_id, quantity);
 
 
@@ -197,7 +225,7 @@ function addProductToCart(elem, client_id, product_id, quantity, product_name, l
 
 function addProductButtonAction(elem, client_id, product_id, quantity, product_name, list_id, product_price){
     if(elem.classList.contains('active')){
-        removeFromCart(elem, product_id, list_id);
+        removeFromCart(elem, product_id, list_id, product_price, quantity);
     }
     else{
         addProductToCart(elem, client_id, product_id, quantity, product_name, list_id, product_price);

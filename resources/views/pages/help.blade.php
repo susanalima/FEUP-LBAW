@@ -54,7 +54,7 @@
             @endif
             
               <div class="card-body">
-              @if(Auth::check())
+              @if(Auth::check() && App\Client::find(Auth::user()->id) !== null)
                 <h2 class="mb-4 mt-2">Any doubts? 
                 <a id="linkHovered" data-toggle="modal" data-target="#contactModal">Contact us!</a> 
                 </h2>
@@ -75,7 +75,7 @@
                 </div>
               </div>
 
-            @if(Auth::check())
+            @if(Auth::check() && App\Client::find(Auth::user()->id) !== null)
               <div class="d-flex flex-row-reverse mx-3 mb-3">
                   <button type="button" class="btn btn-sm button-action  btn-sm " data-toggle="modal" data-target="#contactModal">Contact Support</button>
                 </div>

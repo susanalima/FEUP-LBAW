@@ -116,7 +116,7 @@
                       </div>
                   </a>
                   <div class="ProductBtnsContainer d-flex flex-column justify-content-center h-100">
-                  @if(!Auth::check())
+                  @if(!Auth::check() || App\Client::find(Auth::user()->id) === null)
                                     <button
                                                 class="btn addToCartBtn button-toggable w-100 mr-1 "
                                                 type="submit"
@@ -160,7 +160,7 @@
                           <i class="fas fa-exchange-alt"></i>
                       </button>
                     
-                      @if(Auth::check())
+                      @if(Auth::check() && App\Client::find(Auth::user()->id) !== null)
                       @if($product['number_wl'] > 0)
                             <button
                                 class="btn addToWishListBtn button-toggable w-100  active"

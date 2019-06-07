@@ -36,13 +36,13 @@
                 </div>
                 <div class="col-md-2 d-flex flex-column justify-content-end" id="productCtrl">
                     <h1 class="" id="name">{{$product['name']}}</h1>
-                    <h2 class="" id="category">{{$product['category']}}</h2>
+                <a href="/search/{{$product['id_category']}}"> <h2 class="" id="category">{{$product['category']}}</h2> </a>
 
                     <div class="d-flex" id="price">
                         <h3 id="priceVal" class="">{{$product['price']}}</h3>
                     </div>
                     <div class="d-flex justify-content-between w-100">
-                    @if(!Auth::check())
+                    @if(!Auth::check() || App\Client::find(Auth::user()->id) === null)
                     <button
                                 class="btn addToCartBtn button-toggable w-100 mr-1 "
                                 type="submit"
@@ -86,7 +86,7 @@
                             <i class="fas fa-exchange-alt"></i>
                         </button>
 
-                        @if(Auth::check())
+                        @if(Auth::check() && App\Client::find(Auth::user()->id) !== null)
                             @if($product['number_wl'] > 0)
                             <button
                                 class="btn addToWishListBtn button-toggable w-100 ml-1 active"
@@ -181,13 +181,13 @@
 
             <!-- Modal -->
 
-            @if(Auth::check())
+            @if(Auth::check() && App\Client::find(Auth::user()->id) !== null)
                 @include('templates.add_review')
             @endif
 
             <!-- Modal -->
 
-            @if(Auth::check())
+            @if(Auth::check() && App\Client::find(Auth::user()->id) !== null)
                 @include('templates.add_question')
             @endif
 
@@ -251,7 +251,7 @@
                     </div>
                     <div id="reviewsHeading" class="collapse" aria-labelledby="reviewsCol" data-parent="#infoSection">
                         <div class="d-flex justify-content-end pt-2 pr-1">
-                            @if(Auth::check())
+                            @if(Auth::check() && App\Client::find(Auth::user()->id) !== null)
                             <button
                                 class="btn writeCommentBtn button-toggable align-self-end"
                                 onClick="writeModal(this)"
@@ -352,7 +352,7 @@
                     </div>
                     <div id="qaCol" class="collapse" aria-labelledby="qaHeading" data-parent="#infoSection">
                         <div class="d-flex justify-content-end pt-2 pr-1">
-                        @if(Auth::check())
+                        @if(Auth::check() && App\Client::find(Auth::user()->id) !== null)
                             <button
                                 class="btn writeCommentBtn button-toggable align-self-end"
                                 onClick="writeModal(this)"
