@@ -60,7 +60,6 @@ function checkoutShipping(shipping_id, client_id){
 }
 
 function checkoutConfirmationLoad(){
-    console.log(this.responseText);
     let response = JSON.parse(this.responseText);
     if(response['type'] === "error") {
       setAlert("error validating purchase",response);

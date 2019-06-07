@@ -36,7 +36,7 @@ function addProductToWishList(product_id) {
   let opts = document.getElementById(`selectWL${product_id}`);
   let list_id = opts.options[opts.selectedIndex].value;
 
-  console.log(list_id);
+ //console.log(list_id);
 
   let btn = document.getElementById(`addToWishList${product_id}`);
   btn.classList.toggle("active");

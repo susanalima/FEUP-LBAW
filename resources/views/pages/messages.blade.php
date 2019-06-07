@@ -9,7 +9,6 @@
       <thead>
         <tr>
           <th scope="col">Date</th>
-          <th scope="col">Subject</th>
           <th scope="col">Message</th>
           <th scope="col">Action</th>
         </tr>
@@ -17,7 +16,6 @@
       <tbody>
         <tr>
           <th scope="row">2019-03-05 07:55 UTC</th>
-          <th>Return Product</th>
           <th>User "John Doe": Help returning product</th>
           <th>
             <button type="button" class="btn button-action btn-sm" data-toggle="modal" data-target="#chatModal">
@@ -33,7 +31,6 @@
         </tr>
         <tr>
           <th scope="row">2019-03-01 15:42 UTC</th>
-          <th>Comment Blocked</th>
           <th>User "Ada Lovelace": Highly reported comment</th>
           <th>
             <button type="button" class="btn button-action btn-sm" data-toggle="modal" data-target="#viewCommentModal">
@@ -49,7 +46,6 @@
         </tr>
         <tr>
           <th scope="row">2019-03-01 15:42 UTC</th>
-          <th>Comment Blocked</th>
           <th>User "Charles Babbage": Highly reported review</th>
           <th>
             <button type="button" class="btn button-action btn-sm" data-toggle="modal" data-target="#viewCommentModal">

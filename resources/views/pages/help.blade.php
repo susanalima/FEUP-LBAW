@@ -1,6 +1,16 @@
 @extends('templates.app')
  
+<script src="{{ URL::asset('js/request.js') }}"></script>
+<script src="{{ URL::asset('js/help.js') }}"></script>
+
 @section('content')
+
+     
+        
+<div id="alert">
+     
+     </div>
+
 <div class="mx-auto accordionDiv">
         <div class="accordion my-2" id="accordionExample">
           <div class="card" id="support">
@@ -44,7 +54,13 @@
             @endif
             
               <div class="card-body">
-                <h2 class="mb-4 mt-2">Any doubts? <a id="linkHovered" data-toggle="modal" data-target="#contactModal">Contact us!</a> </h2>
+              @if(Auth::check())
+                <h2 class="mb-4 mt-2">Any doubts? 
+                <a id="linkHovered" data-toggle="modal" data-target="#contactModal">Contact us!</a> 
+                </h2>
+              @else
+                <h2 class="mb-4 mt-2">Any doubts? Contact us!</h2>
+              @endif
                 <div class="row mb-1">
                   <div class="col-6 col-md-2"><b>Address:</b></div>
                   <div class="col-8 col-md-8"> s/n, R. Dr. Roberto Frias, 4200-465 Porto</div>
@@ -58,48 +74,19 @@
                   <div class="col-12 col-md-8">puzzleWoodIsBetterThanAmazon@gmail.com</div>
                 </div>
               </div>
+
+            @if(Auth::check())
               <div class="d-flex flex-row-reverse mx-3 mb-3">
                   <button type="button" class="btn btn-sm button-action  btn-sm " data-toggle="modal" data-target="#contactModal">Contact Support</button>
                 </div>
-                <div class="modal fade" id="contactModal" tabindex="-1" role="dialog" aria-labelledby="contactModalLabel"
-                  aria-hidden="true">
-                  <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h5 class="modal-title" id="contactModalLabel">Contact Support</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                        </button>
-                      </div>
-                      <div class="modal-body">
-                        <form>
-                          <div class="form-group">
-                            <label for="wishListName" class="col-form-label">Subject</label>
-                            <input type="text" class="form-control" id="wishListName" required>
-                          </div>
-                          <div class="form-group">
-                              <label for="wishListName" class="col-form-label">Name</label>
-                              <input type="text" class="form-control" id="wishListName" required>
-                            </div>
-                          <div class="form-group">
-                              <label for="wishListName" class="col-form-label">Email</label>
-                              <input type="text" class="form-control" id="wishListName" required>
-                            </div>
-                          <div class="form-group">
-                            <label for="wishListDescription" class="col-form-label">Description</label>
-                            <textarea class="form-control" id="wishListDescription" required></textarea>
-                          </div>
-                        </form>
-                      </div>
-                      <div class="modal-footer">
-                        <button type="button" class="btn button-submit btn-sm">Finish</button>
-                        <button type="button" class="btn button-negative btn-sm" data-dismiss="modal">Cancel</button>
-                      </div>
-                    </div>
-                  </div>
+                @include('templates.send_message')
+              @else
+              <div class="d-flex flex-row-reverse mx-3 mb-3">
+                  <button type="button" class="btn btn-sm button-action  btn-sm " disabled>Contact Support</button>
                 </div>
+            @endif
             </div>
-          </div>
+            </div>
           <div class="card" id="faq">
             <div class="card-header" id="headingThree">
               <h5 class="mb-0">

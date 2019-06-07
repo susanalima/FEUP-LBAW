@@ -43,4 +43,7 @@ Route::post('/checkout_confirm', "ApiController@checkout_confirm")->name('checko
 Route::post('/add_review', 'ApiController@add_review');
 Route::post('/add_question', 'ApiController@add_question');
 
+Route::post('/send_message', 'ApiController@send_message');
+
+
 Route::get('/productSimple', "ProductController@getSimpleProd")->name('getSimpleProd');

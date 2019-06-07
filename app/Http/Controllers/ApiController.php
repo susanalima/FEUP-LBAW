@@ -16,6 +16,10 @@ use App\WishList;
 use App\ProductList;
 use App\AssListProduct;
 use App\Message;
+use App\MessageClient;
+use App\MessageProduct;
+use App\SalesManager;
+use App\ClientsManager;
 
 class ApiController extends Controller
 {
@@ -692,6 +696,39 @@ public function checkout_delivery(Request $request) {
       'created_at' => $date,
    ];
    return response()->json($data);
+ }
+
+
+ function send_message(Request $request) {
+   $rules = [
+      'subject' => 'required|numeric|min:1|max:2',
+      'client_id' => 'required',
+      'content' => 'required',   
+   ];
+   $validator = Validator::make($request->all(), $rules);
+   if ($validator->fails()) {
+         $data = [
+         'type' => 'error',
+         ];
+         $data['error'] = $validator->errors()->first();
+         return response()->json($data);
+   }
+
+   if($request->subject === "1"){
+      $manager = SalesManager::inRandomOrder()->first();
+      
+      DB::insert("INSERT INTO message_product(id_client,id_sales_manager,content,date)
+      VALUES (?, ?, ?, ?)", 
+      [$request->client_id, $manager->id, $request->content, date("Y-m-d")]);
+   } else if($request->subject === "2") {
+      $manager = ClientsManager::inRandomOrder()->first();
+
+     DB::insert("INSERT INTO message_client (id_client,id_client_manager,content,date)
+      VALUES (?, ?, ?, ?)", 
+      [$request->client_id, $manager->id, $request->content, date("Y-m-d")]);
+   }
+
+   return response()->json($request);
  }
 
 
