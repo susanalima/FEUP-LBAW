@@ -45,8 +45,8 @@
                     <div class="bd-example  w-100">
                         <div class="hotProducts">
                             @foreach ($products as $product)
-                            <div>
-                            <a href="./product/{{$product['id']}}" class="prodCard">
+                            <div class="prodCard">
+                            <a href="./product/{{$product['id']}}" >
                                 <div class="productName">
                                             <span>
                                                 {{$product['name']}}
@@ -63,6 +63,7 @@
                                             src="/storage/{{$product['image']['filepath'] }}"
                                             alt="image of product"
                                         />
+                            </a>
                                         <div class="productBot mt-auto mr-auto d-flex">
                                         <form class="ratingMain">
                                             <fieldset class="starsRating">
@@ -110,8 +111,6 @@
                                             </fieldset>
                                         </form>
                                         </div>
-                          
-                                    </a>
                                 </div>
                             @endforeach
                         </div>

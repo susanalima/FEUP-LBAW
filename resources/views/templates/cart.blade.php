@@ -83,6 +83,6 @@ title="Open Shopping cart"
 </div>
 </div>
 <!--Card JavaScript-->
-<script type="text/javascript" src="{{ URL::asset('js/card.js')}}"></script>
+<script src="{{ URL::asset('js/card.js')}}"></script>
 
 <!-- Shopping Cart End -->
