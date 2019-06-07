@@ -1,4 +1,4 @@
-@if(Auth::Check())
+@if(Auth::check())
     <div
                 class="modal fade"
                 id="writeReviewModal"
