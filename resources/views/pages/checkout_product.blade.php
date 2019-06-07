@@ -22,7 +22,8 @@
         </nav>
     
      
-        <div id="alert" style="max-width: 75%; margin: auto">
+        
+        <div id="alert">
      
         </div>
      

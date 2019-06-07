@@ -64,7 +64,6 @@
                             </div>
                             <div class="modal-footer">
                                     <button type="button" onclick="addReview('{{$product['id']}}', '{{Auth::user()->id}}')" class="btn modalBtn" data-dismiss="modal">Save changes</button>
-                                    <button type="button"  class="btn modalBtn" data-dismiss="modal">Save changes</button>
                                 <button type="button" class="btn modalBtn" data-dismiss="modal">Close</button>
                             </div>
                         </form>

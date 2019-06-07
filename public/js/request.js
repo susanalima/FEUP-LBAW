@@ -53,3 +53,18 @@ function encodeForAjax(data) {
   </div>`
     return;
   }
+
+  function setAlertSuccessString(response) {
+    let mc = document.getElementById("alert");
+    mc.innerHTML += 
+    `
+    <div class="alert alert-success mb-0">
+    <div class="container mx-auto">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      ${response}
+    </div>
+  </div>`
+    return;
+  }
