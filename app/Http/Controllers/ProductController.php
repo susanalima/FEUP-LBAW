@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\DB;
 use Response;
 use Validator;
+use Auth;
 
 class ProductController extends Controller
 {
